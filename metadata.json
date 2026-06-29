@@ -1,0 +1,6 @@
+{
+  "name": "Three Bugs Studio",
+  "description": "Premium portfolio website for Three Bugs Studio - a design-forward software engineering and digital experiences studio.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
