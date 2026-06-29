@@ -286,7 +286,7 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       bio: "Chuyên gia quản trị dự án phần mềm với tầm nhìn thực tế. Anh đảm nhận trách nhiệm quản lý tổng thể, thiết lập đặc tả dự án và đảm bảo bàn giao đúng chất lượng.",
       specialties: ["Quản lý Dự án", "Đặc tả Phần mềm", "Phân tích Nghiệp vụ", "Đảm bảo Cam kết"],
       socials: {
-        github: "https://github.com/Three-Bugs-Studio"
+        github: "https://github.com/DongDuong2001"
       }
     },
     {
@@ -295,7 +295,7 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       bio: "Chuyên gia kiểm định chất lượng và điều phối quy trình phát triển. Anh chịu trách nhiệm kiểm thử hệ thống, thúc đẩy quy trình Agile linh hoạt và đảm bảo bàn giao sản phẩm đạt chuẩn chất lượng.",
       specialties: ["Kiểm thử Phần mềm", "Scrum Master", "Quy trình Agile", "Đảm bảo Chất lượng"],
       socials: {
-        github: "https://github.com/Three-Bugs-Studio"
+        github: "https://github.com/quangdong26"
       }
     },
     {
@@ -304,7 +304,7 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       bio: "Kỹ sư vận hành đám mây và lập trình viên toàn diện. Anh phụ trách tối ưu hóa máy chủ, thiết lập môi trường Docker và xây dựng các hệ thống backend chạy mượt mà.",
       specialties: ["Kiến trúc DevOps", "Docker và Vận hành", "Lập trình Full Stack", "Cơ sở dữ liệu PostgreSQL"],
       socials: {
-        github: "https://github.com/Three-Bugs-Studio"
+        github: "https://github.com/HoHuy2402"
       }
     }
   ],
@@ -315,7 +315,7 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       bio: "Software project manager with a realistic and structured vision. He oversees end to end execution, locks down requirements, and ensures timely delivery.",
       specialties: ["Project Management", "Software Specs", "Business Analysis", "Client Delivery"],
       socials: {
-        github: "https://github.com/Three-Bugs-Studio"
+        github: "https://github.com/DongDuong2001"
       }
     },
     {
@@ -324,7 +324,7 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       bio: "Quality assurance expert and agile coordinator. He leads quality verification, drives agile execution, and ensures top-tier software delivery.",
       specialties: ["Quality Assurance", "Scrum Master", "Agile Framework", "Software Testing"],
       socials: {
-        github: "https://github.com/Three-Bugs-Studio"
+        github: "https://github.com/quangdong26"
       }
     },
     {
@@ -333,7 +333,7 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       bio: "Cloud infrastructure architect and full stack engineer. He configures Docker networks, automates deployment flows, and builds reliable backend API services.",
       specialties: ["DevOps and Pipelines", "Docker and Cloud Setup", "Full Stack Development", "PostgreSQL Database"],
       socials: {
-        github: "https://github.com/Three-Bugs-Studio"
+        github: "https://github.com/HoHuy2402"
       }
     }
   ]
