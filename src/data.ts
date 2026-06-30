@@ -139,7 +139,8 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       timeline: "3 Tuần",
       outcome: "Bàn giao cửa hàng trực tuyến chạy mượt mượt mà, đạt điểm tối ưu hóa SEO 98%, bàn giao đầy đủ mã nguồn và cam kết bảo hành lâu dài.",
       coverImage: "sukajan",
-      metrics: "SEO 98% và hơn 15,000 truy cập"
+      metrics: "SEO 98% và hơn 15,000 truy cập",
+      liveUrl: "https://sukajanrandomphitruong.com/"
     }
   ],
   en: [
@@ -153,7 +154,8 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       timeline: "3 Weeks",
       outcome: "Successfully delivered the online store with 98% SEO score, full source code handover, and reliable long term warranty support.",
       coverImage: "sukajan",
-      metrics: "98% SEO and over 15,000 visits"
+      metrics: "98% SEO and over 15,000 visits",
+      liveUrl: "https://sukajanrandomphitruong.com/"
     }
   ]
 };

@@ -71,11 +71,25 @@ export default function Contact({ lang }: ContactProps) {
     setErrors({});
     setIsSubmitting(true);
 
-    // Simulate an API transmission
+    // Build the mailto link content
+    const selectedBudget = currency === "VND" ? rawVND[budgetIndex] : rawUSD[budgetIndex];
+    const subject = encodeURIComponent(`[Three Bugs Inquiry] Project Proposal by ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n` +
+      `Company/Venture: ${formData.company || "None"}\n` +
+      `Budget Range: ${selectedBudget}\n\n` +
+      `Project Requirements:\n${formData.message}`
+    );
+
+    // Redirect to trigger client's email application
+    window.location.href = `mailto:dongduong840@gmail.com?subject=${subject}&body=${body}`;
+
+    // Mark as submitted to show the success panel
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 1800);
+    }, 1200);
   };
 
   const handleInputChange = (

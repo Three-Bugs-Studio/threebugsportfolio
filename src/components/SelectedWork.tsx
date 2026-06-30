@@ -118,13 +118,27 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                     </p>
 
                     {/* Interactive Lightbox trigger button */}
-                    <button
-                      onClick={() => handleOpenLightbox(project.id, project.title)}
-                      className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-brand-orange bg-brand-orange/5 border border-brand-orange/20 hover:bg-brand-orange hover:text-white px-3.5 py-2 rounded-sm transition-all duration-300 mb-8 hover:shadow-lg hover:shadow-brand-orange/5 active:scale-95 focus-visible:ring-1 focus-visible:ring-brand-orange focus-visible:outline-none"
-                    >
-                      <ImageIcon className="w-3.5 h-3.5 animate-pulse" />
-                      <span>{lang === "vi" ? "Xem giao diện thực tế" : "View Interface Slides"}</span>
-                    </button>
+                    <div className="flex flex-wrap gap-3 mb-8">
+                      <button
+                        onClick={() => handleOpenLightbox(project.id, project.title)}
+                        className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-brand-orange bg-brand-orange/5 border border-brand-orange/20 hover:bg-brand-orange hover:text-white px-3.5 py-2 rounded-sm transition-all duration-300 hover:shadow-lg hover:shadow-brand-orange/5 active:scale-95 focus-visible:ring-1 focus-visible:ring-brand-orange focus-visible:outline-none"
+                      >
+                        <ImageIcon className="w-3.5 h-3.5 animate-pulse" />
+                        <span>{lang === "vi" ? "Xem giao diện thực tế" : "View Interface Slides"}</span>
+                      </button>
+
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-[#F5F5F3] bg-white/5 border border-white/10 hover:bg-brand-orange hover:border-brand-orange hover:text-[#090909] px-3.5 py-2 rounded-sm transition-all duration-300 hover:shadow-lg hover:shadow-brand-orange/5 active:scale-95 focus-visible:ring-1 focus-visible:ring-brand-orange focus-visible:outline-none"
+                        >
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                          <span>{lang === "vi" ? "Truy cập website" : "Visit Live Site"}</span>
+                        </a>
+                      )}
+                    </div>
 
                     {/* Outcome Metric Block */}
                     <div className="p-6 bg-[#121212]/30 border border-white/5 rounded-sm mb-8 flex items-start gap-4 hover:border-white/10 transition-colors">

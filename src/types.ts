@@ -9,6 +9,7 @@ export interface Project {
   outcome: string;
   coverImage: string; // Dynamic graphic representation or visual motif
   metrics?: string;
+  liveUrl?: string;
 }
 
 export interface Service {
