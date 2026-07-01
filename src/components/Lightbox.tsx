@@ -20,10 +20,10 @@ import {
   RefreshCw
 } from "lucide-react";
 import randomPhiTruongStore from "@/assets/randomphitruongstore.png";
-import screenshot0 from "@/assets/Screenshot 2026-07-01 084603.png";
-import screenshot1 from "@/assets/Screenshot 2026-07-01 084613.png";
-import screenshot2 from "@/assets/Screenshot 2026-07-01 084626.png";
-import screenshot3 from "@/assets/Screenshot 2026-07-01 084635.png";
+import storepage from "@/assets/storepage.png";
+import aboutpage from "@/assets/aboutpage.png";
+import productdetail from "@/assets/productdetail.png";
+import contactpage from "@/assets/contactpage.png";
 import BlurUpImage from "./BlurUpImage";
 
 interface LightboxProps {
@@ -67,25 +67,25 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
           : "Japanese-inspired minimalist e-commerce storefront layout with fluid grid lines and bold editorial design."
       },
       {
-        title: lang === "vi" ? "Mô Phỏng Thêu Thủ Công Kỹ Thuật Số" : "Interactive Digital Embroidery Engine",
-        subtitle: "sukajanrandomphitruong.com/previewer",
+        title: lang === "vi" ? "Trang Giới Thiệu (About Page)" : "About Studio Philosophy",
+        subtitle: "sukajanrandomphitruong.com/about",
         desc: lang === "vi"
-          ? "Trình xem trước đường chỉ thêu tùy chỉnh. Bạn có thể chọn màu chỉ thêu bên dưới để xem mô phỏng kết cấu trực tiếp."
-          : "Interactive vector stitch wireframe simulator. Pick a thread color below to update the custom dragon embroidery preview."
+          ? "Giao diện giới thiệu lịch sử, đội ngũ lập trình viên và triết lý vận hành của thương hiệu."
+          : "The profile space highlighting the brand story, development team background, and operating values."
       },
       {
-        title: lang === "vi" ? "Danh Sách Sản Phẩm (Catalog Grid)" : "Premium Curated Catalog Layout",
-        subtitle: "sukajanrandomphitruong.com/products",
+        title: lang === "vi" ? "Chi Tiết Sản Phẩm (Product Details)" : "Premium Product Detail View",
+        subtitle: "sukajanrandomphitruong.com/products/miyabi-dragon",
         desc: lang === "vi"
-          ? "Danh sách hiển thị các mẫu áo khoác Sukajan cao cấp kèm theo hiệu ứng zoom cận cảnh thớ lụa satin khi di chuột."
-          : "Dynamic collection grid featuring fine satin textiles, dragon motifs, and high-fidelity custom detail zoom effects."
+          ? "Hiển thị thông tin mô tả chi tiết mẫu áo khoác Sukajan kèm hình ảnh thớ lụa satin chất lượng cao."
+          : "Product page displaying full fabric specs, embroidery story, and high-fidelity textile preview."
       },
       {
-        title: lang === "vi" ? "Thanh Toán Nhanh Qua VietQR" : "Ultra-fast Checkout & VietQR Engine",
+        title: lang === "vi" ? "Mẫu Đơn Đặt Hàng (Checkout Portal)" : "Streamlined Order Form",
         subtitle: "sukajanrandomphitruong.com/checkout",
         desc: lang === "vi"
-          ? "Trình thanh toán tối giản tự động sinh mã VietQR theo tiêu chuẩn Napas, giúp giao dịch hoàn tất trong 5 giây."
-          : "Streamlined checkout interface generating dynamic VietQR bank transfer codes for frictionless transactions."
+          ? "Giao diện thanh toán VietQR và điền mẫu thông tin giao hàng tối giản để khách đặt mua nhanh chóng."
+          : "Frictionless bank transfer checkout and simple delivery form ensuring quick transaction processing."
       }
     ],
     kallisto: [
@@ -212,7 +212,7 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
   // Render simulated contents based on project and slide index
   const renderSimulatedScreen = () => {
     if (projectId === "sukajan_store") {
-      const sukajanScreenshots = [screenshot0, screenshot2, screenshot1, screenshot3];
+      const sukajanScreenshots = [storepage, aboutpage, productdetail, contactpage];
       return (
         <div className="w-full h-full bg-[#0a0a0a] flex items-center justify-center relative overflow-hidden select-none">
           <BlurUpImage 
