@@ -284,7 +284,7 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
   vi: [
     {
       name: "Duong Phu Dong",
-      role: "Project Lead và Đồng sáng lập",
+      role: "Founder của studio",
       bio: "Chuyên gia quản trị dự án phần mềm với tầm nhìn thực tế. Anh đảm nhận trách nhiệm quản lý tổng thể, thiết lập đặc tả dự án và đảm bảo bàn giao đúng chất lượng.",
       specialties: ["Quản lý Dự án", "Đặc tả Phần mềm", "Phân tích Nghiệp vụ", "Đảm bảo Cam kết"],
       socials: {
@@ -313,7 +313,7 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
   en: [
     {
       name: "Duong Phu Dong",
-      role: "Project Lead and Co Founder",
+      role: "Founder of the studio",
       bio: "Software project manager with a realistic and structured vision. He oversees end to end execution, locks down requirements, and ensures timely delivery.",
       specialties: ["Project Management", "Software Specs", "Business Analysis", "Client Delivery"],
       socials: {

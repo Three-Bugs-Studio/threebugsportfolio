@@ -212,7 +212,7 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
   // Render simulated contents based on project and slide index
   const renderSimulatedScreen = () => {
     if (projectId === "sukajan_store") {
-      const sukajanScreenshots = [screenshot0, screenshot1, screenshot2, screenshot3];
+      const sukajanScreenshots = [screenshot0, screenshot2, screenshot1, screenshot3];
       return (
         <div className="w-full h-full bg-[#0a0a0a] flex items-center justify-center relative overflow-hidden select-none">
           <BlurUpImage 
