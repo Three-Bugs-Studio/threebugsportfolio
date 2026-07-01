@@ -52,16 +52,13 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
 
   return (
     <>
-      <motion.nav
+      <nav
         id="main-navbar"
         className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 border-b lg:pl-20 ${
           scrolled
             ? "bg-[#090909]/80 backdrop-blur-md border-white/5 py-4"
             : "bg-transparent border-transparent py-6"
         }`}
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* Logo & Brand */}
@@ -197,7 +194,7 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
             </button>
           </div>
         </div>
-      </motion.nav>
+      </nav>
 
       {/* Mobile Drawer Overlay */}
       <AnimatePresence>
