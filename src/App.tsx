@@ -287,7 +287,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#090909] text-[#F5F5F3] font-sans selection:bg-brand-orange selection:text-[#090909]" id="root-app-container">
+    <div className="relative min-h-screen w-full overflow-x-hidden bg-[#090909] text-[#F5F5F3] font-sans selection:bg-brand-orange selection:text-[#090909]" id="root-app-container">
       {/* Global CRT Scanline Hardware Overlay */}
       <div className="crt-overlay" id="crt-scanline-overlay" />
 
