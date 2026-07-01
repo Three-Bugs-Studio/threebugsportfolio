@@ -370,7 +370,7 @@ export const TESTIMONIALS_DATA: Record<"vi" | "en", Testimonial[]> = {
   vi: [
     {
       quote: "Làm việc rất chuyên nghiệp. Lộ trình rõ ràng, bàn giao đúng hạn kèm chính sách hỗ trợ lâu dài khiến chúng tôi rất yên tâm.",
-      author: "Đỗ Hoàng Anh",
+      author: "Hoàng Anh",
       role: "Đồng sáng lập",
       company: "Sukajan Store"
     },
@@ -384,7 +384,7 @@ export const TESTIMONIALS_DATA: Record<"vi" | "en", Testimonial[]> = {
   en: [
     {
       quote: "Highly professional. Clear roadmap, on-time delivery, and long-term support make us extremely confident.",
-      author: "Do Hoang Anh",
+      author: "Hoang Anh",
       role: "Co-Founder",
       company: "Sukajan Store"
     },

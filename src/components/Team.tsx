@@ -3,6 +3,9 @@ import { TEAM_DATA, TRANSLATIONS } from "../data";
 import { motion } from "motion/react";
 import { Github, Twitter, Linkedin, Terminal, Sparkles, Layout } from "lucide-react";
 import { TeamMember } from "../types";
+import DuongPhuDongImg from "@/assets/profile/DuongPhuDongProfile.png";
+import HuynhQuangDongImg from "@/assets/profile/HuynhQuangDongProfile.png";
+import HoQuangHuyImg from "@/assets/profile/HoQuangHuyProfile.png";
 
 interface TeamProps {
   lang: "vi" | "en";
@@ -18,12 +21,8 @@ interface TeamMemberCardProps {
 function TeamMemberCard({ member, idx, lang }: TeamMemberCardProps) {
   const [isVectorLoaded, setIsVectorLoaded] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVectorLoaded(true);
-    }, 400 + idx * 200);
-    return () => clearTimeout(timer);
-  }, [idx]);
+  const profileImages = [DuongPhuDongImg, HuynhQuangDongImg, HoQuangHuyImg];
+  const memberImg = profileImages[idx];
 
   return (
     <motion.div
@@ -34,7 +33,7 @@ function TeamMemberCard({ member, idx, lang }: TeamMemberCardProps) {
       transition={{ delay: idx * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="group flex flex-col p-6 bg-[#121212]/30 border border-white/5 hover:border-white/10 hover:bg-[#121212]/40 transition-all duration-300 rounded-sm relative"
     >
-      {/* Visual Portrait Box (Abstract Modern Vector Motif with progressive blur-up effect) */}
+      {/* Visual Portrait Box (Progressive blur-up effect) */}
       <div className="h-64 w-full bg-[#090909] border border-white/5 group-hover:border-white/10 rounded-sm mb-6 relative overflow-hidden flex items-center justify-center transition-colors">
         <div className="absolute inset-0 swiss-grid opacity-10" />
 
@@ -47,50 +46,18 @@ function TeamMemberCard({ member, idx, lang }: TeamMemberCardProps) {
           <div className="w-6 h-6 rounded-full border border-white/10 border-t-brand-orange animate-spin" />
         </div>
 
-        {/* SVG Wrapper with smooth blur-up */}
-        <div 
-          className={`w-full h-full flex items-center justify-center transition-all duration-750 ease-out ${
+        {/* Real Profile Image with smooth blur-up */}
+        <img 
+          src={memberImg}
+          alt={member.name}
+          onLoad={() => setIsVectorLoaded(true)}
+          className={`w-full h-full object-cover transition-all duration-750 ease-out ${
             isVectorLoaded ? "blur-0 scale-100 opacity-100" : "blur-md scale-95 opacity-0"
           }`}
-        >
-          {/* Aesthetic Abstract Visual Key for each founder */}
-          {idx === 0 && (
-            <svg viewBox="0 0 100 100" className="w-24 h-24 text-[#F5F5F3]/10 group-hover:text-[#F5F5F3]/20 transition-colors">
-              {/* Systems representation: interlocking server grids */}
-              <rect x="25" y="25" width="50" height="50" stroke="#F5F5F3" strokeWidth="0.5" fill="none" />
-              <rect x="35" y="35" width="30" height="30" stroke="#F5F5F3" strokeWidth="0.5" fill="none" />
-              <line x1="50" y1="20" x2="50" y2="80" stroke="#FF6A00" strokeWidth="1" strokeDasharray="2,2" />
-              <line x1="20" y1="50" x2="80" y2="50" stroke="#FF6A00" strokeWidth="1" strokeDasharray="2,2" />
-              <circle cx="50" cy="50" r="4" fill="#FF6A00" />
-            </svg>
-          )}
-
-          {idx === 1 && (
-            <svg viewBox="0 0 100 100" className="w-24 h-24 text-[#F5F5F3]/10 group-hover:text-[#F5F5F3]/20 transition-colors">
-              {/* Product design representation: nested gold ratio layout */}
-              <circle cx="50" cy="50" r="30" stroke="#F5F5F3" strokeWidth="0.5" fill="none" />
-              <path d="M 20,50 Q 50,20 80,50 Q 50,80 20,50" stroke="#FF6A00" strokeWidth="1" fill="none" />
-              <rect x="30" y="30" width="40" height="40" stroke="#F5F5F3" strokeWidth="0.5" fill="none" />
-              <circle cx="50" cy="50" r="2" fill="#FF6A00" />
-            </svg>
-          )}
-
-          {idx === 2 && (
-            <svg viewBox="0 0 100 100" className="w-24 h-24 text-[#F5F5F3]/10 group-hover:text-[#F5F5F3]/20 transition-colors">
-              {/* AI logic representation: stellar constellations */}
-              <polygon points="50,15 80,75 20,75" stroke="#F5F5F3" strokeWidth="0.5" fill="none" />
-              <path d="M 50,15 L 50,75" stroke="rgba(255,255,255,0.15)" strokeWidth="0.5" />
-              {/* Interactive nodes */}
-              <circle cx="50" cy="15" r="3.5" fill="#FF6A00" />
-              <circle cx="80" cy="75" r="3" fill="#F5F5F3" />
-              <circle cx="20" cy="75" r="3" fill="#F5F5F3" />
-              <circle cx="50" cy="45" r="4.5" fill="none" stroke="#FF6A00" strokeWidth="1" />
-            </svg>
-          )}
-        </div>
+        />
 
         {/* Initials Label Overlay */}
-        <span className="absolute top-4 left-4 font-mono text-[10px] text-[#8E8E93]">
+        <span className="absolute top-4 left-4 font-mono text-[10px] text-[#8E8E93] bg-[#090909]/60 px-2 py-0.5 rounded-sm border border-white/5 z-20">
           [ {member.name.split(" ").map(n => n[0]).join("")} ]
         </span>
       </div>
