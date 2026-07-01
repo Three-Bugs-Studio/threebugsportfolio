@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
 import { Send, ArrowUpRight, Check, AlertCircle, Coins } from "lucide-react";
@@ -13,6 +13,7 @@ export default function Contact({ lang }: ContactProps) {
   // Selected option index: 0, 1, 2
   const [budgetIndex, setBudgetIndex] = useState<number>(1);
   const [currency, setCurrency] = useState<"VND" | "USD">("VND");
+  const [exchangeRate, setExchangeRate] = useState<number>(26299.87);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -24,6 +25,17 @@ export default function Contact({ lang }: ContactProps) {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  useEffect(() => {
+    fetch("https://open.er-api.com/v6/latest/USD")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data && data.rates && data.rates.VND) {
+          setExchangeRate(data.rates.VND);
+        }
+      })
+      .catch((err) => console.error("Error fetching exchange rate:", err));
+  }, []);
 
   const budgetOptions = [
     t.contactBudgetRange1,
@@ -38,8 +50,8 @@ export default function Contact({ lang }: ContactProps) {
     "Thương lượng qua email hoặc Zalo (Dự án App)"
   ];
   const rawUSD = [
-    "About $304 to $380 USD (Basic Website)",
-    "About $570 to $760 USD (Full Website)",
+    `About $${Math.round(8000000 / exchangeRate)} to $${Math.round(10000000 / exchangeRate)} USD (Basic Website)`,
+    `About $${Math.round(15000000 / exchangeRate)} to $${Math.round(20000000 / exchangeRate)} USD (Full Website)`,
     "Negotiable via email or Zalo (App Build)"
   ];
 
@@ -299,7 +311,9 @@ export default function Contact({ lang }: ContactProps) {
 
                       {/* Faint subtext stating exchange rate standard */}
                       <span className="font-mono text-[8px] text-[#8E8E93]/70 tracking-wide mt-1 block">
-                        * {t.contactBudgetConversionLabel}
+                        * {lang === "vi" 
+                          ? `Tỷ giá quy đổi thời gian thực: 1 USD ≈ ${Math.round(exchangeRate).toLocaleString()} VND (Nguồn: ExchangeRate API)` 
+                          : `Real-time exchange rate: 1 USD ≈ ${Math.round(exchangeRate).toLocaleString()} VND (Source: ExchangeRate API)`}
                       </span>
                     </div>
 
