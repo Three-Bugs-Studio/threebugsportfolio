@@ -81,11 +81,11 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
           : "Product page displaying full fabric specs, embroidery story, and high-fidelity textile preview."
       },
       {
-        title: lang === "vi" ? "Mẫu Đơn Đặt Hàng (Checkout Portal)" : "Streamlined Order Form",
-        subtitle: "sukajanrandomphitruong.com/checkout",
+        title: lang === "vi" ? "Trang Liên Hệ (Contact Page)" : "Contact Page Portal",
+        subtitle: "sukajanrandomphitruong.com/contact",
         desc: lang === "vi"
-          ? "Giao diện thanh toán VietQR và điền mẫu thông tin giao hàng tối giản để khách đặt mua nhanh chóng."
-          : "Frictionless bank transfer checkout and simple delivery form ensuring quick transaction processing."
+          ? "Giao diện liên hệ và gửi mẫu order trực tiếp để nhận tư vấn và báo giá chi tiết."
+          : "Direct contact inquiry form and order submission space for custom project requests."
       }
     ],
     kallisto: [
