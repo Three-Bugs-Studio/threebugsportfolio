@@ -218,7 +218,7 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
           <BlurUpImage 
             src={sukajanScreenshots[currentSlide]} 
             alt={projectSlides[currentSlide]?.title} 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
             wrapperClassName="w-full h-full"
             referrerPolicy="no-referrer"
           />
@@ -588,7 +588,7 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
           {/* Core Content Body: Grid Layout */}
           <div className="grid grid-cols-1 md:grid-cols-12 items-stretch min-h-[380px] md:min-h-[440px]">
             {/* Left Col: The Interactive Browser Mockup Screen (Span 7) */}
-            <div className="md:col-span-7 bg-[#0d0d0d] p-6 flex flex-col justify-center border-b md:border-b-0 md:border-r border-white/5 relative">
+            <div className="md:col-span-7 bg-[#0d0d0d] p-4 sm:p-6 flex flex-col justify-center border-b md:border-b-0 md:border-r border-white/5 relative">
               {/* Browser mockup container */}
               <div className="w-full max-w-lg mx-auto rounded-lg overflow-hidden border border-white/10 shadow-2xl bg-[#0a0a0a] flex flex-col">
                 {/* Browser top title bar */}
@@ -600,7 +600,7 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
                     <div className="w-2 h-2 rounded-full bg-[#27C93F]" />
                   </div>
                   {/* URL Path */}
-                  <div className="bg-black/40 border border-white/5 px-4 py-0.5 rounded text-[#8E8E93] font-mono w-48 text-center truncate">
+                  <div className="bg-black/40 border border-white/5 px-2 sm:px-4 py-0.5 rounded text-[#8E8E93] font-mono w-32 sm:w-48 text-[8px] sm:text-[9px] text-center truncate">
                     {projectSlides[currentSlide]?.subtitle}
                   </div>
                   {/* Sync status */}
@@ -626,7 +626,7 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
             </div>
 
             {/* Right Col: Slide Metadata & Guides (Span 5) */}
-            <div className="md:col-span-5 p-6 flex flex-col justify-between bg-[#111] text-left">
+            <div className="md:col-span-5 p-4 sm:p-6 flex flex-col justify-between bg-[#111] text-left">
               <div className="space-y-4">
                 {/* Slide index badge */}
                 <div className="flex justify-between items-center">
