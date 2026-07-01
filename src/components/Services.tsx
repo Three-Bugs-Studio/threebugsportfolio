@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SERVICES_DATA, TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
-import { PenTool, Globe, Database, Cpu, Terminal, ChevronRight } from "lucide-react";
+import { PenTool, Globe, Database, Cpu, Terminal, ChevronRight, Wrench } from "lucide-react";
 
 interface ServicesProps {
   lang: "vi" | "en";
@@ -25,6 +25,8 @@ export default function Services({ lang }: ServicesProps) {
         return <Cpu className={className} />;
       case "Terminal":
         return <Terminal className={className} />;
+      case "Wrench":
+        return <Wrench className={className} />;
       default:
         return <Terminal className={className} />;
     }

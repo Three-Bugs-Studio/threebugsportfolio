@@ -61,6 +61,18 @@ export const SERVICES_DATA: Record<"vi" | "en", Service[]> = {
         "Kiểm tra tốc độ hiển thị giao diện"
       ],
       iconName: "Terminal"
+    },
+    {
+      id: "maintenance_hotfix",
+      title: "Vận Hành & Vá Lỗi (Maintenance & Hotfix)",
+      description: "Chúng tôi duy trì hệ thống hoạt động liên tục, xử lý sự cố khẩn cấp và khắc phục lỗi trực tiếp (hotfix) lập tức cho các cửa hàng trực tuyến như Sukajan Store.",
+      details: [
+        "Hỗ trợ khắc phục sự cố khẩn cấp 24/7",
+        "Tự động sao lưu và bảo vệ cơ sở dữ liệu",
+        "Theo dõi hiệu suất và trạng thái máy chủ",
+        "Bảo trì và vá lỗi bảo mật định kỳ"
+      ],
+      iconName: "Wrench"
     }
   ],
   en: [
@@ -123,6 +135,18 @@ export const SERVICES_DATA: Record<"vi" | "en", Service[]> = {
         "Frontend Audits"
       ],
       iconName: "Terminal"
+    },
+    {
+      id: "maintenance_hotfix",
+      title: "Maintenance & Hotfix Support",
+      description: "We secure seamless operational uptime, resolve critical bugs, and push production hotfixes instantly for live stores like Sukajan Store.",
+      details: [
+        "24/7 Incident and Crash Hotfix Response",
+        "Automated DB Backups & Cloud Protection",
+        "Continuous Server Health & Speed Monitoring",
+        "Regular Framework Security Upgrades"
+      ],
+      iconName: "Wrench"
     }
   ]
 };
