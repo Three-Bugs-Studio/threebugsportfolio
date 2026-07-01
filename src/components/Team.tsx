@@ -3,9 +3,9 @@ import { TEAM_DATA, TRANSLATIONS } from "../data";
 import { motion } from "motion/react";
 import { Github, Twitter, Linkedin, Terminal, Sparkles, Layout } from "lucide-react";
 import { TeamMember } from "../types";
-import DuongPhuDongImg from "@/assets/profile/DuongPhuDongProfile.png";
-import HuynhQuangDongImg from "@/assets/profile/HuynhQuangDongProfile.png";
-import HoQuangHuyImg from "@/assets/profile/HoQuangHuyProfile.png";
+import DuongPhuDongImg from "@/assets/profile/DuongPhuDongProfile.webp";
+import HuynhQuangDongImg from "@/assets/profile/HuynhQuangDongProfile.webp";
+import HoQuangHuyImg from "@/assets/profile/HoQuangHuyProfile.webp";
 
 interface TeamProps {
   lang: "vi" | "en";

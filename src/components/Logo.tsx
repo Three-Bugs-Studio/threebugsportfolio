@@ -1,5 +1,5 @@
 import React from "react";
-import logoImg from "@/assets/ThreeBugsStudio.png";
+import logoImg from "@/assets/ThreeBugsStudio.webp";
 
 interface LogoProps {
   className?: string;

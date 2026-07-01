@@ -20,10 +20,10 @@ import {
   RefreshCw
 } from "lucide-react";
 import randomPhiTruongStore from "@/assets/randomphitruongstore.png";
-import storepage from "@/assets/storepage.png";
-import aboutpage from "@/assets/aboutpage.png";
-import productdetail from "@/assets/productdetail.png";
-import contactpage from "@/assets/contactpage.png";
+import storepage from "@/assets/storepage.webp";
+import aboutpage from "@/assets/aboutpage.webp";
+import productdetail from "@/assets/productdetail.webp";
+import contactpage from "@/assets/contactpage.webp";
 import BlurUpImage from "./BlurUpImage";
 
 interface LightboxProps {
