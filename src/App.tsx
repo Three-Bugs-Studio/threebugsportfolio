@@ -541,90 +541,120 @@ export default function App() {
       {/* Cinematic Route-like Transition Curtain Overlay */}
       <AnimatePresence>
         {isTransitioning && (
-          <motion.div
+          <div
             id="route-transition-overlay"
-            className="fixed inset-0 z-[100] bg-[#090909] flex flex-col justify-between p-8 md:p-16 select-none overflow-hidden"
-            initial={{ clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)" }}
-            animate={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
-            exit={{ clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" }}
-            transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+            className="fixed inset-0 z-[100] select-none overflow-hidden flex flex-col justify-between pointer-events-auto"
           >
-            {/* Background layout dots & accent glows */}
-            <div className="absolute inset-0 swiss-grid opacity-20 pointer-events-none" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-orange/10 rounded-full blur-[80px]" />
-
-            <div className="flex justify-between items-center font-mono text-[9px] tracking-[0.3em] text-[#8E8E93]/60 relative z-10">
-              <span>THREE BUGS STUDIO</span>
-              <span>LANG_STATE: SWITCHING</span>
+            {/* Background Staggered Pillars */}
+            <div className="absolute inset-0 flex z-0 pointer-events-none">
+              <motion.div 
+                className="flex-1 bg-[#101010] border-r border-white/5"
+                initial={{ y: "-100%" }}
+                animate={{ y: "0%" }}
+                exit={{ y: "100%" }}
+                transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1] }}
+              />
+              <motion.div 
+                className="flex-1 bg-[#0c0c0c] border-r border-white/5"
+                initial={{ y: "-100%" }}
+                animate={{ y: "0%" }}
+                exit={{ y: "100%" }}
+                transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1], delay: 0.05 }}
+              />
+              <motion.div 
+                className="flex-1 bg-[#090909]"
+                initial={{ y: "-100%" }}
+                animate={{ y: "0%" }}
+                exit={{ y: "100%" }}
+                transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}
+              />
             </div>
 
-            <div className="flex flex-col items-center justify-center text-center my-auto relative z-10">
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.1, duration: 0.4 }}
-                className="flex gap-2 mb-6"
-              >
-                <div className="w-3 h-3 rounded-full bg-brand-orange animate-ping" />
-                <div className="w-3 h-3 rounded-full bg-brand-orange" />
-                <div className="w-3 h-3 rounded-full bg-white/20" />
-              </motion.div>
+            {/* Dynamic Content Overlay fading in over the pillars */}
+            <motion.div 
+              className="absolute inset-0 flex flex-col justify-between p-8 md:p-16 z-10"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25, delay: 0.15 }}
+            >
+              {/* Background layout dots & accent glows */}
+              <div className="absolute inset-0 swiss-grid opacity-20 pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-orange/10 rounded-full blur-[80px]" />
 
-              {/* Giant elegant display transition text representing language shift */}
-              <div className="flex items-center gap-6 md:gap-10 mb-8 font-display font-black text-4xl md:text-7xl overflow-hidden select-none">
-                <motion.span
-                  initial={{ x: -60, opacity: 0, filter: "blur(10px)" }}
-                  animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
-                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                  className={lang === "vi" ? "text-white/40" : "text-brand-orange drop-shadow-[0_0_15px_rgba(255,106,0,0.3)]"}
-                >
-                  EN
-                </motion.span>
-                <motion.span
-                  initial={{ scale: 0.4, opacity: 0 }}
+              <div className="flex justify-between items-center font-mono text-[9px] tracking-[0.3em] text-[#8E8E93]/60 relative z-10">
+                <span>THREE BUGS STUDIO</span>
+                <span>LANG_STATE: SWITCHING</span>
+              </div>
+
+              <div className="flex flex-col items-center justify-center text-center my-auto relative z-10">
+                <motion.div
+                  initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-                  className="text-brand-orange"
+                  transition={{ delay: 0.1, duration: 0.4 }}
+                  className="flex gap-2 mb-6"
                 >
-                  →
-                </motion.span>
-                <motion.span
-                  initial={{ x: 60, opacity: 0, filter: "blur(10px)" }}
-                  animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
-                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                  className={lang === "en" ? "text-white/40" : "text-brand-orange drop-shadow-[0_0_15px_rgba(255,106,0,0.3)]"}
+                  <div className="w-3 h-3 rounded-full bg-brand-orange animate-ping" />
+                  <div className="w-3 h-3 rounded-full bg-brand-orange" />
+                  <div className="w-3 h-3 rounded-full bg-white/20" />
+                </motion.div>
+
+                {/* Giant elegant display transition text representing language shift */}
+                <div className="flex items-center gap-6 md:gap-10 mb-8 font-display font-black text-4xl md:text-7xl overflow-hidden select-none">
+                  <motion.span
+                    initial={{ x: -60, opacity: 0, filter: "blur(10px)" }}
+                    animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className={lang === "vi" ? "text-white/40" : "text-brand-orange drop-shadow-[0_0_15px_rgba(255,106,0,0.3)]"}
+                  >
+                    EN
+                  </motion.span>
+                  <motion.span
+                    initial={{ scale: 0.4, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+                    className="text-brand-orange"
+                  >
+                    →
+                  </motion.span>
+                  <motion.span
+                    initial={{ x: 60, opacity: 0, filter: "blur(10px)" }}
+                    animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className={lang === "en" ? "text-white/40" : "text-brand-orange drop-shadow-[0_0_15px_rgba(255,106,0,0.3)]"}
+                  >
+                    VI
+                  </motion.span>
+                </div>
+                
+                <motion.h2 
+                  className="font-display font-medium text-xl md:text-3xl tracking-tight text-white/90"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.15, duration: 0.5 }}
                 >
-                  VI
-                </motion.span>
-              </div>
-              
-              <motion.h2 
-                className="font-display font-medium text-xl md:text-3xl tracking-tight text-white/90"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.15, duration: 0.5 }}
-              >
-                {lang === "vi" ? "ĐANG TẢI GIAO DIỆN MỚI..." : "SWITCHING LANGUAGE..."}
-              </motion.h2>
+                  {lang === "vi" ? "ĐANG TẢI GIAO DIỆN MỚI..." : "SWITCHING LANGUAGE..."}
+                </motion.h2>
 
-              <motion.p 
-                className="font-mono text-[10px] tracking-widest text-brand-orange uppercase mt-3"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-              >
-                {lang === "vi" ? "THIẾT LẬP PHẦN MỀM CAO CẤP" : "CONFIGURING PREMIUM INTERFACE"}
-              </motion.p>
-            </div>
-
-            <div className="flex justify-between items-end font-mono text-[8px] text-[#8E8E93]/60 relative z-10">
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-[#27C93F] rounded-full animate-pulse" />
-                <span>TRANSITION_PORTAL_ACTIVE</span>
+                <motion.p 
+                  className="font-mono text-[10px] tracking-widest text-brand-orange uppercase mt-3"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  {lang === "vi" ? "THIẾT LẬP PHẦN MỀM CAO CẤP" : "CONFIGURING PREMIUM INTERFACE"}
+                </motion.p>
               </div>
-              <span>© 2026 THREE BUGS STUDIO</span>
-            </div>
-          </motion.div>
+
+              <div className="flex justify-between items-end font-mono text-[8px] text-[#8E8E93]/60 relative z-10">
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#27C93F] rounded-full animate-pulse" />
+                  <span>TRANSITION_PORTAL_ACTIVE</span>
+                </div>
+                <span>© 2026 THREE BUGS STUDIO</span>
+              </div>
+            </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </div>
