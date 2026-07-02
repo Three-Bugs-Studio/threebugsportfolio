@@ -19,8 +19,6 @@ interface TeamMemberCardProps {
 }
 
 function TeamMemberCard({ member, idx, lang }: TeamMemberCardProps) {
-  const [isVectorLoaded, setIsVectorLoaded] = useState(false);
-
   const profileImages = [DuongPhuDongImg, HuynhQuangDongImg, HoQuangHuyImg];
   const memberImg = profileImages[idx];
 
@@ -33,27 +31,15 @@ function TeamMemberCard({ member, idx, lang }: TeamMemberCardProps) {
       transition={{ delay: idx * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="group flex flex-col p-6 bg-[#121212]/30 border border-white/5 hover:border-white/10 hover:bg-[#121212]/40 transition-all duration-300 rounded-sm relative"
     >
-      {/* Visual Portrait Box (Progressive blur-up effect) */}
+      {/* Visual Portrait Box */}
       <div className="h-64 w-full bg-[#090909] border border-white/5 group-hover:border-white/10 rounded-sm mb-6 relative overflow-hidden flex items-center justify-center transition-colors">
         <div className="absolute inset-0 swiss-grid opacity-10" />
 
-        {/* Shimmer / loading spinner cover when not loaded */}
-        <div 
-          className={`absolute inset-0 bg-[#161616] animate-pulse flex items-center justify-center transition-opacity duration-500 z-10 ${
-            isVectorLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
-          }`}
-        >
-          <div className="w-6 h-6 rounded-full border border-white/10 border-t-brand-orange animate-spin" />
-        </div>
-
-        {/* Real Profile Image with smooth blur-up */}
+        {/* Real Profile Image loaded instantly */}
         <img 
           src={memberImg}
           alt={member.name}
-          onLoad={() => setIsVectorLoaded(true)}
-          className={`w-full h-full object-cover transition-all duration-750 ease-out ${
-            isVectorLoaded ? "blur-0 scale-100 opacity-100" : "blur-md scale-95 opacity-0"
-          }`}
+          className="w-full h-full object-cover"
         />
 
         {/* Initials Label Overlay */}
