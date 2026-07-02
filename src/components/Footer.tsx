@@ -243,6 +243,7 @@ export default function Footer({ lang }: FooterProps) {
             </span>
             <div className="flex flex-col gap-2 font-mono text-xs">
               <MagneticSocialLink href="https://github.com/Three-Bugs-Studio" label="GITHUB" target="_blank" rel="noreferrer" />
+              <MagneticSocialLink href="https://discord.gg/WDfhFdtqwv" label="DISCORD" target="_blank" rel="noreferrer" />
               <MagneticSocialLink href="mailto:dongduong840@gmail.com" label="EMAIL" />
             </div>
           </div>
