@@ -184,7 +184,7 @@ export default function Contact({ lang }: ContactProps) {
                     {/* Grid Inputs: Name & Company */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
-                        <label htmlFor="name-input" className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block mb-2">
+                        <label htmlFor="name-input" className="font-mono text-[10px] tracking-widest text-[#C0C0C5] uppercase block mb-2">
                           {t.contactFieldName} <span className="text-brand-orange">*</span>
                         </label>
                         <input
@@ -206,7 +206,7 @@ export default function Contact({ lang }: ContactProps) {
                       </div>
 
                       <div>
-                        <label htmlFor="company-input" className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block mb-2">
+                        <label htmlFor="company-input" className="font-mono text-[10px] tracking-widest text-[#C0C0C5] uppercase block mb-2">
                           {t.contactFieldCompany}
                         </label>
                         <input
@@ -223,7 +223,7 @@ export default function Contact({ lang }: ContactProps) {
 
                     {/* Email Input */}
                     <div>
-                      <label htmlFor="email-input" className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block mb-2">
+                      <label htmlFor="email-input" className="font-mono text-[10px] tracking-widest text-[#C0C0C5] uppercase block mb-2">
                         {t.contactFieldEmail} <span className="text-brand-orange">*</span>
                       </label>
                       <input
@@ -247,7 +247,7 @@ export default function Contact({ lang }: ContactProps) {
                     {/* Budget Options Selector with Currency Switcher */}
                     <div>
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
-                        <label className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block">
+                        <label className="font-mono text-[10px] tracking-widest text-[#C0C0C5] uppercase block">
                           {t.contactFieldBudget}
                         </label>
 
@@ -319,7 +319,7 @@ export default function Contact({ lang }: ContactProps) {
 
                     {/* Project details / Message input */}
                     <div>
-                      <label htmlFor="message-input" className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block mb-2">
+                      <label htmlFor="message-input" className="font-mono text-[10px] tracking-widest text-[#C0C0C5] uppercase block mb-2">
                         {t.contactFieldMessage} <span className="text-brand-orange">*</span>
                       </label>
                       <textarea
