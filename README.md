@@ -1,54 +1,29 @@
-# Three Bugs Studio — Portfolio Website
+# Three Bugs Studio
 
-A premium, highly interactive portfolio website for Three Bugs Studio, built with React, TypeScript, Tailwind CSS, and Motion.
+Three Bugs Studio is a premium digital design and software engineering studio. We translate complex product requirements into fast, durable, and highly optimized custom web applications and systems.
 
-## 🚀 Key Features
+## Services
 
-* **Multi-Language Support**: Seamless instant transitions between English (EN) and Vietnamese (VI) locales.
-* **Premium Audio Experience**: Web Audio API integration providing ambient hums and tactile sound feedback on interactions.
-* **Modern Design System**: Sleek dark mode styling, custom-designed cursor follower, cinematic page sweeps, and smooth CRT overlay scanlines.
-* **Responsive Layout**: Designed with a strict layout grid tailored for all screen dimensions.
-* **Fast Performance**: Bundled and compiled with Vite for optimal production speeds and SEO metrics.
+### Product Design
+We design simple, intuitive user interfaces that focus on layout clarity, smooth user journeys, interactive wireframes, and unified design token systems.
 
-## 📦 Tech Stack
+### Web Development
+We build highly responsive web applications optimized for search engine visibility, fast load times, and clean structural architecture.
 
-* **Core**: React 19, TypeScript
-* **Styling**: Tailwind CSS
-* **Animations**: Motion (Framer Motion)
-* **Icons**: Lucide React
-* **Build Tool**: Vite
+### Full Stack Engineering
+We engineer reliable server environments, secure cloud structures, structured databases, containerized systems, and automated build pipelines.
 
-## 🛠️ Getting Started
+### AI Integration
+We integrate large language models, smart database search layers, retrieval workflows, and automated logic structures into production tools.
 
-### Prerequisites
+### Technical Consulting
+We audit legacy codebases, optimize database query performance, map system scaling plans, and troubleshoot frontend rendering speeds.
 
-* Node.js (v18+)
-* npm (or yarn/pnpm)
+### Maintenance and Hotfix Support
+We secure continuous system uptime, automate database backups, perform security package updates, and deploy hotfixes for production environments.
 
-### Installation
+## Connectivity
 
-1. Clone the repository and navigate to the directory:
-   ```bash
-   git clone https://github.com/Three-Bugs-Studio/threebugsportfolio.git
-   cd threebugsportfolio
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Build for production:
-   ```bash
-   npm run build
-   ```
-
-## 🌐 Social Connect
-
-* **GitHub**: [Three-Bugs-Studio](https://github.com/Three-Bugs-Studio)
-* **Email**: [dongduong840@gmail.com](mailto:dongduong840@gmail.com)
+* GitHub: https://github.com/Three-Bugs-Studio
+* Discord: https://discord.gg/WDfhFdtqwv
+* Email: dongduong840@gmail.com
