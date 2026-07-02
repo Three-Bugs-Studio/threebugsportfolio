@@ -88,6 +88,29 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
           : "Direct contact inquiry form and order submission space for custom project requests."
       }
     ],
+    pudo_code_system: [
+      {
+        title: lang === "vi" ? "Chỉ Thị Hệ Thống Cấu Trúc (System Instructions)" : "System Instructions Blueprint",
+        subtitle: "github.com/DongDuong2001/pudo-code-system/AGENTS.md",
+        desc: lang === "vi"
+          ? "Bộ chỉ thị tiêu chuẩn hướng dẫn AI Coding Agent nắm bắt đúng triết lý lập trình sạch, cấu trúc file và phong cách viết code của dự án."
+          : "The core system prompt blueprint configuring layout restrictions, code styles, and clean engineering standards for AI agents."
+      },
+      {
+        title: lang === "vi" ? "Sơ Đồ Ngữ Cảnh Workspace (Context Workspace)" : "Workspace Context Builder",
+        subtitle: "github.com/DongDuong2001/pudo-code-system/.agents",
+        desc: lang === "vi"
+          ? "Tự động sơ đồ hóa danh mục thư mục, lưu trữ tài liệu đặc tả dự án và cập nhật lịch sử thay đổi để AI tra cứu tức thời."
+          : "Automatically map repository folders, system architectures, and specifications to let coding agents fetch context with low latency."
+      },
+      {
+        title: lang === "vi" ? "Bộ Công Cụ Tự Động Lập Trình (Agent Tooling)" : "Agent Automated Skill Library",
+        subtitle: "github.com/DongDuong2001/pudo-code-system/skills",
+        desc: lang === "vi"
+          ? "Các script bổ trợ giúp AI tự động kiểm thử biên dịch, kiểm tra cú pháp, dọn dẹp cơ sở dữ liệu và tối ưu hóa hệ thống."
+          : "Custom script templates equipping agents to execute automated lint checks, database cleanups, and target script compiles."
+      }
+    ],
     kallisto: [
       {
         title: lang === "vi" ? "Tổng Quan Tài Sản (Treasury Hub)" : "Multi-Custody Liquidity Overview",
@@ -224,6 +247,64 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
           />
         </div>
       );
+    } else if (projectId === "pudo_code_system") {
+      switch (currentSlide) {
+        case 0:
+          return (
+            <div className="w-full h-full bg-[#0a0a0a] text-[#8E8E93] font-mono text-[8px] flex flex-col p-4 select-none justify-between leading-relaxed">
+              <div className="border-b border-white/5 pb-1.5 mb-2 text-white/40 flex justify-between">
+                <span>AGENTS.md</span>
+                <span>SYSTEM INSTRUCTIONS</span>
+              </div>
+              <div className="space-y-1.5 text-left my-auto">
+                <p className="text-brand-orange font-bold"># GLOBAL PERSONALITY & RULES</p>
+                <p className="text-[#F5F5F3]">You are Antigravity, a professional AI coding partner.</p>
+                <p className="text-white/30">- Focus on codebase modularity and strict lint guidelines.</p>
+                <p className="text-white/30">- Do not omit existing comments or docstrings.</p>
+                <p className="text-white/30">- Optimize queries to respect PostgreSQL indices.</p>
+                <p className="text-[#27C93F]">// 12 system prompts loaded successfully.</p>
+              </div>
+              <div className="text-white/20 text-right">L:28 C:1</div>
+            </div>
+          );
+        case 1:
+          return (
+            <div className="w-full h-full bg-[#0a0a0a] text-[#8E8E93] font-mono text-[8px] flex flex-col p-4 select-none justify-between leading-relaxed">
+              <div className="border-b border-white/5 pb-1.5 mb-2 text-white/40 flex justify-between">
+                <span>WORKSPACE MAPPER</span>
+                <span>CONTEXT INDEXING</span>
+              </div>
+              <div className="space-y-1 text-left my-auto">
+                <p className="text-brand-orange">$ python pudo_mapper.py --output json</p>
+                <p className="text-[#F5F5F3]">[Index] Scanning active workspace files...</p>
+                <p className="text-[#F5F5F3]">[Index] Mapped 38 components to dependency tree.</p>
+                <p className="text-white/30">  ├─ src/components/Lightbox.tsx (62 imports)</p>
+                <p className="text-white/30">  ├─ src/data.ts (8 exports)</p>
+                <p className="text-[#27C93F]">[SUCCESS] Saved index database to .agents/index.json</p>
+              </div>
+              <div className="text-white/20 text-right">TASK COMPLETE</div>
+            </div>
+          );
+        case 2:
+          return (
+            <div className="w-full h-full bg-[#0a0a0a] text-[#8E8E93] font-mono text-[8px] flex flex-col p-4 select-none justify-between leading-relaxed">
+              <div className="border-b border-white/5 pb-1.5 mb-2 text-white/40 flex justify-between">
+                <span>AUTOMATION SKILLS</span>
+                <span>AUTOMATIC CODING</span>
+              </div>
+              <div className="space-y-1.5 text-left my-auto">
+                <p className="text-white">$ pudo execute lint_checker --target index.js</p>
+                <p className="text-[#F5F5F3]">Running ESLint with system guidelines...</p>
+                <p className="text-[#27C93F]">[OK] No syntax errors found in modified blocks.</p>
+                <p className="text-[#F5F5F3]">Compiling production static bundle...</p>
+                <p className="text-[#27C93F]">[OK] Build succeeded in 4.25 seconds.</p>
+              </div>
+              <div className="text-white/20 text-right">COMPILER: ON</div>
+            </div>
+          );
+        default:
+          return null;
+      }
     } else if (projectId === "kallisto") {
       switch (currentSlide) {
         case 0: // Assets Overview

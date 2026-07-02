@@ -360,6 +360,61 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                       </MagnifyingLens>
                     )}
 
+                    {/* 2. PuDo Code System: Terminal/CLI IDE Mockup representing coding agent guidelines */}
+                    {project.id === "pudo_code_system" && (
+                      <div className="w-full h-full flex flex-col justify-between relative z-10 text-left font-mono text-[9px] text-[#8E8E93]" id="pudo-visual">
+                        {/* Terminal Header */}
+                        <div className="bg-[#1C1C1E] border border-white/5 rounded-t-md px-3 py-2 flex items-center justify-between gap-4 select-none shrink-0">
+                          <div className="flex items-center gap-1.5 shrink-0">
+                            <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
+                          </div>
+                          <span className="font-mono text-[8px] text-white/50 tracking-wider">pudo-system --active</span>
+                          <div className="w-12 shrink-0" />
+                        </div>
+
+                        {/* Terminal Web Viewport */}
+                        <div className="flex-1 bg-[#090909] border-x border-b border-white/5 rounded-b-md p-4 flex flex-col justify-between select-none min-h-[360px] relative overflow-hidden">
+                          {/* Ambient green/orange glow for terminal style */}
+                          <div className="absolute top-1/3 right-1/4 w-44 h-44 rounded-full bg-brand-orange/5 blur-[50px] pointer-events-none" />
+
+                          {/* Code Viewport Structure */}
+                          <div className="space-y-4">
+                            {/* Directory & setup indicator */}
+                            <div className="border-b border-white/5 pb-2 text-[8px] text-white/40 flex justify-between select-none">
+                              <span>PATH: ~/.agents/pudo-code-system/</span>
+                              <span>STATUS: READY</span>
+                            </div>
+
+                            {/* Simulated Workspace Folders */}
+                            <div className="space-y-1 text-[8.5px] leading-relaxed">
+                              <p className="text-[#27C93F]">📁 .agents/</p>
+                              <p className="text-[#8E8E93] pl-4">📄 AGENTS.md <span className="text-white/20">// Main System Prompt rules</span></p>
+                              <p className="text-[#8E8E93] pl-4">📄 setup.sh <span className="text-white/20">// Project Environment Spec</span></p>
+                              <p className="text-[#27C93F]">📁 skills/</p>
+                              <p className="text-[#8E8E93] pl-4">📄 coding_expert.md <span className="text-white/20">// Codebase researcher skill</span></p>
+                            </div>
+
+                            {/* CLI Agent Conversation Simulation */}
+                            <div className="pt-2 border-t border-white/5 space-y-1.5 text-[8px]">
+                              <p className="text-white font-medium">$ pudo init --agent --workspace</p>
+                              <p className="text-[#8E8E93]">Initializing Workspace guidelines...</p>
+                              <p className="text-brand-orange font-semibold">[PUDO] Loading custom Coding Agent context.</p>
+                              <p className="text-[#27C93F]">[SUCCESS] Agent workspace rules loaded (25 rules active).</p>
+                              <p className="text-[#8E8E93] animate-pulse">$ pudo prompt "refactor auth logic" | agent</p>
+                            </div>
+                          </div>
+
+                          {/* Bottom diagnostic stats */}
+                          <div className="flex justify-between items-center border-t border-white/5 pt-2 mt-2 text-[7px] text-white/30">
+                            <span>AGENT_SUCCESS_RATE: 98.4%</span>
+                            <span>VER: 1.0.4</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
                   </div>
                 </div>
               </motion.div>

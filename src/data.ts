@@ -165,6 +165,19 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       coverImage: "sukajan",
       metrics: "SEO 98% và hơn 15,000 truy cập",
       liveUrl: "https://sukajanrandomphitruong.com/"
+    },
+    {
+      id: "pudo_code_system",
+      title: "PuDo Code System",
+      client: "Founder (Duong Phu Dong)",
+      category: "Hệ thống chỉ định AI Agent và Cấu trúc Workspace",
+      shortStory: "Hệ thống quy chuẩn hóa chỉ thị hệ thống và sơ đồ hóa mã nguồn do Founder Duong Phu Dong phát triển, giúp các lập trình viên AI (Coding Agent) nắm bắt đầy đủ ngữ cảnh dự án và tự động hóa viết code chính xác.",
+      technologies: ["Shell", "Markdown", "System Prompts", "Git"],
+      timeline: "Nghiên cứu & Vận hành",
+      outcome: "Được tích hợp vào 100% quy trình làm việc của studio, giúp giảm thiểu 45% thời gian thiết lập dự án ban đầu và tối ưu hóa độ chính xác lập trình của Agent.",
+      coverImage: "pudocode",
+      metrics: "Giảm 45% thời gian cấu hình",
+      liveUrl: "https://github.com/DongDuong2001/pudo-code-system"
     }
   ],
   en: [
@@ -180,6 +193,19 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       coverImage: "sukajan",
       metrics: "98% SEO and over 15,000 visits",
       liveUrl: "https://sukajanrandomphitruong.com/"
+    },
+    {
+      id: "pudo_code_system",
+      title: "PuDo Code System",
+      client: "Founder (Duong Phu Dong)",
+      category: "AI Agent Guidelines & Workspace System",
+      shortStory: "A standardized instructions framework and workspace context builder designed by Founder Duong Phu Dong, enabling AI coding agents to comprehend project schemas and execute automated tasks reliably.",
+      technologies: ["Shell", "Markdown", "System Prompts", "Git"],
+      timeline: "R&D & Active Ops",
+      outcome: "Deployed in 100% of studio repositories, reducing context indexing speeds by 45% and elevating successful automation runs.",
+      coverImage: "pudocode",
+      metrics: "45% setup time optimization",
+      liveUrl: "https://github.com/DongDuong2001/pudo-code-system"
     }
   ]
 };
