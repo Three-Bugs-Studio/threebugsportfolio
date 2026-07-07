@@ -346,7 +346,9 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       role: "Co-Founder & Thiết kế Website",
       bio: "Chuyên gia thiết kế giao diện sáng tạo với tư duy thẩm mỹ hiện đại. Cô tập trung vào việc tạo nên các giao diện người dùng tối giản, tinh tế và tối ưu hóa trải nghiệm.",
       specialties: ["Thiết kế UI/UX", "Ý tưởng Thiết kế", "Hệ thống Thiết kế", "Tương tác Giao diện"],
-      socials: {}
+      socials: {
+        github: "https://github.com/mthutt"
+      }
     },
     {
       name: "Huynh Quang Dong",
@@ -382,7 +384,9 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       role: "Co-Founder & Website Designer",
       bio: "Creative interface designer with a modern aesthetic vision. She focuses on crafting clean, minimalist user layouts and user experience flows.",
       specialties: ["UI/UX Design", "Design Concepting", "Design Systems", "Interactive Layouts"],
-      socials: {}
+      socials: {
+        github: "https://github.com/mthutt"
+      }
     },
     {
       name: "Huynh Quang Dong",
