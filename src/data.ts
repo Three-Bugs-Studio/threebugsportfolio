@@ -358,6 +358,13 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       socials: {
         github: "https://github.com/HoHuy2402"
       }
+    },
+    {
+      name: "Thu Tran",
+      role: "Website Designer",
+      bio: "Chuyên gia thiết kế giao diện sáng tạo với tư duy thẩm mỹ hiện đại. Cô tập trung vào việc tạo nên các giao diện người dùng tối giản, tinh tế và tối ưu hóa trải nghiệm.",
+      specialties: ["Thiết kế UI/UX", "Ý tưởng Thiết kế", "Hệ thống Thiết kế", "Tương tác Giao diện"],
+      socials: {}
     }
   ],
   en: [
@@ -387,6 +394,13 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       socials: {
         github: "https://github.com/HoHuy2402"
       }
+    },
+    {
+      name: "Thu Tran",
+      role: "Website Designer",
+      bio: "Creative interface designer with a modern aesthetic vision. She focuses on crafting clean, minimalist user layouts and user experience flows.",
+      specialties: ["UI/UX Design", "Design Concepting", "Design Systems", "Interactive Layouts"],
+      socials: {}
     }
   ]
 };

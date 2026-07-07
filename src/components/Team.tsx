@@ -6,6 +6,7 @@ import { TeamMember } from "../types";
 import DuongPhuDongImg from "@/assets/profile/DuongPhuDongProfile.webp";
 import HuynhQuangDongImg from "@/assets/profile/HuynhQuangDongProfile.webp";
 import HoQuangHuyImg from "@/assets/profile/HoQuangHuyProfile.webp";
+import ThuTranImg from "@/assets/profile/ThuTranProfile.webp";
 
 interface TeamProps {
   lang: "vi" | "en";
@@ -19,7 +20,7 @@ interface TeamMemberCardProps {
 }
 
 function TeamMemberCard({ member, idx, lang }: TeamMemberCardProps) {
-  const profileImages = [DuongPhuDongImg, HuynhQuangDongImg, HoQuangHuyImg];
+  const profileImages = [DuongPhuDongImg, HuynhQuangDongImg, HoQuangHuyImg, ThuTranImg];
   const memberImg = profileImages[idx];
 
   return (
@@ -136,13 +137,13 @@ export default function Team({ lang }: TeamProps) {
           </div>
           <p className="font-mono text-xs text-[#8E8E93] max-w-xs leading-relaxed">
             {lang === "vi"
-              ? "BA KỸ SƯ CHUYÊN GIA HỆ THỐNG ĐỒNG HÀNH TRỰC TIẾP TRONG TỪNG DỰ ÁN. KHÔNG CÓ KHÂU QUẢN LÝ TRUNG GIAN."
-              : "THREE SPECIALIST SYSTEM DEVELOPERS ALIGNED DIRECTLY WITH EACH SHIPMENT. NO INTERMEDIARIES."}
+              ? "ĐỘI NGŨ CHUYÊN GIA ĐỒNG HÀNH TRỰC TIẾP TRONG TỪNG DỰ ÁN. KHÔNG CÓ KHÂU TRUNG GIAN."
+              : "TEAM OF SPECIALISTS ALIGNED DIRECTLY WITH EACH SHIPMENT. NO INTERMEDIARIES."}
           </p>
         </div>
 
-        {/* Three Founders side-by-side Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12" id="founders-grid">
+        {/* Founders and Members side-by-side Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8" id="founders-grid">
           {teamList.map((member, idx) => (
             <TeamMemberCard key={member.name} member={member} idx={idx} lang={lang} />
           ))}
