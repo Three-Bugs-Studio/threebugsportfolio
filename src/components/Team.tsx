@@ -20,7 +20,7 @@ interface TeamMemberCardProps {
 }
 
 function TeamMemberCard({ member, idx, lang }: TeamMemberCardProps) {
-  const profileImages = [DuongPhuDongImg, HuynhQuangDongImg, HoQuangHuyImg, ThuTranImg];
+  const profileImages = [DuongPhuDongImg, ThuTranImg, HuynhQuangDongImg, HoQuangHuyImg];
   const memberImg = profileImages[idx];
 
   return (
