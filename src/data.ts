@@ -342,6 +342,13 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       }
     },
     {
+      name: "Thu Tran",
+      role: "Co-Founder & Thiết kế Website",
+      bio: "Chuyên gia thiết kế giao diện sáng tạo với tư duy thẩm mỹ hiện đại. Cô tập trung vào việc tạo nên các giao diện người dùng tối giản, tinh tế và tối ưu hóa trải nghiệm.",
+      specialties: ["Thiết kế UI/UX", "Ý tưởng Thiết kế", "Hệ thống Thiết kế", "Tương tác Giao diện"],
+      socials: {}
+    },
+    {
       name: "Huynh Quang Dong",
       role: "Tester và Scrum Master",
       bio: "Chuyên gia kiểm định chất lượng và điều phối quy trình phát triển. Anh chịu trách nhiệm kiểm thử hệ thống, thúc đẩy quy trình Agile linh hoạt và đảm bảo bàn giao sản phẩm đạt chuẩn chất lượng.",
@@ -358,13 +365,6 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       socials: {
         github: "https://github.com/HoHuy2402"
       }
-    },
-    {
-      name: "Thu Tran",
-      role: "Website Designer",
-      bio: "Chuyên gia thiết kế giao diện sáng tạo với tư duy thẩm mỹ hiện đại. Cô tập trung vào việc tạo nên các giao diện người dùng tối giản, tinh tế và tối ưu hóa trải nghiệm.",
-      specialties: ["Thiết kế UI/UX", "Ý tưởng Thiết kế", "Hệ thống Thiết kế", "Tương tác Giao diện"],
-      socials: {}
     }
   ],
   en: [
@@ -376,6 +376,13 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       socials: {
         github: "https://github.com/DongDuong2001"
       }
+    },
+    {
+      name: "Thu Tran",
+      role: "Co-Founder & Website Designer",
+      bio: "Creative interface designer with a modern aesthetic vision. She focuses on crafting clean, minimalist user layouts and user experience flows.",
+      specialties: ["UI/UX Design", "Design Concepting", "Design Systems", "Interactive Layouts"],
+      socials: {}
     },
     {
       name: "Huynh Quang Dong",
@@ -394,13 +401,6 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       socials: {
         github: "https://github.com/HoHuy2402"
       }
-    },
-    {
-      name: "Thu Tran",
-      role: "Website Designer",
-      bio: "Creative interface designer with a modern aesthetic vision. She focuses on crafting clean, minimalist user layouts and user experience flows.",
-      specialties: ["UI/UX Design", "Design Concepting", "Design Systems", "Interactive Layouts"],
-      socials: {}
     }
   ]
 };
