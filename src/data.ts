@@ -158,7 +158,7 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       title: "Sukajan Store",
       client: "PhiTruong",
       category: "Thương mại điện tử và Nhận diện Thương hiệu",
-      shortStory: "Chúng tôi thiết kế và xây dựng website thương mại điện tử Sukajan đầu tiên cho khách hàng, giúp họ đưa thương hiệu lên môi trường trực tuyến hoạt động ổn định và hỗ trợ thanh toán an toàn.",
+      shortStory: "Chúng tôi thiết kế và xây dựng website thương mại điện tử Sukajan cho khách hàng, giúp họ đưa thương hiệu lên môi trường trực tuyến hoạt động ổn định và hỗ trợ thanh toán an toàn.",
       technologies: ["Next.js", "PostgreSQL", "TailwindCSS", "Vercel"],
       timeline: "3 Tuần",
       outcome: "Bàn giao cửa hàng trực tuyến chạy mượt mượt mà, đạt điểm tối ưu hóa SEO 98%, bàn giao đầy đủ mã nguồn và cam kết bảo hành lâu dài.",
@@ -215,7 +215,7 @@ export const PROCESS_DATA: Record<"vi" | "en", ProcessStep[]> = {
     {
       number: "01",
       title: "Khám Phá",
-      description: "Chúng tôi cùng bạn trao đổi chi tiết về ý tưởng, xác định các chức năng cần thiết của trang web và lập kế hoạch triển khai cụ thể để phù hợp nhất với nhu cầu thực tế.",
+      description: "Chúng tôi cùng bạn trao đổi chi tiết về ý tưởng, xác định các chức năng cần thiết của trang web và lập kế hoạch triển khai cụ thể để phù hợp với nhu cầu thực tế.",
       duration: "Tuần 1",
       deliverables: ["Tài liệu Đặc tả Sản phẩm", "Sơ đồ Kiến trúc Hệ thống", "Lộ trình và Dự toán Chi phí"]
     },
@@ -299,7 +299,7 @@ export const VALUES_DATA: Record<"vi" | "en", Value[]> = {
       id: "craft",
       title: "Giao Diện tối giản",
       subtitle: "Thẩm mỹ hiện đại và trực quan",
-      description: "Giao diện được thiết kế đơn giản, gọn gàng và dễ nhìn. Chúng tôi chăm chút các khoảng trống, cỡ chữ và hiệu ứng chuyển động nhẹ nhàng để khách mua hàng có trải nghiệm tốt nhất."
+      description: "Giao diện được thiết kế đơn giản, gọn gàng và dễ nhìn. Chúng tôi chăm chút các khoảng trống, cỡ chữ và hiệu ứng chuyển động nhẹ nhàng để khách mua hàng có trải nghiệm tối ưu.",
     },
     {
       id: "partnership",
@@ -411,13 +411,13 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
 
 export const TECH_DATA: Record<"vi" | "en", TechItem[]> = {
   vi: [
-    { name: "Next.js", category: "frontend", description: "Khung phát triển hàng đầu hỗ trợ SSR và kết xuất tĩnh.", level: "Hàng đầu" },
-    { name: "React.js", category: "frontend", description: "Giao diện người dùng hướng trạng thái và mô đun hóa.", level: "Cốt lõi" },
+    { name: "Next.js", category: "frontend", description: "Khung phát triển hỗ trợ SSR và kết xuất tĩnh.", level: "Chuyên sâu" },
+    { name: "React.js", category: "frontend", description: "Giao diện người dùng hướng trạng thái và mo đun hóa.", level: "Cốt lõi" },
     { name: "TypeScript", category: "frontend", description: "Đảm bảo an toàn kiểu dữ liệu ở mức biên dịch.", level: "Cốt lõi" },
-    { name: "Java", category: "backend", description: "Nền tảng backend doanh nghiệp mạnh mẽ, bảo mật và hiệu năng cao.", level: "Hàng đầu" },
+    { name: "Java", category: "backend", description: "Nền tảng backend doanh nghiệp bảo mật và hiệu năng ổn định.", level: "Chuyên sâu" },
     { name: "Prisma", category: "database", description: "Hệ thống ORM hiện đại, an toàn kiểu dữ liệu cho SQL.", level: "Cốt lõi" },
-    { name: "Supabase", category: "database", description: "Nền tảng dịch vụ backend tích hợp sẵn cơ sở dữ liệu Postgres.", level: "Hàng đầu" },
-    { name: "Neon Database", category: "database", description: "Cơ sở dữ liệu PostgreSQL phi máy chủ mở rộng nhanh chóng.", level: "Hàng đầu" },
+    { name: "Supabase", category: "database", description: "Nền tảng dịch vụ backend tích hợp sẵn cơ sở dữ liệu Postgres.", level: "Chuyên sâu" },
+    { name: "Neon Database", category: "database", description: "Cơ sở dữ liệu PostgreSQL phi máy chủ hỗ trợ mở rộng nhanh.", level: "Chuyên sâu" },
     { name: "PostgreSQL", category: "database", description: "Hệ quản trị cơ sở dữ liệu quan hệ mạnh mẽ, tin cậy cao.", level: "Cốt lõi" },
     { name: "Docker", category: "devops", description: "Môi trường đóng gói phần mềm nhất quán khi triển khai.", level: "Cốt lõi" }
   ],
@@ -443,7 +443,7 @@ export const TESTIMONIALS_DATA: Record<"vi" | "en", Testimonial[]> = {
       company: "Sukajan Store"
     },
     {
-      quote: "Đội ngũ tuyệt vời. Họ đã bàn giao trang web Sukajan hoàn hảo với chất lượng cao nhất và cam kết bảo hành lâu dài.",
+      quote: "Đội ngũ làm việc hiệu quả. Họ đã bàn giao trang web Sukajan hoạt động ổn định với chất lượng tốt và cam kết bảo hành lâu dài.",
       author: "Phi Trường",
       role: "Đồng sáng lập",
       company: "Sukajan Store"
@@ -512,13 +512,13 @@ export const TRANSLATIONS = {
     heroHeading: "Chúng Tôi Xây Dựng Website và Phần Mềm",
     heroDesc: "Three Bugs Studio, đội ngũ gồm ba lập trình viên hoạt động hoàn toàn theo mô hình làm việc từ xa (100% Remote), chuyên xây dựng website chất lượng cao, vận hành ổn định và tối ưu hiệu năng.",
     heroExplore: "Khám Phá Các Dự Án",
-    heroRecentWork: "Dự án mới nhất",
+    heroRecentWork: "Dự án thực tế",
     heroPillars: "Trụ Cột Thiết Kế",
     heroPillarsDesc: "Mọi trang web tốt đều cần giao diện dễ nhìn, mã nguồn tối ưu và tốc độ tải trang nhanh chóng.",
 
     aboutLabel: "01 // CHÂN DUNG STUDIO",
     aboutHeading: "Lập trình thực tế để đưa ý tưởng kinh doanh của bạn lên internet.",
-    aboutBody1: "Tại Three Bugs Studio, chúng tôi tập trung xây dựng trang web hoạt động ổn định và lâu dài. Thay vì làm các giải pháp tạm thời, chúng tôi đầu tư vào cơ sở dữ liệu gọn gàng và mã nguồn tối ưu để trang web của bạn chạy mượt mà nhất.",
+    aboutBody1: "Tại Three Bugs Studio, chúng tôi tập trung xây dựng trang web hoạt động ổn định và lâu dài. Thay vì làm các giải pháp tạm thời, chúng tôi đầu tư vào cơ sở dữ liệu gọn gàng và mã nguồn tối ưu để trang web của bạn chạy mượt mà, ổn định.",
     aboutBody2: "Bạn sẽ làm việc trực tiếp với những lập trình viên trực tiếp xây dựng sản phẩm của bạn. Điều này giúp đẩy nhanh tiến độ bàn giao, giảm thiểu hiểu lầm và đảm bảo sản phẩm đúng như mong đợi.",
     aboutStatProjects: "Dự án hoàn thành",
     aboutStatLines: "Dòng mã tối ưu",
@@ -543,7 +543,7 @@ export const TRANSLATIONS = {
     techLabel: "05 // HỆ THỐNG CÔNG NGHỆ",
     techHeading: "Các công nghệ chúng tôi thường sử dụng.",
     techSubtitle: "Những công nghệ hiện đại giúp trang web tải nhanh, chịu tải tốt và dễ dàng nâng cấp.",
-    techPrimary: "Hàng đầu",
+    techPrimary: "Chuyên sâu",
     techCore: "Cốt lõi",
 
     teamLabel: "06 // ĐỘI NGŨ KỸ THUẬT",
@@ -574,7 +574,7 @@ export const TRANSLATIONS = {
     contactSendBtn: "GỬI THÔNG TIN YÊU CẦU",
     contactSendingBtn: "ĐANG GỬI THÔNG TIN...",
     contactSuccessTitle: "Gửi thông tin thành công!",
-    contactSuccessMessage: "Cảm ơn bạn đã liên hệ. Yêu cầu của bạn đã được gửi trực tiếp đến dongduong840@gmail.com. Chúng tôi sẽ phản hồi sớm nhất để trao đổi chi tiết về giao diện và lộ trình thực hiện.",
+    contactSuccessMessage: "Cảm ơn bạn đã liên hệ. Yêu cầu của bạn đã được gửi trực tiếp đến dongduong840@gmail.com. Chúng tôi sẽ phản hồi sớm để trao đổi chi tiết về giao diện và lộ trình thực hiện.",
     contactFormError: "Vui lòng điền đầy đủ các thông tin bắt buộc.",
 
     footerSiteIndex: "MỤC LỤC TRANG",
@@ -595,7 +595,7 @@ export const TRANSLATIONS = {
     navStartProject: "Start Project",
     navInquiries: "Inquiries",
 
-    heroTag: "PREMIUM SOFTWARE DESIGN AND ENGINEERING",
+    heroTag: "SOFTWARE DESIGN AND ENGINEERING",
     heroHeading: "We build stable and fast web applications.",
     heroDesc: "Three Bugs Studio is a 100% remote-first team of three developers crafting clean, fast, and durable websites.",
     heroExplore: "Explore Selected Work",
@@ -629,7 +629,7 @@ export const TRANSLATIONS = {
 
     techLabel: "05 // SYSTEM TECH STACK",
     techHeading: "Modern architectures built for growth.",
-    techSubtitle: "A highly audited suite of technologies tested for extreme concurrent traffic, durability, and performance.",
+    techSubtitle: "A suite of technologies tested for concurrent traffic, durability, and performance.",
     techPrimary: "Primary",
     techCore: "Core",
 

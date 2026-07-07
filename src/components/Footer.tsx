@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import Logo from "./Logo";
 import { TRANSLATIONS } from "../data";
-import { ArrowUp, ArrowUpRight } from "lucide-react";
-import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import { ArrowUp, ArrowUpRight, X } from "lucide-react";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "motion/react";
 import { audioManager } from "../lib/audioManager";
 
 interface MagneticSocialLinkProps {
@@ -105,6 +105,7 @@ export default function Footer({ lang }: FooterProps) {
   const t = TRANSLATIONS[lang];
   const [utcTime, setUtcTime] = useState("");
   const [isHumOn, setIsHumOn] = useState(false);
+  const [isTermsOpen, setIsTermsOpen] = useState(false);
 
   useEffect(() => {
     setIsHumOn(audioManager.getStatus().hum);
@@ -278,6 +279,15 @@ export default function Footer({ lang }: FooterProps) {
           </div>
 
           <div className="flex items-center gap-6">
+            {/* Privacy & Terms Modal Trigger */}
+            <button
+              onClick={() => setIsTermsOpen(true)}
+              className="hover:text-brand-orange text-[#8E8E93] transition-colors duration-200 cursor-pointer font-mono text-[9px] uppercase interactive"
+            >
+              {lang === "vi" ? "Bảo mật & Điều khoản" : "Privacy & Terms"}
+            </button>
+            <span className="text-white/10 select-none">|</span>
+
             {/* Version / Build indicator */}
             <span className="text-[8px] text-white/20 select-none">BUILD_v1.0.4_PROD</span>
 
@@ -295,6 +305,92 @@ export default function Footer({ lang }: FooterProps) {
         </div>
 
       </div>
+
+      {/* Privacy Policy & Terms of Service Modal */}
+      <AnimatePresence>
+        {isTermsOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsTermsOpen(false)}
+              className="absolute inset-0 bg-black/80 backdrop-blur-md"
+            />
+
+            {/* Modal Body */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              className="relative w-full max-w-2xl bg-[#111111] border border-white/10 rounded-sm p-6 md:p-8 shadow-2xl z-10 flex flex-col max-h-[85vh] overflow-y-auto"
+            >
+              {/* Close Button */}
+              <button
+                onClick={() => setIsTermsOpen(false)}
+                className="absolute top-4 right-4 text-[#8E8E93] hover:text-white transition-colors p-1 cursor-pointer"
+                aria-label="Close modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Title */}
+              <h3 className="font-display font-medium text-xl md:text-2xl text-[#F5F5F3] mb-6 border-b border-white/5 pb-4">
+                {lang === "vi" ? "Chính sách Bảo mật & Điều khoản" : "Privacy Policy & Terms"}
+              </h3>
+
+              {/* Scrollable Document Content */}
+              <div className="space-y-6 text-left font-sans text-xs text-[#8E8E93] leading-relaxed">
+                {/* 1. Privacy Section */}
+                <section className="space-y-2">
+                  <h4 className="font-mono text-[10px] text-brand-orange uppercase tracking-wider font-semibold">
+                    {lang === "vi" ? "1. CHÍNH SÁCH BẢO MẬT (PRIVACY POLICY)" : "1. PRIVACY POLICY"}
+                  </h4>
+                  <p>
+                    {lang === "vi"
+                      ? "Chúng tôi tôn trọng quyền riêng tư của bạn. Mọi thông tin bạn cung cấp thông qua biểu mẫu liên hệ (bao gồm Tên, Email, Công ty, Mô tả dự án và Dự toán chi phí) được gửi trực tiếp và an toàn đến hộp thư của studio (dongduong840@gmail.com) và chỉ được sử dụng cho mục đích trao đổi yêu cầu hợp tác thiết kế, phát triển phần mềm."
+                      : "We respect your privacy. Any information you submit through our contact forms (including Name, Email, Company, Project requirements, and Budget options) is delivered directly and securely to our inbox (dongduong840@gmail.com). This data is exclusively used to discuss project proposals and design services."}
+                  </p>
+                  <p>
+                    {lang === "vi"
+                      ? "Trang web của chúng tôi không sử dụng các dịch vụ theo dõi quảng cáo từ bên thứ ba, đảm bảo dữ liệu truy cập của bạn hoàn toàn bảo mật."
+                      : "Our site does not implement third-party advertising tracking technologies, ensuring your access data remains private."}
+                  </p>
+                </section>
+
+                {/* 2. Terms Section */}
+                <section className="space-y-2">
+                  <h4 className="font-mono text-[10px] text-brand-orange uppercase tracking-wider font-semibold">
+                    {lang === "vi" ? "2. ĐIỀU KHOẢN SỬ DỤNG (TERMS OF SERVICE)" : "2. TERMS OF SERVICE"}
+                  </h4>
+                  <p>
+                    {lang === "vi"
+                      ? "Mọi nội dung, hình ảnh thiết kế giao diện và mã nguồn hiển thị trên trang web này đều thuộc bản quyền sở hữu của Three Bugs Studio. Nghiêm cấm mọi hành vi sao chép, sao chép cấu trúc hoặc tái sử dụng tài nguyên của studio cho mục đích thương mại khi chưa có sự đồng ý bằng văn bản."
+                      : "All content, interface layouts, and source code displayed on this portfolio are the intellectual property of Three Bugs Studio. Unauthorized duplication, structural cloning, or redistribution of these assets for commercial purposes without written consent is strictly prohibited."}
+                  </p>
+                  <p>
+                    {lang === "vi"
+                      ? "Chúng tôi cam kết cung cấp thông tin trung thực về dịch vụ và năng lực. Các ước tính chi phí, lộ trình và kết quả dự án trên trang này mang tính chất tham khảo trực tiếp và sẽ được quy định cụ thể bằng hợp đồng kinh tế khi hai bên chính thức hợp tác."
+                      : "We strive to present clear and factual descriptions of our services. All timeline, cost, and output specifications listed on this portfolio are guides. Final terms and bounds will be governed solely by formal services agreements."}
+                  </p>
+                </section>
+              </div>
+
+              {/* Modal Footer Close Action */}
+              <div className="mt-8 pt-4 border-t border-white/5 flex justify-end">
+                <button
+                  onClick={() => setIsTermsOpen(false)}
+                  className="bg-[#1C1C1E] border border-white/10 hover:border-brand-orange/30 text-white font-mono text-[10px] uppercase tracking-widest px-5 py-2.5 rounded-sm transition-all duration-300 interactive cursor-pointer"
+                >
+                  {lang === "vi" ? "ĐÓNG LẠI" : "CLOSE"}
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </footer>
   );
 }

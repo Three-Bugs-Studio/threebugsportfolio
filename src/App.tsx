@@ -217,14 +217,14 @@ export default function App() {
     // 2. Define SEO variables based on language
     const seoData = {
       vi: {
-        title: "Three Bugs Studio | Thiết Kế Website & Phần Mềm Cao Cấp tại TP.HCM",
-        description: "Three Bugs Studio - Đội ngũ lập trình viên chuyên nghiệp thiết kế website cao cấp, phần mềm custom và ứng dụng web vận hành tối ưu, giao diện hiện đại.",
+        title: "Three Bugs Studio | Thiết Kế Website & Phát Triển Phần Mềm tại TP.HCM",
+        description: "Three Bugs Studio - Đội ngũ lập trình viên chuyên nghiệp thiết kế website, phần mềm custom và ứng dụng web vận hành tối ưu, giao diện hiện đại.",
         keywords: "thiết kế website, thiết kế web tphcm, lập trình phần mềm, làm website uy tín, web app, react, three bugs studio, hcmc"
       },
       en: {
-        title: "Three Bugs Studio | Premium Web Design & Software Engineering",
+        title: "Three Bugs Studio | Web Design & Software Engineering",
         description: "Three Bugs Studio - A professional developer studio crafting fast, clean, and durable custom websites and web applications based in Ho Chi Minh City.",
-        keywords: "web design hanoi hcmc, custom software development, high-end websites, react developer vietnam, web app, three bugs studio"
+        keywords: "web design hanoi hcmc, custom software development, professional websites, react developer vietnam, web app, three bugs studio"
       }
     };
 
@@ -642,7 +642,7 @@ export default function App() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
                 >
-                  {lang === "vi" ? "THIẾT LẬP PHẦN MỀM CAO CẤP" : "CONFIGURING PREMIUM INTERFACE"}
+                  {lang === "vi" ? "KHỞI TẠO HỆ THỐNG GIAO DIỆN" : "CONFIGURING INTERFACE ARCHITECTURE"}
                 </motion.p>
               </div>
 
