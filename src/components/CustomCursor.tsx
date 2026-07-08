@@ -56,20 +56,20 @@ export default function CustomCursor() {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [isTouchDevice, setIsTouchDevice] = useState(true);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
   useEffect(() => {
     const checkTouch = () => {
-      const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
-      setIsTouchDevice(isTouch);
+      const isCoarse = window.matchMedia("(pointer: coarse)").matches;
+      setIsTouchDevice(isCoarse);
     };
 
     checkTouch();
 
-    if (isTouchDevice) return;
+    if (window.matchMedia("(pointer: coarse)").matches) return;
 
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX);

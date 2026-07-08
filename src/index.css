@@ -26,6 +26,8 @@ html {
   background-color: var(--bg-dark);
   color: var(--text-light);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -36,6 +38,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   width: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Custom premium scrollbar */
@@ -76,6 +79,9 @@ body {
   background: radial-gradient(circle, rgba(255, 106, 0, 0.04) 0%, rgba(0,0,0,0) 70%);
   filter: blur(80px);
   pointer-events: none;
+  will-change: transform;
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
 }
 
 .writing-mode-vertical {
