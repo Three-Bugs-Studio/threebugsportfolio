@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
 import { Send, ArrowUpRight, Check, AlertCircle, Coins } from "lucide-react";
+import ZaloQRImg from "@/assets/zalo/zalo_qr.webp";
 
 interface ContactProps {
   lang: "vi" | "en";
@@ -155,22 +156,42 @@ export default function Contact({ lang }: ContactProps) {
             </div>
 
             {/* Direct Contact details */}
-            <div className="border-t border-white/5 pt-8 flex flex-col gap-4">
-              <div>
-                <span className="font-mono text-[9px] tracking-widest text-brand-orange uppercase block mb-1">
-                  STUDIO INBOX
-                </span>
-                <a href="mailto:dongduong840@gmail.com" className="font-sans text-sm text-[#F5F5F3] hover:text-brand-orange transition-colors interactive">
-                  dongduong840@gmail.com
-                </a>
+            <div className="border-t border-white/5 pt-8 flex flex-wrap gap-x-12 gap-y-6">
+              <div className="space-y-4">
+                <div>
+                  <span className="font-mono text-[9px] tracking-widest text-brand-orange uppercase block mb-1">
+                    STUDIO INBOX
+                  </span>
+                  <a href="mailto:dongduong840@gmail.com" className="font-sans text-sm text-[#F5F5F3] hover:text-brand-orange transition-colors interactive">
+                    dongduong840@gmail.com
+                  </a>
+                </div>
+                <div>
+                  <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block mb-1">
+                    OPERATING MODEL
+                  </span>
+                  <span className="font-sans text-sm text-[#F5F5F3] tracking-wide">
+                    100% REMOTE
+                  </span>
+                </div>
               </div>
+
               <div>
-                <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block mb-1">
-                  OPERATING MODEL
+                <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block mb-1.5">
+                  {lang === "vi" ? "QUÉT MÃ ZALO LIÊN HỆ" : "ZALO QUICK CONTACT"}
                 </span>
-                <span className="font-sans text-sm text-[#F5F5F3] tracking-wide">
-                  100% REMOTE
-                </span>
+                <div className="relative group/zalo w-24 h-24 bg-[#121212] border border-white/10 rounded-sm p-1 transition-all hover:border-brand-orange/30 shadow-lg">
+                  <img
+                    src={ZaloQRImg}
+                    alt="Zalo QR Code"
+                    className="w-full h-full object-cover rounded-[1px]"
+                  />
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/zalo:opacity-100 flex items-center justify-center transition-opacity rounded-[1px] pointer-events-none">
+                    <span className="font-mono text-[6.5px] text-brand-orange tracking-widest uppercase font-bold">
+                      {lang === "vi" ? "QUÉT ĐỂ CHAT" : "SCAN TO CHAT"}
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
