@@ -25,6 +25,7 @@ export default function Contact({ lang }: ContactProps) {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<string>("ecommerce");
 
   useEffect(() => {
     fetch("https://open.er-api.com/v6/latest/USD")
@@ -85,11 +86,19 @@ export default function Contact({ lang }: ContactProps) {
 
     // Build the mailto link content
     const selectedBudget = currency === "VND" ? rawVND[budgetIndex] : rawUSD[budgetIndex];
+    const planNames: Record<string, string> = {
+      landing_page: lang === "vi" ? "Gói Landing Page / Brand Site" : "Landing Page & Brand Site",
+      ecommerce: lang === "vi" ? "Gói Cửa Hàng E-Commerce" : "E-Commerce Storefront",
+      custom_software: lang === "vi" ? "Gói Web App & AI Custom" : "Custom Web App & AI System"
+    };
+    const selectedPlanName = planNames[selectedPlan] || selectedPlan;
+
     const subject = encodeURIComponent(`[Three Bugs Inquiry] Project Proposal by ${formData.name}`);
     const body = encodeURIComponent(
       `Name: ${formData.name}\n` +
       `Email: ${formData.email}\n` +
       `Company/Venture: ${formData.company || "None"}\n` +
+      `Chosen Plan Option: ${selectedPlanName}\n` +
       `Budget Range: ${selectedBudget}\n\n` +
       `Project Requirements:\n${formData.message}`
     );
@@ -242,6 +251,74 @@ export default function Contact({ lang }: ContactProps) {
                           <AlertCircle className="w-3.5 h-3.5" /> {errors.email}
                         </span>
                       )}
+                    </div>
+
+                    {/* Project Plan Option Selector */}
+                    <div>
+                      <label className="font-mono text-[10px] tracking-widest text-[#C0C0C5] uppercase block mb-3">
+                        {lang === "vi" ? "LỰA CHỌN GÓI DỰ ÁN" : "SELECT PROJECT PLAN"}
+                      </label>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-2">
+                        {/* Option 1: Landing Page */}
+                        <button
+                          type="button"
+                          onClick={() => setSelectedPlan("landing_page")}
+                          className={`py-3 px-4 text-left border rounded-sm transition-all focus:outline-none flex flex-col justify-between min-h-[85px] cursor-pointer ${
+                            selectedPlan === "landing_page"
+                              ? "bg-brand-orange/15 border-brand-orange text-brand-orange"
+                              : "bg-[#090909]/40 border-white/5 text-[#8E8E93] hover:border-white/10 hover:text-[#F5F5F3]"
+                          }`}
+                        >
+                          <span className="font-sans text-xs font-semibold tracking-wide block">
+                            {lang === "vi" ? "Landing Page / Brand Site" : "Landing Page & Brand"}
+                          </span>
+                          <span className="font-sans text-[8px] opacity-75 leading-tight mt-1">
+                            {lang === "vi"
+                              ? "Giao diện tối giản giới thiệu thương hiệu và sản phẩm."
+                              : "Single-page responsive layout for startups and business profiles."}
+                          </span>
+                        </button>
+
+                        {/* Option 2: E-Commerce Storefront */}
+                        <button
+                          type="button"
+                          onClick={() => setSelectedPlan("ecommerce")}
+                          className={`py-3 px-4 text-left border rounded-sm transition-all focus:outline-none flex flex-col justify-between min-h-[85px] cursor-pointer ${
+                            selectedPlan === "ecommerce"
+                              ? "bg-brand-orange/15 border-brand-orange text-brand-orange"
+                              : "bg-[#090909]/40 border-white/5 text-[#8E8E93] hover:border-white/10 hover:text-[#F5F5F3]"
+                          }`}
+                        >
+                          <span className="font-sans text-xs font-semibold tracking-wide block">
+                            {lang === "vi" ? "Cửa Hàng E-Commerce" : "E-Commerce Storefront"}
+                          </span>
+                          <span className="font-sans text-[8px] opacity-75 leading-tight mt-1">
+                            {lang === "vi"
+                              ? "Tích hợp giỏ hàng, đặt hàng tùy biến giống Sukajan Store."
+                              : "Online store designs with cart systems and specifications."}
+                          </span>
+                        </button>
+
+                        {/* Option 3: Custom Web App / AI */}
+                        <button
+                          type="button"
+                          onClick={() => setSelectedPlan("custom_software")}
+                          className={`py-3 px-4 text-left border rounded-sm transition-all focus:outline-none flex flex-col justify-between min-h-[85px] cursor-pointer ${
+                            selectedPlan === "custom_software"
+                              ? "bg-brand-orange/15 border-brand-orange text-brand-orange"
+                              : "bg-[#090909]/40 border-white/5 text-[#8E8E93] hover:border-white/10 hover:text-[#F5F5F3]"
+                          }`}
+                        >
+                          <span className="font-sans text-xs font-semibold tracking-wide block">
+                            {lang === "vi" ? "Web App & AI Custom" : "Custom Web App & AI"}
+                          </span>
+                          <span className="font-sans text-[8px] opacity-75 leading-tight mt-1">
+                            {lang === "vi"
+                              ? "Lập trình web app riêng, cấu trúc dữ liệu và tích hợp AI."
+                              : "Bespoke database structures, custom dashboard panels, and AI agents."}
+                          </span>
+                        </button>
+                      </div>
                     </div>
 
                     {/* Budget Options Selector with Currency Switcher */}
