@@ -350,6 +350,16 @@ export default function Hero({ lang }: HeroProps) {
           {t.heroDesc}
         </motion.p>
 
+        {/* Studio Slogan Signature */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.8 }}
+          transition={{ delay: 0.7, duration: 1 }}
+          className="font-mono text-xs md:text-sm tracking-[0.25em] text-brand-orange mt-8 uppercase font-medium select-none"
+        >
+          Every bug teaches. Every build improves.
+        </motion.div>
+
         {/* Call to Actions */}
         <motion.div
           id="hero-ctas"

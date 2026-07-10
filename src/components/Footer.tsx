@@ -177,6 +177,10 @@ export default function Footer({ lang }: FooterProps) {
               </span>
             </p>
 
+            <div className="font-mono text-[9px] tracking-[0.2em] text-[#8E8E93] uppercase mb-8 select-none border-l border-brand-orange/30 pl-3">
+              Every bug teaches. Every build improves.
+            </div>
+
             {/* Dynamic UTC Engine Clock & Ambient Hum Toggle */}
             <div className="flex flex-wrap gap-3">
               <div className="bg-[#121212]/50 border border-white/5 px-4 py-2.5 rounded-sm flex items-center gap-3 select-none">
