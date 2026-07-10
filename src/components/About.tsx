@@ -111,38 +111,55 @@ export default function About({ lang }: AboutProps) {
                   {/* Visual Motif (Isometric Geometry in SVG) */}
                   <div className="h-32 w-full flex items-center justify-center mb-8 bg-[#090909]/40 border border-white/5 rounded-sm relative overflow-hidden group-hover:bg-[#090909]/60 transition-colors">
                     {value.id === "foundation" && (
-                      <svg viewBox="0 0 100 100" className="w-16 h-16 opacity-40 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500">
+                      <svg viewBox="0 0 100 100" className="w-16 h-16 opacity-45 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
+                        <defs>
+                          <linearGradient id="glow-orange" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#FF6A00" stopOpacity="1" />
+                            <stop offset="100%" stopColor="#FF3A00" stopOpacity="0.4" />
+                          </linearGradient>
+                        </defs>
                         {/* Foundation Isometric Cube Wireframe */}
-                        <path d="M 50,20 L 80,35 L 80,65 L 50,80 L 20,65 L 20,35 Z" stroke="#F5F5F3" strokeWidth="1" fill="none" />
-                        <path d="M 50,20 L 50,80" stroke="#F5F5F3" strokeWidth="0.5" />
-                        <path d="M 20,35 L 50,50 L 80,35" stroke="#F5F5F3" strokeWidth="0.5" fill="none" />
-                        <line x1="50" y1="50" x2="50" y2="80" stroke="#FF6A00" strokeWidth="1.5" />
-                        <circle cx="50" cy="50" r="3" fill="#FF6A00" />
+                        <path d="M 50,15 L 85,32.5 L 85,67.5 L 50,85 L 15,67.5 L 15,32.5 Z" stroke="rgba(255,255,255,0.15)" strokeWidth="1" fill="none" />
+                        <path d="M 50,15 L 85,32.5 L 50,50 L 15,32.5 Z" stroke="rgba(255,255,255,0.25)" strokeWidth="1" fill="none" />
+                        <path d="M 50,50 L 50,85" stroke="url(#glow-orange)" strokeWidth="2" />
+                        <path d="M 15,32.5 L 50,50 L 85,32.5" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" fill="none" />
+                        <path d="M 15,67.5 L 50,50 L 85,67.5" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" fill="none" />
+                        {/* Core active core */}
+                        <circle cx="50" cy="50" r="5" fill="#FF6A00" className="animate-pulse" />
+                        {/* External orbit lines */}
+                        <circle cx="50" cy="50" r="38" stroke="rgba(255,106,0,0.15)" strokeWidth="0.75" strokeDasharray="3,3" fill="none" />
                       </svg>
                     )}
 
                     {value.id === "craft" && (
-                      <svg viewBox="0 0 100 100" className="w-16 h-16 opacity-40 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500">
+                      <svg viewBox="0 0 100 100" className="w-16 h-16 opacity-45 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
                         {/* Craft Bezier Vector Layout */}
-                        <path d="M 15,50 C 35,20, 65,80, 85,50" stroke="#F5F5F3" strokeWidth="1" fill="none" />
-                        <line x1="30" y1="30" x2="30" y2="70" stroke="rgba(255,255,255,0.15)" strokeWidth="0.5" />
-                        <line x1="70" y1="30" x2="70" y2="70" stroke="rgba(255,255,255,0.15)" strokeWidth="0.5" />
+                        <path d="M 15,50 C 35,15, 65,85, 85,50" stroke="#FF6A00" strokeWidth="2" fill="none" />
+                        <path d="M 15,50 C 35,15, 65,85, 85,50" stroke="rgba(255,255,255,0.2)" strokeWidth="0.75" strokeDasharray="2,2" fill="none" />
+                        {/* Control Handles */}
+                        <line x1="35" y1="23.5" x2="35" y2="76.5" stroke="rgba(255,255,255,0.15)" strokeWidth="0.75" />
+                        <line x1="65" y1="23.5" x2="65" y2="76.5" stroke="rgba(255,255,255,0.15)" strokeWidth="0.75" />
                         {/* Interaction nodes */}
-                        <rect x="27.5" y="47.5" width="5" height="5" fill="#FF6A00" stroke="#090909" strokeWidth="1" />
-                        <rect x="67.5" y="47.5" width="5" height="5" fill="#FF6A00" stroke="#090909" strokeWidth="1" />
-                        <circle cx="15" cy="50" r="2.5" fill="#F5F5F3" />
-                        <circle cx="85" cy="50" r="2.5" fill="#F5F5F3" />
+                        <circle cx="35" cy="23.5" r="3" fill="#FF6A00" stroke="#090909" strokeWidth="1" />
+                        <circle cx="35" cy="76.5" r="3" fill="#FF6A00" stroke="#090909" strokeWidth="1" />
+                        <circle cx="65" cy="23.5" r="3" fill="#F5F5F3" stroke="#090909" strokeWidth="1" />
+                        <circle cx="65" cy="76.5" r="3" fill="#F5F5F3" stroke="#090909" strokeWidth="1" />
+                        <circle cx="15" cy="50" r="3.5" fill="#F5F5F3" stroke="#090909" strokeWidth="1" />
+                        <circle cx="85" cy="50" r="3.5" fill="#F5F5F3" stroke="#090909" strokeWidth="1" />
                       </svg>
                     )}
 
                     {value.id === "partnership" && (
-                      <svg viewBox="0 0 100 100" className="w-16 h-16 opacity-40 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500">
-                        {/* Partnership Intersecting Circles */}
-                        <circle cx="38" cy="50" r="16" stroke="#F5F5F3" strokeWidth="1" fill="none" />
-                        <circle cx="62" cy="50" r="16" stroke="#F5F5F3" strokeWidth="1" fill="none" />
+                      <svg viewBox="0 0 100 100" className="w-16 h-16 opacity-45 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
+                        {/* Partnership Intersecting Rings */}
+                        <circle cx="38" cy="50" r="22" stroke="rgba(255,255,255,0.15)" strokeWidth="1" fill="none" />
+                        <circle cx="62" cy="50" r="22" stroke="rgba(255,255,255,0.15)" strokeWidth="1" fill="none" />
                         {/* Intersection segment highlight */}
-                        <path d="M 50,37.5 A 16,16 0 0,0 50,62.5 A 16,16 0 0,0 50,37.5 Z" fill="rgba(255, 106, 0, 0.15)" stroke="#FF6A00" strokeWidth="1" />
-                        <circle cx="50" cy="50" r="2.5" fill="#FF6A00" />
+                        <path d="M 50,33.5 A 22,22 0 0,0 50,66.5 A 22,22 0 0,0 50,33.5 Z" fill="rgba(255, 106, 0, 0.12)" stroke="#FF6A00" strokeWidth="2" />
+                        <circle cx="50" cy="50" r="4" fill="#FF6A00" />
+                        {/* Connector nodes */}
+                        <circle cx="20" cy="50" r="2.5" fill="#F5F5F3" />
+                        <circle cx="80" cy="50" r="2.5" fill="#F5F5F3" />
                       </svg>
                     )}
                   </div>
