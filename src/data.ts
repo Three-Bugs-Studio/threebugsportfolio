@@ -367,6 +367,15 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       socials: {
         github: "https://github.com/HoHuy2402"
       }
+    },
+    {
+      name: "Hao Vu",
+      role: "Lập trình viên Backend & Cơ sở dữ liệu",
+      bio: "Kỹ sư hệ thống máy chủ và tối ưu hóa dữ liệu. Anh tập trung xây dựng cơ sở hạ tầng backend bảo mật, thiết kế cấu trúc CSDL hiệu năng và tích hợp hệ thống API.",
+      specialties: ["Lập trình Backend", "Thiết kế API", "Tối ưu hóa CSDL", "Bảo mật Hệ thống"],
+      socials: {
+        github: "https://github.com/haovu310"
+      }
     }
   ],
   en: [
@@ -404,6 +413,15 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       specialties: ["DevOps and Pipelines", "Docker and Cloud Setup", "Full Stack Development", "PostgreSQL Database"],
       socials: {
         github: "https://github.com/HoHuy2402"
+      }
+    },
+    {
+      name: "Hao Vu",
+      role: "Backend & Database Developer",
+      bio: "Server-side system architect and database optimizer. He is responsible for building secure backend infrastructures, database schema design, and API integration.",
+      specialties: ["Backend Engineering", "API System Design", "Database Tuning", "System Security"],
+      socials: {
+        github: "https://github.com/haovu310"
       }
     }
   ]

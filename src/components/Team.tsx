@@ -7,6 +7,7 @@ import DuongPhuDongImg from "@/assets/profile/DuongPhuDongProfile.webp";
 import HuynhQuangDongImg from "@/assets/profile/HuynhQuangDongProfile.webp";
 import HoQuangHuyImg from "@/assets/profile/HoQuangHuyProfile.webp";
 import ThuTranImg from "@/assets/profile/ThuTranProfile.webp";
+import HaoVuImg from "@/assets/profile/HaoProfile.webp";
 
 interface TeamProps {
   lang: "vi" | "en";
@@ -20,7 +21,7 @@ interface TeamMemberCardProps {
 }
 
 function TeamMemberCard({ member, idx, lang }: TeamMemberCardProps) {
-  const profileImages = [DuongPhuDongImg, ThuTranImg, HuynhQuangDongImg, HoQuangHuyImg];
+  const profileImages = [DuongPhuDongImg, ThuTranImg, HuynhQuangDongImg, HoQuangHuyImg, HaoVuImg];
   const memberImg = profileImages[idx];
   const isFounder = idx < 2;
 
@@ -181,7 +182,7 @@ export default function Team({ lang }: TeamProps) {
             <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase">// {lang === "vi" ? "ĐỘI NGŨ KỸ THUẬT CHUYÊN MÔN" : "SPECIALISTS & ENGINE ROOM"}</span>
             <span className="h-[1px] flex-1 bg-white/5" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto" id="specialists-grid">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto" id="specialists-grid">
             {specialists.map((member, idx) => (
               <TeamMemberCard key={member.name} member={member} idx={idx + 2} lang={lang} />
             ))}
