@@ -178,6 +178,19 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       coverImage: "pudocode",
       metrics: "Giảm 45% thời gian cấu hình",
       liveUrl: "https://github.com/DongDuong2001/pudo-code-system"
+    },
+    {
+      id: "fortify_kitchen",
+      title: "Fortify Kitchen",
+      client: "Fortify Kitchen",
+      category: "Ẩm thực Sous-Vide & Hệ thống Đặt món",
+      shortStory: "Hệ thống website giới thiệu thực đơn dinh dưỡng nấu chậm Sous-Vide giao tại khu vực TP.HCM. Dự án có sự tham gia lập trình và thiết kế của cả 5 thành viên Duong Phu Dong, Thu Tran, Ho Huy, Huynh Quang Dong và Hao Vu.",
+      technologies: ["Next.js", "React", "PostgreSQL", "TailwindCSS", "Vercel"],
+      timeline: "Đang duy trì & Hotfix",
+      outcome: "Bàn giao giao diện tối giản giới thiệu thực đơn ăn uống khoa học, tích hợp biểu đồ lượng calo và hiện đang duy trì vận hành ổn định.",
+      coverImage: "fortifykitchen",
+      metrics: "Giao tại TP.HCM & Đang Bảo trì",
+      liveUrl: "https://fortifykitchen.vercel.app/"
     }
   ],
   en: [
@@ -206,6 +219,19 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       coverImage: "pudocode",
       metrics: "45% setup time optimization",
       liveUrl: "https://github.com/DongDuong2001/pudo-code-system"
+    },
+    {
+      id: "fortify_kitchen",
+      title: "Fortify Kitchen",
+      client: "Fortify Kitchen",
+      category: "Sous-Vide Culinary & Ordering System",
+      shortStory: "A web platform presenting slow-cooked (Sous-Vide) nutritional meal plans with local delivery in Ho Chi Minh City. Built collaboratively by Duong Phu Dong, Thu Tran, Ho Huy, Huynh Quang Dong, and Hao Vu.",
+      technologies: ["Next.js", "React", "PostgreSQL", "TailwindCSS", "Vercel"],
+      timeline: "Active Maintenance & Hotfix",
+      outcome: "Launched the interface for healthy menu listings and calorie calculations. Currently in continuous maintenance and hotfix support.",
+      coverImage: "fortifykitchen",
+      metrics: "Saigon Delivery & Maintenance",
+      liveUrl: "https://fortifykitchen.vercel.app/"
     }
   ]
 };
