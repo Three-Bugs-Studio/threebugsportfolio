@@ -247,6 +247,19 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
           />
         </div>
       );
+    } else if (projectId === "fortify_kitchen") {
+      const fortifyScreenshots = [fortifyHomepage, fortifyMenu, fortifyCalories];
+      return (
+        <div className="w-full h-full bg-[#0a0a0a] flex items-center justify-center relative overflow-hidden select-none">
+          <BlurUpImage 
+            src={fortifyScreenshots[currentSlide]} 
+            alt={projectSlides[currentSlide]?.title} 
+            className="w-full h-full object-contain"
+            wrapperClassName="w-full h-full"
+            referrerPolicy="no-referrer"
+          />
+        </div>
+      );
     } else if (projectId === "pudo_code_system") {
       switch (currentSlide) {
         case 0:
