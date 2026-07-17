@@ -24,6 +24,9 @@ import storepage from "@/assets/storepage.webp";
 import aboutpage from "@/assets/aboutpage.webp";
 import productdetail from "@/assets/productdetail.webp";
 import contactpage from "@/assets/contactpage.webp";
+import fortifyHomepage from "@/assets/fortifykitchen/fortify_homepage.webp";
+import fortifyMenu from "@/assets/fortifykitchen/fortify_menu.webp";
+import fortifyCalories from "@/assets/fortifykitchen/fortify_calories.webp";
 import BlurUpImage from "./BlurUpImage";
 
 interface LightboxProps {
