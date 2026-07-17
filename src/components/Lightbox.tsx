@@ -36,7 +36,14 @@ interface LightboxProps {
 
 export default function Lightbox({ isOpen, onClose, projectId, projectName, lang }: LightboxProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+
+  // Reset slide index when changing project or opening modal
+  useEffect(() => {
+    if (isOpen) {
+      setCurrentSlide(0);
+    }
+  }, [projectId, isOpen]);
+
   // Slide 2 (Sukajan Color Thread state)
   const [threadColor, setThreadColor] = useState("#FF6A00"); // default brand orange
   const [threadName, setThreadName] = useState("Vàng Cam (Brand Orange)");
