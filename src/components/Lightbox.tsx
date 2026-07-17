@@ -156,6 +156,29 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
           ? "Đồ thị mô phỏng các mối quan hệ liên kết ngữ nghĩa giữa hàng ngàn hợp đồng, tài liệu PDF và email lưu trữ."
           : "Visualization of semantic distance between doc files. Click on quick queries above to focus vector clusters."
       }
+    ],
+    fortify_kitchen: [
+      {
+        title: lang === "vi" ? "Trang Chủ Đặt Món (Home Portal)" : "Fortify Kitchen Home Portal",
+        subtitle: "fortifykitchen.vercel.app",
+        desc: lang === "vi"
+          ? "Giao diện trang chủ giới thiệu thực đơn dinh dưỡng nấu chậm Sous-Vide hiện đại, thiết kế tối giản tăng trải nghiệm người dùng."
+          : "The core healthy nutrition storefront displaying slow-cooked (Sous-Vide) meal plans with high-end aesthetic layout."
+      },
+      {
+        title: lang === "vi" ? "Thực Đơn Dinh Dưỡng (Nutritional Menu)" : "Nutritional Menu Board",
+        subtitle: "fortifykitchen.vercel.app/menu",
+        desc: lang === "vi"
+          ? "Hiển thị danh sách các món ăn nấu chậm Sous-Vide thơm ngon kèm thông số dinh dưỡng đầy đủ."
+          : "The complete Sous-Vide menu card listing ingredients, prep details, and delivery information."
+      },
+      {
+        title: lang === "vi" ? "Tính Toán Lượng Calo (Calorie Compass)" : "Calorie Compass Calculator",
+        subtitle: "fortifykitchen.vercel.app/calories",
+        desc: lang === "vi"
+          ? "Bộ công cụ tính toán lượng calo tiêu thụ và lập lộ trình ăn uống lành mạnh tùy biến theo chỉ số cá nhân."
+          : "Interactive calculator to determine daily calorie needs and match tailored Sous-Vide dishes."
+      }
     ]
   };
 
