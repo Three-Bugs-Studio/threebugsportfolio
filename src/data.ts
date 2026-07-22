@@ -1,4 +1,4 @@
-import { Project, Service, ProcessStep, Value, TeamMember, TechItem, Testimonial, FAQItem } from "./types";
+import { Project, Service, ProcessStep, Value, TeamMember, TechItem, Testimonial, FAQItem, PricingPlan } from "./types";
 
 export const SERVICES_DATA: Record<"vi" | "en", Service[]> = {
   vi: [
@@ -356,6 +356,157 @@ export const VALUES_DATA: Record<"vi" | "en", Value[]> = {
   ]
 };
 
+export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
+  vi: [
+    {
+      id: "phase_1_mvp",
+      phaseNumber: "PHASE 01",
+      name: "Gói Khởi Tạo & UI/UX MVP",
+      tagline: "Dành cho thương hiệu mới, cá nhân hoặc cửa hàng cần ra mắt nhanh chóng.",
+      priceVnd: "8 - 10 Triệu VNĐ",
+      priceUsd: "~ $320 - $400 USD",
+      timeline: "1 - 2 Tuần",
+      phaseFocus: "Thiết kế Figma UI/UX độc quyền, Landing Page tối ưu chuyển đổi, chuẩn hóa thương hiệu và hạ tầng hosting.",
+      benefits: [
+        "Thiết kế giao diện độc quyền trên Figma (Desktop & Mobile)",
+        "Lập trình Landing Page / Web Giới thiệu tải nhanh < 1s",
+        "Tối ưu hóa chuẩn SEO Google & Meta Social Cards",
+        "Miễn phí cấu hình Tên miền & Hosting Cloud Vercel/Netlify",
+        "Tích hợp nút Liên Hệ Zalo, Hotline, Messenger trực tiếp",
+        "Bảo hành & Hỗ trợ vá lỗi kỹ thuật 1 tháng sau bàn giao"
+      ],
+      milestones: [
+        { stage: "Đặt Cọc Phase 1", percentage: "30%", description: "Thống nhất đặc tả & Phác thảo bản vẽ Figma UI/UX" },
+        { stage: "Bàn Giao Giao Diện", percentage: "40%", description: "Lập trình giao diện & Tối ưu tốc độ hiển thị" },
+        { stage: "Nghiệm Thu & Launch", percentage: "30%", description: "Cấu hình tên miền, bàn giao mã nguồn & Hướng dẫn" }
+      ]
+    },
+    {
+      id: "phase_2_fullstack",
+      phaseNumber: "PHASE 02",
+      name: "Gói Phát Triển Chuyên Nghiệp",
+      tagline: "Dành cho doanh nghiệp & cửa hàng e-commerce cần hệ thống bán hàng hoàn chỉnh.",
+      priceVnd: "15 - 20 Triệu VNĐ",
+      priceUsd: "~ $600 - $800 USD",
+      timeline: "3 - 5 Tuần",
+      recommended: true,
+      phaseFocus: "Bao gồm toàn bộ Phase 1 + Xây dựng hệ thống backend, Quản lý kho sản phẩm/bài viết, Thanh toán an toàn & Tối ưu tốc độ cao.",
+      benefits: [
+        "Bao gồm toàn bộ quyền lợi của Phase 01",
+        "Xây dựng Web Thương Mại Điện Tử / Web Doanh Nghiệp hoàn chỉnh",
+        "Trang Admin CMS quản lý bài viết, sản phẩm, đơn hàng dễ sử dụng",
+        "Tích hợp CSDL PostgreSQL / Supabase chịu tải cao",
+        "Tích hợp cổng thanh toán trực tuyến (Chuyển khoản QR / MoMo / VNPay)",
+        "Tối ưu tốc độ SEO Google Lighthouse score 95 - 99%",
+        "Bảo hành & Bảo trì hệ thống 3 tháng + Vá lỗi Hotfix 24/7"
+      ],
+      milestones: [
+        { stage: "Khởi Động Dự Án", percentage: "30%", description: "Thiết kế UI/UX & Cấu trúc CSDL Database Schema" },
+        { stage: "Phát Triển Core API", percentage: "40%", description: "Hoàn thiện Admin CMS, Giỏ hàng & Thanh toán" },
+        { stage: "Kiểm Thử & Đưa Lên Mạng", percentage: "30%", description: "Kiểm thử QA bảo mật, bàn giao 100% mã nguồn" }
+      ]
+    },
+    {
+      id: "phase_3_enterprise",
+      phaseNumber: "PHASE 03",
+      name: "Gói Hệ Thống Toàn Diện & Scale",
+      tagline: "Dành cho nền tảng SaaS, tích hợp AI Agent, hệ thống tùy biến phức tạp.",
+      priceVnd: "Từ 30+ Triệu VNĐ",
+      priceUsd: "~ $1,200+ USD",
+      timeline: "6 - 8+ Tuần",
+      phaseFocus: "Bao gồm Phase 1 & 2 + Tích hợp Trí Tuệ Nhân Tạo (Gemini AI Agent), Kiến trúc Microservices/Docker & SLA Bảo Trì Cao Cấp.",
+      benefits: [
+        "Bao gồm toàn bộ quyền lợi Phase 01 và Phase 02",
+        "Tích hợp tính năng AI Agent (Trợ lý tìm kiếm dữ liệu, Chatbot thông minh)",
+        "Kiến trúc Docker Cloud, CI/CD Pipeline tự động triển khai",
+        "Phân quyền đa quản trị viên (Multi-role Access Control)",
+        "Tư vấn kiến trúc hệ thống chịu tải lớn & Bảo mật nhiều lớp",
+        "Bàn giao trọn bộ tài liệu System Specs & Quy trình PuDo Code",
+        "Cam kết SLA Bảo trì & Hỗ trợ kỹ thuật ưu tiên dài hạn (6 - 12 tháng)"
+      ],
+      milestones: [
+        { stage: "Phân Tích Kiến Trúc", percentage: "30%", description: "Chốt tài liệu System Architecture & Spec Blueprint" },
+        { stage: "Tích Hợp System & AI", percentage: "40%", description: "Lập trình Backend Microservices, Docker & AI Agent" },
+        { stage: "Triển Khai & Chuyển Giao", percentage: "30%", description: "Cấu hình Server Cloud, đào tạo vận hành & SLA 24/7" }
+      ]
+    }
+  ],
+  en: [
+    {
+      id: "phase_1_mvp",
+      phaseNumber: "PHASE 01",
+      name: "MVP Launch & UI/UX Package",
+      tagline: "Ideal for new brands, individuals, or stores needing a quick high-impact launch.",
+      priceVnd: "8 - 10 Million VND",
+      priceUsd: "~ $320 - $400 USD",
+      timeline: "1 - 2 Weeks",
+      phaseFocus: "Exclusive Figma UI/UX design, conversion-optimized landing page, brand alignment, and cloud hosting setup.",
+      benefits: [
+        "Exclusive Figma UI/UX prototype (Desktop & Mobile)",
+        "Fast-loading Landing Page / Corporate Web (< 1s load time)",
+        "Google SEO Baseline & Meta Social Cards optimization",
+        "Free Custom Domain configuration & Vercel/Netlify hosting",
+        "Direct integration of Contact buttons (Zalo, Hotline, Messenger)",
+        "1 Month warranty & technical support after handover"
+      ],
+      milestones: [
+        { stage: "Phase 1 Deposit", percentage: "30%", description: "Locking spec requirements & Figma UI/UX prototypes" },
+        { stage: "Interface Handover", percentage: "40%", description: "Frontend code build & speed optimization" },
+        { stage: "Sign-off & Launch", percentage: "30%", description: "Domain setup, source code handover & user guide" }
+      ]
+    },
+    {
+      id: "phase_2_fullstack",
+      phaseNumber: "PHASE 02",
+      name: "Professional Fullstack Web",
+      tagline: "Tailored for growing businesses & e-commerce brands needing a full online engine.",
+      priceVnd: "15 - 20 Million VND",
+      priceUsd: "~ $600 - $800 USD",
+      timeline: "3 - 5 Weeks",
+      recommended: true,
+      phaseFocus: "Includes Phase 1 + Full backend API, CMS dashboard for products & articles, secure checkout, and high speed optimization.",
+      benefits: [
+        "Includes all benefits of Phase 01",
+        "Complete E-Commerce Store or Fullstack Corporate Portal",
+        "Easy-to-use Admin CMS for managing products, articles & orders",
+        "High-concurrency PostgreSQL / Supabase Database",
+        "Online payment gateway integration (QR Code / Bank Transfer)",
+        "Google Lighthouse performance score optimized to 95 - 99%",
+        "3 Months warranty + 24/7 Incident Hotfix SLA"
+      ],
+      milestones: [
+        { stage: "Project Initiation", percentage: "30%", description: "UI/UX approval & Database Schema architecture" },
+        { stage: "Core API Build", percentage: "40%", description: "Admin CMS, Cart system & Payment flow integration" },
+        { stage: "QA & Live Deployment", percentage: "30%", description: "Security testing & 100% repository handover" }
+      ]
+    },
+    {
+      id: "phase_3_enterprise",
+      phaseNumber: "PHASE 03",
+      name: "Enterprise & Scale Platform",
+      tagline: "For complex SaaS platforms, AI Agent integration, and custom enterprise software.",
+      priceVnd: "From 30+ Million VND",
+      priceUsd: "~ $1,200+ USD",
+      timeline: "6 - 8+ Weeks",
+      phaseFocus: "Includes Phase 1 & 2 + Custom Gemini AI Agent, Docker/Cloud architecture, and long-term priority SLA maintenance.",
+      benefits: [
+        "Includes all benefits from Phase 01 and Phase 02",
+        "Custom AI Agent integration (Vector RAG, smart assistant)",
+        "Docker Cloud setup with automated CI/CD pipelines",
+        "Multi-role Access Control & security permissions",
+        "Scalable microservices consulting & multi-layered security",
+        "Complete System Specs & PuDo Code framework documentation",
+        "Long term priority SLA maintenance & 24/7 technical hotline"
+      ],
+      milestones: [
+        { stage: "System Blueprinting", percentage: "30%", description: "Finalizing System Architecture & Spec Document" },
+        { stage: "Engine & AI Build", percentage: "40%", description: "Backend Microservices, Docker & AI Agent coding" },
+        { stage: "Deployment & SLA Handover", percentage: "30%", description: "Cloud production setup, staff training & 24/7 SLA" }
+      ]
+    }
+  ]
+};
+
 export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
   vi: [
     {
@@ -365,7 +516,17 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       specialties: ["Quản lý Dự án", "Đặc tả Phần mềm", "Phân tích Nghiệp vụ", "Đảm bảo Cam kết"],
       socials: {
         github: "https://github.com/DongDuong2001"
-      }
+      },
+      colorTag: {
+        name: "Cyber Orange",
+        hex: "#FF6A00",
+        badgeClass: "bg-[#FF6A00]/15 text-[#FF6A00] border-[#FF6A00]/40",
+        glowClass: "border-[#FF6A00]/40 shadow-[0_0_20px_rgba(255,106,0,0.25)]",
+        borderHex: "#FF6A00"
+      },
+      diagramRole: "PROJECT SPEC & EXECUTION LEAD",
+      nodeId: "node_dong",
+      connectsTo: ["node_thutran", "node_hoangdong"]
     },
     {
       name: "Thu Tran",
@@ -374,7 +535,17 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       specialties: ["Thiết kế UI/UX", "Ý tưởng Thiết kế", "Hệ thống Thiết kế", "Tương tác Giao diện"],
       socials: {
         github: "https://github.com/mthutt"
-      }
+      },
+      colorTag: {
+        name: "Neon Violet",
+        hex: "#A855F7",
+        badgeClass: "bg-[#A855F7]/15 text-[#C084FC] border-[#A855F7]/40",
+        glowClass: "border-[#A855F7]/40 shadow-[0_0_20px_rgba(168,85,247,0.25)]",
+        borderHex: "#A855F7"
+      },
+      diagramRole: "UI/UX & DESIGN SYSTEM LEAD",
+      nodeId: "node_thutran",
+      connectsTo: ["node_hohuy", "node_haovu"]
     },
     {
       name: "Huynh Quang Dong",
@@ -383,7 +554,17 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       specialties: ["Kiểm thử Phần mềm", "Scrum Master", "Quy trình Agile", "Đảm bảo Chất lượng"],
       socials: {
         github: "https://github.com/quangdong26"
-      }
+      },
+      colorTag: {
+        name: "Electric Cyan",
+        hex: "#06B6D4",
+        badgeClass: "bg-[#06B6D4]/15 text-[#38BDF8] border-[#06B6D4]/40",
+        glowClass: "border-[#06B6D4]/40 shadow-[0_0_20px_rgba(6,182,212,0.25)]",
+        borderHex: "#06B6D4"
+      },
+      diagramRole: "SCRUM MASTER & QA TESTING",
+      nodeId: "node_hoangdong",
+      connectsTo: ["node_dong"]
     },
     {
       name: "Ho Quang Huy",
@@ -392,7 +573,17 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       specialties: ["Kiến trúc DevOps", "Docker và Vận hành", "Lập trình Full Stack", "Cơ sở dữ liệu PostgreSQL"],
       socials: {
         github: "https://github.com/HoHuy2402"
-      }
+      },
+      colorTag: {
+        name: "Emerald Mint",
+        hex: "#10B981",
+        badgeClass: "bg-[#10B981]/15 text-[#34D399] border-[#10B981]/40",
+        glowClass: "border-[#10B981]/40 shadow-[0_0_20px_rgba(16,185,129,0.25)]",
+        borderHex: "#10B981"
+      },
+      diagramRole: "DEVOPS & FULLSTACK PIPELINE",
+      nodeId: "node_hohuy",
+      connectsTo: ["node_hoangdong"]
     },
     {
       name: "Hao Vu",
@@ -401,7 +592,17 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       specialties: ["Lập trình Backend", "Thiết kế API", "Tối ưu hóa CSDL", "Bảo mật Hệ thống"],
       socials: {
         github: "https://github.com/haovu310"
-      }
+      },
+      colorTag: {
+        name: "Rose Crimson",
+        hex: "#F43F5E",
+        badgeClass: "bg-[#F43F5E]/15 text-[#FB7185] border-[#F43F5E]/40",
+        glowClass: "border-[#F43F5E]/40 shadow-[0_0_20px_rgba(244,63,94,0.25)]",
+        borderHex: "#F43F5E"
+      },
+      diagramRole: "BACKEND API & DATABASE ARCHITECT",
+      nodeId: "node_haovu",
+      connectsTo: ["node_hohuy"]
     }
   ],
   en: [
@@ -412,7 +613,17 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       specialties: ["Project Management", "Software Specs", "Business Analysis", "Client Delivery"],
       socials: {
         github: "https://github.com/DongDuong2001"
-      }
+      },
+      colorTag: {
+        name: "Cyber Orange",
+        hex: "#FF6A00",
+        badgeClass: "bg-[#FF6A00]/15 text-[#FF6A00] border-[#FF6A00]/40",
+        glowClass: "border-[#FF6A00]/40 shadow-[0_0_20px_rgba(255,106,0,0.25)]",
+        borderHex: "#FF6A00"
+      },
+      diagramRole: "PROJECT SPEC & EXECUTION LEAD",
+      nodeId: "node_dong",
+      connectsTo: ["node_thutran", "node_hoangdong"]
     },
     {
       name: "Thu Tran",
@@ -421,7 +632,17 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       specialties: ["UI/UX Design", "Design Concepting", "Design Systems", "Interactive Layouts"],
       socials: {
         github: "https://github.com/mthutt"
-      }
+      },
+      colorTag: {
+        name: "Neon Violet",
+        hex: "#A855F7",
+        badgeClass: "bg-[#A855F7]/15 text-[#C084FC] border-[#A855F7]/40",
+        glowClass: "border-[#A855F7]/40 shadow-[0_0_20px_rgba(168,85,247,0.25)]",
+        borderHex: "#A855F7"
+      },
+      diagramRole: "UI/UX & DESIGN SYSTEM LEAD",
+      nodeId: "node_thutran",
+      connectsTo: ["node_hohuy", "node_haovu"]
     },
     {
       name: "Huynh Quang Dong",
@@ -430,7 +651,17 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       specialties: ["Quality Assurance", "Scrum Master", "Agile Framework", "Software Testing"],
       socials: {
         github: "https://github.com/quangdong26"
-      }
+      },
+      colorTag: {
+        name: "Electric Cyan",
+        hex: "#06B6D4",
+        badgeClass: "bg-[#06B6D4]/15 text-[#38BDF8] border-[#06B6D4]/40",
+        glowClass: "border-[#06B6D4]/40 shadow-[0_0_20px_rgba(6,182,212,0.25)]",
+        borderHex: "#06B6D4"
+      },
+      diagramRole: "SCRUM MASTER & QA TESTING",
+      nodeId: "node_hoangdong",
+      connectsTo: ["node_dong"]
     },
     {
       name: "Ho Quang Huy",
@@ -439,7 +670,17 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       specialties: ["DevOps and Pipelines", "Docker and Cloud Setup", "Full Stack Development", "PostgreSQL Database"],
       socials: {
         github: "https://github.com/HoHuy2402"
-      }
+      },
+      colorTag: {
+        name: "Emerald Mint",
+        hex: "#10B981",
+        badgeClass: "bg-[#10B981]/15 text-[#34D399] border-[#10B981]/40",
+        glowClass: "border-[#10B981]/40 shadow-[0_0_20px_rgba(16,185,129,0.25)]",
+        borderHex: "#10B981"
+      },
+      diagramRole: "DEVOPS & FULLSTACK PIPELINE",
+      nodeId: "node_hohuy",
+      connectsTo: ["node_hoangdong"]
     },
     {
       name: "Hao Vu",
@@ -448,7 +689,17 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       specialties: ["Backend Engineering", "API System Design", "Database Tuning", "System Security"],
       socials: {
         github: "https://github.com/haovu310"
-      }
+      },
+      colorTag: {
+        name: "Rose Crimson",
+        hex: "#F43F5E",
+        badgeClass: "bg-[#F43F5E]/15 text-[#FB7185] border-[#F43F5E]/40",
+        glowClass: "border-[#F43F5E]/40 shadow-[0_0_20px_rgba(244,63,94,0.25)]",
+        borderHex: "#F43F5E"
+      },
+      diagramRole: "BACKEND API & DATABASE ARCHITECT",
+      nodeId: "node_haovu",
+      connectsTo: ["node_hohuy"]
     }
   ]
 };
@@ -545,6 +796,7 @@ export const TRANSLATIONS = {
     navWork: "Dự Án",
     navServices: "Dịch Vụ",
     navProcess: "Quy Trình",
+    navPricing: "Báo Giá",
     navStudio: "Công Nghệ",
     navTeam: "Đội Ngũ",
     navTestimonials: "Đánh Giá",
@@ -632,6 +884,7 @@ export const TRANSLATIONS = {
     navWork: "Selected Work",
     navServices: "Services",
     navProcess: "Process",
+    navPricing: "Pricing",
     navStudio: "Tech Stack",
     navTeam: "Our Team",
     navTestimonials: "Reviews",
