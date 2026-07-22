@@ -358,7 +358,7 @@ export default function Hero({ lang }: HeroProps) {
         >
           <button
             onClick={() => handleScrollTo("app-work-section")}
-            className="w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#F5F5F3] text-[#090909] hover:bg-[#F5F5F3]/90 transition-colors font-medium rounded-sm inline-flex items-center justify-center gap-2 group interactive shadow-lg"
+            className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#F5F5F3] text-[#090909] font-medium rounded-sm inline-flex items-center justify-center gap-2 group interactive"
           >
             {t.heroExplore}
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-brand-orange" />
@@ -366,7 +366,7 @@ export default function Hero({ lang }: HeroProps) {
           
           <button
             onClick={() => handleScrollTo("app-contact-section")}
-            className="w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-transparent border border-white/10 hover:border-brand-orange/50 text-[#F5F5F3] transition-colors rounded-sm inline-flex items-center justify-center gap-2 group interactive"
+            className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-transparent border border-white/10 text-[#F5F5F3] rounded-sm inline-flex items-center justify-center gap-2 group interactive"
           >
             {t.navStartProject}
             <span className="w-1.5 h-1.5 bg-brand-orange rounded-full group-hover:scale-125 transition-transform" />
