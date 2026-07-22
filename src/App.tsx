@@ -8,6 +8,7 @@ import SelectedWork from "./components/SelectedWork";
 import Process from "./components/Process";
 import Technology from "./components/Technology";
 import Team from "./components/Team";
+import Pricing from "./components/Pricing";
 import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
 import Contact from "./components/Contact";
@@ -36,8 +37,9 @@ const APP_SECTIONS = [
   { id: "app-services-section", code: "SEC_02", nameEn: "CORE CAPABILITIES", nameVi: "CÔNG NGHỆ & DỊCH VỤ" },
   { id: "app-work-section", code: "SEC_03", nameEn: "SELECTED PORTFOLIO", nameVi: "SẢN PHẨM TIÊU BIỂU" },
   { id: "app-process-section", code: "SEC_04", nameEn: "ENGINEERING FLOW", nameVi: "QUY TRÌNH PHÁT TRIỂN" },
+  { id: "app-pricing-section", code: "SEC_04_ALT", nameEn: "PHASE PRICING", nameVi: "BÁO GIÁ THEO PHASE" },
   { id: "app-technology-section", code: "SEC_05", nameEn: "SYSTEM STACK", nameVi: "HỆ THỐNG CÔNG NGHỆ" },
-  { id: "app-team-section", code: "SEC_06", nameEn: "STUDIO FOUNDERS", nameVi: "ĐỘI NGŨ SÁNG LẬP" },
+  { id: "app-team-section", code: "SEC_06", nameEn: "STUDIO FOUNDERS", nameVi: "SƠ ĐỒ & ĐỘI NGŨ" },
   { id: "app-testimonials-section", code: "SEC_07", nameEn: "PARTNER REVIEWS", nameVi: "ĐÁNH GIÁ ĐỐI TÁC" },
   { id: "app-faq-section", code: "SEC_08", nameEn: "FAQ RESOLUTIONS", nameVi: "GIẢI ĐÁP THẮC MẮC" },
   { id: "app-contact-section", code: "SEC_09", nameEn: "INQUIRY PORTAL", nameVi: "LIÊN HỆ ĐẶT HÀNG" }
@@ -418,6 +420,22 @@ export default function App() {
                 </StaggeredSection>
               </motion.div>
             )}
+
+            {/* Pricing Section */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.45 }}
+            >
+              <StaggeredSection
+                id="app-pricing-section"
+                sectorCode="SECTOR_04_ALT"
+                sectorName={lang === "vi" ? "BÁO GIÁ THEO PHASE" : "PHASE PRICING"}
+                lang={lang}
+              >
+                <Pricing lang={lang} />
+              </StaggeredSection>
+            </motion.div>
 
             {/* Technology / System Stack Section */}
             {!loaded.technology ? (
