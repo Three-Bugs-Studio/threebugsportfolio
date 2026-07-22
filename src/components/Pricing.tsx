@@ -1,7 +1,7 @@
 import React from "react";
 import { PRICING_DATA } from "../data";
 import { motion } from "motion/react";
-import { Check, ArrowRight, Sparkles, Clock, ShieldCheck, Layers } from "lucide-react";
+import { Check, ArrowRight, Clock, ShieldCheck, Layers } from "lucide-react";
 import { PricingPlan } from "../types";
 
 interface PricingProps {
@@ -62,8 +62,6 @@ export default function Pricing({ lang }: PricingProps) {
         {/* Phase Plans Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           {plans.map((plan, idx) => {
-            const isRecommended = plan.recommended;
-
             return (
               <motion.div
                 key={plan.id}
@@ -71,20 +69,8 @@ export default function Pricing({ lang }: PricingProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ delay: idx * 0.15, duration: 0.7 }}
-                className={`relative flex flex-col p-8 rounded-sm transition-all duration-300 ${
-                  isRecommended
-                    ? "bg-[#141414] border-2 border-brand-orange/60 shadow-[0_10px_40px_rgba(255,106,0,0.12)] scale-[1.02] z-20"
-                    : "bg-[#111111]/70 border border-white/10 hover:border-white/20 hover:bg-[#151515]"
-                }`}
+                className="relative flex flex-col p-8 rounded-sm bg-[#111111]/80 border border-white/10 hover:border-brand-orange/40 hover:bg-[#141414] transition-all duration-300 shadow-xl"
               >
-                {/* Popular Recommended Badge */}
-                {isRecommended && (
-                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand-orange text-black font-mono font-bold text-[9px] uppercase tracking-widest px-3 py-1 rounded-full flex items-center gap-1 shadow-md">
-                    <Sparkles className="w-3 h-3 fill-black" />
-                    {lang === "vi" ? "GÓI PHỔ BIẾN NHẤT // KHUYÊN DÙNG" : "MOST POPULAR // RECOMMENDED"}
-                  </div>
-                )}
-
                 {/* Badge & Timeline */}
                 <div className="flex items-center justify-between mb-6">
                   <span className="font-mono text-xs tracking-widest text-brand-orange font-semibold bg-brand-orange/10 border border-brand-orange/20 px-2.5 py-1 rounded-sm">
@@ -154,13 +140,9 @@ export default function Pricing({ lang }: PricingProps) {
                 {/* Select Plan Button -> Direct Scroll to Contact Form */}
                 <button
                   onClick={() => handleSelectPlan(plan)}
-                  className={`w-full py-3.5 px-6 rounded-sm font-mono text-xs tracking-wider uppercase font-semibold transition-all duration-300 flex items-center justify-center gap-2 group interactive ${
-                    isRecommended
-                      ? "bg-brand-orange text-black hover:bg-brand-orange/90 shadow-[0_4px_20px_rgba(255,106,0,0.3)]"
-                      : "bg-white/10 text-white hover:bg-brand-orange hover:text-black border border-white/10"
-                  }`}
+                  className="w-full py-3.5 px-6 rounded-sm font-mono text-xs tracking-wider uppercase font-semibold transition-all duration-300 flex items-center justify-center gap-2 group interactive bg-white/10 text-white hover:bg-brand-orange hover:text-black border border-white/10"
                 >
-                  <span>{lang === "vi" ? `TƯ VẤN NGHỆ MỤC GÓI NÀY` : `SELECT THIS PACKAGE`}</span>
+                  <span>{lang === "vi" ? `NHẬN TƯ VẤN GÓI NÀY` : `SELECT THIS PACKAGE`}</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </button>
               </motion.div>
