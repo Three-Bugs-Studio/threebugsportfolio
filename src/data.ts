@@ -389,17 +389,16 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     },
     {
       id: "phase_2_fullstack",
-      badge: "GÓI PHỔ BIẾN // 3 PHASE",
+      badge: "GÓI THƯƠNG MẠI // 3 PHASE",
       name: "Gói Website Bán Hàng & E-Commerce",
       tagline: "Quy trình 3 Giai Đoạn toàn diện xây dựng cửa hàng trực tuyến & hệ thống CMS hoàn chỉnh.",
       priceVnd: "15 - 20 Triệu VNĐ",
       priceUsd: "~ $600 - $800 USD",
       timeline: "3 - 5 Tuần (Trọn gói 3 Phase)",
-      recommended: true,
       phases: [
         { number: "Phase 1", title: "UX Blueprint & DB Schema", duration: "Tuần 1", description: "Dựng sơ đồ trải nghiệm mua hàng & kiến trúc cơ sở dữ liệu PostgreSQL." },
         { number: "Phase 2", title: "Fullstack & Cart/Payment", duration: "Tuần 2 - 3", description: "Lập trình Web CMS Admin, Giỏ hàng & Tích hợp cổng thanh toán QR." },
-        { number: "Phase 3", title: "Security, Launch & SLA", duration: "Tuần 4 - 5", description: "Kiểm thử QA bảo mật, bàn giao mã nguồn & Bảo trì 24/7 trong 3 tháng." }
+        { number: "Phase 3", title: "Security, Launch & SLA", duration: "Tuần 4 - 5", description: "Kiểm thử QA bảo mật, bàn giao mã nguồn & Bảo trì hỗ trợ sự cố nhanh." }
       ],
       benefits: [
         "Trọn gói quy trình phát triển 3 Giai Đoạn cho dự án E-Commerce",
@@ -409,7 +408,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
         "Trang Admin CMS quản lý bài viết, sản phẩm, đơn hàng dễ sử dụng",
         "Tích hợp cổng thanh toán trực tuyến (Chuyển khoản QR / MoMo / VNPay)",
         "Tối ưu tốc độ SEO Google Lighthouse score 95 - 99%",
-        "Bảo hành & Bảo trì hệ thống 3 tháng + Vá lỗi Hotfix 24/7"
+        "Bảo hành 3 tháng & Cam kết xử lý vá lỗi nhanh nhất có thể"
       ],
       milestones: [
         { stage: "Khởi Động Phase 1", percentage: "30%", description: "Thiết kế UI/UX & Cấu trúc CSDL Database Schema" },
@@ -419,7 +418,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     },
     {
       id: "phase_3_enterprise",
-      badge: "GÓI NÂNG CAO // 3 PHASE",
+      badge: "GÓI ENTERPRISE // 3 PHASE",
       name: "Gói Enterprise & SaaS Platform AI",
       tagline: "Quy trình 3 Giai Đoạn nâng cao tích hợp AI Agent, Microservices & Docker Cloud.",
       priceVnd: "Từ 30+ Triệu VNĐ",
@@ -438,12 +437,12 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
         "Phân quyền đa quản trị viên (Multi-role Access Control)",
         "Tư vấn kiến trúc hệ thống chịu tải lớn & Bảo mật nhiều lớp",
         "Bàn giao trọn bộ tài liệu System Specs & Quy trình PuDo Code",
-        "Cam kết SLA Bảo trì & Hỗ trợ kỹ thuật ưu tiên dài hạn (6 - 12 tháng)"
+        "Cam kết SLA Bảo trì & Hỗ trợ vá lỗi ưu tiên nhanh nhất có thể (6 - 12 tháng)"
       ],
       milestones: [
         { stage: "Phân Tích Phase 1", percentage: "30%", description: "Chốt tài liệu System Architecture & Spec Blueprint" },
         { stage: "Lập Trình Phase 2", percentage: "40%", description: "Lập trình Backend Microservices, Docker & AI Agent" },
-        { stage: "Nghiệm Thu Phase 3", percentage: "30%", description: "Cấu hình Server Cloud, đào tạo vận hành & SLA 24/7" }
+        { stage: "Nghiệm Thu Phase 3", percentage: "30%", description: "Cấu hình Server Cloud, đào tạo vận hành & Bảo trì ưu tiên" }
       ]
     }
   ],
@@ -479,17 +478,16 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     },
     {
       id: "phase_2_fullstack",
-      badge: "POPULAR // 3 PHASES",
+      badge: "E-COMMERCE // 3 PHASES",
       name: "Professional Fullstack Web",
       tagline: "Complete 3-Phase execution building full e-commerce stores & custom admin CMS.",
       priceVnd: "15 - 20 Million VND",
       priceUsd: "~ $600 - $800 USD",
       timeline: "3 - 5 Weeks (Full 3 Phases)",
-      recommended: true,
       phases: [
         { number: "Phase 1", title: "UX Blueprint & DB Schema", duration: "Week 1", description: "Mapping shopping user journey & PostgreSQL database schema architecture." },
         { number: "Phase 2", title: "Fullstack & Cart/Payment", duration: "Weeks 2 - 3", description: "Admin CMS dashboard, Shopping cart & Instant QR payment gateway." },
-        { number: "Phase 3", title: "Security, Launch & SLA", duration: "Weeks 4 - 5", description: "Security QA audit, code repository handover & 3-month 24/7 support." }
+        { number: "Phase 3", title: "Security, Launch & SLA", duration: "Weeks 4 - 5", description: "Security QA audit, code repository handover & 3-month priority support." }
       ],
       benefits: [
         "Full 3-Phase development pipeline for E-Commerce builds",
@@ -499,7 +497,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
         "Easy-to-use Admin CMS for managing products, articles & orders",
         "Online payment gateway integration (QR Code / Bank Transfer)",
         "Google Lighthouse performance score optimized to 95 - 99%",
-        "3 Months warranty + 24/7 Incident Hotfix SLA"
+        "3 Months warranty + Commitment to fix bugs as quickly as possible"
       ],
       milestones: [
         { stage: "Phase 1 Initiation", percentage: "30%", description: "UI/UX approval & Database Schema architecture" },
@@ -528,12 +526,12 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
         "Multi-role Access Control & security permissions",
         "Scalable microservices consulting & multi-layered security",
         "Complete System Specs & PuDo Code framework documentation",
-        "Long term priority SLA maintenance & 24/7 technical hotline"
+        "Long-term priority SLA maintenance & fast incident hotfixes"
       ],
       milestones: [
         { stage: "Phase 1 Blueprint", percentage: "30%", description: "Finalizing System Architecture & Spec Document" },
         { stage: "Phase 2 Build", percentage: "40%", description: "Backend Microservices, Docker & AI Agent coding" },
-        { stage: "Phase 3 Launch", percentage: "30%", description: "Cloud production setup, staff training & 24/7 SLA" }
+        { stage: "Phase 3 Launch", percentage: "30%", description: "Cloud production setup, staff training & priority support" }
       ]
     }
   ]
@@ -842,7 +840,7 @@ export const TRANSLATIONS = {
 
     heroTag: "THIẾT KẾ VÀ PHÁT TRIỂN WEBSITE CHUYÊN NGHIỆP",
     heroHeading: "Chúng Tôi Xây Dựng Website và Phần Mềm",
-    heroDesc: "Three Bugs Studio, đội ngũ gồm ba lập trình viên hoạt động hoàn toàn theo mô hình làm việc từ xa (100% Remote), chuyên xây dựng website chất lượng cao, vận hành ổn định và tối ưu hiệu năng.",
+    heroDesc: "Three Bugs Studio là đội ngũ gồm 5 thành viên lập trình viên & thiết kế chuyên nghiệp làm việc từ xa (100% Remote), chuyên xây dựng website chất lượng cao, vận hành ổn định và tối ưu hiệu năng.",
     heroExplore: "Khám Phá Các Dự Án",
     heroRecentWork: "Dự án thực tế",
     heroPillars: "Trụ Cột Thiết Kế",
@@ -930,7 +928,7 @@ export const TRANSLATIONS = {
 
     heroTag: "SOFTWARE DESIGN AND ENGINEERING",
     heroHeading: "We build stable and fast web applications.",
-    heroDesc: "Three Bugs Studio is a 100% remote-first team of three developers crafting clean, fast, and durable websites.",
+    heroDesc: "Three Bugs Studio is a 100% remote-first team of 5 specialized developers & designers crafting clean, fast, and durable websites.",
     heroExplore: "Explore Selected Work",
     heroRecentWork: "Recent Work",
     heroPillars: "Design Pillars",
