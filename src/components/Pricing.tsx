@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { PRICING_DATA } from "../data";
 import { motion } from "motion/react";
-import { Check, ArrowRight, Sparkles, Clock, ShieldCheck } from "lucide-react";
+import { Check, ArrowRight, Sparkles, Clock, ShieldCheck, Layers } from "lucide-react";
 import { PricingPlan } from "../types";
 
 interface PricingProps {
@@ -17,7 +17,7 @@ export default function Pricing({ lang }: PricingProps) {
       detail: {
         planId: plan.id,
         planName: plan.name,
-        phaseNumber: plan.phaseNumber,
+        badge: plan.badge,
         priceVnd: plan.priceVnd,
         priceUsd: plan.priceUsd,
       }
@@ -44,18 +44,18 @@ export default function Pricing({ lang }: PricingProps) {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange">
-                {lang === "vi" ? "04_ALT // BÁO GIÁ THEO GIAI ĐOẠN" : "04_ALT // PHASE PRICING PLANS"}
+                {lang === "vi" ? "04_ALT // BÁO GIÁ TRỌN GÓI 3 PHASE" : "04_ALT // 3-PHASE PRICING WORKFLOW"}
               </span>
               <span className="h-[1px] w-12 bg-brand-orange/40" />
             </div>
             <h2 className="font-display font-medium text-4xl md:text-6xl tracking-tight text-[#F5F5F3] leading-[1.05]">
-              {lang === "vi" ? "Báo Giá Làm Web Theo Phase" : "Transparent Phase Pricing"}
+              {lang === "vi" ? "Báo Giá Dịch Vụ Web" : "Transparent Web Packages"}
             </h2>
           </div>
           <p className="font-mono text-xs text-[#8E8E93] max-w-sm leading-relaxed">
             {lang === "vi"
-              ? "MINH BẠCH CHI PHÍ THEO TỪNG GIAI ĐOẠN. NỘI DUNG VÀ QUYỀN LỢI ĐƯỢC CAM KẾT RÕ RÀNG BẰNG HỢP ĐỒNG KỸ THUẬT."
-              : "TRANSPARENT COSTS PER DEVELOPMENT PHASE. ALL DELIVERABLES FULLY CONTRACTED WITH LONG-TERM SLA GUARANTEES."}
+              ? "TẤT CẢ CÁC GÓI ĐỀU ĐƯỢC THỰC HIỆN ĐẦY ĐỦ THEO QUY TRÌNH 3 PHASE (THIẾT KẾ ➔ LẬP TRÌNH ➔ KHỞI CHẠY BẢO HÀNH)."
+              : "ALL PACKAGES ARE EXECUTED THROUGH FULL 3-PHASE PIPELINES (DESIGN ➔ ENGINEERING ➔ LAUNCH & SLA)."}
           </p>
         </div>
 
@@ -85,10 +85,10 @@ export default function Pricing({ lang }: PricingProps) {
                   </div>
                 )}
 
-                {/* Phase Number & Badge */}
+                {/* Badge & Timeline */}
                 <div className="flex items-center justify-between mb-6">
                   <span className="font-mono text-xs tracking-widest text-brand-orange font-semibold bg-brand-orange/10 border border-brand-orange/20 px-2.5 py-1 rounded-sm">
-                    {plan.phaseNumber}
+                    {plan.badge}
                   </span>
                   <div className="flex items-center gap-1.5 font-mono text-[10px] text-[#8E8E93]">
                     <Clock className="w-3.5 h-3.5 text-brand-orange" />
@@ -113,16 +113,27 @@ export default function Pricing({ lang }: PricingProps) {
                   </div>
                   <div className="font-mono text-[10px] text-[#8E8E93] mt-1 flex items-center justify-between">
                     <span>{plan.priceUsd}</span>
-                    <span className="text-brand-orange/80">[ {lang === "vi" ? "Trọn Gói Phase" : "Flat Phase Rate"} ]</span>
+                    <span className="text-brand-orange/80">[ {lang === "vi" ? "Trọn gói 3 Phase" : "Full 3 Phases"} ]</span>
                   </div>
                 </div>
 
-                {/* Phase Focus Box */}
-                <div className="mb-6 p-3 bg-white/[0.02] border-l-2 border-brand-orange/60 text-[11px] font-sans text-[#A0A0A5] leading-relaxed">
-                  <strong className="text-white block font-mono text-[10px] uppercase mb-0.5 text-brand-orange">
-                    // {lang === "vi" ? "TRỌNG TÂM TRIỂN KHAI" : "PHASE FOCUS"}:
-                  </strong>
-                  {plan.phaseFocus}
+                {/* 3-PHASE EXECUTION ROADMAP BOX */}
+                <div className="mb-6 bg-[#090909] border border-white/10 rounded-sm p-4">
+                  <div className="font-mono text-[10px] uppercase tracking-wider text-brand-orange mb-3 flex items-center gap-1.5 font-bold">
+                    <Layers className="w-3.5 h-3.5" />
+                    <span>// {lang === "vi" ? "LỘ TRÌNH 3 GIAI ĐOẠN DỰ ÁN" : "3-PHASE EXECUTION ROADMAP"}</span>
+                  </div>
+                  <div className="space-y-3">
+                    {plan.phases.map((ph, i) => (
+                      <div key={i} className="p-2.5 bg-white/[0.02] border-l-2 border-brand-orange/60 rounded-r-sm text-[11px] font-sans">
+                        <div className="flex items-center justify-between font-mono text-[10px] mb-0.5">
+                          <strong className="text-white font-bold">{ph.number}: {ph.title}</strong>
+                          <span className="text-[#8E8E93] text-[9px]">{ph.duration}</span>
+                        </div>
+                        <p className="text-[#A0A0A5] text-[11px] leading-tight">{ph.description}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Benefits List */}
@@ -149,7 +160,7 @@ export default function Pricing({ lang }: PricingProps) {
                       : "bg-white/10 text-white hover:bg-brand-orange hover:text-black border border-white/10"
                   }`}
                 >
-                  <span>{lang === "vi" ? `ĐĂNG KÝ BÁO GIÁ ${plan.phaseNumber}` : `SELECT ${plan.phaseNumber} PLAN`}</span>
+                  <span>{lang === "vi" ? `TƯ VẤN NGHỆ MỤC GÓI NÀY` : `SELECT THIS PACKAGE`}</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </button>
               </motion.div>
@@ -163,15 +174,15 @@ export default function Pricing({ lang }: PricingProps) {
             <div>
               <div className="flex items-center gap-2 text-brand-orange font-mono text-xs uppercase tracking-widest mb-1">
                 <ShieldCheck className="w-4 h-4" />
-                <span>{lang === "vi" ? "LỘ TRÌNH THANH TOÁN THEO TIẾN ĐỘ" : "MILESTONE-BASED PAYMENT SAFETY"}</span>
+                <span>{lang === "vi" ? "LỘ TRÌNH THANH TOÁN THEO TIẾN ĐỘ 3 PHASE" : "3-PHASE MILESTONE PAYMENT SAFETY"}</span>
               </div>
               <h3 className="font-display text-2xl font-bold text-white">
-                {lang === "vi" ? "Cam Kết Thanh Toán Minh Bạch Theo Phase" : "Transparent Milestone Settlement"}
+                {lang === "vi" ? "Cam Kết Thanh Toán Minh Bạch Theo Tiến Độ" : "Transparent Milestone Settlement"}
               </h3>
             </div>
             <p className="font-mono text-xs text-[#8E8E93] max-w-md">
               {lang === "vi"
-                ? "Không yêu cầu thanh toán 100% trước. Khách hàng nghiệm thu từng Phase sản phẩm trước khi chuyển giao giai đoạn tiếp theo."
+                ? "Không yêu cầu thanh toán 100% trước. Khách hàng nghiệm thu lần lượt từng Phase sản phẩm trước khi chuyển sang giai đoạn tiếp theo."
                 : "Zero 100% upfront stress. Review each working phase deliverable before advancing to the next milestone."}
             </p>
           </div>
@@ -180,36 +191,36 @@ export default function Pricing({ lang }: PricingProps) {
             <div className="p-5 bg-[#090909] border border-white/5 rounded-sm relative">
               <div className="font-mono text-xl font-bold text-brand-orange mb-1">30%</div>
               <div className="font-display font-semibold text-white text-sm mb-2">
-                {lang === "vi" ? "Giai Đoạn 1: Khởi Động & Specs" : "Milestone 1: Spec & Design"}
+                {lang === "vi" ? "Phase 1: Specs & Figma UI/UX" : "Phase 1: Spec & Figma UI UX"}
               </div>
               <p className="font-sans text-xs text-[#8E8E93] leading-relaxed">
                 {lang === "vi"
-                  ? "Đặt cọc khởi tạo dự án. Đội ngũ Studio tiến hành chốt đặc tả, thiết kế Wireframe & phác thảo bản vẽ Figma UI/UX."
-                  : "Initial deposit. We finalize requirements, frame layout architectures, and complete full Figma UI UX prototypes."}
+                  ? "Đặt cọc khởi tạo Phase 1. Studio thực hiện chốt đặc tả, thiết kế bản vẽ Figma UI/UX và nghiệm thu giao diện."
+                  : "Initial Phase 1 deposit. We lock requirements, design Figma UI UX prototypes, and sign off layout direction."}
               </p>
             </div>
 
             <div className="p-5 bg-[#090909] border border-white/5 rounded-sm relative">
               <div className="font-mono text-xl font-bold text-brand-orange mb-1">40%</div>
               <div className="font-display font-semibold text-white text-sm mb-2">
-                {lang === "vi" ? "Giai Đoạn 2: Lập Trình & Demo Core" : "Milestone 2: Build & Staging Demo"}
+                {lang === "vi" ? "Phase 2: Lập Trình & Demo Core" : "Phase 2: Build & Staging Demo"}
               </div>
               <p className="font-sans text-xs text-[#8E8E93] leading-relaxed">
                 {lang === "vi"
-                  ? "Bàn giao bản Staging Web hoạt động trực tiếp. Kiểm thử tính năng sản phẩm, kết nối CSDL và chạy thử nghiệm."
-                  : "Handing over live staging link. Feature API integrations, database connectivity tests, and core flow verification."}
+                  ? "Nghiệm thu Phase 2. Bàn giao bản Staging Web hoạt động trực tiếp, chạy thử nghiệm các tính năng & giỏ hàng/CMS."
+                  : "Phase 2 sign-off. Handing over live staging link, testing backend APIs, cart systems, and admin CMS features."}
               </p>
             </div>
 
             <div className="p-5 bg-[#090909] border border-white/5 rounded-sm relative">
               <div className="font-mono text-xl font-bold text-brand-orange mb-1">30%</div>
               <div className="font-display font-semibold text-white text-sm mb-2">
-                {lang === "vi" ? "Giai Đoạn 3: Nghiệm Thu & Launch" : "Milestone 3: Sign-off & Launch"}
+                {lang === "vi" ? "Phase 3: Launch & Bảo Hành" : "Phase 3: Sign-off & Launch"}
               </div>
               <p className="font-sans text-xs text-[#8E8E93] leading-relaxed">
                 {lang === "vi"
-                  ? "Nghiệm thu toàn bộ sản phẩm chính thức. Đẩy web lên Cloud Domain, bàn giao 100% mã nguồn và kích hoạt bảo hành."
-                  : "Final sign-off verification. Deploying live domain to cloud servers, handing over source code, and activating warranty."}
+                  ? "Nghiệm thu Phase 3. Đẩy web lên Cloud Domain chính thức, bàn giao 100% mã nguồn và kích hoạt chính sách bảo hành."
+                  : "Final Phase 3 sign-off. Deploying live domain to cloud servers, handing over source code, and activating warranty."}
               </p>
             </div>
           </div>
