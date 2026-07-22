@@ -399,7 +399,7 @@ export default function Contact({ lang }: ContactProps) {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full mt-4 font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#F5F5F3] hover:bg-[#F5F5F3]/90 text-[#090909] font-semibold rounded-sm inline-flex items-center justify-center gap-2 transition-all relative overflow-hidden group disabled:opacity-50 interactive"
+                      className="btn-stacked w-full mt-4 font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#F5F5F3] hover:bg-[#F5F5F3]/90 text-[#090909] font-semibold rounded-sm inline-flex items-center justify-center gap-2 transition-all relative overflow-hidden group disabled:opacity-50 interactive"
                     >
                       {isSubmitting ? (
                         <span className="flex items-center gap-2">
