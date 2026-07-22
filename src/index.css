@@ -205,3 +205,32 @@ button:focus-visible,
   outline-offset: 3px;
 }
 
+/* User Requested Stacked 3D Multi-layer Shadow Button Hover & Active Animation */
+.btn-stacked,
+.btn,
+button.btn-stacked,
+a.btn-stacked {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-stacked:hover,
+.btn:hover,
+button.btn-stacked:hover,
+a.btn-stacked:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 6px 0 -2px #FF6A00,
+              0 13px 0 -4px #06B6D4,
+              0 14px 10px -3px #06B6D4 !important;
+}
+
+.btn-stacked:active,
+.btn:active,
+button.btn-stacked:active,
+a.btn-stacked:active {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform: translateY(-4px) !important;
+  box-shadow: 0 2px 0 -2px #FF6A00,
+              0 7px 0 -4px #06B6D4,
+              0 10px 8px -3px #06B6D4 !important;
+}
+
