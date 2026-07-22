@@ -38,6 +38,33 @@ export default function Contact({ lang }: ContactProps) {
       .catch((err) => console.error("Error fetching exchange rate:", err));
   }, []);
 
+  // Listen for pricing plan selection events
+  useEffect(() => {
+    const handlePlanSelected = (e: Event) => {
+      const customEvt = e as CustomEvent;
+      if (customEvt && customEvt.detail) {
+        const { planId, planName, phaseNumber, priceVnd } = customEvt.detail;
+        
+        // Map planId to budget option
+        if (planId === "phase_1_mvp") setBudgetIndex(0);
+        else if (planId === "phase_2_fullstack") setBudgetIndex(1);
+        else if (planId === "phase_3_enterprise") setBudgetIndex(2);
+
+        setFormData((prev) => ({
+          ...prev,
+          message: lang === "vi" 
+            ? `[Đăng ký ${phaseNumber}: ${planName} - Chi phí: ${priceVnd}]\nTôi muốn tư vấn thêm chi tiết về lộ trình triển khai gói này.`
+            : `[Selected ${phaseNumber}: ${planName} - Rate: ${priceVnd}]\nI would like further details regarding project execution for this plan.`
+        }));
+      }
+    };
+
+    window.addEventListener("select_pricing_plan", handlePlanSelected);
+    return () => {
+      window.removeEventListener("select_pricing_plan", handlePlanSelected);
+    };
+  }, [lang]);
+
   const budgetOptions = [
     t.contactBudgetRange1,
     t.contactBudgetRange2,
