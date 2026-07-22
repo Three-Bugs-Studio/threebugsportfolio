@@ -45,6 +45,34 @@ export interface TeamMember {
     twitter?: string;
     linkedin?: string;
   };
+  colorTag: {
+    name: string;      // Color label name e.g. "Cyber Orange"
+    hex: string;       // Primary HEX code e.g. "#FF6A00"
+    badgeClass: string; // Tailwind badge classes
+    glowClass: string;  // Tailwind border glow / shadow classes
+    borderHex: string;
+  };
+  diagramRole: string; // Workflow node title e.g. "PROJECT SPEC & EXECUTION"
+  nodeId: string;
+  connectsTo?: string[]; // Connections in workflow diagram
+}
+
+export interface PricingPlan {
+  id: string;
+  phaseNumber: string;
+  name: string;
+  tagline: string;
+  priceVnd: string;
+  priceUsd: string;
+  timeline: string;
+  recommended?: boolean;
+  phaseFocus: string;
+  benefits: string[];
+  milestones: {
+    stage: string;
+    percentage: string;
+    description: string;
+  }[];
 }
 
 export interface TechItem {
@@ -65,4 +93,5 @@ export interface FAQItem {
   question: string;
   answer: string;
 }
+
 
