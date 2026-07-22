@@ -59,14 +59,19 @@ export interface TeamMember {
 
 export interface PricingPlan {
   id: string;
-  phaseNumber: string;
+  badge: string;
   name: string;
   tagline: string;
   priceVnd: string;
   priceUsd: string;
   timeline: string;
   recommended?: boolean;
-  phaseFocus: string;
+  phases: {
+    number: string;
+    title: string;
+    duration: string;
+    description: string;
+  }[];
   benefits: string[];
   milestones: {
     stage: string;
