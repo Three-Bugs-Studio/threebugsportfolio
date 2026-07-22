@@ -746,7 +746,8 @@ export const TECH_DATA: Record<"vi" | "en", TechItem[]> = {
     { name: "Neon Database", category: "database", description: "Cơ sở dữ liệu PostgreSQL phi máy chủ hỗ trợ mở rộng nhanh.", level: "Chuyên sâu" },
     { name: "PostgreSQL", category: "database", description: "Hệ quản trị cơ sở dữ liệu quan hệ mạnh mẽ, tin cậy cao.", level: "Cốt lõi" },
     { name: "Render", category: "devops", description: "Hạ tầng Cloud Hosting vận hành ứng dụng Web & Backend API.", level: "Chuyên sâu" },
-    { name: "Docker", category: "devops", description: "Môi trường đóng gói phần mềm nhất quán khi triển khai.", level: "Cốt lõi" }
+    { name: "Docker", category: "devops", description: "Môi trường đóng gói phần mềm nhất quán khi triển khai.", level: "Cốt lõi" },
+    { name: "GitHub Actions", category: "devops", description: "Hệ thống tự động hóa quy trình kiểm thử và tích hợp CI/CD.", level: "Chuyên sâu" }
   ],
   en: [
     { name: "Next.js", category: "frontend", description: "Production framework for SSR and static rendering.", level: "Primary" },
@@ -759,7 +760,8 @@ export const TECH_DATA: Record<"vi" | "en", TechItem[]> = {
     { name: "Neon Database", category: "database", description: "Serverless Postgres database with instant scaling.", level: "Primary" },
     { name: "PostgreSQL", category: "database", description: "Powerful relational database with high data integrity.", level: "Core" },
     { name: "Render", category: "devops", description: "Cloud platform hosting web applications & API services.", level: "Primary" },
-    { name: "Docker", category: "devops", description: "Containerized, predictable deployment parity.", level: "Core" }
+    { name: "Docker", category: "devops", description: "Containerized, predictable deployment parity.", level: "Core" },
+    { name: "GitHub Actions", category: "devops", description: "Automated testing and CI/CD deployment workflows.", level: "Primary" }
   ]
 };
 
