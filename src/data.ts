@@ -373,10 +373,11 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       ],
       benefits: [
         "Trọn gói quy trình phát triển 3 Giai Đoạn minh bạch",
+        "Bao gồm Tên Miền Quốc Tế chính thức (.com / .net) 1 năm",
+        "Bao gồm Hạ tầng Hosting Cloud tốc độ cao (Vercel/Netlify Pro)",
         "Thiết kế giao diện độc quyền trên Figma (Desktop & Mobile)",
         "Lập trình Landing Page / Web Giới thiệu siêu nhanh < 1s",
         "Tối ưu hóa chuẩn SEO Google Baseline & Meta Social Cards",
-        "Miễn phí cấu hình Tên miền & Cloud Hosting Vercel/Netlify",
         "Tích hợp nút Liên Hệ Zalo, Hotline, Messenger trực tiếp",
         "Bảo hành & Hỗ trợ vá lỗi kỹ thuật 1 tháng sau bàn giao"
       ],
@@ -402,9 +403,10 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       ],
       benefits: [
         "Trọn gói quy trình phát triển 3 Giai Đoạn cho dự án E-Commerce",
+        "Bao gồm Tên Miền Quốc Tế chính thức (.com / .net / .vn) 1 năm",
+        "Bao gồm Hạ tầng Server Cloud & CSDL PostgreSQL/Supabase cao cấp",
         "Xây dựng Web Thương Mại Điện Tử / Web Doanh Nghiệp hoàn chỉnh",
         "Trang Admin CMS quản lý bài viết, sản phẩm, đơn hàng dễ sử dụng",
-        "Tích hợp CSDL PostgreSQL / Supabase chịu tải cao",
         "Tích hợp cổng thanh toán trực tuyến (Chuyển khoản QR / MoMo / VNPay)",
         "Tối ưu tốc độ SEO Google Lighthouse score 95 - 99%",
         "Bảo hành & Bảo trì hệ thống 3 tháng + Vá lỗi Hotfix 24/7"
@@ -430,6 +432,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       ],
       benefits: [
         "Trọn gói quy trình phát triển 3 Giai Đoạn cho nền tảng Enterprise",
+        "Bao gồm Tên Miền Doanh Nghiệp chính thức & Hạ tầng Cloud Server riêng",
         "Tích hợp tính năng AI Agent (Trợ lý tìm kiếm dữ liệu, Chatbot thông minh)",
         "Kiến trúc Docker Cloud, CI/CD Pipeline tự động triển khai",
         "Phân quyền đa quản trị viên (Multi-role Access Control)",
@@ -460,10 +463,11 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       ],
       benefits: [
         "Full transparent 3-Phase development process",
+        "Includes 1-Year Official Custom Domain (.com / .net)",
+        "Includes High-Speed Cloud Hosting (Vercel/Netlify Pro)",
         "Exclusive Figma UI/UX prototype (Desktop & Mobile)",
         "Fast-loading Landing Page / Corporate Web (< 1s load time)",
         "Google SEO Baseline & Meta Social Cards optimization",
-        "Free Custom Domain configuration & Vercel/Netlify hosting",
         "Direct integration of Contact buttons (Zalo, Hotline, Messenger)",
         "1 Month warranty & technical support after handover"
       ],
@@ -489,9 +493,10 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       ],
       benefits: [
         "Full 3-Phase development pipeline for E-Commerce builds",
+        "Includes 1-Year Official Custom Domain (.com / .net / .vn)",
+        "Includes High-Concurrency PostgreSQL / Supabase Database Hosting",
         "Complete E-Commerce Store or Fullstack Corporate Portal",
         "Easy-to-use Admin CMS for managing products, articles & orders",
-        "High-concurrency PostgreSQL / Supabase Database",
         "Online payment gateway integration (QR Code / Bank Transfer)",
         "Google Lighthouse performance score optimized to 95 - 99%",
         "3 Months warranty + 24/7 Incident Hotfix SLA"
@@ -517,6 +522,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       ],
       benefits: [
         "Full 3-Phase development pipeline for Enterprise platforms",
+        "Includes Official Corporate Domain & Dedicated Cloud Server",
         "Custom AI Agent integration (Vector RAG, smart assistant)",
         "Docker Cloud setup with automated CI/CD pipelines",
         "Multi-role Access Control & security permissions",
