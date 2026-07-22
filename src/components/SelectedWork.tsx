@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { PROJECTS_DATA, TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
+import TechIcon from "./TechIcon";
 import { 
   ArrowUpRight, 
   Calendar, 
@@ -175,9 +176,10 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                         {project.technologies.map((tech) => (
                           <span
                             key={tech}
-                            className="font-mono text-[10px] text-[#8E8E93] bg-[#121212]/50 px-2 py-0.5 border border-white/5 hover:text-[#F5F5F3] hover:border-white/10 transition-colors"
+                            className="font-mono text-[10px] text-[#D4D4D8] bg-[#121212]/70 px-2 py-1 rounded-sm border border-white/10 hover:border-brand-orange/40 hover:text-white transition-all flex items-center gap-1.5"
                           >
-                            {tech}
+                            <TechIcon name={tech} className="w-3.5 h-3.5" />
+                            <span>{tech}</span>
                           </span>
                         ))}
                       </div>
