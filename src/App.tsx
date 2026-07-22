@@ -606,44 +606,15 @@ export default function App() {
               </div>
 
               <div className="flex flex-col items-center justify-center text-center my-auto relative z-10">
+                {/* Code-Loader Animated Brackets */}
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.1, duration: 0.4 }}
-                  className="flex gap-2 mb-6"
+                  className="code-loader mb-2 select-none"
                 >
-                  <div className="w-3 h-3 rounded-full bg-brand-orange animate-ping" />
-                  <div className="w-3 h-3 rounded-full bg-brand-orange" />
-                  <div className="w-3 h-3 rounded-full bg-white/20" />
+                  <span>{'{'}</span><span>{'}'}</span>
                 </motion.div>
-
-                {/* Giant elegant display transition text representing language shift */}
-                <div className="flex items-center gap-6 md:gap-10 mb-8 font-display font-black text-4xl md:text-7xl overflow-hidden select-none">
-                  <motion.span
-                    initial={{ x: -60, opacity: 0, filter: "blur(10px)" }}
-                    animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className={lang === "vi" ? "text-white/40" : "text-brand-orange drop-shadow-[0_0_15px_rgba(255,106,0,0.3)]"}
-                  >
-                    EN
-                  </motion.span>
-                  <motion.span
-                    initial={{ scale: 0.4, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-                    className="text-brand-orange"
-                  >
-                    →
-                  </motion.span>
-                  <motion.span
-                    initial={{ x: 60, opacity: 0, filter: "blur(10px)" }}
-                    animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className={lang === "en" ? "text-white/40" : "text-brand-orange drop-shadow-[0_0_15px_rgba(255,106,0,0.3)]"}
-                  >
-                    VI
-                  </motion.span>
-                </div>
                 
                 <motion.h2 
                   className="font-display font-medium text-xl md:text-3xl tracking-tight text-white/90"
