@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import { ArrowDown, ArrowUpRight, Sparkles, Terminal, ShieldCheck } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { TRANSLATIONS } from "../data";
-import TechIcon from "./TechIcon";
 
 interface HeroProps {
   lang: "vi" | "en";
@@ -282,35 +281,13 @@ export default function Hero({ lang }: HeroProps) {
       <div className="absolute top-[30%] right-[-10%] brutalist-glow opacity-30" style={{ filter: "blur(120px)" }} />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10 flex flex-col items-center text-center mt-12 md:mt-16 pb-28 md:pb-36">
-        {/* Studio Status Cyber Emblem Badge */}
-        <motion.div
-          id="hero-emblem"
-          initial={{ scale: 0.9, opacity: 0, y: -10 }}
-          animate={{ scale: 1, opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-6 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141414]/80 border border-brand-orange/30 shadow-[0_0_20px_rgba(255,106,0,0.12)] backdrop-blur-md select-none"
-        >
-          <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse" />
-          <span className="font-mono text-[10px] tracking-[0.25em] text-white uppercase font-medium">
-            THREE BUGS STUDIO
-          </span>
-          <span className="text-white/20 font-mono text-[10px]">//</span>
-          <span className="font-mono text-[9px] tracking-widest text-brand-orange uppercase font-semibold">
-            100% REMOTE
-          </span>
-          <span className="text-white/20 font-mono text-[10px]">//</span>
-          <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase">
-            EST. 2026
-          </span>
-        </motion.div>
-
         {/* Dynamic, responsive time-based greeting badge with active pulsing status indicator */}
         <motion.div
           id="hero-greeting-badge"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center gap-3 mb-6 bg-[#121212]/40 border border-white/5 px-4 py-2 rounded-full backdrop-blur-md select-none"
+          className="flex items-center gap-3 mb-8 bg-[#121212]/40 border border-white/5 px-4 py-2 rounded-full backdrop-blur-md select-none"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75"></span>
@@ -377,7 +354,7 @@ export default function Hero({ lang }: HeroProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col sm:flex-row items-center gap-4 mt-10 w-full sm:w-auto"
+          className="flex flex-col sm:flex-row items-center gap-4 mt-12 w-full sm:w-auto"
         >
           <button
             onClick={() => handleScrollTo("app-work-section")}
@@ -394,32 +371,6 @@ export default function Hero({ lang }: HeroProps) {
             {t.navStartProject}
             <span className="w-1.5 h-1.5 bg-brand-orange rounded-full group-hover:scale-125 transition-transform" />
           </button>
-        </motion.div>
-
-        {/* Official Tech Stack Real Brand Icons Ribbon */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.0, duration: 0.8 }}
-          className="mt-12 pt-8 border-t border-white/5 flex flex-col items-center gap-3 select-none"
-        >
-          <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-[#8E8E93] flex items-center gap-2">
-            <Sparkles className="w-3 h-3 text-brand-orange" />
-            <span>STUDIO SYSTEM CORE TECH STACK</span>
-          </span>
-          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 pt-1">
-            {["Next.js", "NestJS", "React", "TypeScript", "PostgreSQL", "Supabase", "Docker", "Render", "Vercel"].map((tech) => (
-              <div
-                key={tech}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-sm bg-[#121212]/60 border border-white/5 hover:border-brand-orange/40 hover:bg-[#181818] transition-all group cursor-default"
-              >
-                <TechIcon name={tech} className="w-4 h-4 text-sm" />
-                <span className="font-mono text-[10px] text-[#A0A0A5] group-hover:text-white transition-colors">
-                  {tech}
-                </span>
-              </div>
-            ))}
-          </div>
         </motion.div>
 
         {/* Scroll indicator */}
