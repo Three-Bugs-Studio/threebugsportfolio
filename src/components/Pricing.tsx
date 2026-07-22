@@ -140,7 +140,7 @@ export default function Pricing({ lang }: PricingProps) {
                 {/* Select Plan Button -> Direct Scroll to Contact Form */}
                 <button
                   onClick={() => handleSelectPlan(plan)}
-                  className="w-full py-3.5 px-6 rounded-sm font-mono text-xs tracking-wider uppercase font-semibold transition-all duration-300 flex items-center justify-center gap-2 group interactive bg-white/10 text-white hover:bg-brand-orange hover:text-black border border-white/10"
+                  className="btn-stacked w-full py-3.5 px-6 rounded-sm font-mono text-xs tracking-wider uppercase font-semibold transition-all duration-300 flex items-center justify-center gap-2 group interactive bg-white/10 text-white hover:bg-brand-orange hover:text-black border border-white/10"
                 >
                   <span>{lang === "vi" ? `NHẬN TƯ VẤN GÓI NÀY` : `SELECT THIS PACKAGE`}</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
