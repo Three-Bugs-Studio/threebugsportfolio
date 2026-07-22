@@ -272,13 +272,27 @@ export default function Hero({ lang }: HeroProps) {
       {/* Background Interactive Mesh Canvas */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full pointer-events-auto"
+        className="absolute inset-0 w-full h-full pointer-events-auto z-0"
         id="hero-background-canvas"
       />
 
+      {/* Cyber Math Matrix Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-40 overflow-hidden" id="hero-matrix-bg">
+        <div className="jp-matrix">
+          {["+", "−", "×", "÷", "=", "≠", "≈", "∞", "√", "∑", "∏", "∫", "∂", "∆", "π", "θ", "λ", "μ", "σ", "ω", "α", "β", "γ", "δ", "ε", "ζ", "η", "ι", "κ", "ν", "ξ", "ρ", "τ", "φ", "χ", "ψ", "∈", "∉", "∩", "∪", "⊂", "⊃", "⊆", "⊇", "∧", "∨", "¬", "⇒", "⇔", "∀", "∃", "ℕ", "ℤ", "ℚ", "ℝ", "ℂ", "|", "∥", "∠", "⊥", "≅", "∝", "∴", "∵", "⊕", "⊗", "⊥", "⊢", "⊨", "∇"].flatMap((s, i) =>
+            Array.from({ length: 5 }).map((_, rIdx) => (
+              <span key={`${s}-${i}-${rIdx}`}>{s}</span>
+            ))
+          )}
+        </div>
+      </div>
+
+      {/* Dark Vignette Mask Overlay to maintain 100% text legibility */}
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(9,9,9,0.3)_0%,_rgba(9,9,9,0.75)_50%,_rgba(9,9,9,0.98)_100%)]" />
+
       {/* Top Lighting Glares */}
-      <div className="absolute top-[-10%] left-[5%] brutalist-glow opacity-50" />
-      <div className="absolute top-[30%] right-[-10%] brutalist-glow opacity-30" style={{ filter: "blur(120px)" }} />
+      <div className="absolute top-[-10%] left-[5%] brutalist-glow opacity-50 z-[1]" />
+      <div className="absolute top-[30%] right-[-10%] brutalist-glow opacity-30 z-[1]" style={{ filter: "blur(120px)" }} />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10 flex flex-col items-center text-center mt-12 md:mt-16 pb-28 md:pb-36">
         {/* Dynamic, responsive time-based greeting badge with active pulsing status indicator */}
