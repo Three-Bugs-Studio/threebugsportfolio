@@ -25,6 +25,7 @@ export default function Navbar({ lang, onLangChange }: NavbarProps) {
     { label: TRANSLATIONS[lang].navWork, href: "#app-work-section" },
     { label: TRANSLATIONS[lang].navServices, href: "#app-services-section" },
     { label: TRANSLATIONS[lang].navProcess, href: "#app-process-section" },
+    { label: TRANSLATIONS[lang].navPricing, href: "#app-pricing-section" },
     { label: TRANSLATIONS[lang].navStudio, href: "#app-technology-section" },
     { label: TRANSLATIONS[lang].navTeam, href: "#app-team-section" },
     { label: TRANSLATIONS[lang].navFaq, href: "#app-faq-section" },
