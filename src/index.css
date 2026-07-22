@@ -59,6 +59,38 @@ body {
   background: #FF6A00;
 }
 
+/* Code Loader Language Switch Animation */
+.code-loader {
+  color: #FF6A00;
+  font-family: Consolas, Menlo, Monaco, monospace;
+  font-weight: bold;
+  font-size: 80px;
+  opacity: 0.9;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .code-loader {
+    font-size: 110px;
+  }
+}
+
+.code-loader span {
+  display: inline-block;
+  animation: pulse_414 0.4s alternate infinite ease-in-out;
+}
+
+.code-loader span:nth-child(odd) {
+  animation-delay: 0.4s;
+}
+
+@keyframes pulse_414 {
+  to {
+    transform: scale(0.8);
+    opacity: 0.4;
+  }
+}
+
 /* Selection accent */
 ::selection {
   background-color: #FF6A00;
