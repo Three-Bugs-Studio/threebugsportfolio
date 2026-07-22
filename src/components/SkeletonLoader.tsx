@@ -82,6 +82,33 @@ function useProgress(onLoaded?: () => void) {
 }
 
 // -------------------------------------------------------------
+// -------------------------------------------------------------
+// Hamster Wheel Running Animation Component
+// -------------------------------------------------------------
+export function HamsterWheelLoader() {
+  return (
+    <div aria-label="Orange and tan hamster running in a metal wheel" role="img" className="wheel-and-hamster select-none">
+      <div className="wheel" />
+      <div className="hamster">
+        <div className="hamster__body">
+          <div className="hamster__head">
+            <div className="hamster__ear" />
+            <div className="hamster__eye" />
+            <div className="hamster__nose" />
+          </div>
+          <div className="hamster__limb hamster__limb--fr" />
+          <div className="hamster__limb hamster__limb--fl" />
+          <div className="hamster__limb hamster__limb--br" />
+          <div className="hamster__limb hamster__limb--bl" />
+          <div className="hamster__tail" />
+        </div>
+      </div>
+      <div className="spoke" />
+    </div>
+  );
+}
+
+// -------------------------------------------------------------
 // Sector-Specific Skeletons
 // -------------------------------------------------------------
 
@@ -92,44 +119,31 @@ export function HeroSkeleton({ onLoaded, lang }: SkeletonProps) {
     : "INITIALIZING CREATIVE DISPLAY SPACE ENGINE...";
 
   return (
-    <section className="min-h-screen relative flex items-center justify-center overflow-hidden py-32 border-b border-white/5">
+    <section className="min-h-screen relative flex flex-col items-center justify-center overflow-hidden py-24 border-b border-white/5 bg-[#090909]">
       <div className="absolute inset-0 swiss-grid opacity-[0.05]" />
-      <div className="absolute top-1/3 left-1/3 w-80 h-80 bg-brand-orange/5 rounded-full blur-[100px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-orange/10 rounded-full blur-[100px]" />
       
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full flex flex-col justify-between min-h-[60vh]">
-        {/* Top Diagnostics HUD */}
-        <div className="w-full max-w-xl mb-8">
+      <div className="max-w-4xl mx-auto px-6 relative z-10 w-full flex flex-col items-center justify-center text-center my-auto">
+        {/* Animated Hamster Wheel Initial Loader */}
+        <motion.div 
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8 flex flex-col items-center justify-center"
+        >
+          <HamsterWheelLoader />
+        </motion.div>
+
+        {/* Diagnostics HUD */}
+        <div className="w-full max-w-xl mb-6">
           <SectorLoadingDiagnostics progress={progress} sectorCode="SECTOR_00" statusText={status} />
         </div>
 
-        {/* Central Display Headings */}
-        <div className="my-auto max-w-4xl space-y-5">
-          <div className="flex items-center gap-2">
-            <Terminal className="w-4 h-4 text-brand-orange/40" />
-            <div className={`${pulseClass} h-4 w-40`} />
-          </div>
-          <div className={`${pulseClass} h-12 md:h-20 w-[95%]`} />
-          <div className={`${pulseClass} h-12 md:h-18 w-[80%]`} />
-          
-          <div className="pt-6 space-y-2 max-w-xl">
-            <div className={`${pulseClass} h-3.5 w-full`} />
-            <div className={`${pulseClass} h-3.5 w-[85%]`} />
-          </div>
-        </div>
-
-        {/* Bottom Interactive Trigger Area */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8 pt-12 border-t border-white/5 mt-12">
-          <div className="flex items-center gap-4">
-            <div className={`${pulseClass} h-11 w-44 rounded-sm`} />
-            <div className="font-mono text-xs text-[#8e8e93]/50">
-              [ {progress < 100 ? "CONNECTING CORE SERVER" : "SERVER SECURE READY"} ]
-            </div>
-          </div>
-          
-          <div className="flex items-center gap-6">
-            <div className={`${pulseClass} h-4 w-24`} />
-            <div className={`${pulseClass} h-4 w-32`} />
-          </div>
+        {/* Skeleton Pulsing Lines representing initial layout structure */}
+        <div className="w-full max-w-2xl space-y-4 flex flex-col items-center">
+          <div className={`${pulseClass} h-10 md:h-14 w-[85%]`} />
+          <div className={`${pulseClass} h-10 md:h-14 w-[65%]`} />
+          <div className={`${pulseClass} h-4 w-[50%] mt-4`} />
         </div>
       </div>
     </section>
