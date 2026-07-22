@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TECH_DATA, TRANSLATIONS } from "../data";
 import { motion } from "motion/react";
-import { Cpu, Layers, Server, Code } from "lucide-react";
+import TechIcon from "./TechIcon";
 
 interface TechnologyProps {
   lang: "vi" | "en";
@@ -11,22 +11,6 @@ export default function Technology({ lang }: TechnologyProps) {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const t = TRANSLATIONS[lang];
   const techList = TECH_DATA[lang];
-
-  // Custom positioning/lighting effect for modern start-up aesthetics
-  const getCategoryIcon = (category: string) => {
-    switch (category) {
-      case "frontend":
-        return <Code className="w-4 h-4" />;
-      case "backend":
-        return <Server className="w-4 h-4" />;
-      case "database":
-        return <Cpu className="w-4 h-4" />;
-      case "devops":
-        return <Layers className="w-4 h-4" />;
-      default:
-        return <Code className="w-4 h-4" />;
-    }
-  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -62,7 +46,7 @@ export default function Technology({ lang }: TechnologyProps) {
           </p>
         </motion.div>
 
-        {/* Technical Minimal Grid Layout - 3x3 Grid of absolute tech items */}
+        {/* Technical Grid Layout */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 border-l border-t border-white/5" id="tech-grid">
           {techList.map((tech, idx) => {
             const isHovered = hoveredIdx === idx;
@@ -74,11 +58,11 @@ export default function Technology({ lang }: TechnologyProps) {
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onMouseLeave={() => setHoveredIdx(null)}
                 variants={itemVariants}
-                className="group p-6 md:p-8 bg-transparent border-r border-b border-white/5 hover:bg-[#121212]/20 transition-all duration-300 relative overflow-hidden flex flex-col justify-between min-h-[180px] cursor-default select-none"
+                className="group p-6 md:p-8 bg-transparent border-r border-b border-white/5 hover:bg-[#121212]/30 transition-all duration-300 relative overflow-hidden flex flex-col justify-between min-h-[190px] cursor-default select-none"
               >
                 {/* Spotlight background gradient hover effect */}
                 <div
-                  className={`absolute inset-0 bg-[radial-gradient(circle_at_var(--x,_50%)_var(--y,_50%),_rgba(255,_106,_0,_0.04)_0%,_transparent_60%)] pointer-events-none transition-opacity duration-500 ${
+                  className={`absolute inset-0 bg-[radial-gradient(circle_at_var(--x,_50%)_var(--y,_50%),_rgba(255,_106,_0,_0.05)_0%,_transparent_60%)] pointer-events-none transition-opacity duration-500 ${
                     isHovered ? "opacity-100" : "opacity-0"
                   }`}
                   style={
@@ -94,14 +78,14 @@ export default function Technology({ lang }: TechnologyProps) {
                   isHovered ? "scale-100" : "scale-0"
                 }`} />
 
-                {/* Header (Icon + Class Name) */}
+                {/* Header (Real Tech Brand Logo + Category Tag) */}
                 <div className="flex items-center justify-between">
-                  <div className={`p-2 rounded-sm border transition-colors ${
-                    isHovered ? "border-brand-orange text-brand-orange" : "border-white/5 text-[#8E8E93]"
+                  <div className={`p-2.5 rounded-sm border transition-all flex items-center justify-center ${
+                    isHovered ? "border-brand-orange/40 bg-brand-orange/10 shadow-[0_0_15px_rgba(255,106,0,0.15)]" : "border-white/10 bg-white/[0.03]"
                   }`}>
-                    {getCategoryIcon(tech.category)}
+                    <TechIcon name={tech.name} className="w-6 h-6 text-xl" />
                   </div>
-                  <span className="font-mono text-[8px] uppercase tracking-widest text-[#8E8E93]">
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-[#8E8E93] bg-white/5 px-2 py-0.5 rounded-sm border border-white/5">
                     [{tech.category}]
                   </span>
                 </div>
