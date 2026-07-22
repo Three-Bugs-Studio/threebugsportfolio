@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import Logo from "./Logo";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { TRANSLATIONS } from "../data";
 
@@ -282,15 +281,26 @@ export default function Hero({ lang }: HeroProps) {
       <div className="absolute top-[30%] right-[-10%] brutalist-glow opacity-30" style={{ filter: "blur(120px)" }} />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10 flex flex-col items-center text-center mt-12 md:mt-16 pb-28 md:pb-36">
-        {/* Studio Logo Emblem Splash */}
+        {/* Studio Status Cyber Emblem Badge */}
         <motion.div
           id="hero-emblem"
-          initial={{ scale: 0.85, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-8"
+          initial={{ scale: 0.9, opacity: 0, y: -10 }}
+          animate={{ scale: 1, opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-6 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141414]/80 border border-brand-orange/30 shadow-[0_0_20px_rgba(255,106,0,0.12)] backdrop-blur-md select-none"
         >
-          <Logo size="xl" showText={false} variant="light" className="opacity-80 scale-90" />
+          <span className="w-2 h-2 rounded-full bg-brand-orange animate-pulse" />
+          <span className="font-mono text-[10px] tracking-[0.25em] text-white uppercase font-medium">
+            THREE BUGS STUDIO
+          </span>
+          <span className="text-white/20 font-mono text-[10px]">//</span>
+          <span className="font-mono text-[9px] tracking-widest text-brand-orange uppercase font-semibold">
+            100% REMOTE
+          </span>
+          <span className="text-white/20 font-mono text-[10px]">//</span>
+          <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase">
+            EST. 2026
+          </span>
         </motion.div>
 
         {/* Dynamic, responsive time-based greeting badge with active pulsing status indicator */}
