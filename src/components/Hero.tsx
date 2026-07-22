@@ -277,10 +277,10 @@ export default function Hero({ lang }: HeroProps) {
       />
 
       {/* Cyber Math Matrix Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-40 overflow-hidden" id="hero-matrix-bg">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-85 overflow-hidden" id="hero-matrix-bg">
         <div className="jp-matrix">
           {["+", "−", "×", "÷", "=", "≠", "≈", "∞", "√", "∑", "∏", "∫", "∂", "∆", "π", "θ", "λ", "μ", "σ", "ω", "α", "β", "γ", "δ", "ε", "ζ", "η", "ι", "κ", "ν", "ξ", "ρ", "τ", "φ", "χ", "ψ", "∈", "∉", "∩", "∪", "⊂", "⊃", "⊆", "⊇", "∧", "∨", "¬", "⇒", "⇔", "∀", "∃", "ℕ", "ℤ", "ℚ", "ℝ", "ℂ", "|", "∥", "∠", "⊥", "≅", "∝", "∴", "∵", "⊕", "⊗", "⊥", "⊢", "⊨", "∇"].flatMap((s, i) =>
-            Array.from({ length: 5 }).map((_, rIdx) => (
+            Array.from({ length: 6 }).map((_, rIdx) => (
               <span key={`${s}-${i}-${rIdx}`}>{s}</span>
             ))
           )}
@@ -288,7 +288,7 @@ export default function Hero({ lang }: HeroProps) {
       </div>
 
       {/* Dark Vignette Mask Overlay to maintain 100% text legibility */}
-      <div className="absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(9,9,9,0.3)_0%,_rgba(9,9,9,0.75)_50%,_rgba(9,9,9,0.98)_100%)]" />
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(9,9,9,0.35)_0%,_rgba(9,9,9,0.70)_55%,_rgba(9,9,9,0.95)_100%)]" />
 
       {/* Top Lighting Glares */}
       <div className="absolute top-[-10%] left-[5%] brutalist-glow opacity-50 z-[1]" />
