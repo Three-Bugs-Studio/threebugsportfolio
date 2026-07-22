@@ -13,7 +13,26 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("next")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <i className="devicon-nextjs-original text-white text-lg" />
+        <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-white">
+          <mask id="nextjs-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="180" height="180" style={{ maskType: "alpha" }}>
+            <circle cx="90" cy="90" r="90" fill="black"/>
+          </mask>
+          <g mask="url(#nextjs-mask)">
+            <circle cx="90" cy="90" r="90" fill="black"/>
+            <path d="M149.508 157.52L69.142 54H54V125.97H66.8136V69.7571L139.699 164.445C143.209 162.33 146.486 160.016 149.508 157.52Z" fill="url(#nextjs-grad-1)"/>
+            <path d="M115 54H127.814V126H115V54Z" fill="url(#nextjs-grad-2)"/>
+          </g>
+          <defs>
+            <linearGradient id="nextjs-grad-1" x1="109" y1="116.5" x2="144.5" y2="160.5" gradientUnits="userSpaceOnUse">
+              <stop stopColor="white"/>
+              <stop offset="1" stopColor="white" stopOpacity="0"/>
+            </linearGradient>
+            <linearGradient id="nextjs-grad-2" x1="121" y1="54" x2="120.7" y2="104" gradientUnits="userSpaceOnUse">
+              <stop stopColor="white"/>
+              <stop offset="1" stopColor="white" stopOpacity="0"/>
+            </linearGradient>
+          </defs>
+        </svg>
       </span>
     );
   }
