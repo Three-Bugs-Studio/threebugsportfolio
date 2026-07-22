@@ -178,6 +178,15 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
     );
   }
 
+  // GitHub / GitHub Actions
+  if (normName.includes("github")) {
+    return (
+      <span className={`inline-flex items-center justify-center ${className}`}>
+        <i className={`fa-brands fa-github ${showColor ? "text-[#2088FF]" : ""}`} />
+      </span>
+    );
+  }
+
   // Git
   if (normName.includes("git")) {
     return (
