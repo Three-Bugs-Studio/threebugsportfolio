@@ -242,7 +242,7 @@ export function ServicesSkeleton({ onLoaded, lang }: SkeletonProps) {
           <div className="lg:col-span-4 flex flex-col justify-between">
             <div className="space-y-6">
               <div className="flex items-center gap-2 font-mono text-xs text-[#8e8e93]">
-                <Globe className="w-4 h-4 text-brand-orange" />
+                <FaGlobe className="w-4 h-4 text-brand-orange" />
                 <span>SPEC_CATALOG_v4.0</span>
               </div>
               <div className={`${pulseClass} h-10 md:h-14 w-full`} />

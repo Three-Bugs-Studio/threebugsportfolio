@@ -708,7 +708,7 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
               id="lightbox-close-btn"
               aria-label={lang === "vi" ? "Đóng hộp thoại" : "Close dialog"}
             >
-              <X className="w-5 h-5" />
+              <FaXmark className="w-5 h-5" />
             </button>
           </div>
 
