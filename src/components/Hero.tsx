@@ -61,8 +61,25 @@ export default function Hero({ lang }: HeroProps) {
     if (!ctx) return;
 
     let animationFrameId: number;
+    let isVisible = true;
     let width = (canvas.width = canvas.offsetWidth);
     let height = (canvas.height = canvas.offsetHeight);
+
+    // Pause particle animation loop when section is scrolled out of view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          isVisible = entry.isIntersecting;
+          if (isVisible && !animationFrameId) {
+            draw();
+          }
+        });
+      },
+      { threshold: 0.05 }
+    );
+
+    const heroSection = document.getElementById("hero");
+    if (heroSection) observer.observe(heroSection);
 
     const particles: Array<{
       x: number;
@@ -76,19 +93,19 @@ export default function Hero({ lang }: HeroProps) {
       isBrand: boolean;
     }> = [];
 
-    // Initialize particles (nodes of the foundation mesh)
-    const particleCount = Math.min(70, Math.floor((width * height) / 16000));
+    // Lightweight & fast particle mesh (max 35 particles for ultra smooth 60fps)
+    const particleCount = Math.min(35, Math.floor((width * height) / 25000));
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: (Math.random() - 0.6) * 0.25 - 0.08, // Slow, elegant upward drifting
-        radius: Math.random() * 2 + 0.8,
-        alpha: Math.random() * 0.35 + 0.1,
-        pulseSpeed: 0.005 + Math.random() * 0.012,
+        vx: (Math.random() - 0.5) * 0.2,
+        vy: (Math.random() - 0.6) * 0.2 - 0.05,
+        radius: Math.random() * 1.8 + 0.8,
+        alpha: Math.random() * 0.3 + 0.1,
+        pulseSpeed: 0.005 + Math.random() * 0.01,
         pulsePhase: Math.random() * Math.PI * 2,
-        isBrand: Math.random() < 0.12, // 12% are digital glowing orange embers of studio
+        isBrand: Math.random() < 0.15,
       });
     }
 
@@ -116,26 +133,25 @@ export default function Hero({ lang }: HeroProps) {
     canvas.addEventListener("mouseleave", handleMouseLeave);
 
     const draw = () => {
+      if (!isVisible) {
+        cancelAnimationFrame(animationFrameId);
+        return;
+      }
+
       ctx.clearRect(0, 0, width, height);
 
-      // Draw subtle background grid lines (Swiss alignment)
+      // Draw subtle background grid lines
       ctx.strokeStyle = "rgba(255, 255, 255, 0.012)";
       ctx.lineWidth = 1;
-      const gridSize = 40;
+      const gridSize = 45;
       for (let x = 0; x < width; x += gridSize) {
         ctx.beginPath();
         ctx.moveTo(x, 0);
         ctx.lineTo(x, height);
         ctx.stroke();
       }
-      for (let y = 0; y < height; y += gridSize) {
-        ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(width, y);
-        ctx.stroke();
-      }
 
-      // Draw connections (edges of the software network)
+      // Draw connections
       ctx.lineWidth = 0.5;
       for (let i = 0; i < particles.length; i++) {
         const p1 = particles[i];
@@ -145,16 +161,11 @@ export default function Hero({ lang }: HeroProps) {
           const dy = p1.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          // Connection range
-          if (dist < 130) {
-            const alpha = (1 - dist / 130) * 0.12;
-            
-            // Subtle theme tinting for brand elements
-            if (p1.isBrand || p2.isBrand) {
-              ctx.strokeStyle = `rgba(255, 106, 0, ${alpha * 0.8})`;
-            } else {
-              ctx.strokeStyle = `rgba(245, 245, 243, ${alpha})`;
-            }
+          if (dist < 120) {
+            const alpha = (1 - dist / 120) * 0.1;
+            ctx.strokeStyle = (p1.isBrand || p2.isBrand)
+              ? `rgba(255, 106, 0, ${alpha * 0.8})`
+              : `rgba(245, 245, 243, ${alpha})`;
             
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
@@ -169,78 +180,28 @@ export default function Hero({ lang }: HeroProps) {
         p.pulsePhase += p.pulseSpeed;
         const currentAlpha = p.alpha * (0.6 + Math.sin(p.pulsePhase) * 0.4);
 
-        if (p.isBrand) {
-          // Accent Brand Glow Core
-          ctx.fillStyle = `rgba(255, 106, 0, ${currentAlpha * 1.1})`;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius * 1.15, 0, Math.PI * 2);
-          ctx.fill();
+        ctx.fillStyle = p.isBrand ? `rgba(255, 106, 0, ${currentAlpha * 1.1})` : `rgba(245, 245, 243, ${currentAlpha})`;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
 
-          // Accent Brand Outer Flare
-          ctx.fillStyle = `rgba(255, 106, 0, ${currentAlpha * 0.22})`;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius * 3.5, 0, Math.PI * 2);
-          ctx.fill();
-        } else {
-          // Standard cool light gray
-          ctx.fillStyle = `rgba(245, 245, 243, ${currentAlpha})`;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          ctx.fill();
-        }
-
-        // Sway organically
-        p.x += Math.sin(p.pulsePhase) * 0.05;
-
-        // Apply motion vectors
-        p.x += p.vx;
+        p.x += Math.sin(p.pulsePhase) * 0.04 + p.vx;
         p.y += p.vy;
 
-        // Mouse interaction (gentle cloud dispersion force)
-        if (mouse.active) {
-          const dx = mouse.x - p.x;
-          const dy = mouse.y - p.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 180) {
-            const force = (180 - dist) / 180;
-            p.x -= (dx / dist) * force * 0.5;
-            p.y -= (dy / dist) * force * 0.5;
-          }
-        }
-
-        // Loop boundaries infinitely
         if (p.x < -20) p.x = width + 20;
         if (p.x > width + 20) p.x = -20;
         if (p.y < -20) p.y = height + 20;
         if (p.y > height + 20) p.y = -20;
       });
 
-      // Subtle pulse light on hover center/mouse
-      if (mouse.active) {
-        const grad = ctx.createRadialGradient(
-          mouse.x,
-          mouse.y,
-          0,
-          mouse.x,
-          mouse.y,
-          110
-        );
-        grad.addColorStop(0, "rgba(255, 106, 0, 0.025)");
-        grad.addColorStop(1, "rgba(0, 0, 0, 0)");
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(mouse.x, mouse.y, 110, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
       animationFrameId = requestAnimationFrame(draw);
     };
 
     const handleInitialResize = setTimeout(handleResize, 100);
-
     draw();
 
     return () => {
+      observer.disconnect();
       clearTimeout(handleInitialResize);
       window.removeEventListener("resize", handleResize);
       if (canvas) {

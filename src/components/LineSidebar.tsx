@@ -61,42 +61,52 @@ export default function LineSidebar({
     }
   }, [activeSectionIndex, items.length]);
 
-  // Handle Mouse Proximity Calculation
+  const animFrameId = useRef<number | null>(null);
+
+  // Handle Mouse Proximity Calculation with rAF throttling for 60fps performance
   const handleMouseMove = useCallback(
     (e: MouseEvent) => {
+      if (animFrameId.current) return;
+
       const mouseX = e.clientX;
       const mouseY = e.clientY;
 
-      const newShifts = new Array(items.length).fill(0);
-      const newTickScales = new Array(items.length).fill(1);
+      animFrameId.current = requestAnimationFrame(() => {
+        animFrameId.current = null;
 
-      itemRefs.current.forEach((el, idx) => {
-        if (!el) return;
-        const rect = el.getBoundingClientRect();
-        const itemX = rect.left + rect.width / 2;
-        const itemY = rect.top + rect.height / 2;
+        const newShifts = new Array(items.length).fill(0);
+        const newTickScales = new Array(items.length).fill(1);
+        let hasChanges = false;
 
-        const dist = Math.hypot(mouseX - itemX, mouseY - itemY);
+        itemRefs.current.forEach((el, idx) => {
+          if (!el) return;
+          const rect = el.getBoundingClientRect();
+          const itemX = rect.left + rect.width / 2;
+          const itemY = rect.top + rect.height / 2;
 
-        if (dist < proximityRadius) {
-          let ratio = 1 - dist / proximityRadius;
-          if (falloff === "smooth") {
-            // Smoothstep curve for organic proximity response
-            ratio = ratio * ratio * (3 - 2 * ratio);
+          const dist = Math.hypot(mouseX - itemX, mouseY - itemY);
+
+          if (dist < proximityRadius) {
+            let ratio = 1 - dist / proximityRadius;
+            if (falloff === "smooth") {
+              ratio = ratio * ratio * (3 - 2 * ratio);
+            }
+
+            newShifts[idx] = -ratio * maxShift;
+            if (scaleTick) {
+              newTickScales[idx] = 1 + ratio * tickScale;
+            }
+            hasChanges = true;
           }
+        });
 
-          // Negative shift moves item left towards screen center when sidebar is on the right
-          newShifts[idx] = -ratio * maxShift;
-          if (scaleTick) {
-            newTickScales[idx] = 1 + ratio * tickScale;
-          }
+        if (hasChanges || shifts.some((s) => s !== 0)) {
+          setShifts(newShifts);
+          setTickScales(newTickScales);
         }
       });
-
-      setShifts(newShifts);
-      setTickScales(newTickScales);
     },
-    [items.length, proximityRadius, falloff, maxShift, scaleTick, tickScale]
+    [items.length, proximityRadius, falloff, maxShift, scaleTick, tickScale, shifts]
   );
 
   const handleMouseLeave = useCallback(() => {
@@ -109,6 +119,9 @@ export default function LineSidebar({
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      if (animFrameId.current) {
+        cancelAnimationFrame(animFrameId.current);
+      }
     };
   }, [handleMouseMove]);
 
