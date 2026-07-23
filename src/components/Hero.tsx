@@ -1,7 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, Suspense, lazy } from "react";
 import { motion } from "motion/react";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { FaArrowUpRightFromSquare, FaArrowDown } from "react-icons/fa6";
 import { TRANSLATIONS } from "../data";
+
+const Dithering = lazy(() =>
+  import("@paper-design/shaders-react").then((mod) => ({ default: mod.Dithering }))
+);
 
 interface HeroProps {
   lang: "vi" | "en";
@@ -11,6 +15,7 @@ export default function Hero({ lang }: HeroProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [greeting, setGreeting] = useState("");
   const [currentTime, setCurrentTime] = useState("");
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const updateGreetingAndClock = () => {
@@ -268,16 +273,33 @@ export default function Hero({ lang }: HeroProps) {
     <section
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#090909]"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
+      {/* Paper Design Shaders Dithering Background */}
+      <Suspense fallback={<div className="absolute inset-0 bg-neutral-900/20" />}>
+        <div className="pointer-events-none absolute inset-0 z-0 opacity-55 mix-blend-screen">
+          <Dithering
+            colorBack="#00000000"
+            colorFront="#FF6A00"
+            shape="warp"
+            type="4x4"
+            speed={isHovered ? 0.6 : 0.2}
+            className="size-full"
+            minPixelRatio={1}
+          />
+        </div>
+      </Suspense>
+
       {/* Background Interactive Mesh Canvas */}
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full pointer-events-auto z-0"
+        className="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-60"
         id="hero-background-canvas"
       />
 
       {/* Cyber Math Matrix Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-85 overflow-hidden" id="hero-matrix-bg">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-60 overflow-hidden" id="hero-matrix-bg">
         <div className="jp-matrix">
           {["+", "−", "×", "÷", "=", "≠", "≈", "∞", "√", "∑", "∏", "∫", "∂", "∆", "π", "θ", "λ", "μ", "σ", "ω", "α", "β", "γ", "δ", "ε", "ζ", "η", "ι", "κ", "ν", "ξ", "ρ", "τ", "φ", "χ", "ψ", "∈", "∉", "∩", "∪", "⊂", "⊃", "⊆", "⊇", "∧", "∨", "¬", "⇒", "⇔", "∀", "∃", "ℕ", "ℤ", "ℚ", "ℝ", "ℂ", "|", "∥", "∠", "⊥", "≅", "∝", "∴", "∵", "⊕", "⊗", "⊥", "⊢", "⊨", "∇"].flatMap((s, i) =>
             Array.from({ length: 6 }).map((_, rIdx) => (
@@ -288,7 +310,7 @@ export default function Hero({ lang }: HeroProps) {
       </div>
 
       {/* Dark Vignette Mask Overlay to maintain 100% text legibility */}
-      <div className="absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(9,9,9,0.35)_0%,_rgba(9,9,9,0.70)_55%,_rgba(9,9,9,0.95)_100%)]" />
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(9,9,9,0.30)_0%,_rgba(9,9,9,0.65)_55%,_rgba(9,9,9,0.95)_100%)]" />
 
       {/* Top Lighting Glares */}
       <div className="absolute top-[-10%] left-[5%] brutalist-glow opacity-50 z-[1]" />
@@ -362,7 +384,7 @@ export default function Hero({ lang }: HeroProps) {
           Every bug teaches. Every build improves.
         </motion.div>
 
-        {/* Call to Actions */}
+        {/* Call to Actions with FontAwesome Icons */}
         <motion.div
           id="hero-ctas"
           initial={{ opacity: 0, y: 20 }}
@@ -372,22 +394,24 @@ export default function Hero({ lang }: HeroProps) {
         >
           <button
             onClick={() => handleScrollTo("app-work-section")}
-            className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#F5F5F3] text-[#090909] font-medium rounded-sm inline-flex items-center justify-center gap-2 group interactive"
+            className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#F5F5F3] text-[#090909] font-medium rounded-sm inline-flex items-center justify-center gap-2.5 group interactive"
           >
-            {t.heroExplore}
-            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-brand-orange" />
+            <span>{t.heroExplore}</span>
+            <span className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-brand-orange inline-flex items-center justify-center">
+              <FaArrowUpRightFromSquare />
+            </span>
           </button>
           
           <button
             onClick={() => handleScrollTo("app-contact-section")}
             className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-transparent border border-white/10 text-[#F5F5F3] rounded-sm inline-flex items-center justify-center gap-2 group interactive"
           >
-            {t.navStartProject}
+            <span>{t.navStartProject}</span>
             <span className="w-1.5 h-1.5 bg-brand-orange rounded-full group-hover:scale-125 transition-transform" />
           </button>
         </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Scroll indicator with FontAwesome FaArrowDown */}
         <motion.div
           id="hero-scroll-indicator"
           initial={{ opacity: 0 }}
@@ -418,7 +442,9 @@ export default function Hero({ lang }: HeroProps) {
             animate={{ y: [0, 4, 0] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
           >
-            <ArrowDown className="w-3.5 h-3.5 text-[#8E8E93] group-hover:text-brand-orange transition-colors" />
+            <span className="text-[#8E8E93] group-hover:text-brand-orange transition-colors text-xs inline-flex items-center justify-center">
+              <FaArrowDown />
+            </span>
           </motion.div>
         </motion.div>
       </div>
