@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Search, ZoomIn } from "lucide-react";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
 interface MagnifyingLensProps {
   children: React.ReactNode;
@@ -84,7 +84,7 @@ export default function MagnifyingLens({
               className="absolute top-3 left-3 bg-[#0a0a0af0] border border-brand-orange/30 rounded-xs py-1 px-2 font-mono text-[8px] text-brand-orange tracking-wider z-20 shadow-lg pointer-events-none flex items-center gap-1.5"
               id="magnifier-hud-top"
             >
-              <Search className="w-3 h-3 animate-pulse" />
+              <FaMagnifyingGlass className="w-3 h-3 animate-pulse" />
               <span>
                 {lang === "vi" ? "KÍNH PHÓNG ĐẠI: ĐANG KẾT NỐI" : "LENS RETICULE: LOCK_ON"}
               </span>

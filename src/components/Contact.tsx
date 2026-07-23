@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
-import { Send, ArrowUpRight, Check, AlertCircle, Coins } from "lucide-react";
+import { FaPaperPlane, FaArrowUpRightFromSquare, FaCheck, FaCircleExclamation, FaCoins } from "react-icons/fa6";
 import ZaloQRImg from "@/assets/zalo/zalo_qr.webp";
 
 interface ContactProps {

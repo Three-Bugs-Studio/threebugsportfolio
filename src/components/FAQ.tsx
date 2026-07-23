@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FAQ_DATA, TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
-import { Plus, Minus } from "lucide-react";
+import { FaPlus, FaMinus } from "react-icons/fa6";
 
 interface FAQProps {
   lang: "vi" | "en";
@@ -23,30 +23,33 @@ export default function FAQ({ lang }: FAQProps) {
 
       <div className="max-w-4xl mx-auto px-6 md:px-12 relative z-10">
         
-        {/* Label Indicator */}
-        <div className="flex items-center gap-3 mb-8 justify-center">
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange">
-            {t.faqLabel}
-          </span>
-          <span className="h-[1px] w-12 bg-white/10" />
-        </div>
-
-        {/* Heading */}
+        {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="font-display font-medium text-3xl md:text-4xl lg:text-5xl tracking-tight text-[#F5F5F3]">
-            {t.faqHeading}
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-orange/10 border border-brand-orange/20 rounded-full font-mono text-[11px] text-brand-orange uppercase tracking-widest mb-4">
+            <span>// {lang === "vi" ? "GIẢI ĐÁP BẰNG SỰ MINH BẠCH" : "RESOLVED WITH TRANSPARENCY"}</span>
+          </div>
+          <h2 className="font-display font-medium text-4xl md:text-5xl tracking-tight text-[#F5F5F3] mb-4">
+            {t.faqTitle}
           </h2>
+          <p className="font-sans text-sm text-[#8E8E93] max-w-lg mx-auto leading-relaxed">
+            {lang === "vi"
+              ? "Mọi thắc mắc về hợp đồng, tiến độ bàn giao và bảo hành đều được chúng tôi giải đáp công khai."
+              : "Clear, straightforward answers about development workflows, source code ownership, and warranties."}
+          </p>
         </div>
 
         {/* Accordion List */}
-        <div className="space-y-4 max-w-3xl mx-auto">
+        <div className="space-y-4">
           {list.map((item, idx) => {
             const isOpen = openIdx === idx;
             return (
               <div
                 key={idx}
-                className="border border-white/5 rounded-lg bg-[#111] overflow-hidden transition-all duration-300 hover:border-white/10"
-                id={`faq-item-${idx}`}
+                className={`border rounded-sm transition-all duration-300 overflow-hidden ${
+                  isOpen
+                    ? "bg-[#141414] border-brand-orange/40 shadow-lg"
+                    : "bg-[#0f0f0f] border-white/5 hover:border-white/20"
+                }`}
               >
                 {/* Accordion Trigger Header */}
                 <button
@@ -60,9 +63,9 @@ export default function FAQ({ lang }: FAQProps) {
                   </span>
                   <div className="flex-shrink-0 w-8 h-8 rounded-full bg-white/5 flex items-center justify-center border border-white/10 text-[#8E8E93] transition-colors">
                     {isOpen ? (
-                      <Minus className="w-4 h-4 text-brand-orange" />
+                      <FaMinus className="w-3.5 h-3.5 text-brand-orange" />
                     ) : (
-                      <Plus className="w-4 h-4" />
+                      <FaPlus className="w-3.5 h-3.5" />
                     )}
                   </div>
                 </button>

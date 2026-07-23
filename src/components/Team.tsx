@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { TEAM_DATA, TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
 import { 
-  Github, 
-  LayoutGrid, 
-  Sparkles, 
-  ArrowUpRight, 
-  X
-} from "lucide-react";
+  FaGithub, 
+  FaGrip, 
+  FaWandMagicSparkles, 
+  FaArrowUpRightFromSquare, 
+  FaXmark
+} from "react-icons/fa6";
 import { TeamMember } from "../types";
 import DuongPhuDongImg from "@/assets/profile/DuongPhuDongProfile.webp";
 import HuynhQuangDongImg from "@/assets/profile/HuynhQuangDongProfile.webp";

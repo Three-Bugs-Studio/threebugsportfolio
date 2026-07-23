@@ -1,24 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
-  X, 
-  ChevronLeft, 
-  ChevronRight, 
-  Laptop, 
-  Activity, 
-  ShoppingBag, 
-  Check, 
-  Copy, 
-  Search, 
-  Cpu, 
-  Database, 
-  Lock, 
-  TrendingUp, 
-  ShieldCheck, 
-  ArrowRight,
-  Sparkles,
-  RefreshCw
-} from "lucide-react";
+  FaXmark, 
+  FaChevronLeft, 
+  FaChevronRight, 
+  FaLaptop, 
+  FaChartLine, 
+  FaBagShopping, 
+  FaCheck, 
+  FaCopy, 
+  FaMagnifyingGlass, 
+  FaMicrochip, 
+  FaDatabase, 
+  FaLock, 
+  FaArrowTrendUp, 
+  FaShieldHalved, 
+  FaArrowRight,
+  FaWandMagicSparkles,
+  FaRotate
+} from "react-icons/fa6";
 import randomPhiTruongStore from "@/assets/randomphitruongstore.png";
 import storepage from "@/assets/storepage.webp";
 import aboutpage from "@/assets/aboutpage.webp";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SERVICES_DATA, TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
-import { PenTool, Globe, Database, Cpu, Terminal, ChevronRight, Wrench } from "lucide-react";
+import { FaPenNib, FaGlobe, FaDatabase, FaMicrochip, FaTerminal, FaChevronRight, FaWrench } from "react-icons/fa6";
 
 interface ServicesProps {
   lang: "vi" | "en";
@@ -12,23 +12,23 @@ export default function Services({ lang }: ServicesProps) {
   const servicesList = SERVICES_DATA[lang];
   const [activeId, setActiveId] = useState<string | null>(servicesList[0]?.id || null);
 
-  // Icon mapping helper
+  // Icon mapping helper with FontAwesome icons
   const getIcon = (iconName: string, className: string) => {
     switch (iconName) {
       case "PenTool":
-        return <PenTool className={className} />;
+        return <FaPenNib className={className} />;
       case "Globe":
-        return <Globe className={className} />;
+        return <FaGlobe className={className} />;
       case "Database":
-        return <Database className={className} />;
+        return <FaDatabase className={className} />;
       case "Cpu":
-        return <Cpu className={className} />;
+        return <FaMicrochip className={className} />;
       case "Terminal":
-        return <Terminal className={className} />;
+        return <FaTerminal className={className} />;
       case "Wrench":
-        return <Wrench className={className} />;
+        return <FaWrench className={className} />;
       default:
-        return <Terminal className={className} />;
+        return <FaTerminal className={className} />;
     }
   };
 
@@ -141,7 +141,7 @@ export default function Services({ lang }: ServicesProps) {
                     </div>
 
                     {/* Expand Chevron Icon */}
-                    <ChevronRight className={`w-5 h-5 text-[#8E8E93] group-hover:text-[#F5F5F3] transition-transform duration-500 mt-1 ${
+                    <FaChevronRight className={`w-5 h-5 text-[#8E8E93] group-hover:text-[#F5F5F3] transition-transform duration-500 mt-1 ${
                       isActive ? "rotate-90 text-brand-orange" : ""
                     }`} />
                   </div>

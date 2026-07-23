@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { PROCESS_DATA, TRANSLATIONS } from "../data";
 import { motion } from "motion/react";
-import { ArrowRight, Box, Calendar, Cpu, Layers, Milestone, Check } from "lucide-react";
+import { FaArrowRight, FaBox, FaCalendar, FaMicrochip, FaLayerGroup, FaLocationDot, FaCheck } from "react-icons/fa6";
 
 interface ProcessProps {
   lang: "vi" | "en";
@@ -108,7 +108,7 @@ export default function Process({ lang }: ProcessProps) {
               {/* Step Header */}
               <div>
                 <div className="flex items-center gap-2 mb-6">
-                  <Milestone className="w-4 h-4 text-brand-orange" />
+                  <FaLocationDot className="w-4 h-4 text-brand-orange" />
                   <span className="font-mono text-[10px] tracking-widest text-[#8E8E93] uppercase">
                     {lang === "vi" ? "GIAI ĐOẠN" : "PHASE"} {stepsList[activeStepIdx]?.number} / 05 — {stepsList[activeStepIdx]?.duration}
                   </span>
@@ -133,7 +133,7 @@ export default function Process({ lang }: ProcessProps) {
                   {stepsList[activeStepIdx]?.deliverables.map((deliv, dIdx) => (
                     <div key={deliv} className="flex items-center gap-2.5">
                       <div className="w-4 h-4 rounded-full bg-brand-orange/10 flex items-center justify-center shrink-0 border border-brand-orange/20">
-                        <Check className="w-2.5 h-2.5 text-brand-orange" />
+                        <FaCheck className="w-2.5 h-2.5 text-brand-orange" />
                       </div>
                       <span className="font-sans text-xs text-[#F5F5F3] font-light">
                         {deliv}

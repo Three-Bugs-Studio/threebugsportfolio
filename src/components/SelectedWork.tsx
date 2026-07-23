@@ -3,17 +3,17 @@ import { PROJECTS_DATA, TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
 import TechIcon from "./TechIcon";
 import { 
-  ArrowUpRight, 
-  Calendar, 
-  CheckCircle2, 
-  Cpu, 
-  Database, 
-  Activity, 
-  TrendingUp, 
-  Search,
-  Sparkles,
-  Image as ImageIcon
-} from "lucide-react";
+  FaArrowUpRightFromSquare, 
+  FaCalendar, 
+  FaCircleCheck, 
+  FaMicrochip, 
+  FaDatabase, 
+  FaChartLine, 
+  FaArrowTrendUp, 
+  FaMagnifyingGlass,
+  FaWandMagicSparkles,
+  FaImage
+} from "react-icons/fa6";
 import Lightbox from "./Lightbox";
 import randomPhiTruongStore from "@/assets/randomphitruongstore.png";
 import fortifyHomepage from "@/assets/fortifykitchen/fortify_homepage.webp";

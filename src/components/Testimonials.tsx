@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TESTIMONIALS_DATA, TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
-import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { FaQuoteLeft, FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
 interface TestimonialsProps {
   lang: "vi" | "en";
@@ -24,26 +24,18 @@ export default function Testimonials({ lang }: TestimonialsProps) {
 
   return (
     <section id="testimonials" className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative overflow-hidden">
-      {/* Subtle backlighting blur */}
-      <div className="absolute top-[40%] right-[-10%] brutalist-glow opacity-30" />
+      {/* Background Decorative Grid */}
+      <div className="absolute inset-0 swiss-grid opacity-5 pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10 text-center flex flex-col items-center">
+      <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center text-center">
         
-        {/* Label indicator */}
-        <div className="flex items-center gap-3 mb-12">
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange">
-            {t.testimonialsLabel}
-          </span>
-          <span className="h-[1px] w-12 bg-white/10" />
+        {/* Quote Icon */}
+        <div className="w-12 h-12 rounded-full bg-brand-orange/10 border border-brand-orange/20 flex items-center justify-center text-brand-orange mb-8">
+          <FaQuoteLeft className="w-5 h-5" />
         </div>
 
-        {/* Large Decorative Quote Symbol */}
-        <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center border border-white/10 mb-8 md:mb-12 text-brand-orange">
-          <Quote className="w-6 h-6 fill-current" />
-        </div>
-
-        {/* Dynamic Quote Text Block */}
-        <div className="min-h-[220px] md:min-h-[180px] w-full flex items-center justify-center">
+        {/* Dynamic Testimonial Card */}
+        <div className="min-h-[220px] md:min-h-[200px] flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIdx}
@@ -79,7 +71,7 @@ export default function Testimonials({ lang }: TestimonialsProps) {
             aria-label="Previous quote"
             id="testimonial-prev-btn"
           >
-            <ChevronLeft className="w-4 h-4" />
+            <FaChevronLeft className="w-3.5 h-3.5" />
           </button>
 
           {/* Dots Indicator */}
@@ -103,7 +95,7 @@ export default function Testimonials({ lang }: TestimonialsProps) {
             aria-label="Next quote"
             id="testimonial-next-btn"
           >
-            <ChevronRight className="w-4 h-4" />
+            <FaChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>
 

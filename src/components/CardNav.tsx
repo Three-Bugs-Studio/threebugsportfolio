@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Logo from "./Logo";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, ArrowUpRight, Sparkles } from "lucide-react";
+import { FaBars, FaXmark, FaArrowUpRightFromSquare, FaWandMagicSparkles } from "react-icons/fa6";
 import { TRANSLATIONS } from "../data";
 
 export interface CardNavLink {
@@ -206,8 +206,8 @@ export default function CardNav({
               id="card-nav-menu-btn"
             >
               <span className="w-2 h-2 rounded-full" style={{ backgroundColor: menuColor }} />
-              <span>{isOpen ? (lang === "vi" ? "ĐÓNG MENU" : "CLOSE") : (lang === "vi" ? "MENU THẺ" : "CARD NAV")}</span>
-              {isOpen ? <X className="w-4 h-4 text-brand-orange" /> : <Menu className="w-4 h-4 text-brand-orange" />}
+              <span>{isOpen ? (lang === "vi" ? "ĐÓNG MENU" : "CLOSE") : "MENU"}</span>
+              {isOpen ? <FaXmark className="w-4 h-4 text-brand-orange" /> : <FaBars className="w-4 h-4 text-brand-orange" />}
             </button>
 
             {/* Direct Call to Action Button */}
@@ -219,7 +219,7 @@ export default function CardNav({
               id="card-nav-cta-btn"
             >
               <span>{t.navStartProject}</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <FaArrowUpRightFromSquare className="w-3.5 h-3.5" />
             </a>
 
           </div>
@@ -243,8 +243,8 @@ export default function CardNav({
               {/* Header Label */}
               <div className="flex items-center justify-between mb-6 pb-3 border-b border-white/10">
                 <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#8E8E93]">
-                  <Sparkles className="w-4 h-4 text-brand-orange" />
-                  <span>{lang === "vi" ? "DANH MỤC THẺ NAVIGATION DỰ ÁN" : "STUDIO NAVIGATION CARDS"}</span>
+                  <FaWandMagicSparkles className="w-4 h-4 text-brand-orange" />
+                  <span>{lang === "vi" ? "DANH MỤC NAVIGATION DỰ ÁN" : "STUDIO NAVIGATION CARDS"}</span>
                 </div>
                 <span className="font-mono text-[10px] text-brand-orange">
                   // THREE BUGS STUDIO OS
@@ -290,7 +290,7 @@ export default function CardNav({
                           className="font-mono text-xs uppercase tracking-wider opacity-80 hover:opacity-100 hover:translate-x-1.5 transition-all flex items-center justify-between py-1 group/link border-b border-white/5 last:border-none"
                         >
                           <span>{link.label}</span>
-                          <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover/link:opacity-100 transition-opacity" />
+                          <FaArrowUpRightFromSquare className="w-3.5 h-3.5 opacity-0 group-hover/link:opacity-100 transition-opacity" />
                         </a>
                       ))}
                     </div>
@@ -316,3 +316,4 @@ export default function CardNav({
     </header>
   );
 }
+

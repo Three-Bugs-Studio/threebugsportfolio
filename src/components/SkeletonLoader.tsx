@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { 
-  Cpu, 
-  Terminal, 
-  Layers, 
-  Compass, 
-  Users, 
-  HelpCircle, 
-  MessageSquare, 
-  Send, 
-  CheckCircle2, 
-  Globe, 
-  Code, 
-  Shield 
-} from "lucide-react";
+  FaMicrochip, 
+  FaTerminal, 
+  FaLayerGroup, 
+  FaCompass, 
+  FaUsers, 
+  FaCircleQuestion, 
+  FaCommentDots, 
+  FaPaperPlane, 
+  FaCircleCheck, 
+  FaGlobe, 
+  FaCode, 
+  FaShieldHalved 
+} from "react-icons/fa6";
 
 // Common shimmering pulse skeleton class
 const pulseClass = "animate-pulse bg-white/5 rounded-sm";
