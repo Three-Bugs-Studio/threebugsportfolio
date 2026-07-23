@@ -3,7 +3,6 @@ import { TEAM_DATA, TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   Github, 
-  Network, 
   LayoutGrid, 
   Sparkles, 
   ArrowUpRight, 
@@ -56,8 +55,7 @@ const themeColors: Record<string, { bg: string; text: string; tagBg: string; bor
 export default function Team({ lang }: TeamProps) {
   const t = TRANSLATIONS[lang];
   const teamList = TEAM_DATA[lang];
-  const [viewMode, setViewMode] = useState<"showcase" | "diagram" | "grid">("showcase");
-  const [activeNodeId, setActiveNodeId] = useState<string | null>(null);
+  const [viewMode, setViewMode] = useState<"showcase" | "grid">("showcase");
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   const profileImages: Record<string, string> = {
@@ -107,8 +105,6 @@ export default function Team({ lang }: TeamProps) {
     },
   };
 
-  const activeMember = teamList.find((m) => m.nodeId === activeNodeId) || teamList[0];
-
   return (
     <section id="team" className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative overflow-hidden">
       {/* Background Swiss Grid Pattern */}
@@ -145,17 +141,6 @@ export default function Team({ lang }: TeamProps) {
               <span>{lang === "vi" ? "SHOWCASE ARCH" : "SHOWCASE ARCH"}</span>
             </button>
             <button
-              onClick={() => setViewMode("diagram")}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-sm font-mono text-xs transition-all interactive ${
-                viewMode === "diagram"
-                  ? "bg-brand-orange text-black font-semibold shadow-sm"
-                  : "text-[#8E8E93] hover:text-white"
-              }`}
-            >
-              <Network className="w-3.5 h-3.5" />
-              <span>{lang === "vi" ? "SƠ ĐỒ FLOW" : "DIAGRAM FLOW"}</span>
-            </button>
-            <button
               onClick={() => setViewMode("grid")}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-sm font-mono text-xs transition-all interactive ${
                 viewMode === "grid"
@@ -169,7 +154,7 @@ export default function Team({ lang }: TeamProps) {
           </div>
         </div>
 
-        {/* MODE 1: USER REQUESTED ARCH TEAM SHOWCASE */}
+        {/* MODE 1: ARCH TEAM SHOWCASE */}
         {viewMode === "showcase" && (
           <div className="w-full flex flex-col items-center text-center my-4">
             
@@ -208,7 +193,7 @@ export default function Team({ lang }: TeamProps) {
                   return (
                     <motion.div
                       key={member.name}
-                      className="w-[145px] sm:w-[170px] md:w-[210px] lg:w-[230px] shrink-0 my-2 md:my-0 cursor-pointer"
+                      className="w-[145px] sm:w-[170px] md:w-[210px] lg:w-[230px] shrink-0 my-2 md:my-0 cursor-pointer group"
                       variants={cardVariants}
                       whileHover={{ y: -16, scale: 1.06, zIndex: 40 }}
                       style={{ zIndex: teamList.length - index }}
@@ -217,30 +202,28 @@ export default function Team({ lang }: TeamProps) {
                       <div
                         className={`relative pt-6 pb-2 px-3 rounded-t-[50%] h-[310px] sm:h-[350px] md:h-[400px] flex flex-col items-center justify-between text-center overflow-hidden border border-white/20 shadow-2xl transition-shadow ${theme.bg}`}
                       >
-                        {/* Member Title Header inside Arch */}
-                        <div className={`z-10 ${theme.text} px-2`}>
-                          <span className={`font-mono text-[8px] sm:text-[9px] uppercase px-2 py-0.5 rounded-full border mb-1.5 inline-block font-bold tracking-wider ${theme.tagBg}`}>
-                            {member.colorTag.name}
-                          </span>
-                          <h3 className="font-display font-extrabold text-xs sm:text-sm md:text-base leading-tight">
+                        {/* Member Header inside Arch - Pure Color Circle Dot & Name only */}
+                        <div className={`z-10 ${theme.text} px-2 flex flex-col items-center`}>
+                          <span
+                            className="w-3 h-3 rounded-full mb-2 shadow-md border border-white/40 block"
+                            style={{ backgroundColor: member.colorTag.hex }}
+                          />
+                          <h3 className="font-display font-extrabold text-sm sm:text-base md:text-lg leading-tight drop-shadow-sm">
                             {member.name}
                           </h3>
-                          <p className="font-mono text-[9px] sm:text-[10px] opacity-85 mt-0.5 uppercase tracking-tight line-clamp-1">
-                            {member.role}
-                          </p>
                         </div>
 
                         {/* Member Photo Standing inside Arch Card */}
                         <img
                           src={img}
                           alt={member.name}
-                          className="absolute bottom-0 left-0 w-full h-[75%] sm:h-[78%] md:h-[82%] object-cover object-top drop-shadow-2xl transition-transform duration-500 hover:scale-105"
+                          className="absolute bottom-0 left-0 w-full h-[78%] sm:h-[80%] md:h-[84%] object-cover object-top drop-shadow-2xl transition-transform duration-500 group-hover:scale-105"
                         />
 
-                        {/* Bottom Highlight Indicator */}
-                        <div className="absolute bottom-2 inset-x-0 flex justify-center z-20 pointer-events-none">
-                          <span className="font-mono text-[8px] bg-black/60 text-white backdrop-blur-md px-2 py-0.5 rounded-full uppercase tracking-widest border border-white/20">
-                            CLICK TO VIEW
+                        {/* Bottom Highlight View Detail Indicator */}
+                        <div className="absolute bottom-2.5 inset-x-0 flex justify-center z-20 pointer-events-none">
+                          <span className="font-mono text-[9px] bg-black/75 text-white backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-widest border border-white/25 shadow-lg group-hover:bg-brand-orange group-hover:text-black transition-colors font-bold">
+                            {lang === "vi" ? "CHI TIẾT" : "VIEW DETAIL"}
                           </span>
                         </div>
                       </div>
@@ -252,238 +235,7 @@ export default function Team({ lang }: TeamProps) {
           </div>
         )}
 
-        {/* MODE 2: INTERACTIVE WORKFLOW DIAGRAM */}
-        {viewMode === "diagram" && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-16"
-          >
-            {/* Legend & Tag Color Guide */}
-            <div className="mb-8 p-4 bg-[#111111] border border-white/10 rounded-sm flex flex-wrap items-center justify-between gap-4">
-              <div className="flex items-center gap-2 font-mono text-xs text-[#8E8E93]">
-                <Sparkles className="w-4 h-4 text-brand-orange" />
-                <span>{lang === "vi" ? "MÃ MÀU TAG CHUYÊN MÔN KĨ THUẬT:" : "SIGNATURE TECHNICAL COLOR TAGS:"}</span>
-              </div>
-              <div className="flex flex-wrap gap-2.5">
-                {teamList.map((m) => (
-                  <button
-                    key={m.name}
-                    onMouseEnter={() => setActiveNodeId(m.nodeId)}
-                    onMouseLeave={() => setActiveNodeId(null)}
-                    className={`font-mono text-[10px] uppercase px-2.5 py-1 rounded-sm border transition-all flex items-center gap-1.5 interactive ${
-                      m.colorTag.badgeClass
-                    } ${activeNodeId === m.nodeId ? "ring-2 ring-white" : "opacity-85 hover:opacity-100"}`}
-                  >
-                    <span className="w-2 h-2 rounded-full" style={{ backgroundColor: m.colorTag.hex }} />
-                    <span>{m.name.split(" ")[0]}: {m.colorTag.name}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Workflow Diagram Main Visual Box */}
-            <div className="relative bg-[#0d0d0d] border border-white/10 rounded-sm p-6 md:p-12 overflow-x-auto min-w-[700px]">
-              
-              {/* Flowchart Steps Title Header */}
-              <div className="flex justify-between items-center mb-10 pb-4 border-b border-white/5 font-mono text-[11px] text-[#8E8E93]">
-                <span>// STEP 01: REQUIREMENT</span>
-                <span>// STEP 02: DESIGN UI</span>
-                <span>// STEP 03: DEV & DB PIPELINE</span>
-                <span>// STEP 04: QA & SHIP</span>
-              </div>
-
-              {/* Diagram Network Nodes Pipeline Layout */}
-              <div className="grid grid-cols-5 gap-4 relative z-10 items-stretch">
-                
-                {/* Node 1: Duong Phu Dong */}
-                <div
-                  onMouseEnter={() => setActiveNodeId("node_dong")}
-                  onMouseLeave={() => setActiveNodeId(null)}
-                  className={`flex flex-col justify-between p-5 rounded-sm bg-[#121212] border-2 transition-all duration-300 cursor-pointer ${
-                    activeNodeId === "node_dong" || !activeNodeId
-                      ? "border-[#FF6A00] shadow-[0_0_25px_rgba(255,106,0,0.2)]"
-                      : "border-white/10 opacity-60"
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="font-mono text-[9px] px-2 py-0.5 rounded-sm bg-[#FF6A00]/20 text-[#FF6A00] border border-[#FF6A00]/40 uppercase font-bold">
-                        [ TAG: CYBER ORANGE ]
-                      </span>
-                      <span className="font-mono text-[10px] text-[#8E8E93]">01</span>
-                    </div>
-                    <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden border-2 border-[#FF6A00]">
-                      <img src={profileImages["Duong Phu Dong"]} alt="Duong Phu Dong" className="w-full h-full object-cover" />
-                    </div>
-                    <h4 className="font-display font-bold text-white text-center text-sm">Duong Phu Dong</h4>
-                    <p className="font-mono text-[9px] text-[#FF6A00] text-center uppercase tracking-wider mt-0.5">
-                      {teamList[0].diagramRole}
-                    </p>
-                  </div>
-                  <div className="mt-4 pt-3 border-t border-white/10 font-mono text-[9px] text-[#8E8E93] leading-tight">
-                    • Khởi tạo đặc tả<br />
-                    • Quản lý tiến độ<br />
-                    • Chốt Hợp đồng
-                  </div>
-                </div>
-
-                {/* Node 2: Thu Tran */}
-                <div
-                  onMouseEnter={() => setActiveNodeId("node_thutran")}
-                  onMouseLeave={() => setActiveNodeId(null)}
-                  className={`flex flex-col justify-between p-5 rounded-sm bg-[#121212] border-2 transition-all duration-300 cursor-pointer ${
-                    activeNodeId === "node_thutran" || !activeNodeId
-                      ? "border-[#A855F7] shadow-[0_0_25px_rgba(168,85,247,0.2)]"
-                      : "border-white/10 opacity-60"
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="font-mono text-[9px] px-2 py-0.5 rounded-sm bg-[#A855F7]/20 text-[#C084FC] border border-[#A855F7]/40 uppercase font-bold">
-                        [ TAG: NEON VIOLET ]
-                      </span>
-                      <span className="font-mono text-[10px] text-[#8E8E93]">02</span>
-                    </div>
-                    <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden border-2 border-[#A855F7]">
-                      <img src={profileImages["Thu Tran"]} alt="Thu Tran" className="w-full h-full object-cover" />
-                    </div>
-                    <h4 className="font-display font-bold text-white text-center text-sm">Thu Tran</h4>
-                    <p className="font-mono text-[9px] text-[#C084FC] text-center uppercase tracking-wider mt-0.5">
-                      {teamList[1].diagramRole}
-                    </p>
-                  </div>
-                  <div className="mt-4 pt-3 border-t border-white/10 font-mono text-[9px] text-[#8E8E93] leading-tight">
-                    • Thiết kế Figma UI/UX<br />
-                    • Design System Token<br />
-                    • Trải nghiệm giao diện
-                  </div>
-                </div>
-
-                {/* Node 3: Ho Quang Huy */}
-                <div
-                  onMouseEnter={() => setActiveNodeId("node_hohuy")}
-                  onMouseLeave={() => setActiveNodeId(null)}
-                  className={`flex flex-col justify-between p-5 rounded-sm bg-[#121212] border-2 transition-all duration-300 cursor-pointer ${
-                    activeNodeId === "node_hohuy" || !activeNodeId
-                      ? "border-[#10B981] shadow-[0_0_25px_rgba(16,185,129,0.2)]"
-                      : "border-white/10 opacity-60"
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="font-mono text-[9px] px-2 py-0.5 rounded-sm bg-[#10B981]/20 text-[#34D399] border border-[#10B981]/40 uppercase font-bold">
-                        [ TAG: EMERALD MINT ]
-                      </span>
-                      <span className="font-mono text-[10px] text-[#8E8E93]">03</span>
-                    </div>
-                    <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden border-2 border-[#10B981]">
-                      <img src={profileImages["Ho Quang Huy"]} alt="Ho Quang Huy" className="w-full h-full object-cover" />
-                    </div>
-                    <h4 className="font-display font-bold text-white text-center text-sm">Ho Quang Huy</h4>
-                    <p className="font-mono text-[9px] text-[#34D399] text-center uppercase tracking-wider mt-0.5">
-                      {teamList[3].diagramRole}
-                    </p>
-                  </div>
-                  <div className="mt-4 pt-3 border-t border-white/10 font-mono text-[9px] text-[#8E8E93] leading-tight">
-                    • Fullstack React/Next.js<br />
-                    • Docker & Cloud DevOps<br />
-                    • Máy chủ & CI/CD
-                  </div>
-                </div>
-
-                {/* Node 4: Hao Vu */}
-                <div
-                  onMouseEnter={() => setActiveNodeId("node_haovu")}
-                  onMouseLeave={() => setActiveNodeId(null)}
-                  className={`flex flex-col justify-between p-5 rounded-sm bg-[#121212] border-2 transition-all duration-300 cursor-pointer ${
-                    activeNodeId === "node_haovu" || !activeNodeId
-                      ? "border-[#F43F5E] shadow-[0_0_25px_rgba(244,63,94,0.2)]"
-                      : "border-white/10 opacity-60"
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="font-mono text-[9px] px-2 py-0.5 rounded-sm bg-[#F43F5E]/20 text-[#FB7185] border border-[#F43F5E]/40 uppercase font-bold">
-                        [ TAG: ROSE CRIMSON ]
-                      </span>
-                      <span className="font-mono text-[10px] text-[#8E8E93]">04</span>
-                    </div>
-                    <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden border-2 border-[#F43F5E]">
-                      <img src={profileImages["Hao Vu"]} alt="Hao Vu" className="w-full h-full object-cover" />
-                    </div>
-                    <h4 className="font-display font-bold text-white text-center text-sm">Hao Vu</h4>
-                    <p className="font-mono text-[9px] text-[#FB7185] text-center uppercase tracking-wider mt-0.5">
-                      {teamList[4].diagramRole}
-                    </p>
-                  </div>
-                  <div className="mt-4 pt-3 border-t border-white/10 font-mono text-[9px] text-[#8E8E93] leading-tight">
-                    • CSDL PostgreSQL<br />
-                    • Lập trình REST API<br />
-                    • Bảo mật Backend
-                  </div>
-                </div>
-
-                {/* Node 5: Huynh Quang Dong */}
-                <div
-                  onMouseEnter={() => setActiveNodeId("node_hoangdong")}
-                  onMouseLeave={() => setActiveNodeId(null)}
-                  className={`flex flex-col justify-between p-5 rounded-sm bg-[#121212] border-2 transition-all duration-300 cursor-pointer ${
-                    activeNodeId === "node_hoangdong" || !activeNodeId
-                      ? "border-[#06B6D4] shadow-[0_0_25px_rgba(6,182,212,0.2)]"
-                      : "border-white/10 opacity-60"
-                  }`}
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="font-mono text-[9px] px-2 py-0.5 rounded-sm bg-[#06B6D4]/20 text-[#38BDF8] border border-[#06B6D4]/40 uppercase font-bold">
-                        [ TAG: ELECTRIC CYAN ]
-                      </span>
-                      <span className="font-mono text-[10px] text-[#8E8E93]">05</span>
-                    </div>
-                    <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden border-2 border-[#06B6D4]">
-                      <img src={profileImages["Huynh Quang Dong"]} alt="Huynh Quang Dong" className="w-full h-full object-cover" />
-                    </div>
-                    <h4 className="font-display font-bold text-white text-center text-sm">Huynh Quang Dong</h4>
-                    <p className="font-mono text-[9px] text-[#38BDF8] text-center uppercase tracking-wider mt-0.5">
-                      {teamList[2].diagramRole}
-                    </p>
-                  </div>
-                  <div className="mt-4 pt-3 border-t border-white/10 font-mono text-[9px] text-[#8E8E93] leading-tight">
-                    • Kiểm thử QA & Security<br />
-                    • Quy trình Scrum/Agile<br />
-                    • Bàn giao & Bảo hành
-                  </div>
-                </div>
-
-              </div>
-
-              {/* Connected Active Member Spotlight Bar */}
-              <div className="mt-8 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full animate-pulse" style={{ backgroundColor: activeMember.colorTag.hex }} />
-                  <span className="font-mono text-xs text-white">
-                    {lang === "vi" ? "Thành viên đang chọn:" : "Selected Member Focus:"} <strong>{activeMember.name}</strong>
-                  </span>
-                  <span className={`font-mono text-[10px] px-2 py-0.5 rounded-sm border ${activeMember.colorTag.badgeClass}`}>
-                    {activeMember.colorTag.name}
-                  </span>
-                </div>
-                <div className="flex flex-wrap gap-1.5">
-                  {activeMember.specialties.map((spec) => (
-                    <span key={spec} className="font-mono text-[10px] text-[#D4D4D8] bg-white/5 border border-white/10 px-2 py-0.5 rounded-sm">
-                      {spec}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-            </div>
-          </motion.div>
-        )}
-
-        {/* MODE 3: DETAILED MEMBER CARDS GRID */}
+        {/* MODE 2: DETAILED MEMBER CARDS GRID */}
         {viewMode === "grid" && (
           <div className="mt-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -512,7 +264,7 @@ export default function Team({ lang }: TeamProps) {
                         [ {tag.name} ]
                       </span>
                       <span className="font-mono text-[10px] text-[#8E8E93]">
-                        NODE 0{idx + 1}
+                        MEMBER 0{idx + 1}
                       </span>
                     </div>
 
