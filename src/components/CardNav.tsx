@@ -93,7 +93,7 @@ export default function CardNav({
       links: [
         { label: lang === "vi" ? "Form Tư Vấn Dự Án (Trực Tiếp)" : "Consultation Form (Direct)", href: "#app-contact-section", ariaLabel: "Consultation Form" },
         { label: "Email: dongduong840@gmail.com", href: "mailto:dongduong840@gmail.com", ariaLabel: "Direct Email", isExternal: true },
-        { label: "Zalo / Call: 0945 929 780", href: "https://zalo.me/0945929780", ariaLabel: "Zalo Contact", isExternal: true }
+        { label: "GitHub: Three-Bugs-Studio", href: "https://github.com/Three-Bugs-Studio", ariaLabel: "GitHub Repository", isExternal: true }
       ]
     }
   ];
@@ -305,7 +305,7 @@ export default function CardNav({
                   <span>{lang === "vi" ? "TRẠNG THÁI: SẴN SÀNG NHẬN DỰ ÁN MỚI" : "STATUS: AVAILABLE FOR NEW PROJECTS"}</span>
                 </div>
                 <div>
-                  <span>HOTLINE: <strong>0945 929 780</strong></span>
+                  <span>EMAIL: <strong>dongduong840@gmail.com</strong></span>
                 </div>
               </div>
 
