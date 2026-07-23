@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import CustomCursor from "./components/CustomCursor";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -292,9 +291,6 @@ export default function App() {
     <div className="relative min-h-screen w-full overflow-x-hidden bg-[#090909] text-[#F5F5F3] font-sans selection:bg-brand-orange selection:text-[#090909]" id="root-app-container">
       {/* Global CRT Scanline Hardware Overlay */}
       <div className="crt-overlay" id="crt-scanline-overlay" />
-
-      {/* Premium Cursor Follower Interaction */}
-      <CustomCursor />
 
       {/* Floating Vertical Dot Navigation Menu */}
       <DotNavigation lang={lang} />

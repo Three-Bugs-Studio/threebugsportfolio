@@ -121,12 +121,7 @@ body {
   transform: rotate(180deg);
 }
 
-/* Hide default OS cursor on devices with a mouse to let custom 8-bit cursor take over */
-@media (pointer: fine) {
-  html, body, a, button, select, input, textarea, [role="button"], .interactive {
-    cursor: none !important;
-  }
-}
+
 
 /* CRT Scanline Overlay */
 .crt-overlay {
