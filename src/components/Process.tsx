@@ -197,7 +197,7 @@ export default function Process({ lang }: ProcessProps) {
                         {step.deliverables.map((deliv) => (
                           <div key={deliv} className="flex items-center gap-2">
                             <div className="w-3.5 h-3.5 rounded-full bg-brand-orange/10 flex items-center justify-center shrink-0 border border-brand-orange/20">
-                              <Check className="w-2 h-2 text-brand-orange" />
+                              <FaCheck className="w-2 h-2 text-brand-orange" />
                             </div>
                             <span className="font-sans text-xs text-[#F5F5F3] font-light">
                               {deliv}

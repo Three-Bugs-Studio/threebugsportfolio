@@ -137,7 +137,7 @@ export default function Team({ lang }: TeamProps) {
                   : "text-[#8E8E93] hover:text-white"
               }`}
             >
-              <Sparkles className="w-3.5 h-3.5" />
+              <FaWandMagicSparkles className="w-3.5 h-3.5" />
               <span>{lang === "vi" ? "SHOWCASE ARCH" : "SHOWCASE ARCH"}</span>
             </button>
             <button
@@ -148,7 +148,7 @@ export default function Team({ lang }: TeamProps) {
                   : "text-[#8E8E93] hover:text-white"
               }`}
             >
-              <LayoutGrid className="w-3.5 h-3.5" />
+              <FaGrip className="w-3.5 h-3.5" />
               <span>{lang === "vi" ? "THẺ CHI TIẾT" : "MEMBER CARDS"}</span>
             </button>
           </div>
@@ -172,7 +172,7 @@ export default function Team({ lang }: TeamProps) {
                   className="btn-stacked font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#F5F5F3] text-[#090909] font-bold rounded-sm inline-flex items-center gap-2 group interactive"
                 >
                   <span>{lang === "vi" ? "NHẬN TƯ VẤN ĐỘI NGŨ" : "FIND YOUR DEVELOPER"}</span>
-                  <ArrowUpRight className="w-4 h-4 text-brand-orange group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <FaArrowUpRightFromSquare className="w-4 h-4 text-brand-orange group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </button>
               </div>
             </div>
@@ -313,7 +313,7 @@ export default function Team({ lang }: TeamProps) {
                           className="text-[#8E8E93] hover:text-white transition-colors interactive flex items-center gap-1 font-mono text-xs"
                           aria-label={`${member.name} Github`}
                         >
-                          <Github className="w-4 h-4" />
+                          <FaGithub className="w-4 h-4" />
                           <span>Code</span>
                         </a>
                       </div>
@@ -353,7 +353,7 @@ export default function Team({ lang }: TeamProps) {
                   onClick={() => setSelectedMember(null)}
                   className="absolute top-4 right-4 text-[#8E8E93] hover:text-white transition-colors p-1"
                 >
-                  <X className="w-5 h-5" />
+                  <FaXmark className="w-5 h-5" />
                 </button>
 
                 <div className="flex items-center gap-4 mb-6">
@@ -365,38 +365,50 @@ export default function Team({ lang }: TeamProps) {
                     />
                   </div>
                   <div>
-                    <span className={`font-mono text-[9px] uppercase px-2 py-0.5 rounded-sm border inline-block mb-1 font-bold ${selectedMember.colorTag.badgeClass}`}>
-                      {selectedMember.colorTag.name}
-                    </span>
-                    <h3 className="font-display font-bold text-xl text-white">
+                    <h3 className="font-display font-medium text-xl text-[#F5F5F3]">
                       {selectedMember.name}
                     </h3>
-                    <p className="font-mono text-xs text-brand-orange uppercase">
+                    <p className="font-sans text-xs text-[#8E8E93] mt-0.5">
                       {selectedMember.role}
                     </p>
+                    <span 
+                      className="font-mono text-[9px] uppercase px-2 py-0.5 rounded-xs inline-block mt-2 font-bold"
+                      style={{ 
+                        backgroundColor: `${selectedMember.colorTag.hex}20`,
+                        color: selectedMember.colorTag.hex,
+                        border: `1px solid ${selectedMember.colorTag.hex}40`
+                      }}
+                    >
+                      {selectedMember.colorTag.label}
+                    </span>
                   </div>
                 </div>
 
-                <p className="font-sans text-sm text-[#8E8E93] leading-relaxed mb-6">
+                <p className="font-sans text-xs md:text-sm text-[#8E8E93] leading-relaxed mb-6 font-light">
                   {selectedMember.bio}
                 </p>
 
+                {/* Technical Stack Tags */}
                 <div className="mb-6">
-                  <span className="font-mono text-[10px] text-[#8E8E93] uppercase block mb-2">
-                    // SPECIALTIES & RESPONSIBILITIES
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-brand-orange block mb-2 font-bold">
+                    SPECIALIZED STACK
                   </span>
                   <div className="flex flex-wrap gap-1.5">
-                    {selectedMember.specialties.map((s) => (
-                      <span key={s} className="font-mono text-xs text-white bg-white/5 border border-white/10 px-2.5 py-1 rounded-sm">
-                        {s}
+                    {selectedMember.techStack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="font-mono text-[10px] bg-white/5 border border-white/10 px-2 py-1 rounded-xs text-[#F5F5F3]"
+                      >
+                        {tech}
                       </span>
                     ))}
                   </div>
                 </div>
 
+                {/* Modal Footer Link */}
                 {selectedMember.socials.github && (
-                  <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-                    <span className="font-mono text-xs text-[#8E8E93]">
+                  <div className="pt-4 border-t border-white/5 flex justify-between items-center">
+                    <span className="font-mono text-[10px] text-[#8E8E93]">
                       ROLE: {selectedMember.diagramRole}
                     </span>
                     <a
@@ -405,7 +417,7 @@ export default function Team({ lang }: TeamProps) {
                       rel="noreferrer"
                       className="btn-stacked font-mono text-xs bg-[#FF6A00] text-black px-4 py-2 rounded-sm font-bold flex items-center gap-2"
                     >
-                      <Github className="w-4 h-4" />
+                      <FaGithub className="w-4 h-4" />
                       <span>GITHUB PROFILE</span>
                     </a>
                   </div>

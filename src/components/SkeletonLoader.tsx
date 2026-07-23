@@ -195,7 +195,7 @@ export function AboutSkeleton({ onLoaded, lang }: SkeletonProps) {
               >
                 <div className="flex items-center justify-between mb-8">
                   <div className={`p-3 rounded-sm ${isLit ? "bg-brand-orange/10 text-brand-orange" : "bg-white/5 text-[#8e8e93]"}`}>
-                    <Layers className="w-5 h-5" />
+                    <FaLayerGroup className="w-5 h-5" />
                   </div>
                   <span className="font-mono text-xs text-[#8e8e93]">{card.label}</span>
                 </div>
@@ -277,7 +277,7 @@ export function ServicesSkeleton({ onLoaded, lang }: SkeletonProps) {
                 >
                   <div className="flex items-start gap-5 w-full">
                     <div className={`p-2.5 rounded-sm shrink-0 ${active ? "bg-brand-orange/15 text-brand-orange" : "bg-white/5 text-[#8e8e93]"}`}>
-                      <Code className="w-5 h-5" />
+                      <FaCode className="w-5 h-5" />
                     </div>
                     <div className="w-full space-y-3">
                       <div className="font-mono text-xs font-semibold text-white/90 flex items-center gap-2">
@@ -289,7 +289,7 @@ export function ServicesSkeleton({ onLoaded, lang }: SkeletonProps) {
                   </div>
                   <div className="shrink-0 flex items-center">
                     {active ? (
-                      <CheckCircle2 className="w-5 h-5 text-[#27C93F]" />
+                      <FaCircleCheck className="w-5 h-5 text-[#27C93F]" />
                     ) : (
                       <span className="w-5 h-5 rounded-full border border-white/10 animate-spin border-t-brand-orange shrink-0" />
                     )}
@@ -378,7 +378,7 @@ export function SelectedWorkSkeleton({ onLoaded, lang }: SkeletonProps) {
             <div className="my-auto py-12 flex flex-col items-center justify-center space-y-4 relative z-10">
               <div className="relative">
                 <div className={`${pulseClass} h-36 w-36 rounded-full border border-brand-orange/10 flex items-center justify-center`} />
-                <Compass className="w-10 h-10 text-brand-orange/20 absolute inset-0 m-auto animate-spin" style={{ animationDuration: "12s" }} />
+                <FaCompass className="w-10 h-10 text-brand-orange/20 absolute inset-0 m-auto animate-spin" style={{ animationDuration: "12s" }} />
               </div>
               <div className="font-mono text-xs text-brand-orange bg-[#090909] px-3 py-1 border border-white/5 rounded-sm">
                 COMPILING RENDER BUFFERS: {progress}%
@@ -515,7 +515,7 @@ export function TechnologySkeleton({ onLoaded, lang }: SkeletonProps) {
                 }`}
               >
                 <div className={`p-3 rounded-sm ${isFinished ? "bg-[#27C93F]/10 text-[#27C93F]" : isCurrent ? "bg-brand-orange/10 text-brand-orange" : "bg-white/5 text-[#8e8e93]"}`}>
-                  <Cpu className="w-6 h-6" />
+                  <FaMicrochip className="w-6 h-6" />
                 </div>
                 
                 <div className="space-y-1">
@@ -591,7 +591,7 @@ export function TeamSkeleton({ onLoaded, lang }: SkeletonProps) {
                     />
                   </svg>
                   <div className={`w-28 h-28 rounded-full flex items-center justify-center ${pulseClass}`}>
-                    <Users className="w-8 h-8 text-white/10" />
+                    <FaUsers className="w-8 h-8 text-white/10" />
                   </div>
                 </div>
 
@@ -694,7 +694,7 @@ export function FAQSkeleton({ onLoaded, lang }: SkeletonProps) {
                 }`}
               >
                 <div className="flex items-center gap-3 w-full">
-                  <HelpCircle className={`w-4.5 h-4.5 shrink-0 ${isParsed ? "text-brand-orange" : "text-[#8e8e93]/30"}`} />
+                  <FaCircleQuestion className={`w-4.5 h-4.5 shrink-0 ${isParsed ? "text-brand-orange" : "text-[#8e8e93]/30"}`} />
                   <div className="font-mono text-xs font-semibold text-white/80">{faq.title}</div>
                 </div>
                 <div className="shrink-0 text-mono text-[9px] text-[#8e8e93]">
@@ -757,7 +757,7 @@ export function ContactSkeleton({ onLoaded, lang }: SkeletonProps) {
             disabled 
             className="w-full h-11 bg-white/5 rounded-sm flex items-center justify-center gap-2 border border-white/5 text-xs font-mono text-[#8e8e93]"
           >
-            <Send className="w-4 h-4 text-[#8e8e93]/50" />
+            <FaPaperPlane className="w-4 h-4 text-[#8e8e93]/50" />
             <span>ESTABLISHING TUNNEL: {progress}%</span>
           </button>
         </div>

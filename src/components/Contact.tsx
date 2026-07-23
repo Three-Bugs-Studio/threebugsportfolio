@@ -412,7 +412,7 @@ export default function Contact({ lang }: ContactProps) {
                       ) : (
                         <>
                           {t.contactSendBtn}
-                          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-brand-orange" />
+                          <FaArrowUpRightFromSquare className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-brand-orange" />
                         </>
                       )}
                     </button>
@@ -427,7 +427,7 @@ export default function Contact({ lang }: ContactProps) {
                     id="contact-success-panel"
                   >
                     <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 flex items-center justify-center mb-6">
-                      <Check className="w-6 h-6 stroke-[3]" />
+                      <FaCheck className="w-6 h-6 stroke-[3]" />
                     </div>
 
                     <h3 className="font-display font-medium text-2xl text-[#F5F5F3] mb-4">
