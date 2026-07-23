@@ -202,27 +202,24 @@ export default function Team({ lang }: TeamProps) {
                       <div
                         className={`relative pt-6 pb-2 px-3 rounded-t-[50%] h-[310px] sm:h-[350px] md:h-[400px] flex flex-col items-center justify-between text-center overflow-hidden border border-white/20 shadow-2xl transition-shadow ${theme.bg}`}
                       >
-                        {/* Member Header inside Arch - Pure Color Circle Dot & Name only */}
-                        <div className={`z-10 ${theme.text} px-2 flex flex-col items-center`}>
-                          <span
-                            className="w-3 h-3 rounded-full mb-2 shadow-md border border-white/40 block"
-                            style={{ backgroundColor: member.colorTag.hex }}
-                          />
-                          <h3 className="font-display font-extrabold text-sm sm:text-base md:text-lg leading-tight drop-shadow-sm">
-                            {member.name}
-                          </h3>
-                        </div>
-
                         {/* Member Photo Standing inside Arch Card */}
                         <img
                           src={img}
                           alt={member.name}
-                          className="absolute bottom-0 left-0 w-full h-[78%] sm:h-[80%] md:h-[84%] object-cover object-top drop-shadow-2xl transition-transform duration-500 group-hover:scale-105"
+                          className="absolute inset-0 w-full h-full object-cover object-top drop-shadow-2xl transition-transform duration-500 group-hover:scale-105"
                         />
 
+                        {/* Top Subtle Signature Color Circle Indicator */}
+                        <div className="absolute top-3.5 z-20 flex justify-center w-full pointer-events-none">
+                          <span
+                            className="w-3 h-3 rounded-full shadow-lg border border-white/40 block"
+                            style={{ backgroundColor: member.colorTag.hex }}
+                          />
+                        </div>
+
                         {/* Bottom Highlight View Detail Indicator */}
-                        <div className="absolute bottom-2.5 inset-x-0 flex justify-center z-20 pointer-events-none">
-                          <span className="font-mono text-[9px] bg-black/75 text-white backdrop-blur-md px-3 py-1 rounded-full uppercase tracking-widest border border-white/25 shadow-lg group-hover:bg-brand-orange group-hover:text-black transition-colors font-bold">
+                        <div className="absolute bottom-3 inset-x-0 flex justify-center z-20 pointer-events-none">
+                          <span className="font-mono text-[9px] bg-black/80 text-white backdrop-blur-md px-3.5 py-1 rounded-full uppercase tracking-widest border border-white/25 shadow-xl group-hover:bg-brand-orange group-hover:text-black transition-all font-bold">
                             {lang === "vi" ? "CHI TIẾT" : "VIEW DETAIL"}
                           </span>
                         </div>
