@@ -91,9 +91,9 @@ export default function CardNav({
       bgColor: "#FF6A00",
       textColor: "#090909",
       links: [
-        { label: lang === "vi" ? "Gửi Yêu Cầu Tư Vấn" : "Start Project Inquiry", href: "#app-contact-section", ariaLabel: "Contact" },
-        { label: "Zalo: 0945 929 780", href: "https://zalo.me/0945929780", ariaLabel: "Zalo", isExternal: true },
-        { label: "GitHub: Three-Bugs-Studio", href: "https://github.com/Three-Bugs-Studio", ariaLabel: "GitHub", isExternal: true }
+        { label: lang === "vi" ? "Form Tư Vấn Dự Án (Trực Tiếp)" : "Consultation Form (Direct)", href: "#app-contact-section", ariaLabel: "Consultation Form" },
+        { label: "Email: dongduong840@gmail.com", href: "mailto:dongduong840@gmail.com", ariaLabel: "Direct Email", isExternal: true },
+        { label: "Zalo / Call: 0945 929 780", href: "https://zalo.me/0945929780", ariaLabel: "Zalo Contact", isExternal: true }
       ]
     }
   ];
