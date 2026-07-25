@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { VALUES_DATA, TRANSLATIONS } from "../data";
+import { 
+  FaLaptopCode, 
+  FaRocket, 
+  FaPalette, 
+  FaUserGear, 
+  FaDatabase, 
+  FaFileCode 
+} from "react-icons/fa6";
+import { TRANSLATIONS } from "../data";
+import { CategoryList, Category } from "./CategoryList";
 
 interface AboutProps {
   lang: "vi" | "en";
@@ -10,7 +19,6 @@ export default function About({ lang }: AboutProps) {
   const t = TRANSLATIONS[lang];
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Animating values variants with a high-end subtle entrance
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
@@ -20,9 +28,75 @@ export default function About({ lang }: AboutProps) {
     },
   };
 
+  const categories: Category[] = lang === "vi" ? [
+    {
+      id: "performance",
+      title: "Tốc Độ Tải & Tối Ưu Mã Nguồn",
+      subtitle: "Kiến trúc mã nguồn tinh gọn, đạt tốc độ phản hồi dưới 1 giây và chỉ số Lighthouse tối ưu trên mọi thiết bị.",
+      icon: <FaRocket />,
+      featured: true,
+    },
+    {
+      id: "design",
+      title: "Thiết Kế Giao Diện Chuẩn Thương Hiệu",
+      subtitle: "Tạo dựng phong cách hiển thị hiện đại, nhất quán với bộ nhận diện và trải nghiệm người dùng của từng doanh nghiệp.",
+      icon: <FaPalette />,
+    },
+    {
+      id: "direct-engineer",
+      title: "Làm Việc Trực Tiếp Với Kỹ Sư Lập Trình",
+      subtitle: "Khách hàng trao đổi trực tiếp với lập trình viên phụ trách dự án, giúp truyền tải yêu cầu chính xác và đúng tiến độ.",
+      icon: <FaUserGear />,
+    },
+    {
+      id: "database",
+      title: "Cơ Sở Dữ Liệu & Hạ Tầng Bảo Mật",
+      subtitle: "Xây dựng hệ thống CSDL chuẩn hóa PostgreSQL / Supabase, phân quyền an toàn và sẵn sàng vận hành trên Cloud.",
+      icon: <FaDatabase />,
+    },
+    {
+      id: "delivery",
+      title: "Bàn Giao Source Code & Bảo Hành Kỹ Thuật",
+      subtitle: "Bàn giao 100% quyền sở hữu mã nguồn sạch, tài liệu kiến trúc hệ thống và chính sách hỗ trợ kỹ thuật lâu dài.",
+      icon: <FaFileCode />,
+    },
+  ] : [
+    {
+      id: "performance",
+      title: "Code Architecture & High Speed",
+      subtitle: "Clean, optimized codebase tailored for under-1-second load times and top performance metrics on all devices.",
+      icon: <FaRocket />,
+      featured: true,
+    },
+    {
+      id: "design",
+      title: "Custom UI & Brand Identity",
+      subtitle: "Crafting modern, consistent design systems tailored precisely to your company brand guidelines.",
+      icon: <FaPalette />,
+    },
+    {
+      id: "direct-engineer",
+      title: "Direct Engineer Communication",
+      subtitle: "Collaborate directly with the developers building your system for clear technical specifications and swift delivery.",
+      icon: <FaUserGear />,
+    },
+    {
+      id: "database",
+      title: "Secure Database & Cloud Stack",
+      subtitle: "Structured PostgreSQL and Supabase configurations with strict role authorization and deployment readiness.",
+      icon: <FaDatabase />,
+    },
+    {
+      id: "delivery",
+      title: "Full Code Ownership & Warranty",
+      subtitle: "100% source code handover with complete architecture documentation and long-term technical warranty.",
+      icon: <FaFileCode />,
+    },
+  ];
+
   return (
-    <section id="about" className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative">
-      {/* Swiss grid alignment indicator guides (subtle background layout lines) */}
+    <section id="about" className="py-20 md:py-28 bg-[#090909] border-t border-white/5 relative">
+      {/* Subtle grid layout lines */}
       <div className="absolute inset-0 flex justify-between px-6 md:px-12 pointer-events-none opacity-5">
         <div className="w-[1px] h-full bg-white" />
         <div className="w-[1px] h-full bg-white hidden md:block" />
@@ -39,8 +113,8 @@ export default function About({ lang }: AboutProps) {
           <span className="h-[1px] w-12 bg-white/10" />
         </motion.div>
 
-        {/* Editorial Philosophy Statement */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 mb-24 md:mb-32">
+        {/* Editorial Overview Statement */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 mb-16">
           <div className="lg:col-span-8">
             <motion.h2
               variants={itemVariants}
@@ -84,105 +158,16 @@ export default function About({ lang }: AboutProps) {
           </div>
         </div>
 
-        {/* Studio Values / Pillars Section */}
-        <div id="values" className="pt-16 border-t border-white/5">
-          <motion.div variants={itemVariants} className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-16">
-            <span className="font-mono text-xs uppercase tracking-[0.3em] text-[#8E8E93]">
-              {lang === "vi" ? "TRỤ CỘT THIẾT KẾ" : "STUDIO PILLARS"}
-            </span>
-            <span className="font-sans text-xs text-[#8E8E93] font-light">
-              {lang === "vi" ? "BA NGUYÊN TẮC QUẢN TRỊ MỌI BẢN DỰNG" : "THREE PRINCIPLES THAT GOVERN EVERY BUILD"}
-            </span>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-            {VALUES_DATA[lang].map((value) => {
-              // Custom SVG vectors to represent the values visually
-              return (
-                <motion.div
-                  key={value.id}
-                  id={`value-card-${value.id}`}
-                  variants={itemVariants}
-                  className="group flex flex-col p-8 bg-[#121212]/30 border border-white/5 hover:border-white/10 transition-all duration-300 relative overflow-hidden rounded-sm"
-                >
-                  {/* Subtle top edge glow */}
-                  <span className="absolute top-0 left-0 w-0 h-[1.5px] bg-brand-orange group-hover:w-full transition-all duration-500 ease-out" />
-
-                  {/* Visual Motif (Isometric Geometry in SVG) */}
-                  <div className="h-32 w-full flex items-center justify-center mb-8 bg-[#090909]/40 border border-white/5 rounded-sm relative overflow-hidden group-hover:bg-[#090909]/60 transition-colors">
-                    {value.id === "foundation" && (
-                      <svg viewBox="0 0 100 100" className="w-16 h-16 opacity-45 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
-                        <defs>
-                          <linearGradient id="glow-orange" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="#FF6A00" stopOpacity="1" />
-                            <stop offset="100%" stopColor="#FF3A00" stopOpacity="0.4" />
-                          </linearGradient>
-                        </defs>
-                        {/* Foundation Isometric Cube Wireframe */}
-                        <path d="M 50,15 L 85,32.5 L 85,67.5 L 50,85 L 15,67.5 L 15,32.5 Z" stroke="rgba(255,255,255,0.15)" strokeWidth="1" fill="none" />
-                        <path d="M 50,15 L 85,32.5 L 50,50 L 15,32.5 Z" stroke="rgba(255,255,255,0.25)" strokeWidth="1" fill="none" />
-                        <path d="M 50,50 L 50,85" stroke="url(#glow-orange)" strokeWidth="2" />
-                        <path d="M 15,32.5 L 50,50 L 85,32.5" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" fill="none" />
-                        <path d="M 15,67.5 L 50,50 L 85,67.5" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" fill="none" />
-                        {/* Core active core */}
-                        <circle cx="50" cy="50" r="5" fill="#FF6A00" className="animate-pulse" />
-                        {/* External orbit lines */}
-                        <circle cx="50" cy="50" r="38" stroke="rgba(255,106,0,0.15)" strokeWidth="0.75" strokeDasharray="3,3" fill="none" />
-                      </svg>
-                    )}
-
-                    {value.id === "craft" && (
-                      <svg viewBox="0 0 100 100" className="w-16 h-16 opacity-45 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
-                        {/* Craft Bezier Vector Layout */}
-                        <path d="M 15,50 C 35,15, 65,85, 85,50" stroke="#FF6A00" strokeWidth="2" fill="none" />
-                        <path d="M 15,50 C 35,15, 65,85, 85,50" stroke="rgba(255,255,255,0.2)" strokeWidth="0.75" strokeDasharray="2,2" fill="none" />
-                        {/* Control Handles */}
-                        <line x1="35" y1="23.5" x2="35" y2="76.5" stroke="rgba(255,255,255,0.15)" strokeWidth="0.75" />
-                        <line x1="65" y1="23.5" x2="65" y2="76.5" stroke="rgba(255,255,255,0.15)" strokeWidth="0.75" />
-                        {/* Interaction nodes */}
-                        <circle cx="35" cy="23.5" r="3" fill="#FF6A00" stroke="#090909" strokeWidth="1" />
-                        <circle cx="35" cy="76.5" r="3" fill="#FF6A00" stroke="#090909" strokeWidth="1" />
-                        <circle cx="65" cy="23.5" r="3" fill="#F5F5F3" stroke="#090909" strokeWidth="1" />
-                        <circle cx="65" cy="76.5" r="3" fill="#F5F5F3" stroke="#090909" strokeWidth="1" />
-                        <circle cx="15" cy="50" r="3.5" fill="#F5F5F3" stroke="#090909" strokeWidth="1" />
-                        <circle cx="85" cy="50" r="3.5" fill="#F5F5F3" stroke="#090909" strokeWidth="1" />
-                      </svg>
-                    )}
-
-                    {value.id === "partnership" && (
-                      <svg viewBox="0 0 100 100" className="w-16 h-16 opacity-45 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
-                        {/* Partnership Intersecting Rings */}
-                        <circle cx="38" cy="50" r="22" stroke="rgba(255,255,255,0.15)" strokeWidth="1" fill="none" />
-                        <circle cx="62" cy="50" r="22" stroke="rgba(255,255,255,0.15)" strokeWidth="1" fill="none" />
-                        {/* Intersection segment highlight */}
-                        <path d="M 50,33.5 A 22,22 0 0,0 50,66.5 A 22,22 0 0,0 50,33.5 Z" fill="rgba(255, 106, 0, 0.12)" stroke="#FF6A00" strokeWidth="2" />
-                        <circle cx="50" cy="50" r="4" fill="#FF6A00" />
-                        {/* Connector nodes */}
-                        <circle cx="20" cy="50" r="2.5" fill="#F5F5F3" />
-                        <circle cx="80" cy="50" r="2.5" fill="#F5F5F3" />
-                      </svg>
-                    )}
-                  </div>
-
-                  {/* Value Label */}
-                  <div className="font-mono text-[10px] uppercase tracking-widest text-brand-orange mb-3 flex items-center gap-1.5">
-                    <span>//</span> {value.subtitle}
-                  </div>
-
-                  {/* Value Title */}
-                  <h3 className="font-display font-medium text-xl text-[#F5F5F3] mb-4">
-                    {value.title}
-                  </h3>
-
-                  {/* Value Description */}
-                  <p className="font-sans text-xs text-[#8E8E93] leading-relaxed font-light">
-                    {value.description}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
+        {/* Interactive CategoryList Component for Studio Portrait & Pillars */}
+        <motion.div variants={itemVariants} className="pt-8 border-t border-white/5">
+          <CategoryList
+            title={lang === "vi" ? "ĐẶC ĐIỂM VẬN HÀNH STUDIO" : "STUDIO OPERATIONAL PRINCIPLES"}
+            subtitle={lang === "vi" ? "Những tiêu chuẩn kỹ thuật cốt lõi được áp dụng nhất quán trong từng bản dựng." : "Core technical standards applied consistently across all product builds."}
+            headerIcon={<FaLaptopCode className="w-7 h-7" />}
+            categories={categories}
+            className="px-0 py-4"
+          />
+        </motion.div>
       </div>
     </section>
   );
