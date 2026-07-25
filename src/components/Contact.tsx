@@ -329,32 +329,48 @@ export default function Contact({ lang }: ContactProps) {
                         </div>
                       </div>
 
-                      {/* Displaying Options with real time cross conversion text */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
+                      {/* Displaying Options with clean full-width cards and checkmark indicators */}
+                      <div className="flex flex-col gap-3 mb-2">
                         {budgetOptions.map((opt, oIdx) => {
                           const isSelected = budgetIndex === oIdx;
                           const labelText = currency === "VND" ? rawVND[oIdx] : rawUSD[oIdx];
                           const convertedText = currency === "VND" ? rawUSD[oIdx] : rawVND[oIdx];
+                          const packageBadge = oIdx === 0 ? (lang === "vi" ? "GÓI 1" : "PLAN 1") : oIdx === 1 ? (lang === "vi" ? "GÓI 2" : "PLAN 2") : (lang === "vi" ? "GÓI 3" : "PLAN 3");
 
                           return (
                             <button
                               key={oIdx}
                               type="button"
                               onClick={() => setBudgetIndex(oIdx)}
-                              className={`py-3 px-4 text-left border rounded-sm transition-all focus:outline-none flex flex-col justify-between h-16 ${
-                                oIdx === 2 ? "sm:col-span-2" : ""
-                              } ${
+                              className={`w-full text-left p-3.5 md:p-4 border rounded-sm transition-all focus:outline-none flex items-center justify-between gap-3 cursor-pointer ${
                                 isSelected
-                                  ? "bg-brand-orange/15 border-brand-orange text-brand-orange"
-                                  : "bg-[#090909]/40 border-white/5 text-[#8E8E93] hover:border-white/10 hover:text-[#F5F5F3]"
+                                  ? "bg-brand-orange/15 border-brand-orange text-brand-orange shadow-[0_0_15px_rgba(255,106,0,0.1)]"
+                                  : "bg-[#090909]/60 border-white/10 text-[#8E8E93] hover:border-white/20 hover:text-[#F5F5F3]"
                               }`}
                             >
-                              <span className="font-sans text-xs font-semibold tracking-wide">
-                                {labelText}
-                              </span>
-                              <span className="font-mono text-[8px] opacity-60 tracking-wider">
-                                {lang === "vi" ? "Quy đổi: " : "Converted: "} {convertedText}
-                              </span>
+                              <div className="flex items-center gap-3 min-w-0 flex-1">
+                                <span className={`font-mono text-[9px] font-bold px-2 py-0.5 rounded-xs shrink-0 tracking-wider ${
+                                  isSelected ? "bg-brand-orange text-black" : "bg-white/10 text-[#8E8E93]"
+                                }`}>
+                                  {packageBadge}
+                                </span>
+                                <div className="flex flex-col min-w-0">
+                                  <span className={`font-sans text-xs md:text-sm font-medium leading-snug break-words ${
+                                    isSelected ? "text-[#F5F5F3]" : "text-[#D0D0D5]"
+                                  }`}>
+                                    {labelText}
+                                  </span>
+                                  <span className="font-mono text-[9px] opacity-70 tracking-wide mt-0.5">
+                                    {lang === "vi" ? "Quy đổi: " : "Converted: "} {convertedText}
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
+                                isSelected ? "border-brand-orange bg-brand-orange text-black" : "border-white/20 bg-transparent text-transparent"
+                              }`}>
+                                <FaCheck className="w-2.5 h-2.5" />
+                              </div>
                             </button>
                           );
                         })}
