@@ -360,11 +360,11 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
   vi: [
     {
       id: "phase_1_mvp",
-      badge: "GÓI KHỞI TẠO // 3 PHASE",
-      name: "Gói Web Khởi Tạo & UI/UX MVP",
-      tagline: "Quy trình 3 Giai Đoạn hoàn chỉnh dành cho cá nhân, landing page & thương hiệu khởi nghiệp.",
-      priceVnd: "8 - 10 Triệu VNĐ",
-      priceUsd: "~ $320 - $400 USD",
+      badge: "GÓI WEB 1 // 3 PHASE",
+      name: "Gói Web Cơ Bản & Landing Page",
+      tagline: "Quy trình 3 Phase tối ưu chi phí dành cho cá nhân, landing page giới thiệu & thương hiệu khởi nghiệp.",
+      priceVnd: "4 - 5 Triệu VNĐ",
+      priceUsd: "~ $160 - $200 USD",
       timeline: "1 - 2 Tuần (Trọn gói 3 Phase)",
       phases: [
         { number: "Phase 1", title: "Figma UI/UX Design", duration: "Ngày 1 - 3", description: "Phác thảo Wireframe & thiết kế giao diện độc quyền chuẩn thương hiệu." },
@@ -373,13 +373,13 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       ],
       benefits: [
         "Trọn gói quy trình phát triển 3 Giai Đoạn minh bạch",
-        "Bao gồm Tên Miền Quốc Tế chính thức (.com / .net) 1 năm",
-        "Bao gồm Hạ tầng Hosting Cloud tốc độ cao (Vercel/Netlify Pro)",
-        "Thiết kế giao diện độc quyền trên Figma (Desktop & Mobile)",
-        "Lập trình Landing Page / Web Giới thiệu siêu nhanh < 1s",
+        "Thiết kế giao diện Web độc quyền chuẩn thương hiệu",
+        "Lập trình Landing Page / Web Giới thiệu tối ưu tốc độ < 1s",
+        "Tối ưu hiển thị Responsive mượt mà trên Mobile & Desktop",
+        "Tích hợp nút Liên Hệ Zalo, Hotline, Messenger, Email trực tiếp",
         "Tối ưu hóa chuẩn SEO Google Baseline & Meta Social Cards",
-        "Tích hợp nút Liên Hệ Zalo, Hotline, Messenger trực tiếp",
-        "Bảo hành & Hỗ trợ vá lỗi kỹ thuật 1 tháng sau bàn giao"
+        "Miễn phí hỗ trợ cấu hình Tên miền & Hosting Cloud 1 năm",
+        "Bảo hành & Hỗ trợ kỹ thuật 1 tháng sau khi bàn giao"
       ],
       milestones: [
         { stage: "Đặt Cọc Phase 1", percentage: "30%", description: "Thống nhất đặc tả & Phác thảo bản vẽ Figma UI/UX" },
@@ -389,26 +389,26 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     },
     {
       id: "phase_2_fullstack",
-      badge: "GÓI THƯƠNG MẠI // 3 PHASE",
-      name: "Gói Website Bán Hàng & E-Commerce",
-      tagline: "Quy trình 3 Giai Đoạn toàn diện xây dựng cửa hàng trực tuyến & hệ thống CMS hoàn chỉnh.",
-      priceVnd: "15 - 20 Triệu VNĐ",
-      priceUsd: "~ $600 - $800 USD",
-      timeline: "3 - 5 Tuần (Trọn gói 3 Phase)",
+      badge: "GÓI WEB 2 // 3 PHASE",
+      name: "Gói Web Thương Mại & E-Commerce",
+      tagline: "Quy trình 3 Phase toàn diện xây dựng website bán hàng, CMS quản lý & hệ thống doanh nghiệp.",
+      priceVnd: "8 - 10 Triệu VNĐ",
+      priceUsd: "~ $320 - $400 USD",
+      timeline: "2 - 4 Tuần (Trọn gói 3 Phase)",
       phases: [
         { number: "Phase 1", title: "UX Blueprint & DB Schema", duration: "Tuần 1", description: "Dựng sơ đồ trải nghiệm mua hàng & kiến trúc cơ sở dữ liệu PostgreSQL." },
         { number: "Phase 2", title: "Fullstack & Cart/Payment", duration: "Tuần 2 - 3", description: "Lập trình Web CMS Admin, Giỏ hàng & Tích hợp cổng thanh toán QR." },
-        { number: "Phase 3", title: "Security, Launch & SLA", duration: "Tuần 4 - 5", description: "Kiểm thử QA bảo mật, bàn giao mã nguồn & Bảo trì hỗ trợ sự cố nhanh." }
+        { number: "Phase 3", title: "Security, Launch & SLA", duration: "Tuần 4", description: "Kiểm thử QA bảo mật, bàn giao mã nguồn & Bảo trì hỗ trợ sự cố nhanh." }
       ],
       benefits: [
-        "Trọn gói quy trình phát triển 3 Giai Đoạn cho dự án E-Commerce",
-        "Bao gồm Tên Miền Quốc Tế chính thức (.com / .net / .vn) 1 năm",
-        "Bao gồm Hạ tầng Server Cloud & CSDL PostgreSQL/Supabase cao cấp",
-        "Xây dựng Web Thương Mại Điện Tử / Web Doanh Nghiệp hoàn chỉnh",
-        "Trang Admin CMS quản lý bài viết, sản phẩm, đơn hàng dễ sử dụng",
-        "Tích hợp cổng thanh toán trực tuyến (Chuyển khoản QR / MoMo / VNPay)",
-        "Tối ưu tốc độ SEO Google Lighthouse score 95 - 99%",
-        "Bảo hành 3 tháng & Cam kết xử lý vá lỗi nhanh nhất có thể"
+        "Trọn gói quy trình phát triển 3 Giai Đoạn cho dự án Thương Mại",
+        "Xây dựng Website Bán Hàng / E-Commerce / Portal Doanh Nghiệp toàn diện",
+        "Trang Admin CMS quản lý sản phẩm, bài viết & đơn hàng tiện lợi",
+        "Tích hợp chuyển khoản QR tự động / Cổng thanh toán tiện lợi",
+        "Quản lý cơ sở dữ liệu PostgreSQL / Supabase Cloud bảo mật",
+        "Tối ưu hóa SEO Google chuẩn Lighthouse score 95 - 99%",
+        "Bao gồm Tên miền quốc tế chính thức & Server CSDL 1 năm",
+        "Bảo hành 3 tháng & Hỗ trợ xử lý sự cố kỹ thuật nhanh chóng"
       ],
       milestones: [
         { stage: "Khởi Động Phase 1", percentage: "30%", description: "Thiết kế UI/UX & Cấu trúc CSDL Database Schema" },
@@ -418,42 +418,42 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     },
     {
       id: "phase_3_enterprise",
-      badge: "GÓI ENTERPRISE // 3 PHASE",
-      name: "Gói Enterprise & SaaS Platform AI",
-      tagline: "Quy trình 3 Giai Đoạn nâng cao tích hợp AI Agent, Microservices & Docker Cloud.",
-      priceVnd: "Từ 30+ Triệu VNĐ",
-      priceUsd: "~ $1,200+ USD",
-      timeline: "6 - 8+ Tuần (Trọn gói 3 Phase)",
+      badge: "GÓI APP ĐẶC BIỆT // 3 PHASE",
+      name: "Gói App Đặc Biệt & Platform AI",
+      tagline: "Quy trình 3 Phase chuyên sâu xây dựng Web App, Mobile App & Hệ thống tích hợp AI theo yêu cầu.",
+      priceVnd: "Từ 12 Triệu VNĐ",
+      priceUsd: "~ $480+ USD",
+      timeline: "4 - 6+ Tuần (Trọn gói 3 Phase)",
       phases: [
-        { number: "Phase 1", title: "System Spec & Architecture", duration: "Tuần 1 - 2", description: "Thiết lập PuDo Code spec document & thiết kế kiến trúc Microservices." },
-        { number: "Phase 2", title: "AI Integration & Pipeline", duration: "Tuần 3 - 5", description: "Lập trình AI Agent Gemini, Vector DB & cấu hình Docker CI/CD." },
-        { number: "Phase 3", title: "Load Audit & Priority SLA", duration: "Tuần 6 - 8+", description: "Kiểm thử chịu tải, bàn giao tài liệu hệ thống & Cam kết SLA 6-12 tháng." }
+        { number: "Phase 1", title: "App Architecture & Spec", duration: "Tuần 1 - 2", description: "Phân tích đặc tả App, UX Flow & Thiết kế kiến trúc Backend/API." },
+        { number: "Phase 2", title: "App Engineering & AI", duration: "Tuần 3 - 4", description: "Lập trình Web/Mobile App, Tích hợp AI Agent & CSDL chịu tải." },
+        { number: "Phase 3", title: "Deployment & Priority SLA", duration: "Tuần 5 - 6+", description: "Đóng gói Docker/App Store, kiểm thử chịu tải & Bảo trì ưu tiên 6-12 tháng." }
       ],
       benefits: [
-        "Trọn gói quy trình phát triển 3 Giai Đoạn cho nền tảng Enterprise",
-        "Bao gồm Tên Miền Doanh Nghiệp chính thức & Hạ tầng Cloud Server riêng",
-        "Tích hợp tính năng AI Agent (Trợ lý tìm kiếm dữ liệu, Chatbot thông minh)",
-        "Kiến trúc Docker Cloud, CI/CD Pipeline tự động triển khai",
-        "Phân quyền đa quản trị viên (Multi-role Access Control)",
-        "Tư vấn kiến trúc hệ thống chịu tải lớn & Bảo mật nhiều lớp",
-        "Bàn giao trọn bộ tài liệu System Specs & Quy trình PuDo Code",
-        "Cam kết SLA Bảo trì & Hỗ trợ vá lỗi ưu tiên nhanh nhất có thể (6 - 12 tháng)"
+        "Phát triển Ứng dụng Web App / Mobile App chuyên sâu theo yêu cầu riêng",
+        "Tích hợp tính năng AI Agent thông minh (Chatbot AI, Gợi ý dữ liệu tự động)",
+        "Kiến trúc hệ thống nâng cao, tích hợp API & CSDL chịu tải lớn",
+        "Cấu hình Docker Cloud, quy trình CI/CD tự động triển khai",
+        "Phân quyền đa tài khoản (Multi-role) & Bảo mật nhiều lớp cho hệ thống",
+        "Tư vấn kiến trúc giải pháp công nghệ & Tối ưu hóa trải nghiệm người dùng",
+        "Bàn giao 100% Mã nguồn app & Bộ tài liệu kiến trúc PuDo Code",
+        "Cam kết SLA Bảo trì & Hỗ trợ kỹ thuật ưu tiên từ 6 - 12 tháng"
       ],
       milestones: [
-        { stage: "Phân Tích Phase 1", percentage: "30%", description: "Chốt tài liệu System Architecture & Spec Blueprint" },
-        { stage: "Lập Trình Phase 2", percentage: "40%", description: "Lập trình Backend Microservices, Docker & AI Agent" },
-        { stage: "Nghiệm Thu Phase 3", percentage: "30%", description: "Cấu hình Server Cloud, đào tạo vận hành & Bảo trì ưu tiên" }
+        { stage: "Phân Tích Phase 1", percentage: "30%", description: "Chốt tài liệu System Architecture & App Spec Blueprint" },
+        { stage: "Lập Trình Phase 2", percentage: "40%", description: "Lập trình Web/Mobile App, API Cloud & AI Agent" },
+        { stage: "Nghiệm Thu Phase 3", percentage: "30%", description: "Cấu hình Server, bàn giao 100% Mã nguồn & Đào tạo vận hành" }
       ]
     }
   ],
   en: [
     {
       id: "phase_1_mvp",
-      badge: "MVP PACKAGE // 3 PHASES",
-      name: "MVP Launch & UI/UX Package",
-      tagline: "Complete 3-Phase execution workflow tailored for individuals, landing pages & startup brands.",
-      priceVnd: "8 - 10 Million VND",
-      priceUsd: "~ $320 - $400 USD",
+      badge: "WEB PACKAGE 1 // 3 PHASES",
+      name: "Basic Web & Landing Page",
+      tagline: "Cost-effective 3-Phase execution tailored for individuals, showcase landing pages & startup brands.",
+      priceVnd: "4 - 5 Million VND",
+      priceUsd: "~ $160 - $200 USD",
       timeline: "1 - 2 Weeks (Full 3 Phases)",
       phases: [
         { number: "Phase 1", title: "Figma UI/UX Design", duration: "Days 1 - 3", description: "Wireframe layout sketches & custom brand-aligned Figma UI UX design." },
@@ -462,12 +462,12 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       ],
       benefits: [
         "Full transparent 3-Phase development process",
-        "Includes 1-Year Official Custom Domain (.com / .net)",
-        "Includes High-Speed Cloud Hosting (Vercel/Netlify Pro)",
-        "Exclusive Figma UI/UX prototype (Desktop & Mobile)",
+        "Custom brand-aligned web interface design",
         "Fast-loading Landing Page / Corporate Web (< 1s load time)",
+        "Fully Responsive layout across Mobile, Tablet & Desktop",
+        "Direct integration of Contact buttons (Zalo, Hotline, Email)",
         "Google SEO Baseline & Meta Social Cards optimization",
-        "Direct integration of Contact buttons (Zalo, Hotline, Messenger)",
+        "Free assistance with Domain setup & Cloud Hosting 1 year",
         "1 Month warranty & technical support after handover"
       ],
       milestones: [
@@ -478,26 +478,26 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     },
     {
       id: "phase_2_fullstack",
-      badge: "E-COMMERCE // 3 PHASES",
-      name: "Professional Fullstack Web",
-      tagline: "Complete 3-Phase execution building full e-commerce stores & custom admin CMS.",
-      priceVnd: "15 - 20 Million VND",
-      priceUsd: "~ $600 - $800 USD",
-      timeline: "3 - 5 Weeks (Full 3 Phases)",
+      badge: "WEB PACKAGE 2 // 3 PHASES",
+      name: "Commercial Web & E-Commerce",
+      tagline: "Comprehensive 3-Phase execution building online stores, custom CMS & corporate platforms.",
+      priceVnd: "8 - 10 Million VND",
+      priceUsd: "~ $320 - $400 USD",
+      timeline: "2 - 4 Weeks (Full 3 Phases)",
       phases: [
         { number: "Phase 1", title: "UX Blueprint & DB Schema", duration: "Week 1", description: "Mapping shopping user journey & PostgreSQL database schema architecture." },
         { number: "Phase 2", title: "Fullstack & Cart/Payment", duration: "Weeks 2 - 3", description: "Admin CMS dashboard, Shopping cart & Instant QR payment gateway." },
-        { number: "Phase 3", title: "Security, Launch & SLA", duration: "Weeks 4 - 5", description: "Security QA audit, code repository handover & 3-month priority support." }
+        { number: "Phase 3", title: "Security, Launch & SLA", duration: "Week 4", description: "Security QA audit, code repository handover & 3-month priority support." }
       ],
       benefits: [
-        "Full 3-Phase development pipeline for E-Commerce builds",
-        "Includes 1-Year Official Custom Domain (.com / .net / .vn)",
-        "Includes High-Concurrency PostgreSQL / Supabase Database Hosting",
+        "Full 3-Phase development pipeline for Commercial builds",
         "Complete E-Commerce Store or Fullstack Corporate Portal",
         "Easy-to-use Admin CMS for managing products, articles & orders",
-        "Online payment gateway integration (QR Code / Bank Transfer)",
+        "Instant QR payment gateway & online payment integration",
+        "Secure PostgreSQL / Supabase Cloud database architecture",
         "Google Lighthouse performance score optimized to 95 - 99%",
-        "3 Months warranty + Commitment to fix bugs as quickly as possible"
+        "Includes Official Custom Domain & Database Server 1 year",
+        "3 Months warranty & commitment to fast technical hotfixes"
       ],
       milestones: [
         { stage: "Phase 1 Initiation", percentage: "30%", description: "UI/UX approval & Database Schema architecture" },
@@ -507,31 +507,31 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     },
     {
       id: "phase_3_enterprise",
-      badge: "ENTERPRISE // 3 PHASES",
-      name: "Enterprise & Scale Platform",
-      tagline: "Advanced 3-Phase execution integrating Gemini AI Agents, Microservices & Docker Cloud.",
-      priceVnd: "From 30+ Million VND",
-      priceUsd: "~ $1,200+ USD",
-      timeline: "6 - 8+ Weeks (Full 3 Phases)",
+      badge: "SPECIAL APP // 3 PHASES",
+      name: "Special App & AI Platform",
+      tagline: "Deep 3-Phase execution building Web Apps, Mobile Apps & AI-integrated platforms.",
+      priceVnd: "From 12+ Million VND",
+      priceUsd: "~ $480+ USD",
+      timeline: "4 - 6+ Weeks (Full 3 Phases)",
       phases: [
-        { number: "Phase 1", title: "System Spec & Architecture", duration: "Weeks 1 - 2", description: "Locking PuDo Code specs & designing microservices cloud layout." },
-        { number: "Phase 2", title: "AI Integration & Pipeline", duration: "Weeks 3 - 5", description: "Building Gemini AI Agent, Vector DB & Docker CI/CD workflows." },
-        { number: "Phase 3", title: "Load Audit & Priority SLA", duration: "Weeks 6 - 8+", description: "Load testing, system documentation handover & 6-12 month priority SLA." }
+        { number: "Phase 1", title: "App Architecture & Spec", duration: "Weeks 1 - 2", description: "Locking PuDo Code specs & designing mobile/web app API architecture." },
+        { number: "Phase 2", title: "App Engineering & AI", duration: "Weeks 3 - 4", description: "Building Web/Mobile App, Gemini AI Agent & Cloud DB workflows." },
+        { number: "Phase 3", title: "Deployment & Priority SLA", duration: "Weeks 5 - 6+", description: "Docker/App Store setup, load testing & 6-12 month priority SLA." }
       ],
       benefits: [
-        "Full 3-Phase development pipeline for Enterprise platforms",
-        "Includes Official Corporate Domain & Dedicated Cloud Server",
-        "Custom AI Agent integration (Vector RAG, smart assistant)",
-        "Docker Cloud setup with automated CI/CD pipelines",
-        "Multi-role Access Control & security permissions",
-        "Scalable microservices consulting & multi-layered security",
-        "Complete System Specs & PuDo Code framework documentation",
-        "Long-term priority SLA maintenance & fast incident hotfixes"
+        "Custom Web App / Mobile App development built to exact specifications",
+        "Smart AI Agent integration (AI Chatbot, automated data recommendations)",
+        "Advanced architecture with high-concurrency API & Database design",
+        "Docker Cloud setup with automated CI/CD deployment pipelines",
+        "Multi-role Access Control & multi-layered enterprise security",
+        "Tech stack architecture consulting & UX optimization",
+        "Complete 100% source code handover & PuDo Code system docs",
+        "Priority SLA maintenance & technical support for 6 - 12 months"
       ],
       milestones: [
-        { stage: "Phase 1 Blueprint", percentage: "30%", description: "Finalizing System Architecture & Spec Document" },
-        { stage: "Phase 2 Build", percentage: "40%", description: "Backend Microservices, Docker & AI Agent coding" },
-        { stage: "Phase 3 Launch", percentage: "30%", description: "Cloud production setup, staff training & priority support" }
+        { stage: "Phase 1 Blueprint", percentage: "30%", description: "Finalizing System Architecture & App Spec Document" },
+        { stage: "Phase 2 Build", percentage: "40%", description: "Mobile/Web App frontend, Backend API & AI Agent coding" },
+        { stage: "Phase 3 Launch", percentage: "30%", description: "Cloud production setup, 100% code handover & priority support" }
       ]
     }
   ]
