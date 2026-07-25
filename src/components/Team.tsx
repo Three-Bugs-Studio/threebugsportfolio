@@ -290,7 +290,7 @@ export default function Team({ lang }: TeamProps) {
 
                     {/* Specialties Badges colorized */}
                     <div className="flex flex-wrap gap-1.5 mt-auto mb-5">
-                      {member.specialties.map((spec) => (
+                      {(member.specialties || []).map((spec) => (
                         <span
                           key={spec}
                           className="font-mono text-[9px] text-[#E4E4E7] bg-white/5 border border-white/10 px-2 py-0.5 rounded-sm"
@@ -388,13 +388,13 @@ export default function Team({ lang }: TeamProps) {
                   {selectedMember.bio}
                 </p>
 
-                {/* Technical Stack Tags */}
+                {/* Technical Stack / Specialties Tags */}
                 <div className="mb-6">
                   <span className="font-mono text-[9px] uppercase tracking-widest text-brand-orange block mb-2 font-bold">
                     SPECIALIZED STACK
                   </span>
                   <div className="flex flex-wrap gap-1.5">
-                    {selectedMember.techStack.map((tech) => (
+                    {(selectedMember.specialties || []).map((tech) => (
                       <span
                         key={tech}
                         className="font-mono text-[10px] bg-white/5 border border-white/10 px-2 py-1 rounded-xs text-[#F5F5F3]"
