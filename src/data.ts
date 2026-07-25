@@ -800,7 +800,7 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
   vi: [
     {
       question: "Chi phí thiết kế và hoàn thiện website được tính như thế nào?",
-      answer: "Chúng tôi áp dụng mức giá cố định rõ ràng. Gói website cơ bản có chi phí từ 8 đến 10 triệu VND. Gói website tích hợp đầy đủ chức năng nâng cao có chi phí từ 15 đến 20 triệu VND. Đối với các dự án xây dựng ứng dụng di động phức tạp hơn, chi tiết ngân sách sẽ được hai bên bàn bạc cụ thể và thương lượng trực tiếp qua email hoặc Zalo."
+      answer: "Chúng tôi áp dụng mức giá cố định rõ ràng. Gói Web 1 (Cơ bản / Landing Page) có chi phí từ 4 đến 5 triệu VNĐ. Gói Web 2 (Thương mại / E-Commerce) có chi phí từ 8 đến 10 triệu VNĐ. Đối với Gói App đặc biệt hoặc hệ thống tích hợp AI, chi phí khởi điểm từ 12 triệu VNĐ và được trao đổi chi tiết theo đặc tả yêu cầu."
     },
     {
       question: "Thời gian hoàn thành một dự án thường kéo dài trong bao lâu?",
@@ -814,7 +814,7 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
   en: [
     {
       question: "How is the project pricing calculated?",
-      answer: "We offer flat and transparent pricing. A basic website starts from 8 to 10 million VND. A full featured website ranges from 15 to 20 million VND. For complex custom application builds, the budget and technical scopes are negotiated directly via email or Zalo."
+      answer: "We offer transparent pricing. Basic Web & Landing Page package ranges from 4 to 5 million VND. Commercial & E-Commerce Web package ranges from 8 to 10 million VND. For Special App and AI Platforms, pricing starts from 12 million VND+ based on custom technical specifications."
     },
     {
       question: "How long does it take to complete a project?",
@@ -899,9 +899,9 @@ export const TRANSLATIONS = {
     contactFieldBudget: "Ngân sách dự kiến",
     contactFieldMessage: "Chi tiết yêu cầu của bạn",
     contactBudgetValue: "VND",
-    contactBudgetRange1: "Từ 8 đến 10 triệu VND (Website cơ bản)",
-    contactBudgetRange2: "Từ 15 đến 20 triệu VND (Website đầy đủ chức năng)",
-    contactBudgetRange3: "Thương lượng qua email hoặc Zalo (Dự án App)",
+    contactBudgetRange1: "Từ 4 đến 5 triệu VNĐ (Gói Web 1: Cơ bản & Landing Page)",
+    contactBudgetRange2: "Từ 8 đến 10 triệu VNĐ (Gói Web 2: Thương mại & E-Commerce)",
+    contactBudgetRange3: "Từ 12 triệu VNĐ trở lên (Gói App Đặc Biệt & Platform AI)",
     contactBudgetConversionLabel: "Tỷ giá quy đổi tham khảo: 1 USD bằng khoảng 26,299.87 VND",
     contactSendBtn: "GỬI THÔNG TIN YÊU CẦU",
     contactSendingBtn: "ĐANG GỬI THÔNG TIN...",
@@ -987,9 +987,9 @@ export const TRANSLATIONS = {
     contactFieldBudget: "Estimated Budget",
     contactFieldMessage: "Project Requirements",
     contactBudgetValue: "VND",
-    contactBudgetRange1: "8 to 10 million VND (Basic Website)",
-    contactBudgetRange2: "15 to 20 million VND (Full Features Website)",
-    contactBudgetRange3: "Negotiated via email or Zalo (App Build)",
+    contactBudgetRange1: "4 to 5 million VND (Basic Web & Landing Page)",
+    contactBudgetRange2: "8 to 10 million VND (Commercial Web & E-Commerce)",
+    contactBudgetRange3: "From 12 million VND+ (Special App & AI Platform)",
     contactBudgetConversionLabel: "Exchange rate estimation: 1 USD equals about 26,299.87 VND",
     contactSendBtn: "SEND PROJECT INQUIRY",
     contactSendingBtn: "TRANSMITTING INQUIRY...",
