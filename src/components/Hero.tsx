@@ -1,28 +1,130 @@
-import React, { useEffect, useRef, useState, Suspense, lazy } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { motion } from "motion/react";
 import { FaArrowUpRightFromSquare, FaArrowDown } from "react-icons/fa6";
+import createGlobe, { COBEOptions } from "cobe";
 import { TRANSLATIONS } from "../data";
 
-const Dithering = lazy(() =>
-  import("@paper-design/shaders-react").then((mod) => ({ default: mod.Dithering }))
-);
+const GLOBE_CONFIG: COBEOptions = {
+  width: 800,
+  height: 800,
+  onRender: () => {},
+  devicePixelRatio: 2,
+  phi: 0,
+  theta: 0.3,
+  dark: 1,
+  diffuse: 1.4,
+  mapSamples: 16000,
+  mapBrightness: 1.8,
+  baseColor: [22 / 255, 22 / 255, 24 / 255],
+  markerColor: [255 / 255, 106 / 255, 0 / 255], // Cyber Orange (#FF6A00)
+  glowColor: [255 / 255, 106 / 255, 0 / 255],
+  markers: [
+    { location: [10.8231, 106.6297], size: 0.12 }, // Ho Chi Minh City (Studio HQ)
+    { location: [14.5995, 120.9842], size: 0.04 },
+    { location: [19.076, 72.8777], size: 0.07 },
+    { location: [23.8103, 90.4125], size: 0.05 },
+    { location: [30.0444, 31.2357], size: 0.06 },
+    { location: [39.9042, 116.4074], size: 0.08 },
+    { location: [-23.5505, -46.6333], size: 0.07 },
+    { location: [19.4326, -99.1332], size: 0.07 },
+    { location: [40.7128, -74.006], size: 0.09 },
+    { location: [34.6937, 135.5022], size: 0.05 },
+    { location: [41.0082, 28.9784], size: 0.06 },
+  ],
+};
+
+function HeroGlobe({ className, config = GLOBE_CONFIG }: { className?: string; config?: COBEOptions }) {
+  let phi = 0;
+  let width = 0;
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const pointerInteracting = useRef<number | null>(null);
+  const pointerInteractionMovement = useRef(0);
+  const [r, setR] = useState(0);
+
+  const updatePointerInteraction = (value: number | null) => {
+    pointerInteracting.current = value;
+    if (canvasRef.current) {
+      canvasRef.current.style.cursor = value !== null ? "grabbing" : "grab";
+    }
+  };
+
+  const updateMovement = (clientX: number) => {
+    if (pointerInteracting.current !== null) {
+      const delta = clientX - pointerInteracting.current;
+      pointerInteractionMovement.current = delta;
+      setR(delta / 200);
+    }
+  };
+
+  const onRender = useCallback(
+    (state: Record<string, any>) => {
+      if (!pointerInteracting.current) phi += 0.004;
+      state.phi = phi + r;
+      state.width = width * 2;
+      state.height = width * 2;
+    },
+    [r]
+  );
+
+  const onResize = () => {
+    if (canvasRef.current) {
+      width = canvasRef.current.offsetWidth;
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", onResize);
+    onResize();
+
+    const globe = createGlobe(canvasRef.current!, {
+      ...config,
+      width: width * 2,
+      height: width * 2,
+      onRender,
+    });
+
+    if (canvasRef.current) {
+      canvasRef.current.style.opacity = "1";
+    }
+    return () => globe.destroy();
+  }, []);
+
+  return (
+    <div
+      className={`absolute inset-0 mx-auto aspect-[1/1] w-full max-w-[700px] flex items-center justify-center ${className || ""}`}
+    >
+      <canvas
+        className="size-full opacity-0 transition-opacity duration-500 [contain:layout_paint_size] pointer-events-auto"
+        ref={canvasRef}
+        onPointerDown={(e) =>
+          updatePointerInteraction(
+            e.clientX - pointerInteractionMovement.current
+          )
+        }
+        onPointerUp={() => updatePointerInteraction(null)}
+        onPointerOut={() => updatePointerInteraction(null)}
+        onMouseMove={(e) => updateMovement(e.clientX)}
+        onTouchMove={(e) =>
+          e.touches[0] && updateMovement(e.touches[0].clientX)
+        }
+      />
+    </div>
+  );
+}
 
 interface HeroProps {
   lang: "vi" | "en";
 }
 
 export default function Hero({ lang }: HeroProps) {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [greeting, setGreeting] = useState("");
   const [currentTime, setCurrentTime] = useState("");
-  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
     const updateGreetingAndClock = () => {
       const now = new Date();
       const hour = now.getHours();
 
-      // Time-based greetings for personalization
       let greetText = "";
       if (lang === "vi") {
         if (hour >= 5 && hour < 12) greetText = "Chào buổi sáng";
@@ -36,7 +138,6 @@ export default function Hero({ lang }: HeroProps) {
         else greetText = "Evening, night owl";
       }
 
-      // Elegant local clock representation
       const options: Intl.DateTimeFormatOptions = {
         hour: "2-digit",
         minute: "2-digit",
@@ -52,165 +153,6 @@ export default function Hero({ lang }: HeroProps) {
     const interval = setInterval(updateGreetingAndClock, 1000);
     return () => clearInterval(interval);
   }, [lang]);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let animationFrameId: number;
-    let isVisible = true;
-    let width = (canvas.width = canvas.offsetWidth);
-    let height = (canvas.height = canvas.offsetHeight);
-
-    // Pause particle animation loop when section is scrolled out of view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          isVisible = entry.isIntersecting;
-          if (isVisible && !animationFrameId) {
-            draw();
-          }
-        });
-      },
-      { threshold: 0.05 }
-    );
-
-    const heroSection = document.getElementById("hero");
-    if (heroSection) observer.observe(heroSection);
-
-    const particles: Array<{
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      radius: number;
-      alpha: number;
-      pulseSpeed: number;
-      pulsePhase: number;
-      isBrand: boolean;
-    }> = [];
-
-    // Lightweight & fast particle mesh (max 35 particles for ultra smooth 60fps)
-    const particleCount = Math.min(35, Math.floor((width * height) / 25000));
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.2,
-        vy: (Math.random() - 0.6) * 0.2 - 0.05,
-        radius: Math.random() * 1.8 + 0.8,
-        alpha: Math.random() * 0.3 + 0.1,
-        pulseSpeed: 0.005 + Math.random() * 0.01,
-        pulsePhase: Math.random() * Math.PI * 2,
-        isBrand: Math.random() < 0.15,
-      });
-    }
-
-    let mouse = { x: -1000, y: -1000, active: false };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
-      mouse.active = true;
-    };
-
-    const handleMouseLeave = () => {
-      mouse.active = false;
-    };
-
-    const handleResize = () => {
-      if (!canvas) return;
-      width = canvas.width = canvas.offsetWidth;
-      height = canvas.height = canvas.offsetHeight;
-    };
-
-    window.addEventListener("resize", handleResize);
-    canvas.addEventListener("mousemove", handleMouseMove);
-    canvas.addEventListener("mouseleave", handleMouseLeave);
-
-    const draw = () => {
-      if (!isVisible) {
-        cancelAnimationFrame(animationFrameId);
-        return;
-      }
-
-      ctx.clearRect(0, 0, width, height);
-
-      // Draw subtle background grid lines
-      ctx.strokeStyle = "rgba(255, 255, 255, 0.012)";
-      ctx.lineWidth = 1;
-      const gridSize = 45;
-      for (let x = 0; x < width; x += gridSize) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, height);
-        ctx.stroke();
-      }
-
-      // Draw connections
-      ctx.lineWidth = 0.5;
-      for (let i = 0; i < particles.length; i++) {
-        const p1 = particles[i];
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j];
-          const dx = p1.x - p2.x;
-          const dy = p1.y - p2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 120) {
-            const alpha = (1 - dist / 120) * 0.1;
-            ctx.strokeStyle = (p1.isBrand || p2.isBrand)
-              ? `rgba(255, 106, 0, ${alpha * 0.8})`
-              : `rgba(245, 245, 243, ${alpha})`;
-            
-            ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      // Draw and update particles
-      particles.forEach((p) => {
-        p.pulsePhase += p.pulseSpeed;
-        const currentAlpha = p.alpha * (0.6 + Math.sin(p.pulsePhase) * 0.4);
-
-        ctx.fillStyle = p.isBrand ? `rgba(255, 106, 0, ${currentAlpha * 1.1})` : `rgba(245, 245, 243, ${currentAlpha})`;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fill();
-
-        p.x += Math.sin(p.pulsePhase) * 0.04 + p.vx;
-        p.y += p.vy;
-
-        if (p.x < -20) p.x = width + 20;
-        if (p.x > width + 20) p.x = -20;
-        if (p.y < -20) p.y = height + 20;
-        if (p.y > height + 20) p.y = -20;
-      });
-
-      animationFrameId = requestAnimationFrame(draw);
-    };
-
-    const handleInitialResize = setTimeout(handleResize, 100);
-    draw();
-
-    return () => {
-      observer.disconnect();
-      clearTimeout(handleInitialResize);
-      window.removeEventListener("resize", handleResize);
-      if (canvas) {
-        canvas.removeEventListener("mousemove", handleMouseMove);
-        canvas.removeEventListener("mouseleave", handleMouseLeave);
-      }
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
 
   const handleScrollTo = (targetId: string) => {
     const element = document.getElementById(targetId);
@@ -234,57 +176,27 @@ export default function Hero({ lang }: HeroProps) {
     <section
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#090909]"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Paper Design Shaders Dithering Background */}
-      <Suspense fallback={<div className="absolute inset-0 bg-neutral-900/20" />}>
-        <div className="pointer-events-none absolute inset-0 z-0 opacity-55 mix-blend-screen">
-          <Dithering
-            colorBack="#00000000"
-            colorFront="#FF6A00"
-            shape="warp"
-            type="4x4"
-            speed={isHovered ? 0.6 : 0.2}
-            className="size-full"
-            minPixelRatio={1}
-          />
-        </div>
-      </Suspense>
-
-      {/* Background Interactive Mesh Canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full pointer-events-auto z-0 opacity-60"
-        id="hero-background-canvas"
-      />
-
-      {/* Cyber Math Matrix Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-60 overflow-hidden" id="hero-matrix-bg">
-        <div className="jp-matrix">
-          {["+", "−", "×", "÷", "=", "≠", "≈", "∞", "√", "∑", "∏", "∫", "∂", "∆", "π", "θ", "λ", "μ", "σ", "ω", "α", "β", "γ", "δ", "ε", "ζ", "η", "ι", "κ", "ν", "ξ", "ρ", "τ", "φ", "χ", "ψ", "∈", "∉", "∩", "∪", "⊂", "⊃", "⊆", "⊇", "∧", "∨", "¬", "⇒", "⇔", "∀", "∃", "ℕ", "ℤ", "ℚ", "ℝ", "ℂ", "|", "∥", "∠", "⊥", "≅", "∝", "∴", "∵", "⊕", "⊗", "⊥", "⊢", "⊨", "∇"].flatMap((s, i) =>
-            Array.from({ length: 6 }).map((_, rIdx) => (
-              <span key={`${s}-${i}-${rIdx}`}>{s}</span>
-            ))
-          )}
-        </div>
+      {/* 3D Interactive Globe Container */}
+      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-45 pointer-events-auto">
+        <HeroGlobe />
       </div>
 
-      {/* Dark Vignette Mask Overlay to maintain 100% text legibility */}
-      <div className="absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(9,9,9,0.30)_0%,_rgba(9,9,9,0.65)_55%,_rgba(9,9,9,0.95)_100%)]" />
+      {/* Radial Gradient Vignette Overlay to ensure 100% text readability & high contrast */}
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(9,9,9,0.30)_0%,_rgba(9,9,9,0.70)_55%,_rgba(9,9,9,0.95)_100%)]" />
 
       {/* Top Lighting Glares */}
-      <div className="absolute top-[-10%] left-[5%] brutalist-glow opacity-50 z-[1]" />
-      <div className="absolute top-[30%] right-[-10%] brutalist-glow opacity-30 z-[1]" style={{ filter: "blur(120px)" }} />
+      <div className="absolute top-[-10%] left-[5%] brutalist-glow opacity-40 z-[1]" />
+      <div className="absolute top-[30%] right-[-10%] brutalist-glow opacity-25 z-[1]" style={{ filter: "blur(120px)" }} />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10 flex flex-col items-center text-center mt-12 md:mt-16 pb-28 md:pb-36">
-        {/* Dynamic, responsive time-based greeting badge with active pulsing status indicator */}
+        {/* Time-based greeting badge */}
         <motion.div
           id="hero-greeting-badge"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center gap-3 mb-8 bg-[#121212]/40 border border-white/5 px-4 py-2 rounded-full backdrop-blur-md select-none"
+          className="flex items-center gap-3 mb-8 bg-[#121212]/70 border border-white/10 px-4 py-2 rounded-full backdrop-blur-md select-none shadow-xl"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75"></span>
@@ -299,13 +211,13 @@ export default function Hero({ lang }: HeroProps) {
           </span>
         </motion.div>
 
-        {/* Huge Statement */}
+        {/* Main Statement Title */}
         <motion.h1
           id="hero-title"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display font-medium text-4xl md:text-7xl lg:text-8xl tracking-tighter text-[#F5F5F3] leading-[1.05] max-w-4xl"
+          className="font-display font-medium text-4xl md:text-7xl lg:text-8xl tracking-tighter text-[#F5F5F3] leading-[1.05] max-w-4xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]"
         >
           {lang === "vi" ? (
             <>
@@ -324,13 +236,13 @@ export default function Hero({ lang }: HeroProps) {
           )}
         </motion.h1>
 
-        {/* Small Subtitle */}
+        {/* Subtitle Description */}
         <motion.p
           id="hero-subtitle"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-sans text-base md:text-xl text-[#8E8E93] max-w-2xl mt-8 font-light leading-relaxed"
+          className="font-sans text-base md:text-xl text-[#8E8E93] max-w-2xl mt-8 font-light leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]"
         >
           {t.heroDesc}
         </motion.p>
@@ -338,14 +250,14 @@ export default function Hero({ lang }: HeroProps) {
         {/* Studio Slogan Signature */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.8 }}
+          animate={{ opacity: 0.9 }}
           transition={{ delay: 0.7, duration: 1 }}
-          className="font-mono text-xs md:text-sm tracking-[0.25em] text-brand-orange mt-8 uppercase font-medium select-none"
+          className="font-mono text-xs md:text-sm tracking-[0.25em] text-brand-orange mt-8 uppercase font-medium select-none drop-shadow-[0_0_10px_rgba(255,106,0,0.3)]"
         >
           Every bug teaches. Every build improves.
         </motion.div>
 
-        {/* Call to Actions with FontAwesome Icons */}
+        {/* Call to Actions */}
         <motion.div
           id="hero-ctas"
           initial={{ opacity: 0, y: 20 }}
@@ -355,7 +267,7 @@ export default function Hero({ lang }: HeroProps) {
         >
           <button
             onClick={() => handleScrollTo("app-work-section")}
-            className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#F5F5F3] text-[#090909] font-medium rounded-sm inline-flex items-center justify-center gap-2.5 group interactive"
+            className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#F5F5F3] text-[#090909] font-medium rounded-sm inline-flex items-center justify-center gap-2.5 group interactive shadow-2xl"
           >
             <span>{t.heroExplore}</span>
             <span className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-brand-orange inline-flex items-center justify-center">
@@ -365,14 +277,14 @@ export default function Hero({ lang }: HeroProps) {
           
           <button
             onClick={() => handleScrollTo("app-contact-section")}
-            className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-transparent border border-white/10 text-[#F5F5F3] rounded-sm inline-flex items-center justify-center gap-2 group interactive"
+            className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#121212]/80 border border-white/10 text-[#F5F5F3] rounded-sm inline-flex items-center justify-center gap-2 group interactive backdrop-blur-sm"
           >
             <span>{t.navStartProject}</span>
             <span className="w-1.5 h-1.5 bg-brand-orange rounded-full group-hover:scale-125 transition-transform" />
           </button>
         </motion.div>
 
-        {/* Scroll indicator with FontAwesome FaArrowDown */}
+        {/* Scroll indicator */}
         <motion.div
           id="hero-scroll-indicator"
           initial={{ opacity: 0 }}
@@ -381,7 +293,6 @@ export default function Hero({ lang }: HeroProps) {
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 cursor-pointer group"
           onClick={() => handleScrollTo("app-about-section")}
         >
-          {/* Mouse scroll wheel animation */}
           <div className="w-[18px] h-[28px] rounded-full border border-[#8E8E93]/80 group-hover:border-brand-orange transition-colors flex justify-center p-[4px]" id="scroll-mouse-icon">
             <motion.div 
               className="w-[3px] h-[6px] bg-brand-orange rounded-full"
