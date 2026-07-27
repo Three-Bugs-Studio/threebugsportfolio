@@ -71,43 +71,47 @@ export default function App() {
 
   useEffect(() => {
     let scrollTimeout: NodeJS.Timeout | null = null;
+    let ticking = false;
 
     const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-      if (totalScroll > 0) {
-        setScrollProgress((window.scrollY / totalScroll) * 100);
-      } else {
-        setScrollProgress(0);
-      }
-
-      setIsScrolling(true);
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-      scrollTimeout = setTimeout(() => {
-        setIsScrolling(false);
-      }, 1500);
-
-      // Track active section for the top progress bar label
-      const scrollPosition = window.scrollY + 280;
-      let currentSection = "hero";
-      for (const sec of APP_SECTIONS) {
-        const el = document.getElementById(sec.id);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            currentSection = sec.id;
-            break;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+          if (totalScroll > 0) {
+            setScrollProgress((window.scrollY / totalScroll) * 100);
+          } else {
+            setScrollProgress(0);
           }
-        }
+
+          setIsScrolling(true);
+          if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
+          }
+          scrollTimeout = setTimeout(() => {
+            setIsScrolling(false);
+          }, 1500);
+
+          // Track active section for top progress bar
+          const scrollPosition = window.scrollY + 280;
+          let currentSection = "hero";
+          for (const sec of APP_SECTIONS) {
+            const el = document.getElementById(sec.id);
+            if (el) {
+              const top = el.offsetTop;
+              const height = el.offsetHeight;
+              if (scrollPosition >= top && scrollPosition < top + height) {
+                currentSection = sec.id;
+              }
+            }
+          }
+          setActiveSection(currentSection);
+          ticking = false;
+        });
+        ticking = true;
       }
-      setActiveSection(currentSection);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
       if (scrollTimeout) clearTimeout(scrollTimeout);

@@ -123,7 +123,7 @@ body {
 
 
 
-/* CRT Scanline Overlay */
+/* CRT Scanline Overlay - Optimized static texture to prevent continuous whole-page repaints */
 .crt-overlay {
   position: fixed;
   inset: 0;
@@ -132,23 +132,36 @@ body {
   background: 
     linear-gradient(
       rgba(18, 16, 16, 0) 50%, 
-      rgba(0, 0, 0, 0.14) 50%
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 106, 0, 0.015),
-      rgba(0, 0, 0, 0),
-      rgba(0, 240, 255, 0.01)
+      rgba(0, 0, 0, 0.12) 50%
     );
-  background-size: 100% 4px, 6px 100%;
-  animation: crt-flicker 0.2s infinite;
-  opacity: 0.95;
+  background-size: 100% 4px;
+  opacity: 0.85;
 }
 
-@keyframes crt-flicker {
-  0% { opacity: 0.96; }
-  50% { opacity: 1; }
-  100% { opacity: 0.96; }
+/* Mobile & Low-Power Performance Optimization Rules */
+@media (max-width: 768px) {
+  /* Replace expensive backdrop blurs on mobile devices with high-performance translucent solids */
+  .backdrop-blur-md,
+  .backdrop-blur-lg,
+  .backdrop-blur-xl,
+  .backdrop-blur-2xl,
+  .backdrop-blur-sm {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: rgba(18, 18, 18, 0.96) !important;
+  }
+
+  /* Disable heavy continuous text-shadow / filter animations on mobile screens */
+  * {
+    text-shadow: none !important;
+  }
+}
+
+/* Smooth Hardware Acceleration Classes */
+.gpu-accelerated {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 /* Game-like tactile responsive animations for interactive elements */

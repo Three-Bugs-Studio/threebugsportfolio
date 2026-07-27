@@ -47,6 +47,7 @@ export function Globe({
   const pointerInteracting = useRef<number | null>(null);
   const pointerInteractionMovement = useRef(0);
   const [r, setR] = useState(0);
+  const isVisibleRef = useRef(true);
 
   const updatePointerInteraction = (value: number | null) => {
     pointerInteracting.current = value;
@@ -65,10 +66,14 @@ export function Globe({
 
   const onRender = useCallback(
     (state: Record<string, any>) => {
-      if (!pointerInteracting.current) phi += 0.005;
+      // Pause WebGL rendering calculations when off-screen to save 100% GPU/CPU during scrolling
+      if (!isVisibleRef.current) return;
+      if (!pointerInteracting.current) phi += 0.004;
       state.phi = phi + r;
-      state.width = width * 2;
-      state.height = width * 2;
+      const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+      const scaleMult = isMobile ? 1.3 : 2;
+      state.width = width * scaleMult;
+      state.height = width * scaleMult;
     },
     [r]
   );
@@ -83,10 +88,27 @@ export function Globe({
     window.addEventListener("resize", onResize);
     onResize();
 
+    const isMobile = window.innerWidth < 768;
+    const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
+
+    // Pause rendering when Hero is not visible in viewport
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+      },
+      { threshold: 0.01 }
+    );
+
+    if (canvasRef.current) {
+      observer.observe(canvasRef.current);
+    }
+
     const globe = createGlobe(canvasRef.current!, {
       ...config,
-      width: width * 2,
-      height: width * 2,
+      devicePixelRatio: dpr,
+      mapSamples: isMobile ? 7500 : 10500,
+      width: width * (isMobile ? 1.3 : 2),
+      height: width * (isMobile ? 1.3 : 2),
       onRender,
     });
 
@@ -96,13 +118,17 @@ export function Globe({
       }
     });
 
-    return () => globe.destroy();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", onResize);
+      globe.destroy();
+    };
   }, []);
 
   return (
     <div
       className={cn(
-        "absolute inset-0 mx-auto aspect-[1/1] w-full max-w-[720px] flex items-center justify-center",
+        "absolute inset-0 mx-auto aspect-[1/1] w-full max-w-[720px] flex items-center justify-center will-change-transform",
         className
       )}
     >
