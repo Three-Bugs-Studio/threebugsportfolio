@@ -73,14 +73,14 @@ export default function Contact({ lang }: ContactProps) {
 
   // Rates and raw values for internal mapping/display
   const rawVND = [
-    "Từ 4 đến 5 triệu VNĐ (Gói Web 1: Cơ bản / Landing Page)",
-    "Từ 8 đến 10 triệu VNĐ (Gói Web 2: Thương mại / E-Commerce)",
-    "Từ 12 triệu VNĐ trở lên (Gói App Đặc Biệt & Platform AI)"
+    "3.9 triệu VNĐ (Gói 1: Khởi Nghiệp & Landing Page)",
+    "Từ 7.9 đến 9.9 triệu VNĐ (Gói 2: Doanh Nghiệp Đa Ngành & E-Commerce)",
+    "Từ 12.9 triệu VNĐ trở lên (Gói 3: Web App & Hệ Thống AI)"
   ];
   const rawUSD = [
-    `About $${Math.round(4000000 / exchangeRate)} to $${Math.round(5000000 / exchangeRate)} USD (Basic Web & Landing Page)`,
-    `About $${Math.round(8000000 / exchangeRate)} to $${Math.round(10000000 / exchangeRate)} USD (Commercial Web & E-Commerce)`,
-    `From $${Math.round(12000000 / exchangeRate)}+ USD (Special App & AI Platform)`
+    `About $${Math.round(3900000 / exchangeRate)} USD (Starter Web & Landing Page)`,
+    `About $${Math.round(7900000 / exchangeRate)} to $${Math.round(9900000 / exchangeRate)} USD (Corporate & Multi-Sector Web)`,
+    `From $${Math.round(12900000 / exchangeRate)}+ USD (Custom Web App & AI Platform)`
   ];
 
   const validate = () => {

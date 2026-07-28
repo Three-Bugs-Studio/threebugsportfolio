@@ -360,11 +360,11 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
   vi: [
     {
       id: "phase_1_mvp",
-      badge: "GÓI WEB 1 // 3 PHASE",
-      name: "Gói Web Cơ Bản & Landing Page",
-      tagline: "Quy trình 3 Phase tối ưu chi phí dành cho cá nhân, landing page giới thiệu & thương hiệu khởi nghiệp.",
-      priceVnd: "4 - 5 Triệu VNĐ",
-      priceUsd: "~ $160 - $200 USD",
+      badge: "KHỞI NGHIỆP // 3 PHASE",
+      name: "Gói Khởi Nghiệp & Landing Page",
+      tagline: "Tối ưu chi phí dành cho cá nhân, landing page chạy Ads, giới thiệu dịch vụ, Spa, Salon, Nhà hàng & Thương hiệu mới.",
+      priceVnd: "3.9 Triệu VNĐ",
+      priceUsd: "~ $160 USD",
       timeline: "1 - 2 Tuần (Trọn gói 3 Phase)",
       phases: [
         { number: "Phase 1", title: "Figma UI/UX Design", duration: "Ngày 1 - 3", description: "Phác thảo Wireframe & thiết kế giao diện độc quyền chuẩn thương hiệu." },
@@ -372,14 +372,14 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
         { number: "Phase 3", title: "Cloud Launch & Warrant", duration: "Ngày 9 - 14", description: "Cấu hình Tên miền, SEO Google, chạy chính thức & Bảo hành 1 tháng." }
       ],
       benefits: [
-        "Trọn gói quy trình phát triển 3 Giai Đoạn minh bạch",
-        "Thiết kế giao diện Web độc quyền chuẩn thương hiệu",
+        "Trọn gói 3 Phase minh bạch (Figma ➔ Frontend ➔ Cloud Launch)",
+        "Phù hợp đa ngành: Spa, Salon, Bất động sản, Nhà hàng, Personal Brand",
         "Lập trình Landing Page / Web Giới thiệu tối ưu tốc độ < 1s",
         "Tối ưu hiển thị Responsive mượt mà trên Mobile & Desktop",
-        "Tích hợp nút Liên Hệ Zalo, Hotline, Messenger, Email trực tiếp",
+        "Tích hợp nút Zalo, Hotline, Messenger, Email tương tác nhanh",
         "Tối ưu hóa chuẩn SEO Google Baseline & Meta Social Cards",
-        "Miễn phí hỗ trợ cấu hình Tên miền & Hosting Cloud 1 năm",
-        "Bảo hành & Hỗ trợ kỹ thuật 1 tháng sau khi bàn giao"
+        "Miễn phí Hỗ trợ cấu hình Tên miền & Hosting Cloud 1 năm",
+        "Bảo hành & Hỗ trợ kỹ thuật 24/7 trong 1 tháng sau bàn giao"
       ],
       milestones: [
         { stage: "Đặt Cọc Phase 1", percentage: "30%", description: "Thống nhất đặc tả & Phác thảo bản vẽ Figma UI/UX" },
@@ -389,10 +389,10 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     },
     {
       id: "phase_2_fullstack",
-      badge: "GÓI WEB 2 // 3 PHASE",
-      name: "Gói Web Thương Mại & E-Commerce",
-      tagline: "Quy trình 3 Phase toàn diện xây dựng website bán hàng, CMS quản lý & hệ thống doanh nghiệp.",
-      priceVnd: "8 - 10 Triệu VNĐ",
+      badge: "KHUYÊN DÙNG ★ // 3 PHASE",
+      name: "Gói Doanh Nghiệp Đa Ngành & E-Commerce",
+      tagline: "Giải pháp toàn diện cho Doanh nghiệp, Bất động sản, Đặt lịch Booking, Khóa học, Du lịch & Web bán hàng E-Commerce.",
+      priceVnd: "7.9 - 9.9 Triệu VNĐ",
       priceUsd: "~ $320 - $400 USD",
       timeline: "2 - 4 Tuần (Trọn gói 3 Phase)",
       phases: [
@@ -401,14 +401,14 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
         { number: "Phase 3", title: "Security, Launch & SLA", duration: "Tuần 4", description: "Kiểm thử QA bảo mật, bàn giao mã nguồn & Bảo trì hỗ trợ sự cố nhanh." }
       ],
       benefits: [
-        "Trọn gói quy trình phát triển 3 Giai Đoạn cho dự án Thương Mại",
-        "Xây dựng Website Bán Hàng / E-Commerce / Portal Doanh Nghiệp toàn diện",
-        "Trang Admin CMS quản lý sản phẩm, bài viết & đơn hàng tiện lợi",
-        "Tích hợp chuyển khoản QR tự động / Cổng thanh toán tiện lợi",
+        "Trọn gói quy trình 3 Phase toàn diện cho các dự án đa ngành",
+        "Xây dựng Web Doanh Nghiệp, Đặt Lịch Booking, Đào Tạo & E-Commerce",
+        "Trang Admin CMS dễ dàng tự quản lý bài viết, dịch vụ & đơn hàng",
+        "Tích hợp mã QR chuyển khoản tự động / Cổng thanh toán tiện lợi",
         "Quản lý cơ sở dữ liệu PostgreSQL / Supabase Cloud bảo mật",
         "Tối ưu hóa SEO Google chuẩn Lighthouse score 95 - 99%",
         "Bao gồm Tên miền quốc tế chính thức & Server CSDL 1 năm",
-        "Bảo hành 3 tháng & Hỗ trợ xử lý sự cố kỹ thuật nhanh chóng"
+        "Bảo hành 12 tháng & Hỗ trợ kỹ thuật 24/7 ưu tiên sự cố"
       ],
       milestones: [
         { stage: "Khởi Động Phase 1", percentage: "30%", description: "Thiết kế UI/UX & Cấu trúc CSDL Database Schema" },
@@ -418,11 +418,11 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     },
     {
       id: "phase_3_enterprise",
-      badge: "GÓI APP ĐẶC BIỆT // 3 PHASE",
-      name: "Gói App Đặc Biệt & Platform AI",
-      tagline: "Quy trình 3 Phase chuyên sâu xây dựng Web App, Mobile App & Hệ thống tích hợp AI theo yêu cầu.",
-      priceVnd: "Từ 12 Triệu VNĐ",
-      priceUsd: "~ $480+ USD",
+      badge: "CHUYÊN SÂU & AI // 3 PHASE",
+      name: "Gói Web App & Hệ Thống AI Độc Quyền",
+      tagline: "Quy trình chuyên sâu xây dựng Web App, Mobile App, Hệ thống Quản lý Doanh nghiệp (CRM/ERP) & Tích hợp AI Agent.",
+      priceVnd: "Từ 12.9 Triệu VNĐ",
+      priceUsd: "~ $520+ USD",
       timeline: "4 - 6+ Tuần (Trọn gói 3 Phase)",
       phases: [
         { number: "Phase 1", title: "App Architecture & Spec", duration: "Tuần 1 - 2", description: "Phân tích đặc tả App, UX Flow & Thiết kế kiến trúc Backend/API." },
@@ -430,14 +430,14 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
         { number: "Phase 3", title: "Deployment & Priority SLA", duration: "Tuần 5 - 6+", description: "Đóng gói Docker/App Store, kiểm thử chịu tải & Bảo trì ưu tiên 6-12 tháng." }
       ],
       benefits: [
-        "Phát triển Ứng dụng Web App / Mobile App chuyên sâu theo yêu cầu riêng",
-        "Tích hợp tính năng AI Agent thông minh (Chatbot AI, Gợi ý dữ liệu tự động)",
+        "Phát triển Web App / Mobile App chuyên sâu theo yêu cầu riêng",
+        "Tích hợp tính năng AI Agent thông minh (Chatbot AI, Gợi ý tự động)",
         "Kiến trúc hệ thống nâng cao, tích hợp API & CSDL chịu tải lớn",
         "Cấu hình Docker Cloud, quy trình CI/CD tự động triển khai",
-        "Phân quyền đa tài khoản (Multi-role) & Bảo mật nhiều lớp cho hệ thống",
-        "Tư vấn kiến trúc giải pháp công nghệ & Tối ưu hóa trải nghiệm người dùng",
+        "Phân quyền đa tài khoản (Multi-role) & Bảo mật nhiều lớp",
+        "Tư vấn kiến trúc giải pháp công nghệ & Tối ưu UX người dùng",
         "Bàn giao 100% Mã nguồn app & Bộ tài liệu kiến trúc PuDo Code",
-        "Cam kết SLA Bảo trì & Hỗ trợ kỹ thuật ưu tiên từ 6 - 12 tháng"
+        "Cam kết SLA Bảo trì & Hỗ trợ kỹ thuật ưu tiên 24/7 từ 6 - 12 tháng"
       ],
       milestones: [
         { stage: "Phân Tích Phase 1", percentage: "30%", description: "Chốt tài liệu System Architecture & App Spec Blueprint" },
@@ -449,11 +449,11 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
   en: [
     {
       id: "phase_1_mvp",
-      badge: "WEB PACKAGE 1 // 3 PHASES",
-      name: "Basic Web & Landing Page",
-      tagline: "Cost-effective 3-Phase execution tailored for individuals, showcase landing pages & startup brands.",
-      priceVnd: "4 - 5 Million VND",
-      priceUsd: "~ $160 - $200 USD",
+      badge: "STARTER // 3 PHASES",
+      name: "Starter Web & Landing Page",
+      tagline: "Cost-effective 3-Phase execution tailored for landing pages, ad campaigns, Spa, Salon, Restaurants & new brands.",
+      priceVnd: "3.9 Million VND",
+      priceUsd: "~ $160 USD",
       timeline: "1 - 2 Weeks (Full 3 Phases)",
       phases: [
         { number: "Phase 1", title: "Figma UI/UX Design", duration: "Days 1 - 3", description: "Wireframe layout sketches & custom brand-aligned Figma UI UX design." },
@@ -461,14 +461,14 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
         { number: "Phase 3", title: "Cloud Launch & Warranty", duration: "Days 9 - 14", description: "Custom domain, Google SEO, live deployment & 1-month tech warranty." }
       ],
       benefits: [
-        "Full transparent 3-Phase development process",
-        "Custom brand-aligned web interface design",
+        "Transparent 3-Phase execution (Figma ➔ Frontend ➔ Cloud Launch)",
+        "Suitable for multi-sector: Spa, Salon, Real Estate, F&B, Personal Brand",
         "Fast-loading Landing Page / Corporate Web (< 1s load time)",
         "Fully Responsive layout across Mobile, Tablet & Desktop",
         "Direct integration of Contact buttons (Zalo, Hotline, Email)",
         "Google SEO Baseline & Meta Social Cards optimization",
         "Free assistance with Domain setup & Cloud Hosting 1 year",
-        "1 Month warranty & technical support after handover"
+        "24/7 Technical warranty & support for 1 month after handover"
       ],
       milestones: [
         { stage: "Phase 1 Deposit", percentage: "30%", description: "Locking spec requirements & Figma UI/UX prototypes" },
@@ -478,26 +478,26 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     },
     {
       id: "phase_2_fullstack",
-      badge: "WEB PACKAGE 2 // 3 PHASES",
-      name: "Commercial Web & E-Commerce",
-      tagline: "Comprehensive 3-Phase execution building online stores, custom CMS & corporate platforms.",
-      priceVnd: "8 - 10 Million VND",
+      badge: "MOST POPULAR ★ // 3 PHASES",
+      name: "Corporate & Multi-Sector Web",
+      tagline: "Comprehensive 3-Phase solution for Corporate, Real Estate, Booking, Courses, Tourism & E-Commerce stores.",
+      priceVnd: "7.9 - 9.9 Million VND",
       priceUsd: "~ $320 - $400 USD",
       timeline: "2 - 4 Weeks (Full 3 Phases)",
       phases: [
         { number: "Phase 1", title: "UX Blueprint & DB Schema", duration: "Week 1", description: "Mapping shopping user journey & PostgreSQL database schema architecture." },
         { number: "Phase 2", title: "Fullstack & Cart/Payment", duration: "Weeks 2 - 3", description: "Admin CMS dashboard, Shopping cart & Instant QR payment gateway." },
-        { number: "Phase 3", title: "Security, Launch & SLA", duration: "Week 4", description: "Security QA audit, code repository handover & 3-month priority support." }
+        { number: "Phase 3", title: "Security, Launch & SLA", duration: "Week 4", description: "Security QA audit, code repository handover & 12-month priority support." }
       ],
       benefits: [
-        "Full 3-Phase development pipeline for Commercial builds",
-        "Complete E-Commerce Store or Fullstack Corporate Portal",
+        "Full 3-Phase development pipeline for multi-sector projects",
+        "Corporate Web, Booking Portals, Training & E-Commerce platforms",
         "Easy-to-use Admin CMS for managing products, articles & orders",
         "Instant QR payment gateway & online payment integration",
         "Secure PostgreSQL / Supabase Cloud database architecture",
         "Google Lighthouse performance score optimized to 95 - 99%",
         "Includes Official Custom Domain & Database Server 1 year",
-        "3 Months warranty & commitment to fast technical hotfixes"
+        "12 Months warranty & 24/7 priority technical support commitment"
       ],
       milestones: [
         { stage: "Phase 1 Initiation", percentage: "30%", description: "UI/UX approval & Database Schema architecture" },
