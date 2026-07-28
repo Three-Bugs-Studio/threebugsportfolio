@@ -182,11 +182,17 @@ html.light .hero-vignette {
   background: radial-gradient(ellipse at center, rgba(234, 235, 237, 0.2) 0%, rgba(234, 235, 237, 0.65) 50%, rgba(234, 235, 237, 0.95) 100%) !important;
 }
 
-/* Complete Light Mode Overrides for Navigation, Headers, Vignette & Cards (ZERO BLACK) */
+/* Complete Light Mode Overrides for Navigation, Headers, Pricing, FAQ & Cards (ZERO BLACK) */
+html.light .bg-\[\#060606\],
+html.light .bg-\[\#090909\],
 html.light .bg-\[\#0c0c0c\],
+html.light .bg-\[\#0f0f0f\],
 html.light .bg-\[\#0f0f10\],
+html.light .bg-\[\#111111\],
+html.light .bg-\[\#121212\],
 html.light .bg-\[\#141414\],
 html.light .bg-\[\#171717\],
+html.light .bg-\[\#1a1a1a\],
 html.light .bg-\[\#1E1917\],
 html.light .bg-\[\#26160C\],
 html.light nav,
@@ -200,6 +206,11 @@ html.light kbd {
   background-color: #FFFFFF !important;
   border-color: rgba(0, 105, 137, 0.18) !important;
   color: #006989 !important;
+}
+
+html.light .bg-\[\#060606\] {
+  background-color: #EAEBED !important;
+  border-color: rgba(0, 105, 137, 0.2) !important;
 }
 
 html.light .socialSvg path {
@@ -216,6 +227,69 @@ html.light #swiss-alignment-aside span {
 
 html.light .crt-overlay {
   display: none !important;
+}
+
+/* Custom Animated Moon/Sun Theme Toggle Switch (Brand Styled) */
+.theme-toggle-wrapper {
+  position: relative;
+  width: 52px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+}
+
+.theme-switch-label {
+  position: relative;
+  display: block;
+  width: 52px;
+  height: 26px;
+  background-color: #1a1a1a;
+  border-radius: 13px;
+  cursor: pointer;
+  border: 1.5px solid rgba(255, 106, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+html.light .theme-switch-label {
+  background-color: #FFFFFF !important;
+  border-color: rgba(0, 105, 137, 0.3) !important;
+}
+
+.theme-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-slider {
+  position: absolute;
+  inset: 0;
+  border-radius: 13px;
+  transition: 0.35s ease;
+}
+
+.theme-checkbox:checked ~ .theme-slider {
+  background-color: #FFFFFF;
+}
+
+.theme-slider::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  box-shadow: inset 6px -2px 0px 0px #FF6A00;
+  background-color: #121212;
+  transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.theme-checkbox:checked ~ .theme-slider::before {
+  transform: translateX(24px);
+  background-color: #006989;
+  box-shadow: none;
 }
 
 @theme {

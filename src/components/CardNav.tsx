@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Logo from "./Logo";
+import ThemeSwitch from "./ThemeSwitch";
 import { motion, AnimatePresence } from "motion/react";
-import { FaBars, FaXmark, FaArrowUpRightFromSquare, FaWandMagicSparkles, FaSun, FaMoon } from "react-icons/fa6";
+import { FaBars, FaXmark, FaArrowUpRightFromSquare, FaWandMagicSparkles } from "react-icons/fa6";
 import { TRANSLATIONS } from "../data";
 
 export interface CardNavLink {
@@ -202,21 +203,9 @@ export default function CardNav({
               </div>
             )}
 
-            {/* View Transition Theme Toggle Button */}
+            {/* Custom Moon/Sun Theme Toggle Switch */}
             {onThemeToggle && (
-              <button
-                onClick={onThemeToggle}
-                aria-label="Toggle Light and Dark Theme"
-                className="p-2 border border-white/10 rounded-sm text-brand-orange hover:bg-white/5 transition-all interactive flex items-center justify-center cursor-pointer"
-                id="card-nav-theme-btn"
-                title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
-              >
-                {theme === "dark" ? (
-                  <FaSun className="w-4 h-4 text-brand-orange" />
-                ) : (
-                  <FaMoon className="w-4 h-4 text-brand-orange" />
-                )}
-              </button>
+              <ThemeSwitch theme={theme} onThemeToggle={onThemeToggle} />
             )}
 
             {/* CardNav Menu Toggle Button */}
