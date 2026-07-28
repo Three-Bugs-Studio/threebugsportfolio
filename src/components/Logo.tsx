@@ -14,12 +14,12 @@ export default function Logo({
   size = "md",
   variant = "light",
 }: LogoProps) {
-  // Size mappings
+  // Size mappings for square rounded logo container
   const sizeClasses = {
-    sm: "h-8 w-auto",
-    md: "h-12 w-auto",
-    lg: "h-24 w-auto",
-    xl: "h-48 w-auto",
+    sm: "w-8 h-8",
+    md: "w-11 h-11",
+    lg: "w-20 h-20",
+    xl: "w-40 h-40",
   };
 
   const textSizes = {
@@ -34,11 +34,14 @@ export default function Logo({
 
   return (
     <div className={`flex flex-col items-center justify-center ${className}`} id="studio-logo-container">
-      <img
-        src={logoImg}
-        alt="Three Bugs Studio Logo"
-        className={`${activeSize} object-contain transition-all duration-300`}
-      />
+      {/* Modern Rounded Logo Container */}
+      <div className={`relative group ${activeSize} rounded-xl overflow-hidden p-1 bg-brand-orange/10 border border-brand-orange/30 shadow-md hover:border-brand-orange/60 hover:shadow-[0_0_15px_rgba(255,106,0,0.35)] transition-all duration-300 flex items-center justify-center shrink-0`}>
+        <img
+          src={logoImg}
+          alt="Three Bugs Studio Logo"
+          className="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
+        />
+      </div>
 
       {/* Typography */}
       {showText && (
