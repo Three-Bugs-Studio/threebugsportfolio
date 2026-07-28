@@ -88,7 +88,7 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
       variants={containerVariants}
       className="w-full"
     >
-      <div className="relative mx-auto w-full max-w-6xl overflow-hidden rounded-sm bg-[#111111]/90 border border-white/10 hover:border-brand-orange/40 transition-all duration-500 shadow-2xl group">
+      <div className="pricing-card-container relative mx-auto w-full max-w-6xl overflow-hidden rounded-sm bg-[#111111]/90 border border-white/10 hover:border-brand-orange/40 transition-all duration-500 shadow-2xl group">
         {/* Top Accent Gradient Border */}
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-orange to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
 
@@ -96,7 +96,7 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
           
           {/* Left Column: Summary, Price & Primary Action */}
           <motion.div
-            className="flex flex-col justify-between p-6 lg:w-2/5 lg:p-10 border-b lg:border-b-0 lg:border-r border-white/10 bg-[#0c0c0c]/80"
+            className="pricing-card-left flex flex-col justify-between p-6 lg:w-2/5 lg:p-10 border-b lg:border-b-0 lg:border-r border-white/10 bg-[#0c0c0c]/80"
             variants={itemVariants}
           >
             <div>
@@ -122,7 +122,7 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
               </div>
 
               {/* Pricing Display */}
-              <motion.div className="mt-8 p-5 rounded-sm bg-[#060606] border border-white/5 space-y-2" variants={itemVariants}>
+              <motion.div className="pricing-price-box mt-8 p-5 rounded-sm bg-[#060606] border border-white/5 space-y-2" variants={itemVariants}>
                 <div className="flex items-baseline flex-wrap gap-2">
                   <span className="text-3xl md:text-4xl font-extrabold font-display text-[#F5F5F3]">
                     {plan.priceVnd}
@@ -151,7 +151,7 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
 
           {/* Right Column: 3-Phase Roadmap & Benefits Checklist */}
           <motion.div
-            className="p-6 lg:w-3/5 lg:p-10 bg-[#121212]/70 flex flex-col justify-between"
+            className="pricing-card-right p-6 lg:w-3/5 lg:p-10 bg-[#121212]/70 flex flex-col justify-between"
             variants={itemVariants}
           >
             <div className="space-y-8">
@@ -270,7 +270,7 @@ export default function Pricing({ lang }: PricingProps) {
         </div>
 
         {/* Phase Milestone Payment Roadmap Breakdown */}
-        <div className="bg-[#111111]/90 border border-white/10 rounded-sm p-8 md:p-10 relative overflow-hidden shadow-2xl">
+        <div className="pricing-milestone-box bg-[#111111]/90 border border-white/10 rounded-sm p-8 md:p-10 relative overflow-hidden shadow-2xl">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pb-6 border-b border-white/10">
             <div>
               <div className="flex items-center gap-2 text-brand-orange font-mono text-xs uppercase tracking-widest mb-1 font-bold">
@@ -289,7 +289,7 @@ export default function Pricing({ lang }: PricingProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-5 bg-[#090909] border border-white/10 rounded-sm relative group hover:border-brand-orange/40 transition-colors">
+            <div className="pricing-milestone-item p-5 bg-[#090909] border border-white/10 rounded-sm relative group hover:border-brand-orange/40 transition-colors">
               <div className="font-mono text-2xl font-extrabold text-brand-orange mb-1">30%</div>
               <div className="font-display font-bold text-white text-sm mb-2">
                 {lang === "vi" ? "Phase 1: Specs & Figma UI/UX" : "Phase 1: Spec & Figma UI UX"}
@@ -301,7 +301,7 @@ export default function Pricing({ lang }: PricingProps) {
               </p>
             </div>
 
-            <div className="p-5 bg-[#090909] border border-white/10 rounded-sm relative group hover:border-brand-orange/40 transition-colors">
+            <div className="pricing-milestone-item p-5 bg-[#090909] border border-white/10 rounded-sm relative group hover:border-brand-orange/40 transition-colors">
               <div className="font-mono text-2xl font-extrabold text-brand-orange mb-1">40%</div>
               <div className="font-display font-bold text-white text-sm mb-2">
                 {lang === "vi" ? "Phase 2: Lập Trình & Demo Core" : "Phase 2: Build & Staging Demo"}
@@ -313,7 +313,7 @@ export default function Pricing({ lang }: PricingProps) {
               </p>
             </div>
 
-            <div className="p-5 bg-[#090909] border border-white/10 rounded-sm relative group hover:border-brand-orange/40 transition-colors">
+            <div className="pricing-milestone-item p-5 bg-[#090909] border border-white/10 rounded-sm relative group hover:border-brand-orange/40 transition-colors">
               <div className="font-mono text-2xl font-extrabold text-brand-orange mb-1">30%</div>
               <div className="font-display font-bold text-white text-sm mb-2">
                 {lang === "vi" ? "Phase 3: Launch & Bảo Hành" : "Phase 3: Sign-off & Launch"}
