@@ -6,6 +6,135 @@
   --bg-card: #121212;
   --text-light: #F5F5F3;
   --text-muted: #C0C0C5;
+
+  --expo-in: linear(
+    0 0%, 0.0085 31.26%, 0.0167 40.94%,
+    0.0289 48.86%, 0.0471 55.92%,
+    0.0717 61.99%, 0.1038 67.32%,
+    0.1443 72.07%, 0.1989 76.7%,
+    0.2659 80.89%, 0.3465 84.71%,
+    0.4419 88.22%, 0.554 91.48%,
+    0.6835 94.51%, 0.8316 97.34%, 1 100%
+  );
+  --expo-out: linear(
+    0 0%, 0.1684 2.66%, 0.3165 5.49%,
+    0.446 8.52%, 0.5581 11.78%,
+    0.6535 15.29%, 0.7341 19.11%,
+    0.8011 23.3%, 0.8557 27.93%,
+    0.8962 32.68%, 0.9283 38.01%,
+    0.9529 44.08%, 0.9711 51.14%,
+    0.9833 59.06%, 0.9915 68.74%, 1 100%
+  );
+}
+
+/* Custom View Transition Mask Animation for Theme Toggle */
+::view-transition-group(root) {
+  animation-timing-function: var(--expo-in);
+}
+
+::view-transition-new(root) {
+  mask: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmFvNXVzb2p6ODNvZGNseHM5a3ZydHR6aW42YWRvaWxncTdzMnYwNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/iIqmM5tTjmpOB9mpbn/giphy.gif') center / 0 no-repeat;
+  mask-size: 0;
+  animation: scale-mask 1.8s ease-in-out forwards;
+  -webkit-mask: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmFvNXVzb2p6ODNvZGNseHM5a3ZydHR6aW42YWRvaWxncTdzMnYwNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/iIqmM5tTjmpOB9mpbn/giphy.gif') center / 0 no-repeat;
+  -webkit-mask-size: 0;
+}
+
+::view-transition-old(root),
+.dark::view-transition-old(root),
+.light::view-transition-old(root) {
+  animation: scale-mask 1.8s ease-in-out forwards;
+}
+
+@keyframes scale-mask {
+  0% {
+    mask-size: 0;
+    -webkit-mask-size: 0;
+  }
+  15% {
+    mask-size: 60vmax;
+    -webkit-mask-size: 60vmax;
+  }
+  85% {
+    mask-size: 60vmax;
+    -webkit-mask-size: 60vmax;
+  }
+  100% {
+    mask-size: 2000vmax;
+    -webkit-mask-size: 2000vmax;
+  }
+}
+
+/* Light Theme High-Contrast CSS Overrides */
+html.light {
+  --bg-dark: #F8F9FA;
+  --bg-card: #FFFFFF;
+  --text-light: #111827;
+  --text-muted: #4B5563;
+  color-scheme: light;
+}
+
+html.light,
+html.light body {
+  background-color: #F8F9FA !important;
+  color: #111827 !important;
+}
+
+html.light .bg-\[\#090909\],
+html.light .bg-\[\#090909\]\/40,
+html.light .bg-\[\#090909\]\/60,
+html.light .bg-\[\#090909\]\/80,
+html.light .bg-\[\#090909\]\/95 {
+  background-color: #F8F9FA !important;
+}
+
+html.light .bg-\[\#121212\],
+html.light .bg-\[\#121212\]\/30,
+html.light .bg-\[\#121212\]\/40,
+html.light .bg-\[\#121212\]\/50,
+html.light .bg-\[\#121212\]\/70,
+html.light .bg-\[\#121212\]\/80,
+html.light .bg-\[\#141414\],
+html.light .bg-\[\#171717\],
+html.light .bg-\[\#1E1917\],
+html.light .bg-\[\#26160C\],
+html.light .bg-card {
+  background-color: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  color: #111827 !important;
+}
+
+html.light .text-\[\#F5F5F3\],
+html.light .text-white,
+html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6 {
+  color: #111827 !important;
+}
+
+html.light .text-\[\#8E8E93\],
+html.light .text-\[\#C0C0C5\],
+html.light .text-muted-foreground {
+  color: #4B5563 !important;
+}
+
+html.light .border-white\/5,
+html.light .border-white\/10,
+html.light .border-white\/15,
+html.light .border-white\/20 {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light .btn-stacked {
+  background-color: #111827 !important;
+  color: #F8F9FA !important;
+}
+
+html.light .swiss-grid {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px) !important;
+}
+
+html.light .crt-overlay {
+  opacity: 0.15 !important;
 }
 
 @theme {

@@ -50,6 +50,42 @@ export default function App() {
     return (saved === "vi" || saved === "en") ? saved : "vi";
   });
 
+  const [theme, setTheme] = useState<"dark" | "light">(() => {
+    const saved = localStorage.getItem("three_bugs_theme");
+    return (saved === "dark" || saved === "light") ? saved : "dark";
+  });
+
+  useEffect(() => {
+    if (theme === "light") {
+      document.documentElement.classList.add("light");
+      document.documentElement.classList.remove("dark");
+    } else {
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+    }
+    localStorage.setItem("three_bugs_theme", theme);
+  }, [theme]);
+
+  const handleThemeToggle = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+
+    if (!(document as any).startViewTransition) {
+      setTheme(nextTheme);
+      return;
+    }
+
+    (document as any).startViewTransition(() => {
+      setTheme(nextTheme);
+      if (nextTheme === "light") {
+        document.documentElement.classList.add("light");
+        document.documentElement.classList.remove("dark");
+      } else {
+        document.documentElement.classList.add("dark");
+        document.documentElement.classList.remove("light");
+      }
+    });
+  };
+
   const [loaded, setLoaded] = useState<Record<string, boolean>>({
     hero: false,
     about: false,
@@ -303,7 +339,7 @@ export default function App() {
       <div className="fixed inset-0 pointer-events-none z-0 swiss-grid opacity-[0.1]" />
 
       {/* Glassmorphism Navigation Bar */}
-      <Navbar lang={lang} onLangChange={handleLangChange} />
+      <Navbar lang={lang} onLangChange={handleLangChange} theme={theme} onThemeToggle={handleThemeToggle} />
 
       {/* Elegant Fixed Left Sidebar (Swiss Alignment Rail) */}
       <aside className="hidden lg:flex fixed top-0 left-0 bottom-0 w-20 border-r border-white/5 flex-col justify-center items-center z-30 pointer-events-none" id="swiss-alignment-aside">
