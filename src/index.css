@@ -27,57 +27,52 @@
   );
 }
 
-/* Custom View Transition Mask Animation for Theme Toggle */
-::view-transition-group(root) {
-  animation-timing-function: var(--expo-in);
-}
-
 ::view-transition-new(root) {
-  mask: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmFvNXVzb2p6ODNvZGNseHM5a3ZydHR6aW42YWRvaWxncTdzMnYwNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/iIqmM5tTjmpOB9mpbn/giphy.gif') center / 0 no-repeat;
-  mask-size: 0;
-  animation: scale-mask 1.8s ease-in-out forwards;
-  -webkit-mask: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmFvNXVzb2p6ODNvZGNseHM5a3ZydHR6aW42YWRvaWxncTdzMnYwNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/iIqmM5tTjmpOB9mpbn/giphy.gif') center / 0 no-repeat;
+  mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="white"/></svg>')
+    center / 0 no-repeat;
+  animation: scale 1s cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
+  -webkit-mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="white"/></svg>')
+    center / 0 no-repeat;
   -webkit-mask-size: 0;
 }
 
 ::view-transition-old(root),
-.dark::view-transition-old(root),
-.light::view-transition-old(root) {
-  animation: scale-mask 1.8s ease-in-out forwards;
+.dark::view-transition-old(root) {
+  animation: none;
+  animation-fill-mode: both;
+  z-index: -1;
 }
 
-@keyframes scale-mask {
+.dark::view-transition-new(root) {
+  animation: scale 1s cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
+}
+
+@keyframes scale {
   0% {
     mask-size: 0;
     -webkit-mask-size: 0;
   }
-  15% {
-    mask-size: 60vmax;
-    -webkit-mask-size: 60vmax;
-  }
-  85% {
-    mask-size: 60vmax;
-    -webkit-mask-size: 60vmax;
-  }
   100% {
-    mask-size: 2000vmax;
-    -webkit-mask-size: 2000vmax;
+    mask-size: 250vmax;
+    -webkit-mask-size: 250vmax;
   }
 }
 
-/* Light Theme High-Contrast CSS Overrides */
+/* Ultra-Sharp High-Contrast Light Theme Overrides */
 html.light {
   --bg-dark: #F8F9FA;
   --bg-card: #FFFFFF;
-  --text-light: #111827;
-  --text-muted: #4B5563;
+  --text-light: #0F172A;
+  --text-muted: #334155;
   color-scheme: light;
 }
 
 html.light,
 html.light body {
   background-color: #F8F9FA !important;
-  color: #111827 !important;
+  color: #0F172A !important;
 }
 
 html.light .bg-\[\#090909\],
@@ -100,41 +95,70 @@ html.light .bg-\[\#1E1917\],
 html.light .bg-\[\#26160C\],
 html.light .bg-card {
   background-color: #FFFFFF !important;
-  border-color: rgba(0, 0, 0, 0.12) !important;
-  color: #111827 !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
+  color: #0F172A !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
+/* Text Overrides for Light Mode - Ultra Sharp Contrast */
 html.light .text-\[\#F5F5F3\],
 html.light .text-white,
 html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6 {
-  color: #111827 !important;
+  color: #0F172A !important;
 }
 
 html.light .text-\[\#8E8E93\],
 html.light .text-\[\#C0C0C5\],
 html.light .text-muted-foreground {
-  color: #4B5563 !important;
+  color: #334155 !important;
+  opacity: 1 !important;
 }
 
+html.light .text-white\/40,
+html.light .text-white\/60,
+html.light .text-white\/70,
+html.light .text-white\/80 {
+  color: #475569 !important;
+  opacity: 1 !important;
+}
+
+/* Hover States for Light Mode */
+html.light .group:hover .text-\[\#F5F5F3\],
+html.light .group:hover .text-white {
+  color: #FF6A00 !important;
+}
+
+html.light .group:hover h3,
+html.light .group:hover h2 {
+  color: #FF6A00 !important;
+}
+
+/* Border Overrides for Light Mode */
 html.light .border-white\/5,
 html.light .border-white\/10,
 html.light .border-white\/15,
 html.light .border-white\/20 {
-  border-color: rgba(0, 0, 0, 0.1) !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
 }
 
+/* Button & Card Overrides for Light Mode */
 html.light .btn-stacked {
-  background-color: #111827 !important;
-  color: #F8F9FA !important;
+  background-color: #0F172A !important;
+  color: #FFFFFF !important;
+}
+
+html.light .btn-stacked:hover {
+  background-color: #FF6A00 !important;
+  color: #000000 !important;
 }
 
 html.light .swiss-grid {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px) !important;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px) !important;
 }
 
 html.light .crt-overlay {
-  opacity: 0.15 !important;
+  opacity: 0.08 !important;
 }
 
 @theme {
