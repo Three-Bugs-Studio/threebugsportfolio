@@ -214,6 +214,20 @@ html.light .pricing-milestone-item {
   border-color: rgba(0, 105, 137, 0.2) !important;
 }
 
+/* Light Mode Quote & CardNav Panel Overrides */
+html.light .hero-slogan {
+  color: #C2410C !important; /* Deep Rich Burnt Amber for 100% legibility on light background */
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  filter: none !important;
+}
+
+html.light #card-nav-panel {
+  background-color: rgba(234, 235, 237, 0.98) !important;
+  border-color: rgba(0, 105, 137, 0.2) !important;
+  color: #0A2540 !important;
+}
+
 /* Ensure Ultra-High Contrast Dark Navy (#0A2540) text in Light Mode for 100% legibility */
 html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6,
 html.light .text-white,

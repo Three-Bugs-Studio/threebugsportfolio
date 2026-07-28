@@ -293,7 +293,7 @@ export default function Hero({ lang }: HeroProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.95 }}
           transition={{ delay: 0.7, duration: 1 }}
-          className="font-mono text-xs md:text-sm tracking-[0.25em] text-brand-orange mt-8 uppercase font-medium select-none drop-shadow-[0_0_12px_rgba(255,106,0,0.4)]"
+          className="hero-slogan font-mono text-xs md:text-sm tracking-[0.25em] text-brand-orange mt-8 uppercase font-medium select-none drop-shadow-[0_0_12px_rgba(255,106,0,0.4)]"
         >
           Every bug teaches. Every build improves.
         </motion.div>

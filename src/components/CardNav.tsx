@@ -58,12 +58,14 @@ export default function CardNav({
 
   const t = TRANSLATIONS[lang];
 
+  const isLight = theme === "light";
+
   // Default Studio Card Nav Items structured for Three Bugs Studio if not passed explicitly
   const defaultItems: CardNavItem[] = [
     {
       label: lang === "vi" ? "Sản Phẩm & Dịch Vụ" : "Work & Services",
-      bgColor: "#171717",
-      textColor: "#FFFFFF",
+      bgColor: isLight ? "#FFFFFF" : "#171717",
+      textColor: isLight ? "#0A2540" : "#FFFFFF",
       links: [
         { label: lang === "vi" ? "Sản Phẩm Tiêu Biểu" : "Featured Portfolio", href: "#app-work-section", ariaLabel: "Portfolio" },
         { label: lang === "vi" ? "Công Nghệ & Dịch Vụ" : "Core Capabilities", href: "#app-services-section", ariaLabel: "Services" },
@@ -72,8 +74,8 @@ export default function CardNav({
     },
     {
       label: lang === "vi" ? "Quy Trình & Báo Giá" : "Process & Pricing",
-      bgColor: "#1E1917",
-      textColor: "#FFFFFF",
+      bgColor: isLight ? "#DCE5EC" : "#1E1917",
+      textColor: isLight ? "#0A2540" : "#FFFFFF",
       links: [
         { label: lang === "vi" ? "Quy Trình Phát Triển" : "Engineering Flow", href: "#app-process-section", ariaLabel: "Process" },
         { label: lang === "vi" ? "Báo Giá Theo Phase" : "Phase Pricing", href: "#app-pricing-section", ariaLabel: "Pricing" },
@@ -82,8 +84,8 @@ export default function CardNav({
     },
     {
       label: lang === "vi" ? "Studio & Đội Ngũ" : "About & Team",
-      bgColor: "#26160C",
-      textColor: "#FFFFFF",
+      bgColor: isLight ? "#E2E8F0" : "#26160C",
+      textColor: isLight ? "#0A2540" : "#FFFFFF",
       links: [
         { label: lang === "vi" ? "Triết Lý Hoạt Động" : "About Philosophy", href: "#app-about-section", ariaLabel: "About" },
         { label: lang === "vi" ? "Sơ Đồ & Đội Ngũ" : "Studio Founders", href: "#app-team-section", ariaLabel: "Team" },
@@ -91,13 +93,13 @@ export default function CardNav({
       ]
     },
     {
-      label: lang === "vi" ? "Liên Hệ Dự Án" : "Project Inquiry",
-      bgColor: "#FF6A00",
-      textColor: "#090909",
+      label: lang === "vi" ? "Liên Hệ Dự Án" : "Project Inquiries",
+      bgColor: isLight ? "#006989" : "#FF6A00",
+      textColor: isLight ? "#FFFFFF" : "#090909",
       links: [
-        { label: lang === "vi" ? "Form Tư Vấn Dự Án (Trực Tiếp)" : "Consultation Form (Direct)", href: "#app-contact-section", ariaLabel: "Consultation Form" },
-        { label: "Email: dongduong840@gmail.com", href: "mailto:dongduong840@gmail.com", ariaLabel: "Direct Email", isExternal: true },
-        { label: "GitHub: Three-Bugs-Studio", href: "https://github.com/Three-Bugs-Studio", ariaLabel: "GitHub Repository", isExternal: true }
+        { label: lang === "vi" ? "Form Tư Vấn Dự Án (Trực Tiếp)" : "Project Inquiry Form", href: "#app-contact-section", ariaLabel: "Contact Form" },
+        { label: "EMAIL: dongduong840@gmail.com", href: "mailto:dongduong840@gmail.com", ariaLabel: "Email Direct", isExternal: true },
+        { label: "GITHUB: THREE-BUGS-STUDIO", href: "https://github.com/Three-Bugs-Studio", ariaLabel: "GitHub Repo", isExternal: true }
       ]
     }
   ];
