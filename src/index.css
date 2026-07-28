@@ -60,27 +60,29 @@
   }
 }
 
-/* Ultra-Sharp High-Contrast Light Theme Overrides */
+/* Dreamy #EAEBED & Ocean #006989 Palette Light Theme Overrides (NO BLACK BORDERS) */
 html.light {
-  --bg-dark: #F8F9FA;
+  --bg-dark: #EAEBED;
   --bg-card: #FFFFFF;
-  --text-light: #0F172A;
-  --text-muted: #334155;
+  --text-light: #006989;
+  --text-muted: #004D66;
   color-scheme: light;
 }
 
 html.light,
 html.light body {
-  background-color: #F8F9FA !important;
-  color: #0F172A !important;
+  background-color: #EAEBED !important;
+  color: #006989 !important;
 }
 
+/* Background Overrides - Dreamy #EAEBED */
 html.light .bg-\[\#090909\],
 html.light .bg-\[\#090909\]\/40,
 html.light .bg-\[\#090909\]\/60,
 html.light .bg-\[\#090909\]\/80,
-html.light .bg-\[\#090909\]\/95 {
-  background-color: #F8F9FA !important;
+html.light .bg-\[\#090909\]\/95,
+html.light section {
+  background-color: #EAEBED !important;
 }
 
 html.light .bg-\[\#121212\],
@@ -95,70 +97,89 @@ html.light .bg-\[\#1E1917\],
 html.light .bg-\[\#26160C\],
 html.light .bg-card {
   background-color: #FFFFFF !important;
-  border-color: rgba(0, 0, 0, 0.15) !important;
-  color: #0F172A !important;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 105, 137, 0.18) !important;
+  color: #006989 !important;
+  box-shadow: 0 4px 20px rgba(0, 105, 137, 0.05);
 }
 
-/* Text Overrides for Light Mode - Ultra Sharp Contrast */
+/* Text Overrides - Ocean #006989 & #004D66 (ZERO BLACK TEXT) */
 html.light .text-\[\#F5F5F3\],
 html.light .text-white,
 html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6 {
-  color: #0F172A !important;
+  color: #006989 !important;
 }
 
 html.light .text-\[\#8E8E93\],
 html.light .text-\[\#C0C0C5\],
-html.light .text-muted-foreground {
-  color: #334155 !important;
-  opacity: 1 !important;
-}
-
+html.light .text-muted-foreground,
 html.light .text-white\/40,
 html.light .text-white\/60,
 html.light .text-white\/70,
 html.light .text-white\/80 {
-  color: #475569 !important;
+  color: #004D66 !important;
   opacity: 1 !important;
 }
 
 /* Hover States for Light Mode */
 html.light .group:hover .text-\[\#F5F5F3\],
-html.light .group:hover .text-white {
-  color: #FF6A00 !important;
-}
-
+html.light .group:hover .text-white,
 html.light .group:hover h3,
-html.light .group:hover h2 {
+html.light .group:hover h2,
+html.light a:hover {
   color: #FF6A00 !important;
 }
 
-/* Border Overrides for Light Mode */
+/* Border Overrides - Ocean Tint (ZERO BLACK BORDERS) */
 html.light .border-white\/5,
 html.light .border-white\/10,
 html.light .border-white\/15,
-html.light .border-white\/20 {
-  border-color: rgba(0, 0, 0, 0.12) !important;
+html.light .border-white\/20,
+html.light .border-black,
+html.light .border-black\/20,
+html.light .border-black\/30 {
+  border-color: rgba(0, 105, 137, 0.18) !important;
 }
 
-/* Button & Card Overrides for Light Mode */
-html.light .btn-stacked {
-  background-color: #0F172A !important;
+/* Button Overrides for Light Mode - Ocean #006989 & Cyber Orange */
+html.light .btn-stacked,
+html.light button.btn-stacked,
+html.light a.btn-stacked {
+  background-color: #006989 !important;
   color: #FFFFFF !important;
+  border-color: #006989 !important;
+  box-shadow: 0 4px 14px rgba(0, 105, 137, 0.22) !important;
 }
 
-html.light .btn-stacked:hover {
+html.light .btn-stacked:hover,
+html.light button.btn-stacked:hover,
+html.light a.btn-stacked:hover {
   background-color: #FF6A00 !important;
-  color: #000000 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 6px 18px rgba(255, 106, 0, 0.3) !important;
 }
 
+/* Input Fields in Light Mode */
+html.light input,
+html.light textarea,
+html.light select {
+  background-color: #FFFFFF !important;
+  color: #006989 !important;
+  border-color: rgba(0, 105, 137, 0.25) !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: rgba(0, 105, 137, 0.5) !important;
+}
+
+/* Grid & Vignette Overrides for Light Mode */
 html.light .swiss-grid {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px) !important;
+  background-image: linear-gradient(to right, rgba(0, 105, 137, 0.08) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(0, 105, 137, 0.08) 1px, transparent 1px) !important;
 }
 
 html.light .crt-overlay {
-  opacity: 0.08 !important;
+  opacity: 0.03 !important;
 }
 
 @theme {
