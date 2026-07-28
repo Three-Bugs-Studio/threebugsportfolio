@@ -179,71 +179,13 @@ html.light .pricing-card-container {
   box-shadow: 0 10px 30px rgba(0, 105, 137, 0.08) !important;
 }
 
-html.light .pricing-card-left {
-  background-color: #DCE5EC !important; /* Soft Ice Blue Secondary Light Tone */
-  border-color: rgba(0, 105, 137, 0.2) !important;
-}
-
-html.light .pricing-price-box {
-  background-color: #FFFFFF !important;
-  border-color: rgba(0, 105, 137, 0.2) !important;
-  box-shadow: 0 4px 12px rgba(0, 105, 137, 0.05) !important;
-}
-
-html.light .pricing-card-right {
-  background-color: #FFFFFF !important;
-}
-
-html.light .pricing-milestone-box {
-  background-color: #DCE5EC !important; /* Soft Ice Blue Secondary Light Tone */
-  border-color: rgba(0, 105, 137, 0.2) !important;
-}
-
-html.light .pricing-milestone-item {
-  background-color: #FFFFFF !important;
-  border-color: rgba(0, 105, 137, 0.2) !important;
-}
-
-/* Light Mode Quote & CardNav Panel Overrides */
-html.light .hero-slogan {
-  color: #C2410C !important; /* Deep Rich Burnt Amber for 100% legibility on light background */
-  font-weight: 700 !important;
-  text-shadow: none !important;
-  filter: none !important;
-}
-
-html.light #card-nav-panel {
-  background-color: rgba(234, 235, 237, 0.98) !important;
-  border-color: rgba(0, 105, 137, 0.2) !important;
-  color: #0A2540 !important;
-}
-
-/* Ensure Ultra-High Contrast Dark Navy (#0A2540) text in Light Mode for 100% legibility */
-html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6,
-html.light .text-white,
-html.light .text-\[\#F5F5F3\],
-html.light .text-\[\#D4D4D8\] {
-  color: #0A2540 !important;
-}
-
-html.light p, html.light .text-\[\#8E8E93\] {
-  color: #1E3A8A !important;
-}
-
-/* Complete Light Mode Overrides for Navigation, Headers, Pricing, FAQ & Cards (ZERO BLACK) */
-html.light .bg-\[\#060606\],
-html.light .bg-\[\#090909\],
-html.light .bg-\[\#0c0c0c\],
-html.light .bg-\[\#0f0f0f\],
-html.light .bg-\[\#0f0f10\],
-html.light .bg-\[\#111111\],
-html.light .bg-\[\#121212\],
-html.light .bg-\[\#141414\],
-html.light .bg-\[\#171717\],
-html.light .bg-\[\#1a1a1a\],
-html.light .bg-\[\#1E1917\],
-html.light .bg-\[\#26160C\],
+/* ABSOLUTE 100% PURGE OF ALL DARK BLACK HEX BACKGROUNDS IN LIGHT THEME */
+html.light [class*="bg-[#0"],
+html.light [class*="bg-[#1"],
+html.light [class*="bg-[#2"],
+html.light [class*="bg-[#30"],
 html.light nav,
+html.light header,
 html.light #card-nav-container,
 html.light #card-nav-panel,
 html.light #card-nav-menu-btn,
@@ -256,9 +198,58 @@ html.light kbd {
   color: #006989 !important;
 }
 
-html.light .bg-\[\#060606\] {
+/* Main Canvas Page & Section Background Override */
+html.light,
+html.light body,
+html.light main,
+html.light section,
+html.light footer,
+html.light [class*="bg-[#090909]"] {
   background-color: #EAEBED !important;
+}
+
+/* Secondary Light Tone (#DCE5EC Soft Ice Blue) Overrides */
+html.light .pricing-card-left,
+html.light .pricing-milestone-box,
+html.light [class*="bg-[#060606]"],
+html.light [class*="bg-[#0c0c0c]"] {
+  background-color: #DCE5EC !important;
   border-color: rgba(0, 105, 137, 0.2) !important;
+}
+
+html.light .pricing-price-box,
+html.light .pricing-card-right,
+html.light .pricing-milestone-item {
+  background-color: #FFFFFF !important;
+  border-color: rgba(0, 105, 137, 0.2) !important;
+}
+
+/* Border Overrides - Ocean Tint (ZERO BLACK BORDERS) */
+html.light [class*="border-white"],
+html.light [class*="border-black"] {
+  border-color: rgba(0, 105, 137, 0.18) !important;
+}
+
+/* Ensure Ultra-High Contrast Dark Navy (#0A2540) text in Light Mode for 100% legibility */
+html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6,
+html.light [class*="text-white"],
+html.light [class*="text-[#F5F5F3]"],
+html.light [class*="text-[#D4D4D8]"] {
+  color: #0A2540 !important;
+}
+
+html.light p,
+html.light [class*="text-[#8E8E93]"],
+html.light [class*="text-[#C0C0C5]"] {
+  color: #1E3A8A !important;
+}
+
+/* Light Mode Quote & Special Overrides */
+html.light .hero-slogan {
+  color: #C2410C !important; /* Deep Rich Burnt Amber for 100% legibility on light background */
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  filter: none !important;
 }
 
 html.light .socialSvg path {
