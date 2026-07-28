@@ -31,7 +31,7 @@ export interface CardNavProps {
   buttonTextColor?: string;
   ease?: string;
   theme?: "dark" | "light";
-  onThemeToggle?: () => void;
+  onThemeToggle?: (e?: React.MouseEvent) => void;
 }
 
 export default function CardNav({

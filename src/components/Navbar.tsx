@@ -5,7 +5,7 @@ interface NavbarProps {
   lang: "vi" | "en";
   onLangChange: (lang: "vi" | "en") => void;
   theme?: "dark" | "light";
-  onThemeToggle?: () => void;
+  onThemeToggle?: (e?: React.MouseEvent) => void;
 }
 
 export default function Navbar({ lang, onLangChange, theme = "dark", onThemeToggle }: NavbarProps) {

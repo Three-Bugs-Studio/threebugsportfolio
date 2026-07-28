@@ -66,7 +66,7 @@ export default function App() {
     localStorage.setItem("three_bugs_theme", theme);
   }, [theme]);
 
-  const handleThemeToggle = () => {
+  const handleThemeToggle = (e?: React.MouseEvent) => {
     const nextTheme = theme === "dark" ? "light" : "dark";
 
     if (!(document as any).startViewTransition) {
@@ -74,7 +74,15 @@ export default function App() {
       return;
     }
 
-    (document as any).startViewTransition(() => {
+    const x = e ? e.clientX : window.innerWidth / 2;
+    const y = e ? e.clientY : window.innerHeight / 2;
+
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    const transition = (document as any).startViewTransition(() => {
       setTheme(nextTheme);
       if (nextTheme === "light") {
         document.documentElement.classList.add("light");
@@ -83,6 +91,26 @@ export default function App() {
         document.documentElement.classList.add("dark");
         document.documentElement.classList.remove("light");
       }
+    });
+
+    transition.ready.then(() => {
+      const clipPath = [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`,
+      ];
+      document.documentElement.animate(
+        {
+          clipPath: nextTheme === "light" ? clipPath : [...clipPath].reverse(),
+        },
+        {
+          duration: 650,
+          easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+          pseudoElement:
+            nextTheme === "light"
+              ? "::view-transition-new(root)"
+              : "::view-transition-old(root)",
+        }
+      );
     });
   };
 
