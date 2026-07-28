@@ -178,8 +178,44 @@ html.light .swiss-grid {
                     linear-gradient(to bottom, rgba(0, 105, 137, 0.08) 1px, transparent 1px) !important;
 }
 
+html.light .hero-vignette {
+  background: radial-gradient(ellipse at center, rgba(234, 235, 237, 0.2) 0%, rgba(234, 235, 237, 0.65) 50%, rgba(234, 235, 237, 0.95) 100%) !important;
+}
+
+/* Complete Light Mode Overrides for Navigation, Headers, Vignette & Cards (ZERO BLACK) */
+html.light .bg-\[\#0c0c0c\],
+html.light .bg-\[\#0f0f10\],
+html.light .bg-\[\#141414\],
+html.light .bg-\[\#171717\],
+html.light .bg-\[\#1E1917\],
+html.light .bg-\[\#26160C\],
+html.light nav,
+html.light #card-nav-container,
+html.light #card-nav-panel,
+html.light #card-nav-menu-btn,
+html.light #card-nav-theme-btn,
+html.light .footer-social-card,
+html.light .socialContainer,
+html.light kbd {
+  background-color: #FFFFFF !important;
+  border-color: rgba(0, 105, 137, 0.18) !important;
+  color: #006989 !important;
+}
+
+html.light .socialSvg path {
+  fill: #006989 !important;
+}
+
+html.light #swiss-alignment-aside {
+  border-color: rgba(0, 105, 137, 0.15) !important;
+}
+
+html.light #swiss-alignment-aside span {
+  color: #004D66 !important;
+}
+
 html.light .crt-overlay {
-  opacity: 0.03 !important;
+  display: none !important;
 }
 
 @theme {

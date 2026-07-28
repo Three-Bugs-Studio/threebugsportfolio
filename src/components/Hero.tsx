@@ -224,7 +224,7 @@ export default function Hero({ lang }: HeroProps) {
       </div>
 
       {/* High-Contrast Vignette Mask Overlay to ensure text pops out prominently */}
-      <div className="absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(9,9,9,0.25)_0%,_rgba(9,9,9,0.70)_50%,_rgba(9,9,9,0.98)_100%)]" />
+      <div className="hero-vignette absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(9,9,9,0.25)_0%,_rgba(9,9,9,0.70)_50%,_rgba(9,9,9,0.98)_100%)]" />
 
       {/* Ambient Brand Lighting Glares */}
       <div className="absolute top-[-10%] left-[5%] brutalist-glow opacity-40 z-[1]" />
