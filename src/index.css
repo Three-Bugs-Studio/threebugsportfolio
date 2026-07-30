@@ -230,6 +230,12 @@ html.light [class*="border-black"] {
   border-color: rgba(0, 105, 137, 0.18) !important;
 }
 
+html.light .services-anim-icon-container {
+  background-color: #FFFFFF !important;
+  border-color: rgba(0, 105, 137, 0.25) !important;
+  box-shadow: 0 4px 14px rgba(0, 105, 137, 0.08) !important;
+}
+
 /* Ensure Ultra-High Contrast Dark Navy (#0A2540) text in Light Mode for 100% legibility */
 html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6,
 html.light [class*="text-white"],

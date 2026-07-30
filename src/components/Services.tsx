@@ -1,36 +1,33 @@
 import React, { useState } from "react";
 import { SERVICES_DATA, TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
-import { FaPenNib, FaGlobe, FaDatabase, FaMicrochip, FaTerminal, FaChevronRight, FaWrench } from "react-icons/fa6";
+import { FaChevronRight } from "react-icons/fa6";
+
+// Import custom animated GIF icons
+import logoDesignGif from "@/assets/animation-icon/logo-design.gif";
+import webDevGif from "@/assets/animation-icon/web-developer.gif";
+import strategyGif from "@/assets/animation-icon/strategy.gif";
+import aiAssistantGif from "@/assets/animation-icon/ai-assistant.gif";
+import responsiveGif from "@/assets/animation-icon/responsive.gif";
+import maintenanceGif from "@/assets/animation-icon/maintenance.gif";
 
 interface ServicesProps {
   lang: "vi" | "en";
 }
 
+const animIconMap: Record<string, string> = {
+  PenTool: logoDesignGif,
+  Globe: webDevGif,
+  Database: strategyGif,
+  Cpu: aiAssistantGif,
+  Terminal: responsiveGif,
+  Wrench: maintenanceGif,
+};
+
 export default function Services({ lang }: ServicesProps) {
   const t = TRANSLATIONS[lang];
   const servicesList = SERVICES_DATA[lang];
   const [activeId, setActiveId] = useState<string | null>(servicesList[0]?.id || null);
-
-  // Icon mapping helper with FontAwesome icons
-  const getIcon = (iconName: string, className: string) => {
-    switch (iconName) {
-      case "PenTool":
-        return <FaPenNib className={className} />;
-      case "Globe":
-        return <FaGlobe className={className} />;
-      case "Database":
-        return <FaDatabase className={className} />;
-      case "Cpu":
-        return <FaMicrochip className={className} />;
-      case "Terminal":
-        return <FaTerminal className={className} />;
-      case "Wrench":
-        return <FaWrench className={className} />;
-      default:
-        return <FaTerminal className={className} />;
-    }
-  };
 
   // Animating values variants with a high-end subtle entrance
   const itemVariants = {
@@ -116,13 +113,17 @@ export default function Services({ lang }: ServicesProps) {
 
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-start gap-5">
-                      {/* Service Icon */}
-                      <div className={`p-3 border rounded-sm transition-all duration-500 ${
+                      {/* Service Animated Icon Container */}
+                      <div className={`services-anim-icon-container relative w-12 h-12 md:w-14 md:h-14 p-1.5 rounded-xl border transition-all duration-500 flex items-center justify-center shrink-0 overflow-hidden ${
                         isActive
-                          ? "bg-brand-orange/10 border-brand-orange text-brand-orange"
-                          : "bg-[#121212]/50 border-white/5 text-[#8E8E93] group-hover:text-[#F5F5F3]"
+                          ? "bg-brand-orange/15 border-brand-orange shadow-[0_0_18px_rgba(255,106,0,0.3)] scale-105"
+                          : "bg-[#141416] border-white/10 group-hover:border-brand-orange/40 group-hover:shadow-[0_0_12px_rgba(255,106,0,0.15)]"
                       }`}>
-                        {getIcon(service.iconName, "w-5 h-5")}
+                        <img
+                          src={animIconMap[service.iconName] || logoDesignGif}
+                          alt={service.title}
+                          className="w-full h-full object-contain rounded-lg transition-transform duration-300 group-hover:scale-110"
+                        />
                       </div>
 
                       {/* Service Title & Brief */}
