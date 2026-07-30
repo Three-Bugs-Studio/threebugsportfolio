@@ -230,7 +230,9 @@ html.light [class*="border-black"] {
   border-color: rgba(0, 105, 137, 0.18) !important;
 }
 
-html.light .services-anim-icon-container {
+html.light .services-anim-icon-container,
+html.light .price-anim-icon-container,
+html.light .price-header-icon-container {
   background-color: #FFFFFF !important;
   border-color: rgba(0, 105, 137, 0.25) !important;
   box-shadow: 0 4px 14px rgba(0, 105, 137, 0.08) !important;

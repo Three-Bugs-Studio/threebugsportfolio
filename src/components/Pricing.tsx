@@ -3,6 +3,7 @@ import { PRICING_DATA } from "../data";
 import { motion, useInView } from "motion/react";
 import { FaCheck, FaArrowRight, FaClock, FaShieldHalved, FaLayerGroup, FaWandMagicSparkles } from "react-icons/fa6";
 import { PricingPlan } from "../types";
+import priceGif from "@/assets/animation-icon/price.gif";
 
 interface PricingProps {
   lang: "vi" | "en";
@@ -122,13 +123,23 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
               </div>
 
               {/* Pricing Display */}
-              <motion.div className="pricing-price-box mt-8 p-5 rounded-sm bg-[#060606] border border-white/5 space-y-2" variants={itemVariants}>
-                <div className="flex items-baseline flex-wrap gap-2">
-                  <span className="text-3xl md:text-4xl font-extrabold font-display text-[#F5F5F3]">
-                    {plan.priceVnd}
-                  </span>
+              <motion.div className="pricing-price-box mt-8 p-5 rounded-xl bg-[#060606] border border-white/10 space-y-2 relative overflow-hidden" variants={itemVariants}>
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-baseline flex-wrap gap-2">
+                    <span className="text-3xl md:text-4xl font-extrabold font-display text-[#F5F5F3]">
+                      {plan.priceVnd}
+                    </span>
+                  </div>
+                  {/* Price Animated GIF Badge */}
+                  <div className="price-anim-icon-container relative w-11 h-11 md:w-12 md:h-12 p-1 rounded-xl bg-brand-orange/15 border border-brand-orange/30 shadow-[0_0_15px_rgba(255,106,0,0.25)] flex items-center justify-center shrink-0 overflow-hidden">
+                    <img
+                      src={priceGif}
+                      alt="Price tag animation"
+                      className="w-full h-full object-contain rounded-lg transition-transform duration-300 hover:scale-110"
+                    />
+                  </div>
                 </div>
-                <div className="flex items-center justify-between font-mono text-xs text-[#8E8E93] pt-1 border-t border-white/5">
+                <div className="flex items-center justify-between font-mono text-xs text-[#8E8E93] pt-2 border-t border-white/5">
                   <span>{plan.priceUsd}</span>
                   <span className="text-brand-orange font-medium">
                     [ {lang === "vi" ? "Trọn gói 3 Phase" : "Full 3 Phases"} ]
@@ -239,7 +250,10 @@ export default function Pricing({ lang }: PricingProps) {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3.5 mb-4">
+              <div className="price-header-icon-container w-9 h-9 p-1 rounded-lg bg-brand-orange/15 border border-brand-orange/30 flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(255,106,0,0.2)]">
+                <img src={priceGif} alt="Pricing icon" className="w-full h-full object-contain rounded-sm" />
+              </div>
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange font-semibold">
                 {lang === "vi" ? "04_ALT // BÁO GIÁ TRỌN GÓI 3 PHASE" : "04_ALT // 3-PHASE PRICING WORKFLOW"}
               </span>
