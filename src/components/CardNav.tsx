@@ -144,7 +144,7 @@ export default function CardNav({
         }`}
         style={{ backgroundColor: (scrolled || isOpen) ? `${baseColor}E6` : "transparent" }}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 md:px-12 flex items-center justify-between">
           
           {/* Logo & Brand */}
           <a
@@ -154,16 +154,18 @@ export default function CardNav({
               window.scrollTo({ top: 0, behavior: "smooth" });
               setIsOpen(false);
             }}
-            className="flex items-center gap-3 group interactive focus:outline-none"
+            className="flex items-center gap-2 md:gap-3 group interactive focus:outline-none"
             id="card-nav-logo"
           >
-            <div className="flex gap-1.5 mr-1" id="card-nav-logo-dots">
-              <div className="w-2 h-2 rounded-full bg-brand-orange animate-pulse" />
-              <div className="w-2 h-2 rounded-full bg-[#404040]" />
-              <div className="w-2 h-2 rounded-full bg-[#404040]" />
+            <div className="hidden sm:flex gap-1.5 mr-0.5" id="card-nav-logo-dots">
+              <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-brand-orange animate-pulse" />
+              <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#404040]" />
+              <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#404040]" />
             </div>
             <Logo size="sm" showText={false} variant="light" />
-            <div className="text-left leading-none">
+            
+            {/* Desktop Brand Text */}
+            <div className="hidden md:block text-left leading-none">
               <span className="font-display font-bold tracking-widest text-sm uppercase text-white group-hover:text-brand-orange transition-colors">
                 THREE BUGS
               </span>
@@ -171,18 +173,25 @@ export default function CardNav({
                 STUDIO
               </span>
             </div>
+
+            {/* Mobile Compact Brand Text: 3BSTUDIO */}
+            <div className="block md:hidden text-left leading-none">
+              <span className="font-display font-black tracking-wider text-sm uppercase text-white group-hover:text-brand-orange transition-colors">
+                3B<span className="text-brand-orange font-mono text-xs font-bold tracking-widest ml-0.5">STUDIO</span>
+              </span>
+            </div>
           </a>
 
-          {/* Desktop Nav Actions */}
-          <div className="flex items-center gap-4">
+          {/* Desktop & Mobile Nav Actions */}
+          <div className="flex items-center gap-2 md:gap-4">
             
             {/* Language Switcher */}
             {onLangChange && (
-              <div className="flex items-center border border-white/10 rounded-sm overflow-hidden font-mono text-[10px] tracking-wider" id="card-nav-lang">
+              <div className="flex items-center border border-white/10 rounded-sm overflow-hidden font-mono text-[9px] md:text-[10px] tracking-wider" id="card-nav-lang">
                 <button
                   onClick={() => onLangChange("vi")}
                   aria-label="Chuyển sang tiếng Việt"
-                  className={`px-2.5 py-1.5 transition-all ${
+                  className={`px-2 md:px-2.5 py-1 md:py-1.5 transition-all ${
                     lang === "vi"
                       ? "bg-brand-orange text-[#090909] font-semibold"
                       : "bg-transparent text-[#8E8E93] hover:text-white"
@@ -194,7 +203,7 @@ export default function CardNav({
                 <button
                   onClick={() => onLangChange("en")}
                   aria-label="Switch to English"
-                  className={`px-2.5 py-1.5 transition-all ${
+                  className={`px-2 md:px-2.5 py-1 md:py-1.5 transition-all ${
                     lang === "en"
                       ? "bg-brand-orange text-[#090909] font-semibold"
                       : "bg-transparent text-[#8E8E93] hover:text-white"
@@ -213,19 +222,19 @@ export default function CardNav({
             {/* CardNav Menu Toggle Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="btn-stacked relative inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest px-4 py-2 bg-[#141414] border border-white/15 text-white hover:border-brand-orange transition-all duration-300 rounded-sm interactive"
+              className="btn-stacked relative inline-flex items-center gap-1.5 md:gap-2 font-mono text-[11px] md:text-xs uppercase tracking-widest px-3 md:px-4 py-1.5 md:py-2 bg-[#141414] border border-white/15 text-white hover:border-brand-orange transition-all duration-300 rounded-sm interactive"
               id="card-nav-menu-btn"
             >
-              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: menuColor }} />
-              <span>{isOpen ? (lang === "vi" ? "ĐÓNG MENU" : "CLOSE") : "MENU"}</span>
-              {isOpen ? <FaXmark className="w-4 h-4 text-brand-orange" /> : <FaBars className="w-4 h-4 text-brand-orange" />}
+              <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full" style={{ backgroundColor: menuColor }} />
+              <span>{isOpen ? (lang === "vi" ? "ĐÓNG" : "CLOSE") : "MENU"}</span>
+              {isOpen ? <FaXmark className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-orange" /> : <FaBars className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-orange" />}
             </button>
 
             {/* Direct Call to Action Button */}
             <a
               href="#app-contact-section"
               onClick={(e) => handleScrollTo(e, "#app-contact-section")}
-              className="hidden sm:inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest px-5 py-2 rounded-sm font-bold transition-all duration-300 interactive shadow-lg"
+              className="hidden lg:inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest px-5 py-2 rounded-sm font-bold transition-all duration-300 interactive shadow-lg"
               style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
               id="card-nav-cta-btn"
             >
