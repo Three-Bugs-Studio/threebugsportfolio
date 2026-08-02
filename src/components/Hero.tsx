@@ -4,6 +4,7 @@ import { FaArrowUpRightFromSquare, FaArrowDown } from "react-icons/fa6";
 import createGlobe, { COBEOptions } from "cobe";
 import { TRANSLATIONS } from "../data";
 import { cn } from "../lib/utils";
+import { HexagonBackground } from "./ui/hexagon-background";
 
 const GLOBE_CONFIG: COBEOptions = {
   width: 800,
@@ -218,6 +219,9 @@ export default function Hero({ lang }: HeroProps) {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#090909]"
     >
+      {/* Animated Interactive Hexagon Background Grid */}
+      <HexagonBackground className="z-0 opacity-80" gridSize={38} />
+
       {/* 21st.dev Dillion Verma Interactive Globe Component Container */}
       <div className="absolute inset-0 z-0 flex items-center justify-center opacity-65 pointer-events-auto">
         <Globe />
