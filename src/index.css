@@ -225,6 +225,7 @@ html.light [class*="border-black"] {
 html.light .services-anim-icon-container,
 html.light .price-anim-icon-container,
 html.light .price-header-icon-container,
+html.light .receptionist-anim-icon-container,
 html.light .team-card-item {
   background-color: #FFFFFF !important;
   border-color: rgba(0, 105, 137, 0.25) !important;

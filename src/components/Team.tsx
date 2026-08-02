@@ -5,8 +5,7 @@ import {
   FaGithub, 
   FaArrowUpRightFromSquare, 
   FaXmark,
-  FaChevronRight,
-  FaUserCheck
+  FaChevronRight
 } from "react-icons/fa6";
 import { TeamMember } from "../types";
 import DuongPhuDongImg from "@/assets/profile/DuongPhuDongProfile.webp";
@@ -14,6 +13,7 @@ import HuynhQuangDongImg from "@/assets/profile/HuynhQuangDongProfile.webp";
 import HoQuangHuyImg from "@/assets/profile/HoQuangHuyProfile.webp";
 import ThuTranImg from "@/assets/profile/ThuTranProfile.webp";
 import HaoVuImg from "@/assets/profile/HaoProfile.webp";
+import receptionistDeskGif from "@/assets/animation-icon/receptionist-desk.gif";
 
 interface TeamProps {
   lang: "vi" | "en";
@@ -166,8 +166,13 @@ export default function Team({ lang }: TeamProps) {
         {/* Clean Call-to-Action Box */}
         <div className="mt-16 p-6 md:p-8 rounded-xl bg-[#111113]/60 border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center shrink-0 text-brand-orange">
-              <FaUserCheck className="w-6 h-6" />
+            {/* Animated Receptionist GIF Container */}
+            <div className="receptionist-anim-icon-container relative w-12 h-12 md:w-14 md:h-14 p-1.5 rounded-xl bg-brand-orange/15 border border-brand-orange/30 shadow-[0_0_15px_rgba(255,106,0,0.25)] flex items-center justify-center shrink-0 overflow-hidden">
+              <img
+                src={receptionistDeskGif}
+                alt="Receptionist consultation animation"
+                className="w-full h-full object-contain rounded-lg transition-transform duration-300 hover:scale-110"
+              />
             </div>
             <div>
               <h4 className="font-display font-bold text-base md:text-lg text-[#F5F5F3]">
