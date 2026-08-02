@@ -100,15 +100,12 @@ export default function App() {
       ];
       document.documentElement.animate(
         {
-          clipPath: nextTheme === "light" ? clipPath : [...clipPath].reverse(),
+          clipPath: clipPath,
         },
         {
-          duration: 650,
+          duration: 500,
           easing: "cubic-bezier(0.16, 1, 0.3, 1)",
-          pseudoElement:
-            nextTheme === "light"
-              ? "::view-transition-new(root)"
-              : "::view-transition-old(root)",
+          pseudoElement: "::view-transition-new(root)",
         }
       );
     });

@@ -27,7 +27,7 @@
   );
 }
 
-/* Ultra-Smooth 60fps/120fps Dynamic Clip-Path View Transition */
+/* Ultra-Smooth 60fps Dynamic Clip-Path View Transition */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none !important;
@@ -35,19 +35,11 @@
 }
 
 ::view-transition-old(root) {
-  z-index: 1;
+  z-index: 1 !important;
 }
 
 ::view-transition-new(root) {
-  z-index: 9999;
-}
-
-.dark::view-transition-old(root) {
-  z-index: 9999;
-}
-
-.dark::view-transition-new(root) {
-  z-index: 1;
+  z-index: 9999 !important;
 }
 
 /* Dreamy #EAEBED & Ocean #006989 Palette Light Theme Overrides (NO BLACK BORDERS) */
