@@ -3,10 +3,10 @@ import { TEAM_DATA, TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   FaGithub, 
-  FaGrip, 
-  FaWandMagicSparkles, 
   FaArrowUpRightFromSquare, 
-  FaXmark
+  FaXmark,
+  FaChevronRight,
+  FaUserCheck
 } from "react-icons/fa6";
 import { TeamMember } from "../types";
 import DuongPhuDongImg from "@/assets/profile/DuongPhuDongProfile.webp";
@@ -19,43 +19,9 @@ interface TeamProps {
   lang: "vi" | "en";
 }
 
-const themeColors: Record<string, { bg: string; text: string; tagBg: string; borderHex: string }> = {
-  "Duong Phu Dong": {
-    bg: "bg-gradient-to-b from-[#FF6A00] via-[#E05A00] to-[#B34700]",
-    text: "text-black",
-    tagBg: "bg-black/25 text-black border-black/30",
-    borderHex: "#FF6A00"
-  },
-  "Thu Tran": {
-    bg: "bg-gradient-to-b from-[#A855F7] via-[#9333EA] to-[#6B21A8]",
-    text: "text-white",
-    tagBg: "bg-black/30 text-white border-white/20",
-    borderHex: "#A855F7"
-  },
-  "Huynh Quang Dong": {
-    bg: "bg-gradient-to-b from-[#06B6D4] via-[#0284C7] to-[#0369A1]",
-    text: "text-black",
-    tagBg: "bg-black/25 text-black border-black/30",
-    borderHex: "#06B6D4"
-  },
-  "Ho Quang Huy": {
-    bg: "bg-gradient-to-b from-[#10B981] via-[#059669] to-[#047857]",
-    text: "text-black",
-    tagBg: "bg-black/25 text-black border-black/30",
-    borderHex: "#10B981"
-  },
-  "Hao Vu": {
-    bg: "bg-gradient-to-b from-[#F43F5E] via-[#E11D48] to-[#9F1239]",
-    text: "text-white",
-    tagBg: "bg-black/30 text-white border-white/20",
-    borderHex: "#F43F5E"
-  }
-};
-
 export default function Team({ lang }: TeamProps) {
   const t = TRANSLATIONS[lang];
   const teamList = TEAM_DATA[lang];
-  const [viewMode, setViewMode] = useState<"showcase" | "grid">("showcase");
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   const profileImages: Record<string, string> = {
@@ -67,18 +33,9 @@ export default function Team({ lang }: TeamProps) {
   };
 
   const handleScrollToContact = () => {
-    const element = document.getElementById("app-contact-section");
+    const element = document.getElementById("app-contact-section") || document.getElementById("contact");
     if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -87,245 +44,153 @@ export default function Team({ lang }: TeamProps) {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.1,
       },
     },
   };
 
   const cardVariants = {
-    hidden: { y: 40, opacity: 0 },
+    hidden: { y: 30, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 12,
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1],
       },
     },
   };
 
   return (
     <section id="team" className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative overflow-hidden">
-      {/* Background Swiss Grid Pattern */}
+      {/* Background Subtle Tech Grids */}
       <div className="absolute inset-0 swiss-grid opacity-5 pointer-events-none" />
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-brand-orange/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-brand-orange/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
-        {/* Section Label & View Switcher Bar */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange">
-                {t.teamLabel}
+              <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange font-semibold">
+                {lang === "vi" ? "05 // ĐỘI NGŨ THỰC HIỆN" : "05 // STUDIO TEAM"}
               </span>
-              <span className="h-[1px] w-12 bg-white/10" />
+              <span className="h-[1px] w-12 bg-brand-orange/40" />
             </div>
-            <h2 className="font-display font-bold text-3xl md:text-5xl tracking-tight text-[#F5F5F3] uppercase">
-              {lang === "vi" ? "ĐỘI NGŨ 5 LẬP TRÌNH VIÊN THỰC HIỆN" : "THE MAGIC 5 DEVS IN STUDIO"}
+            <h2 className="font-display font-bold text-3xl md:text-5xl tracking-tight text-[#F5F5F3] uppercase leading-tight">
+              {lang === "vi" ? "Đội Ngũ 5 Lập Trình Viên Studio" : "The 5 Engineers & Designers"}
             </h2>
           </div>
 
-          {/* Mode Switcher Buttons */}
-          <div className="flex items-center bg-[#141414] border border-white/10 rounded-sm p-1">
-            <button
-              onClick={() => setViewMode("showcase")}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-sm font-mono text-xs transition-all interactive ${
-                viewMode === "showcase"
-                  ? "bg-brand-orange text-black font-semibold shadow-sm"
-                  : "text-[#8E8E93] hover:text-white"
-              }`}
-            >
-              <FaWandMagicSparkles className="w-3.5 h-3.5" />
-              <span>{lang === "vi" ? "SHOWCASE ARCH" : "SHOWCASE ARCH"}</span>
-            </button>
-            <button
-              onClick={() => setViewMode("grid")}
-              className={`flex items-center gap-2 px-3 py-1.5 rounded-sm font-mono text-xs transition-all interactive ${
-                viewMode === "grid"
-                  ? "bg-brand-orange text-black font-semibold shadow-sm"
-                  : "text-[#8E8E93] hover:text-white"
-              }`}
-            >
-              <FaGrip className="w-3.5 h-3.5" />
-              <span>{lang === "vi" ? "THẺ CHI TIẾT" : "MEMBER CARDS"}</span>
-            </button>
-          </div>
+          <p className="font-sans text-xs md:text-sm text-[#8E8E93] max-w-md font-light leading-relaxed">
+            {lang === "vi"
+              ? "Đội ngũ 5 kỹ sư & thiết kế làm việc trực tiếp tại TP.HCM. Không qua trung gian, không rủi ro tuyển dụng — cam kết chất lượng mã nguồn & bàn giao đúng tiến độ."
+              : "5 dedicated software engineers & UI/UX designers in Ho Chi Minh City. Direct technical partnership with 100% source code handover."}
+          </p>
         </div>
 
-        {/* MODE 1: ARCH TEAM SHOWCASE */}
-        {viewMode === "showcase" && (
-          <div className="w-full flex flex-col items-center text-center my-4">
-            
-            {/* Header Description & CTA Button */}
-            <div className="max-w-3xl mb-14 space-y-4">
-              <p className="font-sans text-sm md:text-base text-[#8E8E93] font-light leading-relaxed max-w-2xl mx-auto">
-                {lang === "vi"
-                  ? "Đội ngũ 5 thành viên lập trình viên & thiết kế chuyên nghiệp tại TP.HCM. Không mất thời gian tìm kiếm hay phỏng vấn rủi ro, chúng tôi trực tiếp thực hiện và đảm bảo tiến độ bàn giao cho bạn."
-                  : "Why waste time searching, interviewing and discovering a bad fit? We handle end-to-end spec, UI/UX, backend, QA & deployment. No back and forth. Get matched with our 5-member team today."}
-              </p>
-              
-              <div className="pt-2">
-                <button
-                  onClick={handleScrollToContact}
-                  className="btn-stacked font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#F5F5F3] text-[#090909] font-bold rounded-sm inline-flex items-center gap-2 group interactive"
-                >
-                  <span>{lang === "vi" ? "NHẬN TƯ VẤN ĐỘI NGŨ" : "FIND YOUR DEVELOPER"}</span>
-                  <FaArrowUpRightFromSquare className="w-4 h-4 text-brand-orange group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </button>
-              </div>
-            </div>
+        {/* Minimalist Professional Team Grid (5 Columns) */}
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          {teamList.map((member, idx) => {
+            const memberImg = profileImages[member.name];
 
-            {/* Overlapping Arch-Top Member Cards Showcase */}
-            <motion.div
-              className="w-full flex flex-wrap md:flex-nowrap justify-center items-end -space-x-3 md:space-x-3 lg:space-x-5 px-2 py-4"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <AnimatePresence>
-                {teamList.map((member, index) => {
-                  const theme = themeColors[member.name] || themeColors["Duong Phu Dong"];
-                  const img = profileImages[member.name];
+            return (
+              <motion.div
+                key={member.name}
+                variants={cardVariants}
+                onClick={() => setSelectedMember(member)}
+                className="team-card-item group relative bg-[#111113]/90 border border-white/10 hover:border-brand-orange/50 p-4 rounded-xl transition-all duration-500 cursor-pointer flex flex-col justify-between overflow-hidden shadow-xl hover:shadow-[0_0_20px_rgba(255,106,0,0.15)] hover:-translate-y-1.5"
+              >
+                {/* Top Subtle Member Index Indicator */}
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="font-mono text-[9px] text-brand-orange font-bold tracking-widest uppercase bg-brand-orange/10 border border-brand-orange/20 px-2 py-0.5 rounded-sm">
+                    0{idx + 1}
+                  </span>
+                  <span className="font-mono text-[9px] text-[#8E8E93] tracking-wider uppercase">
+                    THREE BUGS
+                  </span>
+                </div>
 
-                  return (
-                    <motion.div
-                      key={member.name}
-                      className="w-[145px] sm:w-[170px] md:w-[210px] lg:w-[230px] shrink-0 my-2 md:my-0 cursor-pointer group"
-                      variants={cardVariants}
-                      whileHover={{ y: -16, scale: 1.06, zIndex: 40 }}
-                      style={{ zIndex: teamList.length - index }}
-                      onClick={() => setSelectedMember(member)}
+                {/* Member Portrait Box with Smooth Color Transition */}
+                <div className="relative aspect-[4/5] w-full bg-[#080808] border border-white/5 rounded-lg overflow-hidden mb-4 group-hover:border-brand-orange/30 transition-all duration-500">
+                  <img
+                    src={memberImg}
+                    alt={member.name}
+                    className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                  />
+                  {/* Subtle Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+                </div>
+
+                {/* Name & Role */}
+                <div className="space-y-1 mb-3">
+                  <h3 className="font-display font-bold text-base md:text-lg text-[#F5F5F3] group-hover:text-brand-orange transition-colors leading-snug">
+                    {member.name}
+                  </h3>
+                  <p className="font-sans text-xs text-[#8E8E93] font-light line-clamp-1">
+                    {member.role}
+                  </p>
+                </div>
+
+                {/* Specialized Tech Pills */}
+                <div className="flex flex-wrap gap-1 mb-4 mt-auto">
+                  {(member.specialties || []).slice(0, 2).map((spec) => (
+                    <span
+                      key={spec}
+                      className="font-mono text-[9px] text-[#D4D4D8] bg-white/5 border border-white/10 px-2 py-0.5 rounded-xs"
                     >
-                      <div
-                        className={`relative pt-6 pb-2 px-3 rounded-t-[50%] h-[310px] sm:h-[350px] md:h-[400px] flex flex-col items-center justify-between text-center overflow-hidden border border-white/20 shadow-2xl transition-shadow ${theme.bg}`}
-                      >
-                        {/* Member Photo Standing inside Arch Card */}
-                        <img
-                          src={img}
-                          alt={member.name}
-                          className="absolute inset-0 w-full h-full object-cover object-top drop-shadow-2xl transition-transform duration-500 group-hover:scale-105"
-                        />
-
-                        {/* Top Subtle Signature Color Circle Indicator */}
-                        <div className="absolute top-3.5 z-20 flex justify-center w-full pointer-events-none">
-                          <span
-                            className="w-3 h-3 rounded-full shadow-lg border border-white/40 block"
-                            style={{ backgroundColor: member.colorTag.hex }}
-                          />
-                        </div>
-
-                        {/* Bottom Highlight View Detail Indicator */}
-                        <div className="absolute bottom-3 inset-x-0 flex justify-center z-20 pointer-events-none">
-                          <span className="font-mono text-[9px] bg-black/80 text-white backdrop-blur-md px-3.5 py-1 rounded-full uppercase tracking-widest border border-white/25 shadow-xl group-hover:bg-brand-orange group-hover:text-black transition-all font-bold">
-                            {lang === "vi" ? "CHI TIẾT" : "VIEW DETAIL"}
-                          </span>
-                        </div>
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </AnimatePresence>
-            </motion.div>
-          </div>
-        )}
-
-        {/* MODE 2: DETAILED MEMBER CARDS GRID */}
-        {viewMode === "grid" && (
-          <div className="mt-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {teamList.map((member, idx) => {
-                const memberImg = profileImages[member.name];
-                const tag = member.colorTag;
-
-                return (
-                  <motion.div
-                    key={member.name}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-50px" }}
-                    transition={{ delay: idx * 0.12, duration: 0.7 }}
-                    className="group flex flex-col p-6 rounded-sm bg-[#121212]/50 border border-white/10 hover:border-white/20 transition-all duration-300 relative overflow-hidden"
-                  >
-                    {/* Top Color Tag Ribbon */}
-                    <div
-                      className="absolute top-0 left-0 right-0 h-1 transition-opacity opacity-80 group-hover:opacity-100"
-                      style={{ backgroundColor: tag.hex }}
-                    />
-
-                    {/* Member Header with Tag Badge */}
-                    <div className="flex items-start justify-between mb-4">
-                      <span className={`font-mono text-[9px] tracking-widest px-2 py-0.5 rounded-sm border uppercase font-bold ${tag.badgeClass}`}>
-                        [ {tag.name} ]
-                      </span>
-                      <span className="font-mono text-[10px] text-[#8E8E93]">
-                        MEMBER 0{idx + 1}
-                      </span>
-                    </div>
-
-                    {/* Member Image Box */}
-                    <div className="h-60 w-full bg-[#090909] border border-white/10 rounded-sm mb-5 relative overflow-hidden flex items-center justify-center group-hover:border-white/20 transition-colors">
-                      <div className="absolute inset-0 swiss-grid opacity-10" />
-                      <img
-                        src={memberImg}
-                        alt={member.name}
-                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                      />
-                    </div>
-
-                    {/* Name & Role */}
-                    <h3 className="font-display font-semibold text-xl text-white group-hover:text-brand-orange transition-colors">
-                      {member.name}
-                    </h3>
-                    <span className="font-mono text-[10px] tracking-widest text-brand-orange uppercase mt-1">
-                      {member.role}
+                      {spec}
                     </span>
+                  ))}
+                </div>
 
-                    {/* Bio */}
-                    <p className="font-sans text-xs text-[#8E8E93] font-light leading-relaxed mt-3 mb-5">
-                      {member.bio}
-                    </p>
+                {/* Action Link Footer */}
+                <div className="pt-3 border-t border-white/5 flex items-center justify-between text-xs font-mono text-[#8E8E93] group-hover:text-white transition-colors">
+                  <span className="text-[9px] tracking-wider uppercase text-brand-orange/90 font-medium">
+                    {lang === "vi" ? "Xem hồ sơ" : "View profile"}
+                  </span>
+                  <FaChevronRight className="w-3 h-3 text-brand-orange transition-transform group-hover:translate-x-1" />
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
 
-                    {/* Specialties Badges colorized */}
-                    <div className="flex flex-wrap gap-1.5 mt-auto mb-5">
-                      {(member.specialties || []).map((spec) => (
-                        <span
-                          key={spec}
-                          className="font-mono text-[9px] text-[#E4E4E7] bg-white/5 border border-white/10 px-2 py-0.5 rounded-sm"
-                        >
-                          {spec}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Github Link */}
-                    {member.socials.github && (
-                      <div className="pt-4 border-t border-white/5 flex items-center justify-between">
-                        <span className="font-mono text-[9px] text-[#8E8E93] uppercase">
-                          {member.diagramRole}
-                        </span>
-                        <a
-                          href={member.socials.github}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="text-[#8E8E93] hover:text-white transition-colors interactive flex items-center gap-1 font-mono text-xs"
-                          aria-label={`${member.name} Github`}
-                        >
-                          <FaGithub className="w-4 h-4" />
-                          <span>Code</span>
-                        </a>
-                      </div>
-                    )}
-                  </motion.div>
-                );
-              })}
+        {/* Clean Call-to-Action Box */}
+        <div className="mt-16 p-6 md:p-8 rounded-xl bg-[#111113]/60 border border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center shrink-0 text-brand-orange">
+              <FaUserCheck className="w-6 h-6" />
+            </div>
+            <div>
+              <h4 className="font-display font-bold text-base md:text-lg text-[#F5F5F3]">
+                {lang === "vi" ? "Sẵn Sàng Đồng Hành Cùng Dự Án Của Bạn" : "Ready to Engineer Your Next Product"}
+              </h4>
+              <p className="font-sans text-xs md:text-sm text-[#8E8E93] font-light mt-0.5">
+                {lang === "vi" 
+                  ? "Trao đổi trực tiếp với lập trình viên phụ trách, không qua khâu trung gian sales."
+                  : "Direct collaboration with core engineers, no middleman sales agents."}
+              </p>
             </div>
           </div>
-        )}
 
-        {/* Member Profile Drawer Modal when an arch card is clicked */}
+          <button
+            onClick={handleScrollToContact}
+            className="btn-stacked font-mono text-xs uppercase tracking-widest px-6 py-3.5 bg-brand-orange text-[#090909] font-bold rounded-sm inline-flex items-center gap-2 group shrink-0 interactive hover:bg-white hover:text-black transition-colors"
+          >
+            <span>{lang === "vi" ? "NHẬN TƯ VẤN TRỰC TIẾP" : "DIRECT CONSULTATION"}</span>
+            <FaArrowUpRightFromSquare className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
+        {/* Professional Member Profile Detail Drawer Modal */}
         <AnimatePresence>
           {selectedMember && (
             <motion.div
@@ -336,50 +201,41 @@ export default function Team({ lang }: TeamProps) {
               onClick={() => setSelectedMember(null)}
             >
               <motion.div
-                initial={{ scale: 0.9, y: 20 }}
+                initial={{ scale: 0.95, y: 20 }}
                 animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.9, y: 20 }}
-                transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="bg-[#121212] border border-white/20 rounded-sm p-6 md:p-8 max-w-lg w-full relative overflow-hidden shadow-2xl"
+                exit={{ scale: 0.95, y: 20 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="bg-[#111113] border border-white/15 rounded-xl p-6 md:p-8 max-w-lg w-full relative overflow-hidden shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
               >
-                {/* Accent Top Bar */}
-                <div
-                  className="absolute top-0 left-0 right-0 h-1.5"
-                  style={{ backgroundColor: selectedMember.colorTag.hex }}
-                />
+                {/* Top Accent Orange Border Line */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-brand-orange" />
 
                 <button
                   onClick={() => setSelectedMember(null)}
                   className="absolute top-4 right-4 text-[#8E8E93] hover:text-white transition-colors p-1"
+                  aria-label="Close detail modal"
                 >
                   <FaXmark className="w-5 h-5" />
                 </button>
 
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-20 h-20 rounded-full overflow-hidden border-2" style={{ borderColor: selectedMember.colorTag.hex }}>
+                  <div className="w-16 h-16 rounded-xl overflow-hidden border border-brand-orange/40 shrink-0 bg-[#080808]">
                     <img
                       src={profileImages[selectedMember.name]}
                       alt={selectedMember.name}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-top"
                     />
                   </div>
                   <div>
-                    <h3 className="font-display font-medium text-xl text-[#F5F5F3]">
+                    <h3 className="font-display font-bold text-xl text-[#F5F5F3]">
                       {selectedMember.name}
                     </h3>
-                    <p className="font-sans text-xs text-[#8E8E93] mt-0.5">
+                    <p className="font-sans text-xs text-brand-orange font-medium mt-0.5">
                       {selectedMember.role}
                     </p>
-                    <span 
-                      className="font-mono text-[9px] uppercase px-2 py-0.5 rounded-xs inline-block mt-2 font-bold"
-                      style={{ 
-                        backgroundColor: `${selectedMember.colorTag.hex}20`,
-                        color: selectedMember.colorTag.hex,
-                        border: `1px solid ${selectedMember.colorTag.hex}40`
-                      }}
-                    >
-                      {selectedMember.colorTag.label}
+                    <span className="font-mono text-[9px] text-[#8E8E93] uppercase tracking-wider block mt-1">
+                      {selectedMember.diagramRole}
                     </span>
                   </div>
                 </div>
@@ -391,13 +247,13 @@ export default function Team({ lang }: TeamProps) {
                 {/* Technical Stack / Specialties Tags */}
                 <div className="mb-6">
                   <span className="font-mono text-[9px] uppercase tracking-widest text-brand-orange block mb-2 font-bold">
-                    SPECIALIZED STACK
+                    SPECIALIZED SKILLS & STACK
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {(selectedMember.specialties || []).map((tech) => (
                       <span
                         key={tech}
-                        className="font-mono text-[10px] bg-white/5 border border-white/10 px-2 py-1 rounded-xs text-[#F5F5F3]"
+                        className="font-mono text-[10px] bg-white/5 border border-white/10 px-2.5 py-1 rounded-sm text-[#F5F5F3]"
                       >
                         {tech}
                       </span>
@@ -409,13 +265,13 @@ export default function Team({ lang }: TeamProps) {
                 {selectedMember.socials.github && (
                   <div className="pt-4 border-t border-white/5 flex justify-between items-center">
                     <span className="font-mono text-[10px] text-[#8E8E93]">
-                      ROLE: {selectedMember.diagramRole}
+                      THREE BUGS STUDIO
                     </span>
                     <a
                       href={selectedMember.socials.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="btn-stacked font-mono text-xs bg-[#FF6A00] text-black px-4 py-2 rounded-sm font-bold flex items-center gap-2"
+                      className="btn-stacked font-mono text-xs bg-brand-orange text-[#090909] hover:bg-white hover:text-black px-4 py-2 rounded-sm font-bold flex items-center gap-2 transition-colors"
                     >
                       <FaGithub className="w-4 h-4" />
                       <span>GITHUB PROFILE</span>
