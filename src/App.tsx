@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, startTransition } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -68,9 +68,18 @@ export default function App() {
 
   const handleThemeToggle = (e?: React.MouseEvent) => {
     const nextTheme = theme === "dark" ? "light" : "dark";
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
-    if (!(document as any).startViewTransition) {
+    // Fast direct toggle on Mobile to bypass heavy GPU screen captures and guarantee zero lag
+    if (isMobile || !(document as any).startViewTransition) {
       setTheme(nextTheme);
+      if (nextTheme === "light") {
+        document.documentElement.classList.add("light");
+        document.documentElement.classList.remove("dark");
+      } else {
+        document.documentElement.classList.add("dark");
+        document.documentElement.classList.remove("light");
+      }
       return;
     }
 
@@ -251,8 +260,10 @@ export default function App() {
     
     // Switch language state midway through the animation sweep (when screen is fully covered)
     setTimeout(() => {
-      setLang(newLang);
-      localStorage.setItem("three_bugs_lang", newLang);
+      startTransition(() => {
+        setLang(newLang);
+        localStorage.setItem("three_bugs_lang", newLang);
+      });
       
       setLoaded({
         hero: false,
@@ -271,8 +282,8 @@ export default function App() {
       // Keep overlay slightly longer to let layout settle, then fade out
       setTimeout(() => {
         setIsTransitioning(false);
-      }, 550);
-    }, 450);
+      }, 350);
+    }, 250);
   };
 
   // Dynamic SEO Metadata and Document Title Updates

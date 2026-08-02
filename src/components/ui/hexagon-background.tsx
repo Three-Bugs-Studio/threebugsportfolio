@@ -49,8 +49,9 @@ export function HexagonBackground({
     window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("mouseleave", handleMouseLeave);
 
-    // Calculate Hexagon Geometry
-    const r = gridSize;
+    // Calculate Hexagon Geometry - larger grid on mobile to save GPU cycles
+    const isMobile = window.innerWidth < 768;
+    const r = isMobile ? Math.max(gridSize * 1.5, 54) : gridSize;
     const h = r * Math.sin(Math.PI / 3);
     const w = r;
     const xStep = w * 1.5;
