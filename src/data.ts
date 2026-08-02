@@ -421,8 +421,8 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       badge: "CHUYÊN SÂU & AI // 3 PHASE",
       name: "Gói Web App & Hệ Thống AI Độc Quyền",
       tagline: "Quy trình chuyên sâu xây dựng Web App, Mobile App, Hệ thống Quản lý Doanh nghiệp (CRM/ERP) & Tích hợp AI Agent.",
-      priceVnd: "Từ 12.9 Triệu VNĐ",
-      priceUsd: "~ $520+ USD",
+      priceVnd: "Liên Hệ",
+      priceUsd: "Báo giá theo yêu cầu riêng",
       timeline: "4 - 6+ Tuần (Trọn gói 3 Phase)",
       phases: [
         { number: "Phase 1", title: "App Architecture & Spec", duration: "Tuần 1 - 2", description: "Phân tích đặc tả App, UX Flow & Thiết kế kiến trúc Backend/API." },
@@ -507,11 +507,11 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     },
     {
       id: "phase_3_enterprise",
-      badge: "SPECIAL APP // 3 PHASES",
-      name: "Special App & AI Platform",
-      tagline: "Deep 3-Phase execution building Web Apps, Mobile Apps & AI-integrated platforms.",
-      priceVnd: "From 12+ Million VND",
-      priceUsd: "~ $480+ USD",
+      badge: "ENTERPRISE & AI // 3 PHASES",
+      name: "Custom Web App & AI Platform",
+      tagline: "Deep 3-Phase execution building Web Apps, Mobile Apps, Enterprise Systems (CRM/ERP) & AI Agents.",
+      priceVnd: "Contact Us",
+      priceUsd: "Custom quote per requirements",
       timeline: "4 - 6+ Weeks (Full 3 Phases)",
       phases: [
         { number: "Phase 1", title: "App Architecture & Spec", duration: "Weeks 1 - 2", description: "Locking PuDo Code specs & designing mobile/web app API architecture." },
@@ -799,30 +799,38 @@ export const TESTIMONIALS_DATA: Record<"vi" | "en", Testimonial[]> = {
 export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
   vi: [
     {
-      question: "Chi phí thiết kế và hoàn thiện website được tính như thế nào?",
-      answer: "Chúng tôi áp dụng mức giá cố định rõ ràng. Gói Web 1 (Cơ bản / Landing Page) có chi phí từ 4 đến 5 triệu VNĐ. Gói Web 2 (Thương mại / E-Commerce) có chi phí từ 8 đến 10 triệu VNĐ. Đối với Gói App đặc biệt hoặc hệ thống tích hợp AI, chi phí khởi điểm từ 12 triệu VNĐ và được trao đổi chi tiết theo đặc tả yêu cầu."
+      question: "Chi phí và cách thức đăng ký các gói dịch vụ tại Three Bugs Studio như thế nào?",
+      answer: "Chúng tôi cung cấp các gói cước rõ ràng: Gói 1 (Khởi Nghiệp & Landing Page) chi phí 3.9 Triệu VNĐ; Gói 2 (Doanh Nghiệp Đa Ngành & E-Commerce) chi phí 7.9 – 9.9 Triệu VNĐ; Gói 3 (Web App & Hệ Thống AI) được báo giá linh hoạt theo Liên Hệ. Khi quý khách bấm 'Nhận tư vấn', dữ liệu đăng ký sẽ được tự động lưu về Google Sheets để đội ngũ phản hồi ngay sau 5 - 10 phút."
     },
     {
-      question: "Thời gian hoàn thành một dự án thường kéo dài trong bao lâu?",
-      answer: "Với các dự án website giới thiệu cửa hàng hoặc thương mại điện tử như Sukajan Store, thời gian bàn giao tối ưu là trong vòng 3 tuần. Đối với các hệ thống phức tạp hơn cần phân tích nhiều chức năng, thời gian thực hiện có thể dao động từ 4 đến 8 tuần. Chúng tôi cam kết lộ trình rõ ràng và cập nhật tiến độ liên tục hàng tuần cho bạn."
+      question: "Quy trình làm việc 3 Phase và thời gian hoàn thành dự án kéo dài bao lâu?",
+      answer: "Mọi dự án đều áp dụng quy trình 3 Phase minh bạch: Phase 1 (Thiết kế Figma UI/UX) ➔ Phase 2 (Lập trình Frontend, Backend CMS & Giỏ hàng/QR Payment) ➔ Phase 3 (Kiểm thử bảo mật, Khởi chạy Cloud & Bảo hành). Thời gian hoàn thành từ 1 – 3 tuần đối với Web Landing/E-Commerce và 4 – 6 tuần đối với các ứng dụng Web App/AI phức tạp."
     },
     {
-      question: "Quy trình làm việc và bàn giao sản phẩm diễn ra ra sao?",
-      answer: "Chúng tôi làm việc theo 5 bước từ khâu nhận yêu cầu, thiết kế giao diện Figma, viết mã nguồn, kiểm thử hệ thống đến khi đưa trang web hoạt động chính thức. Khi dự án hoàn thành, chúng tôi bàn giao toàn bộ mã nguồn sạch, tài liệu hướng dẫn vận hành đi kèm chính sách hỗ trợ kỹ thuật và bảo hành lâu dài."
+      question: "Khách hàng có được bàn giao 100% mã nguồn và tài liệu hệ thống không?",
+      answer: "Có! Three Bugs Studio cam kết bàn giao 100% quyền sở hữu mã nguồn sạch (React/Next.js/PostgreSQL), tài liệu kiến trúc hệ thống và hướng dẫn vận hành. Chúng tôi không giữ mã nguồn hay thu phí ẩn, đồng thời tặng kèm chính sách bảo hành kỹ thuật 24/7 từ 1 đến 12 tháng."
+    },
+    {
+      question: "Tôi có được làm việc trực tiếp với đội ngũ lập trình viên thực hiện dự án không?",
+      answer: "Hoàn toàn có thể. Three Bugs Studio làm việc theo mô hình Làm việc Trực tiếp (Direct Engineer Partnership). Quý khách sẽ trao đổi và thống nhất đặc tả kỹ thuật trực tiếp với 5 lập trình viên & thiết kế phụ trách chính, không qua các khâu trung gian sales."
     }
   ],
   en: [
     {
-      question: "How is the project pricing calculated?",
-      answer: "We offer transparent pricing. Basic Web & Landing Page package ranges from 4 to 5 million VND. Commercial & E-Commerce Web package ranges from 8 to 10 million VND. For Special App and AI Platforms, pricing starts from 12 million VND+ based on custom technical specifications."
+      question: "How is project pricing calculated and how do I apply for consultation?",
+      answer: "We offer transparent packages: Package 1 (Starter Web & Landing Page) at 3.9M VND; Package 2 (Corporate & E-Commerce) from 7.9M – 9.9M VND; Package 3 (Custom Web App & AI) is priced on a custom Contact basis. Upon selecting a package, registration details automatically sync to our Google Sheets for instant support within 5–10 minutes."
     },
     {
-      question: "How long does it take to complete a project?",
-      answer: "Standard online stores such as the Sukajan Store are built and launched in 3 weeks. For more complex projects, development usually takes 4 to 8 weeks. We lock down a clear timeline during our initial discovery step and update you with demo progress every week."
+      question: "What is the 3-Phase development workflow and estimated delivery timeline?",
+      answer: "All builds follow a transparent 3-Phase pipeline: Phase 1 (Figma UI/UX Design) ➔ Phase 2 (Fullstack Engineering, CMS Admin & Payment Systems) ➔ Phase 3 (QA Security, Cloud Deployment & Warranty). Delivery ranges from 1–3 weeks for Web Landing/E-Commerce and 4–6 weeks for complex Web Apps and AI platforms."
     },
     {
-      question: "What is the development and delivery process?",
-      answer: "Our workflow covers 5 clear stages: discovery, UI UX design, backend and frontend development, cloud deployment, and long term support. Upon launch, we hand over full source code ownership, complete documentation, and professional technical warranty."
+      question: "Do clients receive 100% source code ownership and system documentation?",
+      answer: "Yes! Three Bugs Studio guarantees 100% source code ownership handover (React/Next.js/PostgreSQL), system architecture documentation, and CMS user guides. There are no hidden fees or source code lock-ins, backed by 24/7 priority SLA technical support for 1 to 12 months."
+    },
+    {
+      question: "Can I collaborate directly with the engineers working on my project?",
+      answer: "Absolutely. Three Bugs Studio operates under a Direct Engineer Partnership model. You collaborate directly with our 5 core software engineers and UI/UX designers, ensuring crystal clear communication without sales agent middlemen."
     }
   ]
 };
