@@ -56,6 +56,18 @@ export default function CardNav({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll when mobile CardNav dropdown is open to ensure 100% smooth inner panel scrolling
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   const t = TRANSLATIONS[lang];
 
   const isLight = theme === "light";
@@ -252,53 +264,53 @@ export default function CardNav({
         {isOpen && (
           <motion.div
             id="card-nav-panel"
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full pointer-events-auto bg-[#090909]/95 backdrop-blur-2xl border-b border-white/10 shadow-2xl py-8 px-6 md:px-12"
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full pointer-events-auto bg-[#090909]/95 backdrop-blur-2xl border-b border-white/10 shadow-2xl py-5 md:py-8 px-4 md:px-12 max-h-[calc(100vh-68px)] overflow-y-auto overscroll-contain custom-scrollbar"
           >
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-7xl mx-auto pb-4">
               
               {/* Header Label */}
-              <div className="flex items-center justify-between mb-6 pb-3 border-b border-white/10">
-                <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#8E8E93]">
-                  <FaWandMagicSparkles className="w-4 h-4 text-brand-orange" />
+              <div className="flex items-center justify-between mb-4 md:mb-6 pb-2.5 border-b border-white/10">
+                <div className="flex items-center gap-2 font-mono text-[11px] md:text-xs uppercase tracking-widest text-[#8E8E93]">
+                  <FaWandMagicSparkles className="w-3.5 h-3.5 text-brand-orange" />
                   <span>{lang === "vi" ? "DANH MỤC NAVIGATION DỰ ÁN" : "STUDIO NAVIGATION CARDS"}</span>
                 </div>
-                <span className="font-mono text-[10px] text-brand-orange">
+                <span className="font-mono text-[9px] md:text-[10px] text-brand-orange hidden sm:inline">
                   // THREE BUGS STUDIO OS
                 </span>
               </div>
 
               {/* Grid Layout for Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 md:gap-5">
                 {cardNavItems.map((card, index) => (
                   <motion.div
                     key={card.label}
-                    initial={{ opacity: 0, y: 25 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 15 }}
-                    transition={{ delay: index * 0.08, duration: 0.4 }}
-                    className="flex flex-col justify-between p-6 rounded-sm border border-white/10 hover:border-brand-orange/60 transition-all duration-300 relative overflow-hidden group shadow-xl"
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ delay: index * 0.05, duration: 0.35 }}
+                    className="flex flex-col justify-between p-4 sm:p-5 rounded-lg border border-white/10 hover:border-brand-orange/60 transition-all duration-300 relative overflow-hidden group shadow-xl"
                     style={{ backgroundColor: card.bgColor, color: card.textColor }}
                   >
                     {/* Top Card Label Header */}
                     <div>
-                      <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/10">
-                        <span className="font-mono text-[10px] opacity-60 tracking-widest">
+                      <div className="flex items-center justify-between mb-3 pb-2 border-b border-white/10">
+                        <span className="font-mono text-[9px] md:text-[10px] opacity-60 tracking-widest">
                           CARD 0{index + 1}
                         </span>
                         <div className="w-2 h-2 rounded-full" style={{ backgroundColor: card.textColor === "#090909" ? "#090909" : "#FF6A00" }} />
                       </div>
 
-                      <h3 className="font-display font-bold text-lg md:text-xl tracking-tight mb-4">
+                      <h3 className="font-display font-bold text-base md:text-lg tracking-tight mb-3">
                         {card.label}
                       </h3>
                     </div>
 
                     {/* Inner Links List */}
-                    <div className="flex flex-col gap-2.5 mt-2">
+                    <div className="flex flex-col gap-2 mt-1">
                       {card.links.map((link) => (
                         <a
                           key={link.label}
@@ -307,10 +319,10 @@ export default function CardNav({
                           rel={link.isExternal ? "noreferrer" : undefined}
                           aria-label={link.ariaLabel || link.label}
                           onClick={(e) => handleScrollTo(e, link.href, link.isExternal)}
-                          className="font-mono text-xs uppercase tracking-wider opacity-80 hover:opacity-100 hover:translate-x-1.5 transition-all flex items-center justify-between py-1 group/link border-b border-white/5 last:border-none"
+                          className="font-mono text-[11px] md:text-xs uppercase tracking-wider opacity-85 hover:opacity-100 hover:translate-x-1.5 transition-all flex items-center justify-between py-1 group/link border-b border-white/5 last:border-none"
                         >
                           <span>{link.label}</span>
-                          <FaArrowUpRightFromSquare className="w-3.5 h-3.5 opacity-0 group-hover/link:opacity-100 transition-opacity" />
+                          <FaArrowUpRightFromSquare className="w-3 h-3 opacity-60 group-hover/link:opacity-100 transition-opacity" />
                         </a>
                       ))}
                     </div>
@@ -319,13 +331,13 @@ export default function CardNav({
               </div>
 
               {/* Bottom Quick Contact Bar */}
-              <div className="mt-8 pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-[#8E8E93]">
-                <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[#27C93F] animate-pulse" />
+              <div className="mt-5 pt-3.5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[11px] text-[#8E8E93] text-center sm:text-left">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-2 h-2 rounded-full bg-[#27C93F] animate-pulse shrink-0" />
                   <span>{lang === "vi" ? "TRẠNG THÁI: SẴN SÀNG NHẬN DỰ ÁN MỚI" : "STATUS: AVAILABLE FOR NEW PROJECTS"}</span>
                 </div>
                 <div>
-                  <span>EMAIL: <strong>dongduong840@gmail.com</strong></span>
+                  <span>EMAIL: <strong className="text-white">dongduong840@gmail.com</strong></span>
                 </div>
               </div>
 
