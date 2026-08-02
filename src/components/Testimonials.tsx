@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { TESTIMONIALS_DATA, TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
-import { FaQuoteLeft, FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+import customerReviewGif from "@/assets/animation-icon/customer-review.gif";
 
 interface TestimonialsProps {
   lang: "vi" | "en";
@@ -29,9 +30,13 @@ export default function Testimonials({ lang }: TestimonialsProps) {
 
       <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center text-center">
         
-        {/* Quote Icon */}
-        <div className="w-12 h-12 rounded-full bg-brand-orange/10 border border-brand-orange/20 flex items-center justify-center text-brand-orange mb-8">
-          <FaQuoteLeft className="w-5 h-5" />
+        {/* Animated Customer Review GIF Icon */}
+        <div className="customer-review-anim-container relative w-14 h-14 md:w-16 md:h-16 p-1.5 rounded-2xl bg-brand-orange/15 border border-brand-orange/30 shadow-[0_0_20px_rgba(255,106,0,0.25)] flex items-center justify-center shrink-0 overflow-hidden mb-8">
+          <img
+            src={customerReviewGif}
+            alt="Customer review feedback animation"
+            className="w-full h-full object-contain rounded-xl transition-transform duration-300 hover:scale-110"
+          />
         </div>
 
         {/* Dynamic Testimonial Card */}
