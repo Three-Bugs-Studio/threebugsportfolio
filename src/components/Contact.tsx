@@ -99,7 +99,7 @@ export default function Contact({ lang }: ContactProps) {
     return newErrors;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const validationErrors = validate();
 
@@ -111,26 +111,48 @@ export default function Contact({ lang }: ContactProps) {
     setErrors({});
     setIsSubmitting(true);
 
-    // Build the mailto link content
     const selectedBudget = currency === "VND" ? rawVND[budgetIndex] : rawUSD[budgetIndex];
+    const googleScriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL || "";
 
-    const subject = encodeURIComponent(`[Three Bugs Inquiry] Project Proposal by ${formData.name}`);
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\n` +
-      `Email: ${formData.email}\n` +
-      `Company/Venture: ${formData.company || "None"}\n` +
-      `Budget Range: ${selectedBudget}\n\n` +
-      `Project Requirements:\n${formData.message}`
-    );
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      company: formData.company || "Cá nhân / Doanh nghiệp",
+      package: selectedBudget,
+      message: formData.message,
+      timestamp: new Date().toLocaleString("vi-VN")
+    };
 
-    // Redirect to trigger client's email application
-    window.location.href = `mailto:dongduong840@gmail.com?subject=${subject}&body=${body}`;
+    // If Google Apps Script Webhook URL is configured, push directly to Google Sheets
+    if (googleScriptUrl) {
+      try {
+        await fetch(googleScriptUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.error("Google Sheets Submission Error:", err);
+      }
+    } else {
+      // Fallback: Trigger client email app if script URL is not yet configured
+      const subject = encodeURIComponent(`[Three Bugs Studio] Đăng ký tư vấn bởi ${formData.name}`);
+      const body = encodeURIComponent(
+        `Họ & Tên: ${formData.name}\n` +
+        `Email: ${formData.email}\n` +
+        `Công ty/Thương hiệu: ${formData.company || "Chưa nhập"}\n` +
+        `Gói đăng ký: ${selectedBudget}\n\n` +
+        `Yêu cầu chi tiết:\n${formData.message}`
+      );
+      window.location.href = `mailto:dongduong840@gmail.com?subject=${subject}&body=${body}`;
+    }
 
     // Mark as submitted to show the success panel
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 1200);
+    }, 800);
   };
 
   const handleInputChange = (
