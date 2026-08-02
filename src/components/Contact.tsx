@@ -43,18 +43,20 @@ export default function Contact({ lang }: ContactProps) {
     const handlePlanSelected = (e: Event) => {
       const customEvt = e as CustomEvent;
       if (customEvt && customEvt.detail) {
-        const { planId, planName, phaseNumber, priceVnd } = customEvt.detail;
+        const { planId, planName, badge, priceVnd } = customEvt.detail;
         
         // Map planId to budget option
         if (planId === "phase_1_mvp") setBudgetIndex(0);
         else if (planId === "phase_2_fullstack") setBudgetIndex(1);
         else if (planId === "phase_3_enterprise") setBudgetIndex(2);
 
+        const badgeLabel = badge ? `[${badge}]` : `[${planName}]`;
+
         setFormData((prev) => ({
           ...prev,
           message: lang === "vi" 
-            ? `[Đăng ký ${phaseNumber}: ${planName} - Chi phí: ${priceVnd}]\nTôi muốn tư vấn thêm chi tiết về lộ trình triển khai gói này.`
-            : `[Selected ${phaseNumber}: ${planName} - Rate: ${priceVnd}]\nI would like further details regarding project execution for this plan.`
+            ? `${badgeLabel} Đăng ký ${planName} (Chi phí: ${priceVnd})\nTôi muốn được tư vấn cụ thể về lộ trình 3 Phase và đặc tả hệ thống cho gói dịch vụ này.`
+            : `${badgeLabel} Registering ${planName} (Rate: ${priceVnd})\nI would like technical details regarding the 3-Phase roadmap and specs for this package.`
         }));
       }
     };
@@ -75,12 +77,12 @@ export default function Contact({ lang }: ContactProps) {
   const rawVND = [
     "3.9 triệu VNĐ (Gói 1: Khởi Nghiệp & Landing Page)",
     "Từ 7.9 đến 9.9 triệu VNĐ (Gói 2: Doanh Nghiệp Đa Ngành & E-Commerce)",
-    "Từ 12.9 triệu VNĐ trở lên (Gói 3: Web App & Hệ Thống AI)"
+    "Liên Hệ Báo Giá (Gói 3: Web App & Hệ Thống AI Độc Quyền)"
   ];
   const rawUSD = [
     `About $${Math.round(3900000 / exchangeRate)} USD (Starter Web & Landing Page)`,
     `About $${Math.round(7900000 / exchangeRate)} to $${Math.round(9900000 / exchangeRate)} USD (Corporate & Multi-Sector Web)`,
-    `From $${Math.round(12900000 / exchangeRate)}+ USD (Custom Web App & AI Platform)`
+    "Contact for Custom Quote (Package 3: Custom Web App & AI Platform)"
   ];
 
   const validate = () => {
