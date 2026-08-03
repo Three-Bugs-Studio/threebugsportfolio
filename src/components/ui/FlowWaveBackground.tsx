@@ -71,10 +71,12 @@ const FinalPassShader = {
       vec3 bloomTex = texture2D(bloomTexture, vUv).xyz;
 
       if (uIsLight > 0.5) {
-        // High-contrast Light Mode compositing (#EAEBED bg with deep Ocean Blue particle wave contrast)
-        vec3 bg = uBg * (1.0 - 0.08 * length(uv));
-        vec3 waveColor = mainTex * 1.4 + bloomTex * 0.8;
-        gl_FragColor = vec4(bg - waveColor * 0.85 + flame * uFlameAmt * 0.2, 1.0);
+        // Pure Snow Light Mode (#F8FAFC bg with bright Sky Blue particle wave contrast)
+        vec3 bg = uBg;
+        vec3 waveColor = mainTex * 1.5 + bloomTex * 0.8;
+        vec3 oceanBlue = vec3(0.01, 0.52, 0.78);
+        vec3 blendedWave = mix(bg, oceanBlue, clamp(length(waveColor) * 0.35, 0.0, 0.6));
+        gl_FragColor = vec4(blendedWave, 1.0);
       } else {
         // High-contrast Dark Mode compositing (#090909 bg with Cyber Orange glow)
         vec3 bg = uBg * (1.0 - 0.4 * length(uv));
