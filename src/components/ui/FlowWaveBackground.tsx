@@ -112,12 +112,12 @@ export function FlowWaveBackground() {
     };
 
     const lightParams = {
-      bgColor: "#EAEBED",
-      flameColor: "#004D66",
-      flameColor2: "#006989",
-      atmoColor: "#005577",
-      colorLow: "#003344",
-      colorHigh: "#006989",
+      bgColor: "#F8FAFC",
+      flameColor: "#0284C7",
+      flameColor2: "#38BDF8",
+      atmoColor: "#0284C7",
+      colorLow: "#0F172A",
+      colorHigh: "#0284C7",
     };
 
     let params = isLight ? lightParams : darkParams;

@@ -54,29 +54,29 @@ canvas {
   z-index: 9999 !important;
 }
 
-/* Dreamy #EAEBED & Ocean #006989 Palette Light Theme Overrides (NO BLACK BORDERS) */
+/* Pure Snow #F8FAFC & Ink Slate #0F172A Palette Light Theme Overrides */
 html.light {
-  --bg-dark: #EAEBED;
+  --bg-dark: #F8FAFC;
   --bg-card: #FFFFFF;
-  --text-light: #006989;
-  --text-muted: #004D66;
+  --text-light: #0F172A;
+  --text-muted: #334155;
   color-scheme: light;
 }
 
 html.light,
 html.light body {
-  background-color: #EAEBED !important;
-  color: #006989 !important;
+  background-color: #F8FAFC !important;
+  color: #0F172A !important;
 }
 
-/* Background Overrides - Dreamy #EAEBED */
+/* Background Overrides - Pure Snow #F8FAFC & #F1F5F9 */
 html.light .bg-\[\#090909\],
 html.light .bg-\[\#090909\]\/40,
 html.light .bg-\[\#090909\]\/60,
 html.light .bg-\[\#090909\]\/80,
 html.light .bg-\[\#090909\]\/95,
 html.light section {
-  background-color: #EAEBED !important;
+  background-color: #F8FAFC !important;
 }
 
 html.light .bg-\[\#121212\],
@@ -91,18 +91,19 @@ html.light .bg-\[\#1E1917\],
 html.light .bg-\[\#26160C\],
 html.light .bg-card {
   background-color: #FFFFFF !important;
-  border-color: rgba(0, 105, 137, 0.18) !important;
-  color: #006989 !important;
-  box-shadow: 0 4px 20px rgba(0, 105, 137, 0.05);
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  color: #0F172A !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
 }
 
-/* Text Overrides - Ocean #006989 & #004D66 (ZERO BLACK TEXT) */
+/* Text Overrides - High Contrast Ink Slate #0F172A & Slate #334155 */
 html.light .text-\[\#F5F5F3\],
 html.light .text-white,
 html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6 {
-  color: #006989 !important;
+  color: #0F172A !important;
 }
 
+html.light p,
 html.light .text-\[\#8E8E93\],
 html.light .text-\[\#C0C0C5\],
 html.light .text-muted-foreground,
@@ -110,7 +111,7 @@ html.light .text-white\/40,
 html.light .text-white\/60,
 html.light .text-white\/70,
 html.light .text-white\/80 {
-  color: #004D66 !important;
+  color: #334155 !important;
   opacity: 1 !important;
 }
 
@@ -209,29 +210,29 @@ html.light main,
 html.light section,
 html.light footer,
 html.light [class*="bg-[#090909]"] {
-  background-color: #EAEBED !important;
+  background-color: #F8FAFC !important;
 }
 
-/* Secondary Light Tone (#DCE5EC Soft Ice Blue) Overrides */
+/* Secondary Light Tone (#F1F5F9 Soft Cloud Grey) Overrides */
 html.light .pricing-card-left,
 html.light .pricing-milestone-box,
 html.light [class*="bg-[#060606]"],
 html.light [class*="bg-[#0c0c0c]"] {
-  background-color: #DCE5EC !important;
-  border-color: rgba(0, 105, 137, 0.2) !important;
+  background-color: #F1F5F9 !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
 }
 
 html.light .pricing-price-box,
 html.light .pricing-card-right,
 html.light .pricing-milestone-item {
   background-color: #FFFFFF !important;
-  border-color: rgba(0, 105, 137, 0.2) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
 }
 
-/* Border Overrides - Ocean Tint (ZERO BLACK BORDERS) */
+/* Border Overrides - Crisp Light Slate Borders */
 html.light [class*="border-white"],
 html.light [class*="border-black"] {
-  border-color: rgba(0, 105, 137, 0.18) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
 }
 
 html.light .services-anim-icon-container,
@@ -241,22 +242,24 @@ html.light .receptionist-anim-icon-container,
 html.light .customer-review-anim-container,
 html.light .team-card-item {
   background-color: #FFFFFF !important;
-  border-color: rgba(0, 105, 137, 0.25) !important;
-  box-shadow: 0 4px 14px rgba(0, 105, 137, 0.08) !important;
+  border-color: rgba(15, 23, 42, 0.14) !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06) !important;
 }
 
-/* Ensure Ultra-High Contrast Dark Navy (#0A2540) text in Light Mode for 100% legibility */
+/* Ensure Ultra-High Contrast Ink Slate (#0F172A) text in Light Mode for 100% legibility */
 html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6,
 html.light [class*="text-white"],
 html.light [class*="text-[#F5F5F3]"],
 html.light [class*="text-[#D4D4D8]"] {
-  color: #0A2540 !important;
+  color: #0F172A !important;
+  font-weight: 700;
 }
 
 html.light p,
 html.light [class*="text-[#8E8E93]"],
 html.light [class*="text-[#C0C0C5]"] {
-  color: #1E3A8A !important;
+  color: #334155 !important;
+  opacity: 1 !important;
 }
 
 /* Light Mode Quote & Special Overrides */
