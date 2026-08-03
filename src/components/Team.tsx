@@ -203,33 +203,21 @@ export default function Team({ lang }: TeamProps) {
                         {activity.seat}
                       </div>
 
-                      {/* Oval Airplane Window Aperture Overlay */}
-                      <div className="airplane-window-frame relative w-full flex-1 rounded-[2.2rem] sm:rounded-[2.8rem] bg-[#050608] border-4 border-[#2A2D35] group-hover:border-brand-orange overflow-hidden shadow-[inset_0_4px_16px_rgba(0,0,0,0.9)] transition-colors">
+                      {/* Custom Oval Airplane Window Frame Embedded Over Sideplane PNG */}
+                      <div className="airplane-window-frame relative w-full h-full rounded-[2.2rem] sm:rounded-[2.8rem] bg-[#050608] border-4 border-[#2A2D35] group-hover:border-brand-orange overflow-hidden shadow-[inset_0_4px_16px_rgba(0,0,0,0.9),0_10px_25px_rgba(0,0,0,0.5)] transition-all duration-300">
                         
                         {/* Glossy Window Glass Reflection Streaks */}
                         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none z-20" />
 
-                        {/* Team Member Portrait (Crisp Static Image) */}
+                        {/* Team Member Portrait (Crisp Static Image Inside Window) */}
                         <img
                           src={memberImg}
                           alt={member.name}
                           className="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-105"
                         />
 
-                        {/* Vignette Overlay */}
+                        {/* Soft Vignette Overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-                      </div>
-
-                      {/* Member Name & Role Pill Under Window */}
-                      <div className="mt-1.5 w-[130%] text-center z-20">
-                        <div className="bg-[#111113]/95 border border-white/15 group-hover:border-brand-orange px-1.5 py-0.5 rounded-lg shadow-xl backdrop-blur-md transition-colors">
-                          <span className="font-display font-bold text-[11px] text-[#F5F5F3] group-hover:text-brand-orange block truncate">
-                            {member.name}
-                          </span>
-                          <span className="font-mono text-[8.5px] text-[#8E8E93] block truncate">
-                            {lang === "vi" ? activity.vi : activity.en}
-                          </span>
-                        </div>
                       </div>
 
                     </div>
