@@ -70,13 +70,13 @@ export default function Team({ lang }: TeamProps) {
     },
   };
 
-  // Compact percentage-based window overlay positions over sideplane.png
+  // Authentic compact airplane window overlay positions over sideplane.png
   const windowSlots = [
-    { left: "23%", top: "31%", width: "7.5%", height: "32%" },
-    { left: "35%", top: "31%", width: "7.5%", height: "32%" },
-    { left: "47%", top: "31%", width: "7.5%", height: "32%" },
-    { left: "59%", top: "31%", width: "7.5%", height: "32%" },
-    { left: "71%", top: "31%", width: "7.5%", height: "32%" },
+    { left: "24.5%", top: "34%", width: "4.8%", height: "24%" },
+    { left: "36.5%", top: "34%", width: "4.8%", height: "24%" },
+    { left: "48.5%", top: "34%", width: "4.8%", height: "24%" },
+    { left: "60.5%", top: "34%", width: "4.8%", height: "24%" },
+    { left: "72.5%", top: "34%", width: "4.8%", height: "24%" },
   ];
 
   const handleScrollToContact = () => {
@@ -189,12 +189,12 @@ export default function Team({ lang }: TeamProps) {
                       className="absolute group cursor-pointer flex flex-col items-center justify-between interactive transition-transform hover:scale-105"
                     >
                       {/* Seat Badge Above Window */}
-                      <div className="bg-black/90 border border-brand-orange/60 px-1.5 py-0.2 rounded-full font-mono text-[8px] sm:text-[9px] text-brand-orange font-bold tracking-widest uppercase backdrop-blur-md shadow-md mb-0.5 z-20">
+                      <div className="bg-black/90 border border-brand-orange/60 px-1 py-0.2 rounded-full font-mono text-[7px] sm:text-[8px] text-brand-orange font-bold tracking-widest uppercase backdrop-blur-md shadow-md mb-0.5 z-20">
                         {activity.seat}
                       </div>
 
                       {/* Custom Oval Airplane Window Frame Embedded Over Sideplane PNG */}
-                      <div className="airplane-window-frame relative w-full h-full rounded-[1.2rem] sm:rounded-[1.8rem] bg-[#050608] border-2 sm:border-3 border-[#2A2D35] group-hover:border-brand-orange overflow-hidden shadow-[inset_0_2px_8px_rgba(0,0,0,0.9)] transition-all duration-300">
+                      <div className="airplane-window-frame relative w-full h-full rounded-[0.8rem] sm:rounded-[1.2rem] bg-[#050608] border border-white/30 group-hover:border-brand-orange overflow-hidden shadow-[inset_0_2px_6px_rgba(0,0,0,0.9)] transition-all duration-300">
                         
                         {/* Glossy Window Glass Reflection Streaks */}
                         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none z-20" />
