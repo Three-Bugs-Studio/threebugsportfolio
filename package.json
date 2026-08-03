@@ -14,6 +14,7 @@
     "@google/genai": "^2.4.0",
     "@paper-design/shaders-react": "^0.0.77",
     "@tailwindcss/vite": "^4.1.14",
+    "@types/three": "^0.185.3",
     "@vercel/analytics": "^2.0.1",
     "@vitejs/plugin-react": "^5.0.4",
     "cobe": "^2.0.1",
@@ -24,6 +25,7 @@
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
     "react-icons": "^5.7.0",
+    "three": "^0.185.1",
     "vite": "^6.2.3"
   },
   "devDependencies": {

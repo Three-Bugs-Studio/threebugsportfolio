@@ -1,158 +1,8 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { FaArrowUpRightFromSquare, FaArrowDown } from "react-icons/fa6";
-import createGlobe, { COBEOptions } from "cobe";
 import { TRANSLATIONS } from "../data";
-import { cn } from "../lib/utils";
-import { HexagonBackground } from "./ui/hexagon-background";
-
-const GLOBE_CONFIG: COBEOptions = {
-  width: 800,
-  height: 800,
-  onRender: () => {},
-  devicePixelRatio: 2,
-  phi: 0,
-  theta: 0.3,
-  dark: 1,
-  diffuse: 1.4,
-  mapSamples: 16000,
-  mapBrightness: 1.8,
-  baseColor: [18 / 255, 18 / 255, 20 / 255],
-  markerColor: [255 / 255, 106 / 255, 0 / 255], // Studio Cyber Orange (#FF6A00)
-  glowColor: [255 / 255, 106 / 255, 0 / 255],
-  markers: [
-    { location: [10.8231, 106.6297], size: 0.12 }, // Ho Chi Minh City (Studio HQ)
-    { location: [14.5995, 120.9842], size: 0.04 },
-    { location: [19.076, 72.8777], size: 0.08 },
-    { location: [23.8103, 90.4125], size: 0.05 },
-    { location: [30.0444, 31.2357], size: 0.07 },
-    { location: [39.9042, 116.4074], size: 0.08 },
-    { location: [-23.5505, -46.6333], size: 0.08 },
-    { location: [19.4326, -99.1332], size: 0.08 },
-    { location: [40.7128, -74.006], size: 0.09 },
-    { location: [34.6937, 135.5022], size: 0.05 },
-    { location: [41.0082, 28.9784], size: 0.06 },
-  ],
-};
-
-export function Globe({
-  className,
-  config = GLOBE_CONFIG,
-}: {
-  className?: string;
-  config?: COBEOptions;
-}) {
-  let phi = 0;
-  let width = 0;
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const pointerInteracting = useRef<number | null>(null);
-  const pointerInteractionMovement = useRef(0);
-  const [r, setR] = useState(0);
-  const isVisibleRef = useRef(true);
-
-  const updatePointerInteraction = (value: number | null) => {
-    pointerInteracting.current = value;
-    if (canvasRef.current) {
-      canvasRef.current.style.cursor = value !== null ? "grabbing" : "grab";
-    }
-  };
-
-  const updateMovement = (clientX: number) => {
-    if (pointerInteracting.current !== null) {
-      const delta = clientX - pointerInteracting.current;
-      pointerInteractionMovement.current = delta;
-      setR(delta / 200);
-    }
-  };
-
-  const onRender = useCallback(
-    (state: Record<string, any>) => {
-      // Pause WebGL rendering calculations when off-screen to save 100% GPU/CPU during scrolling
-      if (!isVisibleRef.current) return;
-      if (!pointerInteracting.current) phi += 0.004;
-      state.phi = phi + r;
-      const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-      const scaleMult = isMobile ? 1.3 : 2;
-      state.width = width * scaleMult;
-      state.height = width * scaleMult;
-    },
-    [r]
-  );
-
-  const onResize = () => {
-    if (canvasRef.current) {
-      width = canvasRef.current.offsetWidth;
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", onResize);
-    onResize();
-
-    const isMobile = window.innerWidth < 768;
-    const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 1.5);
-
-    // Pause rendering when Hero is not visible in viewport
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        isVisibleRef.current = entry.isIntersecting;
-      },
-      { threshold: 0.01 }
-    );
-
-    if (canvasRef.current) {
-      observer.observe(canvasRef.current);
-    }
-
-    const globe = createGlobe(canvasRef.current!, {
-      ...config,
-      devicePixelRatio: dpr,
-      mapSamples: isMobile ? 7500 : 10500,
-      width: width * (isMobile ? 1.3 : 2),
-      height: width * (isMobile ? 1.3 : 2),
-      onRender,
-    });
-
-    setTimeout(() => {
-      if (canvasRef.current) {
-        canvasRef.current.style.opacity = "1";
-      }
-    });
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("resize", onResize);
-      globe.destroy();
-    };
-  }, []);
-
-  return (
-    <div
-      className={cn(
-        "absolute inset-0 mx-auto aspect-[1/1] w-full max-w-[720px] flex items-center justify-center will-change-transform",
-        className
-      )}
-    >
-      <canvas
-        className={cn(
-          "size-full opacity-0 transition-opacity duration-500 [contain:layout_paint_size] pointer-events-auto"
-        )}
-        ref={canvasRef}
-        onPointerDown={(e) =>
-          updatePointerInteraction(
-            e.clientX - pointerInteractionMovement.current
-          )
-        }
-        onPointerUp={() => updatePointerInteraction(null)}
-        onPointerOut={() => updatePointerInteraction(null)}
-        onMouseMove={(e) => updateMovement(e.clientX)}
-        onTouchMove={(e) =>
-          e.touches[0] && updateMovement(e.touches[0].clientX)
-        }
-      />
-    </div>
-  );
-}
+import { FlowWaveBackground } from "./ui/FlowWaveBackground";
 
 interface HeroProps {
   lang: "vi" | "en";
@@ -219,16 +69,11 @@ export default function Hero({ lang }: HeroProps) {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#090909]"
     >
-      {/* Animated Interactive Hexagon Background Grid */}
-      <HexagonBackground className="z-0 opacity-80" gridSize={38} />
-
-      {/* 21st.dev Dillion Verma Interactive Globe Component Container */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center opacity-65 pointer-events-auto">
-        <Globe />
-      </div>
+      {/* Three.js FlowWave Dynamic Particle Wave Background */}
+      <FlowWaveBackground />
 
       {/* High-Contrast Vignette Mask Overlay to ensure text pops out prominently */}
-      <div className="hero-vignette absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(9,9,9,0.25)_0%,_rgba(9,9,9,0.70)_50%,_rgba(9,9,9,0.98)_100%)]" />
+      <div className="hero-vignette absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(9,9,9,0.15)_0%,_rgba(9,9,9,0.50)_50%,_rgba(9,9,9,0.92)_100%)]" />
 
       {/* Ambient Brand Lighting Glares */}
       <div className="absolute top-[-10%] left-[5%] brutalist-glow opacity-40 z-[1]" />
