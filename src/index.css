@@ -27,6 +27,18 @@
   );
 }
 
+/* GPU Hardware Acceleration for 60FPS / 120FPS Smooth Rendering */
+html, body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+canvas {
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
 /* Ultra-Smooth 60fps Dynamic Clip-Path View Transition */
 ::view-transition-old(root),
 ::view-transition-new(root) {

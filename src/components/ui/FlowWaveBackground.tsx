@@ -4,8 +4,6 @@ import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
 import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
-import { GammaCorrectionShader } from "three/examples/jsm/shaders/GammaCorrectionShader.js";
-import { CopyShader } from "three/examples/jsm/shaders/CopyShader.js";
 
 const SNOISE = `
 vec4 permute(vec4 x){return mod(((x*34.0)+1.0)*x, 289.0);}
@@ -38,12 +36,11 @@ const FinalPassShader = {
     iTime: { value: 0 },
     tDiffuse: { value: null },
     bloomTexture: { value: null },
-    torusTexture: { value: null },
-    haloTexture: { value: null },
     uBg: { value: new THREE.Vector3() },
     uFlameA: { value: new THREE.Vector3() },
     uFlameB: { value: new THREE.Vector3() },
     uFlameAmt: { value: 0.2 },
+    uIsLight: { value: 0 },
   },
   vertexShader: `
     varying vec2 vUv;
@@ -53,12 +50,11 @@ const FinalPassShader = {
     uniform float iTime;
     uniform sampler2D tDiffuse;
     uniform sampler2D bloomTexture;
-    uniform sampler2D torusTexture;
-    uniform sampler2D haloTexture;
     uniform vec3 uBg;
     uniform vec3 uFlameA;
     uniform vec3 uFlameB;
     uniform float uFlameAmt;
+    uniform float uIsLight;
     varying vec2 vUv;
     vec3 warp3d(vec3 pos, float t){ float curv=.8,a=1.9,b=0.7; pos*=2.;
       pos.x+=curv*sin(t+a*pos.y)+t*b; pos.y+=curv*cos(t+a*pos.x);
@@ -71,9 +67,19 @@ const FinalPassShader = {
       vec3 flame = 1.5*uFlameA*w.x; flame*=w.y; flame += uFlameB*w.z;
       flame *= smoothstep(0.25, 1., abs(uv.y));
       float md = smoothstep(-0.7, 1., -uv.y*uv.x); flame *= md*md;
-      vec3 bg = uBg * (1.0 - 0.4 * length(uv));
-      vec3 halo = texture2D(haloTexture, vUv).xyz;
-      gl_FragColor = vec4(bg + flame*uFlameAmt + texture2D(bloomTexture, vUv).xyz + texture2D(torusTexture, vUv).xyz + texture2D(tDiffuse, vUv).xyz + halo, 1.);
+      vec3 mainTex = texture2D(tDiffuse, vUv).xyz;
+      vec3 bloomTex = texture2D(bloomTexture, vUv).xyz;
+
+      if (uIsLight > 0.5) {
+        // High-contrast Light Mode compositing (#EAEBED bg with deep Ocean Blue particle wave contrast)
+        vec3 bg = uBg * (1.0 - 0.08 * length(uv));
+        vec3 waveColor = mainTex * 1.4 + bloomTex * 0.8;
+        gl_FragColor = vec4(bg - waveColor * 0.85 + flame * uFlameAmt * 0.2, 1.0);
+      } else {
+        // High-contrast Dark Mode compositing (#090909 bg with Cyber Orange glow)
+        vec3 bg = uBg * (1.0 - 0.4 * length(uv));
+        gl_FragColor = vec4(bg + flame*uFlameAmt + bloomTex + mainTex, 1.0);
+      }
     }
   `,
 };
@@ -92,14 +98,10 @@ export function FlowWaveBackground() {
     const container = containerRef.current;
     if (!container) return;
 
-    // Theme color detection for Studio Cyber Orange / Ocean Blue adaptivity
     const checkIsLight = () => document.documentElement.classList.contains("light");
-
     let isLight = checkIsLight();
 
-    // Studio Palette Color Configs
-    // Dark mode: Deep Onyx bg, Cyber Orange #FF6A00 / Amber #FF9E00 flames & highlights
-    // Light mode: Dreamy Soft Cloud Grey #EAEBED bg, Ocean Blue #006989 / Cyan #00A8E8 flames & highlights
+    // Studio Palette Color Configs optimized for Dark & Light Themes
     const darkParams = {
       bgColor: "#090909",
       flameColor: "#FF6A00",
@@ -111,80 +113,78 @@ export function FlowWaveBackground() {
 
     const lightParams = {
       bgColor: "#EAEBED",
-      flameColor: "#006989",
-      flameColor2: "#00A8E8",
-      atmoColor: "#0088B3",
-      colorLow: "#DCE5EC",
+      flameColor: "#004D66",
+      flameColor2: "#006989",
+      atmoColor: "#005577",
+      colorLow: "#003344",
       colorHigh: "#006989",
     };
 
     let params = isLight ? lightParams : darkParams;
 
-    const LAYERS = { NONE: 0, TORUS_SCENE: 1, BLOOM_SCENE: 2, ENTIRE_SCENE: 3 };
-
-    // Set up Scene, Renderer & Camera
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(params.bgColor);
     scene.fog = new THREE.Fog(params.bgColor, 0, 15);
 
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 400);
     camera.position.set(0, 7, 16);
-    camera.layers.enable(LAYERS.TORUS_SCENE);
-    camera.layers.enable(LAYERS.BLOOM_SCENE);
-    camera.layers.enable(LAYERS.ENTIRE_SCENE);
     scene.add(camera);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
     const isMobile = window.innerWidth < 768;
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
     renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.VSMShadowMap;
     container.appendChild(renderer.domElement);
 
-    // Composers for Postprocessing
+    // Optimized Single Bloom + Final Composite Pipeline for 60FPS / 120FPS
     const renderPass = new RenderPass(scene, camera);
 
-    const torusComposer = new EffectComposer(renderer);
-    torusComposer.renderToScreen = false;
-    torusComposer.addPass(renderPass);
-    torusComposer.addPass(new ShaderPass(GammaCorrectionShader));
-    torusComposer.addPass(new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.22, 0.2, 0));
-    torusComposer.addPass(new ShaderPass(CopyShader));
+    const bloomPass = new UnrealBloomPass(
+      new THREE.Vector2(window.innerWidth, window.innerHeight),
+      isLight ? 0.2 : 0.35,
+      0.4,
+      0
+    );
 
     const bloomComposer = new EffectComposer(renderer);
     bloomComposer.renderToScreen = false;
     bloomComposer.addPass(renderPass);
-    bloomComposer.addPass(new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.4, 0.55, 0));
-    bloomComposer.addPass(new ShaderPass(GammaCorrectionShader));
+    bloomComposer.addPass(bloomPass);
 
     const finalPass = new ShaderPass(FinalPassShader);
     finalPass.uniforms.uBg.value = hexToVec3(params.bgColor);
     finalPass.uniforms.uFlameA.value = hexToVec3(params.flameColor);
     finalPass.uniforms.uFlameB.value = hexToVec3(params.flameColor2);
-    finalPass.uniforms.uFlameAmt.value = 0.25;
+    finalPass.uniforms.uFlameAmt.value = isLight ? 0.15 : 0.25;
+    finalPass.uniforms.uIsLight.value = isLight ? 1 : 0;
     finalPass.uniforms.bloomTexture.value = bloomComposer.renderTarget1.texture;
-    finalPass.uniforms.torusTexture.value = torusComposer.renderTarget1.texture;
 
     const finalComposer = new EffectComposer(renderer);
     finalComposer.addPass(renderPass);
     finalComposer.addPass(finalPass);
 
-    // Wave Flow Geometry & Material
-    const pointsGeo = new THREE.SphereGeometry(4.2, isMobile ? 120 : 200, isMobile ? 350 : 600);
+    // Optimized Geometry Segments for silky 60FPS / 120FPS rendering
+    // Desktop: 90x240 = 21.6k points (Ultra smooth 120fps)
+    // Mobile: 45x110 = 4.95k points (Rock solid 60/120fps on mobile)
+    const pointsGeo = new THREE.SphereGeometry(
+      4.2,
+      isMobile ? 45 : 90,
+      isMobile ? 110 : 240
+    );
+
     const waveMat = new THREE.ShaderMaterial({
       transparent: true,
       depthWrite: false,
-      blending: THREE.AdditiveBlending,
+      blending: isLight ? THREE.NormalBlending : THREE.AdditiveBlending,
       uniforms: {
         uTime: { value: 0 },
         uStream: { value: 0 },
         uAppear: { value: 0 },
         uColLow: { value: hexToVec3(params.colorLow) },
         uColHigh: { value: hexToVec3(params.colorHigh) },
-        uOpacity: { value: isLight ? 0.45 : 0.28 },
-        uSize: { value: isMobile ? 4.5 : 5.5 },
-        uBrightness: { value: isLight ? 0.8 : 0.5 },
+        uOpacity: { value: isLight ? 0.95 : 0.28 },
+        uSize: { value: isMobile ? 4.0 : 5.2 },
+        uBrightness: { value: isLight ? 1.3 : 0.5 },
         uWaveHeight: { value: 3 },
         uFlow: { value: 1 },
         uScale: { value: 0.275 },
@@ -239,14 +239,13 @@ export function FlowWaveBackground() {
 
     const pointsMesh = new THREE.Points(pointsGeo, waveMat);
     pointsMesh.frustumCulled = false;
-    pointsMesh.layers.enable(LAYERS.ENTIRE_SCENE);
 
     const waveGroup = new THREE.Group();
     waveGroup.add(pointsMesh);
     scene.add(waveGroup);
 
-    // Ambient Floating Motes
-    const atmoCount = isMobile ? 120 : 300;
+    // Floating Particles
+    const atmoCount = isMobile ? 80 : 200;
     const atmoGeo = new THREE.BufferGeometry();
     const positions = new Float32Array(atmoCount * 3);
     const sizes = new Float32Array(atmoCount);
@@ -266,7 +265,7 @@ export function FlowWaveBackground() {
 
     const atmoMat = new THREE.ShaderMaterial({
       transparent: true,
-      blending: THREE.AdditiveBlending,
+      blending: isLight ? THREE.NormalBlending : THREE.AdditiveBlending,
       depthWrite: false,
       depthTest: false,
       uniforms: {
@@ -304,10 +303,9 @@ export function FlowWaveBackground() {
 
     const atmoPoints = new THREE.Points(atmoGeo, atmoMat);
     atmoPoints.frustumCulled = false;
-    atmoPoints.layers.enable(LAYERS.ENTIRE_SCENE);
     scene.add(atmoPoints);
 
-    // Scroll & Pointer tracking
+    // Scroll & Mouse lerping
     let scrollTarget = 0;
     let scrollSmooth = 0;
     let scrollCurrent = 0;
@@ -369,7 +367,7 @@ export function FlowWaveBackground() {
     let animId: number;
     let isIntersecting = true;
 
-    // Viewport Intersection Observer for 0% CPU/GPU overhead when off-screen
+    // Viewport Intersection Observer
     const observer = new IntersectionObserver(
       ([entry]) => {
         isIntersecting = entry.isIntersecting;
@@ -393,10 +391,19 @@ export function FlowWaveBackground() {
         finalPass.uniforms.uBg.value.copy(hexToVec3(params.bgColor));
         finalPass.uniforms.uFlameA.value.copy(hexToVec3(params.flameColor));
         finalPass.uniforms.uFlameB.value.copy(hexToVec3(params.flameColor2));
+        finalPass.uniforms.uFlameAmt.value = isLight ? 0.15 : 0.25;
+        finalPass.uniforms.uIsLight.value = isLight ? 1 : 0;
+        bloomPass.strength = isLight ? 0.2 : 0.35;
+
+        waveMat.blending = isLight ? THREE.NormalBlending : THREE.AdditiveBlending;
+        waveMat.needsUpdate = true;
         waveMat.uniforms.uColLow.value.copy(hexToVec3(params.colorLow));
         waveMat.uniforms.uColHigh.value.copy(hexToVec3(params.colorHigh));
-        waveMat.uniforms.uOpacity.value = isLight ? 0.45 : 0.28;
-        waveMat.uniforms.uBrightness.value = isLight ? 0.8 : 0.5;
+        waveMat.uniforms.uOpacity.value = isLight ? 0.95 : 0.28;
+        waveMat.uniforms.uBrightness.value = isLight ? 1.3 : 0.5;
+
+        atmoMat.blending = isLight ? THREE.NormalBlending : THREE.AdditiveBlending;
+        atmoMat.needsUpdate = true;
         atmoMat.uniforms.uColor.value.copy(hexToVec3(params.atmoColor));
       }
 
@@ -406,7 +413,7 @@ export function FlowWaveBackground() {
       mouse.y = Lerp(mouse.y, mouseTarget.y, 0.06);
 
       const t = performance.now() / 1000;
-      const dt = Math.min(0.05, t - t0);
+      const dt = Math.min(0.033, t - t0);
       t0 = t;
 
       waveMat.uniforms.uTime.value = t;
@@ -434,11 +441,7 @@ export function FlowWaveBackground() {
       atmoPoints.position.copy(camera.position);
       finalPass.uniforms.iTime.value = t;
 
-      camera.layers.set(LAYERS.TORUS_SCENE);
-      torusComposer.render();
-      camera.layers.set(LAYERS.BLOOM_SCENE);
       bloomComposer.render();
-      camera.layers.set(LAYERS.ENTIRE_SCENE);
       finalComposer.render();
     };
 
@@ -453,8 +456,6 @@ export function FlowWaveBackground() {
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
 
-      torusComposer.setPixelRatio(dpr);
-      torusComposer.setSize(w, h);
       bloomComposer.setPixelRatio(dpr);
       bloomComposer.setSize(w, h);
       finalComposer.setPixelRatio(dpr);
