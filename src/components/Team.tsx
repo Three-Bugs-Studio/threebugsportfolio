@@ -16,6 +16,7 @@ import HoQuangHuyImg from "@/assets/profile/HoQuangHuyProfile.webp";
 import ThuTranImg from "@/assets/profile/ThuTranProfile.webp";
 import HaoVuImg from "@/assets/profile/HaoProfile.webp";
 import receptionistDeskGif from "@/assets/animation-icon/receptionist-desk.gif";
+import sidePlaneImg from "@/assets/sideplane/sideplane.png";
 
 interface TeamProps {
   lang: "vi" | "en";
@@ -69,12 +70,13 @@ export default function Team({ lang }: TeamProps) {
     },
   };
 
-  const windowPositions = [
-    { x: 310, y: 140, width: 155, height: 210, rx: 70, ry: 70 },
-    { x: 520, y: 140, width: 155, height: 210, rx: 70, ry: 70 },
-    { x: 730, y: 140, width: 155, height: 210, rx: 70, ry: 70 },
-    { x: 940, y: 140, width: 155, height: 210, rx: 70, ry: 70 },
-    { x: 1150, y: 140, width: 155, height: 210, rx: 70, ry: 70 },
+  // Responsive percentage-based window overlay positions over sideplane.png
+  const windowSlots = [
+    { left: "22%", top: "28%", width: "11%", height: "42%" },
+    { left: "35%", top: "28%", width: "11%", height: "42%" },
+    { left: "48%", top: "28%", width: "11%", height: "42%" },
+    { left: "61%", top: "28%", width: "11%", height: "42%" },
+    { left: "74%", top: "28%", width: "11%", height: "42%" },
   ];
 
   const handleScrollToContact = () => {
@@ -147,7 +149,7 @@ export default function Team({ lang }: TeamProps) {
           </div>
         </div>
 
-        {/* Parallax Sky & SVG Airplane Fuselage Container */}
+        {/* Parallax Sky & Sideplane PNG Fuselage Section Container */}
         <div className="sky-background-box relative w-full rounded-3xl overflow-hidden border border-white/15 p-4 sm:p-6 md:p-8 bg-gradient-to-b from-[#070D1E] via-[#0B1530] to-[#070D1E] shadow-2xl">
           
           {/* Animated Parallax Sky Clouds Background Layer */}
@@ -160,136 +162,23 @@ export default function Team({ lang }: TeamProps) {
             </svg>
           </div>
 
-          {/* Horizontal Scroll Wrapper for SVG Airplane Fuselage */}
+          {/* Horizontal Scroll Wrapper for Authentic Sideplane PNG Graphic */}
           <div ref={scrollContainerRef} className="overflow-x-auto custom-scrollbar pb-4 scroll-smooth">
             
-            {/* Real SVG Airplane Fuselage (Aerodynamic Side Profile with Tapered Tail & Oval Windows) */}
-            <div className="min-w-[1280px] lg:min-w-0 relative">
-              <svg viewBox="0 0 1600 480" className="w-full h-auto drop-shadow-2xl">
-                <defs>
-                  {/* Fuselage Body Metallic Titanium Gradient */}
-                  <linearGradient id="fuselageBodyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#2D313D" />
-                    <stop offset="35%" stopColor="#1E2028" />
-                    <stop offset="70%" stopColor="#14151B" />
-                    <stop offset="100%" stopColor="#0B0C0F" />
-                  </linearGradient>
+            {/* Authentic Sideplane PNG Fuselage Container with Fluid Percentage Window Alignment */}
+            <div className="min-w-[1000px] lg:min-w-0 relative">
+              
+              {/* High-Resolution Side Plane PNG Asset */}
+              <img
+                src={sidePlaneImg}
+                alt="3B Studio Commercial Airplane Fuselage"
+                className="w-full h-auto block object-contain pointer-events-none select-none drop-shadow-[0_25px_50px_rgba(0,0,0,0.9)]"
+              />
 
-                  {/* Cockpit Windshield Gradient */}
-                  <linearGradient id="cockpitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#06B6D4" stopOpacity="0.8" />
-                    <stop offset="100%" stopColor="#083344" stopOpacity="0.9" />
-                  </linearGradient>
-
-                  {/* Cyber Orange Airline Livery Stripe */}
-                  <linearGradient id="stripeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#FF6A00" />
-                    <stop offset="50%" stopColor="#FFA000" />
-                    <stop offset="100%" stopColor="#FF6A00" />
-                  </linearGradient>
-
-                  {/* Metallic Window Frame Bevel Gradient */}
-                  <linearGradient id="windowFrameBevel" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#475569" />
-                    <stop offset="50%" stopColor="#1E293B" />
-                    <stop offset="100%" stopColor="#0F172A" />
-                  </linearGradient>
-
-                  {/* Clip Paths for 5 Oval Airplane Windows */}
-                  {windowPositions.map((pos, idx) => (
-                    <clipPath id={`window-clip-${idx}`} key={idx}>
-                      <rect
-                        x={pos.x + 8}
-                        y={pos.y + 8}
-                        width={pos.width - 16}
-                        height={pos.height - 16}
-                        rx={pos.rx - 8}
-                        ry={pos.ry - 8}
-                      />
-                    </clipPath>
-                  ))}
-                </defs>
-
-                {/* 1. JET ENGINE (Under Wing) */}
-                <g id="jet-engine">
-                  <ellipse cx="780" cy="410" rx="75" ry="26" fill="#1E2028" stroke="#FF6A00" strokeWidth="2" />
-                  <ellipse cx="710" cy="410" rx="16" ry="24" fill="#090909" stroke="#334155" strokeWidth="3" />
-                  <line x1="710" y1="410" x2="855" y2="410" stroke="#FF6A00" strokeWidth="3" strokeDasharray="6 4" />
-                </g>
-
-                {/* 2. JET WINGS (Swept-back Wing Surface) */}
-                <polygon
-                  points="620,320 840,430 960,425 790,320"
-                  fill="#181920"
-                  stroke="#475569"
-                  strokeWidth="2"
-                />
-
-                {/* 3. MAIN COMMERCIAL AIRPLANE FUSELAGE SVG PATH */}
-                {/* Nose Cone on Left -> Aerodynamic Roof -> Swept Vertical Tail Fin -> APU Rear Exhaust -> Curved Belly */}
-                <path
-                  d="
-                    M 50,260 
-                    C 50,160 140,90 280,90 
-                    L 1260,90 
-                    L 1380,15 
-                    L 1450,15 
-                    L 1430,90 
-                    L 1560,190 
-                    C 1585,210 1585,240 1560,260 
-                    L 1450,300 
-                    Q 1300,340 1180,340 
-                    L 280,340 
-                    Q 1300,340 1180,340 
-                    Q 140,340 50,260 
-                    Z
-                  "
-                  fill="url(#fuselageBodyGradient)"
-                  stroke="rgba(255,255,255,0.25)"
-                  strokeWidth="3.5"
-                />
-
-                {/* 4. CYBER ORANGE AIRLINE LIVERY STRIPE */}
-                <path
-                  d="M 120,225 L 1480,225"
-                  stroke="url(#stripeGradient)"
-                  strokeWidth="10"
-                  strokeLinecap="round"
-                  opacity="0.85"
-                />
-
-                {/* 5. COCKPIT WINDSHIELD WINDOW PANES (Left Nose Cone) */}
-                <path
-                  d="M 110,185 Q 160,135 220,130 L 220,195 L 140,210 Z"
-                  fill="url(#cockpitGradient)"
-                  stroke="#06B6D4"
-                  strokeWidth="2"
-                />
-                <line x1="165" y1="135" x2="165" y2="205" stroke="#1E293B" strokeWidth="2.5" />
-                <line x1="195" y1="132" x2="195" y2="200" stroke="#1E293B" strokeWidth="2.5" />
-
-                {/* Cockpit Captain Badge */}
-                <text x="140" y="245" fill="#06B6D4" fontSize="11" fontFamily="monospace" fontWeight="bold">
-                  COCKPIT ✈ CAPTAIN 01
-                </text>
-
-                {/* 6. TAIL FIN LOGO & AIRLINE INSIGNIA (Right Tail) */}
-                <polygon points="1380,25 1445,25 1428,80 1370,80" fill="#FF6A00" opacity="0.9" />
-                <text x="1385" y="55" fill="#FFFFFF" fontSize="16" fontFamily="monospace" fontWeight="bold">
-                  3B
-                </text>
-                <text x="1350" y="115" fill="#8E8E93" fontSize="10" fontFamily="monospace" fontWeight="bold">
-                  AIRBUS A350-1000
-                </text>
-
-                {/* 7. FUSELAGE RIVET SEAM DOTS & PANEL LINES */}
-                <line x1="280" y1="95" x2="280" y2="335" stroke="#334155" strokeWidth="1.5" strokeDasharray="4 4" />
-                <line x1="730" y1="95" x2="730" y2="335" stroke="#334155" strokeWidth="1.5" strokeDasharray="4 4" />
-                <line x1="1180" y1="95" x2="1180" y2="335" stroke="#334155" strokeWidth="1.5" strokeDasharray="4 4" />
-
-                {/* 8. 5 CIRCULAR/OVAL AIRPLANE WINDOWS EMBEDDED DIRECTLY IN THE FUSELAGE */}
+              {/* Precise Percentage-based Window Overlay Grid */}
+              <div className="absolute inset-0 pointer-events-auto">
                 {teamList.map((member, idx) => {
-                  const pos = windowPositions[idx];
+                  const slot = windowSlots[idx] || { left: `${20 + idx * 13}%`, top: "28%", width: "11%", height: "42%" };
                   const memberImg = profileImages[member.name];
                   const activity = memberActivities[member.name] || {
                     seat: `SEAT 0${idx + 1}A`,
@@ -298,109 +187,66 @@ export default function Team({ lang }: TeamProps) {
                   };
 
                   return (
-                    <g
+                    <div
                       key={member.name}
-                      className="cursor-pointer group interactive"
+                      style={{
+                        left: slot.left,
+                        top: slot.top,
+                        width: slot.width,
+                        height: slot.height,
+                      }}
                       onClick={() => setSelectedMember(member)}
+                      className="absolute group cursor-pointer flex flex-col items-center justify-between interactive transition-transform hover:scale-105"
                     >
-                      {/* Outer Airplane Window Metallic Bevel Frame */}
-                      <rect
-                        x={pos.x}
-                        y={pos.y}
-                        width={pos.width}
-                        height={pos.height}
-                        rx={pos.rx}
-                        ry={pos.ry}
-                        fill="url(#windowFrameBevel)"
-                        stroke="#FF6A00"
-                        strokeWidth="3.5"
-                        className="group-hover:stroke-white transition-all duration-300"
-                      />
-
-                      {/* Inner Glass Window Aperture Shadow Rim */}
-                      <rect
-                        x={pos.x + 6}
-                        y={pos.y + 6}
-                        width={pos.width - 12}
-                        height={pos.height - 12}
-                        rx={pos.rx - 6}
-                        ry={pos.ry - 6}
-                        fill="#050608"
-                        stroke="#000000"
-                        strokeWidth="4"
-                      />
-
-                      {/* Team Member Portrait Clipped Inside the Oval Window */}
-                      <image
-                        x={pos.x + 8}
-                        y={pos.y + 8}
-                        width={pos.width - 16}
-                        height={pos.height - 16}
-                        href={memberImg}
-                        preserveAspectRatio="xMidYMin slice"
-                        clipPath={`url(#window-clip-${idx})`}
-                        className="filter grayscale group-hover:grayscale-0 transition-all duration-300"
-                      />
-
-                      {/* Glossy Window Reflection Streak */}
-                      <path
-                        d={`M ${pos.x + 20},${pos.y + 20} L ${pos.x + pos.width - 20},${pos.y + pos.height - 40}`}
-                        stroke="rgba(255,255,255,0.25)"
-                        strokeWidth="12"
-                        strokeLinecap="round"
-                        pointerEvents="none"
-                      />
-
                       {/* Seat Badge Above Window */}
-                      <rect
-                        x={pos.x + 30}
-                        y={pos.y - 22}
-                        width="95"
-                        height="18"
-                        rx="9"
-                        fill="#090909"
-                        stroke="#FF6A00"
-                        strokeWidth="1.5"
-                      />
-                      <text
-                        x={pos.x + 77}
-                        y={pos.y - 9}
-                        fill="#FF6A00"
-                        fontSize="9"
-                        fontFamily="monospace"
-                        fontWeight="bold"
-                        textAnchor="middle"
-                      >
+                      <div className="bg-black/90 border border-brand-orange/60 px-2 py-0.5 rounded-full font-mono text-[9px] text-brand-orange font-bold tracking-widest uppercase backdrop-blur-md shadow-md mb-1 z-20">
                         {activity.seat}
-                      </text>
+                      </div>
 
-                      {/* ForeignObject Member Name & Role Pill Under Window */}
-                      <foreignObject x={pos.x - 15} y={pos.y + pos.height + 12} width={pos.width + 30} height={70}>
-                        <div className="text-center space-y-1">
-                          <div className="bg-[#111113]/90 border border-white/15 group-hover:border-brand-orange px-2 py-1 rounded-lg shadow-lg transition-colors">
-                            <span className="font-display font-bold text-xs text-[#F5F5F3] group-hover:text-brand-orange transition-colors block truncate">
-                              {member.name}
-                            </span>
-                            <span className="font-mono text-[9px] text-[#8E8E93] block truncate">
-                              {lang === "vi" ? activity.vi : activity.en}
-                            </span>
-                          </div>
+                      {/* Oval Airplane Window Aperture Overlay */}
+                      <div className="airplane-window-frame relative w-full flex-1 rounded-[2.2rem] sm:rounded-[2.8rem] bg-[#050608] border-4 border-[#2A2D35] group-hover:border-brand-orange overflow-hidden shadow-[inset_0_4px_16px_rgba(0,0,0,0.9)] transition-colors">
+                        
+                        {/* Glossy Window Glass Reflection Streaks */}
+                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none z-20" />
+
+                        {/* Team Member Portrait (Crisp Static Image) */}
+                        <img
+                          src={memberImg}
+                          alt={member.name}
+                          className="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-105"
+                        />
+
+                        {/* Vignette Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+                      </div>
+
+                      {/* Member Name & Role Pill Under Window */}
+                      <div className="mt-1.5 w-[130%] text-center z-20">
+                        <div className="bg-[#111113]/95 border border-white/15 group-hover:border-brand-orange px-1.5 py-0.5 rounded-lg shadow-xl backdrop-blur-md transition-colors">
+                          <span className="font-display font-bold text-[11px] text-[#F5F5F3] group-hover:text-brand-orange block truncate">
+                            {member.name}
+                          </span>
+                          <span className="font-mono text-[8.5px] text-[#8E8E93] block truncate">
+                            {lang === "vi" ? activity.vi : activity.en}
+                          </span>
                         </div>
-                      </foreignObject>
-                    </g>
+                      </div>
+
+                    </div>
                   );
                 })}
-              </svg>
+              </div>
+
             </div>
 
           </div>
 
-          {/* SVG Fuselage Footer Specs */}
+          {/* Sideplane PNG Footer Specs */}
           <div className="mt-4 pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
               <span className="font-mono text-[10px] text-[#8E8E93] tracking-wider uppercase">
-                ✈ REAL SVG COMMERCIAL AIRPLANE FUSELAGE // 100% IN-HOUSE ENGINEERS
+                ✈ AUTHENTIC SIDEPLANE GRAPHIC // 100% IN-HOUSE ENGINEERS
               </span>
             </div>
             <span className="font-mono text-[10px] text-brand-orange font-bold uppercase tracking-widest bg-brand-orange/10 border border-brand-orange/20 px-3 py-1 rounded-full">
