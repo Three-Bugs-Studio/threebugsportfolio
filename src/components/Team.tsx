@@ -7,12 +7,7 @@ import {
   FaXmark,
   FaPlane,
   FaChevronLeft,
-  FaChevronRight,
-  FaLaptopCode,
-  FaPalette,
-  FaVial,
-  FaServer,
-  FaBrain
+  FaChevronRight
 } from "react-icons/fa6";
 import { TeamMember } from "../types";
 import DuongPhuDongImg from "@/assets/profile/DuongPhuDongProfile.webp";
@@ -27,14 +22,11 @@ interface TeamProps {
   lang: "vi" | "en";
 }
 
-interface SuiteMeta {
+interface ActivityMeta {
   seat: string;
   viRole: string;
   enRole: string;
   glowColor: string;
-  borderColor: string;
-  ambientBg: string;
-  deskIcon: React.ReactNode;
 }
 
 export default function Team({ lang }: TeamProps) {
@@ -51,62 +43,46 @@ export default function Team({ lang }: TeamProps) {
     "Hao Vu": HaoVuImg,
   };
 
-  // Custom Art-Deco Suite Interior Lighting & Metadata per Engineer
-  const memberSuites: Record<string, SuiteMeta> = {
+  const memberMeta: Record<string, ActivityMeta> = {
     "Duong Phu Dong": {
-      seat: "SUITE 01 // CEO",
+      seat: "SEAT 01A",
       viRole: "Founder & Lead Fullstack",
       enRole: "Founder & Lead Fullstack",
-      glowColor: "rgba(255, 106, 0, 0.45)",
-      borderColor: "#FF6A00",
-      ambientBg: "from-[#FF6A00]/30 via-[#FF6A00]/10 to-transparent",
-      deskIcon: <FaLaptopCode className="w-3 h-3 text-[#FF6A00]" />,
+      glowColor: "#FF6A00",
     },
     "Thu Tran": {
-      seat: "SUITE 02 // DESIGN",
+      seat: "SEAT 02A",
       viRole: "Co-Founder & UI/UX Lead",
       enRole: "Co-Founder & UI/UX Lead",
-      glowColor: "rgba(192, 132, 252, 0.45)",
-      borderColor: "#C084FC",
-      ambientBg: "from-[#C084FC]/30 via-[#C084FC]/10 to-transparent",
-      deskIcon: <FaPalette className="w-3 h-3 text-[#C084FC]" />,
+      glowColor: "#C084FC",
     },
     "Huynh Quang Dong": {
-      seat: "SUITE 03 // QA",
+      seat: "SEAT 03A",
       viRole: "Tester & Scrum Master",
       enRole: "QA Tester & Scrum Master",
-      glowColor: "rgba(56, 189, 248, 0.45)",
-      borderColor: "#38BDF8",
-      ambientBg: "from-[#38BDF8]/30 via-[#38BDF8]/10 to-transparent",
-      deskIcon: <FaVial className="w-3 h-3 text-[#38BDF8]" />,
+      glowColor: "#38BDF8",
     },
     "Ho Quang Huy": {
-      seat: "SUITE 04 // DEVOPS",
+      seat: "SEAT 04A",
       viRole: "DevOps & Cloud Architect",
       enRole: "DevOps & Cloud Architect",
-      glowColor: "rgba(52, 211, 153, 0.45)",
-      borderColor: "#34D399",
-      ambientBg: "from-[#34D399]/30 via-[#34D399]/10 to-transparent",
-      deskIcon: <FaServer className="w-3 h-3 text-[#34D399]" />,
+      glowColor: "#34D399",
     },
     "Hao Vu": {
-      seat: "SUITE 05 // AI & BACKEND",
+      seat: "SEAT 05A",
       viRole: "Backend & AI Specialist",
       enRole: "Backend & AI Specialist",
-      glowColor: "rgba(168, 85, 247, 0.45)",
-      borderColor: "#A855F7",
-      ambientBg: "from-[#A855F7]/30 via-[#A855F7]/10 to-transparent",
-      deskIcon: <FaBrain className="w-3 h-3 text-[#A855F7]" />,
+      glowColor: "#A855F7",
     },
   };
 
-  // Percentage window coordinates aligned over sideplane.png
-  const suiteSlots = [
-    { left: "24%", top: "26%", width: "7.2%", height: "48%" },
-    { left: "36%", top: "26%", width: "7.2%", height: "48%" },
-    { left: "48%", top: "26%", width: "7.2%", height: "48%" },
-    { left: "60%", top: "26%", width: "7.2%", height: "48%" },
-    { left: "72%", top: "26%", width: "7.2%", height: "48%" },
+  // Precise percentage window coordinates matching the exact 5 oval windows in sideplane.png
+  const windowSlots = [
+    { left: "36.8%", top: "41.5%", width: "4.8%", height: "18.5%" },
+    { left: "44.4%", top: "41.5%", width: "4.8%", height: "18.5%" },
+    { left: "52.0%", top: "41.5%", width: "4.8%", height: "18.5%" },
+    { left: "59.6%", top: "41.5%", width: "4.8%", height: "18.5%" },
+    { left: "67.2%", top: "41.5%", width: "4.8%", height: "18.5%" },
   ];
 
   const handleScrollToContact = () => {
@@ -118,7 +94,7 @@ export default function Team({ lang }: TeamProps) {
 
   const scrollCabin = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
-      const scrollAmount = direction === "left" ? -360 : 360;
+      const scrollAmount = direction === "left" ? -350 : 350;
       scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
     }
   };
@@ -131,7 +107,7 @@ export default function Team({ lang }: TeamProps) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         
-        {/* Section Header & Flight Controls */}
+        {/* Section Header & Controls */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <div className="flex items-center gap-3 mb-3">
@@ -142,12 +118,12 @@ export default function Team({ lang }: TeamProps) {
               <span className="h-[1px] w-12 bg-brand-orange/40" />
             </div>
             <h2 className="font-display font-bold text-3xl md:text-5xl tracking-tight text-[#F5F5F3] uppercase leading-tight">
-              {lang === "vi" ? "Đội Ngũ 5 Kỹ Sư Trực Tiếp" : "The 5 Flight Passengers"}
+              {lang === "vi" ? "Đội Ngũ 5 Kỹ Sư Trực Tiếp" : "The 5 Flight Engineers"}
             </h2>
           </div>
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            {/* Live Flight Telemetry Badge */}
+            {/* Telemetry Badge */}
             <div className="hidden sm:flex items-center gap-3 bg-[#111113] border border-white/10 px-4 py-2 rounded-lg font-mono text-[11px] text-[#8E8E93]">
               <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
@@ -156,10 +132,10 @@ export default function Team({ lang }: TeamProps) {
               <span className="text-white/20">|</span>
               <span className="text-brand-orange font-bold">MACH 0.85</span>
               <span className="text-white/20">|</span>
-              <span>5 LUXURY SUITES</span>
+              <span>5 PASSENGERS</span>
             </div>
 
-            {/* Cabin Slider Controls */}
+            {/* Slider Controls */}
             <div className="flex items-center gap-2">
               <button
                 onClick={() => scrollCabin("left")}
@@ -180,34 +156,31 @@ export default function Team({ lang }: TeamProps) {
         </div>
 
         {/* Sideplane PNG Fuselage Container */}
-        <div className="sky-background-box relative w-full rounded-3xl overflow-hidden border border-white/15 p-4 sm:p-6 md:p-8 bg-[#0B0C10] shadow-2xl">
+        <div className="relative w-full rounded-3xl overflow-hidden border border-white/15 p-4 sm:p-6 md:p-8 bg-[#090A0D] shadow-2xl">
           
-          {/* Horizontal Scroll Wrapper for Authentic Sideplane PNG Graphic */}
+          {/* Horizontal Scroll Wrapper */}
           <div ref={scrollContainerRef} className="overflow-x-auto custom-scrollbar pb-4 scroll-smooth">
             
-            {/* Authentic Sideplane PNG Fuselage Container with Fluid Suite Alignment */}
+            {/* Airplane Graphic Container */}
             <div className="min-w-[1000px] lg:min-w-0 relative">
               
-              {/* High-Resolution Side Plane PNG Asset */}
+              {/* Authentic Sideplane PNG Graphic */}
               <img
                 src={sidePlaneImg}
                 alt="3B Studio Commercial Airplane Fuselage"
                 className="w-full h-auto block object-contain pointer-events-none select-none drop-shadow-[0_25px_50px_rgba(0,0,0,0.9)]"
               />
 
-              {/* Precise Percentage-based Suite Overlay Grid */}
+              {/* Exact Percentage Window Portals Fitting Inside sideplane.png Windows */}
               <div className="absolute inset-0 pointer-events-auto">
                 {teamList.map((member, idx) => {
-                  const slot = suiteSlots[idx] || { left: `${24 + idx * 12}%`, top: "26%", width: "7.2%", height: "48%" };
+                  const slot = windowSlots[idx] || { left: `${36.8 + idx * 7.6}%`, top: "41.5%", width: "4.8%", height: "18.5%" };
                   const memberImg = profileImages[member.name];
-                  const suite = memberSuites[member.name] || {
-                    seat: `SUITE 0${idx + 1}`,
+                  const meta = memberMeta[member.name] || {
+                    seat: `SEAT 0${idx + 1}A`,
                     viRole: member.role,
                     enRole: member.role,
-                    glowColor: "rgba(255, 106, 0, 0.4)",
-                    borderColor: "#FF6A00",
-                    ambientBg: "from-[#FF6A00]/20 to-transparent",
-                    deskIcon: <FaLaptopCode className="w-3 h-3 text-[#FF6A00]" />,
+                    glowColor: "#FF6A00",
                   };
 
                   return (
@@ -220,40 +193,17 @@ export default function Team({ lang }: TeamProps) {
                         height: slot.height,
                       }}
                       onClick={() => setSelectedMember(member)}
-                      className="absolute group cursor-pointer flex flex-col items-center justify-between interactive transition-transform hover:scale-105"
+                      className="absolute group cursor-pointer rounded-[35%] overflow-hidden border-2 border-white/20 hover:border-brand-orange transition-all duration-300 hover:scale-105 shadow-inner bg-black"
                     >
-                      {/* Integrated Black Seat Banner at Top Frame */}
-                      <div className="bg-black/95 border border-white/20 px-1.5 py-0.5 rounded-full font-mono text-[7px] sm:text-[8.5px] text-white font-bold tracking-widest uppercase backdrop-blur-md shadow-md mb-0.5 z-20 whitespace-nowrap truncate max-w-full">
-                        {suite.seat}
-                      </div>
-
-                      {/* Panoramic Glass Suite Window Overlay Embedded Over Sideplane PNG */}
-                      <div 
-                        className="art-deco-suite-frame relative w-full h-full rounded-[1.4rem] sm:rounded-[2rem] bg-[#050608] border-2 group-hover:border-white overflow-hidden transition-all duration-300 flex flex-col justify-end"
-                        style={{
-                          borderColor: suite.borderColor,
-                          boxShadow: `0 4px 15px rgba(0,0,0,0.9), inset 0 0 15px ${suite.glowColor}`,
-                        }}
-                      >
-                        {/* Custom Interior Ambient Lighting Glow */}
-                        <div 
-                          className={`absolute inset-0 bg-gradient-to-b ${suite.ambientBg} opacity-80 group-hover:opacity-100 transition-opacity pointer-events-none z-10`}
-                        />
-
-                        {/* Glossy Window Glass Reflection Streaks */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none z-20" />
-
-                        {/* Team Member Portrait Inside Suite */}
-                        <img
-                          src={memberImg}
-                          alt={member.name}
-                          className="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-105"
-                        />
-
-                        {/* Soft Vignette Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none z-10" />
-                      </div>
-
+                      {/* Member Portrait Clipped Exactly Inside Airplane Window */}
+                      <img
+                        src={memberImg}
+                        alt={member.name}
+                        className="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                      />
+                      
+                      {/* Window Gloss Reflection */}
+                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none" />
                     </div>
                   );
                 })}
@@ -263,17 +213,43 @@ export default function Team({ lang }: TeamProps) {
 
           </div>
 
-          {/* Sideplane PNG Footer Specs */}
-          <div className="mt-4 pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              <span className="font-mono text-[10px] text-[#8E8E93] tracking-wider uppercase">
-                ✈ AUTHENTIC SIDEPLANE GRAPHIC // 5 PANORAMIC SUITES
-              </span>
-            </div>
-            <span className="font-mono text-[10px] text-brand-orange font-bold uppercase tracking-widest bg-brand-orange/10 border border-brand-orange/20 px-3 py-1 rounded-full">
-              {lang === "vi" ? "TRẠM DỪNG: TP. HỒ CHÍ MINH" : "DESTINATION: HO CHI MINH CITY"}
-            </span>
+          {/* Passenger Info Grid Bar Underneath Sideplane */}
+          <div className="mt-8 pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {teamList.map((member, idx) => {
+              const meta = memberMeta[member.name] || {
+                seat: `SEAT 0${idx + 1}A`,
+                viRole: member.role,
+                enRole: member.role,
+                glowColor: "#FF6A00",
+              };
+
+              return (
+                <div
+                  key={member.name}
+                  onClick={() => setSelectedMember(member)}
+                  className="bg-[#111113] border border-white/10 hover:border-brand-orange/50 p-3.5 rounded-xl transition-all duration-300 cursor-pointer interactive flex flex-col justify-between group hover:-translate-y-1"
+                >
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span 
+                      className="font-mono text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider bg-white/5 border border-white/10 text-white"
+                      style={{ color: meta.glowColor, borderColor: `${meta.glowColor}40` }}
+                    >
+                      {meta.seat}
+                    </span>
+                    <span className="w-2 h-2 rounded-full" style={{ backgroundColor: meta.glowColor }} />
+                  </div>
+
+                  <div>
+                    <h4 className="font-display font-bold text-sm text-[#F5F5F3] group-hover:text-brand-orange transition-colors truncate">
+                      {member.name}
+                    </h4>
+                    <p className="font-sans text-xs text-[#8E8E93] font-light truncate mt-0.5">
+                      {lang === "vi" ? meta.viRole : meta.enRole}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
         </div>
