@@ -26,7 +26,6 @@ interface ActivityMeta {
   vi: string;
   en: string;
   icon: string;
-  animClass: string;
 }
 
 export default function Team({ lang }: TeamProps) {
@@ -46,38 +45,33 @@ export default function Team({ lang }: TeamProps) {
   const memberActivities: Record<string, ActivityMeta> = {
     "Duong Phu Dong": {
       seat: "SEAT 01A",
-      vi: "👋 Waving / Chào Bạn",
-      en: "👋 Waving & Smiling",
+      vi: "👋 Founder & Lead Fullstack",
+      en: "👋 Founder & Lead Fullstack",
       icon: "👋",
-      animClass: "animate-idle-wave",
     },
     "Thu Tran": {
       seat: "SEAT 02A",
-      vi: "🎨 Designing / Thiết Kế UI",
-      en: "🎨 Designing UI",
+      vi: "🎨 Co-Founder & UI/UX Designer",
+      en: "🎨 Co-Founder & UI/UX Designer",
       icon: "🎨",
-      animClass: "animate-pulse",
     },
     "Huynh Quang Dong": {
       seat: "SEAT 03A",
-      vi: "💻 Testing / Kiểm Thử QA",
-      en: "💻 QA Testing & Scrum",
+      vi: "💻 Tester & Scrum Master",
+      en: "💻 QA Tester & Scrum Master",
       icon: "💻",
-      animClass: "animate-idle-typing",
     },
     "Ho Quang Huy": {
       seat: "SEAT 04A",
-      vi: "☕ Coffee / Uống Cà Phê",
-      en: "☕ Drinking Coffee",
+      vi: "☕ DevOps & Fullstack Engineer",
+      en: "☕ DevOps & Fullstack Engineer",
       icon: "☕",
-      animClass: "animate-pulse",
     },
     "Hao Vu": {
       seat: "SEAT 05A",
-      vi: "🎧 Jamming / Lập Trình AI",
-      en: "🎧 Jamming Code",
+      vi: "🎧 Backend & Database Engineer",
+      en: "🎧 Backend & Database Engineer",
       icon: "🎧",
-      animClass: "animate-idle-bop",
     },
   };
 
@@ -108,7 +102,7 @@ export default function Team({ lang }: TeamProps) {
           <div>
             <div className="flex items-center gap-3 mb-3">
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange font-semibold flex items-center gap-2">
-                <FaPlane className="w-3.5 h-3.5 animate-pulse" />
+                <FaPlane className="w-3.5 h-3.5" />
                 {lang === "vi" ? "05 // CHUYẾN BAY KỸ SƯ STUDIO" : "05 // FLIGHT 3B-2026 CABIN"}
               </span>
               <span className="h-[1px] w-12 bg-brand-orange/40" />
@@ -151,11 +145,11 @@ export default function Team({ lang }: TeamProps) {
           </div>
         </div>
 
-        {/* Playful Airplane Fuselage & Parallax Sky Container */}
-        <div className="sky-background-box relative w-full rounded-3xl overflow-hidden border border-white/15 p-4 sm:p-6 md:p-8 bg-gradient-to-b from-[#070D1E] via-[#0B1530] to-[#070D1E] shadow-2xl">
+        {/* Real Airplane Fuselage & Windows Container */}
+        <div className="sky-background-box relative w-full rounded-[2.5rem] overflow-hidden border border-white/15 p-3 sm:p-6 md:p-8 bg-gradient-to-b from-[#080E21] via-[#0C1633] to-[#080E21] shadow-2xl">
           
           {/* Animated Parallax Sky Clouds Background Layer */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
+          <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-25">
             <svg className="absolute top-4 left-0 w-[200%] h-32 animate-cloud-slow text-white/40 fill-current" viewBox="0 0 1200 120">
               <path d="M0,60 Q150,10 300,60 T600,60 T900,60 T1200,60 L1200,120 L0,120 Z" />
             </svg>
@@ -164,108 +158,135 @@ export default function Team({ lang }: TeamProps) {
             </svg>
           </div>
 
-          {/* Airplane Fuselage Shell Body */}
-          <div className="airplane-fuselage relative bg-[#111113]/95 backdrop-blur-md border border-white/15 rounded-2xl p-4 sm:p-6 md:p-8 shadow-2xl">
+          {/* Authentic Jet Airplane Fuselage Structure */}
+          <div className="airplane-fuselage relative bg-[#131418] border-2 border-white/15 rounded-[2rem] p-4 sm:p-6 md:p-8 shadow-2xl">
             
-            {/* Fuselage Header Strip & Cockpit Nose Label */}
+            {/* Top Metallic Rivet Seam Lines & Fuselage Branding */}
             <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/10">
               <div className="flex items-center gap-3">
-                <div className="w-3 h-3 rounded-full bg-red-500 animate-pulse" />
+                <div className="flex gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#3A3D4A] border border-white/20" />
+                  <span className="w-2 h-2 rounded-full bg-[#3A3D4A] border border-white/20" />
+                  <span className="w-2 h-2 rounded-full bg-[#3A3D4A] border border-white/20" />
+                </div>
                 <span className="font-mono text-xs text-brand-orange font-bold tracking-widest uppercase">
-                  3B-AIRWAYS ✈ BOEING 777-X STUDIO CABIN
+                  3B AIRWAYS ✈ AIRBUS A350 PASSENGER CABIN
                 </span>
               </div>
               <span className="font-mono text-[10px] text-[#8E8E93] uppercase tracking-wider hidden sm:inline-block">
-                CLICK WINDOW TO VIEW PASSENGER BIO
+                CLICK WINDOW TO VIEW PROFILE
               </span>
             </div>
 
-            {/* Horizontal Scrollable Passenger Airplane Windows */}
-            <div
-              ref={scrollContainerRef}
-              className="flex items-stretch gap-6 overflow-x-auto snap-x snap-mandatory pb-4 pt-2 custom-scrollbar scroll-smooth"
-            >
-              {teamList.map((member, idx) => {
-                const memberImg = profileImages[member.name];
-                const activity = memberActivities[member.name] || {
-                  seat: `SEAT 0${idx + 1}A`,
-                  vi: "✈ In Flight",
-                  en: "✈ In Flight",
-                  icon: "✈",
-                  animClass: "animate-pulse",
-                };
+            {/* Fuselage Structure Layout with Cockpit Nose & Tail Fin */}
+            <div className="relative flex items-center gap-4">
+              
+              {/* Aircraft Nose Cockpit Frame (Left) */}
+              <div className="hidden lg:flex flex-col items-center justify-center w-28 h-64 bg-gradient-to-r from-[#1E212B] to-[#14151C] border-2 border-white/15 rounded-l-[4rem] p-3 shrink-0 relative overflow-hidden shadow-inner">
+                <div className="w-16 h-20 bg-cyan-950/60 border-2 border-cyan-400/40 rounded-tl-full rounded-bl-3xl mb-2 flex items-center justify-center shadow-[inset_0_0_15px_rgba(6,182,212,0.3)]">
+                  <span className="font-mono text-[9px] text-cyan-400 font-bold rotate-90 tracking-widest">COCKPIT</span>
+                </div>
+                <span className="font-mono text-[8px] text-[#8E8E93] uppercase tracking-widest text-center mt-2">CAPTAIN 01</span>
+              </div>
 
-                return (
-                  <div
-                    key={member.name}
-                    onClick={() => setSelectedMember(member)}
-                    className="snap-center shrink-0 w-[240px] sm:w-[260px] group cursor-pointer flex flex-col items-center interactive"
-                  >
-                    {/* Airplane Window Oval Frame */}
-                    <div className="airplane-window-frame relative w-[200px] sm:w-[220px] h-[270px] sm:h-[290px] rounded-[2.8rem] bg-gradient-to-b from-[#1C1C20] via-[#121215] to-[#0A0A0C] border-4 border-white/20 p-3 shadow-[inset_0_4px_20px_rgba(0,0,0,0.9),0_10px_30px_rgba(0,0,0,0.5)] group-hover:border-brand-orange/70 transition-all duration-500 group-hover:scale-[1.03]">
-                      
-                      {/* Glossy Window Glass Reflection Line */}
-                      <div className="absolute top-2 right-4 w-12 h-44 bg-gradient-to-b from-white/20 to-transparent rounded-full transform rotate-[25deg] pointer-events-none animate-window-shine" />
+              {/* Horizontal Scrollable Oval Airplane Windows */}
+              <div
+                ref={scrollContainerRef}
+                className="flex items-stretch gap-6 sm:gap-8 overflow-x-auto snap-x snap-mandatory pb-4 pt-2 custom-scrollbar scroll-smooth w-full"
+              >
+                {teamList.map((member, idx) => {
+                  const memberImg = profileImages[member.name];
+                  const activity = memberActivities[member.name] || {
+                    seat: `SEAT 0${idx + 1}A`,
+                    vi: member.role,
+                    en: member.role,
+                    icon: "✈",
+                  };
 
-                      {/* Seat Number Tag */}
-                      <div className="absolute top-3 left-1/2 -translate-x-1/2 z-20 bg-black/70 border border-white/20 px-2.5 py-0.5 rounded-full font-mono text-[9px] text-brand-orange font-bold tracking-widest uppercase backdrop-blur-sm">
-                        {activity.seat}
-                      </div>
-
-                      {/* Passenger Viewport Window Opening */}
-                      <div className="relative w-full h-full rounded-[2.2rem] overflow-hidden bg-[#060608] border border-white/10 flex flex-col justify-end">
+                  return (
+                    <div
+                      key={member.name}
+                      onClick={() => setSelectedMember(member)}
+                      className="snap-center shrink-0 w-[210px] sm:w-[240px] group cursor-pointer flex flex-col items-center interactive"
+                    >
+                      {/* Outer Wall Panel Recess Box */}
+                      <div className="relative p-2.5 sm:p-3 rounded-[3.8rem] bg-[#1A1C24] border-2 border-white/15 shadow-[inset_0_2px_10px_rgba(0,0,0,0.8)] group-hover:border-brand-orange/60 transition-all duration-300">
                         
-                        {/* Team Member Portrait with Custom Idle Motion */}
-                        <div className={`relative w-full h-full ${activity.animClass}`}>
-                          <img
-                            src={memberImg}
-                            alt={member.name}
-                            className="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
-                          />
+                        {/* Iconic Oval Airplane Window Frame */}
+                        <div className="airplane-window-frame relative w-[180px] sm:w-[200px] h-[250px] sm:h-[280px] rounded-[3.5rem] bg-[#0A0B0E] border-[7px] border-[#2B2E38] p-2.5 shadow-[inset_0_6px_18px_rgba(0,0,0,0.9),0_10px_25px_rgba(0,0,0,0.6)] group-hover:border-brand-orange/80 transition-all duration-300 group-hover:scale-[1.02] flex flex-col justify-between overflow-hidden">
                           
-                          {/* Coffee Steam Animation for Huy */}
-                          {member.name === "Ho Quang Huy" && (
-                            <div className="absolute bottom-12 right-6 flex flex-col items-center pointer-events-none">
-                              <span className="w-1.5 h-6 bg-white/40 rounded-full blur-[2px] animate-steam" />
+                          {/* Glossy Window Glass Reflection Streaks */}
+                          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/15 to-transparent pointer-events-none z-20" />
+                          <div className="absolute top-2 right-3 w-10 h-40 bg-white/10 rounded-full transform rotate-[25deg] pointer-events-none z-20" />
+
+                          {/* Seat Number Tag */}
+                          <div className="absolute top-3 left-1/2 -translate-x-1/2 z-30 bg-black/80 border border-white/20 px-3 py-0.5 rounded-full font-mono text-[9px] text-brand-orange font-bold tracking-widest uppercase backdrop-blur-md">
+                            {activity.seat}
+                          </div>
+
+                          {/* Passenger Viewport Window Aperture */}
+                          <div className="relative w-full h-full rounded-[2.8rem] overflow-hidden bg-[#050608] border border-white/10 flex flex-col justify-end">
+                            
+                            {/* Team Member Portrait (Static - No shaking) */}
+                            <div className="relative w-full h-full">
+                              <img
+                                src={memberImg}
+                                alt={member.name}
+                                className="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-105"
+                              />
+                              {/* Soft Gradient Vignette */}
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
                             </div>
-                          )}
 
-                          {/* Gradient Vignette Overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-                        </div>
+                            {/* Activity Status Badge Overlay */}
+                            <div className="absolute bottom-2.5 left-2.5 right-2.5 z-30">
+                              <div className="bg-black/85 backdrop-blur-md border border-white/15 group-hover:border-brand-orange/60 px-2 py-1 rounded-lg text-center transition-colors">
+                                <span className="font-mono text-[9.5px] text-white font-medium block truncate">
+                                  {lang === "vi" ? activity.vi : activity.en}
+                                </span>
+                              </div>
+                            </div>
 
-                        {/* Interactive Idle Action Status Pill Badge */}
-                        <div className="absolute bottom-3 left-3 right-3 z-20">
-                          <div className="bg-black/80 backdrop-blur-md border border-white/15 group-hover:border-brand-orange/50 px-2.5 py-1 rounded-lg text-center transition-colors">
-                            <span className="font-mono text-[10px] text-white font-medium block truncate">
-                              {lang === "vi" ? activity.vi : activity.en}
-                            </span>
                           </div>
                         </div>
-
                       </div>
-                    </div>
 
-                    {/* Member Name & Role Tag Underneath Window */}
-                    <div className="mt-4 text-center space-y-1 w-full px-2">
-                      <h3 className="font-display font-bold text-base sm:text-lg text-[#F5F5F3] group-hover:text-brand-orange transition-colors truncate">
-                        {member.name}
-                      </h3>
-                      <p className="font-sans text-xs text-[#8E8E93] font-light truncate">
-                        {member.role}
-                      </p>
-                    </div>
+                      {/* Member Name & Role Tag Underneath Window */}
+                      <div className="mt-4 text-center space-y-1 w-full px-2">
+                        <h3 className="font-display font-bold text-base sm:text-lg text-[#F5F5F3] group-hover:text-brand-orange transition-colors truncate">
+                          {member.name}
+                        </h3>
+                        <p className="font-sans text-xs text-[#8E8E93] font-light truncate">
+                          {member.role}
+                        </p>
+                      </div>
 
-                  </div>
-                );
-              })}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Aircraft Tail Fin Frame (Right) */}
+              <div className="hidden lg:flex flex-col items-center justify-center w-28 h-64 bg-gradient-to-l from-[#1E212B] to-[#14151C] border-2 border-white/15 rounded-r-[4rem] p-3 shrink-0 relative overflow-hidden shadow-inner">
+                <div className="w-16 h-20 bg-brand-orange/10 border-2 border-brand-orange/40 rounded-tr-full rounded-br-3xl mb-2 flex items-center justify-center">
+                  <span className="font-mono text-[11px] text-brand-orange font-bold tracking-widest">3B-TAIL</span>
+                </div>
+                <span className="font-mono text-[8px] text-[#8E8E93] uppercase tracking-widest text-center mt-2">FLIGHT 2026</span>
+              </div>
+
             </div>
 
-            {/* Fuselage Footer Indicator */}
+            {/* Fuselage Bottom Rivet Seam Lines & Footer Indicator */}
             <div className="mt-4 pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
-              <span className="font-mono text-[10px] text-[#8E8E93] tracking-wider uppercase">
-                ✈ 100% IN-HOUSE ENGINEERS // NO OUTSOURCING RISK
-              </span>
+              <div className="flex items-center gap-2">
+                <div className="flex gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                </div>
+                <span className="font-mono text-[10px] text-[#8E8E93] tracking-wider uppercase">
+                  ✈ 100% IN-HOUSE ENGINEERS // DIRECT TECHNICAL PARTNERSHIP
+                </span>
+              </div>
               <span className="font-mono text-[10px] text-brand-orange font-bold uppercase tracking-widest bg-brand-orange/10 border border-brand-orange/20 px-3 py-1 rounded-full">
                 {lang === "vi" ? "TRẠM DỪNG: TP. HỒ CHÍ MINH" : "DESTINATION: HO CHI MINH CITY"}
               </span>
@@ -362,7 +383,7 @@ export default function Team({ lang }: TeamProps) {
                     {(selectedMember.specialties || []).map((tech) => (
                       <span
                         key={tech}
-                        className="font-mono text-[10px] bg-white/5 border border-white/10 px-2.5 py-1 rounded-sm text-[#F5F5F3]"
+                        className="font-mono text-[10px] bg-[#1A1A1E] border border-white/10 px-2.5 py-1 rounded-sm text-[#F5F5F3]"
                       >
                         {tech}
                       </span>
