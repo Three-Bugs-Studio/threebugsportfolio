@@ -169,19 +169,16 @@ html.light textarea::placeholder {
 
 /* Grid & Vignette Overrides for Light Mode */
 html.light .swiss-grid {
-  background-image: linear-gradient(to right, rgba(0, 105, 137, 0.08) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(0, 105, 137, 0.08) 1px, transparent 1px) !important;
+  background-image: linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px) !important;
+}
+
+html.light .crt-overlay {
+  display: none !important;
 }
 
 html.light .hero-vignette {
-  background: radial-gradient(ellipse at center, rgba(234, 235, 237, 0.2) 0%, rgba(234, 235, 237, 0.65) 50%, rgba(234, 235, 237, 0.95) 100%) !important;
-}
-
-/* Secondary Light Tone (#DCE5EC Soft Ice Blue) & High-Contrast Typography for Pricing & FAQ in Light Mode */
-html.light .pricing-card-container {
-  background-color: #FFFFFF !important;
-  border-color: rgba(0, 105, 137, 0.2) !important;
-  box-shadow: 0 10px 30px rgba(0, 105, 137, 0.08) !important;
+  background: radial-gradient(ellipse at center, rgba(248, 250, 252, 0.05) 0%, rgba(248, 250, 252, 0.35) 50%, rgba(248, 250, 252, 0.85) 100%) !important;
 }
 
 /* ABSOLUTE 100% PURGE OF ALL DARK BLACK HEX BACKGROUNDS IN LIGHT THEME */
@@ -195,12 +192,12 @@ html.light #card-nav-container,
 html.light #card-nav-panel,
 html.light #card-nav-menu-btn,
 html.light #card-nav-theme-btn,
+html.light #hero-greeting-badge,
 html.light .footer-social-card,
 html.light .socialContainer,
 html.light kbd {
   background-color: #FFFFFF !important;
-  border-color: rgba(0, 105, 137, 0.18) !important;
-  color: #006989 !important;
+  border-color: rgba(15, 23, 42, 0.14) !important;
 }
 
 /* Main Canvas Page & Section Background Override */
@@ -246,19 +243,19 @@ html.light .team-card-item {
   box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06) !important;
 }
 
-/* Ensure Ultra-High Contrast Ink Slate (#0F172A) text in Light Mode for 100% legibility */
+/* Ensure Ultra-High Contrast Deep Slate Black (#0F172A) text in Light Mode for 100% legibility */
 html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6,
 html.light [class*="text-white"],
 html.light [class*="text-[#F5F5F3]"],
 html.light [class*="text-[#D4D4D8]"] {
   color: #0F172A !important;
-  font-weight: 700;
+  font-weight: 800 !important;
 }
 
 html.light p,
 html.light [class*="text-[#8E8E93]"],
 html.light [class*="text-[#C0C0C5]"] {
-  color: #334155 !important;
+  color: #1E293B !important;
   opacity: 1 !important;
 }
 
