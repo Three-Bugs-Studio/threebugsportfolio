@@ -70,13 +70,13 @@ export default function Team({ lang }: TeamProps) {
     },
   };
 
-  // Responsive percentage-based window overlay positions over sideplane.png
+  // Compact percentage-based window overlay positions over sideplane.png
   const windowSlots = [
-    { left: "22%", top: "28%", width: "11%", height: "42%" },
-    { left: "35%", top: "28%", width: "11%", height: "42%" },
-    { left: "48%", top: "28%", width: "11%", height: "42%" },
-    { left: "61%", top: "28%", width: "11%", height: "42%" },
-    { left: "74%", top: "28%", width: "11%", height: "42%" },
+    { left: "23%", top: "31%", width: "7.5%", height: "32%" },
+    { left: "35%", top: "31%", width: "7.5%", height: "32%" },
+    { left: "47%", top: "31%", width: "7.5%", height: "32%" },
+    { left: "59%", top: "31%", width: "7.5%", height: "32%" },
+    { left: "71%", top: "31%", width: "7.5%", height: "32%" },
   ];
 
   const handleScrollToContact = () => {
@@ -149,18 +149,8 @@ export default function Team({ lang }: TeamProps) {
           </div>
         </div>
 
-        {/* Parallax Sky & Sideplane PNG Fuselage Section Container */}
-        <div className="sky-background-box relative w-full rounded-3xl overflow-hidden border border-white/15 p-4 sm:p-6 md:p-8 bg-gradient-to-b from-[#070D1E] via-[#0B1530] to-[#070D1E] shadow-2xl">
-          
-          {/* Animated Parallax Sky Clouds Background Layer */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-30">
-            <svg className="absolute top-4 left-0 w-[200%] h-32 animate-cloud-slow text-white/40 fill-current" viewBox="0 0 1200 120">
-              <path d="M0,60 Q150,10 300,60 T600,60 T900,60 T1200,60 L1200,120 L0,120 Z" />
-            </svg>
-            <svg className="absolute top-16 left-0 w-[200%] h-40 animate-cloud-fast text-white/20 fill-current" viewBox="0 0 1200 120">
-              <path d="M0,80 Q200,20 400,80 T800,80 T1200,80 L1200,120 L0,120 Z" />
-            </svg>
-          </div>
+        {/* Sideplane PNG Fuselage Section Container */}
+        <div className="sky-background-box relative w-full rounded-3xl overflow-hidden border border-white/15 p-4 sm:p-6 md:p-8 bg-[#0B0C10] shadow-2xl">
 
           {/* Horizontal Scroll Wrapper for Authentic Sideplane PNG Graphic */}
           <div ref={scrollContainerRef} className="overflow-x-auto custom-scrollbar pb-4 scroll-smooth">
@@ -199,12 +189,12 @@ export default function Team({ lang }: TeamProps) {
                       className="absolute group cursor-pointer flex flex-col items-center justify-between interactive transition-transform hover:scale-105"
                     >
                       {/* Seat Badge Above Window */}
-                      <div className="bg-black/90 border border-brand-orange/60 px-2 py-0.5 rounded-full font-mono text-[9px] text-brand-orange font-bold tracking-widest uppercase backdrop-blur-md shadow-md mb-1 z-20">
+                      <div className="bg-black/90 border border-brand-orange/60 px-1.5 py-0.2 rounded-full font-mono text-[8px] sm:text-[9px] text-brand-orange font-bold tracking-widest uppercase backdrop-blur-md shadow-md mb-0.5 z-20">
                         {activity.seat}
                       </div>
 
                       {/* Custom Oval Airplane Window Frame Embedded Over Sideplane PNG */}
-                      <div className="airplane-window-frame relative w-full h-full rounded-[2.2rem] sm:rounded-[2.8rem] bg-[#050608] border-4 border-[#2A2D35] group-hover:border-brand-orange overflow-hidden shadow-[inset_0_4px_16px_rgba(0,0,0,0.9),0_10px_25px_rgba(0,0,0,0.5)] transition-all duration-300">
+                      <div className="airplane-window-frame relative w-full h-full rounded-[1.2rem] sm:rounded-[1.8rem] bg-[#050608] border-2 sm:border-3 border-[#2A2D35] group-hover:border-brand-orange overflow-hidden shadow-[inset_0_2px_8px_rgba(0,0,0,0.9)] transition-all duration-300">
                         
                         {/* Glossy Window Glass Reflection Streaks */}
                         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none z-20" />
