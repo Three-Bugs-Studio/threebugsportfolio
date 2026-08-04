@@ -746,6 +746,9 @@ export const TECH_DATA: Record<"vi" | "en", TechItem[]> = {
     { name: "Neon Database", category: "database", description: "Cơ sở dữ liệu PostgreSQL phi máy chủ hỗ trợ mở rộng nhanh.", level: "Chuyên sâu" },
     { name: "PostgreSQL", category: "database", description: "Hệ quản trị cơ sở dữ liệu quan hệ mạnh mẽ, tin cậy cao.", level: "Cốt lõi" },
     { name: "Render", category: "devops", description: "Hạ tầng Cloud Hosting vận hành ứng dụng Web & Backend API.", level: "Chuyên sâu" },
+    { name: "Coolify", category: "devops", description: "Nền tảng PaaS tự quản lý (Self-hosted) triển khai ứng dụng trên hạ tầng đám mây riêng.", level: "Chuyên sâu" },
+    { name: "Netlify", category: "devops", description: "Hạ tầng Cloud Hosting tối ưu triển khai ứng dụng Frontend & Jamstack tốc độ cao.", level: "Cốt lõi" },
+    { name: "Railway", category: "devops", description: "Nền tảng Cloud PaaS hiện đại giúp đóng gói & triển khai Web, Database tự động.", level: "Chuyên sâu" },
     { name: "Docker", category: "devops", description: "Môi trường đóng gói phần mềm nhất quán khi triển khai.", level: "Cốt lõi" },
     { name: "GitHub Actions", category: "devops", description: "Hệ thống tự động hóa quy trình kiểm thử và tích hợp CI/CD.", level: "Chuyên sâu" }
   ],
@@ -760,6 +763,9 @@ export const TECH_DATA: Record<"vi" | "en", TechItem[]> = {
     { name: "Neon Database", category: "database", description: "Serverless Postgres database with instant scaling.", level: "Primary" },
     { name: "PostgreSQL", category: "database", description: "Powerful relational database with high data integrity.", level: "Core" },
     { name: "Render", category: "devops", description: "Cloud platform hosting web applications & API services.", level: "Primary" },
+    { name: "Coolify", category: "devops", description: "Self-hosted PaaS alternative for deploying applications on private cloud servers.", level: "Primary" },
+    { name: "Netlify", category: "devops", description: "High-performance cloud platform for Jamstack & Frontend web apps.", level: "Core" },
+    { name: "Railway", category: "devops", description: "Modern cloud PaaS platform for instant deployment of web apps & databases.", level: "Primary" },
     { name: "Docker", category: "devops", description: "Containerized, predictable deployment parity.", level: "Core" },
     { name: "GitHub Actions", category: "devops", description: "Automated testing and CI/CD deployment workflows.", level: "Primary" }
   ]

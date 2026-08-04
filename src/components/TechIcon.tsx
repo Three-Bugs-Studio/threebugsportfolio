@@ -187,6 +187,39 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
     );
   }
 
+  // Coolify
+  if (normName.includes("coolify")) {
+    return (
+      <span className={`inline-flex items-center justify-center ${className}`}>
+        <svg viewBox="0 0 24 24" fill="currentColor" className={`w-full h-full ${showColor ? "text-[#6366F1]" : ""}`}>
+          <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.8l7.5 3.75v6.9L12 19.2l-7.5-3.75v-6.9L12 4.8zM8.5 9v6l7-3.5V9l-7 3.5z" />
+        </svg>
+      </span>
+    );
+  }
+
+  // Netlify
+  if (normName.includes("netlify")) {
+    return (
+      <span className={`inline-flex items-center justify-center ${className}`}>
+        <svg viewBox="0 0 24 24" fill="currentColor" className={`w-full h-full ${showColor ? "text-[#00C7B7]" : ""}`}>
+          <path d="M6.43 12L12 6.43 17.57 12 12 17.57 6.43 12zM12 0L0 12l12 12 12-12L12 0zm0 3.83L20.17 12 12 20.17 3.83 12 12 3.83z"/>
+        </svg>
+      </span>
+    );
+  }
+
+  // Railway
+  if (normName.includes("railway")) {
+    return (
+      <span className={`inline-flex items-center justify-center ${className}`}>
+        <svg viewBox="0 0 24 24" fill="currentColor" className={`w-full h-full ${showColor ? "text-[#C084FC]" : ""}`}>
+          <path d="M.48 4.347C.186 4.347 0 4.542 0 4.851v14.298c0 .309.186.504.48.504h23.04c.294 0 .48-.195.48-.504V4.851c0-.309-.186-.504-.48-.504H.48zm5.556 3.125h4.156v2.23H6.036V7.472zm7.768 0h4.156v2.23h-4.156V7.472zm-7.768 3.824h4.156v2.23H6.036v-2.23zm7.768 0h4.156v2.23h-4.156v-2.23zm-7.768 3.823h4.156v2.23H6.036v-2.23zm7.768 0h4.156v2.23h-4.156v-2.23z"/>
+        </svg>
+      </span>
+    );
+  }
+
   // Git
   if (normName.includes("git")) {
     return (
