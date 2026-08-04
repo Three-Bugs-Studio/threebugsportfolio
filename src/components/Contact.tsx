@@ -125,36 +125,31 @@ export default function Contact({ lang }: ContactProps) {
       timestamp: new Date().toLocaleString("vi-VN")
     };
 
-    // If Google Apps Script Webhook URL is configured, push directly to Google Sheets
-    if (googleScriptUrl) {
+    // Send payload asynchronously to Google Sheets / Webhook in background without blocking UI thread
+    if (googleScriptUrl && !googleScriptUrl.includes("YOUR_SCRIPT_ID")) {
       try {
-        await fetch(googleScriptUrl, {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 2500);
+
+        fetch(googleScriptUrl, {
           method: "POST",
           mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify(payload),
+          signal: controller.signal
+        })
+          .catch((err) => console.warn("Background sheet sync notice:", err))
+          .finally(() => clearTimeout(timeoutId));
       } catch (err) {
-        console.error("Google Sheets Submission Error:", err);
+        console.warn("Async submission notice:", err);
       }
-    } else {
-      // Fallback: Trigger client email app if script URL is not yet configured
-      const subject = encodeURIComponent(`[Three Bugs Studio] Đăng ký tư vấn bởi ${formData.name}`);
-      const body = encodeURIComponent(
-        `Họ & Tên: ${formData.name}\n` +
-        `Email: ${formData.email}\n` +
-        `Công ty/Thương hiệu: ${formData.company || "Chưa nhập"}\n` +
-        `Gói đăng ký: ${selectedBudget}\n\n` +
-        `Yêu cầu chi tiết:\n${formData.message}`
-      );
-      window.location.href = `mailto:dongduong840@gmail.com?subject=${subject}&body=${body}`;
     }
 
-    // Mark as submitted to show the success panel
+    // Instant UI feedback: transition to Success state within 400ms for snappy user experience!
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 800);
+    }, 400);
   };
 
   const handleInputChange = (
