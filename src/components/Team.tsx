@@ -1,13 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { TEAM_DATA, TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   FaGithub, 
   FaArrowUpRightFromSquare, 
   FaXmark,
-  FaPlane,
-  FaChevronLeft,
-  FaChevronRight
+  FaUserGroup,
+  FaCheckDouble
 } from "react-icons/fa6";
 import { TeamMember } from "../types";
 import DuongPhuDongImg from "@/assets/profile/DuongPhuDongProfile.webp";
@@ -16,24 +15,15 @@ import HoQuangHuyImg from "@/assets/profile/HoQuangHuyProfile.webp";
 import ThuTranImg from "@/assets/profile/ThuTranProfile.webp";
 import HaoVuImg from "@/assets/profile/HaoProfile.webp";
 import receptionistDeskGif from "@/assets/animation-icon/receptionist-desk.gif";
-import sidePlaneImg from "@/assets/sideplane/sideplane.png";
 
 interface TeamProps {
   lang: "vi" | "en";
-}
-
-interface ActivityMeta {
-  seat: string;
-  viRole: string;
-  enRole: string;
-  glowColor: string;
 }
 
 export default function Team({ lang }: TeamProps) {
   const t = TRANSLATIONS[lang];
   const teamList = TEAM_DATA[lang];
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const profileImages: Record<string, string> = {
     "Duong Phu Dong": DuongPhuDongImg,
@@ -43,48 +33,6 @@ export default function Team({ lang }: TeamProps) {
     "Hao Vu": HaoVuImg,
   };
 
-  const memberMeta: Record<string, ActivityMeta> = {
-    "Duong Phu Dong": {
-      seat: "SEAT 01A",
-      viRole: "Founder & Lead Fullstack",
-      enRole: "Founder & Lead Fullstack",
-      glowColor: "#FF6A00",
-    },
-    "Thu Tran": {
-      seat: "SEAT 02A",
-      viRole: "Co-Founder & UI/UX Lead",
-      enRole: "Co-Founder & UI/UX Lead",
-      glowColor: "#C084FC",
-    },
-    "Huynh Quang Dong": {
-      seat: "SEAT 03A",
-      viRole: "Tester & Scrum Master",
-      enRole: "QA Tester & Scrum Master",
-      glowColor: "#38BDF8",
-    },
-    "Ho Quang Huy": {
-      seat: "SEAT 04A",
-      viRole: "DevOps & Cloud Architect",
-      enRole: "DevOps & Cloud Architect",
-      glowColor: "#34D399",
-    },
-    "Hao Vu": {
-      seat: "SEAT 05A",
-      viRole: "Backend & AI Specialist",
-      enRole: "Backend & AI Specialist",
-      glowColor: "#A855F7",
-    },
-  };
-
-  // Precise percentage window coordinates matching the exact 5 oval windows in sideplane.png
-  const windowSlots = [
-    { left: "36.8%", top: "41.5%", width: "4.8%", height: "18.5%" },
-    { left: "44.4%", top: "41.5%", width: "4.8%", height: "18.5%" },
-    { left: "52.0%", top: "41.5%", width: "4.8%", height: "18.5%" },
-    { left: "59.6%", top: "41.5%", width: "4.8%", height: "18.5%" },
-    { left: "67.2%", top: "41.5%", width: "4.8%", height: "18.5%" },
-  ];
-
   const handleScrollToContact = () => {
     const element = document.getElementById("app-contact-section") || document.getElementById("contact");
     if (element) {
@@ -92,11 +40,26 @@ export default function Team({ lang }: TeamProps) {
     }
   };
 
-  const scrollCabin = (direction: "left" | "right") => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = direction === "left" ? -350 : 350;
-      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    }
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { y: 30, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
   };
 
   return (
@@ -107,152 +70,119 @@ export default function Team({ lang }: TeamProps) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         
-        {/* Section Header & Controls */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
-            <div className="flex items-center gap-3 mb-3">
+            <div className="flex items-center gap-3 mb-4">
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange font-semibold flex items-center gap-2">
-                <FaPlane className="w-3.5 h-3.5" />
-                {lang === "vi" ? "05 // CHUYẾN BAY KỸ SƯ STUDIO" : "05 // FLIGHT 3B-2026 FUSELAGE"}
+                <FaUserGroup className="w-3.5 h-3.5" />
+                {lang === "vi" ? "05 // ĐỘI NGŨ THỰC HIỆN" : "05 // STUDIO TEAM"}
               </span>
               <span className="h-[1px] w-12 bg-brand-orange/40" />
             </div>
             <h2 className="font-display font-bold text-3xl md:text-5xl tracking-tight text-[#F5F5F3] uppercase leading-tight">
-              {lang === "vi" ? "Đội Ngũ 5 Kỹ Sư Trực Tiếp" : "The 5 Flight Engineers"}
+              {lang === "vi" ? "Đội Ngũ 5 Kỹ Sư & Thiết Kế Studio" : "The 5 In-House Engineers & Designers"}
             </h2>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            {/* Telemetry Badge */}
-            <div className="hidden sm:flex items-center gap-3 bg-[#111113] border border-white/10 px-4 py-2 rounded-lg font-mono text-[11px] text-[#8E8E93]">
-              <span className="flex items-center gap-1.5 text-emerald-400 font-bold">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                CRUISE 35,000 FT
-              </span>
-              <span className="text-white/20">|</span>
-              <span className="text-brand-orange font-bold">MACH 0.85</span>
-              <span className="text-white/20">|</span>
-              <span>5 PASSENGERS</span>
-            </div>
+          <p className="font-sans text-xs md:text-sm text-[#8E8E93] max-w-md font-light leading-relaxed">
+            {lang === "vi"
+              ? "Đội ngũ 5 kỹ sư & thiết kế chuyên nghiệp làm việc trực tiếp tại TP.HCM. Không qua trung gian, không rủi ro tuyển dụng — cam kết 100% chất lượng mã nguồn & tiến độ bàn giao."
+              : "5 dedicated in-house engineers & UI/UX designers in Ho Chi Minh City. Direct technical partnership with 100% source code handover."}
+          </p>
+        </div>
 
-            {/* Slider Controls */}
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => scrollCabin("left")}
-                className="w-10 h-10 rounded-lg bg-[#111113] border border-white/10 hover:border-brand-orange/50 hover:text-brand-orange text-white flex items-center justify-center transition-colors interactive"
-                aria-label="Previous Seat"
-              >
-                <FaChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => scrollCabin("right")}
-                className="w-10 h-10 rounded-lg bg-[#111113] border border-white/10 hover:border-brand-orange/50 hover:text-brand-orange text-white flex items-center justify-center transition-colors interactive"
-                aria-label="Next Seat"
-              >
-                <FaChevronRight className="w-4 h-4" />
-              </button>
-            </div>
+        {/* Studio Technical Guarantee Badges */}
+        <div className="flex flex-wrap items-center gap-3 mb-10 pb-6 border-b border-white/10">
+          <div className="flex items-center gap-2 bg-[#111113] border border-white/10 px-3.5 py-1.5 rounded-full font-mono text-[11px] text-[#F5F5F3]">
+            <FaCheckDouble className="w-3 h-3 text-brand-orange" />
+            <span>100% IN-HOUSE ENGINEERS</span>
+          </div>
+          <div className="flex items-center gap-2 bg-[#111113] border border-white/10 px-3.5 py-1.5 rounded-full font-mono text-[11px] text-[#F5F5F3]">
+            <FaCheckDouble className="w-3 h-3 text-emerald-400" />
+            <span>DIRECT TECHNICAL PARTNERSHIP</span>
+          </div>
+          <div className="flex items-center gap-2 bg-[#111113] border border-white/10 px-3.5 py-1.5 rounded-full font-mono text-[11px] text-[#F5F5F3]">
+            <FaCheckDouble className="w-3 h-3 text-cyan-400" />
+            <span>ZERO OUTSOURCING RISK</span>
           </div>
         </div>
 
-        {/* Sideplane PNG Fuselage Container */}
-        <div className="relative w-full rounded-3xl overflow-hidden border border-white/15 p-4 sm:p-6 md:p-8 bg-[#090A0D] shadow-2xl">
-          
-          {/* Horizontal Scroll Wrapper */}
-          <div ref={scrollContainerRef} className="overflow-x-auto custom-scrollbar pb-4 scroll-smooth">
-            
-            {/* Airplane Graphic Container */}
-            <div className="min-w-[1000px] lg:min-w-0 relative">
-              
-              {/* Authentic Sideplane PNG Graphic */}
-              <img
-                src={sidePlaneImg}
-                alt="3B Studio Commercial Airplane Fuselage"
-                className="w-full h-auto block object-contain pointer-events-none select-none drop-shadow-[0_25px_50px_rgba(0,0,0,0.9)]"
-              />
+        {/* 5-Column Professional Team Grid */}
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          {teamList.map((member, idx) => {
+            const memberImg = profileImages[member.name];
+            const colorHex = member.colorTag?.hex || "#FF6A00";
 
-              {/* Exact Percentage Window Portals Fitting Inside sideplane.png Windows */}
-              <div className="absolute inset-0 pointer-events-auto">
-                {teamList.map((member, idx) => {
-                  const slot = windowSlots[idx] || { left: `${36.8 + idx * 7.6}%`, top: "41.5%", width: "4.8%", height: "18.5%" };
-                  const memberImg = profileImages[member.name];
-                  const meta = memberMeta[member.name] || {
-                    seat: `SEAT 0${idx + 1}A`,
-                    viRole: member.role,
-                    enRole: member.role,
-                    glowColor: "#FF6A00",
-                  };
-
-                  return (
-                    <div
-                      key={member.name}
-                      style={{
-                        left: slot.left,
-                        top: slot.top,
-                        width: slot.width,
-                        height: slot.height,
-                      }}
-                      onClick={() => setSelectedMember(member)}
-                      className="absolute group cursor-pointer rounded-[35%] overflow-hidden border-2 border-white/20 hover:border-brand-orange transition-all duration-300 hover:scale-105 shadow-inner bg-black"
-                    >
-                      {/* Member Portrait Clipped Exactly Inside Airplane Window */}
-                      <img
-                        src={memberImg}
-                        alt={member.name}
-                        className="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 transition-all duration-300"
-                      />
-                      
-                      {/* Window Gloss Reflection */}
-                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent pointer-events-none" />
-                    </div>
-                  );
-                })}
-              </div>
-
-            </div>
-
-          </div>
-
-          {/* Passenger Info Grid Bar Underneath Sideplane */}
-          <div className="mt-8 pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {teamList.map((member, idx) => {
-              const meta = memberMeta[member.name] || {
-                seat: `SEAT 0${idx + 1}A`,
-                viRole: member.role,
-                enRole: member.role,
-                glowColor: "#FF6A00",
-              };
-
-              return (
-                <div
-                  key={member.name}
-                  onClick={() => setSelectedMember(member)}
-                  className="bg-[#111113] border border-white/10 hover:border-brand-orange/50 p-3.5 rounded-xl transition-all duration-300 cursor-pointer interactive flex flex-col justify-between group hover:-translate-y-1"
-                >
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <span 
-                      className="font-mono text-[9px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-wider bg-white/5 border border-white/10 text-white"
-                      style={{ color: meta.glowColor, borderColor: `${meta.glowColor}40` }}
-                    >
-                      {meta.seat}
-                    </span>
-                    <span className="w-2 h-2 rounded-full" style={{ backgroundColor: meta.glowColor }} />
-                  </div>
-
-                  <div>
-                    <h4 className="font-display font-bold text-sm text-[#F5F5F3] group-hover:text-brand-orange transition-colors truncate">
-                      {member.name}
-                    </h4>
-                    <p className="font-sans text-xs text-[#8E8E93] font-light truncate mt-0.5">
-                      {lang === "vi" ? meta.viRole : meta.enRole}
-                    </p>
-                  </div>
+            return (
+              <motion.div
+                key={member.name}
+                variants={cardVariants}
+                onClick={() => setSelectedMember(member)}
+                className="team-card-item group relative bg-[#111113]/90 border border-white/10 hover:border-brand-orange/50 p-4 rounded-xl transition-all duration-500 cursor-pointer flex flex-col justify-between overflow-hidden shadow-xl hover:shadow-[0_0_25px_rgba(255,106,0,0.15)] hover:-translate-y-1.5 interactive"
+              >
+                {/* Top Member Index & Studio Label */}
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span 
+                    className="font-mono text-[9px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-sm border"
+                    style={{ 
+                      color: colorHex, 
+                      backgroundColor: `${colorHex}15`, 
+                      borderColor: `${colorHex}40` 
+                    }}
+                  >
+                    0{idx + 1}
+                  </span>
+                  <span className="font-mono text-[9px] text-[#8E8E93] tracking-wider uppercase">
+                    THREE BUGS
+                  </span>
                 </div>
-              );
-            })}
-          </div>
 
-        </div>
+                {/* Member Portrait Box */}
+                <div className="relative aspect-[4/5] w-full bg-[#080808] border border-white/10 rounded-lg overflow-hidden mb-4 group-hover:border-brand-orange/40 transition-all duration-500">
+                  <img
+                    src={memberImg}
+                    alt={member.name}
+                    className="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                  />
+                  {/* Subtle Vignette Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
+                </div>
+
+                {/* Name & Role */}
+                <div className="space-y-1 mb-3">
+                  <h3 className="font-display font-bold text-base md:text-lg text-[#F5F5F3] group-hover:text-brand-orange transition-colors leading-snug">
+                    {member.name}
+                  </h3>
+                  <p className="font-sans text-xs text-brand-orange font-medium">
+                    {member.role}
+                  </p>
+                  <span className="font-mono text-[9px] text-[#8E8E93] uppercase tracking-wider block mt-1 line-clamp-1">
+                    {member.diagramRole}
+                  </span>
+                </div>
+
+                {/* Specialty Tags */}
+                <div className="flex flex-wrap gap-1 pt-2 border-t border-white/5">
+                  {(member.specialties || []).slice(0, 2).map((skill) => (
+                    <span
+                      key={skill}
+                      className="font-mono text-[9px] bg-white/5 border border-white/10 px-2 py-0.5 rounded-sm text-[#8E8E93] group-hover:text-[#F5F5F3] transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
 
         {/* Team CTA Box */}
         <div className="mt-16 bg-[#111113]/90 border border-white/10 p-6 md:p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
