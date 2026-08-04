@@ -237,6 +237,8 @@ html.light .price-anim-icon-container,
 html.light .price-header-icon-container,
 html.light .receptionist-anim-icon-container,
 html.light .customer-review-anim-container,
+html.light .faq-anim-icon-container,
+html.light .faq-item-box,
 html.light .team-card-item {
   background-color: #FFFFFF !important;
   border-color: rgba(15, 23, 42, 0.14) !important;
