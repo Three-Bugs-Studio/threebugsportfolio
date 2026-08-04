@@ -200,6 +200,12 @@ html.light kbd {
   border-color: rgba(15, 23, 42, 0.14) !important;
 }
 
+html.light #card-nav-menu-btn,
+html.light #card-nav-menu-btn * {
+  color: #0F172A !important;
+  font-weight: 700 !important;
+}
+
 /* Main Canvas Page & Section Background Override */
 html.light,
 html.light body,

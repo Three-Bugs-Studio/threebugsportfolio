@@ -178,7 +178,7 @@ export default function CardNav({
             
             {/* Desktop Brand Text */}
             <div className="hidden md:block text-left leading-none">
-              <span className="font-display font-bold tracking-widest text-sm uppercase text-white group-hover:text-brand-orange transition-colors">
+              <span className={`font-display font-bold tracking-widest text-sm uppercase group-hover:text-brand-orange transition-colors ${isLight ? "text-[#0F172A]" : "text-white"}`}>
                 THREE BUGS
               </span>
               <span className="block font-mono text-[10px] tracking-[0.35em] uppercase text-brand-orange font-medium mt-0.5">
@@ -188,7 +188,7 @@ export default function CardNav({
 
             {/* Mobile Compact Brand Text: 3BSTUDIO */}
             <div className="block md:hidden text-left leading-none">
-              <span className="font-display font-black tracking-wider text-sm uppercase text-white group-hover:text-brand-orange transition-colors">
+              <span className={`font-display font-black tracking-wider text-sm uppercase group-hover:text-brand-orange transition-colors ${isLight ? "text-[#0F172A]" : "text-white"}`}>
                 3B<span className="text-brand-orange font-mono text-xs font-bold tracking-widest ml-0.5">STUDIO</span>
               </span>
             </div>
@@ -206,7 +206,7 @@ export default function CardNav({
                   className={`px-2 md:px-2.5 py-1 md:py-1.5 transition-all ${
                     lang === "vi"
                       ? "bg-brand-orange text-[#090909] font-semibold"
-                      : "bg-transparent text-[#8E8E93] hover:text-white"
+                      : isLight ? "bg-transparent text-[#334155] hover:text-[#0F172A]" : "bg-transparent text-[#8E8E93] hover:text-white"
                   }`}
                 >
                   VI
@@ -218,7 +218,7 @@ export default function CardNav({
                   className={`px-2 md:px-2.5 py-1 md:py-1.5 transition-all ${
                     lang === "en"
                       ? "bg-brand-orange text-[#090909] font-semibold"
-                      : "bg-transparent text-[#8E8E93] hover:text-white"
+                      : isLight ? "bg-transparent text-[#334155] hover:text-[#0F172A]" : "bg-transparent text-[#8E8E93] hover:text-white"
                   }`}
                 >
                   EN
@@ -234,11 +234,15 @@ export default function CardNav({
             {/* CardNav Menu Toggle Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="btn-stacked relative inline-flex items-center gap-1.5 md:gap-2 font-mono text-[11px] md:text-xs uppercase tracking-widest px-3 md:px-4 py-1.5 md:py-2 bg-[#141414] border border-white/15 text-white hover:border-brand-orange transition-all duration-300 rounded-sm interactive"
+              className={`btn-stacked relative inline-flex items-center gap-1.5 md:gap-2 font-mono text-[11px] md:text-xs uppercase tracking-widest px-3 md:px-4 py-1.5 md:py-2 border transition-all duration-300 rounded-sm interactive ${
+                isLight 
+                  ? "bg-[#FFFFFF] border-slate-300 text-[#0F172A] hover:border-brand-orange font-bold" 
+                  : "bg-[#141414] border-white/15 text-white hover:border-brand-orange"
+              }`}
               id="card-nav-menu-btn"
             >
               <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full" style={{ backgroundColor: menuColor }} />
-              <span>{isOpen ? (lang === "vi" ? "ĐÓNG" : "CLOSE") : "MENU"}</span>
+              <span className={isLight ? "text-[#0F172A] font-bold" : "text-white"}>{isOpen ? (lang === "vi" ? "ĐÓNG" : "CLOSE") : "MENU"}</span>
               {isOpen ? <FaXmark className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-orange" /> : <FaBars className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-orange" />}
             </button>
 
