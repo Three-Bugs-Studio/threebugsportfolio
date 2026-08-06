@@ -144,15 +144,13 @@ export default function Team({ lang }: TeamProps) {
                   </span>
                 </div>
 
-                {/* Member Portrait Box */}
-                <div className="relative aspect-[4/5] w-full bg-[#080808] border border-white/10 rounded-lg overflow-hidden mb-4 group-hover:border-brand-orange/40 transition-all duration-500">
+                {/* Member Portrait Box - Full Color, Perfectly Cropped Edge-to-Edge */}
+                <div className="relative aspect-[3/4] w-full border border-white/10 rounded-lg overflow-hidden mb-4 group-hover:border-brand-orange/40 transition-all duration-500">
                   <img
                     src={memberImg}
                     alt={member.name}
-                    className="w-full h-full object-cover object-top filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-all duration-500"
                   />
-                  {/* Subtle Vignette Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity" />
                 </div>
 
                 {/* Name & Role */}
