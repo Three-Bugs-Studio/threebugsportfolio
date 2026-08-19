@@ -251,6 +251,14 @@ html.light .team-card-item {
   box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06) !important;
 }
 
+/* Ensure ALL Animated GIF Icons & Images have smooth rounded corners & hidden overflow */
+img[src*=".gif"],
+[class*="-anim-"] img,
+[class*="anim-"] img {
+  border-radius: 0.75rem !important;
+  overflow: hidden !important;
+}
+
 /* Ensure Ultra-High Contrast Deep Slate Black (#0F172A) text in Light Mode for 100% legibility */
 html.light h1, html.light h2, html.light h3, html.light h4, html.light h5, html.light h6,
 html.light [class*="text-white"],
