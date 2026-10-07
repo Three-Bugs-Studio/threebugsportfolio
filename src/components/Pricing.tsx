@@ -37,7 +37,7 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
         staggerChildren: 0.1,
         delayChildren: 0.2,
         duration: 0.6,
-        ease: [0.16, 1, 0.3, 1],
+        ease: [0.16, 1, 0.3, 1] as const,
       },
     },
   };
@@ -48,7 +48,7 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 260,
         damping: 20,
       },
@@ -61,7 +61,7 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
       opacity: 1,
       x: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 120,
         damping: 12,
       },

@@ -51,7 +51,7 @@ export default function FAQ({ lang }: FAQProps) {
           </div>
 
           <h2 className="font-display font-bold text-3xl md:text-5xl tracking-tight text-[#F5F5F3] mb-4 uppercase leading-tight">
-            {t.faqTitle}
+            {t.faqHeading}
           </h2>
 
           <p className="font-sans text-xs md:text-sm text-[#8E8E93] max-w-lg mx-auto leading-relaxed font-light">

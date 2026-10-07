@@ -268,7 +268,7 @@ export default function Contact({ lang }: ContactProps) {
                         />
                         {errors.name && (
                           <span className="font-mono text-[9px] text-red-500 mt-1 flex items-center gap-1">
-                            <AlertCircle className="w-3.5 h-3.5" /> {errors.name}
+                            <FaCircleExclamation className="w-3.5 h-3.5" /> {errors.name}
                           </span>
                         )}
                       </div>
@@ -307,7 +307,7 @@ export default function Contact({ lang }: ContactProps) {
                       />
                       {errors.email && (
                         <span className="font-mono text-[9px] text-red-500 mt-1 flex items-center gap-1">
-                          <AlertCircle className="w-3.5 h-3.5" /> {errors.email}
+                          <FaCircleExclamation className="w-3.5 h-3.5" /> {errors.email}
                         </span>
                       )}
                     </div>
@@ -425,7 +425,7 @@ export default function Contact({ lang }: ContactProps) {
                       />
                       {errors.message && (
                         <span className="font-mono text-[9px] text-red-500 mt-1 flex items-center gap-1">
-                          <AlertCircle className="w-3.5 h-3.5" /> {errors.message}
+                          <FaCircleExclamation className="w-3.5 h-3.5" /> {errors.message}
                         </span>
                       )}
                     </div>
