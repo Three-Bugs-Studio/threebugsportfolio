@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { PRICING_DATA } from "../data";
 import { motion, useInView } from "motion/react";
-import { FaCheck, FaArrowRight, FaClock, FaShieldHalved, FaLayerGroup, FaWandMagicSparkles } from "react-icons/fa6";
+import { FaCheck, FaArrowRight, FaClock, FaShieldHalved, FaLayerGroup, FaWandMagicSparkles, FaUserTie, FaPhone } from "react-icons/fa6";
+import { SiZalo } from "react-icons/si";
 import { PricingPlan } from "../types";
 import priceGif from "@/assets/animation-icon/price.gif";
 
@@ -268,6 +269,75 @@ export default function Pricing({ lang }: PricingProps) {
               ? "TẤT CẢ CÁC GÓI ĐỀU ĐƯỢC THỰC HIỆN ĐẦY ĐỦ THEO QUY TRÌNH 3 PHASE (THIẾT KẾ ➔ LẬP TRÌNH ➔ KHỞI CHẠY BẢO HÀNH)."
               : "ALL PACKAGES ARE EXECUTED THROUGH FULL 3-PHASE PIPELINES (DESIGN ➔ ENGINEERING ➔ LAUNCH & SLA)."}
           </p>
+        </div>
+
+        {/* Dedicated Consultants Reception Box */}
+        <div className="mb-14 p-6 bg-[#111112]/90 border border-brand-orange/30 rounded-sm flex flex-col lg:flex-row lg:items-center justify-between gap-6 shadow-2xl relative overflow-hidden group">
+          <div className="absolute top-0 left-0 bottom-0 w-1 bg-brand-orange" />
+          <div className="flex items-start md:items-center gap-4">
+            <div className="w-11 h-11 rounded-full bg-brand-orange/15 text-brand-orange border border-brand-orange/40 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(255,106,0,0.2)]">
+              <FaUserTie className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="font-mono text-[9px] uppercase tracking-widest text-brand-orange font-bold">
+                  // {lang === "vi" ? "BỘ PHẬN TIẾP NHẬN HỒ SƠ & TƯ VẤN TRỰC TIẾP" : "PROJECT INTAKE & DIRECT CONSULTANTS"}
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              </div>
+              <p className="font-display font-medium text-base text-white">
+                {lang === "vi" 
+                  ? "Báo giá linh hoạt theo yêu cầu dự án – Vui lòng liên hệ trực tiếp 2 chuyên viên tư vấn phụ trách:" 
+                  : "Custom quote tailored to project scope – Contact our 2 direct consultants:"}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-3 shrink-0">
+            {/* Consultant 1: Hoang Do */}
+            <div className="flex items-center gap-2 bg-[#090909] border border-white/10 hover:border-brand-orange/50 p-2.5 rounded-sm transition-all shadow-md">
+              <a
+                href="tel:0392996307"
+                className="flex items-center gap-2 font-mono text-xs text-white hover:text-brand-orange transition-colors"
+                title="Gọi Hoàng Đỗ"
+              >
+                <FaPhone className="w-3 h-3 text-brand-orange" />
+                <span className="font-bold">0392.996.307</span>
+              </a>
+              <span className="text-white/20">|</span>
+              <a
+                href="https://zalo.me/0392996307"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 font-mono text-[11px] text-[#0068FF] hover:underline"
+              >
+                <SiZalo className="w-3.5 h-3.5" />
+                <span>Hoàng Đỗ</span>
+              </a>
+            </div>
+
+            {/* Consultant 2: Minh Duc */}
+            <div className="flex items-center gap-2 bg-[#090909] border border-white/10 hover:border-brand-orange/50 p-2.5 rounded-sm transition-all shadow-md">
+              <a
+                href="tel:0867474204"
+                className="flex items-center gap-2 font-mono text-xs text-white hover:text-brand-orange transition-colors"
+                title="Gọi Minh Đức"
+              >
+                <FaPhone className="w-3 h-3 text-brand-orange" />
+                <span className="font-bold">0867.474.204</span>
+              </a>
+              <span className="text-white/20">|</span>
+              <a
+                href="https://zalo.me/0867474204"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 font-mono text-[11px] text-[#0068FF] hover:underline"
+              >
+                <SiZalo className="w-3.5 h-3.5" />
+                <span>Minh Đức</span>
+              </a>
+            </div>
+          </div>
         </div>
 
         {/* Stacked Pricing Cards Container */}
