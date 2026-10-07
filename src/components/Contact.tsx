@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
-import { FaPaperPlane, FaArrowUpRightFromSquare, FaCheck, FaCircleExclamation, FaCoins } from "react-icons/fa6";
+import { FaPaperPlane, FaArrowUpRightFromSquare, FaCheck, FaCircleExclamation, FaCoins, FaPhone, FaUserTie } from "react-icons/fa6";
+import { SiZalo } from "react-icons/si";
 import ZaloQRImg from "@/assets/zalo/zalo_qr.webp";
 
 interface ContactProps {
@@ -83,14 +84,14 @@ export default function Contact({ lang }: ContactProps) {
 
   // Rates and raw values for internal mapping/display
   const rawVND = [
-    "3.9 triệu VNĐ (Gói 1: Khởi Nghiệp & Landing Page)",
-    "Từ 7.9 đến 9.9 triệu VNĐ (Gói 2: Doanh Nghiệp Đa Ngành & E-Commerce)",
-    "Liên Hệ Báo Giá (Gói 3: Web App & Hệ Thống AI Độc Quyền)"
+    "Gói 1: Khởi Nghiệp & Landing Page (Liên Hệ Báo Giá)",
+    "Gói 2: Doanh Nghiệp Đa Ngành & E-Commerce (Liên Hệ Báo Giá)",
+    "Gói 3: Web App & Hệ Thống AI Độc Quyền (Liên Hệ Báo Giá)"
   ];
   const rawUSD = [
-    `About $${Math.round(3900000 / exchangeRate)} USD (Starter Web & Landing Page)`,
-    `About $${Math.round(7900000 / exchangeRate)} to $${Math.round(9900000 / exchangeRate)} USD (Corporate & Multi-Sector Web)`,
-    "Contact for Custom Quote (Package 3: Custom Web App & AI Platform)"
+    "Package 1: Starter Web & Landing Page (Quote on Request)",
+    "Package 2: Corporate & Multi-Sector Web (Quote on Request)",
+    "Package 3: Custom Web App & AI Platform (Quote on Request)"
   ];
 
   const validate = () => {
@@ -211,40 +212,114 @@ export default function Contact({ lang }: ContactProps) {
             </div>
 
             {/* Direct Contact details */}
-            <div className="border-t border-white/5 pt-8 flex flex-wrap gap-x-12 gap-y-6">
-              <div className="space-y-4">
-                <div>
-                  <span className="font-mono text-[9px] tracking-widest text-brand-orange uppercase block mb-1">
-                    STUDIO INBOX
+            <div className="border-t border-white/5 pt-8 space-y-6">
+              
+              {/* Direct Consultants Info Box */}
+              <div className="p-4 bg-[#121212]/80 border border-brand-orange/30 rounded-sm">
+                <div className="flex items-center gap-2 mb-3">
+                  <FaUserTie className="w-4 h-4 text-brand-orange" />
+                  <span className="font-mono text-[9px] tracking-widest text-brand-orange uppercase font-bold">
+                    // {lang === "vi" ? "CHUYÊN VIÊN TIẾP NHẬN HỒ SƠ & TƯ VẤN" : "DIRECT PROJECT CONSULTANTS"}
                   </span>
-                  <a href="mailto:dongduong840@gmail.com" className="font-sans text-sm text-[#F5F5F3] hover:text-brand-orange transition-colors interactive">
-                    dongduong840@gmail.com
-                  </a>
                 </div>
-                <div>
-                  <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block mb-1">
-                    OPERATING MODEL
-                  </span>
-                  <span className="font-sans text-sm text-[#F5F5F3] tracking-wide">
-                    100% REMOTE
-                  </span>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {/* Hoang Do */}
+                  <div className="p-3 bg-[#090909] border border-white/10 rounded-sm">
+                    <span className="font-display font-bold text-xs text-white block">
+                      Hoàng Đỗ
+                    </span>
+                    <span className="font-mono text-[10px] text-[#8E8E93] block mb-2">
+                      {lang === "vi" ? "Tư vấn & Tiếp nhận dự án" : "Project Consultant"}
+                    </span>
+                    <div className="flex items-center gap-2">
+                      <a
+                        href="tel:0392996307"
+                        className="inline-flex items-center gap-1.5 font-mono text-[11px] text-white hover:text-brand-orange transition-colors"
+                      >
+                        <FaPhone className="w-2.5 h-2.5 text-brand-orange" />
+                        <span className="font-bold">0392.996.307</span>
+                      </a>
+                      <span className="text-white/20">|</span>
+                      <a
+                        href="https://zalo.me/0392996307"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 font-mono text-[10px] text-[#0068FF] hover:underline"
+                      >
+                        <SiZalo className="w-3 h-3" />
+                        <span>Zalo</span>
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Minh Duc */}
+                  <div className="p-3 bg-[#090909] border border-white/10 rounded-sm">
+                    <span className="font-display font-bold text-xs text-white block">
+                      Minh Đức
+                    </span>
+                    <span className="font-mono text-[10px] text-[#8E8E93] block mb-2">
+                      {lang === "vi" ? "Tư vấn kỹ thuật & Lộ trình" : "Technical Consultant"}
+                    </span>
+                    <div className="flex items-center gap-2">
+                      <a
+                        href="tel:0867474204"
+                        className="inline-flex items-center gap-1.5 font-mono text-[11px] text-white hover:text-brand-orange transition-colors"
+                      >
+                        <FaPhone className="w-2.5 h-2.5 text-brand-orange" />
+                        <span className="font-bold">0867.474.204</span>
+                      </a>
+                      <span className="text-white/20">|</span>
+                      <a
+                        href="https://zalo.me/0867474204"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 font-mono text-[10px] text-[#0068FF] hover:underline"
+                      >
+                        <SiZalo className="w-3 h-3" />
+                        <span>Zalo</span>
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <div>
-                <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block mb-1.5">
-                  {lang === "vi" ? "QUÉT MÃ ZALO LIÊN HỆ" : "ZALO QUICK CONTACT"}
-                </span>
-                <div className="relative group/zalo w-24 h-24 bg-[#121212] border border-white/10 rounded-sm p-1 transition-all hover:border-brand-orange/30 shadow-lg">
-                  <img
-                    src={ZaloQRImg}
-                    alt="Zalo QR Code"
-                    className="w-full h-full object-cover rounded-[1px]"
-                  />
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/zalo:opacity-100 flex items-center justify-center transition-opacity rounded-[1px] pointer-events-none">
-                    <span className="font-mono text-[6.5px] text-brand-orange tracking-widest uppercase font-bold">
-                      {lang === "vi" ? "QUÉT ĐỂ CHAT" : "SCAN TO CHAT"}
+              {/* Email & Operating model & QR */}
+              <div className="flex flex-wrap gap-x-12 gap-y-6 pt-2">
+                <div className="space-y-4">
+                  <div>
+                    <span className="font-mono text-[9px] tracking-widest text-brand-orange uppercase block mb-1">
+                      STUDIO INBOX
                     </span>
+                    <a href="mailto:dongduong840@gmail.com" className="font-sans text-sm text-[#F5F5F3] hover:text-brand-orange transition-colors interactive">
+                      dongduong840@gmail.com
+                    </a>
+                  </div>
+                  <div>
+                    <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block mb-1">
+                      OPERATING MODEL
+                    </span>
+                    <span className="font-sans text-sm text-[#F5F5F3] tracking-wide">
+                      100% REMOTE
+                    </span>
+                  </div>
+                </div>
+
+                <div>
+                  <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block mb-1.5">
+                    {lang === "vi" ? "QUÉT MÃ ZALO STUDIO" : "STUDIO ZALO QR"}
+                  </span>
+                  <div className="relative group/zalo w-24 h-24 bg-[#121212] border border-white/10 rounded-sm p-1 transition-all hover:border-brand-orange/30 shadow-lg">
+                    <img
+                      src={ZaloQRImg}
+                      alt="Zalo QR Code"
+                      className="w-full h-full object-cover rounded-[1px]"
+                    />
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/zalo:opacity-100 flex items-center justify-center transition-opacity rounded-[1px] pointer-events-none">
+                      <span className="font-mono text-[6.5px] text-brand-orange tracking-widest uppercase font-bold">
+                        {lang === "vi" ? "QUÉT ĐỂ CHAT" : "SCAN TO CHAT"}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
