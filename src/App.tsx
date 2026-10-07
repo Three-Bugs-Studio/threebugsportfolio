@@ -14,6 +14,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import StaggeredSection from "./components/StaggeredSection";
 import DotNavigation from "./components/DotNavigation";
+import QuickContactWidget from "./components/QuickContactWidget";
 import { audioManager } from "./lib/audioManager";
 import { motion, AnimatePresence } from "motion/react";
 import {
@@ -356,6 +357,9 @@ export default function App() {
 
       {/* Floating Vertical Dot Navigation Menu */}
       <DotNavigation lang={lang} />
+
+      {/* Floating Direct Consultation & Zalo Quick Connect Widget */}
+      <QuickContactWidget lang={lang} theme={theme} />
 
       {/* Grid Alignment Matrix Overlay (subtle background layout grid lines) */}
       <div className="fixed inset-0 pointer-events-none z-0 swiss-grid opacity-[0.1]" />
