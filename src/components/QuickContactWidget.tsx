@@ -12,8 +12,18 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
   const [isOpen, setIsOpen] = useState(false);
   const isLight = theme === "light";
 
+  const toggleOpen = (nextState?: boolean) => {
+    const updated = typeof nextState === "boolean" ? nextState : !isOpen;
+    setIsOpen(updated);
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(
+        new CustomEvent("quick_contact_toggle", { detail: { isOpen: updated } })
+      );
+    }
+  };
+
   const handleScrollToContact = () => {
-    setIsOpen(false);
+    toggleOpen(false);
     const element = document.getElementById("app-contact-section");
     if (element) {
       const offset = 80;
@@ -28,7 +38,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
   };
 
   return (
-    <div className="fixed bottom-6 right-6 sm:right-8 md:right-10 z-40 select-none" id="quick-contact-widget">
+    <div className="fixed bottom-6 right-6 sm:right-8 md:right-10 z-50 select-none" id="quick-contact-widget">
       {/* Expanded Quick Action Popover */}
       <AnimatePresence>
         {isOpen && (
@@ -37,10 +47,10 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 15 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className={`absolute bottom-16 right-0 sm:right-1 w-[calc(100vw-2.5rem)] sm:w-84 max-w-[340px] p-5 rounded-sm border shadow-2xl backdrop-blur-xl ring-1 ${
+            className={`absolute bottom-16 right-0 sm:right-1 w-[calc(100vw-2.5rem)] sm:w-84 max-w-[340px] p-5 rounded-sm border shadow-2xl ring-1 ${
               isLight
-                ? "bg-white/95 border-slate-200 ring-slate-900/5 text-slate-900 shadow-slate-300/50"
-                : "bg-[#111112]/95 border-white/10 ring-white/10 text-white shadow-black/90"
+                ? "bg-white border-slate-200 ring-slate-900/5 text-slate-900 shadow-slate-400/40"
+                : "bg-[#101012] border-white/15 ring-white/10 text-white shadow-[0_20px_60px_rgba(0,0,0,0.95)]"
             }`}
           >
             {/* Header */}
@@ -54,7 +64,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
                 </h4>
               </div>
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={() => toggleOpen(false)}
                 className={`p-1.5 rounded-sm transition-colors cursor-pointer ${
                   isLight ? "text-slate-500 hover:text-slate-900" : "text-[#8E8E93] hover:text-white"
                 }`}
@@ -195,7 +205,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => toggleOpen()}
         aria-label={lang === "vi" ? "Mở hộp thoại liên hệ nhanh" : "Open quick contact widget"}
         className="relative flex items-center gap-2.5 bg-brand-orange hover:bg-brand-orange/95 text-[#090909] font-mono text-xs font-bold uppercase tracking-wider px-4 py-3 rounded-full shadow-2xl shadow-brand-orange/20 cursor-pointer interactive border-2 border-[#090909]/40"
       >
