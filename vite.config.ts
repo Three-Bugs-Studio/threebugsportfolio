@@ -12,13 +12,15 @@ export default defineConfig(() => {
       },
     },
     build: {
+      chunkSizeWarningLimit: 800,
       rollupOptions: {
         output: {
           manualChunks: {
             'vendor-react': ['react', 'react-dom'],
-            'vendor-[#motion]': ['motion'],
-            'vendor-[#icons]': ['lucide-react', 'react-icons'],
-            'vendor-[#shaders]': ['@paper-design/shaders-react']
+            'vendor-three': ['three'],
+            'vendor-motion': ['motion'],
+            'vendor-icons': ['lucide-react', 'react-icons'],
+            'vendor-shaders': ['@paper-design/shaders-react']
           }
         }
       }
