@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
-import { FaPaperPlane, FaArrowUpRightFromSquare, FaCheck, FaCircleExclamation, FaCoins, FaPhone, FaUserTie } from "react-icons/fa6";
+import { FaPaperPlane, FaArrowUpRightFromSquare, FaCheck, FaCircleExclamation, FaPhone, FaUserTie } from "react-icons/fa6";
 import { SiZalo } from "react-icons/si";
 import ZaloQRImg from "@/assets/zalo/zalo_qr.webp";
 
@@ -14,8 +14,6 @@ export default function Contact({ lang }: ContactProps) {
 
   // Selected option index: 0, 1, 2
   const [budgetIndex, setBudgetIndex] = useState<number>(1);
-  const [currency, setCurrency] = useState<"VND" | "USD">("VND");
-  const [exchangeRate, setExchangeRate] = useState<number>(26299.87);
 
   const [formData, setFormData] = useState(() => {
     if (typeof window !== "undefined") {
@@ -36,23 +34,12 @@ export default function Contact({ lang }: ContactProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  useEffect(() => {
-    fetch("https://open.er-api.com/v6/latest/USD")
-      .then((res) => res.json())
-      .then((data) => {
-        if (data && data.rates && data.rates.VND) {
-          setExchangeRate(data.rates.VND);
-        }
-      })
-      .catch((err) => console.error("Error fetching exchange rate:", err));
-  }, []);
-
   // Listen for pricing plan selection events
   useEffect(() => {
     const handlePlanSelected = (e: Event) => {
       const customEvt = e as CustomEvent;
       if (customEvt && customEvt.detail) {
-        const { planId, planName, badge, priceVnd } = customEvt.detail;
+        const { planId, planName, badge } = customEvt.detail;
         
         // Map planId to budget option
         if (planId === "phase_1_mvp") setBudgetIndex(0);
@@ -64,8 +51,8 @@ export default function Contact({ lang }: ContactProps) {
         setFormData((prev) => ({
           ...prev,
           message: lang === "vi" 
-            ? `${badgeLabel} Đăng ký ${planName} (Chi phí: ${priceVnd})\nTôi muốn được tư vấn cụ thể về lộ trình 3 Phase và đặc tả hệ thống cho gói dịch vụ này.`
-            : `${badgeLabel} Registering ${planName} (Rate: ${priceVnd})\nI would like technical details regarding the 3-Phase roadmap and specs for this package.`
+            ? `${badgeLabel} Đăng ký tư vấn ${planName} (Liên Hệ Báo Giá)\nTôi muốn được trao đổi chi tiết về lộ trình 3 Phase và đặc tả hệ thống cho gói dịch vụ này.`
+            : `${badgeLabel} Registering consultation for ${planName} (Quote on Request)\nI would like technical details regarding the 3-Phase roadmap and specs for this package.`
         }));
       }
     };
@@ -77,21 +64,24 @@ export default function Contact({ lang }: ContactProps) {
   }, [lang]);
 
   const budgetOptions = [
-    t.contactBudgetRange1,
-    t.contactBudgetRange2,
-    t.contactBudgetRange3,
-  ];
-
-  // Rates and raw values for internal mapping/display
-  const rawVND = [
-    "Gói 1: Khởi Nghiệp & Landing Page (Liên Hệ Báo Giá)",
-    "Gói 2: Doanh Nghiệp Đa Ngành & E-Commerce (Liên Hệ Báo Giá)",
-    "Gói 3: Web App & Hệ Thống AI Độc Quyền (Liên Hệ Báo Giá)"
-  ];
-  const rawUSD = [
-    "Package 1: Starter Web & Landing Page (Quote on Request)",
-    "Package 2: Corporate & Multi-Sector Web (Quote on Request)",
-    "Package 3: Custom Web App & AI Platform (Quote on Request)"
+    {
+      badge: lang === "vi" ? "GÓI 01" : "PLAN 01",
+      title: lang === "vi" ? "Khởi Nghiệp & Landing Page" : "Starter Web & Landing Page",
+      quote: lang === "vi" ? "Liên Hệ Báo Giá" : "Quote on Request",
+      desc: lang === "vi" ? "Phù hợp cá nhân, chiến dịch ra mắt sản phẩm hoặc MVP tinh gọn." : "Ideal for individuals, product launches, or lean MVPs.",
+    },
+    {
+      badge: lang === "vi" ? "GÓI 02" : "PLAN 02",
+      title: lang === "vi" ? "Doanh Nghiệp Đa Ngành & E-Commerce" : "Corporate & E-Commerce",
+      quote: lang === "vi" ? "Liên Hệ Báo Giá" : "Quote on Request",
+      desc: lang === "vi" ? "Tối ưu cho công ty cần nhận diện thương hiệu, bán hàng hoặc đặt lịch." : "Optimized for companies requiring branding, commerce, or booking.",
+    },
+    {
+      badge: lang === "vi" ? "GÓI 03" : "PLAN 03",
+      title: lang === "vi" ? "Web App & Hệ Thống AI Độc Quyền" : "Custom Web App & AI Platform",
+      quote: lang === "vi" ? "Liên Hệ Báo Giá" : "Quote on Request",
+      desc: lang === "vi" ? "Kiến trúc chuyên sâu, tích hợp AI Assistant, Dashboard & API phức tạp." : "Deep architecture, AI Assistant, real-time dashboards & custom APIs.",
+    },
   ];
 
   const validate = () => {
@@ -122,7 +112,8 @@ export default function Contact({ lang }: ContactProps) {
     setErrors({});
     setIsSubmitting(true);
 
-    const selectedBudget = currency === "VND" ? rawVND[budgetIndex] : rawUSD[budgetIndex];
+    const selectedOption = budgetOptions[budgetIndex];
+    const selectedBudget = `${selectedOption.badge}: ${selectedOption.title} (${selectedOption.quote})`;
     const googleScriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL || "";
 
     const payload = {
@@ -215,68 +206,80 @@ export default function Contact({ lang }: ContactProps) {
             <div className="border-t border-white/5 pt-8 space-y-6">
               
               {/* Direct Consultants Info Box */}
-              <div className="p-4 bg-[#121212]/80 border border-brand-orange/30 rounded-sm">
-                <div className="flex items-center gap-2 mb-3">
+              <div className="p-4 sm:p-5 bg-[#121212]/90 border border-brand-orange/30 rounded-sm relative overflow-hidden shadow-xl">
+                <div className="absolute top-0 left-0 bottom-0 w-1 bg-brand-orange" />
+                <div className="flex items-center gap-2 mb-3.5 pl-1">
                   <FaUserTie className="w-4 h-4 text-brand-orange" />
-                  <span className="font-mono text-[9px] tracking-widest text-brand-orange uppercase font-bold">
+                  <span className="font-mono text-[9px] sm:text-[10px] tracking-widest text-brand-orange uppercase font-bold">
                     // {lang === "vi" ? "CHUYÊN VIÊN TIẾP NHẬN HỒ SƠ & TƯ VẤN" : "DIRECT PROJECT CONSULTANTS"}
                   </span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse ml-auto" />
                 </div>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {/* Hoang Do */}
-                  <div className="p-3 bg-[#090909] border border-white/10 rounded-sm">
-                    <span className="font-display font-bold text-xs text-white block">
-                      Hoàng Đỗ
-                    </span>
-                    <span className="font-mono text-[10px] text-[#8E8E93] block mb-2">
-                      {lang === "vi" ? "Tư vấn & Tiếp nhận dự án" : "Project Consultant"}
-                    </span>
-                    <div className="flex items-center gap-2">
+                  <div className="p-3.5 bg-[#090909] border border-white/10 hover:border-brand-orange/30 rounded-sm flex flex-col justify-between transition-colors group/c">
+                    <div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-display font-bold text-xs text-white group-hover/c:text-brand-orange transition-colors">
+                          Hoàng Đỗ
+                        </span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      </div>
+                      <span className="font-mono text-[10px] text-[#8E8E93] block mb-2.5">
+                        {lang === "vi" ? "Tiếp nhận hồ sơ & Báo giá" : "Project Intake & Quotes"}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 mt-1">
                       <a
                         href="tel:0392996307"
-                        className="inline-flex items-center gap-1.5 font-mono text-[11px] text-white hover:text-brand-orange transition-colors"
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 font-mono text-[10px] text-white hover:text-brand-orange bg-[#18181b] hover:bg-[#202024] border border-white/10 py-2 px-2 rounded-sm transition-all shadow-sm active:scale-95"
+                        title="Gọi Hoàng Đỗ: 0392.996.307"
                       >
                         <FaPhone className="w-2.5 h-2.5 text-brand-orange" />
                         <span className="font-bold">0392.996.307</span>
                       </a>
-                      <span className="text-white/20">|</span>
                       <a
                         href="https://zalo.me/0392996307"
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1 font-mono text-[10px] text-[#0068FF] hover:underline"
+                        className="inline-flex items-center justify-center gap-1.5 font-mono text-[10px] font-bold text-white bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] py-2 px-3 rounded-sm shadow-[0_0_12px_rgba(0,104,255,0.35)] hover:shadow-[0_0_16px_rgba(0,104,255,0.55)] transition-all active:scale-95"
                       >
-                        <SiZalo className="w-3 h-3" />
+                        <SiZalo className="w-3.5 h-3.5 shrink-0" />
                         <span>Zalo</span>
                       </a>
                     </div>
                   </div>
 
                   {/* Minh Duc */}
-                  <div className="p-3 bg-[#090909] border border-white/10 rounded-sm">
-                    <span className="font-display font-bold text-xs text-white block">
-                      Minh Đức
-                    </span>
-                    <span className="font-mono text-[10px] text-[#8E8E93] block mb-2">
-                      {lang === "vi" ? "Tư vấn kỹ thuật & Lộ trình" : "Technical Consultant"}
-                    </span>
-                    <div className="flex items-center gap-2">
+                  <div className="p-3.5 bg-[#090909] border border-white/10 hover:border-brand-orange/30 rounded-sm flex flex-col justify-between transition-colors group/c">
+                    <div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-display font-bold text-xs text-white group-hover/c:text-brand-orange transition-colors">
+                          Minh Đức
+                        </span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      </div>
+                      <span className="font-mono text-[10px] text-[#8E8E93] block mb-2.5">
+                        {lang === "vi" ? "Tư vấn kỹ thuật & Lộ trình" : "Technical & Roadmap"}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 mt-1">
                       <a
                         href="tel:0867474204"
-                        className="inline-flex items-center gap-1.5 font-mono text-[11px] text-white hover:text-brand-orange transition-colors"
+                        className="flex-1 inline-flex items-center justify-center gap-1.5 font-mono text-[10px] text-white hover:text-brand-orange bg-[#18181b] hover:bg-[#202024] border border-white/10 py-2 px-2 rounded-sm transition-all shadow-sm active:scale-95"
+                        title="Gọi Minh Đức: 0867.474.204"
                       >
                         <FaPhone className="w-2.5 h-2.5 text-brand-orange" />
                         <span className="font-bold">0867.474.204</span>
                       </a>
-                      <span className="text-white/20">|</span>
                       <a
                         href="https://zalo.me/0867474204"
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1 font-mono text-[10px] text-[#0068FF] hover:underline"
+                        className="inline-flex items-center justify-center gap-1.5 font-mono text-[10px] font-bold text-white bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] py-2 px-3 rounded-sm shadow-[0_0_12px_rgba(0,104,255,0.35)] hover:shadow-[0_0_16px_rgba(0,104,255,0.55)] transition-all active:scale-95"
                       >
-                        <SiZalo className="w-3 h-3" />
+                        <SiZalo className="w-3.5 h-3.5 shrink-0" />
                         <span>Zalo</span>
                       </a>
                     </div>
@@ -406,47 +409,16 @@ export default function Contact({ lang }: ContactProps) {
 
 
 
-                    {/* Budget Options Selector with Currency Switcher */}
+                    {/* Budget Options Selector */}
                     <div>
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
-                        <label className="font-mono text-[10px] tracking-widest text-[#C0C0C5] uppercase block">
-                          {t.contactFieldBudget}
-                        </label>
-
-                        {/* High-end Currency Switcher Trigger */}
-                        <div className="flex items-center gap-1 bg-[#090909]/80 border border-white/5 rounded-sm p-0.5">
-                          <button
-                            type="button"
-                            onClick={() => setCurrency("VND")}
-                            className={`px-3 py-1 text-[9px] font-mono rounded-sm transition-all relative ${
-                              currency === "VND"
-                                ? "bg-brand-orange/15 text-brand-orange border border-brand-orange/25 font-bold"
-                                : "text-[#8E8E93] hover:text-[#F5F5F3]"
-                            }`}
-                          >
-                            VND (₫)
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => setCurrency("USD")}
-                            className={`px-3 py-1 text-[9px] font-mono rounded-sm transition-all relative ${
-                              currency === "USD"
-                                ? "bg-brand-orange/15 text-brand-orange border border-brand-orange/25 font-bold"
-                                : "text-[#8E8E93] hover:text-[#F5F5F3]"
-                            }`}
-                          >
-                            USD ($)
-                          </button>
-                        </div>
-                      </div>
+                      <label className="font-mono text-[10px] tracking-widest text-[#C0C0C5] uppercase block mb-3">
+                        {t.contactFieldBudget}
+                      </label>
 
                       {/* Displaying Options with clean full-width cards and checkmark indicators */}
                       <div className="flex flex-col gap-3 mb-2">
                         {budgetOptions.map((opt, oIdx) => {
                           const isSelected = budgetIndex === oIdx;
-                          const labelText = currency === "VND" ? rawVND[oIdx] : rawUSD[oIdx];
-                          const convertedText = currency === "VND" ? rawUSD[oIdx] : rawVND[oIdx];
-                          const packageBadge = oIdx === 0 ? (lang === "vi" ? "GÓI 1" : "PLAN 1") : oIdx === 1 ? (lang === "vi" ? "GÓI 2" : "PLAN 2") : (lang === "vi" ? "GÓI 3" : "PLAN 3");
 
                           return (
                             <button
@@ -463,16 +435,16 @@ export default function Contact({ lang }: ContactProps) {
                                 <span className={`font-mono text-[9px] font-bold px-2 py-0.5 rounded-xs shrink-0 tracking-wider ${
                                   isSelected ? "bg-brand-orange text-black" : "bg-white/10 text-[#8E8E93]"
                                 }`}>
-                                  {packageBadge}
+                                  {opt.badge}
                                 </span>
                                 <div className="flex flex-col min-w-0">
-                                  <span className={`font-sans text-xs md:text-sm font-medium leading-snug break-words ${
+                                  <span className={`font-sans text-xs md:text-sm font-semibold leading-snug break-words ${
                                     isSelected ? "text-[#F5F5F3]" : "text-[#D0D0D5]"
                                   }`}>
-                                    {labelText}
+                                    {opt.title}
                                   </span>
-                                  <span className="font-mono text-[9px] opacity-70 tracking-wide mt-0.5">
-                                    {lang === "vi" ? "Quy đổi: " : "Converted: "} {convertedText}
+                                  <span className="font-mono text-[10px] text-brand-orange font-medium tracking-wide mt-0.5">
+                                    {opt.quote} • <span className="text-[#8E8E93] font-normal">{opt.desc}</span>
                                   </span>
                                 </div>
                               </div>
@@ -487,11 +459,10 @@ export default function Contact({ lang }: ContactProps) {
                         })}
                       </div>
 
-                      {/* Faint subtext stating exchange rate standard */}
-                      <span className="font-mono text-[8px] text-[#8E8E93]/70 tracking-wide mt-1 block">
+                      <span className="font-mono text-[8.5px] text-[#8E8E93]/80 tracking-wide mt-1.5 block">
                         * {lang === "vi" 
-                          ? `Tỷ giá quy đổi thời gian thực: 1 USD ≈ ${Math.round(exchangeRate).toLocaleString()} VND (Nguồn: ExchangeRate API)` 
-                          : `Real-time exchange rate: 1 USD ≈ ${Math.round(exchangeRate).toLocaleString()} VND (Source: ExchangeRate API)`}
+                          ? "Three Bugs Studio tiếp nhận yêu cầu và chủ động liên hệ gửi bảng báo giá tối ưu theo quy mô dự án." 
+                          : "Three Bugs Studio will consult and provide a tailored quote matching your project scope."}
                       </span>
                     </div>
 
