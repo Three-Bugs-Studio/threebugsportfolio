@@ -313,20 +313,20 @@ export default function Pricing({ lang }: PricingProps) {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-2 mt-1">
+              <div className="grid grid-cols-2 gap-2.5 mt-2">
                 <a
                   href="tel:0392996307"
-                  className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-sm bg-[#18181b] hover:bg-[#222226] border border-white/10 hover:border-brand-orange/40 font-mono text-[11px] text-white hover:text-brand-orange transition-all shadow-sm active:scale-95"
+                  className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-sm bg-[#18181b] hover:bg-[#222226] border border-white/10 hover:border-brand-orange/40 font-mono text-[11px] text-white hover:text-brand-orange transition-all shadow-sm active:scale-95"
                   title="Gọi Hoàng Đỗ: 0392.996.307"
                 >
-                  <FaPhone className="w-3 h-3 text-brand-orange" />
+                  <FaPhone className="w-3 h-3 text-brand-orange shrink-0" />
                   <span className="font-bold tracking-tight">0392.996.307</span>
                 </a>
                 <a
                   href="https://zalo.me/0392996307"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-sm bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] text-white font-mono text-[11px] font-bold shadow-[0_0_12px_rgba(0,104,255,0.35)] hover:shadow-[0_0_18px_rgba(0,104,255,0.55)] transition-all active:scale-95"
+                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-sm bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] text-white font-mono text-[11px] font-bold shadow-[0_0_12px_rgba(0,104,255,0.35)] hover:shadow-[0_0_18px_rgba(0,104,255,0.55)] transition-all active:scale-95"
                 >
                   <SiZalo className="w-3.5 h-3.5 shrink-0" />
                   <span>Zalo Chat</span>
@@ -335,7 +335,7 @@ export default function Pricing({ lang }: PricingProps) {
             </div>
 
             {/* Consultant 2: Minh Duc */}
-            <div className="flex flex-col justify-between p-3.5 bg-[#090909]/90 border border-white/10 hover:border-brand-orange/40 rounded-sm transition-all shadow-md group/card">
+            <div className="flex flex-col justify-between p-3.5 sm:p-4 bg-[#090909]/90 border border-white/10 hover:border-brand-orange/40 rounded-sm transition-all shadow-md group/card">
               <div className="flex items-center justify-between mb-2.5">
                 <div>
                   <div className="flex items-center gap-2">
@@ -350,20 +350,20 @@ export default function Pricing({ lang }: PricingProps) {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-2 mt-1">
+              <div className="grid grid-cols-2 gap-2.5 mt-2">
                 <a
                   href="tel:0867474204"
-                  className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-sm bg-[#18181b] hover:bg-[#222226] border border-white/10 hover:border-brand-orange/40 font-mono text-[11px] text-white hover:text-brand-orange transition-all shadow-sm active:scale-95"
+                  className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-sm bg-[#18181b] hover:bg-[#222226] border border-white/10 hover:border-brand-orange/40 font-mono text-[11px] text-white hover:text-brand-orange transition-all shadow-sm active:scale-95"
                   title="Gọi Minh Đức: 0867.474.204"
                 >
-                  <FaPhone className="w-3 h-3 text-brand-orange" />
+                  <FaPhone className="w-3 h-3 text-brand-orange shrink-0" />
                   <span className="font-bold tracking-tight">0867.474.204</span>
                 </a>
                 <a
                   href="https://zalo.me/0867474204"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-sm bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] text-white font-mono text-[11px] font-bold shadow-[0_0_12px_rgba(0,104,255,0.35)] hover:shadow-[0_0_18px_rgba(0,104,255,0.55)] transition-all active:scale-95"
+                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-sm bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] text-white font-mono text-[11px] font-bold shadow-[0_0_12px_rgba(0,104,255,0.35)] hover:shadow-[0_0_18px_rgba(0,104,255,0.55)] transition-all active:scale-95"
                 >
                   <SiZalo className="w-3.5 h-3.5 shrink-0" />
                   <span>Zalo Chat</span>
