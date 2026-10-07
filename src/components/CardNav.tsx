@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import Logo from "./Logo";
 import ThemeSwitch from "./ThemeSwitch";
 import { motion, AnimatePresence } from "motion/react";
-import { FaBars, FaXmark, FaArrowUpRightFromSquare, FaWandMagicSparkles } from "react-icons/fa6";
+import { FaBars, FaXmark, FaArrowUpRightFromSquare, FaWandMagicSparkles, FaVolumeHigh, FaVolumeXmark } from "react-icons/fa6";
 import { TRANSLATIONS } from "../data";
+import { audioManager } from "../lib/audioManager";
 
 export interface CardNavLink {
   label: string;
@@ -47,6 +48,25 @@ export default function CardNav({
 }: CardNavProps) {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isSfxOn, setIsSfxOn] = useState(() => {
+    if (typeof window !== "undefined") {
+      return audioManager.getStatus().sfx;
+    }
+    return true;
+  });
+
+  useEffect(() => {
+    const handleAudioUpdate = () => {
+      setIsSfxOn(audioManager.getStatus().sfx);
+    };
+    window.addEventListener("three_bugs_audio_update", handleAudioUpdate);
+    return () => window.removeEventListener("three_bugs_audio_update", handleAudioUpdate);
+  }, []);
+
+  const handleToggleSound = () => {
+    const next = audioManager.toggleSfx();
+    setIsSfxOn(next);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -230,6 +250,25 @@ export default function CardNav({
             {onThemeToggle && (
               <ThemeSwitch theme={theme} onThemeToggle={onThemeToggle} />
             )}
+
+            {/* Audio Sound FX Toggle Switch */}
+            <button
+              onClick={handleToggleSound}
+              aria-label={isSfxOn ? (lang === "vi" ? "Tắt âm thanh hiệu ứng (Phím M)" : "Mute Sound Effects (M)") : (lang === "vi" ? "Bật âm thanh hiệu ứng (Phím M)" : "Enable Sound Effects (M)")}
+              title={isSfxOn ? (lang === "vi" ? "Âm thanh: BẬT (phím M để tắt)" : "Sound: ON (press M to mute)") : (lang === "vi" ? "Âm thanh: TẮT" : "Sound: OFF")}
+              className={`p-1.5 md:p-2 rounded-sm border transition-all duration-300 interactive flex items-center justify-center cursor-pointer ${
+                isLight 
+                  ? "bg-white border-slate-300 text-slate-700 hover:text-brand-orange hover:border-brand-orange" 
+                  : "bg-[#141414] border-white/15 text-[#8E8E93] hover:text-white hover:border-brand-orange/40"
+              }`}
+              id="header-sound-toggle-btn"
+            >
+              {isSfxOn ? (
+                <FaVolumeHigh className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-orange" />
+              ) : (
+                <FaVolumeXmark className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#8E8E93]" />
+              )}
+            </button>
 
             {/* CardNav Menu Toggle Button */}
             <button
