@@ -50,9 +50,25 @@ export default function LineSidebar({
   const [shifts, setShifts] = useState<number[]>(() => new Array(items.length).fill(0));
   const [tickScales, setTickScales] = useState<number[]>(() => new Array(items.length).fill(1));
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const [isQuickContactOpen, setIsQuickContactOpen] = useState(false);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Listen for quick contact popover toggle to gracefully fade out sidebar and eliminate visual overlap
+  useEffect(() => {
+    const handleQuickContactToggle = (e: Event) => {
+      const customEvt = e as CustomEvent;
+      if (customEvt && customEvt.detail) {
+        setIsQuickContactOpen(!!customEvt.detail.isOpen);
+      }
+    };
+
+    window.addEventListener("quick_contact_toggle", handleQuickContactToggle);
+    return () => {
+      window.removeEventListener("quick_contact_toggle", handleQuickContactToggle);
+    };
+  }, []);
 
   // Sync activeIndex if controlled activeSectionIndex prop is passed
   useEffect(() => {
@@ -140,7 +156,9 @@ export default function LineSidebar({
     <aside
       ref={containerRef}
       onMouseLeave={handleMouseLeave}
-      className={`fixed right-6 top-1/2 -translate-y-1/2 z-[999] hidden lg:flex flex-col items-end select-none pointer-events-auto ${className}`}
+      className={`fixed right-6 top-1/2 -translate-y-1/2 z-30 hidden lg:flex flex-col items-end select-none transition-all duration-300 ${
+        isQuickContactOpen ? "opacity-0 pointer-events-none translate-x-6" : "opacity-100 pointer-events-auto translate-x-0"
+      } ${className}`}
       id="line-sidebar-container"
     >
       <div className="relative flex items-center gap-4">
