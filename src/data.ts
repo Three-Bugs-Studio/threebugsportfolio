@@ -363,8 +363,8 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       badge: "KHỞI NGHIỆP // 3 PHASE",
       name: "Gói Khởi Nghiệp & Landing Page",
       tagline: "Tối ưu chi phí dành cho cá nhân, landing page chạy Ads, giới thiệu dịch vụ, Spa, Salon, Nhà hàng & Thương hiệu mới.",
-      priceVnd: "3.9 Triệu VNĐ",
-      priceUsd: "~ $160 USD",
+      priceVnd: "Liên Hệ Báo Giá",
+      priceUsd: "Báo giá theo quy mô & yêu cầu",
       timeline: "1 - 2 Tuần (Trọn gói 3 Phase)",
       phases: [
         { number: "Phase 1", title: "Figma UI/UX Design", duration: "Ngày 1 - 3", description: "Phác thảo Wireframe & thiết kế giao diện độc quyền chuẩn thương hiệu." },
@@ -392,8 +392,8 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       badge: "KHUYÊN DÙNG ★ // 3 PHASE",
       name: "Gói Doanh Nghiệp Đa Ngành & E-Commerce",
       tagline: "Giải pháp toàn diện cho Doanh nghiệp, Bất động sản, Đặt lịch Booking, Khóa học, Du lịch & Web bán hàng E-Commerce.",
-      priceVnd: "7.9 - 9.9 Triệu VNĐ",
-      priceUsd: "~ $320 - $400 USD",
+      priceVnd: "Liên Hệ Báo Giá",
+      priceUsd: "Báo giá theo quy mô & yêu cầu",
       timeline: "2 - 4 Tuần (Trọn gói 3 Phase)",
       phases: [
         { number: "Phase 1", title: "UX Blueprint & DB Schema", duration: "Tuần 1", description: "Dựng sơ đồ trải nghiệm mua hàng & kiến trúc cơ sở dữ liệu PostgreSQL." },
@@ -421,8 +421,8 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       badge: "CHUYÊN SÂU & AI // 3 PHASE",
       name: "Gói Web App & Hệ Thống AI Độc Quyền",
       tagline: "Quy trình chuyên sâu xây dựng Web App, Mobile App, Hệ thống Quản lý Doanh nghiệp (CRM/ERP) & Tích hợp AI Agent.",
-      priceVnd: "Liên Hệ",
-      priceUsd: "Báo giá theo yêu cầu riêng",
+      priceVnd: "Liên Hệ Báo Giá",
+      priceUsd: "Báo giá theo quy mô & yêu cầu",
       timeline: "4 - 6+ Tuần (Trọn gói 3 Phase)",
       phases: [
         { number: "Phase 1", title: "App Architecture & Spec", duration: "Tuần 1 - 2", description: "Phân tích đặc tả App, UX Flow & Thiết kế kiến trúc Backend/API." },
@@ -452,8 +452,8 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       badge: "STARTER // 3 PHASES",
       name: "Starter Web & Landing Page",
       tagline: "Cost-effective 3-Phase execution tailored for landing pages, ad campaigns, Spa, Salon, Restaurants & new brands.",
-      priceVnd: "3.9 Million VND",
-      priceUsd: "~ $160 USD",
+      priceVnd: "Quote on Request",
+      priceUsd: "Tailored to Project Scope",
       timeline: "1 - 2 Weeks (Full 3 Phases)",
       phases: [
         { number: "Phase 1", title: "Figma UI/UX Design", duration: "Days 1 - 3", description: "Wireframe layout sketches & custom brand-aligned Figma UI UX design." },
@@ -481,8 +481,8 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       badge: "MOST POPULAR ★ // 3 PHASES",
       name: "Corporate & Multi-Sector Web",
       tagline: "Comprehensive 3-Phase solution for Corporate, Real Estate, Booking, Courses, Tourism & E-Commerce stores.",
-      priceVnd: "7.9 - 9.9 Million VND",
-      priceUsd: "~ $320 - $400 USD",
+      priceVnd: "Quote on Request",
+      priceUsd: "Tailored to Project Scope",
       timeline: "2 - 4 Weeks (Full 3 Phases)",
       phases: [
         { number: "Phase 1", title: "UX Blueprint & DB Schema", duration: "Week 1", description: "Mapping shopping user journey & PostgreSQL database schema architecture." },
@@ -510,8 +510,8 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       badge: "ENTERPRISE & AI // 3 PHASES",
       name: "Custom Web App & AI Platform",
       tagline: "Deep 3-Phase execution building Web Apps, Mobile Apps, Enterprise Systems (CRM/ERP) & AI Agents.",
-      priceVnd: "Contact Us",
-      priceUsd: "Custom quote per requirements",
+      priceVnd: "Quote on Request",
+      priceUsd: "Tailored to Project Scope",
       timeline: "4 - 6+ Weeks (Full 3 Phases)",
       phases: [
         { number: "Phase 1", title: "App Architecture & Spec", duration: "Weeks 1 - 2", description: "Locking PuDo Code specs & designing mobile/web app API architecture." },
@@ -806,7 +806,7 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
   vi: [
     {
       question: "Chi phí và cách thức đăng ký các gói dịch vụ tại Three Bugs Studio như thế nào?",
-      answer: "Chúng tôi cung cấp các gói cước rõ ràng: Gói 1 (Khởi Nghiệp & Landing Page) chi phí 3.9 Triệu VNĐ; Gói 2 (Doanh Nghiệp Đa Ngành & E-Commerce) chi phí 7.9 – 9.9 Triệu VNĐ; Gói 3 (Web App & Hệ Thống AI) được báo giá linh hoạt theo Liên Hệ. Khi quý khách bấm 'Nhận tư vấn', dữ liệu đăng ký sẽ được tự động lưu về Google Sheets để đội ngũ phản hồi ngay sau 5 - 10 phút."
+      answer: "Three Bugs Studio áp dụng chính sách Báo Giá Linh Hoạt theo quy mô và yêu cầu thực tế của từng dự án (Gói Khởi Nghiệp, Gói Doanh Nghiệp Đa Ngành, Gói Web App & AI Chuyên Sâu) nhằm tránh tình trạng áp mức giá cố định cứng nhắc hay phát sinh phụ phí ẩn. Quý khách vui lòng liên hệ chuyên viên tư vấn Hoàng Đỗ (0392.996.307) hoặc Minh Đức (0867.474.204) để được tiếp nhận hồ sơ và nhận bảng báo giá chi tiết trong vòng 5 - 10 phút."
     },
     {
       question: "Quy trình làm việc 3 Phase và thời gian hoàn thành dự án kéo dài bao lâu?",
@@ -824,7 +824,7 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
   en: [
     {
       question: "How is project pricing calculated and how do I apply for consultation?",
-      answer: "We offer transparent packages: Package 1 (Starter Web & Landing Page) at 3.9M VND; Package 2 (Corporate & E-Commerce) from 7.9M – 9.9M VND; Package 3 (Custom Web App & AI) is priced on a custom Contact basis. Upon selecting a package, registration details automatically sync to our Google Sheets for instant support within 5–10 minutes."
+      answer: "Three Bugs Studio provides flexible custom quotations tailored to the specific scope and feature requirements of your project (Starter Web, Corporate & E-Commerce, Custom Web App & AI) to avoid rigid pricing constraints or unexpected hidden costs. Please contact our project consultants Hoang Do (+84 392.996.307) or Minh Duc (+84 867.474.204) for quick project intake and a detailed quote proposal within 5–10 minutes."
     },
     {
       question: "What is the 3-Phase development workflow and estimated delivery timeline?",
@@ -913,10 +913,10 @@ export const TRANSLATIONS = {
     contactFieldBudget: "Gói cước / Ngân sách lựa chọn",
     contactFieldMessage: "Chi tiết yêu cầu của bạn",
     contactBudgetValue: "VND",
-    contactBudgetRange1: "3.9 Triệu VNĐ (Gói 1: Khởi Nghiệp & Landing Page)",
-    contactBudgetRange2: "Từ 7.9 đến 9.9 Triệu VNĐ (Gói 2: Doanh Nghiệp Đa Ngành & E-Commerce)",
-    contactBudgetRange3: "Liên Hệ Báo Giá (Gói 3: Web App & Hệ Thống AI Độc Quyền)",
-    contactBudgetConversionLabel: "Tỷ giá quy đổi tham khảo tự động qua API Ngân hàng",
+    contactBudgetRange1: "Gói 1: Khởi Nghiệp & Landing Page (Liên Hệ Báo Giá)",
+    contactBudgetRange2: "Gói 2: Doanh Nghiệp Đa Ngành & E-Commerce (Liên Hệ Báo Giá)",
+    contactBudgetRange3: "Gói 3: Web App & Hệ Thống AI Độc Quyền (Liên Hệ Báo Giá)",
+    contactBudgetConversionLabel: "Tư vấn & báo giá chi tiết trực tiếp qua Zalo / Hotline",
     contactSendBtn: "GỬI THÔNG TIN YÊU CẦU",
     contactSendingBtn: "ĐANG GỬI THÔNG TIN...",
     contactSuccessTitle: "Gửi thông tin thành công!",
@@ -1001,10 +1001,10 @@ export const TRANSLATIONS = {
     contactFieldBudget: "Selected Package / Budget",
     contactFieldMessage: "Project Requirements",
     contactBudgetValue: "VND",
-    contactBudgetRange1: "3.9M VND (Package 1: Starter Web & Landing Page)",
-    contactBudgetRange2: "7.9M - 9.9M VND (Package 2: Corporate & E-Commerce)",
-    contactBudgetRange3: "Contact Us (Package 3: Custom Web App & AI Platform)",
-    contactBudgetConversionLabel: "Automatic Live Banking Exchange Rate API",
+    contactBudgetRange1: "Package 1: Starter Web & Landing Page (Quote on Request)",
+    contactBudgetRange2: "Package 2: Corporate & E-Commerce (Quote on Request)",
+    contactBudgetRange3: "Package 3: Custom Web App & AI Platform (Quote on Request)",
+    contactBudgetConversionLabel: "Direct project consultation via Zalo / Hotline",
     contactSendBtn: "SEND PROJECT INQUIRY",
     contactSendingBtn: "TRANSMITTING INQUIRY...",
     contactSuccessTitle: "Inquiry Successfully Transmitted!",
