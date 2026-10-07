@@ -127,8 +127,8 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
               <motion.div className="pricing-price-box mt-8 p-5 rounded-xl bg-[#060606] border border-white/10 space-y-2 relative overflow-hidden" variants={itemVariants}>
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-baseline flex-wrap gap-2">
-                    <span className="text-3xl md:text-4xl font-extrabold font-display text-[#F5F5F3]">
-                      {plan.priceVnd}
+                    <span className="text-2xl md:text-3xl font-extrabold font-display text-[#F5F5F3]">
+                      {lang === "vi" ? "Liên Hệ Báo Giá" : "Quote on Request"}
                     </span>
                   </div>
                   {/* Price Animated GIF Badge */}
@@ -141,8 +141,10 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                   </div>
                 </div>
                 <div className="flex items-center justify-between font-mono text-xs text-[#8E8E93] pt-2 border-t border-white/5">
-                  <span>{plan.priceUsd}</span>
-                  <span className="text-brand-orange font-medium">
+                  <span className="truncate max-w-[200px]">
+                    {lang === "vi" ? "Báo giá theo quy mô & tính năng" : "Tailored to project scope"}
+                  </span>
+                  <span className="text-brand-orange font-medium shrink-0">
                     [ {lang === "vi" ? "Trọn gói 3 Phase" : "Full 3 Phases"} ]
                   </span>
                 </div>
@@ -227,8 +229,7 @@ export default function Pricing({ lang }: PricingProps) {
         planId: plan.id,
         planName: plan.name,
         badge: plan.badge,
-        priceVnd: plan.priceVnd,
-        priceUsd: plan.priceUsd,
+        quoteNotice: lang === "vi" ? "Liên Hệ Báo Giá" : "Quote on Request",
       }
     });
     window.dispatchEvent(event);
@@ -271,71 +272,103 @@ export default function Pricing({ lang }: PricingProps) {
           </p>
         </div>
 
-        {/* Dedicated Consultants Reception Box */}
-        <div className="mb-14 p-6 bg-[#111112]/90 border border-brand-orange/30 rounded-sm flex flex-col lg:flex-row lg:items-center justify-between gap-6 shadow-2xl relative overflow-hidden group">
-          <div className="absolute top-0 left-0 bottom-0 w-1 bg-brand-orange" />
-          <div className="flex items-start md:items-center gap-4">
-            <div className="w-11 h-11 rounded-full bg-brand-orange/15 text-brand-orange border border-brand-orange/40 flex items-center justify-center shrink-0 shadow-[0_0_15px_rgba(255,106,0,0.2)]">
+        {/* Dedicated Consultants Reception Box - Fully Responsive for all resolutions */}
+        <div className="mb-14 p-5 md:p-7 bg-[#111112]/95 border border-brand-orange/30 rounded-sm flex flex-col xl:flex-row xl:items-center justify-between gap-6 shadow-2xl relative overflow-hidden group">
+          <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-gradient-to-b from-brand-orange to-brand-orange/40" />
+          
+          <div className="flex items-start md:items-center gap-4 max-w-xl">
+            <div className="w-12 h-12 rounded-full bg-brand-orange/15 text-brand-orange border border-brand-orange/40 flex items-center justify-center shrink-0 shadow-[0_0_18px_rgba(255,106,0,0.25)]">
               <FaUserTie className="w-5 h-5" />
             </div>
             <div>
-              <div className="flex items-center gap-2 mb-1">
-                <span className="font-mono text-[9px] uppercase tracking-widest text-brand-orange font-bold">
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-brand-orange font-bold">
                   // {lang === "vi" ? "BỘ PHẬN TIẾP NHẬN HỒ SƠ & TƯ VẤN TRỰC TIẾP" : "PROJECT INTAKE & DIRECT CONSULTANTS"}
                 </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               </div>
-              <p className="font-display font-medium text-base text-white">
+              <p className="font-display font-medium text-sm md:text-base text-white leading-snug">
                 {lang === "vi" 
-                  ? "Báo giá linh hoạt theo yêu cầu dự án – Vui lòng liên hệ trực tiếp 2 chuyên viên tư vấn phụ trách:" 
-                  : "Custom quote tailored to project scope – Contact our 2 direct consultants:"}
+                  ? "Báo giá linh hoạt theo quy mô & chức năng – Liên hệ ngay 2 chuyên viên phụ trách tiếp nhận dự án:" 
+                  : "Custom quote tailored to project scope – Contact our 2 direct project intake consultants:"}
               </p>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-3 shrink-0">
+          {/* Responsive Consultant Action Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 w-full xl:w-auto xl:min-w-[560px]">
             {/* Consultant 1: Hoang Do */}
-            <div className="flex items-center gap-2 bg-[#090909] border border-white/10 hover:border-brand-orange/50 p-2.5 rounded-sm transition-all shadow-md">
-              <a
-                href="tel:0392996307"
-                className="flex items-center gap-2 font-mono text-xs text-white hover:text-brand-orange transition-colors"
-                title="Gọi Hoàng Đỗ"
-              >
-                <FaPhone className="w-3 h-3 text-brand-orange" />
-                <span className="font-bold">0392.996.307</span>
-              </a>
-              <span className="text-white/20">|</span>
-              <a
-                href="https://zalo.me/0392996307"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1 font-mono text-[11px] text-[#0068FF] hover:underline"
-              >
-                <SiZalo className="w-3.5 h-3.5" />
-                <span>Hoàng Đỗ</span>
-              </a>
+            <div className="flex flex-col justify-between p-3.5 bg-[#090909]/90 border border-white/10 hover:border-brand-orange/40 rounded-sm transition-all shadow-md group/card">
+              <div className="flex items-center justify-between mb-2.5">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-display font-bold text-sm text-white group-hover/card:text-brand-orange transition-colors">
+                      Hoàng Đỗ
+                    </span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  </div>
+                  <span className="font-mono text-[10px] text-[#8E8E93]">
+                    {lang === "vi" ? "Tiếp nhận hồ sơ & Báo giá" : "Project Intake & Quotes"}
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2 mt-1">
+                <a
+                  href="tel:0392996307"
+                  className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-sm bg-[#18181b] hover:bg-[#222226] border border-white/10 hover:border-brand-orange/40 font-mono text-[11px] text-white hover:text-brand-orange transition-all shadow-sm active:scale-95"
+                  title="Gọi Hoàng Đỗ: 0392.996.307"
+                >
+                  <FaPhone className="w-3 h-3 text-brand-orange" />
+                  <span className="font-bold tracking-tight">0392.996.307</span>
+                </a>
+                <a
+                  href="https://zalo.me/0392996307"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-sm bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] text-white font-mono text-[11px] font-bold shadow-[0_0_12px_rgba(0,104,255,0.35)] hover:shadow-[0_0_18px_rgba(0,104,255,0.55)] transition-all active:scale-95"
+                >
+                  <SiZalo className="w-3.5 h-3.5 shrink-0" />
+                  <span>Zalo Chat</span>
+                </a>
+              </div>
             </div>
 
             {/* Consultant 2: Minh Duc */}
-            <div className="flex items-center gap-2 bg-[#090909] border border-white/10 hover:border-brand-orange/50 p-2.5 rounded-sm transition-all shadow-md">
-              <a
-                href="tel:0867474204"
-                className="flex items-center gap-2 font-mono text-xs text-white hover:text-brand-orange transition-colors"
-                title="Gọi Minh Đức"
-              >
-                <FaPhone className="w-3 h-3 text-brand-orange" />
-                <span className="font-bold">0867.474.204</span>
-              </a>
-              <span className="text-white/20">|</span>
-              <a
-                href="https://zalo.me/0867474204"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-1 font-mono text-[11px] text-[#0068FF] hover:underline"
-              >
-                <SiZalo className="w-3.5 h-3.5" />
-                <span>Minh Đức</span>
-              </a>
+            <div className="flex flex-col justify-between p-3.5 bg-[#090909]/90 border border-white/10 hover:border-brand-orange/40 rounded-sm transition-all shadow-md group/card">
+              <div className="flex items-center justify-between mb-2.5">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-display font-bold text-sm text-white group-hover/card:text-brand-orange transition-colors">
+                      Minh Đức
+                    </span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  </div>
+                  <span className="font-mono text-[10px] text-[#8E8E93]">
+                    {lang === "vi" ? "Tư vấn kỹ thuật & Lộ trình" : "Technical & Roadmap"}
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2 mt-1">
+                <a
+                  href="tel:0867474204"
+                  className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-sm bg-[#18181b] hover:bg-[#222226] border border-white/10 hover:border-brand-orange/40 font-mono text-[11px] text-white hover:text-brand-orange transition-all shadow-sm active:scale-95"
+                  title="Gọi Minh Đức: 0867.474.204"
+                >
+                  <FaPhone className="w-3 h-3 text-brand-orange" />
+                  <span className="font-bold tracking-tight">0867.474.204</span>
+                </a>
+                <a
+                  href="https://zalo.me/0867474204"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-sm bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] text-white font-mono text-[11px] font-bold shadow-[0_0_12px_rgba(0,104,255,0.35)] hover:shadow-[0_0_18px_rgba(0,104,255,0.55)] transition-all active:scale-95"
+                >
+                  <SiZalo className="w-3.5 h-3.5 shrink-0" />
+                  <span>Zalo Chat</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
