@@ -483,22 +483,18 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Custom premium scrollbar */
+/* Hide scrollbar completely while maintaining smooth scrolling across all browsers */
+html,
+body,
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
 ::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-dark);
-}
-
-::-webkit-scrollbar-thumb {
-  background: #262626;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #FF6A00;
+  display: none; /* Chrome, Safari, Opera */
+  width: 0px;
+  height: 0px;
 }
 
 /* Code Loader Language Switch Animation */
