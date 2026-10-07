@@ -264,25 +264,11 @@ export default function App() {
         setLang(newLang);
         localStorage.setItem("three_bugs_lang", newLang);
       });
-      
-      setLoaded({
-        hero: false,
-        about: false,
-        services: false,
-        work: false,
-        process: false,
-        technology: false,
-        team: false,
-        testimonials: false,
-        faq: false,
-        contact: false,
-        footer: false,
-      });
 
-      // Keep overlay slightly longer to let layout settle, then fade out
+      // Keep overlay slightly longer to let layout settle, then fade out smoothly
       setTimeout(() => {
         setIsTransitioning(false);
-      }, 350);
+      }, 300);
     }, 250);
   };
 
