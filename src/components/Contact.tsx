@@ -211,19 +211,13 @@ export default function Contact({ lang }: ContactProps) {
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-orange to-transparent opacity-90" />
                 
                 {/* Section Header */}
-                <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-md bg-brand-orange/15 text-brand-orange border border-brand-orange/30 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(255,106,0,0.2)]">
-                      <FaUserTie className="w-3.5 h-3.5" />
-                    </div>
-                    <span className="font-mono text-[9px] sm:text-[10px] tracking-widest text-brand-orange uppercase font-bold">
-                      // {lang === "vi" ? "CHUYÊN VIÊN TƯ VẤN & TIẾP NHẬN DỰ ÁN" : "DIRECT PROJECT CONSULTANTS"}
-                    </span>
+                <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-white/10">
+                  <div className="w-7 h-7 rounded-md bg-brand-orange/15 text-brand-orange border border-brand-orange/30 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(255,106,0,0.2)]">
+                    <FaUserTie className="w-3.5 h-3.5" />
                   </div>
-                  <div className="flex items-center gap-1.5 font-mono text-[10px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>{lang === "vi" ? "Đang trực tuyến" : "Online"}</span>
-                  </div>
+                  <span className="font-mono text-[9px] sm:text-[10px] tracking-widest text-brand-orange uppercase font-bold">
+                    // {lang === "vi" ? "CHUYÊN VIÊN TƯ VẤN & TIẾP NHẬN DỰ ÁN" : "DIRECT PROJECT CONSULTANTS"}
+                  </span>
                 </div>
 
                 <div className="flex flex-col gap-3.5">
