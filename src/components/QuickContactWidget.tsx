@@ -66,81 +66,116 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
 
             {/* Quick Contact Links */}
             <div className="flex flex-col gap-2.5">
-              {/* Zalo Direct Chat */}
-              <a
-                href="https://zalo.me/0333246840"
-                target="_blank"
-                rel="noreferrer"
-                className={`flex items-center justify-between p-3 rounded-sm border transition-all duration-200 group ${
+              {/* Consultant 1: Hoang Do */}
+              <div
+                className={`p-2.5 rounded-sm border transition-all duration-200 ${
                   isLight
-                    ? "bg-blue-50/70 border-blue-200/80 hover:border-[#0068FF] text-slate-900 hover:bg-blue-50"
-                    : "bg-[#0b1324] border-[#0068FF]/30 hover:border-[#0068FF] text-white hover:bg-[#0068FF]/10"
+                    ? "bg-blue-50/70 border-blue-200/80 text-slate-900"
+                    : "bg-[#0c1220] border-[#0068FF]/30 text-white"
                 }`}
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-[#0068FF] text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-md">
-                    <SiZalo className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="font-display font-medium text-xs block leading-tight">
-                      {lang === "vi" ? "Chat Zalo Trực Tiếp" : "Chat on Zalo"}
+                <div className="flex items-center justify-between mb-1.5">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="font-display font-bold text-xs">
+                      Hoàng Đỗ
                     </span>
-                    <span className="font-mono text-[10px] text-blue-500">
-                      0333.246.840
+                    <span className="font-mono text-[9px] text-[#8E8E93]">
+                      ({lang === "vi" ? "Tư Vấn Hồ Sơ" : "Consultant"})
                     </span>
                   </div>
                 </div>
-                <FaArrowUpRightFromSquare className="w-3.5 h-3.5 text-[#0068FF] opacity-70 group-hover:opacity-100 transition-opacity" />
-              </a>
 
-              {/* Direct Phone / Hotline */}
-              <a
-                href="tel:0333246840"
-                className={`flex items-center justify-between p-3 rounded-sm border transition-all duration-200 group ${
+                <div className="flex items-center gap-2">
+                  <a
+                    href="https://zalo.me/0392996307"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#0068FF] hover:bg-[#0052cc] text-white py-1.5 px-2.5 rounded-sm font-mono text-[10px] font-bold transition-colors shadow-sm"
+                  >
+                    <SiZalo className="w-3.5 h-3.5" />
+                    <span>Zalo Chat</span>
+                  </a>
+                  <a
+                    href="tel:0392996307"
+                    className={`inline-flex items-center justify-center gap-1.5 py-1.5 px-2.5 rounded-sm font-mono text-[10px] border transition-colors ${
+                      isLight
+                        ? "bg-white border-slate-300 text-slate-800 hover:border-brand-orange"
+                        : "bg-[#18181b] border-white/10 text-white hover:border-brand-orange/40"
+                    }`}
+                    title="Gọi Hoàng Đỗ"
+                  >
+                    <FaPhone className="w-3 h-3 text-brand-orange" />
+                    <span>0392.996.307</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Consultant 2: Minh Duc */}
+              <div
+                className={`p-2.5 rounded-sm border transition-all duration-200 ${
                   isLight
-                    ? "bg-slate-50 border-slate-200 hover:border-brand-orange text-slate-900"
-                    : "bg-[#161618] border-white/5 hover:border-brand-orange/40 text-white hover:bg-brand-orange/5"
+                    ? "bg-blue-50/70 border-blue-200/80 text-slate-900"
+                    : "bg-[#0c1220] border-[#0068FF]/30 text-white"
                 }`}
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-brand-orange/15 text-brand-orange flex items-center justify-center text-xs shrink-0">
-                    <FaPhone className="w-3.5 h-3.5" />
-                  </div>
-                  <div>
-                    <span className="font-display font-medium text-xs block leading-tight">
-                      {lang === "vi" ? "Gọi Hotline Kỹ Thuật" : "Call Studio Hotline"}
+                <div className="flex items-center justify-between mb-1.5">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="font-display font-bold text-xs">
+                      Minh Đức
                     </span>
-                    <span className="font-mono text-[10px] text-[#8E8E93]">
-                      0333.246.840
+                    <span className="font-mono text-[9px] text-[#8E8E93]">
+                      ({lang === "vi" ? "Tư Vấn Kỹ Thuật" : "Tech Consultant"})
                     </span>
                   </div>
                 </div>
-                <FaArrowUpRightFromSquare className="w-3.5 h-3.5 text-brand-orange opacity-70 group-hover:opacity-100 transition-opacity" />
-              </a>
+
+                <div className="flex items-center gap-2">
+                  <a
+                    href="https://zalo.me/0867474204"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 bg-[#0068FF] hover:bg-[#0052cc] text-white py-1.5 px-2.5 rounded-sm font-mono text-[10px] font-bold transition-colors shadow-sm"
+                  >
+                    <SiZalo className="w-3.5 h-3.5" />
+                    <span>Zalo Chat</span>
+                  </a>
+                  <a
+                    href="tel:0867474204"
+                    className={`inline-flex items-center justify-center gap-1.5 py-1.5 px-2.5 rounded-sm font-mono text-[10px] border transition-colors ${
+                      isLight
+                        ? "bg-white border-slate-300 text-slate-800 hover:border-brand-orange"
+                        : "bg-[#18181b] border-white/10 text-white hover:border-brand-orange/40"
+                    }`}
+                    title="Gọi Minh Đức"
+                  >
+                    <FaPhone className="w-3 h-3 text-brand-orange" />
+                    <span>0867.474.204</span>
+                  </a>
+                </div>
+              </div>
 
               {/* Email Direct */}
               <a
                 href="mailto:dongduong840@gmail.com"
-                className={`flex items-center justify-between p-3 rounded-sm border transition-all duration-200 group ${
+                className={`flex items-center justify-between p-2.5 rounded-sm border transition-all duration-200 group ${
                   isLight
                     ? "bg-slate-50 border-slate-200 hover:border-slate-400 text-slate-900"
                     : "bg-[#161618] border-white/5 hover:border-white/20 text-white"
                 }`}
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center text-xs shrink-0">
-                    <FaEnvelope className="w-3.5 h-3.5 text-slate-400" />
+                <div className="flex items-center gap-2.5">
+                  <div className="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center text-xs shrink-0">
+                    <FaEnvelope className="w-3 h-3 text-slate-400" />
                   </div>
                   <div>
-                    <span className="font-display font-medium text-xs block leading-tight">
-                      Email
-                    </span>
-                    <span className="font-mono text-[10px] text-[#8E8E93] truncate max-w-[150px] block">
+                    <span className="font-mono text-[10px] text-[#8E8E93] truncate max-w-[170px] block">
                       dongduong840@gmail.com
                     </span>
                   </div>
                 </div>
-                <FaArrowUpRightFromSquare className="w-3.5 h-3.5 text-slate-400 opacity-70 group-hover:opacity-100 transition-opacity" />
+                <FaArrowUpRightFromSquare className="w-3 h-3 text-slate-400 opacity-70 group-hover:opacity-100 transition-opacity" />
               </a>
             </div>
 
