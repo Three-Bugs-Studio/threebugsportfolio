@@ -16,11 +16,19 @@ export default function Contact({ lang }: ContactProps) {
   const [currency, setCurrency] = useState<"VND" | "USD">("VND");
   const [exchangeRate, setExchangeRate] = useState<number>(26299.87);
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    message: "",
+  const [formData, setFormData] = useState(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const draft = sessionStorage.getItem("three_bugs_contact_draft");
+        if (draft) return JSON.parse(draft);
+      } catch (e) {}
+    }
+    return {
+      name: "",
+      email: "",
+      company: "",
+      message: "",
+    };
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -149,6 +157,9 @@ export default function Contact({ lang }: ContactProps) {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
+      try {
+        sessionStorage.removeItem("three_bugs_contact_draft");
+      } catch (e) {}
     }, 400);
   };
 
@@ -156,7 +167,13 @@ export default function Contact({ lang }: ContactProps) {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => {
+      const next = { ...prev, [name]: value };
+      try {
+        sessionStorage.setItem("three_bugs_contact_draft", JSON.stringify(next));
+      } catch (e) {}
+      return next;
+    });
     // Clear field-specific error as they type
     if (errors[name]) {
       setErrors((prev) => {
