@@ -141,6 +141,21 @@ export default function Footer({ lang }: FooterProps) {
     });
   };
 
+  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) {
+      const offset = 80;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
     <footer className="bg-[#090909] border-t border-white/5 pt-16 md:pt-24 pb-10 md:pb-12 relative overflow-hidden" id="main-footer">
       {/* Visual Alignment helper lines */}
@@ -213,30 +228,78 @@ export default function Footer({ lang }: FooterProps) {
             <span className="font-mono text-[9px] tracking-widest text-brand-orange uppercase block">
               // {t.footerSiteIndex}
             </span>
-            <div className="flex flex-col gap-3 font-mono text-xs text-[#8E8E93]">
-              <a href="#hero" className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive">
+            <div className="flex flex-col gap-2.5 font-mono text-xs text-[#8E8E93]">
+              <a
+                href="#hero"
+                onClick={(e) => handleScrollToSection(e, "hero")}
+                className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive"
+              >
                 <span>{lang === "vi" ? "01 / TRANG CHỦ" : "01 / HOME"}</span>
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
               </a>
-              <a href="#about" className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive">
-                <span>{lang === "vi" ? "02 / GIỚI THIỆU" : "02 / ABOUT"}</span>
+              <a
+                href="#app-about-section"
+                onClick={(e) => handleScrollToSection(e, "app-about-section")}
+                className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive"
+              >
+                <span>{lang === "vi" ? "02 / GIỚI THIỆU" : "02 / PHILOSOPHY"}</span>
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
               </a>
-              <a href="#work" className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive">
-                <span>{lang === "vi" ? "03 / DỰ ÁN TIÊU BIỂU" : "03 / SELECTED_WORK"}</span>
+              <a
+                href="#app-services-section"
+                onClick={(e) => handleScrollToSection(e, "app-services-section")}
+                className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive"
+              >
+                <span>{lang === "vi" ? "03 / CÔNG NGHỆ & DỊCH VỤ" : "03 / CAPABILITIES"}</span>
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
               </a>
-              <a href="#process" className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive">
-                <span>{lang === "vi" ? "04 / QUY TRÌNH CHUẨN" : "04 / PROCESS"}</span>
+              <a
+                href="#app-work-section"
+                onClick={(e) => handleScrollToSection(e, "app-work-section")}
+                className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive"
+              >
+                <span>{lang === "vi" ? "04 / DỰ ÁN TIÊU BIỂU" : "04 / SELECTED WORK"}</span>
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
               </a>
-              <a href="#faq" className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive">
-                <span>{lang === "vi" ? "05 / THẮC MẮC THƯỜNG GẶP" : "05 / FAQ"}</span>
+              <a
+                href="#app-process-section"
+                onClick={(e) => handleScrollToSection(e, "app-process-section")}
+                className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive"
+              >
+                <span>{lang === "vi" ? "05 / QUY TRÌNH PHÁT TRIỂN" : "05 / ENGINEERING FLOW"}</span>
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
               </a>
-              <a href="#contact" className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive">
-                <span>{lang === "vi" ? "06 / LIÊN HỆ DỰ ÁN" : "06 / INQUIRIES"}</span>
+              <a
+                href="#app-pricing-section"
+                onClick={(e) => handleScrollToSection(e, "app-pricing-section")}
+                className="hover:text-brand-orange text-[#D4D4D8] transition-colors flex items-center justify-between group interactive"
+              >
+                <span className="font-semibold">{lang === "vi" ? "06 / BÁO GIÁ 3 PHASE" : "06 / 3-PHASE PRICING"}</span>
+                <span className="text-brand-orange opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+              </a>
+              <a
+                href="#app-team-section"
+                onClick={(e) => handleScrollToSection(e, "app-team-section")}
+                className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive"
+              >
+                <span>{lang === "vi" ? "07 / ĐỘI NGŨ SÁNG LẬP" : "07 / STUDIO FOUNDERS"}</span>
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+              </a>
+              <a
+                href="#app-faq-section"
+                onClick={(e) => handleScrollToSection(e, "app-faq-section")}
+                className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive"
+              >
+                <span>{lang === "vi" ? "08 / GIẢI ĐÁP THẮC MẮC" : "08 / FAQ RESOLUTIONS"}</span>
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+              </a>
+              <a
+                href="#app-contact-section"
+                onClick={(e) => handleScrollToSection(e, "app-contact-section")}
+                className="hover:text-brand-orange text-[#D4D4D8] transition-colors flex items-center justify-between group interactive"
+              >
+                <span className="font-semibold">{lang === "vi" ? "09 / LIÊN HỆ ĐẶT HÀNG" : "09 / INQUIRY PORTAL"}</span>
+                <span className="text-brand-orange opacity-0 group-hover:opacity-100 transition-opacity">→</span>
               </a>
             </div>
           </div>
