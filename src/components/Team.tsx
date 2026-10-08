@@ -76,7 +76,7 @@ export default function Team({ lang }: TeamProps) {
             <div className="flex items-center gap-3 mb-4">
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange font-semibold flex items-center gap-2">
                 <FaUserGroup className="w-3.5 h-3.5" />
-                {lang === "vi" ? "05 // ĐỘI NGŨ THỰC HIỆN" : "05 // STUDIO TEAM"}
+                {t.teamLabel}
               </span>
               <span className="h-[1px] w-12 bg-brand-orange/40" />
             </div>
