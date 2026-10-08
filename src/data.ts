@@ -161,7 +161,7 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       shortStory: "Chúng tôi thiết kế và xây dựng website thương mại điện tử Sukajan cho khách hàng, giúp họ đưa thương hiệu lên môi trường trực tuyến hoạt động ổn định và hỗ trợ thanh toán an toàn. Dự án có sự tham gia của Duong Phu Dong, Huynh Quang Dong và Ho Quang Huy.",
       technologies: ["Next.js", "PostgreSQL", "TailwindCSS", "Vercel"],
       timeline: "3 Tuần",
-      outcome: "Bàn giao cửa hàng trực tuyến chạy mượt mượt mà, đạt điểm tối ưu hóa SEO 98%, bàn giao đầy đủ mã nguồn và cam kết bảo hành lâu dài.",
+      outcome: "Bàn giao cửa hàng trực tuyến chạy mượt mà, đạt điểm tối ưu hóa SEO 98%, bàn giao đầy đủ mã nguồn và cam kết bảo hành lâu dài.",
       coverImage: "sukajan",
       metrics: "SEO 98% và hơn 15,000 truy cập",
       liveUrl: "https://sukajanrandomphitruong.com/"
@@ -900,10 +900,10 @@ export const TRANSLATIONS = {
     testimonialsLabel: "07 // ĐÁNH GIÁ TỪ KHÁCH HÀNG",
     testimonialsHeading: "Ý kiến từ khách hàng đã hợp tác cùng chúng tôi.",
 
-    faqLabel: "09 // THẮC MẮC THƯỜNG GẶP",
+    faqLabel: "08 // THẮC MẮC THƯỜNG GẶP",
     faqHeading: "Giải đáp các câu hỏi thường gặp.",
 
-    contactLabel: "08 // LIÊN HỆ HỢP TÁC",
+    contactLabel: "09 // LIÊN HỆ HỢP TÁC",
     contactHeading: "Gửi yêu cầu thiết kế trang web của bạn.",
     contactSubtitle: "Hãy để lại thông tin liên hệ và ý tưởng của bạn. Đội ngũ lập trình viên của chúng tôi sẽ liên hệ lại trong vòng 12 giờ làm việc để tư vấn cụ thể.",
     contactFieldName: "Họ và tên",
@@ -988,10 +988,10 @@ export const TRANSLATIONS = {
     testimonialsLabel: "07 // TESTIMONIALS",
     testimonialsHeading: "Direct thoughts from founders we have built for.",
 
-    faqLabel: "09 // FREQUENTLY ASKED QUESTIONS",
+    faqLabel: "08 // FREQUENTLY ASKED QUESTIONS",
     faqHeading: "Common questions with clear and direct answers.",
 
-    contactLabel: "08 // THE BLUEPRINT FLOW",
+    contactLabel: "09 // THE BLUEPRINT FLOW",
     contactHeading: "Initiate your next product blueprint.",
     contactSubtitle: "Tell us about your technical requirements. Our developers based in Ho Chi Minh City will review and reach out within 12 business hours.",
     contactFieldName: "Full Name",
