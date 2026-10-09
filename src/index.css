@@ -178,7 +178,16 @@ html.light .crt-overlay {
 }
 
 html.light .hero-vignette {
-  background: radial-gradient(ellipse at center, rgba(248, 250, 252, 0.05) 0%, rgba(248, 250, 252, 0.35) 50%, rgba(248, 250, 252, 0.85) 100%) !important;
+  display: none !important;
+  opacity: 0 !important;
+}
+
+html.light #hero-title,
+html.light #hero-title *,
+html.light #hero-subtitle,
+html.light #hero-subtitle * {
+  filter: none !important;
+  text-shadow: none !important;
 }
 
 /* ABSOLUTE 100% PURGE OF ALL DARK BLACK HEX BACKGROUNDS IN LIGHT THEME */
@@ -387,67 +396,30 @@ html.light .panoramic-glass-wall {
   background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(241,245,249,0.7) 100%) !important;
 }
 
-/* Custom Animated Moon/Sun Theme Toggle Switch (Brand Styled) */
-.theme-toggle-wrapper {
-  position: relative;
-  width: 52px;
-  height: 26px;
-  display: flex;
-  align-items: center;
+/* High-Visibility Brand Theme Toggle Button */
+#card-nav-theme-btn {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.theme-switch-label {
-  position: relative;
-  display: block;
-  width: 52px;
-  height: 26px;
-  background-color: #1a1a1a;
-  border-radius: 13px;
-  cursor: pointer;
-  border: 1.5px solid rgba(255, 106, 0, 0.4);
-  transition: all 0.3s ease;
-}
-
-html.light .theme-switch-label {
+html.light #card-nav-theme-btn {
   background-color: #FFFFFF !important;
-  border-color: rgba(0, 105, 137, 0.3) !important;
+  border-color: rgba(15, 23, 42, 0.22) !important;
+  color: #0F172A !important;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08) !important;
 }
 
-.theme-checkbox {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
+html.light #card-nav-theme-btn:hover {
+  border-color: #006989 !important;
+  box-shadow: 0 2px 8px rgba(0, 105, 137, 0.18) !important;
 }
 
-.theme-slider {
-  position: absolute;
-  inset: 0;
-  border-radius: 13px;
-  transition: 0.35s ease;
-}
-
-.theme-checkbox:checked ~ .theme-slider {
-  background-color: #FFFFFF;
-}
-
-.theme-slider::before {
-  content: "";
-  position: absolute;
-  top: 3px;
-  left: 4px;
-  width: 17px;
-  height: 17px;
-  border-radius: 50%;
-  box-shadow: inset 6px -2px 0px 0px #FF6A00;
-  background-color: #121212;
-  transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.theme-checkbox:checked ~ .theme-slider::before {
-  transform: translateX(24px);
-  background-color: #006989;
-  box-shadow: none;
+/* Light Theme Card Depth & Border Contrast Enhancements */
+html.light .pricing-card-left,
+html.light .pricing-card-right,
+html.light .faq-item-box,
+html.light .team-card-item {
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.08) !important;
+  border-color: rgba(15, 23, 42, 0.14) !important;
 }
 
 @theme {
