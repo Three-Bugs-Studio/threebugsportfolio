@@ -248,7 +248,7 @@ export default function CardNav({
 
             {/* Custom Moon/Sun Theme Toggle Switch */}
             {onThemeToggle && (
-              <ThemeSwitch theme={theme} onThemeToggle={onThemeToggle} />
+              <ThemeSwitch theme={theme} onThemeToggle={onThemeToggle} lang={lang} />
             )}
 
             {/* Audio Sound FX Toggle Switch */}
