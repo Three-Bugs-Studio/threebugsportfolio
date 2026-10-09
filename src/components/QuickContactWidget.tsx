@@ -168,7 +168,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
 
               {/* Email Direct */}
               <a
-                href="mailto:dongduong840@gmail.com"
+                href="mailto:threebugstudio@gmail.com"
                 className={`flex items-center justify-between p-2.5 rounded-sm border transition-all duration-200 group ${
                   isLight
                     ? "bg-slate-50 border-slate-200 hover:border-slate-400 text-slate-900"
@@ -181,7 +181,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
                   </div>
                   <div>
                     <span className="font-mono text-[10px] text-[#8E8E93] truncate max-w-[170px] block">
-                      dongduong840@gmail.com
+                      threebugstudio@gmail.com
                     </span>
                   </div>
                 </div>
