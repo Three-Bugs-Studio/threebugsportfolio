@@ -318,8 +318,8 @@ export default function Contact({ lang }: ContactProps) {
                     <span className="font-mono text-[9px] tracking-widest text-brand-orange uppercase block mb-1">
                       STUDIO INBOX
                     </span>
-                    <a href="mailto:dongduong840@gmail.com" className="font-sans text-sm text-[#F5F5F3] hover:text-brand-orange transition-colors interactive">
-                      dongduong840@gmail.com
+                    <a href="mailto:threebugstudio@gmail.com" className="font-sans text-sm text-[#F5F5F3] hover:text-brand-orange transition-colors interactive">
+                      threebugstudio@gmail.com
                     </a>
                   </div>
                   <div>
