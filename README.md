@@ -26,4 +26,4 @@ We secure continuous system uptime, automate database backups, perform security 
 
 * GitHub: https://github.com/Three-Bugs-Studio
 * Discord: https://discord.gg/WDfhFdtqwv
-* Email: dongduong840@gmail.com
+* Email: threebugstudio@gmail.com
