@@ -165,7 +165,7 @@ export default function LineSidebar({
     <aside
       ref={containerRef}
       onMouseLeave={handleMouseLeave}
-      className={`fixed right-6 top-1/2 -translate-y-1/2 z-30 hidden lg:flex flex-col items-end select-none transition-all duration-300 ${
+      className={`fixed right-4 2xl:right-6 top-1/2 -translate-y-1/2 z-30 hidden lg:flex flex-col items-end select-none transition-all duration-300 ${
         isQuickContactOpen ? "opacity-0 pointer-events-none translate-x-6" : "opacity-100 pointer-events-auto translate-x-0"
       } ${className}`}
       id="line-sidebar-container"
@@ -199,9 +199,9 @@ export default function LineSidebar({
                 {/* Item Label & Index Container - Responsive Collision Prevention */}
                 <div
                   className={`flex items-center gap-2 transition-all duration-200 ${
-                    isHovered || isActive
+                    isHovered
                       ? "opacity-100 translate-x-0"
-                      : "max-[1536px]:opacity-0 max-[1536px]:pointer-events-none max-[1536px]:translate-x-2 2xl:opacity-100"
+                      : "max-[1536px]:opacity-0 max-[1536px]:pointer-events-none max-[1536px]:translate-x-2 2xl:opacity-100 2xl:pointer-events-auto"
                   } ${
                     isLight
                       ? "max-[1536px]:bg-white/95 max-[1536px]:border max-[1536px]:border-slate-200 max-[1536px]:px-2.5 max-[1536px]:py-1 max-[1536px]:rounded-sm max-[1536px]:shadow-md backdrop-blur-sm"
