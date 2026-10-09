@@ -946,7 +946,7 @@ export const TRANSLATIONS = {
     contactSendBtn: "GỬI THÔNG TIN YÊU CẦU",
     contactSendingBtn: "ĐANG GỬI THÔNG TIN...",
     contactSuccessTitle: "Gửi thông tin thành công!",
-    contactSuccessMessage: "Cảm ơn bạn đã liên hệ. Yêu cầu của bạn đã được gửi trực tiếp đến dongduong840@gmail.com. Chúng tôi sẽ phản hồi sớm để trao đổi chi tiết về giao diện và lộ trình thực hiện.",
+    contactSuccessMessage: "Cảm ơn bạn đã liên hệ. Yêu cầu của bạn đã được gửi trực tiếp đến threebugstudio@gmail.com. Chúng tôi sẽ phản hồi sớm để trao đổi chi tiết về giao diện và lộ trình thực hiện.",
     contactFormError: "Vui lòng điền đầy đủ các thông tin bắt buộc.",
 
     footerSiteIndex: "MỤC LỤC TRANG",
@@ -1034,7 +1034,7 @@ export const TRANSLATIONS = {
     contactSendBtn: "SEND PROJECT INQUIRY",
     contactSendingBtn: "TRANSMITTING INQUIRY...",
     contactSuccessTitle: "Inquiry Successfully Transmitted!",
-    contactSuccessMessage: "Thank you for reaching out. Your inquiry has been transmitted directly to dongduong840@gmail.com. We will analyze your specifications and follow up shortly.",
+    contactSuccessMessage: "Thank you for reaching out. Your inquiry has been transmitted directly to threebugstudio@gmail.com. We will analyze your specifications and follow up shortly.",
     contactFormError: "Please complete all mandatory fields to proceed.",
 
     footerSiteIndex: "SITE INDEX",
