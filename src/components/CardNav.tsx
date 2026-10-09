@@ -130,7 +130,7 @@ export default function CardNav({
       textColor: isLight ? "#FFFFFF" : "#090909",
       links: [
         { label: lang === "vi" ? "Form Tư Vấn Dự Án (Trực Tiếp)" : "Project Inquiry Form", href: "#app-contact-section", ariaLabel: "Contact Form" },
-        { label: "EMAIL: dongduong840@gmail.com", href: "mailto:dongduong840@gmail.com", ariaLabel: "Email Direct", isExternal: true },
+        { label: "EMAIL: threebugstudio@gmail.com", href: "mailto:threebugstudio@gmail.com", ariaLabel: "Email Direct", isExternal: true },
         { label: "GITHUB: THREE-BUGS-STUDIO", href: "https://github.com/Three-Bugs-Studio", ariaLabel: "GitHub Repo", isExternal: true }
       ]
     }
@@ -380,7 +380,7 @@ export default function CardNav({
                   <span>{lang === "vi" ? "TRẠNG THÁI: SẴN SÀNG NHẬN DỰ ÁN MỚI" : "STATUS: AVAILABLE FOR NEW PROJECTS"}</span>
                 </div>
                 <div>
-                  <span>EMAIL: <strong className="text-white">dongduong840@gmail.com</strong></span>
+                  <span>EMAIL: <strong className="text-white">threebugstudio@gmail.com</strong></span>
                 </div>
               </div>
 
