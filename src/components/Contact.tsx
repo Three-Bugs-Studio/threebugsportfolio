@@ -3,7 +3,6 @@ import { TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
 import { FaPaperPlane, FaArrowUpRightFromSquare, FaCheck, FaCircleExclamation, FaPhone, FaUserTie } from "react-icons/fa6";
 import { SiZalo } from "react-icons/si";
-import ZaloQRImg from "@/assets/zalo/zalo_qr.webp";
 
 interface ContactProps {
   lang: "vi" | "en";
@@ -311,43 +310,23 @@ export default function Contact({ lang }: ContactProps) {
                 </div>
               </div>
 
-              {/* Email & Operating model & QR */}
-              <div className="flex flex-wrap gap-x-12 gap-y-6 pt-2">
-                <div className="space-y-4">
-                  <div>
-                    <span className="font-mono text-[9px] tracking-widest text-brand-orange uppercase block mb-1">
-                      STUDIO INBOX
-                    </span>
-                    <a href="mailto:threebugstudio@gmail.com" className="font-sans text-sm text-[#F5F5F3] hover:text-brand-orange transition-colors interactive">
-                      threebugstudio@gmail.com
-                    </a>
-                  </div>
-                  <div>
-                    <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block mb-1">
-                      OPERATING MODEL
-                    </span>
-                    <span className="font-sans text-sm text-[#F5F5F3] tracking-wide">
-                      100% REMOTE
-                    </span>
-                  </div>
-                </div>
-
-                <div>
-                  <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block mb-1.5">
-                    {lang === "vi" ? "QUÉT MÃ ZALO STUDIO" : "STUDIO ZALO QR"}
+              {/* Email & Operating model */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+                <div className="p-3.5 bg-[#09090b] border border-white/5 rounded-sm">
+                  <span className="font-mono text-[9px] tracking-widest text-brand-orange uppercase block mb-1">
+                    STUDIO INBOX
                   </span>
-                  <div className="relative group/zalo w-24 h-24 bg-[#121212] border border-white/10 rounded-sm p-1 transition-all hover:border-brand-orange/30 shadow-lg">
-                    <img
-                      src={ZaloQRImg}
-                      alt="Zalo QR Code"
-                      className="w-full h-full object-cover rounded-[1px]"
-                    />
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover/zalo:opacity-100 flex items-center justify-center transition-opacity rounded-[1px] pointer-events-none">
-                      <span className="font-mono text-[6.5px] text-brand-orange tracking-widest uppercase font-bold">
-                        {lang === "vi" ? "QUÉT ĐỂ CHAT" : "SCAN TO CHAT"}
-                      </span>
-                    </div>
-                  </div>
+                  <a href="mailto:threebugstudio@gmail.com" className="font-sans text-xs text-[#F5F5F3] hover:text-brand-orange transition-colors interactive break-all font-medium">
+                    threebugstudio@gmail.com
+                  </a>
+                </div>
+                <div className="p-3.5 bg-[#09090b] border border-white/5 rounded-sm">
+                  <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block mb-1">
+                    OPERATING MODEL
+                  </span>
+                  <span className="font-sans text-xs text-[#F5F5F3] tracking-wide block font-medium">
+                    100% REMOTE
+                  </span>
                 </div>
               </div>
             </div>
