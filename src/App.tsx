@@ -356,7 +356,7 @@ export default function App() {
       <div className="crt-overlay" id="crt-scanline-overlay" />
 
       {/* Floating Vertical Dot Navigation Menu */}
-      <DotNavigation lang={lang} />
+      <DotNavigation lang={lang} theme={theme} />
 
       {/* Floating Direct Consultation & Zalo Quick Connect Widget */}
       <QuickContactWidget lang={lang} theme={theme} />
