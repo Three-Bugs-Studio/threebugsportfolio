@@ -72,8 +72,8 @@ export default function Hero({ lang }: HeroProps) {
       {/* Three.js FlowWave Dynamic Particle Wave Background */}
       <FlowWaveBackground />
 
-      {/* High-Contrast Vignette Mask Overlay to ensure text pops out prominently */}
-      <div className="hero-vignette absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(9,9,9,0.15)_0%,_rgba(9,9,9,0.50)_50%,_rgba(9,9,9,0.92)_100%)]" />
+      {/* High-Contrast Vignette Mask Overlay to ensure text pops out prominently in dark mode */}
+      <div className="hero-vignette absolute inset-0 z-[1] pointer-events-none dark:block hidden bg-[radial-gradient(ellipse_at_center,_rgba(9,9,9,0.15)_0%,_rgba(9,9,9,0.50)_50%,_rgba(9,9,9,0.92)_100%)]" />
 
       {/* Ambient Brand Lighting Glares */}
       <div className="absolute top-[-10%] left-[5%] brutalist-glow opacity-40 z-[1]" />
@@ -107,19 +107,19 @@ export default function Hero({ lang }: HeroProps) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display font-medium text-4xl md:text-7xl lg:text-8xl tracking-tighter text-[#F5F5F3] leading-[1.05] max-w-4xl drop-shadow-[0_4px_32px_rgba(0,0,0,0.95)]"
+          className="font-display font-medium text-4xl md:text-7xl lg:text-8xl tracking-tighter text-[#F5F5F3] leading-[1.05] max-w-4xl dark:drop-shadow-[0_4px_32px_rgba(0,0,0,0.95)]"
         >
           {lang === "vi" ? (
             <>
               Chúng tôi xây dựng <br />
-              <span className="text-[#8E8E93] drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
+              <span className="text-[#8E8E93] dark:drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
                 website và phần mềm.
               </span>
             </>
           ) : (
             <>
               We build websites <br />
-              <span className="text-[#8E8E93] drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
+              <span className="text-[#8E8E93] dark:drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
                 and custom software.
               </span>
             </>
@@ -132,7 +132,7 @@ export default function Hero({ lang }: HeroProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-sans text-base md:text-xl text-[#8E8E93] max-w-2xl mt-8 font-light leading-relaxed drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)]"
+          className="font-sans text-base md:text-xl text-[#8E8E93] max-w-2xl mt-8 font-light leading-relaxed dark:drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)]"
         >
           {t.heroDesc}
         </motion.p>
@@ -183,7 +183,7 @@ export default function Hero({ lang }: HeroProps) {
           className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 cursor-pointer group"
           onClick={() => handleScrollTo("app-about-section")}
         >
-          <div className="w-[18px] h-[28px] rounded-full border border-[#8E8E93]/80 group-hover:border-brand-orange transition-colors flex justify-center p-[4px]" id="scroll-mouse-icon">
+          <div className="w-[18px] h-[28px] rounded-full border dark:border-[#8E8E93]/80 border-slate-400 group-hover:border-brand-orange transition-colors flex justify-center p-[4px]" id="scroll-mouse-icon">
             <motion.div 
               className="w-[3px] h-[6px] bg-brand-orange rounded-full"
               animate={{ 
@@ -197,14 +197,14 @@ export default function Hero({ lang }: HeroProps) {
               }}
             />
           </div>
-          <span className="font-mono text-[9px] tracking-[0.4em] text-[#8E8E93] uppercase group-hover:text-brand-orange transition-colors">
+          <span className="font-mono text-[9px] tracking-[0.4em] dark:text-[#8E8E93] text-slate-700 font-semibold uppercase group-hover:text-brand-orange transition-colors">
             {lang === "vi" ? "CUỘN XUỐNG" : "SCROLL"}
           </span>
           <motion.div
             animate={{ y: [0, 4, 0] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
           >
-            <span className="text-[#8E8E93] group-hover:text-brand-orange transition-colors text-xs inline-flex items-center justify-center">
+            <span className="dark:text-[#8E8E93] text-slate-700 group-hover:text-brand-orange transition-colors text-xs inline-flex items-center justify-center">
               <FaArrowDown />
             </span>
           </motion.div>
