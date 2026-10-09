@@ -22,6 +22,7 @@ export interface LineSidebarProps {
   activeSectionIndex?: number;
   onItemClick?: (index: number, label: string) => void;
   className?: string;
+  theme?: "dark" | "light";
 }
 
 export default function LineSidebar({
@@ -45,7 +46,15 @@ export default function LineSidebar({
   activeSectionIndex,
   onItemClick,
   className = "",
+  theme = "dark",
 }: LineSidebarProps) {
+  const isLight = theme === "light";
+  const effectiveAccentColor = isLight ? "#006989" : accentColor;
+  const effectiveInactiveIndexColor = isLight ? "rgba(15, 23, 42, 0.55)" : "rgba(255, 255, 255, 0.35)";
+  const effectiveActiveTextColor = isLight ? "#0F172A" : "#F5F5F3";
+  const effectiveInactiveTextColor = isLight ? "#475569" : textColor;
+  const effectiveMarkerColor = isLight ? "rgba(15, 23, 42, 0.18)" : markerColor;
+
   const [activeIndex, setActiveIndex] = useState<number>(defaultActive);
   const [shifts, setShifts] = useState<number[]>(() => new Array(items.length).fill(0));
   const [tickScales, setTickScales] = useState<number[]>(() => new Array(items.length).fill(1));
@@ -187,16 +196,25 @@ export default function LineSidebar({
                   transition: `transform ${smoothing}ms cubic-bezier(0.16, 1, 0.3, 1), color 200ms ease`,
                 }}
               >
-                {/* Item Label & Index Container */}
-                <div className="flex items-center gap-2">
-                  
+                {/* Item Label & Index Container - Responsive Collision Prevention */}
+                <div
+                  className={`flex items-center gap-2 transition-all duration-200 ${
+                    isHovered || isActive
+                      ? "opacity-100 translate-x-0"
+                      : "max-[1536px]:opacity-0 max-[1536px]:pointer-events-none max-[1536px]:translate-x-2 2xl:opacity-100"
+                  } ${
+                    isLight
+                      ? "max-[1536px]:bg-white/95 max-[1536px]:border max-[1536px]:border-slate-200 max-[1536px]:px-2.5 max-[1536px]:py-1 max-[1536px]:rounded-sm max-[1536px]:shadow-md backdrop-blur-sm"
+                      : "max-[1536px]:bg-[#121212]/90 max-[1536px]:border max-[1536px]:border-white/10 max-[1536px]:px-2.5 max-[1536px]:py-1 max-[1536px]:rounded-sm max-[1536px]:shadow-lg backdrop-blur-sm"
+                  }`}
+                >
                   {/* Optional Index Number */}
                   {showIndex && (
                     <span
-                      className="font-mono text-[10px] tracking-wider transition-colors duration-200"
+                      className="font-mono text-[10px] tracking-wider transition-colors duration-200 shrink-0"
                       style={{
-                        color: isActive ? accentColor : "rgba(255, 255, 255, 0.35)",
-                        fontWeight: isActive ? 600 : 400,
+                        color: isActive ? effectiveAccentColor : effectiveInactiveIndexColor,
+                        fontWeight: isActive ? 700 : 500,
                       }}
                     >
                       [{formattedIndex}]
@@ -208,8 +226,9 @@ export default function LineSidebar({
                     className="font-display font-medium tracking-tight uppercase whitespace-nowrap transition-all duration-200"
                     style={{
                       fontSize: `${fontSize}rem`,
-                      color: isActive ? "#F5F5F3" : textColor,
-                      textShadow: isActive ? `0 0 12px ${accentColor}40` : "none",
+                      color: isActive ? effectiveActiveTextColor : effectiveInactiveTextColor,
+                      textShadow: isActive && !isLight ? `0 0 12px ${effectiveAccentColor}40` : "none",
+                      fontWeight: isActive ? 600 : 400,
                     }}
                   >
                     {item}
@@ -219,10 +238,10 @@ export default function LineSidebar({
                 {/* Individual Tick Marker Dot / Indicator */}
                 {showMarker && (
                   <div
-                    className="w-2 h-2 rounded-full border transition-all duration-200 flex items-center justify-center"
+                    className="w-2 h-2 rounded-full border transition-all duration-200 flex items-center justify-center shrink-0"
                     style={{
-                      borderColor: isActive ? accentColor : "rgba(255, 255, 255, 0.2)",
-                      backgroundColor: isActive ? `${accentColor}30` : "transparent",
+                      borderColor: isActive ? effectiveAccentColor : (isLight ? "rgba(15, 23, 42, 0.25)" : "rgba(255, 255, 255, 0.2)"),
+                      backgroundColor: isActive ? `${effectiveAccentColor}30` : "transparent",
                       transform: `scale(${currentTickScale})`,
                       marginLeft: `${markerGap}px`,
                     }}
@@ -230,7 +249,7 @@ export default function LineSidebar({
                     <div
                       className="w-1 h-1 rounded-full transition-colors duration-200"
                       style={{
-                        backgroundColor: isActive ? accentColor : "rgba(255, 255, 255, 0.4)",
+                        backgroundColor: isActive ? effectiveAccentColor : (isLight ? "rgba(15, 23, 42, 0.5)" : "rgba(255, 255, 255, 0.4)"),
                       }}
                     />
                   </div>
@@ -246,16 +265,16 @@ export default function LineSidebar({
             {/* Background Rail Line */}
             <div
               className="absolute inset-y-0 w-[1px] rounded-full"
-              style={{ backgroundColor: markerColor }}
+              style={{ backgroundColor: effectiveMarkerColor }}
             />
 
             {/* Smooth Moving Active Marker Indicator */}
             <motion.div
               className="absolute w-[3px] rounded-full shadow-lg"
               style={{
-                backgroundColor: accentColor,
+                backgroundColor: effectiveAccentColor,
                 height: `${markerLength}px`,
-                boxShadow: `0 0 10px ${accentColor}`,
+                boxShadow: isLight ? `0 0 8px ${effectiveAccentColor}60` : `0 0 10px ${effectiveAccentColor}`,
               }}
               animate={{
                 top: activeOffsetTop - markerLength / 2,
