@@ -327,7 +327,7 @@ export default function Footer({ lang }: FooterProps) {
                 </a>
 
                 {/* Email Container */}
-                <a href="mailto:dongduong840@gmail.com" className="socialContainer containerThree" title="Email">
+                <a href="mailto:threebugstudio@gmail.com" className="socialContainer containerThree" title="Email">
                   <svg className="socialSvg" viewBox="0 0 24 24">
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                   </svg>
@@ -345,7 +345,7 @@ export default function Footer({ lang }: FooterProps) {
               <div className="flex flex-col gap-2 font-mono text-xs pt-1">
                 <MagneticSocialLink href="https://github.com/Three-Bugs-Studio" label="GITHUB REPO" target="_blank" rel="noreferrer" />
                 <MagneticSocialLink href="https://discord.gg/WDfhFdtqwv" label="DISCORD COMMUNITY" target="_blank" rel="noreferrer" />
-                <MagneticSocialLink href="mailto:dongduong840@gmail.com" label="DIRECT EMAIL" />
+                <MagneticSocialLink href="mailto:threebugstudio@gmail.com" label="DIRECT EMAIL" />
               </div>
             </div>
           </div>
@@ -451,8 +451,8 @@ export default function Footer({ lang }: FooterProps) {
                   </h4>
                   <p>
                     {lang === "vi"
-                      ? "Chúng tôi tôn trọng quyền riêng tư của bạn. Mọi thông tin bạn cung cấp thông qua biểu mẫu liên hệ (bao gồm Tên, Email, Công ty, Mô tả dự án và Dự toán chi phí) được gửi trực tiếp và an toàn đến hộp thư của studio (dongduong840@gmail.com) và chỉ được sử dụng cho mục đích trao đổi yêu cầu hợp tác thiết kế, phát triển phần mềm."
-                      : "We respect your privacy. Any information you submit through our contact forms (including Name, Email, Company, Project requirements, and Budget options) is delivered directly and securely to our inbox (dongduong840@gmail.com). This data is exclusively used to discuss project proposals and design services."}
+                      ? "Chúng tôi tôn trọng quyền riêng tư của bạn. Mọi thông tin bạn cung cấp thông qua biểu mẫu liên hệ (bao gồm Tên, Email, Công ty, Mô tả dự án và Dự toán chi phí) được gửi trực tiếp và an toàn đến hộp thư của studio (threebugstudio@gmail.com) và chỉ được sử dụng cho mục đích trao đổi yêu cầu hợp tác thiết kế, phát triển phần mềm."
+                      : "We respect your privacy. Any information you submit through our contact forms (including Name, Email, Company, Project requirements, and Budget options) is delivered directly and securely to our inbox (threebugstudio@gmail.com). This data is exclusively used to discuss project proposals and design services."}
                   </p>
                   <p>
                     {lang === "vi"
