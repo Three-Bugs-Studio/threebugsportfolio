@@ -24,9 +24,10 @@ const SECTIONS: SectionInfo[] = [
 
 interface DotNavigationProps {
   lang: "vi" | "en";
+  theme?: "dark" | "light";
 }
 
-export default function DotNavigation({ lang }: DotNavigationProps) {
+export default function DotNavigation({ lang, theme = "dark" }: DotNavigationProps) {
   const [activeIdx, setActiveIdx] = useState<number>(0);
 
   useEffect(() => {
@@ -96,6 +97,7 @@ export default function DotNavigation({ lang }: DotNavigationProps) {
       defaultActive={0}
       activeSectionIndex={activeIdx}
       onItemClick={(index) => handleScrollTo(index)}
+      theme={theme}
     />
   );
 }
