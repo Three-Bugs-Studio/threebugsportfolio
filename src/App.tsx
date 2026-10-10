@@ -129,6 +129,19 @@ export default function App() {
     setLoaded(prev => ({ ...prev, hero: true }));
   }, []);
 
+  useEffect(() => {
+    (window as any).replayCrtBoot = () => {
+      setIsCrtBooting(true);
+    };
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.altKey && (e.key === "b" || e.key === "B")) {
+        setIsCrtBooting(true);
+      }
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
+
   const [loaded, setLoaded] = useState<Record<string, boolean>>({
     hero: false,
     about: false,
