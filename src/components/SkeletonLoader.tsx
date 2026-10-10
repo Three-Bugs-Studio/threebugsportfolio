@@ -41,7 +41,7 @@ export function SectorLoadingDiagnostics({ progress, sectorCode, statusText }: S
   return (
     <div className="font-mono text-[10px] text-brand-orange bg-[#0b0b0c] border border-white/5 rounded-sm p-4 mb-6 flex flex-col md:flex-row md:items-center justify-between gap-3 select-none">
       <div className="flex items-center gap-3">
-        <span className="animate-ping h-2 w-2 rounded-full bg-brand-orange shrink-0" />
+        <span className="h-1.5 w-1.5 rounded-full bg-brand-orange shadow-[0_0_6px_rgba(255,106,0,0.8)] shrink-0" />
         <span className="text-[#8e8e93]">[{sectorCode}_INIT]</span>
         <span className="text-white font-medium truncate max-w-[280px] md:max-w-md">{statusText}</span>
       </div>
