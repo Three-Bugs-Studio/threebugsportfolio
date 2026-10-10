@@ -190,10 +190,6 @@ export default function CrtLoadingScreen({ onComplete, lang = "vi" }: CrtLoading
   useEffect(() => {
     let current = 0;
     const interval = setInterval(() => {
-      if ((window as any).__crt_pause_test) {
-        setProgress(76);
-        return;
-      }
       // Randomized increments for authentic terminal feel
       const jump = Math.floor(Math.random() * 8) + 4;
       current = Math.min(100, current + jump);
