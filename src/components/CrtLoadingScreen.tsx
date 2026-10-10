@@ -190,6 +190,10 @@ export default function CrtLoadingScreen({ onComplete, lang = "vi" }: CrtLoading
   useEffect(() => {
     let current = 0;
     const interval = setInterval(() => {
+      if ((window as any).__crt_pause_test) {
+        setProgress(76);
+        return;
+      }
       // Randomized increments for authentic terminal feel
       const jump = Math.floor(Math.random() * 8) + 4;
       current = Math.min(100, current + jump);
@@ -257,6 +261,7 @@ export default function CrtLoadingScreen({ onComplete, lang = "vi" }: CrtLoading
               // Setup texture
               texture = gl.createTexture();
               gl.bindTexture(gl.TEXTURE_2D, texture);
+              gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
               gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
               gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
               gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
@@ -412,6 +417,7 @@ export default function CrtLoadingScreen({ onComplete, lang = "vi" }: CrtLoading
 
         // Update texture with 2D offscreen canvas
         gl.bindTexture(gl.TEXTURE_2D, texture);
+        gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, textCanvas);
 
         // Bind quad position
