@@ -81,31 +81,13 @@ function useProgress(onLoaded?: () => void) {
   return progress;
 }
 
+import { MiniCrtLoader } from "./CrtLoadingScreen";
+
 // -------------------------------------------------------------
-// -------------------------------------------------------------
-// Hamster Wheel Running Animation Component
+// Retro-Tech CRT Terminal Loader Component (Replaces Hamster Wheel)
 // -------------------------------------------------------------
 export function HamsterWheelLoader() {
-  return (
-    <div aria-label="Orange and tan hamster running in a metal wheel" role="img" className="wheel-and-hamster select-none">
-      <div className="wheel" />
-      <div className="hamster">
-        <div className="hamster__body">
-          <div className="hamster__head">
-            <div className="hamster__ear" />
-            <div className="hamster__eye" />
-            <div className="hamster__nose" />
-          </div>
-          <div className="hamster__limb hamster__limb--fr" />
-          <div className="hamster__limb hamster__limb--fl" />
-          <div className="hamster__limb hamster__limb--br" />
-          <div className="hamster__limb hamster__limb--bl" />
-          <div className="hamster__tail" />
-        </div>
-      </div>
-      <div className="spoke" />
-    </div>
-  );
+  return <MiniCrtLoader />;
 }
 
 // -------------------------------------------------------------
@@ -124,14 +106,14 @@ export function HeroSkeleton({ onLoaded, lang }: SkeletonProps) {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-orange/10 rounded-full blur-[100px]" />
       
       <div className="max-w-4xl mx-auto px-6 relative z-10 w-full flex flex-col items-center justify-center text-center my-auto">
-        {/* Animated Hamster Wheel Initial Loader */}
+        {/* Animated Retro CRT Initial Loader */}
         <motion.div 
-          initial={{ scale: 0.8, opacity: 0 }}
+          initial={{ scale: 0.85, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5 }}
           className="mb-8 flex flex-col items-center justify-center"
         >
-          <HamsterWheelLoader />
+          <MiniCrtLoader />
         </motion.div>
 
         {/* Diagnostics HUD */}
