@@ -650,7 +650,7 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
                 {/* Central search anchor node */}
                 <div className="absolute flex flex-col items-center gap-1">
                   <div className="w-5 h-5 bg-brand-orange rounded-full border-2 border-white flex items-center justify-center shadow-lg relative">
-                    <div className="absolute inset-0 bg-brand-orange rounded-full animate-ping opacity-45" />
+                    <div className="absolute inset-0 bg-brand-orange rounded-full shadow-[0_0_10px_#FF6A00] opacity-30" />
                     <FaMagnifyingGlass className="w-2.5 h-2.5 text-white" />
                   </div>
                   <span className="font-mono text-[6px] text-white bg-black/80 px-1 rounded border border-white/10 uppercase">
