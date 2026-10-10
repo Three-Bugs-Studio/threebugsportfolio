@@ -143,7 +143,7 @@ export default function App() {
   }, []);
 
   const [loaded, setLoaded] = useState<Record<string, boolean>>({
-    hero: false,
+    hero: true,
     about: false,
     services: false,
     work: false,
