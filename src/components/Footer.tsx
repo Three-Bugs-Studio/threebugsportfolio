@@ -220,6 +220,22 @@ export default function Footer({ lang }: FooterProps) {
                   {lang === "vi" ? "ÂM NỀN:" : "AMBIENT HUM:"} <span className={isHumOn ? "text-brand-orange font-medium" : "text-[#6E6E73]"}>{isHumOn ? (lang === "vi" ? "BẬT" : "ON") : (lang === "vi" ? "TẤT" : "OFF")}</span>
                 </span>
               </button>
+
+              <button
+                onClick={() => {
+                  if (typeof window !== "undefined" && (window as any).replayCrtBoot) {
+                    (window as any).replayCrtBoot();
+                  }
+                }}
+                className="bg-[#121212]/50 border border-brand-orange/20 text-[#8E8E93] hover:text-brand-orange hover:border-brand-orange/50 px-4 py-2.5 rounded-sm flex items-center gap-3 hover:bg-[#1a1a1a]/50 transition-all duration-300 interactive select-none cursor-pointer"
+                title={lang === "vi" ? "Chạy lại animation CRT Boot (Phím tắt: Alt+B)" : "Replay CRT Boot Sequence (Shortcut: Alt+B)"}
+                id="footer-crt-reboot-btn"
+              >
+                <span className="w-1.5 h-1.5 bg-brand-orange rounded-full animate-pulse" />
+                <span className="font-mono text-[9px] tracking-widest uppercase">
+                  CRT BOOT <span className="text-brand-orange font-medium">[REPLAY]</span>
+                </span>
+              </button>
             </div>
           </div>
 
