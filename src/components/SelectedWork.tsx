@@ -280,7 +280,7 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                               {/* Left: Copy and CTA */}
                               <div className="col-span-7 space-y-2 text-left">
                                 <div className="inline-flex items-center gap-1.5 bg-brand-orange/15 border border-brand-orange/35 px-1.5 py-0.5 rounded-[2px]">
-                                  <span className="w-1 h-1 bg-brand-orange rounded-full animate-ping" />
+                                  <span className="w-1 h-1 bg-brand-orange rounded-full" />
                                   <span className="text-[6px] tracking-widest text-brand-orange font-mono uppercase font-bold">
                                     SUKAJAN · ORDER TẠI VIỆT NAM
                                   </span>
@@ -356,7 +356,7 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                               
                               {/* Zalo chat simulator pill */}
                               <div className="bg-[#0068FF] hover:bg-[#0055D0] px-2 py-0.5 rounded-sm flex items-center gap-1 shadow-lg border border-[#0068FF]/30 cursor-pointer transition-colors">
-                                <span className="w-1 h-1 bg-white rounded-full animate-ping" />
+                                <span className="w-1 h-1 bg-white rounded-full" />
                                 <span className="font-mono text-[6px] font-black text-white tracking-widest">ZALO CHAT</span>
                               </div>
                             </div>
@@ -471,7 +471,7 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                               {/* Left: Copy and CTA */}
                               <div className="col-span-7 space-y-2 text-left">
                                 <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/30 px-1.5 py-0.5 rounded-[2px]">
-                                  <span className="w-1 h-1 bg-[#27C93F] rounded-full animate-ping" />
+                                  <span className="w-1 h-1 bg-[#27C93F] rounded-full" />
                                   <span className="text-[6px] tracking-widest text-[#27C93F] font-mono uppercase font-bold">
                                     {lang === "vi" ? "DINH DƯỠNG NẤU CHẬM · SOUS-VIDE" : "SLOW-COOKED MEAL PREP"}
                                   </span>
@@ -582,7 +582,7 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                               {/* Left: Copy and CTA */}
                               <div className="col-span-7 space-y-2 text-left">
                                 <div className="inline-flex items-center gap-1.5 bg-[#0068FF]/15 border border-[#0068FF]/30 px-1.5 py-0.5 rounded-[2px]">
-                                  <span className="w-1 h-1 bg-[#0068FF] rounded-full animate-ping" />
+                                  <span className="w-1 h-1 bg-[#0068FF] rounded-full" />
                                   <span className="text-[6px] tracking-widest text-[#60A5FA] font-mono uppercase font-bold">
                                     {lang === "vi" ? "GAMING PC & LINH KIỆN HÀ NỘI" : "HANOI GAMING PC & PARTS"}
                                   </span>
