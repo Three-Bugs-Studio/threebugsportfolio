@@ -101,7 +101,7 @@ export default function MagnifyingLens({
               className="absolute bottom-3 right-3 bg-[#0a0a0af0] border border-white/10 rounded-xs py-1 px-2.5 font-mono text-[8px] text-[#8e8e93] tracking-widest z-20 shadow-lg pointer-events-none flex items-center gap-2"
               id="magnifier-hud-bottom"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[#27C93F] animate-ping" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#27C93F] shadow-[0_0_6px_rgba(39,201,63,0.8)]" />
               <span>COORDS: X={coords.x} Y={coords.y}</span>
             </motion.div>
 
