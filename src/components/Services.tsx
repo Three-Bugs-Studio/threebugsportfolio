@@ -157,19 +157,19 @@ export default function Services({ lang }: ServicesProps) {
                         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
-                        <div className="mt-6 pt-6 border-t border-white/5 pl-0 md:pl-16 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="mt-6 pt-6 border-t border-white/5 pl-0 md:pl-16 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3.5">
                           {service.details.map((detail, dIdx) => (
                             <motion.div
                               key={detail}
                               initial={{ x: -10, opacity: 0 }}
                               animate={{ x: 0, opacity: 1 }}
                               transition={{ delay: dIdx * 0.05, duration: 0.3 }}
-                              className="flex items-center gap-3"
+                              className="flex items-start gap-2.5"
                             >
-                              <span className="font-mono text-[9px] text-brand-orange select-none">
+                              <span className="font-mono text-[9px] text-brand-orange select-none shrink-0 whitespace-nowrap mt-0.5 tracking-wider font-semibold">
                                 // 0{dIdx + 1}
                               </span>
-                              <span className="font-sans text-xs text-[#F5F5F3] font-light">
+                              <span className="font-sans text-xs text-[#F5F5F3] font-light leading-relaxed">
                                 {detail}
                               </span>
                             </motion.div>
