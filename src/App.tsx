@@ -16,6 +16,7 @@ import StaggeredSection from "./components/StaggeredSection";
 import DotNavigation from "./components/DotNavigation";
 import QuickContactWidget from "./components/QuickContactWidget";
 import { audioManager } from "./lib/audioManager";
+import CrtLoadingScreen from "./components/CrtLoadingScreen";
 import { motion, AnimatePresence } from "motion/react";
 import {
   HeroSkeleton,
@@ -120,6 +121,13 @@ export default function App() {
       );
     });
   };
+
+  const [isCrtBooting, setIsCrtBooting] = useState<boolean>(true);
+
+  const handleCrtComplete = useCallback(() => {
+    setIsCrtBooting(false);
+    setLoaded(prev => ({ ...prev, hero: true }));
+  }, []);
 
   const [loaded, setLoaded] = useState<Record<string, boolean>>({
     hero: false,
@@ -352,6 +360,14 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-[#090909] text-[#F5F5F3] font-sans selection:bg-brand-orange selection:text-[#090909]" id="root-app-container">
+      {/* Three Bugs Studio Retro CRT Boot Loading Screen */}
+      {isCrtBooting && (
+        <CrtLoadingScreen
+          lang={lang}
+          onComplete={handleCrtComplete}
+        />
+      )}
+
       {/* Global CRT Scanline Hardware Overlay */}
       <div className="crt-overlay" id="crt-scanline-overlay" />
 
