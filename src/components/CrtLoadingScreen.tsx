@@ -38,7 +38,7 @@ uniform float uPowerTransition;
 varying vec2 vUv;
 
 vec2 curveUv(vec2 uv, float curve) {
-  vec2 fuv = uv - 0.5;
+  vec2 fuv = (uv - 0.5) * 1.04;
   float d = dot(fuv, fuv);
   fuv += fuv * d * curve;
   return fuv + 0.5;
@@ -275,12 +275,16 @@ export default function CrtLoadingScreen({ onComplete, lang = "vi" }: CrtLoading
     }
 
     let startTime = performance.now();
+    let lastW = 0;
+    let lastH = 0;
 
     const render = (time: number) => {
-      const width = canvas.clientWidth || window.innerWidth;
-      const height = canvas.clientHeight || window.innerHeight;
+      const width = canvas.clientWidth || window.innerWidth || 1920;
+      const height = canvas.clientHeight || window.innerHeight || 1080;
 
-      if (canvas.width !== width || canvas.height !== height) {
+      if (lastW !== width || lastH !== height) {
+        lastW = width;
+        lastH = height;
         canvas.width = width;
         canvas.height = height;
         textCanvas.width = width;
