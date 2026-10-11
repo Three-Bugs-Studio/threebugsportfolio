@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { FaComments, FaXmark, FaPhone, FaEnvelope, FaArrowUpRightFromSquare, FaArrowRight } from "react-icons/fa6";
+import {
+  ChatIcon,
+  CloseIcon,
+  PhoneIcon,
+  MailIcon,
+  ArrowUpRightIcon,
+  ArrowRightIcon,
+} from "./ui/MajesticIcon";
 import { SiZalo } from "react-icons/si";
 
 interface QuickContactWidgetProps {
@@ -70,7 +77,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
                 }`}
                 aria-label="Đóng cửa sổ tư vấn nhanh"
               >
-                <FaXmark className="w-4 h-4" />
+                <CloseIcon size={16} className="w-4 h-4" />
               </button>
             </div>
 
@@ -115,7 +122,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
                     }`}
                     title="Gọi Hoàng Đỗ: 0392.996.307"
                   >
-                    <FaPhone className="w-3 h-3 text-brand-orange shrink-0" />
+                    <PhoneIcon size={12} className="w-3 h-3 text-brand-orange shrink-0" />
                     <span>0392.996.307</span>
                   </a>
                 </div>
@@ -160,7 +167,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
                     }`}
                     title="Gọi Minh Đức: 0867.474.204"
                   >
-                    <FaPhone className="w-3 h-3 text-brand-orange shrink-0" />
+                    <PhoneIcon size={12} className="w-3 h-3 text-brand-orange shrink-0" />
                     <span>0867.474.204</span>
                   </a>
                 </div>
@@ -177,7 +184,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
               >
                 <div className="flex items-center gap-2.5">
                   <div className="w-6 h-6 rounded-full bg-white/10 text-white flex items-center justify-center text-xs shrink-0">
-                    <FaEnvelope className="w-3 h-3 text-slate-400" />
+                    <MailIcon size={12} className="w-3 h-3 text-slate-400" />
                   </div>
                   <div>
                     <span className="font-mono text-[10px] text-[#8E8E93] truncate max-w-[170px] block">
@@ -185,7 +192,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
                     </span>
                   </div>
                 </div>
-                <FaArrowUpRightFromSquare className="w-3 h-3 text-slate-400 opacity-70 group-hover:opacity-100 transition-opacity" />
+                <ArrowUpRightIcon size={12} className="w-3 h-3 text-slate-400 opacity-70 group-hover:opacity-100 transition-opacity" />
               </a>
             </div>
 
@@ -195,7 +202,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
               className="mt-3.5 w-full bg-brand-orange hover:bg-brand-orange/90 text-[#090909] font-mono text-[10px] font-bold uppercase tracking-wider py-2.5 px-4 rounded-sm flex items-center justify-center gap-2 transition-transform active:scale-95 cursor-pointer shadow-lg shadow-brand-orange/10"
             >
               <span>{lang === "vi" ? "Điền Form Yêu Cầu Chi Tiết" : "Fill Consultation Form"}</span>
-              <FaArrowRight className="w-3 h-3" />
+              <ArrowRightIcon size={12} className="w-3 h-3" />
             </button>
           </motion.div>
         )}
@@ -212,12 +219,12 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
         <span className="h-2 w-2 rounded-full bg-white shadow-[0_0_6px_rgba(255,255,255,0.8)] shrink-0" />
         {isOpen ? (
           <>
-            <FaXmark className="w-4 h-4" />
+            <CloseIcon size={16} className="w-4 h-4" />
             <span>{lang === "vi" ? "ĐÓNG" : "CLOSE"}</span>
           </>
         ) : (
           <>
-            <FaComments className="w-4 h-4" />
+            <ChatIcon size={16} className="w-4 h-4" />
             <span>{lang === "vi" ? "TƯ VẤN NHANH" : "QUICK CHAT"}</span>
           </>
         )}
