@@ -1,5 +1,4 @@
-import React from "react";
-import { FaSun, FaMoon } from "react-icons/fa6";
+import { SunIcon, MoonIcon } from "./ui/MajesticIcon";
 
 interface ThemeSwitchProps {
   theme: "dark" | "light";
@@ -34,12 +33,12 @@ export default function ThemeSwitch({ theme, onThemeToggle, lang = "vi" }: Theme
       >
         {isLight ? (
           <>
-            <FaMoon className="w-3.5 h-3.5 text-[#006989] group-hover:text-brand-orange transition-colors shrink-0" />
+            <MoonIcon className="w-3.5 h-3.5 text-[#006989] group-hover:text-brand-orange transition-colors shrink-0" size={14} />
             <span className="hidden sm:inline tracking-wider font-semibold text-slate-800">LIGHT</span>
           </>
         ) : (
           <>
-            <FaSun className="w-3.5 h-3.5 text-brand-orange group-hover:rotate-45 transition-transform shrink-0" />
+            <SunIcon className="w-3.5 h-3.5 text-brand-orange group-hover:rotate-45 transition-transform shrink-0" size={14} />
             <span className="hidden sm:inline tracking-wider font-semibold text-zinc-300">DARK</span>
           </>
         )}
