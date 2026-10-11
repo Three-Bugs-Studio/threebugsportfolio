@@ -1,24 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
-  FaXmark, 
-  FaChevronLeft, 
-  FaChevronRight, 
-  FaLaptop, 
-  FaChartLine, 
-  FaBagShopping, 
-  FaCheck, 
-  FaCopy, 
-  FaMagnifyingGlass, 
-  FaMicrochip, 
-  FaDatabase, 
-  FaLock, 
-  FaArrowTrendUp, 
-  FaShieldHalved, 
-  FaArrowRight,
-  FaWandMagicSparkles,
-  FaRotate
-} from "react-icons/fa6";
+  CloseIcon, 
+  ChevronLeftIcon, 
+  ChevronRightIcon, 
+  LaptopIcon, 
+  AnalyticsIcon, 
+  SearchIcon, 
+  SparklesIcon 
+} from "./ui/MajesticIcon";
 import randomPhiTruongStore from "@/assets/randomphitruongstore.png";
 import storepage from "@/assets/storepage.webp";
 import aboutpage from "@/assets/aboutpage.webp";
@@ -397,7 +387,7 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
             <div className="w-full h-full bg-[#0a0a0a] text-white flex flex-col justify-between p-6 relative overflow-hidden font-sans select-none">
               <div className="flex justify-between items-center border-b border-white/5 pb-2.5">
                 <div className="flex items-center gap-1.5">
-                  <FaArrowTrendUp className="w-3.5 h-3.5 text-brand-orange" />
+                  <AnalyticsIcon size={14} className="w-3.5 h-3.5 text-brand-orange" />
                   <span className="font-mono text-[9px] tracking-widest text-[#F5F5F3]">KALLISTO FINANCIAL</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -563,7 +553,7 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
               <div className="my-auto space-y-3.5 text-left max-w-sm mx-auto">
                 <div className="flex gap-2">
                   <div className="relative flex-grow">
-                    <FaMagnifyingGlass className="absolute left-2.5 top-2 w-3.5 h-3.5 text-[#555]" />
+                    <SearchIcon size={14} className="absolute left-2.5 top-2 w-3.5 h-3.5 text-[#555]" />
                     <input 
                       type="text" 
                       placeholder={lang === "vi" ? "Nhập từ khóa truy vấn ngữ nghĩa..." : "Enter semantic query request..."}
@@ -651,7 +641,7 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
                 <div className="absolute flex flex-col items-center gap-1">
                   <div className="w-5 h-5 bg-brand-orange rounded-full border-2 border-white flex items-center justify-center shadow-lg relative">
                     <div className="absolute inset-0 bg-brand-orange rounded-full shadow-[0_0_10px_#FF6A00] opacity-30" />
-                    <FaMagnifyingGlass className="w-2.5 h-2.5 text-white" />
+                    <SearchIcon size={10} className="w-2.5 h-2.5 text-white" />
                   </div>
                   <span className="font-mono text-[6px] text-white bg-black/80 px-1 rounded border border-white/10 uppercase">
                     QUERY_VECTOR
@@ -690,7 +680,7 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
 
                 {/* Floating indicator */}
                 <div className="absolute bottom-2 left-2 flex items-center gap-1.5 bg-black/80 border border-white/10 px-2 py-0.5 rounded font-mono text-[6px] text-brand-orange">
-                  <FaWandMagicSparkles className="w-2.5 h-2.5 animate-spin" />
+                  <SparklesIcon size={10} className="w-2.5 h-2.5 animate-spin" />
                   <span>COSINE SIMILARITY FILTER &gt;= 0.85</span>
                 </div>
               </div>
@@ -734,7 +724,7 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
           {/* Header Bar */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-white/5 bg-[#141414]">
             <div className="flex items-center gap-2">
-              <FaLaptop className="w-4 h-4 text-brand-orange" />
+              <LaptopIcon size={16} className="w-4 h-4 text-brand-orange" />
               <span className="font-sans font-medium text-[#F5F5F3] text-sm md:text-base">
                 {projectName} — {lang === "vi" ? "Giao diện trải nghiệm" : "Interactive Interface"}
               </span>
@@ -747,7 +737,7 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
               id="lightbox-close-btn"
               aria-label={lang === "vi" ? "Đóng hộp thoại" : "Close dialog"}
             >
-              <FaXmark className="w-5 h-5" />
+              <CloseIcon size={20} className="w-5 h-5" />
             </button>
           </div>
 
@@ -816,7 +806,7 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
 
                 {/* Live interaction reminder banner */}
                 <div className="p-3 bg-[#0a0a0a]/50 rounded border border-white/5 flex items-start gap-2.5">
-                  <FaWandMagicSparkles className="w-4 h-4 text-brand-orange shrink-0 mt-0.5 animate-pulse" />
+                  <SparklesIcon size={16} className="w-4 h-4 text-brand-orange shrink-0 mt-0.5 animate-pulse" />
                   <p className="font-sans text-[10px] md:text-[11px] text-[#8E8E93] leading-relaxed">
                     {lang === "vi"
                       ? "Giao diện mô phỏng phía bên trái hoàn toàn sống động. Bạn có thể bấm để trải nghiệm thử cách website hoạt động thực tế!"
@@ -837,7 +827,7 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
                       aria-label={lang === "vi" ? "Hình trước" : "Previous Slide"}
                       id="lightbox-prev-btn"
                     >
-                      <FaChevronLeft className="w-5 h-5" />
+                      <ChevronLeftIcon size={20} className="w-5 h-5" />
                     </button>
                     <button
                       onClick={nextSlide}
@@ -846,7 +836,7 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
                       aria-label={lang === "vi" ? "Hình tiếp theo" : "Next Slide"}
                       id="lightbox-next-btn"
                     >
-                      <FaChevronRight className="w-5 h-5" />
+                      <ChevronRightIcon size={20} className="w-5 h-5" />
                     </button>
                   </div>
 
