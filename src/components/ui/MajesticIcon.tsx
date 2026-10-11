@@ -1261,6 +1261,25 @@ export const CheckIcon = ({ size = 24, className = "", ...props }: NamedIconProp
     <path d="M5 13l4 4L19 7" />
   </svg>
 );
+export const CheckDoubleIcon = ({ size = 24, className = "", ...props }: NamedIconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    aria-hidden="true"
+    {...props}
+  >
+    <path d="M2 13l4.5 4.5L16 7" />
+    <path d="M8 13l3.5 3.5L21 7" />
+  </svg>
+);
 export const ClockIcon = createNamedIcon("clock");
 export const CalendarIcon = createNamedIcon("calendar");
 export const MapMarkerIcon = createNamedIcon("map-marker");
@@ -1282,5 +1301,9 @@ export const HeartIcon = createNamedIcon("heart");
 export const LaptopIcon = createNamedIcon("laptop");
 export const MonitorIcon = createNamedIcon("monitor");
 export const SmartphoneIcon = createNamedIcon("smartphone-apps");
+export const DatabaseIcon = createNamedIcon("data");
+export const ServerIcon = createNamedIcon("server");
+export const SettingsIcon = createNamedIcon("settings-cog");
+export const EditPenIcon = createNamedIcon("edit-pen-2");
 
 export default MajesticIcon;
