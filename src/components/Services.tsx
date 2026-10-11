@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SERVICES_DATA, TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
-import { FaChevronRight } from "react-icons/fa6";
+import { ChevronRightIcon } from "./ui/MajesticIcon";
 
 // Import custom animated GIF icons
 import logoDesignGif from "@/assets/animation-icon/logo-design.gif";
@@ -142,7 +142,7 @@ export default function Services({ lang }: ServicesProps) {
                     </div>
 
                     {/* Expand Chevron Icon */}
-                    <FaChevronRight className={`w-5 h-5 text-[#8E8E93] group-hover:text-[#F5F5F3] transition-transform duration-500 mt-1 ${
+                    <ChevronRightIcon size={20} className={`w-5 h-5 text-[#8E8E93] group-hover:text-[#F5F5F3] transition-transform duration-500 mt-1 ${
                       isActive ? "rotate-90 text-brand-orange" : ""
                     }`} />
                   </div>
