@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { audioManager } from "../lib/audioManager";
-import { FaChevronDown } from "react-icons/fa6";
+import { ChevronDownIcon } from "./ui/MajesticIcon";
 
 // Recursive helper to extract all pure text contents from React nodes
 const extractText = (node: React.ReactNode): string => {
@@ -285,7 +285,7 @@ export default function StaggeredSection({
             animate={{ y: [0, 4, 0] }}
             transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
           >
-            <FaChevronDown className="w-3.5 h-3.5 text-brand-orange drop-shadow-[0_0_4px_rgba(255,106,0,0.4)]" />
+            <ChevronDownIcon size={14} className="w-3.5 h-3.5 text-brand-orange drop-shadow-[0_0_4px_rgba(255,106,0,0.4)]" />
           </motion.div>
         </motion.div>
       </div>
