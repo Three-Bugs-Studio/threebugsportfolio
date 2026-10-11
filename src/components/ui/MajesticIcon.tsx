@@ -1220,6 +1220,7 @@ export const CpuIcon = createNamedIcon("cpu");
 export const GlobeIcon = createNamedIcon("globe-earth");
 export const GlobeGridIcon = createNamedIcon("globe-grid");
 export const ShieldIcon = createNamedIcon("shield");
+export const AlertCircleIcon = createNamedIcon("alert-circle");
 export const PhoneIcon = createNamedIcon("phone");
 export const MailIcon = createNamedIcon("mail");
 export const SendIcon = createNamedIcon("send");
