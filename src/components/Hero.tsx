@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { FaArrowUpRightFromSquare, FaArrowDown } from "react-icons/fa6";
+import { ArrowUpRightIcon, ArrowDownIcon } from "./ui/MajesticIcon";
 import { TRANSLATIONS } from "../data";
 import { FlowWaveBackground } from "./ui/FlowWaveBackground";
 
@@ -158,7 +158,7 @@ export default function Hero({ lang }: HeroProps) {
           >
             <span>{t.heroExplore}</span>
             <span className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-brand-orange inline-flex items-center justify-center">
-              <FaArrowUpRightFromSquare />
+              <ArrowUpRightIcon size={14} />
             </span>
           </button>
           
@@ -202,7 +202,7 @@ export default function Hero({ lang }: HeroProps) {
             transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
           >
             <span className="dark:text-[#8E8E93] text-slate-700 group-hover:text-brand-orange transition-colors text-xs inline-flex items-center justify-center">
-              <FaArrowDown />
+              <ArrowDownIcon size={14} />
             </span>
           </motion.div>
         </motion.div>
