@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Logo from "./Logo";
 import ThemeSwitch from "./ThemeSwitch";
 import { motion, AnimatePresence } from "motion/react";
-import { FaBars, FaXmark, FaArrowUpRightFromSquare, FaWandMagicSparkles, FaVolumeHigh, FaVolumeXmark } from "react-icons/fa6";
+import { MenuIcon, CloseIcon, ArrowUpRightIcon, SparklesIcon, SpeakerIcon } from "./ui/MajesticIcon";
 import { TRANSLATIONS } from "../data";
 import { audioManager } from "../lib/audioManager";
 
@@ -264,9 +264,9 @@ export default function CardNav({
               id="header-sound-toggle-btn"
             >
               {isSfxOn ? (
-                <FaVolumeHigh className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-orange" />
+                <SpeakerIcon className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-orange" size={16} />
               ) : (
-                <FaVolumeXmark className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#8E8E93]" />
+                <SpeakerIcon className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#8E8E93] opacity-50" size={16} />
               )}
             </button>
 
@@ -282,7 +282,7 @@ export default function CardNav({
             >
               <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full" style={{ backgroundColor: menuColor }} />
               <span className={isLight ? "text-[#0F172A] font-bold" : "text-white"}>{isOpen ? (lang === "vi" ? "ĐÓNG" : "CLOSE") : "MENU"}</span>
-              {isOpen ? <FaXmark className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-orange" /> : <FaBars className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-orange" />}
+              {isOpen ? <CloseIcon className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-orange" size={16} /> : <MenuIcon className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-orange" size={16} />}
             </button>
 
             {/* Direct Call to Action Button */}
@@ -294,7 +294,7 @@ export default function CardNav({
               id="card-nav-cta-btn"
             >
               <span>{t.navStartProject}</span>
-              <FaArrowUpRightFromSquare className="w-3.5 h-3.5" />
+              <ArrowUpRightIcon className="w-3.5 h-3.5" size={14} />
             </a>
 
           </div>
@@ -318,7 +318,7 @@ export default function CardNav({
               {/* Header Label */}
               <div className="flex items-center justify-between mb-4 md:mb-6 pb-2.5 border-b border-white/10">
                 <div className="flex items-center gap-2 font-mono text-[11px] md:text-xs uppercase tracking-widest text-[#8E8E93]">
-                  <FaWandMagicSparkles className="w-3.5 h-3.5 text-brand-orange" />
+                  <SparklesIcon className="w-3.5 h-3.5 text-brand-orange" size={14} />
                   <span>{lang === "vi" ? "DANH MỤC NAVIGATION DỰ ÁN" : "STUDIO NAVIGATION CARDS"}</span>
                 </div>
                 <span className="font-mono text-[9px] md:text-[10px] text-brand-orange hidden sm:inline">
@@ -365,7 +365,7 @@ export default function CardNav({
                           className="font-mono text-[11px] md:text-xs uppercase tracking-wider opacity-85 hover:opacity-100 hover:translate-x-1.5 transition-all flex items-center justify-between py-1 group/link border-b border-white/5 last:border-none"
                         >
                           <span>{link.label}</span>
-                          <FaArrowUpRightFromSquare className="w-3 h-3 opacity-60 group-hover/link:opacity-100 transition-opacity" />
+                          <ArrowUpRightIcon className="w-3 h-3 opacity-60 group-hover/link:opacity-100 transition-opacity" size={12} />
                         </a>
                       ))}
                     </div>
