@@ -1261,6 +1261,7 @@ export const CheckIcon = ({ size = 24, className = "", ...props }: NamedIconProp
 );
 export const ClockIcon = createNamedIcon("clock");
 export const CalendarIcon = createNamedIcon("calendar");
+export const MapMarkerIcon = createNamedIcon("map-marker");
 export const UserIcon = createNamedIcon("user");
 export const UsersIcon = createNamedIcon("users");
 export const SpeakerIcon = createNamedIcon("speaker");
