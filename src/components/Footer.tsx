@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import Logo from "./Logo";
 import { TRANSLATIONS } from "../data";
-import { FaArrowUp, FaArrowUpRightFromSquare, FaXmark } from "react-icons/fa6";
+import { ArrowUpIcon, ArrowUpRightIcon, CloseIcon } from "./ui/MajesticIcon";
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "motion/react";
 import { audioManager } from "../lib/audioManager";
 
@@ -90,7 +90,7 @@ function MagneticSocialLink({ href, label, target, rel }: MagneticSocialLinkProp
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
           className="inline-flex"
         >
-          <FaArrowUpRightFromSquare className="w-3 h-3 text-brand-orange" />
+          <ArrowUpRightIcon size={12} className="w-3 h-3 text-brand-orange" />
         </motion.span>
       </motion.a>
     </div>
@@ -411,7 +411,7 @@ export default function Footer({ lang }: FooterProps) {
               id="scroll-to-top-btn"
             >
               <span>{t.footerBackToTop}</span>
-              <FaArrowUp className="w-3 h-3 group-hover:-translate-y-0.5 transition-transform text-brand-orange" />
+              <ArrowUpIcon size={12} className="w-3 h-3 group-hover:-translate-y-0.5 transition-transform text-brand-orange" />
             </button>
           </div>
         </div>
@@ -445,7 +445,7 @@ export default function Footer({ lang }: FooterProps) {
                 className="absolute top-4 right-4 text-[#8E8E93] hover:text-white transition-colors p-1 cursor-pointer"
                 aria-label="Close modal"
               >
-                <FaXmark className="w-5 h-5" />
+                <CloseIcon size={20} className="w-5 h-5" />
               </button>
 
               {/* Title */}
