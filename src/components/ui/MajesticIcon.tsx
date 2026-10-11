@@ -1273,6 +1273,7 @@ export const CompassIcon = createNamedIcon("compass-2");
 export const SparklesIcon = createNamedIcon("shooting-star");
 export const LightningIcon = createNamedIcon("lightning-bolt");
 export const BoxIcon = createNamedIcon("box");
+export const ImageIcon = createNamedIcon("image");
 export const ReloadIcon = createNamedIcon("reload");
 export const EyeIcon = createNamedIcon("eye");
 export const LockIcon = createNamedIcon("lock");
