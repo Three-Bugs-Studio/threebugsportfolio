@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { FAQ_DATA, TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
-import { FaPlus, FaMinus, FaMagnifyingGlass, FaMessage, FaArrowRight } from "react-icons/fa6";
+import {
+  PlusIcon,
+  MinusIcon,
+  SearchIcon,
+  ChatIcon,
+  ArrowRightIcon,
+} from "./ui/MajesticIcon";
 import faqGif from "@/assets/animation-icon/faq.gif";
 
 interface FAQProps {
@@ -69,7 +75,7 @@ export default function FAQ({ lang }: FAQProps) {
               placeholder={lang === "vi" ? "Tìm câu hỏi (vd: bảo hành, mã nguồn, chi phí...)" : "Search FAQ (e.g., warranty, source code, timeline...)"}
               className="w-full bg-[#111113] border border-white/15 focus:border-brand-orange text-xs md:text-sm text-[#F5F5F3] placeholder-[#8E8E93] px-10 py-3 rounded-full outline-none transition-colors shadow-lg"
             />
-            <FaMagnifyingGlass className="w-4 h-4 text-[#8E8E93] absolute left-4 top-1/2 -translate-y-1/2" />
+            <SearchIcon size={16} className="w-4 h-4 text-[#8E8E93] absolute left-4 top-1/2 -translate-y-1/2" />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
@@ -132,9 +138,9 @@ export default function FAQ({ lang }: FAQProps) {
                       }`}
                     >
                       {isOpen ? (
-                        <FaMinus className="w-3.5 h-3.5" />
+                        <MinusIcon size={14} className="w-3.5 h-3.5" />
                       ) : (
-                        <FaPlus className="w-3.5 h-3.5" />
+                        <PlusIcon size={14} className="w-3.5 h-3.5" />
                       )}
                     </div>
                   </button>
@@ -164,7 +170,7 @@ export default function FAQ({ lang }: FAQProps) {
         <div className="mt-14 bg-[#111113] border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left shadow-xl">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center text-brand-orange shrink-0">
-              <FaMessage className="w-5 h-5" />
+              <ChatIcon size={20} className="w-5 h-5" />
             </div>
             <div>
               <h4 className="font-display font-bold text-base md:text-lg text-[#F5F5F3]">
@@ -181,7 +187,7 @@ export default function FAQ({ lang }: FAQProps) {
             className="btn-stacked font-mono text-xs uppercase tracking-widest px-5 py-3 bg-brand-orange text-[#090909] font-bold rounded-sm inline-flex items-center gap-2 group shrink-0 interactive hover:bg-white hover:text-black transition-colors"
           >
             <span>{lang === "vi" ? "TƯ VẤN TRỰC TIẾP" : "ASK OUR ENGINEERS"}</span>
-            <FaArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRightIcon size={14} className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
