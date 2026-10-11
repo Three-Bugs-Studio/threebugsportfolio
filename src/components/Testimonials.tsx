@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TESTIMONIALS_DATA, TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+import { ChevronLeftIcon, ChevronRightIcon } from "./ui/MajesticIcon";
 import customerReviewGif from "@/assets/animation-icon/customer-review.gif";
 
 interface TestimonialsProps {
@@ -76,7 +76,7 @@ export default function Testimonials({ lang }: TestimonialsProps) {
             aria-label="Previous quote"
             id="testimonial-prev-btn"
           >
-            <FaChevronLeft className="w-3.5 h-3.5" />
+            <ChevronLeftIcon size={14} className="w-3.5 h-3.5" />
           </button>
 
           {/* Dots Indicator */}
@@ -100,7 +100,7 @@ export default function Testimonials({ lang }: TestimonialsProps) {
             aria-label="Next quote"
             id="testimonial-next-btn"
           >
-            <FaChevronRight className="w-3.5 h-3.5" />
+            <ChevronRightIcon size={14} className="w-3.5 h-3.5" />
           </button>
         </div>
 
