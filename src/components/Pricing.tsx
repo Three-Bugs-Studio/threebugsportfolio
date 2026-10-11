@@ -1,7 +1,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import { PRICING_DATA } from "../data";
 import { motion, useInView } from "motion/react";
-import { FaCheck, FaArrowRight, FaClock, FaShieldHalved, FaLayerGroup, FaWandMagicSparkles, FaUserTie, FaPhone } from "react-icons/fa6";
+import {
+  CheckIcon,
+  ArrowRightIcon,
+  ClockIcon,
+  ShieldIcon,
+  BoxIcon,
+  SparklesIcon,
+  UserIcon,
+  PhoneIcon,
+} from "./ui/MajesticIcon";
 import { SiZalo } from "react-icons/si";
 import { PricingPlan } from "../types";
 import priceGif from "@/assets/animation-icon/price.gif";
@@ -72,12 +81,12 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
   const featureSections = [
     {
       title: lang === "vi" ? "Lộ Trình 3 Phase Triển Khai" : "3-Phase Execution Roadmap",
-      icon: <FaLayerGroup className="w-4 h-4 text-brand-orange" />,
+      icon: <BoxIcon size={16} className="w-4 h-4 text-brand-orange" />,
       items: plan.phases.map((ph) => `${ph.number}: ${ph.title} (${ph.duration}) - ${ph.description}`),
     },
     {
       title: lang === "vi" ? "Quyền Lợi & Bàn Giao Sản Phẩm" : "Benefits & Deliverables",
-      icon: <FaWandMagicSparkles className="w-4 h-4 text-brand-orange" />,
+      icon: <SparklesIcon size={16} className="w-4 h-4 text-brand-orange" />,
       items: plan.benefits,
     },
   ];
@@ -108,7 +117,7 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                   {plan.badge}
                 </span>
                 <div className="flex items-center gap-1.5 font-mono text-[10px] text-[#8E8E93]">
-                  <FaClock className="w-3.5 h-3.5 text-brand-orange" />
+                  <ClockIcon size={14} className="w-3.5 h-3.5 text-brand-orange" />
                   <span>{plan.timeline}</span>
                 </div>
               </div>
@@ -158,7 +167,7 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                 className="btn-stacked w-full py-4 px-6 rounded-sm font-mono text-xs tracking-widest uppercase font-bold transition-all duration-300 flex items-center justify-center gap-2 group/btn interactive bg-brand-orange text-[#090909] hover:bg-white hover:text-black shadow-lg"
               >
                 <span>{lang === "vi" ? "NHẬN TƯ VẤN GÓI NÀY" : "SELECT THIS PACKAGE"}</span>
-                <FaArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                <ArrowRightIcon size={16} className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
               </button>
             </motion.div>
           </motion.div>
@@ -186,7 +195,7 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                         variants={listItemVariants}
                       >
                         <div className="mt-0.5 mr-2.5 p-0.5 rounded bg-brand-orange/15 text-brand-orange border border-brand-orange/30 shrink-0">
-                          <FaCheck className="h-3 w-3" />
+                          <CheckIcon size={12} className="h-3 w-3" />
                         </div>
                         <span>{item}</span>
                       </motion.li>
@@ -278,7 +287,7 @@ export default function Pricing({ lang }: PricingProps) {
           
           <div className="flex items-start md:items-center gap-4 max-w-xl">
             <div className="w-12 h-12 rounded-full bg-brand-orange/15 text-brand-orange border border-brand-orange/40 flex items-center justify-center shrink-0 shadow-[0_0_18px_rgba(255,106,0,0.25)]">
-              <FaUserTie className="w-5 h-5" />
+              <UserIcon size={20} className="w-5 h-5" />
             </div>
             <div>
               <div className="flex items-center gap-2 mb-1.5">
@@ -319,7 +328,7 @@ export default function Pricing({ lang }: PricingProps) {
                   className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-sm bg-[#18181b] hover:bg-[#222226] border border-white/10 hover:border-brand-orange/40 font-mono text-[11px] text-white hover:text-brand-orange transition-all shadow-sm active:scale-95"
                   title="Gọi Hoàng Đỗ: 0392.996.307"
                 >
-                  <FaPhone className="w-3 h-3 text-brand-orange shrink-0" />
+                  <PhoneIcon size={12} className="w-3 h-3 text-brand-orange shrink-0" />
                   <span className="font-bold tracking-tight">0392.996.307</span>
                 </a>
                 <a
@@ -356,7 +365,7 @@ export default function Pricing({ lang }: PricingProps) {
                   className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-sm bg-[#18181b] hover:bg-[#222226] border border-white/10 hover:border-brand-orange/40 font-mono text-[11px] text-white hover:text-brand-orange transition-all shadow-sm active:scale-95"
                   title="Gọi Minh Đức: 0867.474.204"
                 >
-                  <FaPhone className="w-3 h-3 text-brand-orange shrink-0" />
+                  <PhoneIcon size={12} className="w-3 h-3 text-brand-orange shrink-0" />
                   <span className="font-bold tracking-tight">0867.474.204</span>
                 </a>
                 <a
@@ -391,7 +400,7 @@ export default function Pricing({ lang }: PricingProps) {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 pb-6 border-b border-white/10">
             <div>
               <div className="flex items-center gap-2 text-brand-orange font-mono text-xs uppercase tracking-widest mb-1 font-bold">
-                <FaShieldHalved className="w-4 h-4" />
+                <ShieldIcon size={16} className="w-4 h-4" />
                 <span>{lang === "vi" ? "LỘ TRÌNH THANH TOÁN THEO TIẾN ĐỘ 3 PHASE" : "3-PHASE MILESTONE PAYMENT SAFETY"}</span>
               </div>
               <h3 className="font-display text-2xl font-bold text-white">
