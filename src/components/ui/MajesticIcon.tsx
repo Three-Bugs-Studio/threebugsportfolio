@@ -1222,6 +1222,7 @@ export const GlobeGridIcon = createNamedIcon("globe-grid");
 export const AnalyticsIcon = createNamedIcon("analytics");
 export const ShieldIcon = createNamedIcon("shield");
 export const AlertCircleIcon = createNamedIcon("alert-circle");
+export const QuestionCircleIcon = createNamedIcon("question-circle");
 export const PhoneIcon = createNamedIcon("phone");
 export const MailIcon = createNamedIcon("mail");
 export const SendIcon = createNamedIcon("send");
