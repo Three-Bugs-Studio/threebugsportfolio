@@ -1239,7 +1239,25 @@ export const ArrowLeftIcon = createNamedIcon("arrow-left");
 export const ArrowUpIcon = createNamedIcon("arrow-up");
 export const ArrowDownIcon = createNamedIcon("arrow-down");
 export const ArrowUpRightIcon = createNamedIcon("open");
-export const CheckIcon = createNamedIcon("clipboard-check");
+export const ClipboardCheckIcon = createNamedIcon("clipboard-check");
+export const CheckIcon = ({ size = 24, className = "", ...props }: NamedIconProps) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    aria-hidden="true"
+    {...props}
+  >
+    <path d="M5 13l4 4L19 7" />
+  </svg>
+);
 export const ClockIcon = createNamedIcon("clock");
 export const CalendarIcon = createNamedIcon("calendar");
 export const UserIcon = createNamedIcon("user");
