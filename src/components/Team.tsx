@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { TEAM_DATA, TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
 import { 
-  FaGithub, 
-  FaArrowUpRightFromSquare, 
-  FaXmark,
-  FaUserGroup,
-  FaCheckDouble
-} from "react-icons/fa6";
+  UsersIcon, 
+  CheckDoubleIcon, 
+  ArrowUpRightIcon, 
+  CloseIcon 
+} from "./ui/MajesticIcon";
+import { SiGithub } from "react-icons/si";
 import { TeamMember } from "../types";
 import DuongPhuDongImg from "@/assets/profile/DuongPhuDongProfile.webp";
 import HuynhQuangDongImg from "@/assets/profile/HuynhQuangDongProfile.webp";
@@ -75,7 +75,7 @@ export default function Team({ lang }: TeamProps) {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange font-semibold flex items-center gap-2">
-                <FaUserGroup className="w-3.5 h-3.5" />
+                <UsersIcon size={14} className="w-3.5 h-3.5" />
                 {t.teamLabel}
               </span>
               <span className="h-[1px] w-12 bg-brand-orange/40" />
@@ -95,15 +95,15 @@ export default function Team({ lang }: TeamProps) {
         {/* Studio Technical Guarantee Badges */}
         <div className="flex flex-wrap items-center gap-3 mb-10 pb-6 border-b border-white/10">
           <div className="flex items-center gap-2 bg-[#111113] border border-white/10 px-3.5 py-1.5 rounded-full font-mono text-[11px] text-[#F5F5F3]">
-            <FaCheckDouble className="w-3 h-3 text-brand-orange" />
+            <CheckDoubleIcon size={12} className="w-3 h-3 text-brand-orange" />
             <span>100% IN-HOUSE ENGINEERS</span>
           </div>
           <div className="flex items-center gap-2 bg-[#111113] border border-white/10 px-3.5 py-1.5 rounded-full font-mono text-[11px] text-[#F5F5F3]">
-            <FaCheckDouble className="w-3 h-3 text-emerald-400" />
+            <CheckDoubleIcon size={12} className="w-3 h-3 text-emerald-400" />
             <span>DIRECT TECHNICAL PARTNERSHIP</span>
           </div>
           <div className="flex items-center gap-2 bg-[#111113] border border-white/10 px-3.5 py-1.5 rounded-full font-mono text-[11px] text-[#F5F5F3]">
-            <FaCheckDouble className="w-3 h-3 text-cyan-400" />
+            <CheckDoubleIcon size={12} className="w-3 h-3 text-cyan-400" />
             <span>ZERO OUTSOURCING RISK</span>
           </div>
         </div>
@@ -203,7 +203,7 @@ export default function Team({ lang }: TeamProps) {
             className="btn-stacked font-mono text-xs uppercase tracking-widest px-6 py-3.5 bg-brand-orange text-[#090909] font-bold rounded-sm inline-flex items-center gap-2 group shrink-0 interactive hover:bg-white hover:text-black transition-colors"
           >
             <span>{lang === "vi" ? "NHẬN TƯ VẤN TRỰC TIẾP" : "DIRECT CONSULTATION"}</span>
-            <FaArrowUpRightFromSquare className="w-3.5 h-3.5" />
+            <ArrowUpRightIcon size={14} className="w-3.5 h-3.5" />
           </button>
         </div>
 
@@ -233,7 +233,7 @@ export default function Team({ lang }: TeamProps) {
                   className="absolute top-4 right-4 text-[#8E8E93] hover:text-white transition-colors p-1"
                   aria-label="Close detail modal"
                 >
-                  <FaXmark className="w-5 h-5" />
+                  <CloseIcon size={20} className="w-5 h-5" />
                 </button>
 
                 <div className="flex items-center gap-4 mb-6">
@@ -290,7 +290,7 @@ export default function Team({ lang }: TeamProps) {
                       rel="noreferrer"
                       className="btn-stacked font-mono text-xs bg-brand-orange text-[#090909] hover:bg-white hover:text-black px-4 py-2 rounded-sm font-bold flex items-center gap-2 transition-colors"
                     >
-                      <FaGithub className="w-4 h-4" />
+                      <SiGithub className="w-4 h-4" />
                       <span>GITHUB PROFILE</span>
                     </a>
                   </div>
