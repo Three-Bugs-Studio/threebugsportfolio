@@ -10,7 +10,7 @@ import {
   ImageIcon
 } from "./ui/MajesticIcon";
 import Lightbox from "./Lightbox";
-import randomPhiTruongStore from "@/assets/randomphitruongstore.png";
+import randomPhiTruongStore from "@/assets/randomphitruongstore.webp";
 import fortifyHomepage from "@/assets/fortifykitchen/fortify_homepage.webp";
 import qmdHomepage from "@/assets/qmdtech/qmd_tech_homepage.webp";
 import BlurUpImage from "./BlurUpImage";
