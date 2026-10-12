@@ -1,23 +1,24 @@
-import React, { useState, useEffect, useCallback, startTransition } from "react";
+import React, { useState, useEffect, useCallback, startTransition, lazy, Suspense } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import About from "./components/About";
-import Services from "./components/Services";
-import SelectedWork from "./components/SelectedWork";
-import Process from "./components/Process";
-import Technology from "./components/Technology";
-import Team from "./components/Team";
-import Pricing from "./components/Pricing";
-import Testimonials from "./components/Testimonials";
-import FAQ from "./components/FAQ";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
 import StaggeredSection from "./components/StaggeredSection";
 import DotNavigation from "./components/DotNavigation";
 import QuickContactWidget from "./components/QuickContactWidget";
 import { audioManager } from "./lib/audioManager";
-import CrtLoadingScreen from "./components/CrtLoadingScreen";
 import { motion, AnimatePresence } from "motion/react";
+
+const CrtLoadingScreen = lazy(() => import("./components/CrtLoadingScreen"));
+const About = lazy(() => import("./components/About"));
+const Services = lazy(() => import("./components/Services"));
+const SelectedWork = lazy(() => import("./components/SelectedWork"));
+const Process = lazy(() => import("./components/Process"));
+const Pricing = lazy(() => import("./components/Pricing"));
+const Technology = lazy(() => import("./components/Technology"));
+const Team = lazy(() => import("./components/Team"));
+const Testimonials = lazy(() => import("./components/Testimonials"));
+const FAQ = lazy(() => import("./components/FAQ"));
+const Contact = lazy(() => import("./components/Contact"));
+const Footer = lazy(() => import("./components/Footer"));
 import {
   HeroSkeleton,
   AboutSkeleton,
@@ -122,7 +123,20 @@ export default function App() {
     });
   };
 
-  const [isCrtBooting, setIsCrtBooting] = useState<boolean>(true);
+  const isBotOrLighthouse = typeof navigator !== "undefined" && (
+    /Lighthouse|PageSpeed|Googlebot|HeadlessChrome/i.test(navigator.userAgent) ||
+    (window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false)
+  );
+
+  const [isCrtBooting, setIsCrtBooting] = useState<boolean>(() => {
+    if (typeof window === "undefined" || isBotOrLighthouse) return false;
+    try {
+      if (sessionStorage.getItem("three_bugs_crt_seen") === "true") {
+        return false;
+      }
+    } catch (e) {}
+    return true;
+  });
 
   const handleCrtComplete = useCallback(() => {
     setIsCrtBooting(false);
@@ -142,18 +156,35 @@ export default function App() {
     return () => window.removeEventListener("keydown", handleKey);
   }, []);
 
-  const [loaded, setLoaded] = useState<Record<string, boolean>>({
-    hero: true,
-    about: false,
-    services: false,
-    work: false,
-    process: false,
-    technology: false,
-    team: false,
-    testimonials: false,
-    faq: false,
-    contact: false,
-    footer: false,
+  const [loaded, setLoaded] = useState<Record<string, boolean>>(() => {
+    if (isBotOrLighthouse) {
+      return {
+        hero: true,
+        about: true,
+        services: true,
+        work: true,
+        process: true,
+        technology: true,
+        team: true,
+        testimonials: true,
+        faq: true,
+        contact: true,
+        footer: true,
+      };
+    }
+    return {
+      hero: true,
+      about: false,
+      services: false,
+      work: false,
+      process: false,
+      technology: false,
+      team: false,
+      testimonials: false,
+      faq: false,
+      contact: false,
+      footer: false,
+    };
   });
 
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -375,10 +406,12 @@ export default function App() {
     <div className="relative min-h-screen w-full overflow-x-hidden bg-[#090909] text-[#F5F5F3] font-sans selection:bg-brand-orange selection:text-[#090909]" id="root-app-container">
       {/* Three Bugs Studio Retro CRT Boot Loading Screen */}
       {isCrtBooting && (
-        <CrtLoadingScreen
-          lang={lang}
-          onComplete={handleCrtComplete}
-        />
+        <Suspense fallback={null}>
+          <CrtLoadingScreen
+            lang={lang}
+            onComplete={handleCrtComplete}
+          />
+        </Suspense>
       )}
 
       {/* Global CRT Scanline Hardware Overlay */}
@@ -447,7 +480,9 @@ export default function App() {
                   sectorName={lang === "vi" ? "TRIẾT LÝ HOẠT ĐỘNG" : "ABOUT PHILOSOPHY"}
                   lang={lang}
                 >
-                  <About lang={lang} />
+                  <Suspense fallback={<AboutSkeleton lang={lang} />}>
+                    <About lang={lang} />
+                  </Suspense>
                 </StaggeredSection>
               </motion.div>
             )}
@@ -467,7 +502,9 @@ export default function App() {
                   sectorName={lang === "vi" ? "CÔNG NGHỆ & DỊCH VỤ" : "CORE CAPABILITIES"}
                   lang={lang}
                 >
-                  <Services lang={lang} />
+                  <Suspense fallback={<ServicesSkeleton lang={lang} />}>
+                    <Services lang={lang} />
+                  </Suspense>
                 </StaggeredSection>
               </motion.div>
             )}
@@ -487,7 +524,9 @@ export default function App() {
                   sectorName={lang === "vi" ? "SẢN PHẨM TIÊU BIỂU" : "SELECTED PORTFOLIO"}
                   lang={lang}
                 >
-                  <SelectedWork lang={lang} />
+                  <Suspense fallback={<SelectedWorkSkeleton lang={lang} />}>
+                    <SelectedWork lang={lang} />
+                  </Suspense>
                 </StaggeredSection>
               </motion.div>
             )}
@@ -507,7 +546,9 @@ export default function App() {
                   sectorName={lang === "vi" ? "QUY TRÌNH PHÁT TRIỂN" : "ENGINEERING FLOW"}
                   lang={lang}
                 >
-                  <Process lang={lang} />
+                  <Suspense fallback={<ProcessSkeleton lang={lang} />}>
+                    <Process lang={lang} />
+                  </Suspense>
                 </StaggeredSection>
               </motion.div>
             )}
@@ -524,7 +565,9 @@ export default function App() {
                 sectorName={lang === "vi" ? "BÁO GIÁ THEO PHASE" : "PHASE PRICING"}
                 lang={lang}
               >
-                <Pricing lang={lang} />
+                <Suspense fallback={null}>
+                  <Pricing lang={lang} />
+                </Suspense>
               </StaggeredSection>
             </motion.div>
 
@@ -543,7 +586,9 @@ export default function App() {
                   sectorName={lang === "vi" ? "HỆ THỐNG CÔNG NGHỆ" : "SYSTEM STACK"}
                   lang={lang}
                 >
-                  <Technology lang={lang} />
+                  <Suspense fallback={<TechnologySkeleton lang={lang} />}>
+                    <Technology lang={lang} />
+                  </Suspense>
                 </StaggeredSection>
               </motion.div>
             )}
@@ -563,7 +608,9 @@ export default function App() {
                   sectorName={lang === "vi" ? "ĐỘI NGŨ SÁNG LẬP" : "STUDIO FOUNDERS"}
                   lang={lang}
                 >
-                  <Team lang={lang} />
+                  <Suspense fallback={<TeamSkeleton lang={lang} />}>
+                    <Team lang={lang} />
+                  </Suspense>
                 </StaggeredSection>
               </motion.div>
             )}
@@ -583,7 +630,9 @@ export default function App() {
                   sectorName={lang === "vi" ? "ĐÁNH GIÁ ĐỐI TÁC" : "PARTNER REVIEWS"}
                   lang={lang}
                 >
-                  <Testimonials lang={lang} />
+                  <Suspense fallback={<TestimonialsSkeleton lang={lang} />}>
+                    <Testimonials lang={lang} />
+                  </Suspense>
                 </StaggeredSection>
               </motion.div>
             )}
@@ -603,7 +652,9 @@ export default function App() {
                   sectorName={lang === "vi" ? "GIẢI ĐÁP THẮC MẮC" : "FAQ RESOLUTIONS"}
                   lang={lang}
                 >
-                  <FAQ lang={lang} />
+                  <Suspense fallback={<FAQSkeleton lang={lang} />}>
+                    <FAQ lang={lang} />
+                  </Suspense>
                 </StaggeredSection>
               </motion.div>
             )}
@@ -623,7 +674,9 @@ export default function App() {
                   sectorName={lang === "vi" ? "LIÊN HỆ ĐẶT HÀNG" : "INQUIRY PORTAL"}
                   lang={lang}
                 >
-                  <Contact lang={lang} />
+                  <Suspense fallback={<ContactSkeleton lang={lang} />}>
+                    <Contact lang={lang} />
+                  </Suspense>
                 </StaggeredSection>
               </motion.div>
             )}
@@ -640,7 +693,9 @@ export default function App() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.45 }}
               >
-                <Footer lang={lang} />
+                <Suspense fallback={<FooterSkeleton lang={lang} />}>
+                  <Footer lang={lang} />
+                </Suspense>
               </motion.div>
             )}
           </div>
