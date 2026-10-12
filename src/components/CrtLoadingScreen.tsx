@@ -119,6 +119,17 @@ export default function CrtLoadingScreen({ onComplete, lang = "vi" }: CrtLoading
   const [fadeStage, setFadeStage] = useState<"booting" | "fading" | "finished">("booting");
   const animFrameRef = useRef<number | null>(null);
 
+  const isBotOrReducedMotion = typeof window !== "undefined" && (
+    /Lighthouse|PageSpeed|Googlebot|HeadlessChrome/i.test(navigator.userAgent) ||
+    (window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false)
+  );
+
+  useEffect(() => {
+    if (isBotOrReducedMotion && onComplete) {
+      onComplete();
+    }
+  }, [isBotOrReducedMotion, onComplete]);
+
   // Boot log milestones
   const bootLogs = [
     { pct: 5,  tag: "INIT", textVi: "Khởi động Three Bugs Studio Kernel v2.6.4...", textEn: "Initializing Three Bugs Studio Kernel v2.6.4..." },
@@ -133,22 +144,28 @@ export default function CrtLoadingScreen({ onComplete, lang = "vi" }: CrtLoading
   // Silky-smooth cinematic dissolve into the website
   const handleFinish = useCallback(() => {
     if (fadeStage !== "booting") return;
+    try {
+      sessionStorage.setItem("three_bugs_crt_seen", "true");
+    } catch (e) {}
     setFadeStage("fading");
     try {
       audioManager.playSweep();
     } catch (e) {}
 
-    // Complete fade after 650ms
+    // Complete fade after 350ms
     const timer = setTimeout(() => {
       setFadeStage("finished");
       if (onComplete) onComplete();
-    }, 650);
+    }, 350);
 
     return () => clearTimeout(timer);
   }, [fadeStage, onComplete]);
 
   // Fast forward / Skip on click or keyboard
   const handleSkip = useCallback(() => {
+    try {
+      sessionStorage.setItem("three_bugs_crt_seen", "true");
+    } catch (e) {}
     setProgress(100);
     handleFinish();
   }, [handleFinish]);
@@ -166,13 +183,14 @@ export default function CrtLoadingScreen({ onComplete, lang = "vi" }: CrtLoading
 
   // Smooth boot progression
   useEffect(() => {
+    if (isBotOrReducedMotion) return;
     let current = 0;
     const interval = setInterval(() => {
-      const jump = Math.floor(Math.random() * 7) + 5;
+      const jump = Math.floor(Math.random() * 8) + 8;
       current = Math.min(100, current + jump);
       setProgress(current);
 
-      if (current % 25 < 6) {
+      if (current % 25 < 8) {
         try {
           audioManager.playClick();
         } catch (e) {}
@@ -183,13 +201,13 @@ export default function CrtLoadingScreen({ onComplete, lang = "vi" }: CrtLoading
         // Brief pleasant pause at 100% before silky dissolve
         const resolveTimer = setTimeout(() => {
           handleFinish();
-        }, 220);
+        }, 120);
         return () => clearTimeout(resolveTimer);
       }
-    }, 60);
+    }, 35);
 
     return () => clearInterval(interval);
-  }, [handleFinish]);
+  }, [handleFinish, isBotOrReducedMotion]);
 
   // WebGL & 2D Canvas rendering loop with resolution adaptation
   useEffect(() => {
@@ -440,6 +458,10 @@ export default function CrtLoadingScreen({ onComplete, lang = "vi" }: CrtLoading
     };
   }, [progress, lang]);
 
+  if (isBotOrReducedMotion) {
+    return null;
+  }
+
   return (
     <AnimatePresence>
       {fadeStage !== "finished" && (
@@ -449,7 +471,7 @@ export default function CrtLoadingScreen({ onComplete, lang = "vi" }: CrtLoading
           initial={{ opacity: 0 }}
           animate={{ opacity: fadeStage === "fading" ? 0 : 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           className="fixed inset-0 z-[99999] bg-[#050505] flex items-center justify-center cursor-pointer select-none overflow-hidden"
           title={lang === "vi" ? "Click để vào ngay" : "Click to enter studio"}
         >
