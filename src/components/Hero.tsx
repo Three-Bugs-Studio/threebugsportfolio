@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { ArrowUpRightIcon, ArrowDownIcon } from "./ui/MajesticIcon";
 import { TRANSLATIONS } from "../data";
-import { FlowWaveBackground } from "./ui/FlowWaveBackground";
+
+const FlowWaveBackground = React.lazy(() =>
+  import("./ui/FlowWaveBackground").then((m) => ({ default: m.FlowWaveBackground }))
+);
 
 interface HeroProps {
   lang: "vi" | "en";
@@ -70,7 +73,9 @@ export default function Hero({ lang }: HeroProps) {
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#090909]"
     >
       {/* Three.js FlowWave Dynamic Particle Wave Background */}
-      <FlowWaveBackground />
+      <React.Suspense fallback={null}>
+        <FlowWaveBackground />
+      </React.Suspense>
 
       {/* High-Contrast Vignette Mask Overlay to ensure text pops out prominently in dark mode */}
       <div className="hero-vignette absolute inset-0 z-[1] pointer-events-none dark:block hidden bg-[radial-gradient(ellipse_at_center,_rgba(9,9,9,0.15)_0%,_rgba(9,9,9,0.50)_50%,_rgba(9,9,9,0.92)_100%)]" />
