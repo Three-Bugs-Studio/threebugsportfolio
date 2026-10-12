@@ -804,6 +804,12 @@ a.btn-stacked:active {
   box-shadow: 0 0 12px rgba(168, 85, 247, 0.5);
 }
 
+.footer-social-card .containerFive:hover {
+  background-color: #FE2C55; /* TikTok Brand Crimson */
+  border-color: #FE2C55;
+  box-shadow: 0 0 12px rgba(254, 44, 85, 0.5);
+}
+
 .footer-social-card .socialContainer:active {
   transform: scale(0.88);
   transition-duration: 0.2s;
@@ -820,6 +826,10 @@ a.btn-stacked:active {
 
 .footer-social-card .socialContainer:hover .socialSvg {
   animation: slide-in-top 0.3s both;
+}
+
+html.light .footer-social-card .socialContainer:hover .socialSvg path {
+  fill: #FFFFFF !important;
 }
 
 @keyframes slide-in-top {
