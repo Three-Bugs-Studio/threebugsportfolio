@@ -1,4 +1,25 @@
 import React from "react";
+import {
+  SiReact,
+  SiTypescript,
+  SiNestjs,
+  SiOpenjdk,
+  SiPrisma,
+  SiSupabase,
+  SiPostgresql,
+  SiDocker,
+  SiTailwindcss,
+  SiPython,
+  SiGnubash,
+  SiMarkdown,
+  SiGithub,
+  SiGit,
+  SiNextdotjs,
+  SiVercel,
+  SiNetlify,
+  SiRailway
+} from "react-icons/si";
+import { CodeIcon } from "./ui/MajesticIcon";
 
 interface TechIconProps {
   name: string;
@@ -13,26 +34,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("next")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full text-white">
-          <mask id="nextjs-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="180" height="180" style={{ maskType: "alpha" }}>
-            <circle cx="90" cy="90" r="90" fill="black"/>
-          </mask>
-          <g mask="url(#nextjs-mask)">
-            <circle cx="90" cy="90" r="90" fill="black"/>
-            <path d="M149.508 157.52L69.142 54H54V125.97H66.8136V69.7571L139.699 164.445C143.209 162.33 146.486 160.016 149.508 157.52Z" fill="url(#nextjs-grad-1)"/>
-            <path d="M115 54H127.814V126H115V54Z" fill="url(#nextjs-grad-2)"/>
-          </g>
-          <defs>
-            <linearGradient id="nextjs-grad-1" x1="109" y1="116.5" x2="144.5" y2="160.5" gradientUnits="userSpaceOnUse">
-              <stop stopColor="white"/>
-              <stop offset="1" stopColor="white" stopOpacity="0"/>
-            </linearGradient>
-            <linearGradient id="nextjs-grad-2" x1="121" y1="54" x2="120.7" y2="104" gradientUnits="userSpaceOnUse">
-              <stop stopColor="white"/>
-              <stop offset="1" stopColor="white" stopOpacity="0"/>
-            </linearGradient>
-          </defs>
-        </svg>
+        <SiNextdotjs className="w-full h-full text-white" />
       </span>
     );
   }
@@ -41,7 +43,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("react")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <i className={`devicon-react-original ${showColor ? "text-[#61DAFB]" : ""}`} />
+        <SiReact className={`w-full h-full ${showColor ? "text-[#61DAFB]" : ""}`} />
       </span>
     );
   }
@@ -50,7 +52,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("typescript") || normName === "ts") {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <i className={`devicon-typescript-plain ${showColor ? "text-[#3178C6]" : ""}`} />
+        <SiTypescript className={`w-full h-full ${showColor ? "text-[#3178C6]" : ""}`} />
       </span>
     );
   }
@@ -59,7 +61,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("nest")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <i className={`devicon-nestjs-original ${showColor ? "text-[#E0234E]" : ""}`} />
+        <SiNestjs className={`w-full h-full ${showColor ? "text-[#E0234E]" : ""}`} />
       </span>
     );
   }
@@ -68,7 +70,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName === "java") {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <i className={`fa-brands fa-java ${showColor ? "text-[#ED8B00]" : ""}`} />
+        <SiOpenjdk className={`w-full h-full ${showColor ? "text-[#ED8B00]" : ""}`} />
       </span>
     );
   }
@@ -77,7 +79,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("prisma")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <i className={`devicon-prisma-original ${showColor ? "text-[#5A67D8]" : ""}`} />
+        <SiPrisma className={`w-full h-full ${showColor ? "text-[#5A67D8]" : ""}`} />
       </span>
     );
   }
@@ -86,7 +88,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("supabase")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <i className={`devicon-supabase-plain ${showColor ? "text-[#3ECF8E]" : ""}`} />
+        <SiSupabase className={`w-full h-full ${showColor ? "text-[#3ECF8E]" : ""}`} />
       </span>
     );
   }
@@ -106,7 +108,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("postgres")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <i className={`devicon-postgresql-plain ${showColor ? "text-[#4169E1]" : ""}`} />
+        <SiPostgresql className={`w-full h-full ${showColor ? "text-[#4169E1]" : ""}`} />
       </span>
     );
   }
@@ -126,7 +128,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("docker")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <i className={`fa-brands fa-docker ${showColor ? "text-[#2496ED]" : ""}`} />
+        <SiDocker className={`w-full h-full ${showColor ? "text-[#2496ED]" : ""}`} />
       </span>
     );
   }
@@ -135,9 +137,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("vercel")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <svg viewBox="0 0 24 24" fill="currentColor" className="w-full h-full text-white">
-          <path d="M24 22.525H0l12-21.05 12 21.05z" />
-        </svg>
+        <SiVercel className="w-full h-full text-white" />
       </span>
     );
   }
@@ -146,7 +146,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("tailwind")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <i className={`devicon-tailwindcss-plain ${showColor ? "text-[#06B6D4]" : ""}`} />
+        <SiTailwindcss className={`w-full h-full ${showColor ? "text-[#06B6D4]" : ""}`} />
       </span>
     );
   }
@@ -155,7 +155,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("python")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <i className={`fa-brands fa-python ${showColor ? "text-[#3776AB]" : ""}`} />
+        <SiPython className={`w-full h-full ${showColor ? "text-[#3776AB]" : ""}`} />
       </span>
     );
   }
@@ -164,7 +164,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("shell") || normName.includes("bash")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <i className={`devicon-bash-plain ${showColor ? "text-[#4EAA25]" : ""}`} />
+        <SiGnubash className={`w-full h-full ${showColor ? "text-[#4EAA25]" : ""}`} />
       </span>
     );
   }
@@ -173,7 +173,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("markdown")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <i className="devicon-markdown-original text-white" />
+        <SiMarkdown className="w-full h-full text-white" />
       </span>
     );
   }
@@ -182,7 +182,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("github")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <i className={`fa-brands fa-github ${showColor ? "text-[#2088FF]" : ""}`} />
+        <SiGithub className={`w-full h-full ${showColor ? "text-[#2088FF]" : ""}`} />
       </span>
     );
   }
@@ -202,9 +202,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("netlify")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <svg viewBox="0 0 24 24" fill="currentColor" className={`w-full h-full ${showColor ? "text-[#00C7B7]" : ""}`}>
-          <path d="M6.43 12L12 6.43 17.57 12 12 17.57 6.43 12zM12 0L0 12l12 12 12-12L12 0zm0 3.83L20.17 12 12 20.17 3.83 12 12 3.83z"/>
-        </svg>
+        <SiNetlify className={`w-full h-full ${showColor ? "text-[#00C7B7]" : ""}`} />
       </span>
     );
   }
@@ -213,9 +211,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("railway")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <svg viewBox="0 0 24 24" fill="currentColor" className={`w-full h-full ${showColor ? "text-[#C084FC]" : ""}`}>
-          <path d="M.48 4.347C.186 4.347 0 4.542 0 4.851v14.298c0 .309.186.504.48.504h23.04c.294 0 .48-.195.48-.504V4.851c0-.309-.186-.504-.48-.504H.48zm5.556 3.125h4.156v2.23H6.036V7.472zm7.768 0h4.156v2.23h-4.156V7.472zm-7.768 3.824h4.156v2.23H6.036v-2.23zm7.768 0h4.156v2.23h-4.156v-2.23zm-7.768 3.823h4.156v2.23H6.036v-2.23zm7.768 0h4.156v2.23h-4.156v-2.23z"/>
-        </svg>
+        <SiRailway className={`w-full h-full ${showColor ? "text-[#C084FC]" : ""}`} />
       </span>
     );
   }
@@ -224,7 +220,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("git")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <i className={`devicon-git-plain ${showColor ? "text-[#F05032]" : ""}`} />
+        <SiGit className={`w-full h-full ${showColor ? "text-[#F05032]" : ""}`} />
       </span>
     );
   }
@@ -232,7 +228,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   // Fallback icon
   return (
     <span className={`inline-flex items-center justify-center ${className}`}>
-      <i className="fa-solid fa-code text-brand-orange" />
+      <CodeIcon size={20} className="w-full h-full text-brand-orange" />
     </span>
   );
 }
