@@ -88,7 +88,7 @@ function useProgress(onLoaded?: () => void) {
   return progress;
 }
 
-import { MiniCrtLoader } from "./CrtLoadingScreen";
+import { MiniCrtLoader } from "./ui/MiniCrtLoader";
 
 // -------------------------------------------------------------
 // Retro-Tech CRT Terminal Loader Component (Replaces Hamster Wheel)
