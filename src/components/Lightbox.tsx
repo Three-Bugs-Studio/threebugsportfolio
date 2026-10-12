@@ -9,7 +9,7 @@ import {
   SearchIcon, 
   SparklesIcon 
 } from "./ui/MajesticIcon";
-import randomPhiTruongStore from "@/assets/randomphitruongstore.png";
+import randomPhiTruongStore from "@/assets/randomphitruongstore.webp";
 import storepage from "@/assets/storepage.webp";
 import aboutpage from "@/assets/aboutpage.webp";
 import productdetail from "@/assets/productdetail.webp";
