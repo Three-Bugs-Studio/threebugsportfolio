@@ -833,38 +833,198 @@ export const TESTIMONIALS_DATA: Record<"vi" | "en", Testimonial[]> = {
 export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
   vi: [
     {
-      question: "Chi phí và cách thức đăng ký các gói dịch vụ tại Three Bugs Studio như thế nào?",
-      answer: "Three Bugs Studio áp dụng chính sách Báo Giá Linh Hoạt theo quy mô và yêu cầu thực tế của từng dự án (Gói Khởi Nghiệp, Gói Doanh Nghiệp Đa Ngành, Gói Web App & AI Chuyên Sâu) nhằm tránh tình trạng áp mức giá cố định cứng nhắc hay phát sinh phụ phí ẩn. Quý khách vui lòng liên hệ chuyên viên tư vấn Hoàng Đỗ (0392.996.307) hoặc Minh Đức (0867.474.204) để được tiếp nhận hồ sơ và nhận bảng báo giá chi tiết trong vòng 5 - 10 phút."
+      question: "Khách hàng có được bàn giao 100% toàn bộ mã nguồn và dữ liệu khi nghiệm thu không?",
+      badge: "CAM KẾT 100% SỞ HỮU",
+      category: "ownership",
+      answer: "Có, 100% quyền sở hữu thuộc về bạn! Ngay khi hoàn tất dự án, Three Bugs Studio bàn giao toàn bộ mã nguồn sạch (Clean Code repository trên GitHub/GitLab), cấu trúc cơ sở dữ liệu PostgreSQL/Supabase, cấu hình Cloud Hosting (Vercel/Docker) và toàn bộ tài sản thiết kế Figma gốc. Chúng tôi cam kết không cài cắm mã khóa độc quyền, không ép khách hàng trả phí duy trì bản quyền hàng tháng/năm. Bạn có toàn quyền sao lưu, tự vận hành hoặc chuyển giao cho đội ngũ kỹ sư nội bộ phát triển tiếp bất kỳ lúc nào mà không bị ràng buộc (Zero Vendor Lock-in).",
+      keyBenefits: [
+        "Bàn giao full source code kho lưu trữ GitHub/GitLab độc lập",
+        "Không thu phí bản quyền mã nguồn định kỳ hàng tháng hay hàng năm",
+        "Chủ động 100% dữ liệu kinh doanh, không bị phụ thuộc vào đơn vị phát triển",
+        "Bàn giao toàn bộ file thiết kế gốc Figma và tài liệu kiến trúc hệ thống"
+      ]
     },
     {
-      question: "Quy trình làm việc 3 Phase và thời gian hoàn thành dự án kéo dài bao lâu?",
-      answer: "Mọi dự án đều áp dụng quy trình 3 Phase minh bạch: Phase 1 (Thiết kế Figma UI/UX) ➔ Phase 2 (Lập trình Frontend, Backend CMS & Giỏ hàng/QR Payment) ➔ Phase 3 (Kiểm thử bảo mật, Khởi chạy Cloud & Bảo hành). Thời gian hoàn thành từ 1 – 3 tuần đối với Web Landing/E-Commerce và 4 – 6 tuần đối với các ứng dụng Web App/AI phức tạp."
+      question: "Chi phí dự án được tính như thế nào? Studio có cam kết không phát sinh phụ phí ẩn không?",
+      badge: "CAM KẾT 0Đ PHÍ ẨN",
+      category: "pricing",
+      answer: "Three Bugs Studio cam kết 100% không phát sinh bất kỳ phụ phí ẩn nào ngoài hợp đồng! Báo giá được tính toán trọn gói dựa trên bảng đặc tả tính năng chi tiết (Scope of Work) được hai bên thống nhất từ đầu. Chi phí thanh toán được chia nhỏ theo 3 Phase nghiệm thu rõ ràng: bạn chỉ giải ngân giai đoạn tiếp theo khi đã kiểm tra và hoàn toàn hài lòng với kết quả giai đoạn trước. Nếu trong quá trình làm bạn muốn bổ sung tính năng mới ngoài thỏa thuận ban đầu, Studio sẽ báo giá độc lập minh bạch và chỉ triển khai khi có sự đồng ý của bạn.",
+      keyBenefits: [
+        "Báo giá trọn gói minh bạch, cam kết không phát sinh phụ phí bất ngờ",
+        "Thanh toán linh hoạt chia theo từng cột mốc (Phase) nghiệm thu thực tế",
+        "Chỉ thanh toán giai đoạn tiếp theo khi đã nghiệm thu ưng ý giai đoạn trước",
+        "Tư vấn tối ưu chi phí hạ tầng Cloud (Vercel/Supabase) mức tiết kiệm nhất"
+      ]
     },
     {
-      question: "Khách hàng có được bàn giao 100% mã nguồn và tài liệu hệ thống không?",
-      answer: "Có! Three Bugs Studio cam kết bàn giao 100% quyền sở hữu mã nguồn sạch (React/Next.js/PostgreSQL), tài liệu kiến trúc hệ thống và hướng dẫn vận hành. Chúng tôi không giữ mã nguồn hay thu phí ẩn, đồng thời tặng kèm chính sách bảo hành kỹ thuật 24/7 từ 1 đến 12 tháng."
+      question: "Chính sách bảo hành, sửa lỗi và duy trì hoạt động sau khi bàn giao diễn ra như thế nào?",
+      badge: "BẢO HÀNH ĐẾN 12 THÁNG",
+      category: "warranty",
+      answer: "Mọi sản phẩm của Three Bugs Studio đều đi kèm chính sách bảo hành kỹ thuật MIỄN PHÍ 100% từ 3 đến 12 tháng (tùy theo gói dịch vụ). Trong suốt thời gian bảo hành, bất kỳ lỗi lập trình hoặc vấn đề phát sinh từ hệ thống đã bàn giao đều được đội ngũ kỹ sư khắc phục triệt để không tốn thêm chi phí. Chúng tôi cam kết SLA phản hồi nhanh chóng trong vòng 1–2 giờ đối với các sự cố vận hành khẩn cấp, đồng thời hỗ trợ thiết lập cơ chế tự động sao lưu dữ liệu (Automated Daily Backup) để bạn hoàn toàn an tâm kinh doanh.",
+      keyBenefits: [
+        "Bảo hành kỹ thuật miễn phí 100% từ 3 đến 12 tháng sau bàn giao",
+        "Sửa chữa triệt để mọi lỗi phát sinh từ hệ thống với SLA phản hồi khẩn cấp 1-2h",
+        "Hỗ trợ cấu hình tự động sao lưu dữ liệu và giám sát Uptime 99.9%",
+        "Chính sách hỗ trợ kỹ thuật đồng hành trọn đời sau thời gian bảo hành"
+      ]
     },
     {
-      question: "Tôi có được làm việc trực tiếp với đội ngũ lập trình viên thực hiện dự án không?",
-      answer: "Hoàn toàn có thể. Three Bugs Studio làm việc theo mô hình Làm việc Trực tiếp (Direct Engineer Partnership). Quý khách sẽ trao đổi và thống nhất đặc tả kỹ thuật trực tiếp với 5 lập trình viên & thiết kế phụ trách chính, không qua các khâu trung gian sales."
+      question: "Tôi sẽ làm việc với ai? Có phải trao đổi qua các nhân viên kinh doanh (Sales) trung gian không?",
+      badge: "LÀM VIỆC TRỰC TIẾP 1:1",
+      category: "ownership",
+      answer: "Bạn sẽ làm việc trực tiếp 1:1 với các kỹ sư phần mềm và nhà thiết kế UI/UX chủ chốt của Three Bugs Studio! Chúng tôi áp dụng mô hình Hợp Tác Kỹ Sư Trực Tiếp (Direct Engineer Partnership), loại bỏ hoàn toàn các khâu telesale hay môi giới trung gian — nơi thường gây ra tình trạng hiểu sai yêu cầu kỹ thuật ('tam sao thất bản') và đẩy chi phí dự án lên cao. Bạn sẽ được tư vấn các giải pháp kỹ thuật đúng trọng tâm bài toán kinh doanh, tiết kiệm thời gian phản hồi và rút ngắn hơn 50% tiến độ trao đổi.",
+      keyBenefits: [
+        "Trao đổi trực tiếp cùng đội ngũ 5 kỹ sư lập trình & thiết kế chính của Studio",
+        "Không qua sales hay môi giới trung gian, loại bỏ hoàn toàn tình trạng hiểu sai yêu cầu",
+        "Tư vấn kỹ thuật thực tế, đúng nhu cầu kinh doanh, tiết kiệm tối đa ngân sách",
+        "Nhóm chat hỗ trợ riêng biệt phản hồi nhanh chóng qua Zalo / Telegram / Discord"
+      ]
+    },
+    {
+      question: "Studio cam kết tiến độ bàn giao ra sao? Tôi có được theo dõi tiến độ thời gian thực không?",
+      badge: "CAM KẾT ĐÚNG TIẾN ĐỘ",
+      category: "warranty",
+      answer: "Chúng tôi cam kết tiến độ rõ ràng bằng văn bản: thời gian hoàn thành thông thường từ 1–3 tuần đối với Website/E-Commerce và 4–6 tuần đối với các hệ thống Web App/AI phức tạp. Trong suốt quá trình phát triển, bạn sẽ được cung cấp đường link Live Staging/Demo riêng biệt để trực tiếp truy cập trên điện thoại và máy tính, theo dõi từng màn hình được hoàn thiện mỗi tuần. Hợp đồng có điều khoản cam kết mốc thời gian rõ ràng: nếu trễ hạn do lỗi từ Studio, chúng tôi cam kết chịu phạt hợp đồng hoặc bồi hoàn bằng các tháng bảo trì kỹ thuật miễn phí.",
+      keyBenefits: [
+        "Tiến độ hoàn thành nhanh chóng: 1–3 tuần cho Web/E-commerce, 4–6 tuần cho Web App",
+        "Cung cấp link Staging/Demo kiểm thử trực tiếp trên điện thoại & máy tính hàng tuần",
+        "Cam kết điều khoản tiến độ rõ ràng trong hợp đồng pháp lý",
+        "Chính sách bồi thường hoặc gia hạn bảo trì miễn phí nếu trễ hạn do lỗi Studio"
+      ]
+    },
+    {
+      question: "Website bàn giao có đảm bảo chuẩn SEO Google và đạt điểm tốc độ cao trên di động không?",
+      badge: "CHUẨN SEO & PAGESPEED 95+",
+      category: "quality",
+      answer: "Chắc chắn có! Mọi sản phẩm xuất xưởng từ Three Bugs Studio đều được kiểm thử và tối ưu đạt điểm Google PageSpeed Insights Xanh (85 – 95+) trên cả máy tính lẫn thiết bị di động. Chúng tôi tích hợp sẵn hạ tầng SEO On-Page chuẩn chỉnh: thẻ Open Graph chia sẻ mạng xã hội, dữ liệu có cấu trúc Schema JSON-LD, Sitemap.xml tự động, và cấu trúc Semantic HTML5 tải trang dưới 1.5 giây. Điều này giúp website của bạn nhanh chóng được Google xếp hạng cao, tối ưu tỷ lệ chuyển đổi khách hàng và tiết kiệm hàng chục triệu chi phí quảng cáo.",
+      keyBenefits: [
+        "Tối ưu điểm Google PageSpeed Insights Xanh (85-95+) cả Desktop & Mobile",
+        "Tốc độ mở trang cực nhanh dưới 1.5 giây, nâng cao tỷ lệ chốt đơn hàng",
+        "Tích hợp sẵn cấu trúc SEO On-Page, Schema JSON-LD và Sitemap.xml tự động",
+        "Tương thích 100% hiển thị trên mọi độ phân giải (iPhone, Android, Tablet, PC)"
+      ]
+    },
+    {
+      question: "Ý tưởng kinh doanh và dữ liệu người dùng của tôi có được bảo mật tuyệt đối không?",
+      badge: "BẢO MẬT PHÁP LÝ NDA",
+      category: "quality",
+      answer: "An toàn bảo mật thông tin của khách hàng là ưu tiên số một của chúng tôi. Three Bugs Studio sẵn sàng ký kết Thỏa Thuận Bảo Mật Thông Tin (NDA) pháp lý trước khi tiếp nhận bất kỳ ý tưởng hay dữ liệu kinh doanh nào từ bạn. Toàn bộ mã nguồn dự án được lưu trữ trên Private Repository riêng tư; cơ sở dữ liệu được thiết lập tường lửa và mã hóa chuẩn SSL/TLS. Chúng tôi cam kết không chia sẻ dữ liệu, không thương mại hóa hay tái sử dụng mã nguồn độc quyền của bạn cho bất kỳ bên thứ ba nào.",
+      keyBenefits: [
+        "Ký kết thỏa thuận bảo mật NDA pháp lý trước khi bắt đầu tiếp nhận dự án",
+        "Mã nguồn được lưu trữ tại Private Repository bảo mật tuyệt đối của khách hàng",
+        "Cơ sở dữ liệu mã hóa chuẩn công nghiệp SSL/TLS, ngăn chặn rò rỉ dữ liệu",
+        "Cam kết bảo vệ bản quyền ý tưởng và không tái sử dụng logic độc quyền cho đối thủ"
+      ]
+    },
+    {
+      question: "Sau khi bàn giao, tôi hoặc nhân viên không biết lập trình có tự quản trị website được không?",
+      badge: "DỄ QUẢN TRỊ 100%",
+      category: "ownership",
+      answer: "Hoàn toàn dễ dàng! Hệ thống bảng điều khiển quản trị (CMS Dashboard) được chúng tôi tùy biến thân thiện bằng Tiếng Việt hoặc Tiếng Anh, giao diện rõ ràng như sử dụng mạng xã hội. Khi bàn giao, Studio cung cấp kèm Video hướng dẫn thao tác thực tế và tài liệu chi tiết từng bước: từ đăng sản phẩm, sửa giá, thay đổi hình ảnh banner, cập nhật bài viết cho đến xem báo cáo đơn hàng. Ngoài ra, đội ngũ kỹ sư sẽ có buổi hướng dẫn trực tiếp 1:1 qua Google Meet để nhân viên của bạn có thể tự tin vận hành trơn tru ngay từ ngày đầu tiên.",
+      keyBenefits: [
+        "Hệ thống quản trị (CMS) trực quan, nhân viên không biết code vẫn dùng dễ dàng",
+        "Bàn giao kèm Video quay màn hình hướng dẫn thao tác chi tiết từng bước",
+        "Buổi đào tạo trực tiếp 1:1 qua Google Meet giải đáp mọi thao tác quản trị",
+        "Tài liệu số lưu trữ nội bộ hỗ trợ tra cứu nhanh bất kỳ lúc nào"
+      ]
     }
   ],
   en: [
     {
-      question: "How is project pricing calculated and how do I apply for consultation?",
-      answer: "Three Bugs Studio provides flexible custom quotations tailored to the specific scope and feature requirements of your project (Starter Web, Corporate & E-Commerce, Custom Web App & AI) to avoid rigid pricing constraints or unexpected hidden costs. Please contact our project consultants Hoang Do (+84 392.996.307) or Minh Duc (+84 867.474.204) for quick project intake and a detailed quote proposal within 5–10 minutes."
+      question: "Do clients receive 100% full source code ownership and system data upon completion?",
+      badge: "100% FULL OWNERSHIP",
+      category: "ownership",
+      answer: "Yes, you own 100% of your product! Upon project completion, Three Bugs Studio hands over full, clean source code repositories on GitHub/GitLab, PostgreSQL/Supabase database schemas, Cloud hosting configurations (Vercel/Docker), and raw Figma design files. We never inject proprietary locks or enforce recurring software licensing fees. You retain permanent freedom to backup, host independently, or delegate further development to your internal engineers at any time (Zero Vendor Lock-in).",
+      keyBenefits: [
+        "Full independent GitHub/GitLab source code repository handover",
+        "Zero recurring monthly or annual source code licensing fees",
+        "100% data autonomy with zero vendor lock-in",
+        "Complete Figma master design assets and system architecture blueprints"
+      ]
     },
     {
-      question: "What is the 3-Phase development workflow and estimated delivery timeline?",
-      answer: "All builds follow a transparent 3-Phase pipeline: Phase 1 (Figma UI/UX Design) ➔ Phase 2 (Fullstack Engineering, CMS Admin & Payment Systems) ➔ Phase 3 (QA Security, Cloud Deployment & Warranty). Delivery ranges from 1–3 weeks for Web Landing/E-Commerce and 4–6 weeks for complex Web Apps and AI platforms."
+      question: "How is project pricing calculated? Does the Studio guarantee zero hidden fees?",
+      badge: "ZERO HIDDEN FEES",
+      category: "pricing",
+      answer: "Three Bugs Studio strictly guarantees zero unexpected hidden fees! Every project quote is fixed-scope based on an itemized Scope of Work mutually agreed upon before kickoff. Payments are divided across 3 transparent delivery phases: you only disburse funds for the next phase once you have inspected and fully approved the deliverables of the previous phase. Should you wish to expand functionality, we provide clear separate estimates and proceed only upon your consent.",
+      keyBenefits: [
+        "Transparent fixed-scope quotes with zero unexpected surcharges",
+        "Flexible milestone payments across verified delivery phases",
+        "Next milestone payment released only upon your explicit satisfaction",
+        "Tailored infrastructure cost optimization on Vercel and Supabase"
+      ]
     },
     {
-      question: "Do clients receive 100% source code ownership and system documentation?",
-      answer: "Yes! Three Bugs Studio guarantees 100% source code ownership handover (React/Next.js/PostgreSQL), system architecture documentation, and CMS user guides. There are no hidden fees or source code lock-ins, backed by 24/7 priority SLA technical support for 1 to 12 months."
+      question: "What is your warranty policy, bug-fixing coverage, and post-launch maintenance SLA?",
+      badge: "UP TO 12-MONTH WARRANTY",
+      category: "warranty",
+      answer: "All solutions delivered by Three Bugs Studio include 100% FREE technical warranty coverage for 3 to 12 months (depending on your project tier). During this warranty period, any functional bugs or regressions arising from delivered systems are resolved without extra charge. We commit to a rapid 1–2 hour SLA response for critical operational disruptions, along with configuring automated daily backups so your business operates with peace of mind.",
+      keyBenefits: [
+        "100% free technical warranty coverage for 3 to 12 months post-launch",
+        "Comprehensive bug-fixing with priority 1–2h emergency SLA response",
+        "Automated daily database backups and 99.9% uptime health monitoring",
+        "Lifetime technical advisory support even after the warranty period"
+      ]
     },
     {
-      question: "Can I collaborate directly with the engineers working on my project?",
-      answer: "Absolutely. Three Bugs Studio operates under a Direct Engineer Partnership model. You collaborate directly with our 5 core software engineers and UI/UX designers, ensuring crystal clear communication without sales agent middlemen."
+      question: "Who will I collaborate with? Do I have to communicate through intermediary sales reps?",
+      badge: "DIRECT 1:1 ENGINEERS",
+      category: "ownership",
+      answer: "You collaborate directly 1-on-1 with our core software engineers and UI/UX designers! We operate strictly under a Direct Engineer Partnership model, eliminating sales agents and middlemen who frequently misinterpret technical specifications and inflate agency fees. You receive authentic architectural advice tailored to your business model, prompt problem resolution, and more than 50% faster turnaround time on all communications.",
+      keyBenefits: [
+        "Direct collaboration with our 5 core engineering and design leads",
+        "Zero sales middlemen, eliminating communication bottlenecks and spec misunderstandings",
+        "Practical engineering advice aligned with real business ROI",
+        "Dedicated VIP messaging channels on Zalo, Telegram, or Discord"
+      ]
+    },
+    {
+      question: "How does the Studio guarantee delivery deadlines? Can I track live progress in real-time?",
+      badge: "ON-TIME GUARANTEE",
+      category: "warranty",
+      answer: "We guarantee delivery timelines in formal contracts: typically 1–3 weeks for Corporate & E-Commerce sites and 4–6 weeks for complex Web Apps and AI platforms. Throughout development, you receive access to a dedicated Live Staging/Demo link to test newly shipped screens every week directly on your mobile device and desktop. Our contracts feature clear milestone clauses: if delays occur due to studio fault, we honor penalty credits or complimentary maintenance extensions.",
+      keyBenefits: [
+        "Swift turnaround: 1–3 weeks for Web/E-commerce, 4–6 weeks for Web Apps",
+        "Live weekly staging links accessible on mobile and desktop devices",
+        "Legally committed delivery milestones in binding contracts",
+        "Compensation credits or free maintenance extensions if deadlines slip"
+      ]
+    },
+    {
+      question: "Does the delivered website meet Google SEO standards and high mobile performance scores?",
+      badge: "SEO & 95+ SPEED BUILT-IN",
+      category: "quality",
+      answer: "Absolutely! Every project shipped by Three Bugs Studio is audited and optimized to achieve Green Google PageSpeed Insights ratings (85 – 95+) across both Desktop and Mobile. We build in comprehensive On-Page SEO: Open Graph social previews, Schema JSON-LD structured data, automated XML sitemaps, and semantic HTML5 with sub-1.5 second page load speeds. This boosts Google rankings, maximizes conversion rates, and saves thousands of dollars in ad spend.",
+      keyBenefits: [
+        "Green Google PageSpeed Insights scores (85–95+) on Desktop & Mobile",
+        "Ultra-fast sub-1.5 second load times to maximize conversion rates",
+        "Built-in On-Page SEO, Schema JSON-LD metadata, and auto-generated XML sitemaps",
+        "100% fluid responsiveness across iPhone, Android, iPad, and 4K displays"
+      ]
+    },
+    {
+      question: "Will my business idea and customer database be kept strictly confidential?",
+      badge: "STRICT NDA PRIVACY",
+      category: "quality",
+      answer: "Customer confidentiality and data protection are our highest priorities. Three Bugs Studio readily signs legally binding Non-Disclosure Agreements (NDAs) prior to receiving your business ideas or proprietary data. All source code is hosted on secure Private Repositories; databases are protected by firewalls and SSL/TLS encryption. We strictly pledge never to sell data, expose business logic, or reuse proprietary code for competitor projects.",
+      keyBenefits: [
+        "Legally binding mutual NDA signed prior to project intake",
+        "Source code locked inside private, client-owned encrypted repositories",
+        "Enterprise-grade SSL/TLS database encryption preventing data breaches",
+        "Strict intellectual property protection with zero code reuse for competitors"
+      ]
+    },
+    {
+      question: "Can non-technical team members easily manage and update the website after handover?",
+      badge: "INTUITIVE CMS HANDOVER",
+      category: "ownership",
+      answer: "Effortlessly! The administrative control panel (CMS Dashboard) is tailored intuitively in Vietnamese or English, making updates as simple as managing social media. Upon handover, we provide custom screen-recorded video walkthroughs and step-by-step documentation covering product uploads, pricing updates, banner swaps, blog editing, and order exports. Furthermore, our engineers conduct a 1-on-1 Google Meet session so your staff feels confident from day one.",
+      keyBenefits: [
+        "Intuitive CMS dashboard usable by any non-technical staff member",
+        "Screen-recorded video tutorials detailing everyday operations",
+        "Live 1-on-1 Google Meet training session to answer operational questions",
+        "Searchable digital documentation handbook for permanent team reference"
+      ]
     }
   ]
 };
