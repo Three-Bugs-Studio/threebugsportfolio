@@ -78,18 +78,27 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
     },
   };
 
-  const featureSections = [
-    {
-      title: lang === "vi" ? "Lộ Trình 3 Phase Triển Khai" : "3-Phase Execution Roadmap",
-      icon: <BoxIcon size={16} className="w-4 h-4 text-brand-orange" />,
-      items: plan.phases.map((ph) => `${ph.number}: ${ph.title} (${ph.duration}) - ${ph.description}`),
-    },
-    {
-      title: lang === "vi" ? "Quyền Lợi & Bàn Giao Sản Phẩm" : "Benefits & Deliverables",
-      icon: <SparklesIcon size={16} className="w-4 h-4 text-brand-orange" />,
-      items: plan.benefits,
-    },
-  ];
+  const featureSections: { title: string; icon?: React.ReactNode; items: string[] }[] =
+    plan.features && plan.features.length > 0
+      ? plan.features.map((f, i) => ({
+          title: f.title,
+          icon: i === 0 
+            ? <ShieldIcon size={16} className="w-4 h-4 text-brand-orange shrink-0" />
+            : <SparklesIcon size={16} className="w-4 h-4 text-brand-orange shrink-0" />,
+          items: f.items,
+        }))
+      : [
+          {
+            title: lang === "vi" ? "Lộ Trình 3 Phase Triển Khai" : "3-Phase Execution Roadmap",
+            icon: <BoxIcon size={16} className="w-4 h-4 text-brand-orange shrink-0" />,
+            items: (plan.phases || []).map((ph) => `${ph.number}: ${ph.title} (${ph.duration}) - ${ph.description}`),
+          },
+          {
+            title: lang === "vi" ? "Quyền Lợi & Bàn Giao Sản Phẩm" : "Benefits & Deliverables",
+            icon: <SparklesIcon size={16} className="w-4 h-4 text-brand-orange shrink-0" />,
+            items: plan.benefits,
+          },
+        ];
 
   return (
     <motion.div
@@ -99,9 +108,9 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
       variants={containerVariants}
       className="w-full"
     >
-      <div className="pricing-card-container relative mx-auto w-full max-w-6xl overflow-hidden rounded-sm bg-[#111111]/90 border border-white/10 hover:border-brand-orange/40 transition-all duration-500 shadow-2xl group">
+      <div className={`pricing-card-container relative mx-auto w-full max-w-6xl overflow-hidden rounded-sm bg-[#111111]/90 border ${plan.pricingType === "hourly" ? "border-brand-orange/40" : "border-white/10"} hover:border-brand-orange/60 transition-all duration-500 shadow-2xl group`}>
         {/* Top Accent Gradient Border */}
-        <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-orange to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />
+        <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${plan.pricingType === "hourly" ? "from-brand-orange via-amber-400 to-brand-orange" : "from-transparent via-brand-orange to-transparent"} opacity-70 group-hover:opacity-100 transition-opacity`} />
 
         <div className="flex flex-col lg:flex-row">
           
@@ -137,8 +146,15 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-baseline flex-wrap gap-2">
                     <span className="text-2xl md:text-3xl font-extrabold font-display text-[#F5F5F3]">
-                      {lang === "vi" ? "Liên Hệ Báo Giá" : "Quote on Request"}
+                      {plan.pricingType === "hourly"
+                        ? (lang === "vi" ? "Tính Theo Giờ" : "Hourly Rate")
+                        : (lang === "vi" ? "Liên Hệ Báo Giá" : "Quote on Request")}
                     </span>
+                    {plan.pricingType === "hourly" && (
+                      <span className="font-mono text-xs text-brand-orange font-semibold">
+                        ({lang === "vi" ? "Thỏa thuận" : "Negotiated"})
+                      </span>
+                    )}
                   </div>
                   {/* Price Animated GIF Badge */}
                   <div className="price-anim-icon-container relative w-11 h-11 md:w-12 md:h-12 p-1 rounded-xl bg-brand-orange/15 border border-brand-orange/30 shadow-[0_0_15px_rgba(255,106,0,0.25)] flex items-center justify-center shrink-0 overflow-hidden">
@@ -151,12 +167,19 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                 </div>
                 <div className="flex items-center justify-between font-mono text-xs text-[#8E8E93] pt-2 border-t border-white/5">
                   <span className="truncate max-w-[200px]">
-                    {lang === "vi" ? "Báo giá theo quy mô & tính năng" : "Tailored to project scope"}
+                    {plan.pricingType === "hourly"
+                      ? (lang === "vi" ? "Linh hoạt block 10h / 20h" : "Flexible 10h / 20h blocks")
+                      : (lang === "vi" ? "Báo giá theo quy mô & tính năng" : "Tailored to project scope")}
                   </span>
                   <span className="text-brand-orange font-medium shrink-0">
-                    [ {lang === "vi" ? "Trọn gói 3 Phase" : "Full 3 Phases"} ]
+                    [ {plan.pricingType === "hourly"
+                        ? (lang === "vi" ? "Time-Tracking SLA" : "Tracked SLA")
+                        : (lang === "vi" ? "Trọn gói 3 Phase" : "Full 3 Phases")} ]
                   </span>
                 </div>
+                <span className="block text-[11px] font-sans text-[#8E8E93] pt-1">
+                  {plan.paymentNote || (lang === "vi" ? "one-time payment / theo tiến độ" : "one-time payment / milestone-based")}
+                </span>
               </motion.div>
             </div>
 
@@ -166,18 +189,20 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                 onClick={() => onSelectPlan(plan)}
                 className="btn-stacked w-full py-4 px-6 rounded-sm font-mono text-xs tracking-widest uppercase font-bold transition-all duration-300 flex items-center justify-center gap-2 group/btn interactive bg-brand-orange text-[#090909] hover:bg-white hover:text-black shadow-lg"
               >
-                <span>{lang === "vi" ? "NHẬN TƯ VẤN GÓI NÀY" : "SELECT THIS PACKAGE"}</span>
+                <span>
+                  {plan.buttonText || (lang === "vi" ? "NHẬN TƯ VẤN GÓI NÀY" : "SELECT THIS PACKAGE")}
+                </span>
                 <ArrowRightIcon size={16} className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
               </button>
             </motion.div>
           </motion.div>
 
-          {/* Right Column: 3-Phase Roadmap & Benefits Checklist */}
+          {/* Right Column: 3-Phase Roadmap / Maintenance Checklist */}
           <motion.div
             className="pricing-card-right p-6 lg:w-3/5 lg:p-10 bg-[#121212]/70 flex flex-col justify-between"
             variants={itemVariants}
           >
-            <div className="space-y-8">
+            <div className="space-y-6">
               {featureSections.map((section, secIdx) => (
                 <div key={secIdx}>
                   <div className="flex items-center gap-2 mb-4">
@@ -193,6 +218,7 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                         key={itemIdx}
                         className="flex items-start text-xs font-sans text-[#D4D4D8] leading-relaxed"
                         variants={listItemVariants}
+                        custom={itemIdx + secIdx * section.items.length}
                       >
                         <div className="mt-0.5 mr-2.5 p-0.5 rounded bg-brand-orange/15 text-brand-orange border border-brand-orange/30 shrink-0">
                           <CheckIcon size={12} className="h-3 w-3" />
@@ -209,17 +235,30 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
               ))}
             </div>
 
-            {/* Milestones Footer Bar */}
-            <div className="mt-8 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] text-[#8E8E93]">
-              <span className="text-brand-orange">// {lang === "vi" ? "TIẾN ĐỘ THANH TOÁN:" : "PAYMENT MILESTONES:"}</span>
-              <div className="flex items-center gap-4">
-                <span className="text-white font-medium">30% Deposit</span>
-                <span className="text-white/30">•</span>
-                <span className="text-white font-medium">40% Staging</span>
-                <span className="text-white/30">•</span>
-                <span className="text-white font-medium">30% Launch</span>
+            {/* Card Footer Bar: Hourly SLA Terms vs 3-Phase Milestones */}
+            {plan.pricingType === "hourly" ? (
+              <div className="mt-8 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] text-[#8E8E93]">
+                <span className="text-brand-orange">// {lang === "vi" ? "HÌNH THỨC HỢP TÁC BẢO TRÌ:" : "HOURLY SLA COOPERATION:"}</span>
+                <div className="flex items-center gap-3 md:gap-4 flex-wrap">
+                  <span className="text-white font-medium">{lang === "vi" ? "Time-Tracking Minh Bạch" : "Verified Time-Tracking"}</span>
+                  <span className="text-white/30">•</span>
+                  <span className="text-white font-medium">{lang === "vi" ? "Sao Lưu Định Kỳ" : "Periodic Backups"}</span>
+                  <span className="text-white/30">•</span>
+                  <span className="text-white font-medium">{lang === "vi" ? "Không Phí Cố Định" : "Zero Monthly Lock-in"}</span>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="mt-8 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] text-[#8E8E93]">
+                <span className="text-brand-orange">// {lang === "vi" ? "TIẾN ĐỘ THANH TOÁN:" : "PAYMENT MILESTONES:"}</span>
+                <div className="flex items-center gap-4">
+                  <span className="text-white font-medium">30% Deposit</span>
+                  <span className="text-white/30">•</span>
+                  <span className="text-white font-medium">40% Staging</span>
+                  <span className="text-white/30">•</span>
+                  <span className="text-white font-medium">30% Launch</span>
+                </div>
+              </div>
+            )}
           </motion.div>
 
         </div>
@@ -238,7 +277,10 @@ export default function Pricing({ lang }: PricingProps) {
         planId: plan.id,
         planName: plan.name,
         badge: plan.badge,
-        quoteNotice: lang === "vi" ? "Liên Hệ Báo Giá" : "Quote on Request",
+        pricingType: plan.pricingType,
+        quoteNotice: plan.pricingType === "hourly"
+          ? (lang === "vi" ? "Tính Theo Giờ (Thỏa thuận)" : "Hourly Rate (Mutual Agreement)")
+          : (lang === "vi" ? "Liên Hệ Báo Giá" : "Quote on Request"),
       }
     });
     window.dispatchEvent(event);
@@ -266,18 +308,18 @@ export default function Pricing({ lang }: PricingProps) {
                 <img src={priceGif} alt="Pricing icon" className="w-full h-full object-contain rounded-sm" />
               </div>
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange font-semibold">
-                {lang === "vi" ? "04_ALT // BÁO GIÁ TRỌN GÓI 3 PHASE" : "04_ALT // 3-PHASE PRICING WORKFLOW"}
+                {lang === "vi" ? "04_ALT // BÁO GIÁ DỊCH VỤ & BẢO TRÌ" : "04_ALT // PACKAGES & HOURLY SLA"}
               </span>
               <span className="h-[1px] w-12 bg-brand-orange/40" />
             </div>
             <h2 className="font-display font-bold text-4xl md:text-6xl tracking-tight text-[#F5F5F3] leading-[1.05]">
-              {lang === "vi" ? "Báo Giá Dịch Vụ Web" : "Transparent Web Packages"}
+              {lang === "vi" ? "Báo Giá Dịch Vụ & Bảo Trì" : "Transparent Packages & SLA"}
             </h2>
           </div>
           <p className="font-mono text-xs text-[#8E8E93] max-w-sm leading-relaxed">
             {lang === "vi"
-              ? "TẤT CẢ CÁC GÓI ĐỀU ĐƯỢC THỰC HIỆN ĐẦY ĐỦ THEO QUY TRÌNH 3 PHASE (THIẾT KẾ ➔ LẬP TRÌNH ➔ KHỞI CHẠY BẢO HÀNH)."
-              : "ALL PACKAGES ARE EXECUTED THROUGH FULL 3-PHASE PIPELINES (DESIGN ➔ ENGINEERING ➔ LAUNCH & SLA)."}
+              ? "BÁO GIÁ MINH BẠCH THEO TIẾN ĐỘ 3 PHASE (THIẾT KẾ ➔ LẬP TRÌNH ➔ KHỞI CHẠY) VÀ GÓI BẢO TRÌ TÍNH THEO GIỜ HẬU MÃI."
+              : "TRANSPARENT 3-PHASE EXECUTION (DESIGN ➔ ENGINEERING ➔ LAUNCH) PLUS ON-DEMAND HOURLY SLA POST-WARRANTY."}
           </p>
         </div>
 
@@ -450,6 +492,28 @@ export default function Pricing({ lang }: PricingProps) {
                   : "Final Phase 3 sign-off. Deploying live domain to cloud servers, handing over source code, and activating warranty."}
               </p>
             </div>
+          </div>
+
+          {/* Post-Warranty Hourly Maintenance SLA Guarantee Note */}
+          <div className="mt-6 p-4 rounded-sm bg-[#090909] border border-brand-orange/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="p-1.5 rounded bg-brand-orange/15 text-brand-orange border border-brand-orange/30 shrink-0">
+                <ClockIcon size={16} className="w-4 h-4" />
+              </div>
+              <div>
+                <span className="font-mono text-xs uppercase tracking-wider text-brand-orange font-bold">
+                  // {lang === "vi" ? "GÓI BẢO TRÌ NGOÀI GIỜ (HOURLY SLA):" : "POST-WARRANTY HOURLY SLA TERMS:"}
+                </span>
+                <p className="font-sans text-xs text-[#D4D4D8] mt-0.5">
+                  {lang === "vi"
+                    ? "Sau khi hết thời hạn bảo hành miễn phí, dịch vụ được tính phí theo giờ làm việc thực tế (Time-tracking minh bạch), nghiệm thu theo từng đợt thỏa thuận mà không cần trả phí duy trì hàng tháng."
+                    : "After the free warranty period expires, support is billed strictly by actual hours worked (Transparent time-tracking), settled upon mutual agreement with no recurring monthly lock-in."}
+                </p>
+              </div>
+            </div>
+            <span className="font-mono text-[10px] text-brand-orange bg-brand-orange/10 border border-brand-orange/20 px-2.5 py-1 rounded shrink-0">
+              {lang === "vi" ? "Thỏa Thuận Theo Giờ" : "Hourly Agreement"}
+            </span>
           </div>
         </div>
 
