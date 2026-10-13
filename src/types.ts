@@ -10,6 +10,7 @@ export interface Project {
   coverImage: string; // Dynamic graphic representation or visual motif
   metrics?: string;
   liveUrl?: string;
+  sponsorUrl?: string;
 }
 
 export interface Service {
