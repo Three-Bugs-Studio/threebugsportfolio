@@ -842,3 +842,23 @@ html.light .footer-social-card .socialContainer:hover .socialSvg path {
   }
 }
 
+/* GitHub Sponsors Button Styling (Dark & Light Mode) */
+html.light a.github-sponsor-btn {
+  color: #DB2777 !important;
+  background-color: rgba(234, 74, 170, 0.08) !important;
+  border-color: rgba(234, 74, 170, 0.35) !important;
+}
+
+html.light a.github-sponsor-btn:hover,
+a.github-sponsor-btn:hover {
+  background-color: #EA4AAA !important;
+  border-color: #EA4AAA !important;
+  color: #FFFFFF !important;
+}
+
+html.light a.github-sponsor-btn:hover svg,
+a.github-sponsor-btn:hover svg {
+  color: #FFFFFF !important;
+}
+
+
