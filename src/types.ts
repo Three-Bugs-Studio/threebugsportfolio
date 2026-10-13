@@ -58,6 +58,11 @@ export interface TeamMember {
   connectsTo?: string[]; // Connections in workflow diagram
 }
 
+export interface PricingFeature {
+  title: string;
+  items: string[];
+}
+
 export interface PricingPlan {
   id: string;
   badge: string;
@@ -67,14 +72,18 @@ export interface PricingPlan {
   priceUsd: string;
   timeline: string;
   recommended?: boolean;
-  phases: {
+  pricingType?: "project" | "hourly";
+  paymentNote?: string;
+  buttonText?: string;
+  phases?: {
     number: string;
     title: string;
     duration: string;
     description: string;
   }[];
+  features?: PricingFeature[];
   benefits: string[];
-  milestones: {
+  milestones?: {
     stage: string;
     percentage: string;
     description: string;
