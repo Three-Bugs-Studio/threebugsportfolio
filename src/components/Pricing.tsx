@@ -181,6 +181,51 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                   {plan.paymentNote || (lang === "vi" ? "one-time payment / theo tiến độ" : "one-time payment / milestone-based")}
                 </span>
               </motion.div>
+
+              {/* Direct Consultant for Hourly SLA: Hoang Do */}
+              {plan.pricingType === "hourly" && (
+                <motion.div
+                  className="mt-6 p-4 rounded-lg bg-[#080808] border border-brand-orange/30 shadow-[0_0_15px_rgba(255,106,0,0.1)] relative overflow-hidden"
+                  variants={itemVariants}
+                >
+                  <div className="flex items-center justify-between gap-3 mb-2.5">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-8 h-8 rounded-full bg-brand-orange/15 text-brand-orange border border-brand-orange/30 font-display font-bold text-xs flex items-center justify-center shrink-0">
+                        HĐ
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-display font-bold text-sm text-white">Hoàng Đỗ</span>
+                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                        </div>
+                        <span className="font-mono text-[10px] text-brand-orange block font-semibold">
+                          // {lang === "vi" ? "ĐẦU MỐI TIẾP NHẬN BẢO TRÌ" : "HOURLY SLA LEAD CONSULTANT"}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2 mt-3 pt-2.5 border-t border-white/5">
+                    <a
+                      href="tel:0392996307"
+                      className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-sm bg-[#161618] hover:bg-[#202024] border border-white/10 hover:border-brand-orange/40 font-mono text-[11px] text-white hover:text-brand-orange transition-all shadow-sm active:scale-95"
+                      title="Gọi Hoàng Đỗ: 0392.996.307"
+                    >
+                      <PhoneIcon size={12} className="w-3 h-3 text-brand-orange shrink-0" />
+                      <span className="font-bold">0392.996.307</span>
+                    </a>
+                    <a
+                      href="https://zalo.me/0392996307"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-sm bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] text-white font-mono text-[11px] font-bold shadow-[0_0_12px_rgba(0,104,255,0.35)] transition-all active:scale-95"
+                    >
+                      <SiZalo className="w-3 h-3 shrink-0" />
+                      <span>Zalo Hoàng Đỗ</span>
+                    </a>
+                  </div>
+                </motion.div>
+              )}
             </div>
 
             {/* Select Plan Button */}
@@ -357,9 +402,12 @@ export default function Pricing({ lang }: PricingProps) {
                       Hoàng Đỗ
                     </span>
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    <span className="font-mono text-[9px] text-brand-orange bg-brand-orange/10 border border-brand-orange/20 px-1.5 py-0.5 rounded font-semibold">
+                      {lang === "vi" ? "Đầu mối Bảo Trì" : "Hourly SLA Lead"}
+                    </span>
                   </div>
                   <span className="font-mono text-[10px] text-[#8E8E93]">
-                    {lang === "vi" ? "Tiếp nhận hồ sơ & Báo giá" : "Project Intake & Quotes"}
+                    {lang === "vi" ? "Tiếp nhận hồ sơ & Bảo trì ngoài giờ" : "Project Intake & Hourly Maintenance"}
                   </span>
                 </div>
               </div>
