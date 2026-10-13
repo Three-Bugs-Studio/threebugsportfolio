@@ -58,8 +58,8 @@ export default function Contact({ lang }: ContactProps) {
           setFormData((prev) => ({
             ...prev,
             message: lang === "vi" 
-              ? `${badgeLabel} Đăng ký tư vấn ${planName} (Tính Theo Giờ / Thỏa Thuận)\nTôi muốn được trao đổi chi tiết về yêu cầu bảo trì / nâng cấp tính năng cho hệ thống hiện có theo hình thức tính phí theo giờ.`
-              : `${badgeLabel} Registering consultation for ${planName} (Hourly Rate SLA)\nI would like to discuss on-demand maintenance / feature upgrade requirements billed hourly with verified time-tracking.`
+              ? `${badgeLabel} Đăng ký tư vấn ${planName} (Chuyên viên tiếp nhận: Hoàng Đỗ - 0392.996.307)\nTôi muốn được trao đổi chi tiết về yêu cầu bảo trì / nâng cấp tính năng cho hệ thống hiện có theo hình thức tính phí theo giờ.`
+              : `${badgeLabel} Registering consultation for ${planName} (Intake Lead: Hoang Do - 0392.996.307)\nI would like to discuss on-demand maintenance / feature upgrade requirements billed hourly with verified time-tracking.`
           }));
         } else {
           setFormData((prev) => ({
@@ -99,9 +99,9 @@ export default function Contact({ lang }: ContactProps) {
     },
     {
       badge: lang === "vi" ? "GÓI 04" : "PLAN 04",
-      title: lang === "vi" ? "Bảo Trì & Nâng Cấp Ngoài Giờ" : "Post-Warranty Hourly SLA",
+      title: lang === "vi" ? "Bảo Trì & Nâng Cấp Ngoài Giờ (Hoàng Đỗ)" : "Post-Warranty Hourly SLA (Hoang Do)",
       quote: lang === "vi" ? "Tính Theo Giờ (Thỏa thuận)" : "Hourly Rate (Mutual Agreement)",
-      desc: lang === "vi" ? "Dành cho web hết bảo hành, fix bug khẩn cấp, vá bảo mật & nâng cấp tính năng theo giờ." : "On-demand hotfixes, security patching & feature upgrades billed hourly with zero monthly lock-in.",
+      desc: lang === "vi" ? "Chuyên viên Hoàng Đỗ tiếp nhận: Fix bug khẩn cấp, vá bảo mật & nâng cấp tính năng theo giờ." : "Intake by Hoang Do: On-demand hotfixes, security patching & feature upgrades billed hourly.",
     },
   ];
 
