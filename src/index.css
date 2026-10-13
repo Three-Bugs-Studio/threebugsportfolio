@@ -861,4 +861,16 @@ a.github-sponsor-btn:hover svg {
   color: #FFFFFF !important;
 }
 
+/* FAQ Benefits Checklist in Light Mode */
+html.light .faq-item-box .bg-\[\#0b0b0d\] {
+  background-color: #F8FAFC !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+html.light .faq-item-box .text-\[\#D4D4D8\],
+html.light .faq-item-box .text-\[\#E4E4E7\] {
+  color: #334155 !important;
+}
+
+
 
