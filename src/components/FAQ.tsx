@@ -7,6 +7,7 @@ import {
   SearchIcon,
   ChatIcon,
   ArrowRightIcon,
+  CheckIcon,
 } from "./ui/MajesticIcon";
 import faqGif from "@/assets/animation-icon/faq.gif";
 
@@ -19,6 +20,15 @@ export default function FAQ({ lang }: FAQProps) {
   const list = FAQ_DATA[lang];
   const [openIdx, setOpenIdx] = useState<number | null>(0);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+
+  const categories = [
+    { id: "all", labelVi: "Tất Cả (8)", labelEn: "All (8)" },
+    { id: "ownership", labelVi: "Sở Hữu & Bản Quyền", labelEn: "Ownership & Code" },
+    { id: "pricing", labelVi: "Chi Phí & 0đ Phí Ẩn", labelEn: "Pricing & 0đ Fees" },
+    { id: "warranty", labelVi: "Bảo Hành & Tiến Độ", labelEn: "Warranty & Timeline" },
+    { id: "quality", labelVi: "SEO & Bảo Mật NDA", labelEn: "SEO & NDA Security" },
+  ];
 
   const toggleItem = (idx: number) => {
     setOpenIdx(openIdx === idx ? null : idx);
@@ -31,10 +41,17 @@ export default function FAQ({ lang }: FAQProps) {
     }
   };
 
-  const filteredList = list.filter(item => 
-    item.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.answer.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredList = list.filter(item => {
+    const matchesCategory = selectedCategory === "all" || item.category === selectedCategory;
+    if (!matchesCategory) return false;
+    if (!searchQuery.trim()) return true;
+    const q = searchQuery.toLowerCase();
+    const matchesQuestion = item.question.toLowerCase().includes(q);
+    const matchesAnswer = item.answer.toLowerCase().includes(q);
+    const matchesBadge = item.badge ? item.badge.toLowerCase().includes(q) : false;
+    const matchesBenefits = item.keyBenefits ? item.keyBenefits.some(b => b.toLowerCase().includes(q)) : false;
+    return matchesQuestion || matchesAnswer || matchesBadge || matchesBenefits;
+  });
 
   return (
     <section id="faq" className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative overflow-hidden">
@@ -44,7 +61,7 @@ export default function FAQ({ lang }: FAQProps) {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         
-        {/* Lively Section Header with faq.gif Icon */}
+        {/* Lively Section Header with Animated Icon */}
         <div className="flex flex-col items-center text-center mb-12">
           
           {/* Animated FAQ Icon Badge */}
@@ -53,17 +70,17 @@ export default function FAQ({ lang }: FAQProps) {
           </div>
 
           <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-orange/10 border border-brand-orange/20 rounded-full font-mono text-[11px] text-brand-orange uppercase tracking-widest mb-4">
-            <span>// {lang === "vi" ? "GIẢI ĐÁP MINH BẠCH 100%" : "100% TRANSPARENT ANSWERS"}</span>
+            <span>// {lang === "vi" ? "CAM KẾT MINH BẠCH VÌ LỢI ÍCH KHÁCH HÀNG" : "100% TRANSPARENT CLIENT GUARANTEES"}</span>
           </div>
 
           <h2 className="font-display font-bold text-3xl md:text-5xl tracking-tight text-[#F5F5F3] mb-4 uppercase leading-tight">
             {t.faqHeading}
           </h2>
 
-          <p className="font-sans text-xs md:text-sm text-[#8E8E93] max-w-lg mx-auto leading-relaxed font-light">
+          <p className="font-sans text-xs md:text-sm text-[#8E8E93] max-w-xl mx-auto leading-relaxed font-light">
             {lang === "vi"
-              ? "Mọi thắc mắc về hợp đồng, tiến độ bàn giao, quyền sở hữu mã nguồn và bảo hành đều được chúng tôi giải đáp công khai."
-              : "Clear, straightforward answers about development workflows, 100% source code ownership, and warranty guarantees."}
+              ? "Mọi chính sách về quyền sở hữu 100% mã nguồn, bảo hành kỹ thuật, tiến độ bàn giao và bảo mật NDA đều được chúng tôi công khai minh bạch để bảo vệ tối đa lợi ích của bạn."
+              : "Clear, binding commitments covering 100% source code ownership, warranty support, strict NDA privacy, and zero hidden fees."}
           </p>
 
           {/* Interactive Search Bar */}
@@ -72,7 +89,7 @@ export default function FAQ({ lang }: FAQProps) {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={lang === "vi" ? "Tìm câu hỏi (vd: bảo hành, mã nguồn, chi phí...)" : "Search FAQ (e.g., warranty, source code, timeline...)"}
+              placeholder={lang === "vi" ? "Tìm câu hỏi (vd: bảo hành, mã nguồn, chi phí, SEO...)" : "Search FAQ (e.g., ownership, warranty, fees, SEO...)"}
               className="w-full bg-[#111113] border border-white/15 focus:border-brand-orange text-xs md:text-sm text-[#F5F5F3] placeholder-[#8E8E93] px-10 py-3 rounded-full outline-none transition-colors shadow-lg"
             />
             <SearchIcon size={16} className="w-4 h-4 text-[#8E8E93] absolute left-4 top-1/2 -translate-y-1/2" />
@@ -85,6 +102,34 @@ export default function FAQ({ lang }: FAQProps) {
               </button>
             )}
           </div>
+
+          {/* Quick Filter Category Pills */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
+            {categories.map((cat) => {
+              const isSelected = selectedCategory === cat.id;
+              const label = lang === "vi" ? cat.labelVi : cat.labelEn;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => setSelectedCategory(cat.id)}
+                  className={`font-mono text-[10px] md:text-[11px] uppercase tracking-wider px-3.5 py-1.5 rounded-full transition-all duration-200 border ${
+                    isSelected
+                      ? "bg-brand-orange text-[#090909] font-bold border-brand-orange shadow-md shadow-brand-orange/20 scale-105"
+                      : "bg-[#111113] text-[#8E8E93] border-white/10 hover:border-white/25 hover:text-white"
+                  }`}
+                >
+                  {label}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Result count indicator */}
+          <div className="mt-3 font-mono text-[10px] text-[#8E8E93]/70">
+            {lang === "vi"
+              ? `Hiển thị ${filteredList.length} / ${list.length} cam kết minh bạch`
+              : `Showing ${filteredList.length} of ${list.length} transparent guarantees`}
+          </div>
         </div>
 
         {/* Dynamic Interactive Accordion List */}
@@ -92,7 +137,7 @@ export default function FAQ({ lang }: FAQProps) {
           {filteredList.length === 0 ? (
             <div className="text-center py-12 bg-[#111113] border border-white/10 rounded-xl p-6">
               <p className="font-sans text-sm text-[#8E8E93]">
-                {lang === "vi" ? "Không tìm thấy câu hỏi phù hợp. Hãy đặt câu hỏi trực tiếp cho đội ngũ Studio!" : "No matching questions found. Ask our team directly!"}
+                {lang === "vi" ? "Không tìm thấy câu hỏi phù hợp. Hãy kết nối trực tiếp cùng đội ngũ kỹ sư của Studio!" : "No matching questions found. Consult directly with our engineering team!"}
               </p>
               <button
                 onClick={handleScrollToContact}
@@ -116,22 +161,33 @@ export default function FAQ({ lang }: FAQProps) {
                   {/* Accordion Trigger Header */}
                   <button
                     onClick={() => toggleItem(idx)}
-                    className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 group interactive"
+                    className="w-full px-5 sm:px-6 py-5 text-left flex items-start sm:items-center justify-between gap-4 group interactive"
                     aria-expanded={isOpen}
                     id={`faq-trigger-${idx}`}
                   >
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-start sm:items-center gap-3.5 sm:gap-4 flex-1">
                       {/* Number Badge */}
-                      <span className="font-mono text-xs font-bold text-brand-orange bg-brand-orange/10 border border-brand-orange/20 px-2.5 py-1 rounded-md shrink-0">
+                      <span className="font-mono text-xs font-bold text-brand-orange bg-brand-orange/10 border border-brand-orange/20 px-2.5 py-1 rounded-md shrink-0 mt-0.5 sm:mt-0">
                         0{idx + 1}
                       </span>
-                      <span className="font-sans font-bold text-base md:text-lg tracking-tight text-[#F5F5F3] group-hover:text-brand-orange transition-colors leading-snug">
-                        {item.question}
-                      </span>
+
+                      <div className="flex-1">
+                        {item.badge && (
+                          <div className="mb-1.5 sm:mb-1">
+                            <span className="inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-sm font-bold">
+                              <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
+                              <span>{item.badge}</span>
+                            </span>
+                          </div>
+                        )}
+                        <h3 className="font-sans font-bold text-base md:text-lg tracking-tight text-[#F5F5F3] group-hover:text-brand-orange transition-colors leading-snug">
+                          {item.question}
+                        </h3>
+                      </div>
                     </div>
 
                     <div 
-                      className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-300 ${
+                      className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-300 mt-1 sm:mt-0 ${
                         isOpen 
                           ? "bg-brand-orange text-[#090909] border-brand-orange rotate-180" 
                           : "bg-white/5 border-white/10 text-[#8E8E93] group-hover:text-white"
@@ -154,8 +210,26 @@ export default function FAQ({ lang }: FAQProps) {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                       >
-                        <div className="px-6 pb-6 text-sm md:text-base text-[#C0C0C5] leading-relaxed font-sans border-t border-white/5 pt-4 font-light">
-                          {item.answer}
+                        <div className="px-5 sm:px-6 pb-6 text-sm md:text-base text-[#D4D4D8] leading-relaxed font-sans border-t border-white/5 pt-4 font-light">
+                          <p className="leading-relaxed">{item.answer}</p>
+
+                          {/* Key Benefits Checklist Box */}
+                          {item.keyBenefits && item.keyBenefits.length > 0 && (
+                            <div className="mt-5 p-4 rounded-lg bg-[#0b0b0d] border border-white/10 space-y-2.5">
+                              <div className="flex items-center gap-2 text-brand-orange font-mono text-[10px] uppercase tracking-wider font-bold">
+                                <CheckIcon size={14} className="w-3.5 h-3.5 text-brand-orange shrink-0" />
+                                <span>{lang === "vi" ? "QUYỀN LỢI CAM KẾT BẢO ĐẢM CHO BẠN:" : "GUARANTEED CLIENT BENEFITS:"}</span>
+                              </div>
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                                {item.keyBenefits.map((benefit, bIdx) => (
+                                  <div key={bIdx} className="flex items-start gap-2 text-xs text-[#E4E4E7]">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 shrink-0 shadow-[0_0_6px_rgba(52,211,153,0.8)]" />
+                                    <span className="font-sans leading-relaxed">{benefit}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                         </div>
                       </motion.div>
                     )}
