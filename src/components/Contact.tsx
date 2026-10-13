@@ -50,15 +50,25 @@ export default function Contact({ lang }: ContactProps) {
         if (planId === "phase_1_mvp") setBudgetIndex(0);
         else if (planId === "phase_2_fullstack") setBudgetIndex(1);
         else if (planId === "phase_3_enterprise") setBudgetIndex(2);
+        else if (planId === "phase_maintenance") setBudgetIndex(3);
 
         const badgeLabel = badge ? `[${badge}]` : `[${planName}]`;
 
-        setFormData((prev) => ({
-          ...prev,
-          message: lang === "vi" 
-            ? `${badgeLabel} Đăng ký tư vấn ${planName} (Liên Hệ Báo Giá)\nTôi muốn được trao đổi chi tiết về lộ trình 3 Phase và đặc tả hệ thống cho gói dịch vụ này.`
-            : `${badgeLabel} Registering consultation for ${planName} (Quote on Request)\nI would like technical details regarding the 3-Phase roadmap and specs for this package.`
-        }));
+        if (planId === "phase_maintenance") {
+          setFormData((prev) => ({
+            ...prev,
+            message: lang === "vi" 
+              ? `${badgeLabel} Đăng ký tư vấn ${planName} (Tính Theo Giờ / Thỏa Thuận)\nTôi muốn được trao đổi chi tiết về yêu cầu bảo trì / nâng cấp tính năng cho hệ thống hiện có theo hình thức tính phí theo giờ.`
+              : `${badgeLabel} Registering consultation for ${planName} (Hourly Rate SLA)\nI would like to discuss on-demand maintenance / feature upgrade requirements billed hourly with verified time-tracking.`
+          }));
+        } else {
+          setFormData((prev) => ({
+            ...prev,
+            message: lang === "vi" 
+              ? `${badgeLabel} Đăng ký tư vấn ${planName} (Liên Hệ Báo Giá)\nTôi muốn được trao đổi chi tiết về lộ trình 3 Phase và đặc tả hệ thống cho gói dịch vụ này.`
+              : `${badgeLabel} Registering consultation for ${planName} (Quote on Request)\nI would like technical details regarding the 3-Phase roadmap and specs for this package.`
+          }));
+        }
       }
     };
 
@@ -86,6 +96,12 @@ export default function Contact({ lang }: ContactProps) {
       title: lang === "vi" ? "Web App & Hệ Thống AI Độc Quyền" : "Custom Web App & AI Platform",
       quote: lang === "vi" ? "Liên Hệ Báo Giá" : "Quote on Request",
       desc: lang === "vi" ? "Kiến trúc chuyên sâu, tích hợp AI Assistant, Dashboard & API phức tạp." : "Deep architecture, AI Assistant, real-time dashboards & custom APIs.",
+    },
+    {
+      badge: lang === "vi" ? "GÓI 04" : "PLAN 04",
+      title: lang === "vi" ? "Bảo Trì & Nâng Cấp Ngoài Giờ" : "Post-Warranty Hourly SLA",
+      quote: lang === "vi" ? "Tính Theo Giờ (Thỏa thuận)" : "Hourly Rate (Mutual Agreement)",
+      desc: lang === "vi" ? "Dành cho web hết bảo hành, fix bug khẩn cấp, vá bảo mật & nâng cấp tính năng theo giờ." : "On-demand hotfixes, security patching & feature upgrades billed hourly with zero monthly lock-in.",
     },
   ];
 
