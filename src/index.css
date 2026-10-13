@@ -225,6 +225,12 @@ html.light [class*="bg-[#090909]"] {
 }
 
 /* Secondary Light Tone (#F1F5F9 Soft Cloud Grey) Overrides */
+html.light .pricing-card-container {
+  background-color: #FFFFFF !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06) !important;
+}
+
 html.light .pricing-card-left,
 html.light .pricing-milestone-box,
 html.light [class*="bg-[#060606]"],
