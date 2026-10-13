@@ -98,6 +98,9 @@ export interface Testimonial {
 export interface FAQItem {
   question: string;
   answer: string;
+  badge?: string;
+  category?: "ownership" | "pricing" | "warranty" | "quality";
+  keyBenefits?: string[];
 }
 
 
