@@ -177,7 +177,8 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       outcome: "Được tích hợp vào 100% quy trình làm việc của studio, giúp giảm thiểu 45% thời gian thiết lập dự án ban đầu và tối ưu hóa độ chính xác lập trình của Agent.",
       coverImage: "pudocode",
       metrics: "Giảm 45% thời gian cấu hình",
-      liveUrl: "https://github.com/DongDuong2001/pudo-code-system"
+      liveUrl: "https://github.com/DongDuong2001/pudo-code-system",
+      sponsorUrl: "https://github.com/sponsors/DongDuong2001"
     },
     {
       id: "fortify_kitchen",
@@ -231,7 +232,8 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       outcome: "Deployed in 100% of studio repositories, reducing context indexing speeds by 45% and elevating successful automation runs.",
       coverImage: "pudocode",
       metrics: "45% setup time optimization",
-      liveUrl: "https://github.com/DongDuong2001/pudo-code-system"
+      liveUrl: "https://github.com/DongDuong2001/pudo-code-system",
+      sponsorUrl: "https://github.com/sponsors/DongDuong2001"
     },
     {
       id: "fortify_kitchen",
