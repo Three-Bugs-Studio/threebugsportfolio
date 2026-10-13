@@ -7,7 +7,8 @@ import {
   CalendarIcon, 
   CheckIcon, 
   SearchIcon,
-  ImageIcon
+  ImageIcon,
+  HeartIcon
 } from "./ui/MajesticIcon";
 import Lightbox from "./Lightbox";
 import randomPhiTruongStore from "@/assets/randomphitruongstore.webp";
@@ -137,6 +138,18 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                         >
                           <ArrowUpRightIcon size={14} className="w-3.5 h-3.5" />
                           <span>{lang === "vi" ? "Truy cập website" : "Visit Live Site"}</span>
+                        </a>
+                      )}
+
+                      {project.sponsorUrl && (
+                        <a
+                          href={project.sponsorUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="github-sponsor-btn inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-[#EA4AAA] bg-[#EA4AAA]/10 border border-[#EA4AAA]/30 hover:bg-[#EA4AAA] hover:border-[#EA4AAA] hover:text-white px-3.5 py-2 rounded-sm transition-all duration-300 hover:shadow-lg hover:shadow-[#EA4AAA]/25 active:scale-95 focus-visible:ring-1 focus-visible:ring-[#EA4AAA] focus-visible:outline-none group/sponsor"
+                        >
+                          <HeartIcon iconStyle="solid" size={14} className="w-3.5 h-3.5 text-[#EA4AAA] group-hover/sponsor:text-white group-hover/sponsor:scale-110 transition-transform duration-300" />
+                          <span>{lang === "vi" ? "Tài trợ dự án (Sponsor)" : "Sponsor Project"}</span>
                         </a>
                       )}
                     </div>
