@@ -472,6 +472,56 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
         { stage: "Lập Trình Phase 2", percentage: "40%", description: "Lập trình Web/Mobile App, API Cloud & AI Agent" },
         { stage: "Nghiệm Thu Phase 3", percentage: "30%", description: "Cấu hình Server, bàn giao 100% Mã nguồn & Đào tạo vận hành" }
       ]
+    },
+    {
+      id: "phase_maintenance",
+      badge: "HẬU MÃI & THEO GIỜ // HOURLY SLA",
+      name: "Gói Bảo Trì & Nâng Cấp Ngoài Giờ",
+      tagline: "Dành riêng cho website/hệ thống đã hết thời hạn bảo hành tiêu chuẩn hoặc doanh nghiệp cần kỹ sư túc trực fix bug, tối ưu tốc độ, nâng cấp tính năng theo giờ mà không mất phí duy trì cố định hàng tháng.",
+      priceVnd: "Tính Theo Giờ (Thỏa thuận)",
+      priceUsd: "Thỏa thuận theo giờ thực tế",
+      timeline: "Linh hoạt / Gói Block 10h - 20h",
+      pricingType: "hourly",
+      paymentNote: "Tính theo giờ làm việc thực tế / Thỏa thuận giữa khách hàng & Studio",
+      buttonText: "ĐĂNG KÝ BẢO TRÌ THEO GIỜ",
+      phases: [
+        { number: "Bước 1", title: "Khảo Sát & Ước Lượng Giờ", duration: "1 - 2 Giờ", description: "Tiếp nhận yêu cầu hoặc lỗi phát sinh, chốt danh sách task và ước lượng số giờ xử lý dự kiến." },
+        { number: "Bước 2", title: "Thực Thi & Time-Tracking", duration: "Linh hoạt", description: "Kỹ sư tiến hành fix bug hoặc code tính năng, sử dụng công cụ time-tracking ghi nhận thời gian minh bạch." },
+        { number: "Bước 3", title: "Nghiệm Thu & Bàn Giao", duration: "Hoàn tất task", description: "Khách hàng kiểm thử nghiệm thu trực tiếp trên môi trường thực tế và thanh toán đúng số giờ làm việc." }
+      ],
+      features: [
+        {
+          title: "Hạng Mục Bảo Trì & Xử Lý Sự Cố Khẩn Cấp",
+          items: [
+            "Fix bug phát sinh, vá lỗi giao diện vỡ layout & xung đột thư viện",
+            "Vá lỗ hổng bảo mật, gia hạn chứng chỉ SSL & cấu hình Cloudflare",
+            "Tối ưu truy vấn CSDL, dọn dẹp cache & cải thiện điểm Google Lighthouse",
+            "Xử lý sự cố máy chủ gián đoạn, khôi phục dữ liệu từ bản backup an toàn"
+          ]
+        },
+        {
+          title: "Nâng Cấp Tính Năng & Cam Kết Hỗ Trợ Minh Bạch",
+          items: [
+            "Code thêm tính năng mới, tạo form khảo sát, chỉnh banner theo yêu cầu",
+            "Nâng cấp phiên bản framework (React, Next.js, Node.js) an toàn",
+            "Phần mềm Time-tracking bấm giờ minh bạch, báo cáo chi tiết từng task",
+            "Cam kết phản hồi sự cố trong vòng 2 - 4h, không ràng buộc phí duy trì hàng tháng"
+          ]
+        }
+      ],
+      benefits: [
+        "Không ràng buộc phí duy trì hàng tháng cố định nếu không có nhu cầu",
+        "Chi phí tính theo giờ làm việc thực tế (Time-tracking minh bạch)",
+        "Ưu tiên tiếp nhận xử lý sự cố khẩn cấp trong vòng 2 - 4h",
+        "Bảo đảm an toàn dữ liệu, luôn tạo bản sao lưu trước khi can thiệp mã nguồn",
+        "Đội ngũ kỹ sư chính của Three Bugs Studio trực tiếp xử lý, không qua trung gian",
+        "Báo cáo chi tiết nhật ký công việc (Worklog report) kèm mã commit rõ ràng"
+      ],
+      milestones: [
+        { stage: "Tiếp Nhận Task", percentage: "Ước lượng", description: "Khảo sát sự cố / yêu cầu và gửi bản ước lượng giờ làm việc" },
+        { stage: "Xử Lý & Time-Tracking", percentage: "Thực thi", description: "Tiến hành sửa lỗi hoặc phát triển tính năng theo giờ bấm máy" },
+        { stage: "Nghiệm Thu & Báo Cáo", percentage: "Nghiệm thu", description: "Khách hàng kiểm tra kết quả, nhận báo cáo và thanh toán theo giờ" }
+      ]
     }
   ],
   en: [
@@ -560,6 +610,56 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
         { stage: "Phase 1 Blueprint", percentage: "30%", description: "Finalizing System Architecture & App Spec Document" },
         { stage: "Phase 2 Build", percentage: "40%", description: "Mobile/Web App frontend, Backend API & AI Agent coding" },
         { stage: "Phase 3 Launch", percentage: "30%", description: "Cloud production setup, 100% code handover & priority support" }
+      ]
+    },
+    {
+      id: "phase_maintenance",
+      badge: "POST-WARRANTY // HOURLY SLA",
+      name: "Post-Warranty Hourly SLA & Maintenance",
+      tagline: "Dedicated to systems whose warranty has ended or businesses needing on-demand engineers for hotfixes, performance tuning, and new features billed hourly with no recurring lock-in.",
+      priceVnd: "Hourly Rate (Mutual Agreement)",
+      priceUsd: "Hourly Rate (Mutual Agreement)",
+      timeline: "On-Demand / Flexible 10h - 20h Blocks",
+      pricingType: "hourly",
+      paymentNote: "Billed strictly on tracked working hours / Mutual client agreement",
+      buttonText: "REQUEST HOURLY SLA",
+      phases: [
+        { number: "Step 1", title: "Assessment & Hour Estimation", duration: "1 - 2 Hours", description: "Reviewing issue logs or new requests, itemizing tasks with upfront hour estimates." },
+        { number: "Step 2", title: "Execution & Time-Tracking", duration: "Flexible", description: "Engineers apply hotfixes or code new features with transparent time-tracking logs." },
+        { number: "Step 3", title: "QA Sign-off & Delivery", duration: "Upon Completion", description: "Direct staging verification by client, paying strictly for verified hours worked." }
+      ],
+      features: [
+        {
+          title: "Emergency Maintenance & Security Hotfixes",
+          items: [
+            "Debugging critical bugs, layout glitches & package version conflicts",
+            "Security vulnerability patching, SSL certificate renewal & Cloudflare tuning",
+            "Database query optimization, cache clearing & Lighthouse score boosts",
+            "Server downtime troubleshooting & secure database backup restoration"
+          ]
+        },
+        {
+          title: "Feature Additions & Transparent SLA Commitment",
+          items: [
+            "Coding new components, custom landing pages, banners & forms",
+            "Safe dependencies & framework version upgrades (React, Next.js, Node.js)",
+            "Transparent time-tracking software with task-by-task hour breakdowns",
+            "Rapid 2-4h incident response SLA with zero monthly subscription lock-in"
+          ]
+        }
+      ],
+      benefits: [
+        "Zero monthly lock-in or recurring fees when you do not need support",
+        "Billed strictly on actual tracked engineering hours (Full transparency)",
+        "High-priority incident response within 2 - 4 hours of notification",
+        "Full data safety guarantee: mandatory pre-maintenance snapshots and backups",
+        "Direct handling by core Three Bugs Studio engineers without middlemen",
+        "Detailed worklog report delivered with transparent git commit history"
+      ],
+      milestones: [
+        { stage: "Task Assessment", percentage: "Estimate", description: "Analyzing requirements/incidents and sending transparent hour quote" },
+        { stage: "Work & Time-Track", percentage: "Execute", description: "Coding fixes or features with verified clock-in time tracking" },
+        { stage: "Sign-off & Report", percentage: "Sign-off", description: "Client inspects delivery, reviews hour report and settles payment" }
       ]
     }
   ]
