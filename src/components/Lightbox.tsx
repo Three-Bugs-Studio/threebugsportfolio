@@ -7,7 +7,8 @@ import {
   LaptopIcon, 
   AnalyticsIcon, 
   SearchIcon, 
-  SparklesIcon 
+  SparklesIcon,
+  HeartIcon
 } from "./ui/MajesticIcon";
 import randomPhiTruongStore from "@/assets/randomphitruongstore.webp";
 import storepage from "@/assets/storepage.webp";
@@ -813,6 +814,18 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
                       : "The interface mockup on the left is active. Try clicking the buttons inside the browser frame to experience real behavior!"}
                   </p>
                 </div>
+
+                {projectId === "pudo_code_system" && (
+                  <a
+                    href="https://github.com/sponsors/DongDuong2001"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="github-sponsor-btn w-full inline-flex items-center justify-center gap-2 font-mono text-[10px] uppercase tracking-wider text-[#EA4AAA] bg-[#EA4AAA]/10 border border-[#EA4AAA]/30 hover:bg-[#EA4AAA] hover:border-[#EA4AAA] hover:text-white px-4 py-2.5 rounded-sm transition-all duration-300 hover:shadow-lg hover:shadow-[#EA4AAA]/25 active:scale-95 focus-visible:ring-1 focus-visible:ring-[#EA4AAA] focus-visible:outline-none group/sponsor"
+                  >
+                    <HeartIcon iconStyle="solid" size={14} className="w-3.5 h-3.5 text-[#EA4AAA] group-hover/sponsor:text-white group-hover/sponsor:scale-110 transition-transform duration-300" />
+                    <span>{lang === "vi" ? "Tài trợ dự án qua GitHub Sponsors" : "Sponsor Project on GitHub"}</span>
+                  </a>
+                )}
               </div>
 
               {/* Slider controls & dots */}
