@@ -59,12 +59,15 @@ export default function App() {
   });
 
   useEffect(() => {
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (theme === "light") {
       document.documentElement.classList.add("light");
       document.documentElement.classList.remove("dark");
+      if (metaThemeColor) metaThemeColor.setAttribute("content", "#F8FAFC");
     } else {
       document.documentElement.classList.add("dark");
       document.documentElement.classList.remove("light");
+      if (metaThemeColor) metaThemeColor.setAttribute("content", "#090909");
     }
     localStorage.setItem("three_bugs_theme", theme);
   }, [theme]);
