@@ -161,6 +161,10 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                     <img
                       src={priceGif}
                       alt="Price tag animation"
+                      loading="lazy"
+                      decoding="async"
+                      width={44}
+                      height={44}
                       className="w-full h-full object-contain rounded-lg transition-transform duration-300 hover:scale-110"
                     />
                   </div>
@@ -387,7 +391,15 @@ export default function Pricing({ lang }: PricingProps) {
           <div>
             <div className="flex items-center gap-3.5 mb-4">
               <div className="price-header-icon-container w-9 h-9 p-1 rounded-lg bg-brand-orange/15 border border-brand-orange/30 flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(255,106,0,0.2)]">
-                <img src={priceGif} alt="Pricing icon" className="w-full h-full object-contain rounded-sm" />
+                <img 
+                  src={priceGif} 
+                  alt="Pricing icon" 
+                  loading="lazy" 
+                  decoding="async" 
+                  width={36} 
+                  height={36} 
+                  className="w-full h-full object-contain rounded-sm" 
+                />
               </div>
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange font-semibold">
                 {lang === "vi" ? "04_ALT // BÁO GIÁ DỊCH VỤ & BẢO TRÌ" : "04_ALT // PACKAGES & HOURLY SLA"}
