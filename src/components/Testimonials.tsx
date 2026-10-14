@@ -35,6 +35,10 @@ export default function Testimonials({ lang }: TestimonialsProps) {
           <img
             src={customerReviewGif}
             alt="Customer review feedback animation"
+            loading="lazy"
+            decoding="async"
+            width={56}
+            height={56}
             className="w-full h-full object-contain rounded-xl transition-transform duration-300 hover:scale-110"
           />
         </div>
