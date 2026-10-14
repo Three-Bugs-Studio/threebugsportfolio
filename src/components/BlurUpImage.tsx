@@ -31,6 +31,8 @@ export default function BlurUpImage({
       <img
         src={src}
         alt={alt}
+        loading="lazy"
+        decoding="async"
         onLoad={() => setIsLoaded(true)}
         className={`transition-all duration-750 ease-out ${
           isLoaded 
