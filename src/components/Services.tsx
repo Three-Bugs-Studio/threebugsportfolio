@@ -122,6 +122,10 @@ export default function Services({ lang }: ServicesProps) {
                         <img
                           src={animIconMap[service.iconName] || logoDesignGif}
                           alt={service.title}
+                          loading="lazy"
+                          decoding="async"
+                          width={56}
+                          height={56}
                           className="w-full h-full object-contain rounded-lg transition-transform duration-300 group-hover:scale-110"
                         />
                       </div>
