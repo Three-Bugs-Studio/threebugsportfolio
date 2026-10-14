@@ -56,6 +56,9 @@ export interface TeamMember {
   diagramRole: string; // Workflow node title e.g. "PROJECT SPEC & EXECUTION"
   nodeId: string;
   connectsTo?: string[]; // Connections in workflow diagram
+  showcaseUrl?: string; // RMIT showcase project link
+  showcaseLabel?: string; // e.g. "RMIT Enterprise Showcase"
+  highlightBadge?: string; // e.g. "RMIT SHOWCASE" or "QUẢN LÝ SỔ SÁCH"
 }
 
 export interface PricingFeature {
