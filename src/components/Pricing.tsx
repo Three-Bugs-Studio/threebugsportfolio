@@ -116,12 +116,12 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
           
           {/* Left Column: Summary, Price & Primary Action */}
           <motion.div
-            className="pricing-card-left flex flex-col justify-between p-6 lg:w-2/5 lg:p-10 border-b lg:border-b-0 lg:border-r border-white/10 bg-[#0c0c0c]/80"
+            className="pricing-card-left flex flex-col justify-between p-6 lg:w-2/5 lg:p-8 border-b lg:border-b-0 lg:border-r border-white/10 bg-[#0c0c0c]/80"
             variants={itemVariants}
           >
             <div>
               {/* Badge & Timeline */}
-              <div className="flex items-center justify-between gap-3 mb-6">
+              <div className="flex items-center justify-between gap-3 mb-4">
                 <span className="font-mono text-xs tracking-widest text-brand-orange font-semibold bg-brand-orange/10 border border-brand-orange/20 px-3 py-1 rounded-sm">
                   {plan.badge}
                 </span>
@@ -136,13 +136,13 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                 <h3 className="text-2xl md:text-3xl font-bold font-display text-white tracking-tight">
                   {plan.name}
                 </h3>
-                <p className="mt-3 font-sans text-xs md:text-sm text-[#8E8E93] leading-relaxed">
+                <p className="mt-2 font-sans text-xs md:text-sm text-[#8E8E93] leading-relaxed">
                   {plan.tagline}
                 </p>
               </div>
 
               {/* Pricing Display */}
-              <motion.div className="pricing-price-box mt-8 p-5 rounded-xl bg-[#060606] border border-white/10 space-y-2 relative overflow-hidden" variants={itemVariants}>
+              <motion.div className="pricing-price-box mt-5 p-4 rounded-xl bg-[#060606] border border-white/10 space-y-2 relative overflow-hidden" variants={itemVariants}>
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-baseline flex-wrap gap-2">
                     <span className="text-2xl md:text-3xl font-extrabold font-display text-[#F5F5F3]">
@@ -157,7 +157,7 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                     )}
                   </div>
                   {/* Price Animated GIF Badge */}
-                  <div className="price-anim-icon-container relative w-11 h-11 md:w-12 md:h-12 p-1 rounded-xl bg-brand-orange/15 border border-brand-orange/30 shadow-[0_0_15px_rgba(255,106,0,0.25)] flex items-center justify-center shrink-0 overflow-hidden">
+                  <div className="price-anim-icon-container relative w-10 h-10 md:w-11 md:h-11 p-1 rounded-xl bg-brand-orange/15 border border-brand-orange/30 shadow-[0_0_15px_rgba(255,106,0,0.25)] flex items-center justify-center shrink-0 overflow-hidden">
                     <img
                       src={priceGif}
                       alt="Price tag animation"
@@ -177,7 +177,7 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                         : (lang === "vi" ? "Trọn gói 3 Phase" : "Full 3 Phases")} ]
                   </span>
                 </div>
-                <span className="block text-[11px] font-sans text-[#8E8E93] pt-1">
+                <span className="block text-[11px] font-sans text-[#8E8E93] pt-0.5">
                   {plan.paymentNote || (lang === "vi" ? "one-time payment / theo tiến độ" : "one-time payment / milestone-based")}
                 </span>
               </motion.div>
@@ -185,10 +185,10 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
               {/* Direct Consultant for Hourly SLA: Hoang Do */}
               {plan.pricingType === "hourly" && (
                 <motion.div
-                  className="mt-6 p-4 rounded-lg bg-[#080808] border border-brand-orange/30 shadow-[0_0_15px_rgba(255,106,0,0.1)] relative overflow-hidden"
+                  className="mt-3.5 p-3.5 rounded-lg bg-[#080808] border border-brand-orange/30 shadow-[0_0_15px_rgba(255,106,0,0.1)] relative overflow-hidden"
                   variants={itemVariants}
                 >
-                  <div className="flex items-center justify-between gap-3 mb-2.5">
+                  <div className="flex items-center justify-between gap-3 mb-2">
                     <div className="flex items-center gap-2.5">
                       <div className="w-8 h-8 rounded-full bg-brand-orange/15 text-brand-orange border border-brand-orange/30 font-display font-bold text-xs flex items-center justify-center shrink-0">
                         HĐ
@@ -205,7 +205,7 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 mt-3 pt-2.5 border-t border-white/5">
+                  <div className="grid grid-cols-2 gap-2 mt-2.5 pt-2 border-t border-white/5">
                     <a
                       href="tel:0392996307"
                       className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-sm bg-[#161618] hover:bg-[#202024] border border-white/10 hover:border-brand-orange/40 font-mono text-[11px] text-white hover:text-brand-orange transition-all shadow-sm active:scale-95"
@@ -229,10 +229,10 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
             </div>
 
             {/* Select Plan Button */}
-            <motion.div className="mt-8" variants={itemVariants}>
+            <motion.div className="mt-5" variants={itemVariants}>
               <button
                 onClick={() => onSelectPlan(plan)}
-                className="btn-stacked w-full py-4 px-6 rounded-sm font-mono text-xs tracking-widest uppercase font-bold transition-all duration-300 flex items-center justify-center gap-2 group/btn interactive bg-brand-orange text-[#090909] hover:bg-white hover:text-black shadow-lg"
+                className="btn-stacked w-full py-3.5 px-6 rounded-sm font-mono text-xs tracking-widest uppercase font-bold transition-all duration-300 flex items-center justify-center gap-2 group/btn interactive bg-brand-orange text-[#090909] hover:bg-white hover:text-black shadow-lg"
               >
                 <span>
                   {plan.buttonText || (lang === "vi" ? "NHẬN TƯ VẤN GÓI NÀY" : "SELECT THIS PACKAGE")}
@@ -244,20 +244,20 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
 
           {/* Right Column: 3-Phase Roadmap / Maintenance Checklist */}
           <motion.div
-            className="pricing-card-right p-6 lg:w-3/5 lg:p-10 bg-[#121212]/70 flex flex-col justify-between"
+            className="pricing-card-right p-6 lg:w-3/5 lg:p-8 bg-[#121212]/70 flex flex-col justify-between"
             variants={itemVariants}
           >
-            <div className="space-y-6">
+            <div className="space-y-5">
               {featureSections.map((section, secIdx) => (
                 <div key={secIdx}>
-                  <div className="flex items-center gap-2 mb-4">
+                  <div className="flex items-center gap-2 mb-3">
                     {section.icon}
                     <h4 className="text-sm font-mono uppercase tracking-wider text-brand-orange font-bold">
                       {section.title}:
                     </h4>
                   </div>
 
-                  <ul className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                  <ul className="grid grid-cols-1 gap-2.5 md:grid-cols-2">
                     {section.items.map((item, itemIdx) => (
                       <motion.li
                         key={itemIdx}
@@ -274,15 +274,52 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                   </ul>
 
                   {secIdx < featureSections.length - 1 && (
-                    <div className="my-6 h-[1px] w-full bg-white/10" />
+                    <div className="my-4 h-[1px] w-full bg-white/10" />
                   )}
                 </div>
               ))}
+
+              {/* 3-Step On-Demand SLA Workflow (For Hourly Maintenance) */}
+              {plan.pricingType === "hourly" && plan.phases && plan.phases.length > 0 && (
+                <div className="pt-4 border-t border-white/10">
+                  <div className="flex items-center gap-2 mb-3">
+                    <BoxIcon size={16} className="w-4 h-4 text-brand-orange shrink-0" />
+                    <h4 className="text-xs md:text-sm font-mono uppercase tracking-wider text-brand-orange font-bold">
+                      {lang === "vi" ? "Quy Trình Tiếp Nhận & Bấm Giờ 3 Bước:" : "3-Step On-Demand SLA Workflow:"}
+                    </h4>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5">
+                    {plan.phases.map((ph, phIdx) => (
+                      <div
+                        key={phIdx}
+                        className="p-3 rounded-lg bg-[#0a0a0c] border border-white/10 hover:border-brand-orange/40 transition-colors flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-1 mb-1">
+                            <span className="font-mono text-[10px] font-bold text-brand-orange">
+                              {ph.number}
+                            </span>
+                            <span className="font-mono text-[9px] text-[#8E8E93] bg-white/5 border border-white/5 px-1.5 py-0.5 rounded">
+                              {ph.duration}
+                            </span>
+                          </div>
+                          <div className="font-display font-semibold text-xs text-white mb-1">
+                            {ph.title}
+                          </div>
+                          <p className="font-sans text-[11px] text-[#A0A0A5] leading-relaxed">
+                            {ph.description}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Card Footer Bar: Hourly SLA Terms vs 3-Phase Milestones */}
             {plan.pricingType === "hourly" ? (
-              <div className="mt-8 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] text-[#8E8E93]">
+              <div className="mt-6 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] text-[#8E8E93]">
                 <span className="text-brand-orange">// {lang === "vi" ? "HÌNH THỨC HỢP TÁC BẢO TRÌ:" : "HOURLY SLA COOPERATION:"}</span>
                 <div className="flex items-center gap-3 md:gap-4 flex-wrap">
                   <span className="text-white font-medium">{lang === "vi" ? "Time-Tracking Minh Bạch" : "Verified Time-Tracking"}</span>
@@ -293,7 +330,7 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                 </div>
               </div>
             ) : (
-              <div className="mt-8 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] text-[#8E8E93]">
+              <div className="mt-6 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] text-[#8E8E93]">
                 <span className="text-brand-orange">// {lang === "vi" ? "TIẾN ĐỘ THANH TOÁN:" : "PAYMENT MILESTONES:"}</span>
                 <div className="flex items-center gap-4">
                   <span className="text-white font-medium">30% Deposit</span>
