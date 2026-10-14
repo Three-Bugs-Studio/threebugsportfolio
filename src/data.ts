@@ -673,9 +673,9 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
   vi: [
     {
       name: "Duong Phu Dong",
-      role: "Founder của studio",
-      bio: "Chuyên gia quản trị dự án phần mềm với tầm nhìn thực tế. Anh đảm nhận trách nhiệm quản lý tổng thể, thiết lập đặc tả dự án và đảm bảo bàn giao đúng chất lượng.",
-      specialties: ["Quản lý Dự án", "Đặc tả Phần mềm", "Phân tích Nghiệp vụ", "Đảm bảo Cam kết"],
+      role: "Founder & Trưởng nhóm Dự án Doanh nghiệp",
+      bio: "Sáng lập Three Bugs Studio với kinh nghiệm dày dặn trong quản trị và trực tiếp hoàn thành các dự án phần mềm cho doanh nghiệp (nổi bật là dự án Project Luvcraft cho Project Pluto trên RMIT Showcase). Anh chịu trách nhiệm quản lý tổng thể, đặc tả kiến trúc kỹ thuật và cam kết chất lượng bàn giao.",
+      specialties: ["Quản lý Dự án Doanh nghiệp", "Đặc tả Phần mềm", "Kiến trúc Hệ thống", "RMIT Enterprise Showcase"],
       socials: {
         github: "https://github.com/DongDuong2001"
       },
@@ -688,13 +688,16 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       },
       diagramRole: "PROJECT SPEC & EXECUTION LEAD",
       nodeId: "node_dong",
-      connectsTo: ["node_thutran", "node_hoangdong"]
+      connectsTo: ["node_thutran", "node_hoangdong"],
+      showcaseUrl: "https://www.rmitvn-showcase.com/nightswatch10f37c09",
+      showcaseLabel: "RMIT Enterprise Showcase (Project Luvcraft)",
+      highlightBadge: "RMIT SHOWCASE"
     },
     {
       name: "Thu Tran",
-      role: "Co-Founder & Thiết kế Website",
-      bio: "Chuyên gia thiết kế giao diện sáng tạo với tư duy thẩm mỹ hiện đại. Cô tập trung vào việc tạo nên các giao diện người dùng tối giản, tinh tế và tối ưu hóa trải nghiệm.",
-      specialties: ["Thiết kế UI/UX", "Ý tưởng Thiết kế", "Hệ thống Thiết kế", "Tương tác Giao diện"],
+      role: "Co-Founder, Thiết kế UI/UX & Quản lý Sổ sách Studio",
+      bio: "Đồng sáng lập studio, chuyên gia thiết kế giao diện hiện đại kiêm phụ trách quản trị vận hành và quản lý sổ sách tài chính nội bộ cho Three Bugs Studio. Cô đảm bảo tính minh bạch về thu chi dự án, tối ưu hóa dòng tiền và kiến tạo trải nghiệm người dùng tinh tế.",
+      specialties: ["Thiết kế UI/UX", "Quản lý Sổ sách Tài chính", "Vận hành Studio", "Hệ thống Thiết kế"],
       socials: {
         github: "https://github.com/mthutt"
       },
@@ -705,15 +708,16 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
         glowClass: "border-[#A855F7]/40 shadow-[0_0_20px_rgba(168,85,247,0.25)]",
         borderHex: "#A855F7"
       },
-      diagramRole: "UI/UX & DESIGN SYSTEM LEAD",
+      diagramRole: "UI/UX & STUDIO FINANCIAL OPERATIONS",
       nodeId: "node_thutran",
-      connectsTo: ["node_hohuy", "node_haovu"]
+      connectsTo: ["node_hohuy", "node_haovu"],
+      highlightBadge: "SỔ SÁCH & TÀI CHÍNH"
     },
     {
       name: "Huynh Quang Dong",
-      role: "Tester và Scrum Master",
-      bio: "Chuyên gia kiểm định chất lượng và điều phối quy trình phát triển. Anh chịu trách nhiệm kiểm thử hệ thống, thúc đẩy quy trình Agile linh hoạt và đảm bảo bàn giao sản phẩm đạt chuẩn chất lượng.",
-      specialties: ["Kiểm thử Phần mềm", "Scrum Master", "Quy trình Agile", "Đảm bảo Chất lượng"],
+      role: "Scrum Master & Kiểm thử QA Doanh nghiệp",
+      bio: "Chuyên gia điều phối Agile Scrum và kiểm thử chất lượng phần mềm với bề dày kinh nghiệm thực thi dự án doanh nghiệp thực tế (Project Luvcraft trên RMIT Showcase). Anh đảm bảo mọi tính năng được kiểm định chặt chẽ, luồng người dùng không lỗi và quy trình bàn giao đạt chuẩn.",
+      specialties: ["Kiểm thử Phần mềm QA", "Scrum Master Agile", "Kiểm thử Chịu tải", "Đảm bảo Chất lượng"],
       socials: {
         github: "https://github.com/quangdong26"
       },
@@ -726,13 +730,16 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       },
       diagramRole: "SCRUM MASTER & QA TESTING",
       nodeId: "node_hoangdong",
-      connectsTo: ["node_dong"]
+      connectsTo: ["node_dong"],
+      showcaseUrl: "https://www.rmitvn-showcase.com/nightswatch10f37c09",
+      showcaseLabel: "RMIT Enterprise Showcase (Project Luvcraft)",
+      highlightBadge: "RMIT SHOWCASE"
     },
     {
       name: "Ho Quang Huy",
-      role: "DevOps và Nhà phát triển Full Stack",
-      bio: "Kỹ sư vận hành đám mây và lập trình viên toàn diện. Anh phụ trách tối ưu hóa máy chủ, thiết lập môi trường Docker và xây dựng các hệ thống backend chạy mượt mà.",
-      specialties: ["Kiến trúc DevOps", "Docker và Vận hành", "Lập trình Full Stack", "Cơ sở dữ liệu PostgreSQL"],
+      role: "Kỹ sư DevOps & Full Stack Doanh nghiệp",
+      bio: "Kỹ sư đám mây và lập trình viên Full Stack với kinh nghiệm thực chiến phát triển giải pháp doanh nghiệp trên RMIT Showcase (Project Luvcraft). Anh phụ trách kiến trúc vi dịch vụ (FastAPI, RabbitMQ, Celery), Docker container hóa, cơ sở dữ liệu PostgreSQL và hạ tầng CI/CD chịu tải cao.",
+      specialties: ["Kiến trúc DevOps & Docker", "Lập trình Full Stack", "Hệ thống Microservice", "Cơ sở dữ liệu PostgreSQL"],
       socials: {
         github: "https://github.com/HoHuy2402"
       },
@@ -745,13 +752,16 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       },
       diagramRole: "DEVOPS & FULLSTACK PIPELINE",
       nodeId: "node_hohuy",
-      connectsTo: ["node_hoangdong"]
+      connectsTo: ["node_hoangdong"],
+      showcaseUrl: "https://www.rmitvn-showcase.com/nightswatch10f37c09",
+      showcaseLabel: "RMIT Enterprise Showcase (Project Luvcraft)",
+      highlightBadge: "RMIT SHOWCASE"
     },
     {
       name: "Hao Vu",
-      role: "Lập trình viên Backend & Cơ sở dữ liệu",
-      bio: "Kỹ sư hệ thống máy chủ và tối ưu hóa dữ liệu. Anh tập trung xây dựng cơ sở hạ tầng backend bảo mật, thiết kế cấu trúc CSDL hiệu năng và tích hợp hệ thống API.",
-      specialties: ["Lập trình Backend", "Thiết kế API", "Tối ưu hóa CSDL", "Bảo mật Hệ thống"],
+      role: "Kỹ sư Backend & Cơ sở dữ liệu Doanh nghiệp",
+      bio: "Kỹ sư chuyên sâu về hệ thống máy chủ, API bảo mật và tối ưu dữ liệu quy mô doanh nghiệp trên RMIT Showcase (Project Luvcraft). Anh phụ trách thiết kế lược đồ cơ sở dữ liệu tối ưu, phân quyền đa tài khoản RBAC và tích hợp các pipeline dữ liệu thông minh.",
+      specialties: ["Lập trình Backend", "Tối ưu hóa CSDL", "Bảo mật & Phân quyền RBAC", "Thiết kế API Doanh nghiệp"],
       socials: {
         github: "https://github.com/haovu310"
       },
@@ -764,15 +774,18 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       },
       diagramRole: "BACKEND API & DATABASE ARCHITECT",
       nodeId: "node_haovu",
-      connectsTo: ["node_hohuy"]
+      connectsTo: ["node_hohuy"],
+      showcaseUrl: "https://www.rmitvn-showcase.com/nightswatch10f37c09",
+      showcaseLabel: "RMIT Enterprise Showcase (Project Luvcraft)",
+      highlightBadge: "RMIT SHOWCASE"
     }
   ],
   en: [
     {
       name: "Duong Phu Dong",
-      role: "Founder of the studio",
-      bio: "Software project manager with a realistic and structured vision. He oversees end to end execution, locks down requirements, and ensures timely delivery.",
-      specialties: ["Project Management", "Software Specs", "Business Analysis", "Client Delivery"],
+      role: "Studio Founder & Enterprise Project Lead",
+      bio: "Founder of Three Bugs Studio with proven enterprise project execution experience (notably Project Luvcraft for Project Pluto featured on RMIT Showcase). He oversees end-to-end architecture, technical specifications, and timely delivery.",
+      specialties: ["Enterprise Project Management", "Software Specifications", "System Architecture", "RMIT Enterprise Showcase"],
       socials: {
         github: "https://github.com/DongDuong2001"
       },
@@ -785,13 +798,16 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       },
       diagramRole: "PROJECT SPEC & EXECUTION LEAD",
       nodeId: "node_dong",
-      connectsTo: ["node_thutran", "node_hoangdong"]
+      connectsTo: ["node_thutran", "node_hoangdong"],
+      showcaseUrl: "https://www.rmitvn-showcase.com/nightswatch10f37c09",
+      showcaseLabel: "RMIT Enterprise Showcase (Project Luvcraft)",
+      highlightBadge: "RMIT SHOWCASE"
     },
     {
       name: "Thu Tran",
-      role: "Co-Founder & Website Designer",
-      bio: "Creative interface designer with a modern aesthetic vision. She focuses on crafting clean, minimalist user layouts and user experience flows.",
-      specialties: ["UI/UX Design", "Design Concepting", "Design Systems", "Interactive Layouts"],
+      role: "Co-Founder, UI/UX Designer & Studio Financial Operations",
+      bio: "Co-founder of the studio, interface designer and internal financial bookkeeper for Three Bugs Studio. She oversees project financial records, operational bookkeeping, and crafts clean, high-conversion UI/UX design systems.",
+      specialties: ["UI/UX Design", "Financial Bookkeeping", "Studio Operations", "Design Systems"],
       socials: {
         github: "https://github.com/mthutt"
       },
@@ -802,15 +818,16 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
         glowClass: "border-[#A855F7]/40 shadow-[0_0_20px_rgba(168,85,247,0.25)]",
         borderHex: "#A855F7"
       },
-      diagramRole: "UI/UX & DESIGN SYSTEM LEAD",
+      diagramRole: "UI/UX & STUDIO FINANCIAL OPERATIONS",
       nodeId: "node_thutran",
-      connectsTo: ["node_hohuy", "node_haovu"]
+      connectsTo: ["node_hohuy", "node_haovu"],
+      highlightBadge: "FINANCIAL OPS"
     },
     {
       name: "Huynh Quang Dong",
-      role: "Tester and Scrum Master",
-      bio: "Quality assurance expert and agile coordinator. He leads quality verification, drives agile execution, and ensures top-tier software delivery.",
-      specialties: ["Quality Assurance", "Scrum Master", "Agile Framework", "Software Testing"],
+      role: "Scrum Master & Enterprise QA Lead",
+      bio: "Agile Scrum coordinator and quality assurance lead with verified enterprise project experience (Project Luvcraft on RMIT Showcase). He enforces rigorous QA testing, test automation, and flawless milestone delivery.",
+      specialties: ["Enterprise QA Testing", "Agile Scrum Master", "Stress Testing", "Quality Delivery"],
       socials: {
         github: "https://github.com/quangdong26"
       },
@@ -823,13 +840,16 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       },
       diagramRole: "SCRUM MASTER & QA TESTING",
       nodeId: "node_hoangdong",
-      connectsTo: ["node_dong"]
+      connectsTo: ["node_dong"],
+      showcaseUrl: "https://www.rmitvn-showcase.com/nightswatch10f37c09",
+      showcaseLabel: "RMIT Enterprise Showcase (Project Luvcraft)",
+      highlightBadge: "RMIT SHOWCASE"
     },
     {
       name: "Ho Quang Huy",
-      role: "DevOps and Full Stack Developer",
-      bio: "Cloud infrastructure architect and full stack engineer. He configures Docker networks, automates deployment flows, and builds reliable backend API services.",
-      specialties: ["DevOps and Pipelines", "Docker and Cloud Setup", "Full Stack Development", "PostgreSQL Database"],
+      role: "DevOps & Enterprise Full Stack Engineer",
+      bio: "Cloud infrastructure and full-stack engineer with proven enterprise development experience featured on RMIT Showcase (Project Luvcraft). He architects asynchronous pipelines (FastAPI, RabbitMQ, Celery), Docker containers, PostgreSQL, and robust CI/CD environments.",
+      specialties: ["DevOps & Docker Setup", "Full Stack Development", "Microservice Systems", "PostgreSQL Database"],
       socials: {
         github: "https://github.com/HoHuy2402"
       },
@@ -842,13 +862,16 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       },
       diagramRole: "DEVOPS & FULLSTACK PIPELINE",
       nodeId: "node_hohuy",
-      connectsTo: ["node_hoangdong"]
+      connectsTo: ["node_hoangdong"],
+      showcaseUrl: "https://www.rmitvn-showcase.com/nightswatch10f37c09",
+      showcaseLabel: "RMIT Enterprise Showcase (Project Luvcraft)",
+      highlightBadge: "RMIT SHOWCASE"
     },
     {
       name: "Hao Vu",
-      role: "Backend & Database Developer",
-      bio: "Server-side system architect and database optimizer. He is responsible for building secure backend infrastructures, database schema design, and API integration.",
-      specialties: ["Backend Engineering", "API System Design", "Database Tuning", "System Security"],
+      role: "Enterprise Backend & Database Engineer",
+      bio: "Server-side and database architect with proven enterprise project delivery on RMIT Showcase (Project Luvcraft). He builds secure backend APIs, optimized PostgreSQL schemas, Role-Based Access Control (RBAC), and high-throughput data pipelines.",
+      specialties: ["Backend Engineering", "Database Optimization", "Enterprise RBAC Security", "API Architecture"],
       socials: {
         github: "https://github.com/haovu310"
       },
@@ -861,7 +884,10 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       },
       diagramRole: "BACKEND API & DATABASE ARCHITECT",
       nodeId: "node_haovu",
-      connectsTo: ["node_hohuy"]
+      connectsTo: ["node_hohuy"],
+      showcaseUrl: "https://www.rmitvn-showcase.com/nightswatch10f37c09",
+      showcaseLabel: "RMIT Enterprise Showcase (Project Luvcraft)",
+      highlightBadge: "RMIT SHOWCASE"
     }
   ]
 };
