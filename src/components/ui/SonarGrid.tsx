@@ -120,14 +120,20 @@ export function SonarGrid({
     let width = 0;
     let height = 0;
     let raf = 0;
-    let timer = 0;
     let visible = true;
     let seeded = false;
-    let stroke = "";
+    let stroke = color || "#FF6A00";
     let nextPing = performance.now() + opts.current.pingEvery * 1000;
 
     const readColor = () => {
-      stroke = color || getComputedStyle(canvas).color || "#FF6A00";
+      let c = color;
+      if (!c && canvas) {
+        const computed = getComputedStyle(canvas).color;
+        if (computed && computed !== "transparent" && computed !== "rgba(0, 0, 0, 0)") {
+          c = computed;
+        }
+      }
+      stroke = c || "#FF6A00";
     };
 
     const addRing = (x: number, y: number, born: number) => {
@@ -207,17 +213,20 @@ export function SonarGrid({
 
     const resize = () => {
       const rect = host.getBoundingClientRect();
-      width = Math.max(1, Math.round(rect.width));
-      height = Math.max(1, Math.round(rect.height));
+      const newWidth = Math.max(1, Math.round(rect.width));
+      const newHeight = Math.max(1, Math.round(rect.height));
+      width = newWidth;
+      height = newHeight;
       const dpr = Math.min(window.devicePixelRatio || 1, MAX_DPR);
       canvas.width = Math.round(width * dpr);
       canvas.height = Math.round(height * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      if (!seeded) {
+
+      if (!seeded && width > 100 && height > 100) {
         // One ring already mid-expansion inside the ping area, so the first paint shows the idea.
         seeded = true;
         const [x0, y0, x1, y1] = opts.current.pingArea;
-        if (opts.current.seedPing && !reduceMotion.matches) {
+        if (opts.current.seedPing) {
           addRing(
             width * (x0 + (x1 - x0) * 0.68),
             height * (y0 + (y1 - y0) * 0.34),
@@ -226,22 +235,15 @@ export function SonarGrid({
         }
       }
       draw(performance.now());
-    };
-
-    const scheduleIdle = (delay: number) => {
-      window.clearTimeout(timer);
-      timer = window.setTimeout(() => tick(performance.now()), Math.max(16, delay));
+      wake();
     };
 
     const tick = (now: number) => {
       raf = 0;
       if (!visible || document.hidden) return;
-      if (reduceMotion.matches) {
-        ringsRef.current = [];
-        draw(now);
-        return;
-      }
+
       const o = opts.current;
+      const interval = reduceMotion.matches ? Math.max(5000, o.pingEvery * 2500) : o.pingEvery * 1000;
       if (o.pingEvery > 0 && now >= nextPing) {
         const [x0, y0, x1, y1] = o.pingArea;
         addRing(
@@ -249,19 +251,16 @@ export function SonarGrid({
           height * (y0 + Math.random() * (y1 - y0)),
           now
         );
-        nextPing = now + o.pingEvery * 1000;
+        nextPing = now + interval;
       }
       draw(now);
-      if (ringsRef.current.length > 0) {
-        raf = requestAnimationFrame(tick);
-      } else if (o.pingEvery > 0) {
-        scheduleIdle(nextPing - now);
-      }
+
+      // Keep running at display refresh rate while in viewport; paused by IntersectionObserver and visibilitychange
+      raf = requestAnimationFrame(tick);
     };
 
     const wake = () => {
       if (!raf) {
-        window.clearTimeout(timer);
         raf = requestAnimationFrame(tick);
       }
     };
@@ -272,10 +271,21 @@ export function SonarGrid({
       wake();
     };
 
-    const onDown = (e: PointerEvent) => {
-      if (!opts.current.interactive || reduceMotion.matches) return;
+    const onDown = (e: PointerEvent | MouseEvent | TouchEvent) => {
+      if (!opts.current.interactive) return;
       const rect = host.getBoundingClientRect();
-      addRing(e.clientX - rect.left, e.clientY - rect.top, performance.now());
+      let clientX = 0;
+      let clientY = 0;
+      if ("touches" in e && e.touches.length > 0) {
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+      } else if ("clientX" in e) {
+        clientX = (e as MouseEvent).clientX;
+        clientY = (e as MouseEvent).clientY;
+      } else {
+        return;
+      }
+      addRing(clientX - rect.left, clientY - rect.top, performance.now());
       wake();
     };
 
@@ -286,10 +296,10 @@ export function SonarGrid({
     const ro = new ResizeObserver(resize);
     const io = new IntersectionObserver(
       ([entry]) => {
-        visible = entry?.isIntersecting ?? true;
+        visible = entry ? entry.isIntersecting : true;
         if (visible) wake();
       },
-      { threshold: 0 }
+      { threshold: 0, rootMargin: "100px" }
     );
     const mo = new MutationObserver(() => refreshRef.current());
 
@@ -301,7 +311,8 @@ export function SonarGrid({
       attributes: true,
       attributeFilter: ["class", "style", "data-theme"],
     });
-    host.addEventListener("pointerdown", onDown);
+    host.addEventListener("pointerdown", onDown as any);
+    host.addEventListener("touchstart", onDown as any, { passive: true });
     document.addEventListener("visibilitychange", onVisibility);
     reduceMotion.addEventListener("change", wake);
     wake();
@@ -310,11 +321,11 @@ export function SonarGrid({
       ro.disconnect();
       io.disconnect();
       mo.disconnect();
-      host.removeEventListener("pointerdown", onDown);
+      host.removeEventListener("pointerdown", onDown as any);
+      host.removeEventListener("touchstart", onDown as any);
       document.removeEventListener("visibilitychange", onVisibility);
       reduceMotion.removeEventListener("change", wake);
       cancelAnimationFrame(raf);
-      window.clearTimeout(timer);
       refreshRef.current = () => {};
     };
   }, [color]);
@@ -352,7 +363,7 @@ export function SonarGrid({
       <canvas
         ref={canvasRef}
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 size-full text-brand-orange"
+        className="pointer-events-none absolute inset-0 z-0 size-full text-brand-orange"
         style={color ? { color } : undefined}
       />
       {children}
