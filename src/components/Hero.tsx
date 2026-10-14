@@ -3,9 +3,7 @@ import { motion } from "motion/react";
 import { ArrowUpRightIcon, ArrowDownIcon } from "./ui/MajesticIcon";
 import { TRANSLATIONS } from "../data";
 
-const FlowWaveBackground = React.lazy(() =>
-  import("./ui/FlowWaveBackground").then((m) => ({ default: m.FlowWaveBackground }))
-);
+import { SonarGrid } from "./ui/SonarGrid";
 
 interface HeroProps {
   lang: "vi" | "en";
@@ -68,21 +66,29 @@ export default function Hero({ lang }: HeroProps) {
   const t = TRANSLATIONS[lang];
 
   return (
-    <section
+    <SonarGrid
+      as="section"
       id="hero"
+      color="#FF6A00"
+      spacing={26}
+      dotRadius={1.4}
+      baseOpacity={0.22}
+      pingEvery={2.4}
+      speed={260}
+      ringWidth={90}
+      amplitude={2.2}
+      interactive={true}
+      maxRings={6}
+      seedPing={true}
+      pingArea={[0.15, 0.2, 0.85, 0.8]}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#090909]"
     >
-      {/* Three.js FlowWave Dynamic Particle Wave Background */}
-      <React.Suspense fallback={null}>
-        <FlowWaveBackground />
-      </React.Suspense>
-
       {/* High-Contrast Vignette Mask Overlay to ensure text pops out prominently in dark mode */}
       <div className="hero-vignette absolute inset-0 z-[1] pointer-events-none dark:block hidden bg-[radial-gradient(ellipse_at_center,_rgba(9,9,9,0.15)_0%,_rgba(9,9,9,0.50)_50%,_rgba(9,9,9,0.92)_100%)]" />
 
       {/* Ambient Brand Lighting Glares */}
-      <div className="absolute top-[-10%] left-[5%] brutalist-glow opacity-40 z-[1]" />
-      <div className="absolute top-[30%] right-[-10%] brutalist-glow opacity-25 z-[1]" style={{ filter: "blur(120px)" }} />
+      <div className="absolute top-[-10%] left-[5%] brutalist-glow opacity-40 z-[1] pointer-events-none" />
+      <div className="absolute top-[30%] right-[-10%] brutalist-glow opacity-25 z-[1] pointer-events-none" style={{ filter: "blur(120px)" }} />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10 flex flex-col items-center text-center mt-12 md:mt-16 pb-28 md:pb-36">
         {/* Dynamic time-based greeting badge */}
@@ -212,6 +218,6 @@ export default function Hero({ lang }: HeroProps) {
           </motion.div>
         </motion.div>
       </div>
-    </section>
+    </SonarGrid>
   );
 }
