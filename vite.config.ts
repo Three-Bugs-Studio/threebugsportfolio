@@ -12,15 +12,20 @@ export default defineConfig(() => {
       },
     },
     build: {
-      chunkSizeWarningLimit: 800,
+      chunkSizeWarningLimit: 1000,
       rollupOptions: {
         output: {
-          manualChunks: {
-            'vendor-react': ['react', 'react-dom'],
-            'vendor-three': ['three'],
-            'vendor-motion': ['motion'],
-            'vendor-icons': ['lucide-react', 'react-icons'],
-            'vendor-shaders': ['@paper-design/shaders-react']
+          manualChunks: (id) => {
+            if (id.includes('MajesticIcon')) {
+              return 'ui-icons';
+            }
+            if (id.includes('node_modules')) {
+              if (id.includes('three')) return 'vendor-three';
+              if (id.includes('motion')) return 'vendor-motion';
+              if (id.includes('react-dom') || id.includes('node_modules/react/') || id.includes('node_modules\\react\\')) return 'vendor-react';
+              if (id.includes('lucide-react') || id.includes('react-icons')) return 'vendor-icons';
+              if (id.includes('@paper-design/shaders-react')) return 'vendor-shaders';
+            }
           }
         }
       }
