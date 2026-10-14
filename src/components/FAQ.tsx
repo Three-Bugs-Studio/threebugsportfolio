@@ -66,7 +66,15 @@ export default function FAQ({ lang }: FAQProps) {
           
           {/* Animated FAQ Icon Badge */}
           <div className="faq-anim-icon-container w-16 h-16 rounded-2xl bg-[#111113] border border-white/15 p-2 shadow-2xl mb-6 flex items-center justify-center interactive hover:scale-105 transition-transform">
-            <img src={faqGif} alt="FAQ Animated Icon" className="w-full h-full object-contain" />
+            <img 
+              src={faqGif} 
+              alt="FAQ Animated Icon" 
+              loading="lazy"
+              decoding="async"
+              width={64}
+              height={64}
+              className="w-full h-full object-contain" 
+            />
           </div>
 
           <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-orange/10 border border-brand-orange/20 rounded-full font-mono text-[11px] text-brand-orange uppercase tracking-widest mb-4">
