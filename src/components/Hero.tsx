@@ -71,12 +71,12 @@ export default function Hero({ lang }: HeroProps) {
       id="hero"
       color="#FF6A00"
       spacing={26}
-      dotRadius={1.4}
-      baseOpacity={0.22}
+      dotRadius={1.6}
+      baseOpacity={0.32}
       pingEvery={2.4}
       speed={260}
-      ringWidth={90}
-      amplitude={2.2}
+      ringWidth={95}
+      amplitude={2.4}
       interactive={true}
       maxRings={6}
       seedPing={true}
