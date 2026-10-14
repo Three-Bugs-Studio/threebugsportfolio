@@ -87,8 +87,8 @@ export default function Team({ lang }: TeamProps) {
 
           <p className="font-sans text-xs md:text-sm text-[#8E8E93] max-w-md font-light leading-relaxed">
             {lang === "vi"
-              ? "Đội ngũ 5 kỹ sư & thiết kế chuyên nghiệp làm việc trực tiếp tại TP.HCM. Không qua trung gian, không rủi ro tuyển dụng — cam kết 100% chất lượng mã nguồn & tiến độ bàn giao."
-              : "5 dedicated in-house engineers & UI/UX designers in Ho Chi Minh City. Direct technical partnership with 100% source code handover."}
+              ? "Đội ngũ 5 kỹ sư & thiết kế chuyên nghiệp tại TP.HCM với kinh nghiệm thực chiến hoàn thành dự án doanh nghiệp (RMIT Showcase) và quản trị tài chính minh bạch."
+              : "5 dedicated in-house engineers & designers in Ho Chi Minh City with verified enterprise showcase experience (RMIT Vietnam) & transparent studio operations."}
           </p>
         </div>
 
@@ -98,13 +98,13 @@ export default function Team({ lang }: TeamProps) {
             <CheckDoubleIcon size={12} className="w-3 h-3 text-brand-orange" />
             <span>100% IN-HOUSE ENGINEERS</span>
           </div>
-          <div className="flex items-center gap-2 bg-[#111113] border border-white/10 px-3.5 py-1.5 rounded-full font-mono text-[11px] text-[#F5F5F3]">
-            <CheckDoubleIcon size={12} className="w-3 h-3 text-emerald-400" />
-            <span>DIRECT TECHNICAL PARTNERSHIP</span>
-          </div>
-          <div className="flex items-center gap-2 bg-[#111113] border border-white/10 px-3.5 py-1.5 rounded-full font-mono text-[11px] text-[#F5F5F3]">
+          <div className="flex items-center gap-2 bg-[#111113] border border-cyan-500/30 px-3.5 py-1.5 rounded-full font-mono text-[11px] text-cyan-300">
             <CheckDoubleIcon size={12} className="w-3 h-3 text-cyan-400" />
-            <span>ZERO OUTSOURCING RISK</span>
+            <span>RMIT ENTERPRISE SHOWCASE CREDENTIALS</span>
+          </div>
+          <div className="flex items-center gap-2 bg-[#111113] border border-purple-500/30 px-3.5 py-1.5 rounded-full font-mono text-[11px] text-purple-300">
+            <CheckDoubleIcon size={12} className="w-3 h-3 text-purple-400" />
+            <span>STUDIO FINANCIAL TRANSPARENCY</span>
           </div>
         </div>
 
@@ -127,10 +127,10 @@ export default function Team({ lang }: TeamProps) {
                 onClick={() => setSelectedMember(member)}
                 className="team-card-item group relative bg-[#111113]/90 border border-white/10 hover:border-brand-orange/50 p-4 rounded-xl transition-all duration-500 cursor-pointer flex flex-col justify-between overflow-hidden shadow-xl hover:shadow-[0_0_25px_rgba(255,106,0,0.15)] hover:-translate-y-1.5 interactive"
               >
-                {/* Top Member Index & Studio Label */}
+                {/* Top Member Index & Studio Label / Highlight Badge */}
                 <div className="flex items-center justify-between gap-2 mb-3">
                   <span 
-                    className="font-mono text-[9px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-sm border"
+                    className="font-mono text-[9px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-sm border shrink-0"
                     style={{ 
                       color: colorHex, 
                       backgroundColor: `${colorHex}15`, 
@@ -139,9 +139,22 @@ export default function Team({ lang }: TeamProps) {
                   >
                     0{idx + 1}
                   </span>
-                  <span className="font-mono text-[9px] text-[#8E8E93] tracking-wider uppercase">
-                    THREE BUGS
-                  </span>
+                  {member.highlightBadge ? (
+                    <span 
+                      className="font-mono text-[8px] font-bold px-1.5 py-0.5 rounded border tracking-wider truncate"
+                      style={{ 
+                        color: colorHex, 
+                        backgroundColor: `${colorHex}15`, 
+                        borderColor: `${colorHex}40` 
+                      }}
+                    >
+                      {member.highlightBadge}
+                    </span>
+                  ) : (
+                    <span className="font-mono text-[9px] text-[#8E8E93] tracking-wider uppercase">
+                      THREE BUGS
+                    </span>
+                  )}
                 </div>
 
                 {/* Member Portrait Box - Full Color, Perfectly Cropped Edge-to-Edge */}
@@ -177,6 +190,26 @@ export default function Team({ lang }: TeamProps) {
                     </span>
                   ))}
                 </div>
+
+                {/* Bottom Verification Indicator */}
+                {member.showcaseUrl && (
+                  <div className="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[9px] font-mono text-cyan-400 group-hover:text-cyan-300">
+                    <span className="flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                      RMIT Showcase
+                    </span>
+                    <ArrowUpRightIcon size={10} className="w-2.5 h-2.5" />
+                  </div>
+                )}
+                {member.name === "Thu Tran" && (
+                  <div className="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[9px] font-mono text-purple-400 group-hover:text-purple-300">
+                    <span className="flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+                      {lang === "vi" ? "Sổ Sách & Thu Chi" : "Financial Ops"}
+                    </span>
+                    <CheckDoubleIcon size={10} className="w-2.5 h-2.5" />
+                  </div>
+                )}
               </motion.div>
             );
           })}
@@ -261,6 +294,52 @@ export default function Team({ lang }: TeamProps) {
                   {selectedMember.bio}
                 </p>
 
+                {/* Enterprise Showcase Credentials Box */}
+                {selectedMember.showcaseUrl && (
+                  <div className="mb-6 p-3.5 rounded-lg bg-cyan-950/20 border border-cyan-500/30">
+                    <div className="flex items-center justify-between gap-2 mb-1.5">
+                      <span className="font-mono text-[10px] font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                        {selectedMember.showcaseLabel || "RMIT Vietnam Enterprise Showcase"}
+                      </span>
+                      <a
+                        href={selectedMember.showcaseUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 font-mono text-[10px] text-cyan-300 hover:text-white bg-cyan-500/20 hover:bg-cyan-500/40 px-2 py-0.5 rounded border border-cyan-500/40 transition-colors"
+                      >
+                        <span>{lang === "vi" ? "Xem Dự Án" : "View Showcase"}</span>
+                        <ArrowUpRightIcon size={10} className="w-2.5 h-2.5" />
+                      </a>
+                    </div>
+                    <p className="font-sans text-xs text-[#A0A0A5] leading-relaxed">
+                      {lang === "vi"
+                        ? "Dự án Luvcraft (Nights Watch): Nền tảng AI & Fandom Intelligence quy mô doanh nghiệp thực tế phối hợp cùng Project Pluto và RMIT Vietnam (FastAPI, RabbitMQ, Celery, PostgreSQL, Next.js)."
+                        : "Project Luvcraft (Nights Watch): Enterprise-grade AI & Fandom Intelligence platform built with Project Pluto & RMIT Vietnam (FastAPI, RabbitMQ, Celery, PostgreSQL, Next.js)."}
+                    </p>
+                  </div>
+                )}
+
+                {/* Studio Financial Operations Box for Thu Tran */}
+                {selectedMember.name === "Thu Tran" && (
+                  <div className="mb-6 p-3.5 rounded-lg bg-purple-950/20 border border-purple-500/30">
+                    <div className="flex items-center justify-between gap-2 mb-1.5">
+                      <span className="font-mono text-[10px] font-bold text-purple-400 uppercase tracking-wider flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-purple-400" />
+                        {lang === "vi" ? "Quản Lý Tài Chính & Sổ Sách Studio" : "Studio Financial Operations"}
+                      </span>
+                      <span className="font-mono text-[9px] text-purple-300/80 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
+                        {lang === "vi" ? "Minh Bạch 100%" : "100% Transparent"}
+                      </span>
+                    </div>
+                    <p className="font-sans text-xs text-[#A0A0A5] leading-relaxed">
+                      {lang === "vi"
+                        ? "Phụ trách kiểm soát ngân sách hợp đồng, tiến độ giải ngân theo từng cột mốc (milestones), báo cáo sổ sách thu chi rõ ràng nhằm đảm bảo an toàn tài chính tuyệt đối cho khách hàng."
+                        : "Oversees studio contract budgets, milestone-based disbursements, and transparent financial bookkeeping to ensure zero financial ambiguity for clients."}
+                    </p>
+                  </div>
+                )}
+
                 {/* Technical Stack / Specialties Tags */}
                 <div className="mb-6">
                   <span className="font-mono text-[9px] uppercase tracking-widest text-brand-orange block mb-2 font-bold">
@@ -279,22 +358,35 @@ export default function Team({ lang }: TeamProps) {
                 </div>
 
                 {/* Modal Footer Link */}
-                {selectedMember.socials.github && (
-                  <div className="pt-4 border-t border-white/5 flex justify-between items-center">
-                    <span className="font-mono text-[10px] text-[#8E8E93]">
-                      THREE BUGS STUDIO
-                    </span>
-                    <a
-                      href={selectedMember.socials.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="btn-stacked font-mono text-xs bg-brand-orange text-[#090909] hover:bg-white hover:text-black px-4 py-2 rounded-sm font-bold flex items-center gap-2 transition-colors"
-                    >
-                      <SiGithub className="w-4 h-4" />
-                      <span>GITHUB PROFILE</span>
-                    </a>
+                <div className="pt-4 border-t border-white/5 flex justify-between items-center gap-2">
+                  <span className="font-mono text-[10px] text-[#8E8E93]">
+                    THREE BUGS STUDIO
+                  </span>
+                  <div className="flex items-center gap-2">
+                    {selectedMember.showcaseUrl && (
+                      <a
+                        href={selectedMember.showcaseUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-mono text-xs text-cyan-400 hover:text-white border border-cyan-500/40 hover:bg-cyan-500/20 px-3 py-2 rounded-sm font-bold flex items-center gap-1.5 transition-colors"
+                      >
+                        <ArrowUpRightIcon size={12} className="w-3.5 h-3.5" />
+                        <span>RMIT SHOWCASE</span>
+                      </a>
+                    )}
+                    {selectedMember.socials.github && (
+                      <a
+                        href={selectedMember.socials.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="btn-stacked font-mono text-xs bg-brand-orange text-[#090909] hover:bg-white hover:text-black px-4 py-2 rounded-sm font-bold flex items-center gap-2 transition-colors"
+                      >
+                        <SiGithub className="w-4 h-4" />
+                        <span>GITHUB</span>
+                      </a>
+                    )}
                   </div>
-                )}
+                </div>
               </motion.div>
             </motion.div>
           )}
