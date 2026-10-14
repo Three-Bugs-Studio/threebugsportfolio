@@ -477,7 +477,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       id: "phase_maintenance",
       badge: "HẬU MÃI & THEO GIỜ // HOURLY SLA",
       name: "Gói Bảo Trì & Nâng Cấp Ngoài Giờ",
-      tagline: "Dành riêng cho website/hệ thống đã hết thời hạn bảo hành tiêu chuẩn hoặc doanh nghiệp cần kỹ sư túc trực fix bug, tối ưu tốc độ, nâng cấp tính năng theo giờ mà không mất phí duy trì cố định hàng tháng. Chuyên viên Hoàng Đỗ (Hotline/Zalo: 0392.996.307) trực tiếp tiếp nhận hồ sơ & điều phối xử lý nhanh chóng.",
+      tagline: "Dành riêng cho website/hệ thống đã hết thời hạn bảo hành tiêu chuẩn hoặc doanh nghiệp cần kỹ sư túc trực fix bug, tối ưu tốc độ, nâng cấp tính năng theo giờ mà không mất phí duy trì cố định hàng tháng.",
       priceVnd: "Tính Theo Giờ (Thỏa thuận)",
       priceUsd: "Thỏa thuận theo giờ thực tế",
       timeline: "Linh hoạt / Gói Block 10h - 20h",
@@ -506,6 +506,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "Code thêm tính năng mới, tạo form khảo sát, chỉnh banner theo yêu cầu",
             "Nâng cấp phiên bản framework (React, Next.js, Node.js) an toàn",
             "Phần mềm Time-tracking bấm giờ minh bạch, báo cáo chi tiết từng task",
+            "Sao lưu toàn bộ source code & CSDL an toàn trước khi can thiệp kỹ thuật",
             "Cam kết phản hồi sự cố trong vòng 2 - 4h, không ràng buộc phí duy trì hàng tháng"
           ]
         }
@@ -618,7 +619,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       id: "phase_maintenance",
       badge: "POST-WARRANTY // HOURLY SLA",
       name: "Post-Warranty Hourly SLA & Maintenance",
-      tagline: "Dedicated to systems whose warranty has ended or businesses needing on-demand engineers for hotfixes, performance tuning, and new features billed hourly with no recurring lock-in. Direct intake by Lead Consultant Hoang Do (Hotline/Zalo: 0392.996.307) for immediate scheduling.",
+      tagline: "Dedicated to systems whose warranty has ended or businesses needing on-demand engineers for hotfixes, performance tuning, and new features billed hourly with no recurring lock-in.",
       priceVnd: "Hourly Rate (Mutual Agreement)",
       priceUsd: "Hourly Rate (Mutual Agreement)",
       timeline: "On-Demand / Flexible 10h - 20h Blocks",
@@ -647,6 +648,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "Coding new components, custom landing pages, banners & forms",
             "Safe dependencies & framework version upgrades (React, Next.js, Node.js)",
             "Transparent time-tracking software with task-by-task hour breakdowns",
+            "Full data safety: complete source code & database backup snapshot prior to technical changes",
             "Rapid 2-4h incident response SLA with zero monthly subscription lock-in"
           ]
         }
