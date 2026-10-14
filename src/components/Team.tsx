@@ -33,6 +33,26 @@ export default function Team({ lang }: TeamProps) {
     "Hao Vu": HaoVuImg,
   };
 
+  // Keyboard Escape listener & body scroll lock for member modal
+  useEffect(() => {
+    if (!selectedMember) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedMember(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [selectedMember]);
+
   const handleScrollToContact = () => {
     const element = document.getElementById("app-contact-section") || document.getElementById("contact");
     if (element) {
@@ -162,6 +182,8 @@ export default function Team({ lang }: TeamProps) {
                   <img
                     src={memberImg}
                     alt={member.name}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover object-top group-hover:scale-105 transition-all duration-500"
                   />
                 </div>
@@ -219,7 +241,15 @@ export default function Team({ lang }: TeamProps) {
         <div className="mt-16 bg-[#111113]/90 border border-white/10 p-6 md:p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
           <div className="flex items-center gap-4 relative z-10">
             <div className="receptionist-anim-icon-container w-14 h-14 rounded-xl bg-[#080808] border border-white/10 p-1.5 shrink-0 flex items-center justify-center">
-              <img src={receptionistDeskGif} alt="Receptionist Desk" className="w-full h-full object-contain" />
+              <img 
+                src={receptionistDeskGif} 
+                alt="Receptionist Desk" 
+                loading="lazy"
+                decoding="async"
+                width={48}
+                height={48}
+                className="w-full h-full object-contain" 
+              />
             </div>
             <div>
               <h3 className="font-display font-bold text-lg md:text-xl text-[#F5F5F3] leading-snug">
@@ -274,6 +304,8 @@ export default function Team({ lang }: TeamProps) {
                     <img
                       src={profileImages[selectedMember.name]}
                       alt={selectedMember.name}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover object-top"
                     />
                   </div>
