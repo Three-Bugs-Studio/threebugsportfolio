@@ -73,13 +73,13 @@ export default function Hero({ lang }: HeroProps) {
       spacing={26}
       dotRadius={1.6}
       baseOpacity={0.32}
-      pingEvery={2.4}
+      pingEvery={0}
       speed={260}
       ringWidth={95}
       amplitude={2.4}
       interactive={true}
-      maxRings={6}
-      seedPing={true}
+      maxRings={4}
+      seedPing={false}
       pingArea={[0.15, 0.2, 0.85, 0.8]}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#090909]"
     >
@@ -97,7 +97,7 @@ export default function Hero({ lang }: HeroProps) {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center gap-3 mb-8 bg-[#121212]/80 border border-white/10 px-4 py-2 rounded-full backdrop-blur-md select-none shadow-2xl"
+          className="flex items-center gap-3 mb-8 bg-[#121212]/80 border border-white/10 px-3.5 py-1.5 rounded-sm backdrop-blur-md select-none shadow-2xl"
         >
           <span className="h-2 w-2 rounded-full bg-brand-orange shadow-[0_0_8px_rgba(255,106,0,0.8)] shrink-0" />
           <span className="font-mono text-[10px] tracking-[0.2em] text-[#8E8E93] uppercase">
