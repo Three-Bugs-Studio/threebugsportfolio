@@ -21,6 +21,9 @@ import fortifyCalories from "@/assets/fortifykitchen/fortify_calories.webp";
 import qmdHomepage from "@/assets/qmdtech/qmd_tech_homepage.webp";
 import qmdBuildPc from "@/assets/qmdtech/qmd_tech_buildpc.webp";
 import qmdProducts from "@/assets/qmdtech/qmd_tech_products.webp";
+import lehongkhanhHomepage from "@/assets/lehongkhanh/lehongkhanh_homepage.webp";
+import lehongkhanhFeatures from "@/assets/lehongkhanh/lehongkhanh_features.webp";
+import lehongkhanhDetails from "@/assets/lehongkhanh/lehongkhanh_details.webp";
 import BlurUpImage from "./BlurUpImage";
 
 interface LightboxProps {
@@ -199,6 +202,29 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
           ? "Danh mục cấu hình PC ráp sẵn tối ưu theo từng phân khúc: Gaming Esport, Đồ Họa 3D, Giả Lập và Workstation chuyên nghiệp."
           : "Curated pre-built desktop tiers tailored for esports gaming, 3D graphics, virtualization, and heavy workstation loads."
       }
+    ],
+    h1t_micro: [
+      {
+        title: lang === "vi" ? "Trang Đích Định Lượng Vi Chất (Landing Page)" : "Micronutrient Tracking Landing Portal",
+        subtitle: "lehongkhanh.vn/landing",
+        desc: lang === "vi"
+          ? "Giao diện trang đích chuẩn y khoa giới thiệu hệ thống theo dõi 22 vi chất và năng lượng theo tiêu chuẩn RNI/RDA của Viện Dinh Dưỡng Quốc Gia & USDA."
+          : "Scientific landing portal introducing the 22 micronutrient and energy tracking system built on RNI/RDA standards from NIN & USDA."
+      },
+      {
+        title: lang === "vi" ? "Bảng Đối Chiếu 22 Vi Chất & Tính Năng (Features & Comparison)" : "22 Micronutrients & Comparative Features",
+        subtitle: "lehongkhanh.vn/landing#tinh-nang",
+        desc: lang === "vi"
+          ? "Bảng đối chiếu định lượng chi tiết 10 khoáng chất và 12 vitamin thiết yếu, tích hợp công cụ tính toán bù nước và điện giải theo cường độ tập luyện."
+          : "Quantitative breakdown of 10 minerals and 12 vitamins with an intelligent hydration & electrolyte replenishment calculator."
+      },
+      {
+        title: lang === "vi" ? "Độ Minh Bạch & Nhóm Đối Tượng (Audience & Scientific Transparency)" : "Target Audiences & Scientific Transparency",
+        subtitle: "lehongkhanh.vn/landing#doi-tuong",
+        desc: lang === "vi"
+          ? "Chi tiết giải pháp dinh dưỡng chuyên sâu cho người tập luyện thể thao, phụ nữ mang thai, người ăn chay và người cần phục hồi sức khỏe."
+          : "Specialized precision nutrition tracking for athletes, pregnancy, plant-based diets, and metabolic recovery."
+      }
     ]
   };
 
@@ -316,6 +342,19 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
         <div className="w-full h-full bg-[#0a0a0a] flex items-center justify-center relative overflow-hidden select-none">
           <BlurUpImage 
             src={qmdScreenshots[currentSlide]} 
+            alt={projectSlides[currentSlide]?.title} 
+            className="w-full h-full object-contain"
+            wrapperClassName="w-full h-full"
+            referrerPolicy="no-referrer"
+          />
+        </div>
+      );
+    } else if (projectId === "h1t_micro") {
+      const lehongkhanhScreenshots = [lehongkhanhHomepage, lehongkhanhFeatures, lehongkhanhDetails];
+      return (
+        <div className="w-full h-full bg-[#0a0a0a] flex items-center justify-center relative overflow-hidden select-none">
+          <BlurUpImage 
+            src={lehongkhanhScreenshots[currentSlide]} 
             alt={projectSlides[currentSlide]?.title} 
             className="w-full h-full object-contain"
             wrapperClassName="w-full h-full"
