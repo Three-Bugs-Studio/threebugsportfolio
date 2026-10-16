@@ -77,7 +77,7 @@ export default function FAQ({ lang }: FAQProps) {
             />
           </div>
 
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-orange/10 border border-brand-orange/20 rounded-full font-mono text-[11px] text-brand-orange uppercase tracking-widest mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-orange/10 border border-brand-orange/20 rounded-sm font-mono text-[11px] text-brand-orange uppercase tracking-widest mb-4">
             <span>// {lang === "vi" ? "CAM KẾT MINH BẠCH VÌ LỢI ÍCH KHÁCH HÀNG" : "100% TRANSPARENT CLIENT GUARANTEES"}</span>
           </div>
 
@@ -98,7 +98,7 @@ export default function FAQ({ lang }: FAQProps) {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={lang === "vi" ? "Tìm câu hỏi (vd: bảo hành, mã nguồn, chi phí, SEO...)" : "Search FAQ (e.g., ownership, warranty, fees, SEO...)"}
-              className="w-full bg-[#111113] border border-white/15 focus:border-brand-orange text-xs md:text-sm text-[#F5F5F3] placeholder-[#8E8E93] px-10 py-3 rounded-full outline-none transition-colors shadow-lg"
+              className="w-full bg-[#111113] border border-white/15 focus:border-brand-orange text-xs md:text-sm text-[#F5F5F3] placeholder-[#8E8E93] px-10 py-3 rounded-sm outline-none transition-colors shadow-lg"
             />
             <SearchIcon size={16} className="w-4 h-4 text-[#8E8E93] absolute left-4 top-1/2 -translate-y-1/2" />
             {searchQuery && (
@@ -111,7 +111,7 @@ export default function FAQ({ lang }: FAQProps) {
             )}
           </div>
 
-          {/* Quick Filter Category Pills */}
+          {/* Quick Filter Category Tabs */}
           <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
             {categories.map((cat) => {
               const isSelected = selectedCategory === cat.id;
@@ -120,7 +120,7 @@ export default function FAQ({ lang }: FAQProps) {
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`font-mono text-[10px] md:text-[11px] uppercase tracking-wider px-3.5 py-1.5 rounded-full transition-all duration-200 border ${
+                  className={`font-mono text-[10px] md:text-[11px] uppercase tracking-wider px-3.5 py-1.5 rounded-sm transition-all duration-200 border ${
                     isSelected
                       ? "bg-brand-orange text-[#090909] font-bold border-brand-orange shadow-md shadow-brand-orange/20 scale-105"
                       : "bg-[#111113] text-[#8E8E93] border-white/10 hover:border-white/25 hover:text-white"
@@ -183,7 +183,7 @@ export default function FAQ({ lang }: FAQProps) {
                         {item.badge && (
                           <div className="mb-1.5 sm:mb-1">
                             <span className="inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-sm font-bold">
-                              <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
+                              <span className="w-1.5 h-1.5 rounded-sm bg-emerald-400" />
                               <span>{item.badge}</span>
                             </span>
                           </div>
@@ -195,7 +195,7 @@ export default function FAQ({ lang }: FAQProps) {
                     </div>
 
                     <div 
-                      className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-300 mt-1 sm:mt-0 ${
+                      className={`flex-shrink-0 w-8 h-8 rounded-sm flex items-center justify-center border transition-all duration-300 mt-1 sm:mt-0 ${
                         isOpen 
                           ? "bg-brand-orange text-[#090909] border-brand-orange rotate-180" 
                           : "bg-white/5 border-white/10 text-[#8E8E93] group-hover:text-white"
@@ -231,7 +231,7 @@ export default function FAQ({ lang }: FAQProps) {
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
                                 {item.keyBenefits.map((benefit, bIdx) => (
                                   <div key={bIdx} className="flex items-start gap-2 text-xs text-[#E4E4E7]">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 shrink-0 shadow-[0_0_6px_rgba(52,211,153,0.8)]" />
+                                    <span className="w-1.5 h-1.5 rounded-sm bg-emerald-400 mt-1.5 shrink-0" />
                                     <span className="font-sans leading-relaxed">{benefit}</span>
                                   </div>
                                 ))}
