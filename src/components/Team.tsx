@@ -114,15 +114,15 @@ export default function Team({ lang }: TeamProps) {
 
         {/* Studio Technical Guarantee Badges */}
         <div className="flex flex-wrap items-center gap-3 mb-10 pb-6 border-b border-white/10">
-          <div className="flex items-center gap-2 bg-[#111113] border border-white/10 px-3.5 py-1.5 rounded-full font-mono text-[11px] text-[#F5F5F3]">
+          <div className="flex items-center gap-2 bg-[#111113] border border-white/10 px-3.5 py-1.5 rounded-sm font-mono text-[11px] text-[#F5F5F3]">
             <CheckDoubleIcon size={12} className="w-3 h-3 text-brand-orange" />
             <span>100% IN-HOUSE ENGINEERS</span>
           </div>
-          <div className="flex items-center gap-2 bg-[#111113] border border-cyan-500/30 px-3.5 py-1.5 rounded-full font-mono text-[11px] text-cyan-300">
+          <div className="flex items-center gap-2 bg-[#111113] border border-cyan-500/30 px-3.5 py-1.5 rounded-sm font-mono text-[11px] text-cyan-300">
             <CheckDoubleIcon size={12} className="w-3 h-3 text-cyan-400" />
             <span>RMIT ENTERPRISE SHOWCASE CREDENTIALS</span>
           </div>
-          <div className="flex items-center gap-2 bg-[#111113] border border-purple-500/30 px-3.5 py-1.5 rounded-full font-mono text-[11px] text-purple-300">
+          <div className="flex items-center gap-2 bg-[#111113] border border-purple-500/30 px-3.5 py-1.5 rounded-sm font-mono text-[11px] text-purple-300">
             <CheckDoubleIcon size={12} className="w-3 h-3 text-purple-400" />
             <span>STUDIO FINANCIAL TRANSPARENCY</span>
           </div>
@@ -217,7 +217,7 @@ export default function Team({ lang }: TeamProps) {
                 {member.showcaseUrl && (
                   <div className="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[9px] font-mono text-cyan-400 group-hover:text-cyan-300">
                     <span className="flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                      <span className="w-1.5 h-1.5 rounded-sm bg-cyan-400" />
                       RMIT Showcase
                     </span>
                     <ArrowUpRightIcon size={10} className="w-2.5 h-2.5" />
@@ -226,7 +226,7 @@ export default function Team({ lang }: TeamProps) {
                 {member.name === "Thu Tran" && (
                   <div className="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[9px] font-mono text-purple-400 group-hover:text-purple-300">
                     <span className="flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+                      <span className="w-1.5 h-1.5 rounded-sm bg-purple-400" />
                       {lang === "vi" ? "Sổ Sách & Thu Chi" : "Financial Ops"}
                     </span>
                     <CheckDoubleIcon size={10} className="w-2.5 h-2.5" />
@@ -331,7 +331,7 @@ export default function Team({ lang }: TeamProps) {
                   <div className="mb-6 p-3.5 rounded-lg bg-cyan-950/20 border border-cyan-500/30">
                     <div className="flex items-center justify-between gap-2 mb-1.5">
                       <span className="font-mono text-[10px] font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                        <span className="w-1.5 h-1.5 rounded-sm bg-cyan-400" />
                         {selectedMember.showcaseLabel || "RMIT Vietnam Enterprise Showcase"}
                       </span>
                       <a
@@ -357,7 +357,7 @@ export default function Team({ lang }: TeamProps) {
                   <div className="mb-6 p-3.5 rounded-lg bg-purple-950/20 border border-purple-500/30">
                     <div className="flex items-center justify-between gap-2 mb-1.5">
                       <span className="font-mono text-[10px] font-bold text-purple-400 uppercase tracking-wider flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-purple-400" />
+                        <span className="w-1.5 h-1.5 rounded-sm bg-purple-400" />
                         {lang === "vi" ? "Quản Lý Tài Chính & Sổ Sách Studio" : "Studio Financial Operations"}
                       </span>
                       <span className="font-mono text-[9px] text-purple-300/80 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
