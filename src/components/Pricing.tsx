@@ -194,13 +194,13 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                 >
                   <div className="flex items-center justify-between gap-3 mb-2">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-full bg-brand-orange/15 text-brand-orange border border-brand-orange/30 font-display font-bold text-xs flex items-center justify-center shrink-0">
+                      <div className="w-8 h-8 rounded-sm bg-brand-orange/15 text-brand-orange border border-brand-orange/30 font-display font-bold text-xs flex items-center justify-center shrink-0">
                         HĐ
                       </div>
                       <div>
                         <div className="flex items-center gap-1.5">
                           <span className="font-display font-bold text-sm text-white">Hoàng Đỗ</span>
-                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                          <span className="w-2 h-2 rounded-full bg-emerald-400" />
                         </div>
                         <span className="font-mono text-[10px] text-brand-orange block font-semibold">
                           // {lang === "vi" ? "ĐẦU MỐI TIẾP NHẬN BẢO TRÌ" : "HOURLY SLA LEAD CONSULTANT"}
@@ -422,7 +422,7 @@ export default function Pricing({ lang }: PricingProps) {
           <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-gradient-to-b from-brand-orange to-brand-orange/40" />
           
           <div className="flex items-start md:items-center gap-4 max-w-xl">
-            <div className="w-12 h-12 rounded-full bg-brand-orange/15 text-brand-orange border border-brand-orange/40 flex items-center justify-center shrink-0 shadow-[0_0_18px_rgba(255,106,0,0.25)]">
+            <div className="w-12 h-12 rounded-sm bg-brand-orange/15 text-brand-orange border border-brand-orange/40 flex items-center justify-center shrink-0 shadow-[0_0_18px_rgba(255,106,0,0.25)]">
               <UserIcon size={20} className="w-5 h-5" />
             </div>
             <div>
@@ -430,7 +430,7 @@ export default function Pricing({ lang }: PricingProps) {
                 <span className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-brand-orange font-bold">
                   // {lang === "vi" ? "BỘ PHẬN TIẾP NHẬN HỒ SƠ & TƯ VẤN TRỰC TIẾP" : "PROJECT INTAKE & DIRECT CONSULTANTS"}
                 </span>
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
               </div>
               <p className="font-display font-medium text-sm md:text-base text-white leading-snug">
                 {lang === "vi" 
