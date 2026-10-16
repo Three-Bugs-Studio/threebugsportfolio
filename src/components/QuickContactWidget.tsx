@@ -93,7 +93,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
                     <span className="font-display font-bold text-xs tracking-tight">
                       Hoàng Đỗ
                     </span>
@@ -138,7 +138,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
                     <span className="font-display font-bold text-xs tracking-tight">
                       Minh Đức
                     </span>
@@ -214,7 +214,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
         whileTap={{ scale: 0.95 }}
         onClick={() => toggleOpen()}
         aria-label={lang === "vi" ? "Mở hộp thoại liên hệ nhanh" : "Open quick contact widget"}
-        className="relative flex items-center gap-2.5 bg-brand-orange hover:bg-brand-orange/95 text-[#090909] font-mono text-xs font-bold uppercase tracking-wider px-4 py-3 rounded-full shadow-2xl shadow-brand-orange/20 cursor-pointer interactive border-2 border-[#090909]/40"
+        className="relative flex items-center gap-2.5 bg-brand-orange hover:bg-brand-orange/95 text-[#090909] font-mono text-xs font-bold uppercase tracking-wider px-4 py-3 rounded-sm shadow-2xl shadow-brand-orange/20 cursor-pointer interactive border-2 border-[#090909]/40"
       >
         <span className="h-2 w-2 rounded-full bg-white shadow-[0_0_6px_rgba(255,255,255,0.8)] shrink-0" />
         {isOpen ? (
