@@ -90,8 +90,8 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                         {project.category}
                       </span>
                       {(project.id === "qmd_tech" || project.id === "fortify_kitchen") && (
-                        <span className="inline-flex items-center gap-1.5 font-mono text-[10px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full font-semibold">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="inline-flex items-center gap-1.5 font-mono text-[10px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-sm font-semibold">
+                          <span className="w-1.5 h-1.5 rounded-sm bg-emerald-400" />
                           <span>{project.timeline}</span>
                         </span>
                       )}
@@ -279,7 +279,7 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                               <div className="flex items-center gap-2 font-mono text-[7px] text-[#8E8E93]">
                                 <span className="text-white">VI</span>
                                 <span>đ</span>
-                                <span className="w-1.5 h-1.5 bg-[#27C93F] rounded-full animate-pulse" />
+                                <span className="w-1.5 h-1.5 bg-[#27C93F] rounded-full" />
                               </div>
                             </div>
 
@@ -580,7 +580,7 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                               </div>
 
                               <div className="flex items-center gap-1.5 font-mono text-[7px] text-emerald-400">
-                                <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
+                                <span className="w-1 h-1 rounded-full bg-emerald-400" />
                                 <span>ONLINE</span>
                               </div>
                             </div>
