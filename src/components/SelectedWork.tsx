@@ -14,6 +14,7 @@ import Lightbox from "./Lightbox";
 import randomPhiTruongStore from "@/assets/randomphitruongstore.webp";
 import fortifyHomepage from "@/assets/fortifykitchen/fortify_homepage.webp";
 import qmdHomepage from "@/assets/qmdtech/qmd_tech_homepage.webp";
+import lehongkhanhHomepage from "@/assets/lehongkhanh/lehongkhanh_homepage.webp";
 import BlurUpImage from "./BlurUpImage";
 import MagnifyingLens from "./MagnifyingLens";
 
@@ -89,7 +90,7 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                       <span className="font-mono text-xs text-[#8E8E93]">
                         {project.category}
                       </span>
-                      {(project.id === "qmd_tech" || project.id === "fortify_kitchen") && (
+                      {(project.id === "qmd_tech" || project.id === "fortify_kitchen" || project.id === "h1t_micro") && (
                         <span className="inline-flex items-center gap-1.5 font-mono text-[10px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-sm font-semibold">
                           <span className="w-1.5 h-1.5 rounded-sm bg-emerald-400" />
                           <span>{project.timeline}</span>
@@ -646,6 +647,120 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                               <div className="flex flex-col">
                                 <span className="font-mono text-[5px] text-brand-orange uppercase">STATUS: ACTIVE BUILD & MAINTENANCE</span>
                                 <span className="text-[6px] text-white tracking-wider font-mono">SEPAY VIETQR · NEXT.JS · HANOI 2H SHIP</span>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </MagnifyingLens>
+                    )}
+
+                    {/* 5. H1T MICRO: Scientific Micronutrient Tracking System */}
+                    {project.id === "h1t_micro" && (
+                      <MagnifyingLens lang={lang} zoomImage={lehongkhanhHomepage} zoomLevel={2.5}>
+                        <div className="w-full h-full flex flex-col justify-between relative z-10 text-left font-sans" id="lehongkhanh-visual">
+                          {/* Mock Browser Header */}
+                          <div className="bg-[#1C1C1E] border border-white/5 rounded-t-md px-3 py-2 flex items-center justify-between gap-4">
+                            <div className="flex items-center gap-1.5 shrink-0">
+                              <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
+                              <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+                              <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
+                            </div>
+                            
+                            {/* Search Bar / Address URL */}
+                            <div className="flex-1 max-w-md mx-auto bg-[#090909]/60 border border-white/5 rounded-sm py-0.5 px-3 flex items-center justify-between gap-2 text-[#8E8E93]">
+                              <span className="text-[7.5px] font-mono tracking-wider truncate">https://lehongkhanh.vn/landing</span>
+                              <span className="text-[8px] font-bold">↻</span>
+                            </div>
+                            <div className="w-12 shrink-0" />
+                          </div>
+
+                          {/* Simulated Web Viewport */}
+                          <div className="flex-1 bg-[#090909] border-x border-b border-white/5 rounded-b-md p-4 flex flex-col justify-between relative overflow-hidden select-none min-h-[360px]">
+                            
+                            {/* Ambient emerald glow for healthtech science vibe */}
+                            <div className="absolute top-1/4 right-1/4 w-44 h-44 rounded-full bg-emerald-500/10 blur-[60px] pointer-events-none" />
+
+                            {/* Mini Navbar */}
+                            <div className="flex justify-between items-center border-b border-white/5 pb-2 mb-3">
+                              <div className="flex items-center gap-2">
+                                <span className="font-bold tracking-widest text-[9.5px] text-white">H1T MICRO</span>
+                                <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[5px] font-mono px-1 py-0.5 rounded font-bold">22 VI CHẤT</span>
+                              </div>
+
+                              <div className="hidden sm:flex items-center gap-3 font-mono text-[6.5px] tracking-wide text-[#8E8E93]">
+                                <span className="text-white">RNI / RDA</span>
+                                <span>ĐIỆN GIẢI</span>
+                                <span>NHẬT KÝ</span>
+                              </div>
+
+                              <div className="flex items-center gap-1.5 font-mono text-[7px] text-emerald-400">
+                                <span className="w-1 h-1 rounded-full bg-emerald-400" />
+                                <span>ONLINE</span>
+                              </div>
+                            </div>
+
+                            {/* Hero Banner with Snapshot preview */}
+                            <div className="grid grid-cols-12 gap-3 items-center my-auto">
+                              {/* Left: Copy and CTA */}
+                              <div className="col-span-7 space-y-2 text-left">
+                                <div className="inline-flex items-center gap-1.5 bg-emerald-500/15 border border-emerald-500/30 px-1.5 py-0.5 rounded-[2px]">
+                                  <span className="w-1 h-1 bg-emerald-400 rounded-full" />
+                                  <span className="text-[6px] tracking-widest text-emerald-400 font-mono uppercase font-bold">
+                                    {lang === "vi" ? "DINH DƯỠNG CHUẨN KHOA HỌC" : "PRECISION NUTRITION SYSTEM"}
+                                  </span>
+                                </div>
+
+                                <h2 className="font-display font-black text-lg sm:text-xl text-white leading-none tracking-tight">
+                                  H1T<br />
+                                  <span className="text-brand-orange">MICRO</span>
+                                </h2>
+
+                                <p className="text-[7px] text-[#8E8E93] font-light leading-snug max-w-[170px]">
+                                  {lang === "vi"
+                                    ? "Định lượng 22 vi chất thiết yếu theo khuyến nghị RNI/RDA của Viện Dinh Dưỡng Quốc Gia & USDA."
+                                    : "Quantifying 22 essential micronutrients following national RNI & USDA scientific standards."}
+                                </p>
+
+                                <div className="pt-1 flex items-center gap-2">
+                                  <span className="inline-flex items-center gap-1 bg-emerald-600 text-white font-mono text-[6px] font-bold tracking-widest px-2 py-1 rounded-[1px] shadow-lg">
+                                    {lang === "vi" ? "KHÁM PHÁ HỆ THỐNG" : "EXPLORE PLATFORM"}
+                                  </span>
+                                  <span className="text-[6px] font-mono text-[#8E8E93]">
+                                    Cloud VPS Active
+                                  </span>
+                                </div>
+                              </div>
+
+                              {/* Right: Snapshot Image preview */}
+                              <div className="col-span-5 relative h-44 flex items-center justify-center">
+                                <div className="relative z-10 w-full max-w-[130px] bg-[#141414] border border-white/10 rounded-sm p-1.5 shadow-xl rotate-[2deg] hover:rotate-0 transition-transform duration-500">
+                                  <div className="h-28 w-full bg-[#0d0d0d] rounded-[1px] overflow-hidden relative">
+                                    <BlurUpImage 
+                                      src={lehongkhanhHomepage} 
+                                      alt="H1T MICRO Landing" 
+                                      className="w-full h-full object-cover opacity-95 hover:scale-110 transition-all duration-500"
+                                      wrapperClassName="w-full h-full"
+                                      referrerPolicy="no-referrer"
+                                    />
+                                    <div className="absolute top-1 left-1 bg-emerald-500/95 text-white text-[5px] font-mono px-1 py-0.5 rounded-[1px] tracking-wider">
+                                      HEALTH TECH
+                                    </div>
+                                  </div>
+                                  <div className="mt-1.5 text-center">
+                                    <span className="font-mono text-[5.5px] text-[#8E8E93] tracking-widest uppercase block">
+                                      H1T_MICRO.WEBP
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Footer stats */}
+                            <div className="flex justify-between items-end border-t border-white/5 pt-2 mt-2">
+                              <div className="flex flex-col">
+                                <span className="font-mono text-[5px] text-brand-orange uppercase">STATUS: DEPLOYED & ACTIVE MAINTENANCE</span>
+                                <span className="text-[6px] text-white tracking-wider font-mono">VIETNIX VPS · DIGITALOCEAN · DƯƠNG PHÚ ĐÔNG & HÀO</span>
                               </div>
                             </div>
 
