@@ -276,7 +276,7 @@ export default function StaggeredSection({
           initial={{ opacity: 0, y: 15, scale: 0.95 }}
           animate={showScrollIndicator ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 15, scale: 0.95 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="flex flex-col items-center gap-1.5 bg-[#0c0c0c]/85 border border-white/5 px-4.5 py-2.5 rounded-full backdrop-blur-md shadow-[0_12px_24px_-10px_rgba(0,0,0,0.8)]"
+          className="flex flex-col items-center gap-1.5 bg-[#0c0c0c]/85 border border-white/5 px-4.5 py-2.5 rounded-sm backdrop-blur-md shadow-[0_12px_24px_-10px_rgba(0,0,0,0.8)]"
         >
           <span className="font-mono text-[8px] text-[#8E8E93] tracking-[0.25em] font-medium uppercase select-none">
             {lang === "vi" ? "CUỘN XUỐNG" : "SCROLL DOWN"}
