@@ -205,6 +205,19 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       coverImage: "qmdtech",
       metrics: "Hỏa tốc Hà Nội 2H & Đang Vận Hành",
       liveUrl: "https://qmd-tech.vercel.app/"
+    },
+    {
+      id: "h1t_micro",
+      title: "H1T MICRO",
+      client: "Lê Hồng Khánh",
+      category: "Nền Tảng Dinh Dưỡng Khoa Học & Định Lượng 22 Vi Chất",
+      shortStory: "Hệ thống landing page và ứng dụng theo dõi 22 vi chất dinh dưỡng thiết yếu (10 khoáng chất & 12 vitamin) chuẩn y khoa và dinh dưỡng khoa học (RNI/RDA từ Viện Dinh Dưỡng Quốc Gia & USDA) cho thương hiệu H1T MICRO của Lê Hồng Khánh. Dự án do Duong Phu Dong và Hao Vu trực tiếp lập trình toàn diện, tối ưu hạ tầng Cloud VPS tốc độ cao và bảo mật.",
+      technologies: ["Next.js", "TypeScript", "TailwindCSS", "PostgreSQL", "VPS Vietnix", "DigitalOcean"],
+      timeline: "Đã Triển Khai & Đang Duy Trì",
+      outcome: "Triển khai thành công hệ thống định lượng vi chất chuẩn khoa học, tối ưu tốc độ tải trang dưới 1 giây trên hạ tầng VPS Vietnix & DigitalOcean, bàn giao hoàn chỉnh và đang tiếp tục đồng hành duy trì vận hành ổn định.",
+      coverImage: "lehongkhanh",
+      metrics: "22 Vi Chất & Đang Vận Hành",
+      liveUrl: "https://lehongkhanh.vn/landing"
     }
   ],
   en: [
@@ -260,6 +273,19 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       coverImage: "qmdtech",
       metrics: "Hanoi 2H Express & Active Maintenance",
       liveUrl: "https://qmd-tech.vercel.app/"
+    },
+    {
+      id: "h1t_micro",
+      title: "H1T MICRO",
+      client: "Le Hong Khanh",
+      category: "HealthTech & Scientific Micronutrient Platform",
+      shortStory: "A scientific landing platform and web application quantifying 22 essential micronutrients (10 minerals & 12 vitamins) based on RNI/RDA recommendations from the National Institute of Nutrition & USDA for H1T MICRO (Le Hong Khanh). Built and engineered end-to-end by Duong Phu Dong and Hao Vu with robust Cloud VPS deployment.",
+      technologies: ["Next.js", "TypeScript", "TailwindCSS", "PostgreSQL", "VPS Vietnix", "DigitalOcean"],
+      timeline: "Deployed & Active Maintenance",
+      outcome: "Successfully launched the precision nutrition tracking platform with sub-second page performance across Vietnix & DigitalOcean Cloud VPS infrastructure, currently under active studio maintenance and operational support.",
+      coverImage: "lehongkhanh",
+      metrics: "22 Micronutrients & Active Ops",
+      liveUrl: "https://lehongkhanh.vn/landing"
     }
   ]
 };
@@ -910,7 +936,10 @@ export const TECH_DATA: Record<"vi" | "en", TechItem[]> = {
     { name: "Netlify", category: "devops", description: "Hạ tầng Cloud Hosting tối ưu triển khai ứng dụng Frontend & Jamstack tốc độ cao.", level: "Cốt lõi" },
     { name: "Railway", category: "devops", description: "Nền tảng Cloud PaaS hiện đại giúp đóng gói & triển khai Web, Database tự động.", level: "Chuyên sâu" },
     { name: "Docker", category: "devops", description: "Môi trường đóng gói phần mềm nhất quán khi triển khai.", level: "Cốt lõi" },
-    { name: "GitHub Actions", category: "devops", description: "Hệ thống tự động hóa quy trình kiểm thử và tích hợp CI/CD.", level: "Chuyên sâu" }
+    { name: "GitHub Actions", category: "devops", description: "Hệ thống tự động hóa quy trình kiểm thử và tích hợp CI/CD.", level: "Chuyên sâu" },
+    { name: "DigitalOcean", category: "devops", description: "Hạ tầng Cloud VPS & Droplets toàn cầu tối ưu tốc độ và độ ổn định cao.", level: "Cốt lõi" },
+    { name: "Vietnix", category: "devops", description: "Hạ tầng Cloud VPS cao cấp tại Việt Nam với đường truyền trong nước tốc độ cao & chống DDoS.", level: "Chuyên sâu" },
+    { name: "Hostinger", category: "devops", description: "Nền tảng Cloud VPS & Hosting quốc tế tối ưu chi phí và triển khai nhanh chóng.", level: "Chuyên sâu" }
   ],
   en: [
     { name: "Next.js", category: "frontend", description: "Production framework for SSR and static rendering.", level: "Primary" },
@@ -927,7 +956,10 @@ export const TECH_DATA: Record<"vi" | "en", TechItem[]> = {
     { name: "Netlify", category: "devops", description: "High-performance cloud platform for Jamstack & Frontend web apps.", level: "Core" },
     { name: "Railway", category: "devops", description: "Modern cloud PaaS platform for instant deployment of web apps & databases.", level: "Primary" },
     { name: "Docker", category: "devops", description: "Containerized, predictable deployment parity.", level: "Core" },
-    { name: "GitHub Actions", category: "devops", description: "Automated testing and CI/CD deployment workflows.", level: "Primary" }
+    { name: "GitHub Actions", category: "devops", description: "Automated testing and CI/CD deployment workflows.", level: "Primary" },
+    { name: "DigitalOcean", category: "devops", description: "Global Cloud VPS & Droplets infrastructure optimized for speed, reliability, and scale.", level: "Core" },
+    { name: "Vietnix", category: "devops", description: "Premium Vietnamese Cloud VPS infrastructure with high-speed low-latency domestic bandwidth & DDoS protection.", level: "Primary" },
+    { name: "Hostinger", category: "devops", description: "Cost-effective international Cloud VPS and hosting with rapid containerized deployments.", level: "Primary" }
   ]
 };
 
