@@ -19,9 +19,13 @@ import {
   SiNetlify,
   SiRailway,
   SiDigitalocean,
-  SiHostinger
+  SiHostinger,
+  SiGo,
+  SiCloudinary
 } from "react-icons/si";
 import { CodeIcon } from "./ui/MajesticIcon";
+import vietnixLogo from "@/assets/tech/vietnix.webp";
+import digitaloceanLogo from "@/assets/tech/digitalocean.webp";
 
 interface TechIconProps {
   name: string;
@@ -227,11 +231,29 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
     );
   }
 
-  // DigitalOcean
+  // Golang / Go
+  if (normName === "golang" || normName === "go") {
+    return (
+      <span className={`inline-flex items-center justify-center ${className}`}>
+        <SiGo className={`w-full h-full ${showColor ? "text-[#00ADD8]" : ""}`} />
+      </span>
+    );
+  }
+
+  // Cloudinary
+  if (normName.includes("cloudinary")) {
+    return (
+      <span className={`inline-flex items-center justify-center ${className}`}>
+        <SiCloudinary className={`w-full h-full ${showColor ? "text-[#3448C5]" : ""}`} />
+      </span>
+    );
+  }
+
+  // DigitalOcean (Cropped 1:1 transparent logo)
   if (normName.includes("digitalocean") || normName.includes("digital ocean")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <SiDigitalocean className={`w-full h-full ${showColor ? "text-[#0080FF]" : ""}`} />
+        <img src={digitaloceanLogo} alt="DigitalOcean" className="w-full h-full object-contain" />
       </span>
     );
   }
@@ -245,18 +267,11 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
     );
   }
 
-  // Vietnix (Cloud VPS)
+  // Vietnix (Cropped 1:1 isometric 3D cloud server stack logo)
   if (normName.includes("vietnix")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`w-full h-full ${showColor ? "text-[#F37021]" : ""}`}>
-          <rect x="2" y="3" width="20" height="7" rx="1.5" />
-          <rect x="2" y="14" width="20" height="7" rx="1.5" />
-          <circle cx="6" cy="6.5" r="1" fill="currentColor" />
-          <circle cx="6" cy="17.5" r="1" fill="currentColor" />
-          <line x1="10" y1="6.5" x2="18" y2="6.5" />
-          <line x1="10" y1="17.5" x2="18" y2="17.5" />
-        </svg>
+        <img src={vietnixLogo} alt="Vietnix" className="w-full h-full object-contain" />
       </span>
     );
   }
