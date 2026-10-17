@@ -28,10 +28,10 @@ export const SERVICES_DATA: Record<"vi" | "en", Service[]> = {
     },
     {
       id: "fullstack_engineering",
-      title: "Kỹ Thuật Full Stack & Backend Golang",
-      description: "Chúng tôi xây dựng hệ thống máy chủ tốc độ cao bằng ngôn ngữ Golang và Node.js/NestJS, bảo mật doanh nghiệp và cơ sở dữ liệu chịu tải lớn.",
+      title: "Kỹ Thuật Full Stack & Backend (Golang / FastAPI / NestJS)",
+      description: "Chúng tôi xây dựng hệ thống máy chủ tốc độ cao bằng Golang, Python FastAPI và Node.js/NestJS, bảo mật doanh nghiệp và cơ sở dữ liệu chịu tải lớn.",
       details: [
-        "Lập trình Backend Golang & Node.js hiệu năng cao",
+        "Lập trình Backend Golang, Python FastAPI & Node.js hiệu năng cao",
         "Xây dựng cổng kết nối RESTful & GraphQL API chuẩn xác",
         "Thiết kế cấu trúc cơ sở dữ liệu PostgreSQL / Supabase",
         "Đóng gói ứng dụng bằng Docker và triển khai lên Cloud VPS"
@@ -102,10 +102,10 @@ export const SERVICES_DATA: Record<"vi" | "en", Service[]> = {
     },
     {
       id: "fullstack_engineering",
-      title: "Full Stack & Golang Engineering",
-      description: "We architect high-concurrency server backends using Golang and Node.js/NestJS with enterprise-grade security and robust database performance.",
+      title: "Full Stack & Modern Backend (Golang / FastAPI / NestJS)",
+      description: "We architect high-concurrency server backends using Golang, Python FastAPI, and Node.js/NestJS with enterprise-grade security and robust database performance.",
       details: [
-        "High-performance Golang & Node.js API development",
+        "High-performance Golang, Python FastAPI & Node.js API development",
         "Scalable REST and GraphQL API endpoints",
         "Relational Database Schema Design",
         "Dockerization and Cloud VPS Deployments"
@@ -765,9 +765,9 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
     },
     {
       name: "Ho Quang Huy",
-      role: "Kỹ sư DevOps & Full Stack Doanh nghiệp",
+      role: "Kỹ sư DevOps & Full Stack (FastAPI / Node.js) Doanh nghiệp",
       bio: "Kỹ sư đám mây và lập trình viên Full Stack với kinh nghiệm thực chiến phát triển giải pháp doanh nghiệp trên RMIT Showcase (Project Luvcraft). Anh phụ trách kiến trúc vi dịch vụ (FastAPI, RabbitMQ, Celery), Docker container hóa, cơ sở dữ liệu PostgreSQL và hạ tầng CI/CD chịu tải cao.",
-      specialties: ["Kiến trúc DevOps & Docker", "Lập trình Full Stack", "Hệ thống Microservice", "Cơ sở dữ liệu PostgreSQL"],
+      specialties: ["Kiến trúc DevOps & Docker", "Backend FastAPI & Python", "Hệ thống Microservice", "Cơ sở dữ liệu PostgreSQL"],
       socials: {
         github: "https://github.com/HoHuy2402"
       },
@@ -778,7 +778,7 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
         glowClass: "border-[#10B981]/40 shadow-[0_0_20px_rgba(16,185,129,0.25)]",
         borderHex: "#10B981"
       },
-      diagramRole: "DEVOPS & FULLSTACK PIPELINE",
+      diagramRole: "DEVOPS & FASTAPI FULLSTACK PIPELINE",
       nodeId: "node_hohuy",
       connectsTo: ["node_hoangdong"],
       showcaseUrl: "https://www.rmitvn-showcase.com/nightswatch10f37c09",
@@ -875,9 +875,9 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
     },
     {
       name: "Ho Quang Huy",
-      role: "DevOps & Enterprise Full Stack Engineer",
+      role: "DevOps & Enterprise Full Stack (FastAPI / Node.js) Engineer",
       bio: "Cloud infrastructure and full-stack engineer with proven enterprise development experience featured on RMIT Showcase (Project Luvcraft). He architects asynchronous pipelines (FastAPI, RabbitMQ, Celery), Docker containers, PostgreSQL, and robust CI/CD environments.",
-      specialties: ["DevOps & Docker Setup", "Full Stack Development", "Microservice Systems", "PostgreSQL Database"],
+      specialties: ["DevOps & Docker Setup", "FastAPI & Python Backend", "Microservice Systems", "PostgreSQL Database"],
       socials: {
         github: "https://github.com/HoHuy2402"
       },
@@ -888,7 +888,7 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
         glowClass: "border-[#10B981]/40 shadow-[0_0_20px_rgba(16,185,129,0.25)]",
         borderHex: "#10B981"
       },
-      diagramRole: "DEVOPS & FULLSTACK PIPELINE",
+      diagramRole: "DEVOPS & FASTAPI FULLSTACK PIPELINE",
       nodeId: "node_hohuy",
       connectsTo: ["node_hoangdong"],
       showcaseUrl: "https://www.rmitvn-showcase.com/nightswatch10f37c09",
@@ -927,6 +927,7 @@ export const TECH_DATA: Record<"vi" | "en", TechItem[]> = {
     { name: "TypeScript", category: "frontend", description: "Đảm bảo an toàn kiểu dữ liệu ở mức biên dịch.", level: "Cốt lõi" },
     { name: "NestJS", category: "backend", description: "Khung phát triển Backend Node.js doanh nghiệp mở rộng cao.", level: "Chuyên sâu" },
     { name: "Golang (Go)", category: "backend", description: "Ngôn ngữ lập trình biên dịch tốc độ cao từ Google, tối ưu xử lý đồng thời (goroutines) và vi dịch vụ backend chịu tải.", level: "Chuyên sâu" },
+    { name: "FastAPI (Python)", category: "backend", description: "Khung phát triển Backend API Python bất đồng bộ (asyncio) tốc độ cao, hỗ trợ chuẩn OpenAPI và xử lý dữ liệu chuẩn Pydantic.", level: "Chuyên sâu" },
     { name: "Java", category: "backend", description: "Nền tảng backend doanh nghiệp bảo mật và hiệu năng ổn định.", level: "Chuyên sâu" },
     { name: "Prisma", category: "database", description: "Hệ thống ORM hiện đại, an toàn kiểu dữ liệu cho SQL.", level: "Cốt lõi" },
     { name: "Supabase", category: "database", description: "Nền tảng dịch vụ backend tích hợp sẵn cơ sở dữ liệu Postgres.", level: "Chuyên sâu" },
@@ -950,6 +951,7 @@ export const TECH_DATA: Record<"vi" | "en", TechItem[]> = {
     { name: "TypeScript", category: "frontend", description: "Static compile time type safety and contracts.", level: "Core" },
     { name: "NestJS", category: "backend", description: "Scalable enterprise Node.js server framework.", level: "Primary" },
     { name: "Golang (Go)", category: "backend", description: "High-performance compiled language by Google, optimized for high concurrency (goroutines) and microservices.", level: "Primary" },
+    { name: "FastAPI (Python)", category: "backend", description: "High-performance async Python API framework powered by Starlette and Pydantic with automated OpenAPI docs.", level: "Primary" },
     { name: "Java", category: "backend", description: "Robust, secure, high performance enterprise backend.", level: "Primary" },
     { name: "Prisma", category: "database", description: "Modern, type safe ORM for relational queries.", level: "Core" },
     { name: "Supabase", category: "database", description: "Backend service integrated with Postgres.", level: "Primary" },
@@ -1270,7 +1272,7 @@ export const TRANSLATIONS = {
 
     techLabel: "05 // HỆ THỐNG CÔNG NGHỆ",
     techHeading: "Các công nghệ chúng tôi thường sử dụng.",
-    techSubtitle: "Những ngôn ngữ & công nghệ hiện đại (Next.js, TypeScript, Golang, NestJS, Hetzner, Vietnix) giúp trang web tải nhanh, chịu tải tốt và dễ dàng nâng cấp.",
+    techSubtitle: "Những ngôn ngữ & công nghệ hiện đại (Next.js, TypeScript, Golang, FastAPI / Python, NestJS, Hetzner, Vietnix) giúp trang web tải nhanh, chịu tải tốt và dễ dàng nâng cấp.",
     techPrimary: "Chuyên sâu",
     techCore: "Cốt lõi",
 
@@ -1358,7 +1360,7 @@ export const TRANSLATIONS = {
 
     techLabel: "05 // SYSTEM TECH STACK",
     techHeading: "Modern architectures built for growth.",
-    techSubtitle: "Modern programming languages & cloud stacks (Next.js, TypeScript, Golang, NestJS, Hetzner, Vietnix) engineered for high concurrency, durability, and performance.",
+    techSubtitle: "Modern programming languages & cloud stacks (Next.js, TypeScript, Golang, FastAPI / Python, NestJS, Hetzner, Vietnix) engineered for high concurrency, durability, and performance.",
     techPrimary: "Primary",
     techCore: "Core",
 
