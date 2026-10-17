@@ -941,7 +941,8 @@ export const TECH_DATA: Record<"vi" | "en", TechItem[]> = {
     { name: "GitHub Actions", category: "devops", description: "Hệ thống tự động hóa quy trình kiểm thử và tích hợp CI/CD.", level: "Chuyên sâu" },
     { name: "DigitalOcean", category: "devops", description: "Hạ tầng Cloud VPS & Droplets toàn cầu tối ưu tốc độ và độ ổn định cao.", level: "Cốt lõi" },
     { name: "Vietnix", category: "devops", description: "Hạ tầng Cloud VPS cao cấp tại Việt Nam với đường truyền trong nước tốc độ cao & chống DDoS.", level: "Chuyên sâu" },
-    { name: "Hostinger", category: "devops", description: "Nền tảng Cloud VPS & Hosting quốc tế tối ưu chi phí và triển khai nhanh chóng.", level: "Chuyên sâu" }
+    { name: "Hostinger", category: "devops", description: "Nền tảng Cloud VPS & Hosting quốc tế tối ưu chi phí và triển khai nhanh chóng.", level: "Chuyên sâu" },
+    { name: "Hetzner", category: "devops", description: "Hạ tầng Cloud VPS & Dedicated Server chuẩn Châu Âu với hiệu năng vượt trội và chi phí tối ưu cho các dự án quốc tế.", level: "Chuyên sâu" }
   ],
   en: [
     { name: "Next.js", category: "frontend", description: "Production framework for SSR and static rendering.", level: "Primary" },
@@ -963,7 +964,8 @@ export const TECH_DATA: Record<"vi" | "en", TechItem[]> = {
     { name: "GitHub Actions", category: "devops", description: "Automated testing and CI/CD deployment workflows.", level: "Primary" },
     { name: "DigitalOcean", category: "devops", description: "Global Cloud VPS & Droplets infrastructure optimized for speed, reliability, and scale.", level: "Core" },
     { name: "Vietnix", category: "devops", description: "Premium Vietnamese Cloud VPS infrastructure with high-speed low-latency domestic bandwidth & DDoS protection.", level: "Primary" },
-    { name: "Hostinger", category: "devops", description: "Cost-effective international Cloud VPS and hosting with rapid containerized deployments.", level: "Primary" }
+    { name: "Hostinger", category: "devops", description: "Cost-effective international Cloud VPS and hosting with rapid containerized deployments.", level: "Primary" },
+    { name: "Hetzner", category: "devops", description: "High-performance European Cloud VPS & Dedicated Server infrastructure optimized for international deployments.", level: "Primary" }
   ]
 };
 
@@ -1095,6 +1097,18 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
         "Buổi đào tạo trực tiếp 1:1 qua Google Meet giải đáp mọi thao tác quản trị",
         "Tài liệu số lưu trữ nội bộ hỗ trợ tra cứu nhanh bất kỳ lúc nào"
       ]
+    },
+    {
+      question: "Three Bugs Studio có nhận các dự án phần mềm từ khách hàng hoặc doanh nghiệp ở nước ngoài không?",
+      badge: "DỰ ÁN QUỐC TẾ // GLOBAL",
+      category: "ownership",
+      answer: "Có, hoàn toàn sẵn sàng! Three Bugs Studio vận hành theo mô hình 100% Remote-First, có khả năng giao tiếp và làm việc trực tiếp bằng Tiếng Anh chuyên ngành phần mềm. Chúng tôi linh hoạt điều chỉnh múi giờ họp và cập nhật tiến độ theo giờ quốc tế (Hoa Kỳ, Châu Âu, Úc, Singapore, Nhật Bản,...). Về mặt hạ tầng, Studio tự chủ triển khai máy chủ toàn cầu trên Hetzner (Châu Âu/Mỹ), DigitalOcean, AWS kết hợp CDN Cloudflare và Cloudinary tối ưu độ trễ. Chúng tôi hỗ trợ thanh toán quốc tế bằng USD qua điện chuyển tiền quốc tế (Wire Transfer), Stripe, Wise hoặc PayPal với hợp đồng dịch vụ rõ ràng.",
+      keyBenefits: [
+        "100% Remote-First, trao đổi và đặc tả kỹ thuật trực tiếp bằng Tiếng Anh",
+        "Linh hoạt đồng bộ múi giờ làm việc theo yêu cầu khách hàng quốc tế",
+        "Hạ tầng VPS & Dedicated Server toàn cầu: Hetzner (Châu Âu/Mỹ), DigitalOcean, AWS",
+        "Hỗ trợ thanh toán quốc tế đa kênh bằng USD (Wire Transfer, Stripe, Wise, PayPal)"
+      ]
     }
   ],
   en: [
@@ -1193,6 +1207,18 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
         "Live 1-on-1 Google Meet training session to answer operational questions",
         "Searchable digital documentation handbook for permanent team reference"
       ]
+    },
+    {
+      question: "Does Three Bugs Studio accept software projects from international or overseas clients?",
+      badge: "GLOBAL & OVERSEAS",
+      category: "ownership",
+      answer: "Yes, absolutely! Three Bugs Studio is built as a 100% remote-first engineering team, fully fluent in professional English for technical specifications and project management. We accommodate international timezones (US, Europe, Australia, Singapore, Japan, etc.) with flexible meeting syncs and async updates. Infrastructure-wise, we deploy global low-latency servers on Hetzner (European/US data centers), DigitalOcean, and AWS, combined with Cloudflare and Cloudinary CDN networks. For international billing, we support USD transactions via International Wire Transfer, Stripe, Wise, or PayPal under clear international service agreements.",
+      keyBenefits: [
+        "100% remote-first engineering with fluent English technical communication",
+        "Flexible working hour alignment across international timezones (US, EU, APAC)",
+        "Global high-performance cloud infrastructure: Hetzner, DigitalOcean, and AWS",
+        "Multi-channel USD billing support (International Wire Transfer, Stripe, Wise, PayPal)"
+      ]
     }
   ]
 };
@@ -1212,7 +1238,7 @@ export const TRANSLATIONS = {
 
     heroTag: "THIẾT KẾ VÀ PHÁT TRIỂN WEBSITE CHUYÊN NGHIỆP",
     heroHeading: "Chúng Tôi Xây Dựng Website và Phần Mềm",
-    heroDesc: "Three Bugs Studio là đội ngũ gồm 5 thành viên lập trình viên & thiết kế chuyên nghiệp làm việc từ xa (100% Remote), chuyên xây dựng website chất lượng cao, vận hành ổn định và tối ưu hiệu năng.",
+    heroDesc: "Three Bugs Studio là đội ngũ gồm 5 thành viên lập trình viên & thiết kế chuyên nghiệp làm việc từ xa (100% Remote-First), sẵn sàng tiếp nhận các dự án trong nước lẫn quốc tế, chuyên xây dựng website chất lượng cao, vận hành ổn định và tối ưu hiệu năng.",
     heroExplore: "Khám Phá Các Dự Án",
     heroRecentWork: "Dự án thực tế",
     heroPillars: "Trụ Cột Thiết Kế",
@@ -1261,7 +1287,7 @@ export const TRANSLATIONS = {
 
     contactLabel: "09 // LIÊN HỆ HỢP TÁC",
     contactHeading: "Gửi yêu cầu thiết kế trang web của bạn.",
-    contactSubtitle: "Hãy để lại thông tin liên hệ và ý tưởng của bạn. Đội ngũ lập trình viên của chúng tôi sẽ liên hệ lại trong vòng 12 giờ làm việc để tư vấn cụ thể.",
+    contactSubtitle: "Hãy để lại thông tin liên hệ và ý tưởng của bạn. Đội ngũ kỹ sư của chúng tôi tiếp nhận các dự án trong nước & quốc tế, sẽ liên hệ lại trong vòng 12 giờ làm việc để tư vấn cụ thể.",
     contactFieldName: "Họ và tên",
     contactFieldEmail: "Địa chỉ email",
     contactFieldCompany: "Tên cửa hàng hoặc công ty",
@@ -1300,7 +1326,7 @@ export const TRANSLATIONS = {
 
     heroTag: "SOFTWARE DESIGN AND ENGINEERING",
     heroHeading: "We build stable and fast web applications.",
-    heroDesc: "Three Bugs Studio is a 100% remote-first team of 5 specialized developers & designers crafting clean, fast, and durable websites.",
+    heroDesc: "Three Bugs Studio is a 100% remote-first team of 5 specialized developers & designers partnering with domestic and global clients to craft clean, fast, and durable digital products.",
     heroExplore: "Explore Selected Work",
     heroRecentWork: "Recent Work",
     heroPillars: "Design Pillars",
@@ -1349,7 +1375,7 @@ export const TRANSLATIONS = {
 
     contactLabel: "09 // THE BLUEPRINT FLOW",
     contactHeading: "Initiate your next product blueprint.",
-    contactSubtitle: "Tell us about your technical requirements. Our developers based in Ho Chi Minh City will review and reach out within 12 business hours.",
+    contactSubtitle: "Tell us about your technical requirements. We build for clients locally and worldwide, reviewing specifications and responding within 12 business hours.",
     contactFieldName: "Full Name",
     contactFieldEmail: "Email Address",
     contactFieldCompany: "Company or Venture",
