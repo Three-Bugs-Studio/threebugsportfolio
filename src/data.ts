@@ -28,13 +28,13 @@ export const SERVICES_DATA: Record<"vi" | "en", Service[]> = {
     },
     {
       id: "fullstack_engineering",
-      title: "Kỹ Thuật Full Stack",
-      description: "Chúng tôi xây dựng hệ thống máy chủ hoạt động ổn định, bảo mật cao và cơ sở dữ liệu có khả năng chịu tải tốt.",
+      title: "Kỹ Thuật Full Stack & Backend Golang",
+      description: "Chúng tôi xây dựng hệ thống máy chủ tốc độ cao bằng ngôn ngữ Golang và Node.js/NestJS, bảo mật doanh nghiệp và cơ sở dữ liệu chịu tải lớn.",
       details: [
-        "Xây dựng các cổng kết nối API ổn định",
-        "Thiết kế cấu trúc cơ sở dữ liệu ngăn nắp",
-        "Đóng gói ứng dụng bằng Docker và triển khai lên đám mây",
-        "Thiết lập quy trình triển khai tự động"
+        "Lập trình Backend Golang & Node.js hiệu năng cao",
+        "Xây dựng cổng kết nối RESTful & GraphQL API chuẩn xác",
+        "Thiết kế cấu trúc cơ sở dữ liệu PostgreSQL / Supabase",
+        "Đóng gói ứng dụng bằng Docker và triển khai lên Cloud VPS"
       ],
       iconName: "Database"
     },
@@ -102,13 +102,13 @@ export const SERVICES_DATA: Record<"vi" | "en", Service[]> = {
     },
     {
       id: "fullstack_engineering",
-      title: "Full Stack Engineering",
-      description: "We design stable backend networks, secure cloud setups, and database schemas built for growth.",
+      title: "Full Stack & Golang Engineering",
+      description: "We architect high-concurrency server backends using Golang and Node.js/NestJS with enterprise-grade security and robust database performance.",
       details: [
-        "Scalable REST and GraphQL APIs",
+        "High-performance Golang & Node.js API development",
+        "Scalable REST and GraphQL API endpoints",
         "Relational Database Schema Design",
-        "Dockerization and Cloud Deployments",
-        "Automated Deployment Pipelines"
+        "Dockerization and Cloud VPS Deployments"
       ],
       iconName: "Database"
     },
@@ -787,9 +787,9 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
     },
     {
       name: "Hao Vu",
-      role: "Kỹ sư Backend & Cơ sở dữ liệu Doanh nghiệp",
-      bio: "Kỹ sư chuyên sâu về hệ thống máy chủ, API bảo mật và tối ưu dữ liệu quy mô doanh nghiệp trên RMIT Showcase (Project Luvcraft). Anh phụ trách thiết kế lược đồ cơ sở dữ liệu tối ưu, phân quyền đa tài khoản RBAC và tích hợp các pipeline dữ liệu thông minh.",
-      specialties: ["Lập trình Backend", "Tối ưu hóa CSDL", "Bảo mật & Phân quyền RBAC", "Thiết kế API Doanh nghiệp"],
+      role: "Kỹ sư Backend Golang & Cơ sở dữ liệu Doanh nghiệp",
+      bio: "Kỹ sư chuyên sâu về lập trình backend Golang & Node.js, API bảo mật và tối ưu dữ liệu quy mô doanh nghiệp trên RMIT Showcase (Project Luvcraft). Anh phụ trách kiến trúc backend Golang hiệu năng cao cho H1T MICRO, thiết kế lược đồ cơ sở dữ liệu tối ưu, phân quyền đa tài khoản RBAC và tích hợp các pipeline dữ liệu thông minh.",
+      specialties: ["Lập trình Backend Golang", "Tối ưu hóa CSDL", "Bảo mật & Phân quyền RBAC", "Thiết kế API Doanh nghiệp"],
       socials: {
         github: "https://github.com/haovu310"
       },
@@ -800,7 +800,7 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
         glowClass: "border-[#F43F5E]/40 shadow-[0_0_20px_rgba(244,63,94,0.25)]",
         borderHex: "#F43F5E"
       },
-      diagramRole: "BACKEND API & DATABASE ARCHITECT",
+      diagramRole: "GOLANG BACKEND & DATABASE ARCHITECT",
       nodeId: "node_haovu",
       connectsTo: ["node_hohuy"],
       showcaseUrl: "https://www.rmitvn-showcase.com/nightswatch10f37c09",
@@ -897,9 +897,9 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
     },
     {
       name: "Hao Vu",
-      role: "Enterprise Backend & Database Engineer",
-      bio: "Server-side and database architect with proven enterprise project delivery on RMIT Showcase (Project Luvcraft). He builds secure backend APIs, optimized PostgreSQL schemas, Role-Based Access Control (RBAC), and high-throughput data pipelines.",
-      specialties: ["Backend Engineering", "Database Optimization", "Enterprise RBAC Security", "API Architecture"],
+      role: "Enterprise Backend & Golang Engineer",
+      bio: "Server-side and database architect with proven enterprise project delivery on RMIT Showcase (Project Luvcraft). He builds secure Golang backend APIs, optimized PostgreSQL schemas, Role-Based Access Control (RBAC), and high-throughput data pipelines.",
+      specialties: ["Golang Backend Engineering", "Database Optimization", "Enterprise RBAC Security", "API Architecture"],
       socials: {
         github: "https://github.com/haovu310"
       },
@@ -910,7 +910,7 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
         glowClass: "border-[#F43F5E]/40 shadow-[0_0_20px_rgba(244,63,94,0.25)]",
         borderHex: "#F43F5E"
       },
-      diagramRole: "BACKEND API & DATABASE ARCHITECT",
+      diagramRole: "GOLANG BACKEND & DATABASE ARCHITECT",
       nodeId: "node_haovu",
       connectsTo: ["node_hohuy"],
       showcaseUrl: "https://www.rmitvn-showcase.com/nightswatch10f37c09",
@@ -926,7 +926,7 @@ export const TECH_DATA: Record<"vi" | "en", TechItem[]> = {
     { name: "React.js", category: "frontend", description: "Giao diện người dùng hướng trạng thái và mo đun hóa.", level: "Cốt lõi" },
     { name: "TypeScript", category: "frontend", description: "Đảm bảo an toàn kiểu dữ liệu ở mức biên dịch.", level: "Cốt lõi" },
     { name: "NestJS", category: "backend", description: "Khung phát triển Backend Node.js doanh nghiệp mở rộng cao.", level: "Chuyên sâu" },
-    { name: "Golang", category: "backend", description: "Ngôn ngữ biên dịch tốc độ cao, tối ưu xử lý đồng thời và vi dịch vụ backend.", level: "Chuyên sâu" },
+    { name: "Golang (Go)", category: "backend", description: "Ngôn ngữ lập trình biên dịch tốc độ cao từ Google, tối ưu xử lý đồng thời (goroutines) và vi dịch vụ backend chịu tải.", level: "Chuyên sâu" },
     { name: "Java", category: "backend", description: "Nền tảng backend doanh nghiệp bảo mật và hiệu năng ổn định.", level: "Chuyên sâu" },
     { name: "Prisma", category: "database", description: "Hệ thống ORM hiện đại, an toàn kiểu dữ liệu cho SQL.", level: "Cốt lõi" },
     { name: "Supabase", category: "database", description: "Nền tảng dịch vụ backend tích hợp sẵn cơ sở dữ liệu Postgres.", level: "Chuyên sâu" },
@@ -949,7 +949,7 @@ export const TECH_DATA: Record<"vi" | "en", TechItem[]> = {
     { name: "React.js", category: "frontend", description: "State driven declarative UI components.", level: "Core" },
     { name: "TypeScript", category: "frontend", description: "Static compile time type safety and contracts.", level: "Core" },
     { name: "NestJS", category: "backend", description: "Scalable enterprise Node.js server framework.", level: "Primary" },
-    { name: "Golang", category: "backend", description: "High-performance compiled language optimized for concurrency and microservices.", level: "Primary" },
+    { name: "Golang (Go)", category: "backend", description: "High-performance compiled language by Google, optimized for high concurrency (goroutines) and microservices.", level: "Primary" },
     { name: "Java", category: "backend", description: "Robust, secure, high performance enterprise backend.", level: "Primary" },
     { name: "Prisma", category: "database", description: "Modern, type safe ORM for relational queries.", level: "Core" },
     { name: "Supabase", category: "database", description: "Backend service integrated with Postgres.", level: "Primary" },
@@ -1270,7 +1270,7 @@ export const TRANSLATIONS = {
 
     techLabel: "05 // HỆ THỐNG CÔNG NGHỆ",
     techHeading: "Các công nghệ chúng tôi thường sử dụng.",
-    techSubtitle: "Những công nghệ hiện đại giúp trang web tải nhanh, chịu tải tốt và dễ dàng nâng cấp.",
+    techSubtitle: "Những ngôn ngữ & công nghệ hiện đại (Next.js, TypeScript, Golang, NestJS, Hetzner, Vietnix) giúp trang web tải nhanh, chịu tải tốt và dễ dàng nâng cấp.",
     techPrimary: "Chuyên sâu",
     techCore: "Cốt lõi",
 
@@ -1358,7 +1358,7 @@ export const TRANSLATIONS = {
 
     techLabel: "05 // SYSTEM TECH STACK",
     techHeading: "Modern architectures built for growth.",
-    techSubtitle: "A suite of technologies tested for concurrent traffic, durability, and performance.",
+    techSubtitle: "Modern programming languages & cloud stacks (Next.js, TypeScript, Golang, NestJS, Hetzner, Vietnix) engineered for high concurrency, durability, and performance.",
     techPrimary: "Primary",
     techCore: "Core",
 
