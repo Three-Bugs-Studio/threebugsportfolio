@@ -22,7 +22,8 @@ import {
   SiHostinger,
   SiGo,
   SiCloudinary,
-  SiHetzner
+  SiHetzner,
+  SiFastapi
 } from "react-icons/si";
 import { CodeIcon } from "./ui/MajesticIcon";
 import vietnixLogo from "@/assets/tech/vietnix.webp";
@@ -124,7 +125,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   if (normName.includes("render")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
-        <svg viewBox="0 0 24 24" fill="currentColor" className={`w-full h-full ${showColor ? "text-[#000000] bg-white rounded-full p-0.5" : ""}`}>
+        <svg viewBox="0 0 24 24" fill="currentColor" className={`w-full h-full ${showColor ? "text-[#000000] bg-white rounded-sm p-0.5" : ""}`}>
           <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9L12 10.5V4zm-6.31 4.9C4.63 10.25 4 11.95 4 13.8c0 4.42 3.58 8 8 8v-6.5L5.69 8.9z" />
         </svg>
       </span>
@@ -154,6 +155,15 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
         <SiTailwindcss className={`w-full h-full ${showColor ? "text-[#06B6D4]" : ""}`} />
+      </span>
+    );
+  }
+
+  // FastAPI
+  if (normName.includes("fastapi")) {
+    return (
+      <span className={`inline-flex items-center justify-center ${className}`}>
+        <SiFastapi className={`w-full h-full ${showColor ? "text-[#009688]" : ""}`} />
       </span>
     );
   }
