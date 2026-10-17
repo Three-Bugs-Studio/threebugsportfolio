@@ -727,7 +727,7 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                                     {lang === "vi" ? "KHÁM PHÁ HỆ THỐNG" : "EXPLORE PLATFORM"}
                                   </span>
                                   <span className="text-[6px] font-mono text-[#8E8E93]">
-                                    Cloud VPS Active
+                                    Golang & Vietnix VPS
                                   </span>
                                 </div>
                               </div>
@@ -760,7 +760,7 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                             <div className="flex justify-between items-end border-t border-white/5 pt-2 mt-2">
                               <div className="flex flex-col">
                                 <span className="font-mono text-[5px] text-brand-orange uppercase">STATUS: DEPLOYED & ACTIVE MAINTENANCE</span>
-                                <span className="text-[6px] text-white tracking-wider font-mono">VIETNIX VPS · DIGITALOCEAN · DƯƠNG PHÚ ĐÔNG & HÀO</span>
+                                <span className="text-[6px] text-white tracking-wider font-mono">GOLANG · NEXT.JS · SUPABASE · CLOUDINARY · VIETNIX VPS</span>
                               </div>
                             </div>
 
