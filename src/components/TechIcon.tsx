@@ -233,7 +233,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   }
 
   // Golang / Go
-  if (normName === "golang" || normName === "go") {
+  if (normName.includes("golang") || normName === "go" || normName.startsWith("go ") || normName.includes("(go)")) {
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
         <SiGo className={`w-full h-full ${showColor ? "text-[#00ADD8]" : ""}`} />
