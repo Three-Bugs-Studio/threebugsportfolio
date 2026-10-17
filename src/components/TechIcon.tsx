@@ -21,7 +21,8 @@ import {
   SiDigitalocean,
   SiHostinger,
   SiGo,
-  SiCloudinary
+  SiCloudinary,
+  SiHetzner
 } from "react-icons/si";
 import { CodeIcon } from "./ui/MajesticIcon";
 import vietnixLogo from "@/assets/tech/vietnix.webp";
@@ -272,6 +273,15 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
         <img src={vietnixLogo} alt="Vietnix" className="w-full h-full object-contain" />
+      </span>
+    );
+  }
+
+  // Hetzner (European Cloud & Dedicated VPS)
+  if (normName.includes("hetzner")) {
+    return (
+      <span className={`inline-flex items-center justify-center ${className}`}>
+        <SiHetzner className={`w-full h-full ${showColor ? "text-[#D50C2D]" : ""}`} />
       </span>
     );
   }
