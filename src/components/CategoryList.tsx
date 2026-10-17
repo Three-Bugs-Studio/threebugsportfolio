@@ -34,7 +34,7 @@ export const CategoryList = ({
         {/* Header Section */}
         <div className="text-center mb-10 md:mb-14">
           {headerIcon && (
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-brand-orange/90 to-brand-orange mb-6 text-black shadow-[0_0_25px_rgba(255,106,0,0.3)]">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-sm bg-gradient-to-br from-brand-orange/90 to-brand-orange mb-6 text-black shadow-[0_0_25px_rgba(255,106,0,0.3)]">
               {headerIcon}
             </div>
           )}
@@ -108,7 +108,7 @@ export const CategoryList = ({
                   {/* Icon appears on the right on hover */}
                   {category.icon && (
                     <div className={cn(
-                      "text-xl md:text-2xl shrink-0 transition-all duration-300 flex items-center justify-center p-3 rounded-full border",
+                      "text-xl md:text-2xl shrink-0 transition-all duration-300 flex items-center justify-center p-3 rounded-sm border",
                       hoveredItem === category.id 
                         ? 'text-brand-orange border-brand-orange/40 bg-brand-orange/10 scale-110 opacity-100' 
                         : 'text-[#8E8E93] border-white/5 bg-white/5 opacity-70'
