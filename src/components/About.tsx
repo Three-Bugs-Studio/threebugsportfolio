@@ -6,7 +6,8 @@ import {
   EditPenIcon, 
   SettingsIcon, 
   DatabaseIcon, 
-  CodeIcon 
+  CodeIcon,
+  GlobeIcon 
 } from "./ui/MajesticIcon";
 import { TRANSLATIONS } from "../data";
 import { CategoryList, Category } from "./CategoryList";
@@ -60,6 +61,12 @@ export default function About({ lang }: AboutProps) {
       subtitle: "Bàn giao 100% quyền sở hữu mã nguồn sạch, tài liệu kiến trúc hệ thống và chính sách hỗ trợ kỹ thuật lâu dài.",
       icon: <CodeIcon size={20} />,
     },
+    {
+      id: "global-cloud",
+      title: "Hợp Tác Quốc Tế & Hạ Tầng Đa Quốc Gia",
+      subtitle: "Vận hành 100% Remote-First, giao tiếp Tiếng Anh chuyên nghiệp, triển khai Cloud VPS toàn cầu (Hetzner, DigitalOcean) và thanh toán USD linh hoạt.",
+      icon: <GlobeIcon size={20} />,
+    },
   ] : [
     {
       id: "performance",
@@ -91,6 +98,12 @@ export default function About({ lang }: AboutProps) {
       title: "Full Code Ownership & Warranty",
       subtitle: "100% source code handover with complete architecture documentation and long-term technical warranty.",
       icon: <CodeIcon size={20} />,
+    },
+    {
+      id: "global-cloud",
+      title: "Global Delivery & Multi-Region Cloud",
+      subtitle: "100% remote-first engineering with fluent English communication, global VPS hosting (Hetzner, DigitalOcean), and flexible international USD billing.",
+      icon: <GlobeIcon size={20} />,
     },
   ];
 
