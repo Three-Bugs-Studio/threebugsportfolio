@@ -758,6 +758,8 @@ a.btn-stacked:active {
 /* User Requested Slide-In-Top Social Container Card in Footer */
 .footer-social-card {
   width: fit-content;
+  max-width: 100%;
+  flex-wrap: wrap;
   height: fit-content;
   background-color: #121212;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -813,6 +815,12 @@ a.btn-stacked:active {
   background-color: #FE2C55; /* TikTok Brand Crimson */
   border-color: #FE2C55;
   box-shadow: 0 0 12px rgba(254, 44, 85, 0.5);
+}
+
+.footer-social-card .containerSix:hover {
+  background-color: #1877F2; /* Facebook Brand Blue */
+  border-color: #1877F2;
+  box-shadow: 0 0 12px rgba(24, 119, 242, 0.5);
 }
 
 .footer-social-card .socialContainer:active {
