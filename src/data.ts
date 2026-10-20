@@ -214,9 +214,9 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       shortStory: "Hệ thống landing page và ứng dụng theo dõi 22 vi chất dinh dưỡng thiết yếu (10 khoáng chất & 12 vitamin) chuẩn y khoa và dinh dưỡng khoa học (RNI/RDA từ Viện Dinh Dưỡng Quốc Gia & USDA) cho thương hiệu H1T MICRO của Lê Hồng Khánh. Dự án do Duong Phu Dong và Hao Vu trực tiếp lập trình với kiến trúc Frontend Next.js tốc độ cao, Backend Golang xử lý dữ liệu vi chất chuẩn xác, kết hợp cơ sở dữ liệu Supabase, lưu trữ Cloudinary và hạ tầng Cloud VPS Vietnix bảo mật.",
       technologies: ["Next.js", "Golang", "Supabase", "Cloudinary", "VPS Vietnix"],
       timeline: "Đã Triển Khai & Đang Duy Trì",
-      outcome: "Triển khai thành công hệ thống định lượng vi chất chuẩn khoa học, tối ưu tốc độ tải trang dưới 1 giây với backend Golang và hạ tầng VPS Vietnix, quản lý media qua Cloudinary, bàn giao hoàn chỉnh và đang tiếp tục đồng hành duy trì vận hành ổn định.",
+      outcome: "Triển khai thành công hệ thống định lượng vi chất chuẩn khoa học, đạt chỉ số kiểm định hiệu năng gần như tuyệt đối: 99 Performance, 100 Accessibility, 100 Best Practices, 100 SEO và 2/2 Agentic Browsing. Tối ưu tốc độ tải trang dưới 1 giây với backend Golang và hạ tầng VPS Vietnix, quản lý media qua Cloudinary, bàn giao hoàn chỉnh và đang tiếp tục đồng hành duy trì vận hành ổn định.",
       coverImage: "lehongkhanh",
-      metrics: "22 Vi Chất & Đang Vận Hành",
+      metrics: "99 Perf · 100 SEO/A11y · 22 Vi Chất",
       liveUrl: "https://lehongkhanh.vn/landing"
     }
   ],
@@ -282,9 +282,9 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       shortStory: "A scientific landing platform and web application quantifying 22 essential micronutrients (10 minerals & 12 vitamins) based on RNI/RDA recommendations from the National Institute of Nutrition & USDA for H1T MICRO (Le Hong Khanh). Engineered end-to-end by Duong Phu Dong and Hao Vu with a high-performance Next.js frontend, Golang backend, Supabase database, Cloudinary media CDN, and secure Vietnix Cloud VPS hosting.",
       technologies: ["Next.js", "Golang", "Supabase", "Cloudinary", "VPS Vietnix"],
       timeline: "Deployed & Active Maintenance",
-      outcome: "Successfully launched the precision nutrition tracking platform with sub-second page performance powered by a compiled Golang backend on Vietnix Cloud VPS, seamless Cloudinary media delivery, currently under active studio maintenance and operational support.",
+      outcome: "Successfully launched the precision nutrition tracking platform achieving near-perfect audit benchmarks: 99 Performance, 100 Accessibility, 100 Best Practices, 100 SEO, and 2/2 Agentic Browsing. Powered by a sub-second compiled Golang backend on Vietnix Cloud VPS, seamless Cloudinary media delivery, currently under active studio maintenance and operational support.",
       coverImage: "lehongkhanh",
-      metrics: "22 Micronutrients & Active Ops",
+      metrics: "99 Perf · 100 SEO/A11y · 22 Micronutrients",
       liveUrl: "https://lehongkhanh.vn/landing"
     }
   ]
@@ -1066,11 +1066,11 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
     },
     {
       question: "Website bàn giao có đảm bảo chuẩn SEO Google và đạt điểm tốc độ cao trên di động không?",
-      badge: "CHUẨN SEO & PAGESPEED 95+",
+      badge: "CHUẨN SEO & PAGESPEED 95-100",
       category: "quality",
-      answer: "Chắc chắn có! Mọi sản phẩm xuất xưởng từ Three Bugs Studio đều được kiểm thử và tối ưu đạt điểm Google PageSpeed Insights Xanh (85 – 95+) trên cả máy tính lẫn thiết bị di động. Chúng tôi tích hợp sẵn hạ tầng SEO On-Page chuẩn chỉnh: thẻ Open Graph chia sẻ mạng xã hội, dữ liệu có cấu trúc Schema JSON-LD, Sitemap.xml tự động, và cấu trúc Semantic HTML5 tải trang dưới 1.5 giây. Điều này giúp website của bạn nhanh chóng được Google xếp hạng cao, tối ưu tỷ lệ chuyển đổi khách hàng và tiết kiệm hàng chục triệu chi phí quảng cáo.",
+      answer: "Chắc chắn có! Mọi sản phẩm xuất xưởng từ Three Bugs Studio đều được kiểm thử và tối ưu đạt điểm Google PageSpeed Insights & Lighthouse Xanh (95 – 100), điển hình như dự án thực tế H1T MICRO đạt 99 Performance, 100 SEO, 100 Accessibility và 100 Best Practices. Chúng tôi tích hợp sẵn hạ tầng SEO On-Page chuẩn chỉnh: thẻ Open Graph chia sẻ mạng xã hội, dữ liệu có cấu trúc Schema JSON-LD, Sitemap.xml tự động, và cấu trúc Semantic HTML5 tải trang dưới 1.5 giây. Điều này giúp website của bạn nhanh chóng được Google xếp hạng cao, tối ưu tỷ lệ chuyển đổi khách hàng và tiết kiệm hàng chục triệu chi phí quảng cáo.",
       keyBenefits: [
-        "Tối ưu điểm Google PageSpeed Insights Xanh (85-95+) cả Desktop & Mobile",
+        "Tối ưu điểm Google PageSpeed & Lighthouse Xanh (95-100) cả Desktop & Mobile (minh chứng: H1T MICRO đạt 99-100 điểm)",
         "Tốc độ mở trang cực nhanh dưới 1.5 giây, nâng cao tỷ lệ chốt đơn hàng",
         "Tích hợp sẵn cấu trúc SEO On-Page, Schema JSON-LD và Sitemap.xml tự động",
         "Tương thích 100% hiển thị trên mọi độ phân giải (iPhone, Android, Tablet, PC)"
@@ -1176,11 +1176,11 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
     },
     {
       question: "Does the delivered website meet Google SEO standards and high mobile performance scores?",
-      badge: "SEO & 95+ SPEED BUILT-IN",
+      badge: "SEO & 95-100 SPEED BUILT-IN",
       category: "quality",
-      answer: "Absolutely! Every project shipped by Three Bugs Studio is audited and optimized to achieve Green Google PageSpeed Insights ratings (85 – 95+) across both Desktop and Mobile. We build in comprehensive On-Page SEO: Open Graph social previews, Schema JSON-LD structured data, automated XML sitemaps, and semantic HTML5 with sub-1.5 second page load speeds. This boosts Google rankings, maximizes conversion rates, and saves thousands of dollars in ad spend.",
+      answer: "Absolutely! Every project shipped by Three Bugs Studio is audited and optimized to achieve Green Google PageSpeed Insights and Lighthouse ratings (95 – 100), as proven by our live production benchmark on H1T MICRO scoring 99 Performance, 100 SEO, 100 Accessibility, and 100 Best Practices. We build in comprehensive On-Page SEO: Open Graph social previews, Schema JSON-LD structured data, automated XML sitemaps, and semantic HTML5 with sub-1.5 second page load speeds. This boosts Google rankings, maximizes conversion rates, and saves thousands of dollars in ad spend.",
       keyBenefits: [
-        "Green Google PageSpeed Insights scores (85–95+) on Desktop & Mobile",
+        "Green Google PageSpeed & Lighthouse scores (95–100) on Desktop & Mobile (proven by H1T MICRO's 99-100 ratings)",
         "Ultra-fast sub-1.5 second load times to maximize conversion rates",
         "Built-in On-Page SEO, Schema JSON-LD metadata, and auto-generated XML sitemaps",
         "100% fluid responsiveness across iPhone, Android, iPad, and 4K displays"
