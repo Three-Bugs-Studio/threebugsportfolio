@@ -756,6 +756,64 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                               </div>
                             </div>
 
+                            {/* Verified Lighthouse Audit Benchmark Bar */}
+                            <div className="bg-[#121214]/90 border border-emerald-500/30 rounded-sm p-2 my-2 backdrop-blur-sm">
+                              <div className="flex items-center justify-between mb-1.5 pb-1 border-b border-white/5">
+                                <div className="flex items-center gap-1.5">
+                                  <span className="w-1.5 h-1.5 rounded-sm bg-emerald-400" />
+                                  <span className="font-mono text-[6.5px] uppercase tracking-wider text-emerald-400 font-bold">
+                                    {lang === "vi" ? "CHỈ SỐ KIỂM ĐỊNH AUDIT THỰC TẾ (LIGHTHOUSE)" : "VERIFIED PRODUCTION AUDIT (LIGHTHOUSE)"}
+                                  </span>
+                                </div>
+                                <span className="font-mono text-[5.5px] text-[#8E8E93] uppercase tracking-widest">
+                                  LEHONGKHANH.VN
+                                </span>
+                              </div>
+
+                              <div className="flex items-center justify-between sm:justify-around gap-1.5 px-0.5 py-0.5">
+                                {/* Performance 99 */}
+                                <div className="flex flex-col items-center">
+                                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full border-2 border-emerald-400 bg-emerald-500/10 flex items-center justify-center shadow-[0_0_8px_rgba(52,211,153,0.25)]">
+                                    <span className="font-mono text-[8px] sm:text-[9px] font-bold text-emerald-400 leading-none">99</span>
+                                  </div>
+                                  <span className="font-sans text-[6px] sm:text-[6.5px] text-white/90 mt-1 font-medium tracking-tight">Performance</span>
+                                </div>
+
+                                {/* Accessibility 100 */}
+                                <div className="flex flex-col items-center">
+                                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full border-2 border-emerald-400 bg-emerald-500/10 flex items-center justify-center shadow-[0_0_8px_rgba(52,211,153,0.25)]">
+                                    <span className="font-mono text-[8px] sm:text-[9px] font-bold text-emerald-400 leading-none">100</span>
+                                  </div>
+                                  <span className="font-sans text-[6px] sm:text-[6.5px] text-white/90 mt-1 font-medium tracking-tight">Accessibility</span>
+                                </div>
+
+                                {/* Best Practices 100 */}
+                                <div className="flex flex-col items-center">
+                                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full border-2 border-emerald-400 bg-emerald-500/10 flex items-center justify-center shadow-[0_0_8px_rgba(52,211,153,0.25)]">
+                                    <span className="font-mono text-[8px] sm:text-[9px] font-bold text-emerald-400 leading-none">100</span>
+                                  </div>
+                                  <span className="font-sans text-[6px] sm:text-[6.5px] text-white/90 mt-1 font-medium tracking-tight">Best Practices</span>
+                                </div>
+
+                                {/* SEO 100 */}
+                                <div className="flex flex-col items-center">
+                                  <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full border-2 border-emerald-400 bg-emerald-500/10 flex items-center justify-center shadow-[0_0_8px_rgba(52,211,153,0.25)]">
+                                    <span className="font-mono text-[8px] sm:text-[9px] font-bold text-emerald-400 leading-none">100</span>
+                                  </div>
+                                  <span className="font-sans text-[6px] sm:text-[6.5px] text-white/90 mt-1 font-medium tracking-tight">SEO</span>
+                                </div>
+
+                                {/* Agentic Browsing 2/2 */}
+                                <div className="flex flex-col items-center">
+                                  <div className="h-6 sm:h-7 px-2 rounded-sm border border-emerald-400/50 bg-emerald-500/15 flex items-center justify-center gap-1 shadow-[0_0_8px_rgba(52,211,153,0.25)]">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                                    <span className="font-mono text-[8px] sm:text-[9px] font-bold text-emerald-400 leading-none">2/2</span>
+                                  </div>
+                                  <span className="font-sans text-[6px] sm:text-[6.5px] text-white/90 mt-1 font-medium tracking-tight">Agentic Browsing</span>
+                                </div>
+                              </div>
+                            </div>
+
                             {/* Footer stats */}
                             <div className="flex justify-between items-end border-t border-white/5 pt-2 mt-2">
                               <div className="flex flex-col">
