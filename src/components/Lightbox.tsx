@@ -206,10 +206,10 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
     h1t_micro: [
       {
         title: lang === "vi" ? "Trang Đích Định Lượng Vi Chất (Landing Page)" : "Micronutrient Tracking Landing Portal",
-        subtitle: "lehongkhanh.vn/landing",
+        subtitle: "lehongkhanh.vn/landing · 99 Perf · 100 SEO & A11y",
         desc: lang === "vi"
-          ? "Giao diện trang đích chuẩn y khoa giới thiệu hệ thống theo dõi 22 vi chất và năng lượng theo tiêu chuẩn RNI/RDA. Xây dựng bằng Next.js, Backend Golang tốc độ cao, lưu trữ Supabase, CDN Cloudinary và hosting trên Cloud VPS Vietnix."
-          : "Scientific landing portal introducing the 22 micronutrient and energy tracking system built on RNI/RDA standards. Engineered with Next.js, a compiled Golang backend, Supabase, Cloudinary CDN, and Vietnix Cloud VPS hosting."
+          ? "Giao diện trang đích chuẩn y khoa giới thiệu hệ thống theo dõi 22 vi chất và năng lượng theo tiêu chuẩn RNI/RDA. Đạt chứng nhận kiểm định Lighthouse thực tế (99 Performance, 100 SEO, 100 A11y, 100 Best Practices, 2/2 Agentic). Xây dựng bằng Next.js, Backend Golang tốc độ cao, lưu trữ Supabase, CDN Cloudinary và hosting trên Cloud VPS Vietnix."
+          : "Scientific landing portal introducing the 22 micronutrient and energy tracking system built on RNI/RDA standards. Certified near-perfect Lighthouse audit (99 Performance, 100 SEO, 100 Accessibility, 100 Best Practices, 2/2 Agentic). Engineered with Next.js, a compiled Golang backend, Supabase, Cloudinary CDN, and Vietnix Cloud VPS hosting."
       },
       {
         title: lang === "vi" ? "Bảng Đối Chiếu 22 Vi Chất & Tính Năng (Features & Comparison)" : "22 Micronutrients & Comparative Features",
