@@ -823,6 +823,12 @@ a.btn-stacked:active {
   box-shadow: 0 0 12px rgba(24, 119, 242, 0.5);
 }
 
+.footer-social-card .containerSeven:hover {
+  background-color: #0A66C2; /* LinkedIn Brand Blue */
+  border-color: #0A66C2;
+  box-shadow: 0 0 12px rgba(10, 102, 194, 0.5);
+}
+
 .footer-social-card .socialContainer:active {
   transform: scale(0.88);
   transition-duration: 0.2s;
