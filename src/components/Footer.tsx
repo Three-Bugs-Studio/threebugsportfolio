@@ -337,6 +337,13 @@ export default function Footer({ lang }: FooterProps) {
                   </svg>
                 </a>
 
+                {/* LinkedIn Container */}
+                <a href="https://www.linkedin.com/company/three-bugs-studio" className="socialContainer containerSeven" target="_blank" rel="noreferrer" title="LinkedIn @ThreeBugsStudio">
+                  <svg className="socialSvg" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451c.979 0 1.778-.773 1.778-1.729V1.73C24 .774 23.205 0 22.225 0z"/>
+                  </svg>
+                </a>
+
                 {/* TikTok Container */}
                 <a href="https://www.tiktok.com/@threebugsstudio" className="socialContainer containerFive" target="_blank" rel="noreferrer" title="TikTok @threebugsstudio">
                   <svg className="socialSvg" viewBox="0 0 24 24">
@@ -369,6 +376,7 @@ export default function Footer({ lang }: FooterProps) {
               {/* Standard Magnetic Links */}
               <div className="flex flex-col gap-2 font-mono text-xs pt-1">
                 <MagneticSocialLink href="https://github.com/Three-Bugs-Studio" label="GITHUB REPO" target="_blank" rel="noreferrer" />
+                <MagneticSocialLink href="https://www.linkedin.com/company/three-bugs-studio" label="LINKEDIN COMPANY" target="_blank" rel="noreferrer" />
                 <MagneticSocialLink href="https://www.facebook.com/profile.php?id=61595572553695&locale=vi_VN" label="FACEBOOK FANPAGE" target="_blank" rel="noreferrer" />
                 <MagneticSocialLink href="https://www.tiktok.com/@threebugsstudio" label="TIKTOK @THREEBUGSSTUDIO" target="_blank" rel="noreferrer" />
                 <MagneticSocialLink href="https://discord.gg/WDfhFdtqwv" label="DISCORD COMMUNITY" target="_blank" rel="noreferrer" />
