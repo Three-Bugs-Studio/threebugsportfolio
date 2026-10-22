@@ -892,5 +892,34 @@ html.light .faq-item-box .text-\[\#E4E4E7\] {
   color: #334155 !important;
 }
 
+/* Unikorn Badge Dark / Light theme toggle */
+.unikorn-badge-dark {
+  display: block;
+}
+.unikorn-badge-light {
+  display: none;
+}
+html.light .unikorn-badge-dark {
+  display: none !important;
+}
+html.light .unikorn-badge-light {
+  display: block !important;
+}
+
+/* Device Showcase Frame Light Mode adaptation */
+html.light .device-showcase-frame {
+  background-color: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+html.light .device-showcase-header {
+  background-color: #F1F3F5 !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+html.light .device-showcase-url {
+  background-color: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  color: #495057 !important;
+}
+
 
 
