@@ -214,9 +214,9 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       shortStory: "Hệ thống landing page và ứng dụng theo dõi 22 vi chất dinh dưỡng thiết yếu (10 khoáng chất & 12 vitamin) chuẩn y khoa và dinh dưỡng khoa học (RNI/RDA từ Viện Dinh Dưỡng Quốc Gia & USDA) cho thương hiệu H1T MICRO của Lê Hồng Khánh. Dự án do Duong Phu Dong và Hao Vu trực tiếp lập trình với kiến trúc Frontend Next.js tốc độ cao, Backend Golang xử lý dữ liệu vi chất chuẩn xác, kết hợp cơ sở dữ liệu Supabase, lưu trữ Cloudinary và hạ tầng Cloud VPS Vietnix bảo mật.",
       technologies: ["Next.js", "Golang", "Supabase", "Cloudinary", "VPS Vietnix"],
       timeline: "Đã Triển Khai & Đang Duy Trì",
-      outcome: "Triển khai thành công hệ thống định lượng vi chất chuẩn khoa học, đạt chỉ số kiểm định hiệu năng gần như tuyệt đối: 99 Performance, 100 Accessibility, 100 Best Practices, 100 SEO và 2/2 Agentic Browsing. Tối ưu tốc độ tải trang dưới 1 giây với backend Golang và hạ tầng VPS Vietnix, quản lý media qua Cloudinary, bàn giao hoàn chỉnh và đang tiếp tục đồng hành duy trì vận hành ổn định.",
+      outcome: "Xuất sắc đạt #1 Product of the Day trên Unikorn.vn và cán mốc 1.000+ thành viên theo dõi dinh dưỡng khoa học. Nền tảng đạt chứng nhận kiểm định thực tế 99 Performance, 100 SEO, 100 Accessibility trên hạ tầng backend Golang và VPS Vietnix.",
       coverImage: "lehongkhanh",
-      metrics: "99 Perf · 100 SEO/A11y · 22 Vi Chất",
+      metrics: "1.000+ Thành Viên · #1 Unikorn · 99 Perf",
       liveUrl: "https://lehongkhanh.vn/landing"
     }
   ],
@@ -282,9 +282,9 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       shortStory: "A scientific landing platform and web application quantifying 22 essential micronutrients (10 minerals & 12 vitamins) based on RNI/RDA recommendations from the National Institute of Nutrition & USDA for H1T MICRO (Le Hong Khanh). Engineered end-to-end by Duong Phu Dong and Hao Vu with a high-performance Next.js frontend, Golang backend, Supabase database, Cloudinary media CDN, and secure Vietnix Cloud VPS hosting.",
       technologies: ["Next.js", "Golang", "Supabase", "Cloudinary", "VPS Vietnix"],
       timeline: "Deployed & Active Maintenance",
-      outcome: "Successfully launched the precision nutrition tracking platform achieving near-perfect audit benchmarks: 99 Performance, 100 Accessibility, 100 Best Practices, 100 SEO, and 2/2 Agentic Browsing. Powered by a sub-second compiled Golang backend on Vietnix Cloud VPS, seamless Cloudinary media delivery, currently under active studio maintenance and operational support.",
+      outcome: "Awarded #1 Product of the Day on Unikorn.vn and scaled past 1,000+ active members tracking micronutrients. Achieved verified benchmarks: 99 Performance, 100 SEO, 100 Accessibility powered by compiled Golang on Vietnix Cloud VPS.",
       coverImage: "lehongkhanh",
-      metrics: "99 Perf · 100 SEO/A11y · 22 Micronutrients",
+      metrics: "1,000+ Members · #1 Unikorn · 99 Perf",
       liveUrl: "https://lehongkhanh.vn/landing"
     }
   ]
