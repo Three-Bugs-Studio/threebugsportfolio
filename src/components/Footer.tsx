@@ -207,7 +207,7 @@ export default function Footer({ lang }: FooterProps) {
 
               <button
                 onClick={handleToggleHum}
-                className={`bg-[#121212]/50 border ${isHumOn ? 'border-brand-orange/30 text-white' : 'border-white/5 text-[#8E8E93]'} px-4 py-2.5 rounded-sm flex items-center gap-3 hover:bg-[#1a1a1a]/50 transition-all duration-300 interactive select-none cursor-pointer`}
+                className={`bg-[#121212]/50 border ${isHumOn ? 'border-brand-orange/30 text-white' : 'border-white/5 text-[#8E8E93]'} px-4 py-2.5 rounded-sm flex items-center gap-3 hover:bg-[#1a1a1a]/50 transition-all duration-300 interactive select-none cursor-pointer focus-terminal outline-none active:scale-[0.98]`}
                 id="footer-ambient-hum-toggle"
               >
                 <span className={`relative inline-flex rounded-full h-1.5 w-1.5 ${isHumOn ? 'bg-brand-orange shadow-[0_0_6px_rgba(255,106,0,0.8)]' : 'bg-[#404040]'}`} />
@@ -222,7 +222,7 @@ export default function Footer({ lang }: FooterProps) {
                     (window as any).replayCrtBoot();
                   }
                 }}
-                className="bg-[#121212]/50 border border-brand-orange/20 text-[#8E8E93] hover:text-brand-orange hover:border-brand-orange/50 px-4 py-2.5 rounded-sm flex items-center gap-3 hover:bg-[#1a1a1a]/50 transition-all duration-300 interactive select-none cursor-pointer"
+                className="bg-[#121212]/50 border border-brand-orange/20 text-[#8E8E93] hover:text-brand-orange hover:border-brand-orange/50 px-4 py-2.5 rounded-sm flex items-center gap-3 hover:bg-[#1a1a1a]/50 transition-all duration-300 interactive select-none cursor-pointer focus-terminal outline-none active:scale-[0.98]"
                 title={lang === "vi" ? "Chạy lại animation CRT Boot (Phím tắt: Alt+B)" : "Replay CRT Boot Sequence (Shortcut: Alt+B)"}
                 id="footer-crt-reboot-btn"
               >

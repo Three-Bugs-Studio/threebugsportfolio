@@ -381,13 +381,15 @@ export default function Contact({ lang }: ContactProps) {
                           name="name"
                           value={formData.name}
                           onChange={handleInputChange}
-                          className={`w-full bg-[#090909]/60 border px-4 py-3 text-sm text-[#F5F5F3] rounded-sm focus:outline-none transition-all ${
-                            errors.name ? "border-red-500/50 focus:border-red-500" : "border-white/5 focus:border-brand-orange"
+                          aria-invalid={errors.name ? "true" : "false"}
+                          aria-describedby={errors.name ? "name-error" : undefined}
+                          className={`w-full bg-[#090909]/80 border px-4 py-3 text-sm text-[#F5F5F3] rounded-sm focus:outline-none focus:ring-1 focus:ring-brand-orange/50 transition-all ${
+                            errors.name ? "border-red-500/50 focus:border-red-500 focus:ring-red-500/30" : "border-white/10 focus:border-brand-orange focus:bg-[#141417]"
                           }`}
                           placeholder="Alex Mercer"
                         />
                         {errors.name && (
-                          <span className="font-mono text-[9px] text-red-500 mt-1 flex items-center gap-1">
+                          <span id="name-error" className="font-mono text-[9px] text-red-500 mt-1 flex items-center gap-1">
                             <AlertCircleIcon size={14} className="w-3.5 h-3.5" /> {errors.name}
                           </span>
                         )}
@@ -403,7 +405,7 @@ export default function Contact({ lang }: ContactProps) {
                           name="company"
                           value={formData.company}
                           onChange={handleInputChange}
-                          className="w-full bg-[#090909]/60 border border-white/5 focus:border-brand-orange px-4 py-3 text-sm text-[#F5F5F3] rounded-sm focus:outline-none transition-all"
+                          className="w-full bg-[#090909]/80 border border-white/10 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange/50 focus:bg-[#141417] px-4 py-3 text-sm text-[#F5F5F3] rounded-sm focus:outline-none transition-all"
                           placeholder="MetaLabs Inc."
                         />
                       </div>
@@ -420,13 +422,15 @@ export default function Contact({ lang }: ContactProps) {
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        className={`w-full bg-[#090909]/60 border px-4 py-3 text-sm text-[#F5F5F3] rounded-sm focus:outline-none transition-all ${
-                          errors.email ? "border-red-500/50 focus:border-red-500" : "border-white/5 focus:border-brand-orange"
+                        aria-invalid={errors.email ? "true" : "false"}
+                        aria-describedby={errors.email ? "email-error" : undefined}
+                        className={`w-full bg-[#090909]/80 border px-4 py-3 text-sm text-[#F5F5F3] rounded-sm focus:outline-none focus:ring-1 focus:ring-brand-orange/50 transition-all ${
+                          errors.email ? "border-red-500/50 focus:border-red-500 focus:ring-red-500/30" : "border-white/10 focus:border-brand-orange focus:bg-[#141417]"
                         }`}
                         placeholder="alex@metalabs.com"
                       />
                       {errors.email && (
-                        <span className="font-mono text-[9px] text-red-500 mt-1 flex items-center gap-1">
+                        <span id="email-error" className="font-mono text-[9px] text-red-500 mt-1 flex items-center gap-1">
                           <AlertCircleIcon size={14} className="w-3.5 h-3.5" /> {errors.email}
                         </span>
                       )}
@@ -502,8 +506,10 @@ export default function Contact({ lang }: ContactProps) {
                         rows={4}
                         value={formData.message}
                         onChange={handleInputChange}
-                        className={`w-full bg-[#090909]/60 border px-4 py-3 text-sm text-[#F5F5F3] rounded-sm focus:outline-none transition-all resize-none ${
-                          errors.message ? "border-red-500/50 focus:border-red-500" : "border-white/5 focus:border-brand-orange"
+                        aria-invalid={errors.message ? "true" : "false"}
+                        aria-describedby={errors.message ? "message-error" : undefined}
+                        className={`w-full bg-[#090909]/80 border px-4 py-3 text-sm text-[#F5F5F3] rounded-sm focus:outline-none focus:ring-1 focus:ring-brand-orange/50 transition-all resize-none ${
+                          errors.message ? "border-red-500/50 focus:border-red-500 focus:ring-red-500/30" : "border-white/10 focus:border-brand-orange focus:bg-[#141417]"
                         }`}
                         placeholder={
                           lang === "vi"
@@ -512,7 +518,7 @@ export default function Contact({ lang }: ContactProps) {
                         }
                       />
                       {errors.message && (
-                        <span className="font-mono text-[9px] text-red-500 mt-1 flex items-center gap-1">
+                        <span id="message-error" className="font-mono text-[9px] text-red-500 mt-1 flex items-center gap-1">
                           <AlertCircleIcon size={14} className="w-3.5 h-3.5" /> {errors.message}
                         </span>
                       )}
@@ -522,7 +528,7 @@ export default function Contact({ lang }: ContactProps) {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="btn-stacked w-full mt-4 font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#F5F5F3] hover:bg-[#F5F5F3]/90 text-[#090909] font-semibold rounded-sm inline-flex items-center justify-center gap-2 transition-all relative overflow-hidden group disabled:opacity-50 interactive"
+                      className="btn-stacked w-full mt-4 font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#F5F5F3] hover:bg-white text-[#090909] font-semibold rounded-sm inline-flex items-center justify-center gap-2 transition-all relative overflow-hidden group disabled:opacity-50 interactive focus-terminal outline-none active:scale-[0.99] shadow-xl hover:shadow-[0_0_24px_rgba(245,245,243,0.35)]"
                     >
                       {isSubmitting ? (
                         <span className="flex items-center gap-2">

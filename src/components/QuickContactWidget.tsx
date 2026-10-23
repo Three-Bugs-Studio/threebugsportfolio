@@ -214,7 +214,8 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
         whileTap={{ scale: 0.95 }}
         onClick={() => toggleOpen()}
         aria-label={lang === "vi" ? "Mở hộp thoại liên hệ nhanh" : "Open quick contact widget"}
-        className="relative flex items-center gap-2.5 bg-brand-orange hover:bg-brand-orange/95 text-[#090909] font-mono text-xs font-bold uppercase tracking-wider px-4 py-3 rounded-sm shadow-2xl shadow-brand-orange/20 cursor-pointer interactive border-2 border-[#090909]/40"
+        aria-expanded={isOpen}
+        className="relative flex items-center gap-2.5 bg-brand-orange hover:bg-brand-orange/95 text-[#090909] font-mono text-xs font-bold uppercase tracking-wider px-4 py-3 rounded-sm shadow-2xl shadow-brand-orange/20 cursor-pointer interactive border-2 border-[#090909]/40 focus-terminal outline-none"
       >
         <span className="h-2 w-2 rounded-full bg-white shadow-[0_0_6px_rgba(255,255,255,0.8)] shrink-0" />
         {isOpen ? (

@@ -108,7 +108,7 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
       variants={containerVariants}
       className="w-full"
     >
-      <div className={`pricing-card-container relative mx-auto w-full max-w-6xl overflow-hidden rounded-sm bg-[#111111]/90 border ${plan.pricingType === "hourly" ? "border-brand-orange/40" : "border-white/10"} hover:border-brand-orange/60 transition-all duration-500 shadow-2xl group`}>
+      <div className={`pricing-card-container card-brutalist relative mx-auto w-full max-w-6xl overflow-hidden rounded-sm bg-[#111111]/90 border ${plan.pricingType === "hourly" ? "border-brand-orange/40" : "border-white/10"} hover:border-brand-orange/60 transition-all duration-500 shadow-2xl group`}>
         {/* Top Accent Gradient Border */}
         <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${plan.pricingType === "hourly" ? "from-brand-orange via-amber-400 to-brand-orange" : "from-transparent via-brand-orange to-transparent"} opacity-70 group-hover:opacity-100 transition-opacity`} />
 
@@ -236,7 +236,8 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
             <motion.div className="mt-5" variants={itemVariants}>
               <button
                 onClick={() => onSelectPlan(plan)}
-                className="btn-stacked w-full py-3.5 px-6 rounded-sm font-mono text-xs tracking-widest uppercase font-bold transition-all duration-300 flex items-center justify-center gap-2 group/btn interactive bg-brand-orange text-[#090909] hover:bg-white hover:text-black shadow-lg"
+                aria-label={`${plan.buttonText || (lang === "vi" ? "Nhận tư vấn gói" : "Select package")} ${plan.name}`}
+                className="btn-stacked w-full py-3.5 px-6 rounded-sm font-mono text-xs tracking-widest uppercase font-bold transition-all duration-300 flex items-center justify-center gap-2 group/btn interactive bg-brand-orange text-[#090909] hover:bg-white hover:text-black shadow-lg focus-terminal outline-none active:scale-[0.99]"
               >
                 <span>
                   {plan.buttonText || (lang === "vi" ? "NHẬN TƯ VẤN GÓI NÀY" : "SELECT THIS PACKAGE")}

@@ -97,14 +97,16 @@ export default function FAQ({ lang }: FAQProps) {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              aria-label={lang === "vi" ? "Tìm kiếm câu hỏi thường gặp" : "Search frequently asked questions"}
               placeholder={lang === "vi" ? "Tìm câu hỏi (vd: bảo hành, mã nguồn, chi phí, SEO...)" : "Search FAQ (e.g., ownership, warranty, fees, SEO...)"}
-              className="w-full bg-[#111113] border border-white/15 focus:border-brand-orange text-xs md:text-sm text-[#F5F5F3] placeholder-[#8E8E93] px-10 py-3 rounded-sm outline-none transition-colors shadow-lg"
+              className="w-full bg-[#111113] border border-white/15 focus:border-brand-orange text-xs md:text-sm text-[#F5F5F3] placeholder-[#8E8E93] px-10 py-3 rounded-sm outline-none transition-colors shadow-lg focus-terminal"
             />
-            <SearchIcon size={16} className="w-4 h-4 text-[#8E8E93] absolute left-4 top-1/2 -translate-y-1/2" />
+            <SearchIcon size={16} className="w-4 h-4 text-[#8E8E93] absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-[#8E8E93] hover:text-white"
+                aria-label={lang === "vi" ? "Xóa tìm kiếm" : "Clear search"}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-[#8E8E93] hover:text-white focus-terminal px-1 py-0.5 rounded-sm"
               >
                 Clear
               </button>
@@ -120,7 +122,8 @@ export default function FAQ({ lang }: FAQProps) {
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`font-mono text-[10px] md:text-[11px] uppercase tracking-wider px-3.5 py-1.5 rounded-sm transition-all duration-200 border ${
+                  aria-pressed={isSelected}
+                  className={`font-mono text-[10px] md:text-[11px] uppercase tracking-wider px-3.5 py-1.5 rounded-sm transition-all duration-200 border focus-terminal outline-none active:scale-95 ${
                     isSelected
                       ? "bg-brand-orange text-[#090909] font-bold border-brand-orange shadow-md shadow-brand-orange/20 scale-105"
                       : "bg-[#111113] text-[#8E8E93] border-white/10 hover:border-white/25 hover:text-white"
@@ -169,8 +172,9 @@ export default function FAQ({ lang }: FAQProps) {
                   {/* Accordion Trigger Header */}
                   <button
                     onClick={() => toggleItem(idx)}
-                    className="w-full px-5 sm:px-6 py-5 text-left flex items-start sm:items-center justify-between gap-4 group interactive"
+                    className="w-full px-5 sm:px-6 py-5 text-left flex items-start sm:items-center justify-between gap-4 group interactive focus-terminal outline-none"
                     aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${idx}`}
                     id={`faq-trigger-${idx}`}
                   >
                     <div className="flex items-start sm:items-center gap-3.5 sm:gap-4 flex-1">
@@ -188,7 +192,7 @@ export default function FAQ({ lang }: FAQProps) {
                             </span>
                           </div>
                         )}
-                        <h3 className="font-sans font-bold text-base md:text-lg tracking-tight text-[#F5F5F3] group-hover:text-brand-orange transition-colors leading-snug">
+                        <h3 className="font-sans font-bold text-base md:text-lg tracking-tight text-[#F5F5F3] group-hover:text-brand-orange transition-colors leading-snug [text-wrap:balance]">
                           {item.question}
                         </h3>
                       </div>

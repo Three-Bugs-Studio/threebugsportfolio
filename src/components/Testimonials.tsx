@@ -44,7 +44,10 @@ export default function Testimonials({ lang }: TestimonialsProps) {
         </div>
 
         {/* Dynamic Testimonial Card */}
-        <div className="min-h-[220px] md:min-h-[200px] flex items-center justify-center">
+        <div className="min-h-[220px] md:min-h-[200px] flex items-center justify-center relative">
+          <div className="absolute -top-10 left-1/2 -translate-x-1/2 font-display text-8xl text-brand-orange/15 select-none pointer-events-none font-bold">
+            “
+          </div>
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIdx}
@@ -52,9 +55,9 @@ export default function Testimonials({ lang }: TestimonialsProps) {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full"
+              className="w-full relative z-10"
             >
-              <blockquote className="font-display font-medium text-2xl md:text-3xl lg:text-4xl tracking-tight text-[#F5F5F3] leading-relaxed max-w-4xl mx-auto">
+              <blockquote className="font-display font-medium text-2xl md:text-3xl lg:text-4xl tracking-tight text-[#F5F5F3] leading-relaxed max-w-4xl mx-auto [text-wrap:balance]">
                 "{activeTestimonial?.quote}"
               </blockquote>
 
@@ -63,8 +66,8 @@ export default function Testimonials({ lang }: TestimonialsProps) {
                 <span className="font-sans font-semibold text-sm md:text-base text-[#F5F5F3] block">
                   {activeTestimonial?.author}
                 </span>
-                <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block mt-1">
-                  {activeTestimonial?.role} — <span className="text-brand-orange">{activeTestimonial?.company}</span>
+                <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block mt-1.5">
+                  {activeTestimonial?.role} — <span className="text-brand-orange font-semibold">{activeTestimonial?.company}</span>
                 </span>
               </cite>
             </motion.div>
@@ -76,7 +79,7 @@ export default function Testimonials({ lang }: TestimonialsProps) {
           {/* Prev button */}
           <button
             onClick={handlePrev}
-            className="w-10 h-10 rounded-full border border-white/10 hover:border-brand-orange text-[#8E8E93] hover:text-[#F5F5F3] flex items-center justify-center transition-all duration-300 interactive"
+            className="w-10 h-10 rounded-full border border-white/10 hover:border-brand-orange text-[#8E8E93] hover:text-[#F5F5F3] flex items-center justify-center transition-all duration-300 interactive focus-terminal outline-none hover:shadow-[0_0_12px_rgba(255,106,0,0.3)] active:scale-95"
             aria-label="Previous quote"
             id="testimonial-prev-btn"
           >
@@ -89,8 +92,8 @@ export default function Testimonials({ lang }: TestimonialsProps) {
               <button
                 key={idx}
                 onClick={() => setActiveIdx(idx)}
-                className={`h-1 rounded-full transition-all duration-300 ${
-                  activeIdx === idx ? "w-6 bg-brand-orange" : "w-1.5 bg-white/20 hover:bg-white/40"
+                className={`h-1.5 rounded-full transition-all duration-300 focus-terminal outline-none ${
+                  activeIdx === idx ? "w-6 bg-brand-orange shadow-[0_0_8px_rgba(255,106,0,0.6)]" : "w-2 bg-white/20 hover:bg-white/40"
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
@@ -100,7 +103,7 @@ export default function Testimonials({ lang }: TestimonialsProps) {
           {/* Next button */}
           <button
             onClick={handleNext}
-            className="w-10 h-10 rounded-full border border-white/10 hover:border-brand-orange text-[#8E8E93] hover:text-[#F5F5F3] flex items-center justify-center transition-all duration-300 interactive"
+            className="w-10 h-10 rounded-full border border-white/10 hover:border-brand-orange text-[#8E8E93] hover:text-[#F5F5F3] flex items-center justify-center transition-all duration-300 interactive focus-terminal outline-none hover:shadow-[0_0_12px_rgba(255,106,0,0.3)] active:scale-95"
             aria-label="Next quote"
             id="testimonial-next-btn"
           >
