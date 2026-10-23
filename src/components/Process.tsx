@@ -34,7 +34,7 @@ export default function Process({ lang }: ProcessProps) {
               </span>
               <span className="h-[1px] w-12 bg-white/10" />
             </div>
-            <h2 className="font-display font-medium text-4xl md:text-6xl tracking-tight text-[#F5F5F3] leading-[1.05]">
+            <h2 className="font-display font-medium text-4xl md:text-6xl tracking-tight text-[#F5F5F3] leading-[1.05] [text-wrap:balance]">
               {t.processHeading}
             </h2>
           </div>
@@ -59,9 +59,9 @@ export default function Process({ lang }: ProcessProps) {
                   id={`process-btn-${idx}`}
                   onClick={() => setActiveStepIdx(idx)}
                   variants={itemVariants}
-                  className={`flex items-center justify-between text-left p-6 border transition-all duration-300 rounded-sm cursor-pointer focus:outline-none w-full group interactive ${
+                  className={`flex items-center justify-between text-left p-6 border transition-all duration-300 rounded-sm cursor-pointer w-full group interactive focus-terminal outline-none ${
                     isActive
-                      ? "bg-[#121212]/55 border-white/10 shadow-lg"
+                      ? "bg-[#121212]/70 border-brand-orange/40 shadow-lg -translate-x-1"
                       : "bg-transparent border-white/5 hover:border-white/10 hover:bg-[#121212]/10"
                   }`}
                 >
@@ -107,7 +107,21 @@ export default function Process({ lang }: ProcessProps) {
  
               {/* Step Header */}
               <div>
-                <div className="flex items-center gap-2 mb-6">
+                {/* 5-step visual pipeline progress */}
+                <div className="flex items-center gap-1.5 mb-6" aria-label={`Step ${activeStepIdx + 1} of ${stepsList.length}`}>
+                  {stepsList.map((_, pIdx) => (
+                    <div
+                      key={pIdx}
+                      className={`h-1 flex-1 rounded-full transition-all duration-300 ${
+                        pIdx <= activeStepIdx
+                          ? "bg-brand-orange shadow-[0_0_6px_rgba(255,106,0,0.6)]"
+                          : "bg-white/10"
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-2 mb-4">
                   <MapMarkerIcon size={16} className="w-4 h-4 text-brand-orange" />
                   <span className="font-mono text-[10px] tracking-widest text-[#8E8E93] uppercase">
                     {lang === "vi" ? "GIAI ĐOẠN" : "PHASE"} {stepsList[activeStepIdx]?.number} / 05 — {stepsList[activeStepIdx]?.duration}

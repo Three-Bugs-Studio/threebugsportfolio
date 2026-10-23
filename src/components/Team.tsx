@@ -143,9 +143,18 @@ export default function Team({ lang }: TeamProps) {
             return (
               <motion.div
                 key={member.name}
+                tabIndex={0}
+                role="button"
+                aria-label={`${member.name} - ${member.role} (${lang === "vi" ? "Nhấn để xem chi tiết" : "Click to view profile"})`}
                 variants={cardVariants}
                 onClick={() => setSelectedMember(member)}
-                className="team-card-item group relative bg-[#111113]/90 border border-white/10 hover:border-brand-orange/50 p-4 rounded-xl transition-all duration-500 cursor-pointer flex flex-col justify-between overflow-hidden shadow-xl hover:shadow-[0_0_25px_rgba(255,106,0,0.15)] hover:-translate-y-1.5 interactive"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setSelectedMember(member);
+                  }
+                }}
+                className="team-card-item group relative bg-[#111113]/90 border border-white/10 hover:border-brand-orange/50 p-4 rounded-xl transition-all duration-500 cursor-pointer flex flex-col justify-between overflow-hidden shadow-xl hover:shadow-[0_0_25px_rgba(255,106,0,0.15)] hover:-translate-y-1.5 interactive focus-terminal outline-none"
               >
                 {/* Top Member Index & Studio Label / Highlight Badge */}
                 <div className="flex items-center justify-between gap-2 mb-3">
@@ -293,7 +302,7 @@ export default function Team({ lang }: TeamProps) {
 
                 <button
                   onClick={() => setSelectedMember(null)}
-                  className="absolute top-4 right-4 text-[#8E8E93] hover:text-white transition-colors p-1"
+                  className="absolute top-4 right-4 text-[#8E8E93] hover:text-white transition-colors p-1.5 focus-terminal rounded-sm outline-none"
                   aria-label="Close detail modal"
                 >
                   <CloseIcon size={20} className="w-5 h-5" />

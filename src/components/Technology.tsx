@@ -37,7 +37,7 @@ export default function Technology({ lang }: TechnologyProps) {
               </span>
               <span className="h-[1px] w-12 bg-white/10" />
             </div>
-            <h2 className="font-display font-medium text-4xl md:text-6xl tracking-tight text-[#F5F5F3] leading-[1.05]">
+            <h2 className="font-display font-medium text-4xl md:text-6xl tracking-tight text-[#F5F5F3] leading-[1.05] [text-wrap:balance]">
               {t.techHeading}
             </h2>
           </div>
@@ -55,10 +55,15 @@ export default function Technology({ lang }: TechnologyProps) {
               <motion.div
                 key={tech.name}
                 id={`tech-cell-${idx}`}
+                tabIndex={0}
+                role="article"
+                aria-label={`${tech.name}: ${tech.description}`}
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onMouseLeave={() => setHoveredIdx(null)}
+                onFocus={() => setHoveredIdx(idx)}
+                onBlur={() => setHoveredIdx(null)}
                 variants={itemVariants}
-                className="group p-6 md:p-8 bg-transparent border-r border-b border-white/5 hover:bg-[#121212]/30 transition-all duration-300 relative overflow-hidden flex flex-col justify-between min-h-[190px] cursor-default select-none"
+                className="group p-6 md:p-8 bg-transparent border-r border-b border-white/5 hover:bg-[#121212]/30 transition-all duration-300 relative overflow-hidden flex flex-col justify-between min-h-[190px] cursor-default select-none focus-terminal outline-none"
               >
                 {/* Spotlight background gradient hover effect */}
                 <div
