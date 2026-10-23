@@ -56,7 +56,7 @@ export default function Services({ lang }: ServicesProps) {
           {/* Left Column: Descriptive Intro */}
           <div className="lg:col-span-4 flex flex-col justify-between">
             <motion.div variants={itemVariants}>
-              <h2 className="font-display font-medium text-4xl md:text-5xl tracking-tight text-[#F5F5F3] leading-[1.1] mb-6">
+              <h2 className="font-display font-medium text-4xl md:text-5xl tracking-tight text-[#F5F5F3] leading-[1.1] mb-6 [text-wrap:balance]">
                 {t.servicesHeading}
               </h2>
               <p className="font-sans text-sm md:text-base text-[#8E8E93] font-light leading-relaxed max-w-sm">
@@ -91,10 +91,11 @@ export default function Services({ lang }: ServicesProps) {
                   tabIndex={0}
                   role="button"
                   aria-expanded={isActive}
+                  aria-controls={`service-details-${service.id}`}
                   aria-label={`${service.title} — ${lang === "vi" ? "Nhấp để hiển thị chi tiết dịch vụ" : "Click to view service details"}`}
                   variants={itemVariants}
-                  className={`group border border-white/5 hover:border-white/10 p-6 md:p-8 transition-all duration-500 rounded-sm cursor-pointer relative overflow-hidden select-none focus-visible:ring-1 focus-visible:ring-brand-orange focus-visible:outline-none ${
-                    isActive ? "bg-[#121212]/40 border-white/10" : "bg-transparent hover:bg-[#121212]/10"
+                  className={`group border border-white/5 hover:border-white/10 p-6 md:p-8 transition-all duration-500 rounded-sm cursor-pointer relative overflow-hidden select-none focus-terminal outline-none ${
+                    isActive ? "bg-[#121212]/50 border-white/15 shadow-xl -translate-y-0.5" : "bg-transparent hover:bg-[#121212]/15"
                   }`}
                   onClick={() => setActiveId(isActive ? null : service.id)}
                   onKeyDown={(e) => {

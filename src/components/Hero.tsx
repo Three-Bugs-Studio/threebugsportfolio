@@ -97,14 +97,17 @@ export default function Hero({ lang }: HeroProps) {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center gap-3 mb-8 bg-[#121212]/80 border border-white/10 px-3.5 py-1.5 rounded-sm backdrop-blur-md select-none shadow-2xl"
+          className="flex items-center gap-3 mb-8 bg-[#121212]/80 border border-white/10 px-3.5 py-1.5 rounded-sm backdrop-blur-md select-none shadow-2xl transition-colors hover:border-brand-orange/40"
         >
-          <span className="h-2 w-2 rounded-full bg-brand-orange shadow-[0_0_8px_rgba(255,106,0,0.8)] shrink-0" />
-          <span className="font-mono text-[10px] tracking-[0.2em] text-[#8E8E93] uppercase">
+          <span className="relative flex h-2 w-2 shrink-0">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-orange shadow-[0_0_8px_rgba(255,106,0,0.8)]" />
+          </span>
+          <span className="font-mono text-[10px] tracking-[0.2em] text-[#A1A1AA] dark:text-[#8E8E93] uppercase font-medium">
             {greeting}
           </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-white/10" />
-          <span className="font-mono text-[10px] text-brand-orange/90 font-medium">
+          <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
+          <span className="font-mono text-[10px] text-brand-orange font-semibold tracking-wider">
             {currentTime}
           </span>
         </motion.div>
@@ -115,19 +118,19 @@ export default function Hero({ lang }: HeroProps) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display font-medium text-4xl md:text-7xl lg:text-8xl tracking-tighter text-[#F5F5F3] leading-[1.05] max-w-4xl dark:drop-shadow-[0_4px_32px_rgba(0,0,0,0.95)]"
+          className="font-display font-medium text-4xl md:text-7xl lg:text-8xl tracking-tighter text-[#F5F5F3] leading-[1.05] max-w-4xl dark:drop-shadow-[0_4px_32px_rgba(0,0,0,0.95)] [text-wrap:balance]"
         >
           {lang === "vi" ? (
             <>
               Chúng tôi xây dựng <br />
-              <span className="text-[#8E8E93] dark:drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
+              <span className="text-[#A1A1AA] dark:text-[#8E8E93] dark:drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
                 website và phần mềm.
               </span>
             </>
           ) : (
             <>
               We build websites <br />
-              <span className="text-[#8E8E93] dark:drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
+              <span className="text-[#A1A1AA] dark:text-[#8E8E93] dark:drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
                 and custom software.
               </span>
             </>
@@ -140,7 +143,7 @@ export default function Hero({ lang }: HeroProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-sans text-base md:text-xl text-[#8E8E93] max-w-2xl mt-8 font-light leading-relaxed dark:drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)]"
+          className="font-sans text-base md:text-xl text-[#A1A1AA] dark:text-[#8E8E93] max-w-2xl mt-8 font-light leading-relaxed dark:drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)] [text-wrap:pretty]"
         >
           {t.heroDesc}
         </motion.p>
@@ -165,7 +168,8 @@ export default function Hero({ lang }: HeroProps) {
         >
           <button
             onClick={() => handleScrollTo("app-work-section")}
-            className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#F5F5F3] text-[#090909] font-medium rounded-sm inline-flex items-center justify-center gap-2.5 group interactive shadow-2xl"
+            aria-label={t.heroExplore}
+            className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#F5F5F3] text-[#090909] font-medium rounded-sm inline-flex items-center justify-center gap-2.5 group interactive shadow-2xl focus-terminal active:scale-[0.98] transition-all hover:shadow-[0_0_24px_rgba(245,245,243,0.3)]"
           >
             <span>{t.heroExplore}</span>
             <span className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-brand-orange inline-flex items-center justify-center">
@@ -175,7 +179,8 @@ export default function Hero({ lang }: HeroProps) {
           
           <button
             onClick={() => handleScrollTo("app-contact-section")}
-            className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#121212]/90 border border-white/10 text-[#F5F5F3] rounded-sm inline-flex items-center justify-center gap-2 group interactive backdrop-blur-md shadow-xl"
+            aria-label={t.navStartProject}
+            className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#121212]/90 border border-white/10 text-[#F5F5F3] rounded-sm inline-flex items-center justify-center gap-2 group interactive backdrop-blur-md shadow-xl focus-terminal active:scale-[0.98] transition-all hover:border-brand-orange/60 hover:shadow-[0_0_20px_rgba(255,106,0,0.18)]"
           >
             <span>{t.navStartProject}</span>
             <span className="w-1.5 h-1.5 bg-brand-orange rounded-full group-hover:scale-125 transition-transform" />
@@ -188,8 +193,17 @@ export default function Hero({ lang }: HeroProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.8 }}
           transition={{ delay: 1.2, duration: 1 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 cursor-pointer group"
+          role="button"
+          tabIndex={0}
+          aria-label={lang === "vi" ? "Cuộn xuống phần giới thiệu" : "Scroll to about section"}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 cursor-pointer group focus-terminal rounded-sm p-1"
           onClick={() => handleScrollTo("app-about-section")}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              handleScrollTo("app-about-section");
+            }
+          }}
         >
           <div className="w-[18px] h-[28px] rounded-full border dark:border-[#8E8E93]/80 border-slate-400 group-hover:border-brand-orange transition-colors flex justify-center p-[4px]" id="scroll-mouse-icon">
             <motion.div 
