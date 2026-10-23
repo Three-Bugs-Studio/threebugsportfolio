@@ -206,21 +206,21 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
     h1t_micro: [
       {
         title: lang === "vi" ? "Trang Đích Định Lượng Vi Chất (Landing Page)" : "Micronutrient Tracking Landing Portal",
-        subtitle: "lehongkhanh.vn/landing · #1 Unikorn · 1.000+ Members · 99 Perf",
+        subtitle: "lehongkhanh.vn · #1 Unikorn · 1.000+ Members · 99 Perf",
         desc: lang === "vi"
           ? "Giao diện trang đích chuẩn y khoa giới thiệu hệ thống theo dõi 22 vi chất và năng lượng theo tiêu chuẩn RNI/RDA. Xuất sắc đạt #1 Product of the Day trên Unikorn.vn và phục vụ hơn 1.000+ thành viên theo dõi dinh dưỡng. Đạt chứng nhận kiểm định Lighthouse thực tế (99 Performance, 100 SEO, 100 A11y, 100 Best Practices, 2/2 Agentic). Xây dựng bằng Next.js, Backend Golang tốc độ cao, lưu trữ Supabase, CDN Cloudinary và hosting trên Cloud VPS Vietnix."
           : "Scientific landing portal introducing the 22 micronutrient and energy tracking system built on RNI/RDA standards. Awarded #1 Product of the Day on Unikorn.vn and trusted by 1,000+ active members. Certified near-perfect Lighthouse audit (99 Performance, 100 SEO, 100 Accessibility, 100 Best Practices, 2/2 Agentic). Engineered with Next.js, a compiled Golang backend, Supabase, Cloudinary CDN, and Vietnix Cloud VPS hosting."
       },
       {
         title: lang === "vi" ? "Bảng Đối Chiếu 22 Vi Chất & Tính Năng (Features & Comparison)" : "22 Micronutrients & Comparative Features",
-        subtitle: "lehongkhanh.vn/landing#tinh-nang",
+        subtitle: "lehongkhanh.vn#tinh-nang",
         desc: lang === "vi"
           ? "Bảng đối chiếu định lượng chi tiết 10 khoáng chất và 12 vitamin thiết yếu, tích hợp công cụ tính toán bù nước và điện giải theo cường độ tập luyện."
           : "Quantitative breakdown of 10 minerals and 12 vitamins with an intelligent hydration & electrolyte replenishment calculator."
       },
       {
         title: lang === "vi" ? "Độ Minh Bạch & Nhóm Đối Tượng (Audience & Scientific Transparency)" : "Target Audiences & Scientific Transparency",
-        subtitle: "lehongkhanh.vn/landing#doi-tuong",
+        subtitle: "lehongkhanh.vn#doi-tuong",
         desc: lang === "vi"
           ? "Chi tiết giải pháp dinh dưỡng chuyên sâu cho người tập luyện thể thao, phụ nữ mang thai, người ăn chay và người cần phục hồi sức khỏe."
           : "Specialized precision nutrition tracking for athletes, pregnancy, plant-based diets, and metabolic recovery."
