@@ -921,5 +921,70 @@ html.light .device-showcase-url {
   color: #495057 !important;
 }
 
+/* ==========================================================================
+   UI/UX PRO MAX - HIGH-TECH CYBERPUNK & NEO-BRUTALIST UTILITIES
+   ========================================================================== */
+
+/* Balanced typography heading helper */
+.heading-balance,
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+/* Accessible High-Contrast Focus Ring */
+.focus-terminal:focus-visible {
+  outline: 2px solid #FF6A00 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 12px rgba(255, 106, 0, 0.5) !important;
+}
+
+/* High-Tech Brutalist Card with Subtle Tactile Feedback */
+.card-brutalist {
+  position: relative;
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 300ms cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, border-color, box-shadow;
+}
+
+.card-brutalist:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 106, 0, 0.45) !important;
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 106, 0, 0.12) !important;
+}
+
+html.light .card-brutalist:hover {
+  box-shadow: 0 14px 28px -12px rgba(15, 23, 42, 0.15), 0 0 16px rgba(255, 106, 0, 0.15) !important;
+}
+
+/* Monospace Telemetry Chip */
+.chip-telemetry {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 250ms ease;
+  user-select: none;
+}
+
+/* Global Prefers-Reduced-Motion Accessibility Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
 
 
