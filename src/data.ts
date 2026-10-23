@@ -217,7 +217,7 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       outcome: "Xuất sắc đạt #1 Product of the Day trên Unikorn.vn và cán mốc 1.000+ thành viên theo dõi dinh dưỡng khoa học. Nền tảng đạt chứng nhận kiểm định thực tế 99 Performance, 100 SEO, 100 Accessibility trên hạ tầng backend Golang và VPS Vietnix.",
       coverImage: "lehongkhanh",
       metrics: "1.000+ Thành Viên · #1 Unikorn · 99 Perf",
-      liveUrl: "https://lehongkhanh.vn/landing"
+      liveUrl: "https://lehongkhanh.vn"
     }
   ],
   en: [
@@ -285,7 +285,7 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       outcome: "Awarded #1 Product of the Day on Unikorn.vn and scaled past 1,000+ active members tracking micronutrients. Achieved verified benchmarks: 99 Performance, 100 SEO, 100 Accessibility powered by compiled Golang on Vietnix Cloud VPS.",
       coverImage: "lehongkhanh",
       metrics: "1,000+ Members · #1 Unikorn · 99 Perf",
-      liveUrl: "https://lehongkhanh.vn/landing"
+      liveUrl: "https://lehongkhanh.vn"
     }
   ]
 };
