@@ -491,7 +491,7 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                               <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
                             </div>
                             <div className="device-showcase-url flex-1 max-w-xs mx-auto bg-[#09090b]/80 border border-emerald-500/30 rounded-sm py-0.5 px-3 flex items-center justify-between text-[#8E8E93] text-[9px] font-mono">
-                              <span className="truncate">https://lehongkhanh.vn/landing</span>
+                              <span className="truncate">https://lehongkhanh.vn</span>
                               <span className="text-[8px] text-emerald-400 font-bold">LIVE 🔒</span>
                             </div>
                             <span className="font-mono text-[8px] text-emerald-400 font-bold tracking-widest shrink-0 uppercase">HEALTH TECH</span>
