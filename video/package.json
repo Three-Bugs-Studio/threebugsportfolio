@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "studio": "remotion studio",
+    "sfx": "node scripts/sfx.mjs",
     "render": "remotion render Promo out/promo.mp4"
   },
   "dependencies": {
