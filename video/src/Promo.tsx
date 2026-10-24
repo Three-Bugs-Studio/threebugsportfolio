@@ -1,6 +1,7 @@
 import React from "react";
 import {
   AbsoluteFill,
+  Audio,
   Easing,
   Img,
   Sequence,
@@ -223,10 +224,38 @@ const Cta: React.FC = () => {
 
 const at = ([start, len]: readonly [number, number]) => ({ from: Math.round(start * S), durationInFrames: Math.round(len * S) });
 
+// Sound cues, in frames, synced to the animations above.
+const sec = (k: keyof typeof SCENES) => Math.round(SCENES[k][0] * S);
+const CUES: [string, number, number][] = [
+  // Typing the boot command (frames 10-70)
+  ...Array.from({ length: 15 }, (_, i) => ["key.wav", 10 + i * 4, 0.5] as [string, number, number]),
+  ["boot.wav", 80, 0.6],
+  // Whoosh slightly ahead of each scene change
+  ...(["headline", "services", "work", "cta"] as const).map((k) => ["whoosh.wav", sec(k) - 8, 0.7] as [string, number, number]),
+  ["pop.wav", sec("headline") + 12, 0.5],
+  ["pop.wav", sec("headline") + 30, 0.5],
+  ...SERVICES.map((_, i) => ["pop.wav", sec("services") + 30 + i * 14, 0.4] as [string, number, number]),
+  ...[1, 2].map((k) => ["whoosh.wav", sec("work") + Math.round((SCENES.work[1] * S * k) / PROJECTS.length) - 8, 0.45] as [string, number, number]),
+  ["pop.wav", sec("cta") + 40, 0.7],
+  ["boot.wav", sec("cta") + 40, 0.35],
+];
+
+const SoundTrack: React.FC = () => (
+  <>
+    <Audio src={staticFile("sfx/hum.wav")} volume={0.5} />
+    {CUES.map(([file, from, volume], i) => (
+      <Sequence key={i} from={Math.max(0, from)} durationInFrames={2 * S} layout="none">
+        <Audio src={staticFile(`sfx/${file}`)} volume={volume} />
+      </Sequence>
+    ))}
+  </>
+);
+
 export const Promo: React.FC = () => {
   const f = useCurrentFrame();
   return (
     <AbsoluteFill style={{ background: BG }}>
+      <SoundTrack />
       <DotGrid />
       {/* Vignette keeps text readable over the grid */}
       <AbsoluteFill style={{ background: `radial-gradient(ellipse at 30% 50%, ${BG}ee 20%, ${BG}55 70%, ${BG}cc 100%)` }} />
