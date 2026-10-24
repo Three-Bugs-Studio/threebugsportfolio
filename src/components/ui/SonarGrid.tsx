@@ -255,7 +255,8 @@ export function SonarGrid({
       }
       draw(now);
 
-      // Keep running at display refresh rate while in viewport; paused by IntersectionObserver and visibilitychange
+      // Sleep once the grid is static (no rings, no auto-ping); pointerdown/refresh calls wake() again
+      if (o.pingEvery <= 0 && ringsRef.current.length === 0) return;
       raf = requestAnimationFrame(tick);
     };
 
