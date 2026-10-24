@@ -146,15 +146,8 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-baseline flex-wrap gap-2">
                     <span className="text-2xl md:text-3xl font-extrabold font-display text-[#F5F5F3]">
-                      {plan.pricingType === "hourly"
-                        ? (lang === "vi" ? "Tính Theo Giờ" : "Hourly Rate")
-                        : (lang === "vi" ? "Liên Hệ Báo Giá" : "Quote on Request")}
+                      {plan.priceVnd}
                     </span>
-                    {plan.pricingType === "hourly" && (
-                      <span className="font-mono text-xs text-brand-orange font-semibold">
-                        ({lang === "vi" ? "Thỏa thuận" : "Negotiated"})
-                      </span>
-                    )}
                   </div>
                   {/* Price Animated GIF Badge */}
                   <div className="price-anim-icon-container relative w-10 h-10 md:w-11 md:h-11 p-1 rounded-xl bg-brand-orange/15 border border-brand-orange/30 shadow-[0_0_15px_rgba(255,106,0,0.25)] flex items-center justify-center shrink-0 overflow-hidden">
@@ -169,16 +162,14 @@ function PricingCardItem({ plan, lang, onSelectPlan, index }: SinglePricingCardP
                     />
                   </div>
                 </div>
-                <div className="flex items-center justify-between font-mono text-xs text-[#8E8E93] pt-2 border-t border-white/5">
-                  <span className="truncate max-w-[200px]">
-                    {plan.pricingType === "hourly"
-                      ? (lang === "vi" ? "Linh hoạt block 10h / 20h" : "Flexible 10h / 20h blocks")
-                      : (lang === "vi" ? "Báo giá theo quy mô & tính năng" : "Tailored to project scope")}
-                  </span>
+                <div className="flex items-center justify-between gap-3 font-mono text-xs text-[#8E8E93] pt-2 border-t border-white/5">
+                  <span>{plan.priceUsd}</span>
                   <span className="text-brand-orange font-medium shrink-0">
                     [ {plan.pricingType === "hourly"
                         ? (lang === "vi" ? "Time-Tracking SLA" : "Tracked SLA")
-                        : (lang === "vi" ? "Trọn gói 3 Phase" : "Full 3 Phases")} ]
+                        : plan.buttonHref
+                          ? "Template"
+                          : (lang === "vi" ? "Trọn gói 3 Phase" : "Full 3 Phases")} ]
                   </span>
                 </div>
                 <span className="block text-[11px] font-sans text-[#8E8E93] pt-0.5">
@@ -358,6 +349,11 @@ export default function Pricing({ lang }: PricingProps) {
   const plans = PRICING_DATA[lang];
 
   const handleSelectPlan = (plan: PricingPlan) => {
+    if (plan.buttonHref) {
+      window.location.href = plan.buttonHref;
+      return;
+    }
+
     // Dispatch custom event for Contact component to pre-fill budget & message
     const event = new CustomEvent("select_pricing_plan", {
       detail: {
@@ -365,9 +361,7 @@ export default function Pricing({ lang }: PricingProps) {
         planName: plan.name,
         badge: plan.badge,
         pricingType: plan.pricingType,
-        quoteNotice: plan.pricingType === "hourly"
-          ? (lang === "vi" ? "Tính Theo Giờ (Thỏa thuận)" : "Hourly Rate (Mutual Agreement)")
-          : (lang === "vi" ? "Liên Hệ Báo Giá" : "Quote on Request"),
+        quoteNotice: plan.priceVnd,
       }
     });
     window.dispatchEvent(event);
