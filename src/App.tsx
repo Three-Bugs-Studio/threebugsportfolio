@@ -33,20 +33,6 @@ import {
   FooterSkeleton
 } from "./components/SkeletonLoader";
 
-const APP_SECTIONS = [
-  { id: "hero", code: "SEC_00", nameEn: "HERO_SPLASH", nameVi: "TRANG CHỦ" },
-  { id: "app-about-section", code: "SEC_01", nameEn: "ABOUT PHILOSOPHY", nameVi: "TRIẾT LÝ HOẠT ĐỘNG" },
-  { id: "app-services-section", code: "SEC_02", nameEn: "CORE CAPABILITIES", nameVi: "CÔNG NGHỆ & DỊCH VỤ" },
-  { id: "app-work-section", code: "SEC_03", nameEn: "SELECTED PORTFOLIO", nameVi: "SẢN PHẨM TIÊU BIỂU" },
-  { id: "app-process-section", code: "SEC_04", nameEn: "ENGINEERING FLOW", nameVi: "QUY TRÌNH PHÁT TRIỂN" },
-  { id: "app-pricing-section", code: "SEC_04_ALT", nameEn: "PHASE PRICING", nameVi: "BÁO GIÁ THEO PHASE" },
-  { id: "app-technology-section", code: "SEC_05", nameEn: "SYSTEM STACK", nameVi: "HỆ THỐNG CÔNG NGHỆ" },
-  { id: "app-team-section", code: "SEC_06", nameEn: "STUDIO FOUNDERS", nameVi: "SƠ ĐỒ & ĐỘI NGŨ" },
-  { id: "app-testimonials-section", code: "SEC_07", nameEn: "PARTNER REVIEWS", nameVi: "ĐÁNH GIÁ ĐỐI TÁC" },
-  { id: "app-faq-section", code: "SEC_08", nameEn: "FAQ RESOLUTIONS", nameVi: "GIẢI ĐÁP THẮC MẮC" },
-  { id: "app-contact-section", code: "SEC_09", nameEn: "INQUIRY PORTAL", nameVi: "LIÊN HỆ ĐẶT HÀNG" }
-];
-
 export default function App() {
   const [lang, setLang] = useState<"vi" | "en">(() => {
     const saved = localStorage.getItem("three_bugs_lang");
@@ -191,59 +177,6 @@ export default function App() {
   });
 
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [activeSection, setActiveSection] = useState<string>("hero");
-  const [isScrolling, setIsScrolling] = useState(false);
-
-  useEffect(() => {
-    let scrollTimeout: NodeJS.Timeout | null = null;
-    let ticking = false;
-
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
-          if (totalScroll > 0) {
-            setScrollProgress((window.scrollY / totalScroll) * 100);
-          } else {
-            setScrollProgress(0);
-          }
-
-          setIsScrolling(true);
-          if (scrollTimeout) {
-            clearTimeout(scrollTimeout);
-          }
-          scrollTimeout = setTimeout(() => {
-            setIsScrolling(false);
-          }, 1500);
-
-          // Track active section for top progress bar
-          const scrollPosition = window.scrollY + 280;
-          let currentSection = "hero";
-          for (const sec of APP_SECTIONS) {
-            const el = document.getElementById(sec.id);
-            if (el) {
-              const top = el.offsetTop;
-              const height = el.offsetHeight;
-              if (scrollPosition >= top && scrollPosition < top + height) {
-                currentSection = sec.id;
-              }
-            }
-          }
-          setActiveSection(currentSection);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (scrollTimeout) clearTimeout(scrollTimeout);
-    };
-  }, []);
-
   // Global Interaction Sound Effects (Tactile Web Audio API feedback)
   useEffect(() => {
     const handleGlobalClick = (e: MouseEvent) => {
