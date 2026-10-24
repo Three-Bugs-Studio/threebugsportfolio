@@ -8,4 +8,10 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://3bstudio.me/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://3bstudio.me/" />
   </url>
+  <url>
+    <loc>https://3bstudio.me/templates</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
