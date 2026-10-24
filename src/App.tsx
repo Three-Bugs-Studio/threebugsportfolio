@@ -2,12 +2,10 @@ import React, { useState, useEffect, useCallback, startTransition, lazy, Suspens
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import StaggeredSection from "./components/StaggeredSection";
-import DotNavigation from "./components/DotNavigation";
 import QuickContactWidget from "./components/QuickContactWidget";
 import { audioManager } from "./lib/audioManager";
 import { motion, AnimatePresence } from "motion/react";
 
-const CrtLoadingScreen = lazy(() => import("./components/CrtLoadingScreen"));
 const About = lazy(() => import("./components/About"));
 const Services = lazy(() => import("./components/Services"));
 const SelectedWork = lazy(() => import("./components/SelectedWork"));
@@ -20,7 +18,6 @@ const FAQ = lazy(() => import("./components/FAQ"));
 const Contact = lazy(() => import("./components/Contact"));
 const Footer = lazy(() => import("./components/Footer"));
 import {
-  HeroSkeleton,
   AboutSkeleton,
   ServicesSkeleton,
   SelectedWorkSkeleton,
@@ -111,70 +108,6 @@ export default function App() {
       );
     });
   };
-
-  const isBotOrLighthouse = typeof navigator !== "undefined" && (
-    /Lighthouse|PageSpeed|Googlebot|HeadlessChrome/i.test(navigator.userAgent) ||
-    (window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : false)
-  );
-
-  const [isCrtBooting, setIsCrtBooting] = useState<boolean>(() => {
-    if (typeof window === "undefined" || isBotOrLighthouse) return false;
-    try {
-      if (sessionStorage.getItem("three_bugs_crt_seen") === "true") {
-        return false;
-      }
-    } catch (e) {}
-    return true;
-  });
-
-  const handleCrtComplete = useCallback(() => {
-    setIsCrtBooting(false);
-    setLoaded(prev => ({ ...prev, hero: true }));
-  }, []);
-
-  useEffect(() => {
-    (window as any).replayCrtBoot = () => {
-      setIsCrtBooting(true);
-    };
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.altKey && (e.key === "b" || e.key === "B")) {
-        setIsCrtBooting(true);
-      }
-    };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, []);
-
-  const [loaded, setLoaded] = useState<Record<string, boolean>>(() => {
-    if (isBotOrLighthouse) {
-      return {
-        hero: true,
-        about: true,
-        services: true,
-        work: true,
-        process: true,
-        technology: true,
-        team: true,
-        testimonials: true,
-        faq: true,
-        contact: true,
-        footer: true,
-      };
-    }
-    return {
-      hero: true,
-      about: false,
-      services: false,
-      work: false,
-      process: false,
-      technology: false,
-      team: false,
-      testimonials: false,
-      faq: false,
-      contact: false,
-      footer: false,
-    };
-  });
 
   const [isTransitioning, setIsTransitioning] = useState(false);
   // Global Interaction Sound Effects (Tactile Web Audio API feedback)
@@ -340,21 +273,9 @@ export default function App() {
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-[#090909] text-[#F5F5F3] font-sans selection:bg-brand-orange selection:text-[#090909]" id="root-app-container">
-      {/* Three Bugs Studio Retro CRT Boot Loading Screen */}
-      {isCrtBooting && (
-        <Suspense fallback={null}>
-          <CrtLoadingScreen
-            lang={lang}
-            onComplete={handleCrtComplete}
-          />
-        </Suspense>
-      )}
 
       {/* Global CRT Scanline Hardware Overlay */}
       <div className="crt-overlay" id="crt-scanline-overlay" />
-
-      {/* Floating Vertical Dot Navigation Menu */}
-      <DotNavigation lang={lang} theme={theme} />
 
       {/* Floating Direct Consultation & Zalo Quick Connect Widget */}
       <QuickContactWidget lang={lang} theme={theme} />
@@ -389,9 +310,6 @@ export default function App() {
           <main className="relative z-10 lg:pl-20" id="main-content">
             
             {/* Hero Section */}
-            {!loaded.hero ? (
-              <HeroSkeleton lang={lang} onLoaded={() => setLoaded(prev => ({ ...prev, hero: true }))} />
-            ) : (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -399,12 +317,8 @@ export default function App() {
               >
                 <Hero lang={lang} />
               </motion.div>
-            )}
 
             {/* About Section */}
-            {!loaded.about ? (
-              <AboutSkeleton lang={lang} onLoaded={() => setLoaded(prev => ({ ...prev, about: true }))} />
-            ) : (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -421,12 +335,8 @@ export default function App() {
                   </Suspense>
                 </StaggeredSection>
               </motion.div>
-            )}
 
             {/* Services / Capabilities Section */}
-            {!loaded.services ? (
-              <ServicesSkeleton lang={lang} onLoaded={() => setLoaded(prev => ({ ...prev, services: true }))} />
-            ) : (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -443,12 +353,8 @@ export default function App() {
                   </Suspense>
                 </StaggeredSection>
               </motion.div>
-            )}
 
             {/* Selected Works Editorial Section */}
-            {!loaded.work ? (
-              <SelectedWorkSkeleton lang={lang} onLoaded={() => setLoaded(prev => ({ ...prev, work: true }))} />
-            ) : (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -465,12 +371,8 @@ export default function App() {
                   </Suspense>
                 </StaggeredSection>
               </motion.div>
-            )}
 
             {/* Process Timeline Section */}
-            {!loaded.process ? (
-              <ProcessSkeleton lang={lang} onLoaded={() => setLoaded(prev => ({ ...prev, process: true }))} />
-            ) : (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -487,7 +389,6 @@ export default function App() {
                   </Suspense>
                 </StaggeredSection>
               </motion.div>
-            )}
 
             {/* Pricing Section */}
             <motion.div
@@ -508,9 +409,6 @@ export default function App() {
             </motion.div>
 
             {/* Technology / System Stack Section */}
-            {!loaded.technology ? (
-              <TechnologySkeleton lang={lang} onLoaded={() => setLoaded(prev => ({ ...prev, technology: true }))} />
-            ) : (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -527,12 +425,8 @@ export default function App() {
                   </Suspense>
                 </StaggeredSection>
               </motion.div>
-            )}
 
             {/* Founders / Team Section */}
-            {!loaded.team ? (
-              <TeamSkeleton lang={lang} onLoaded={() => setLoaded(prev => ({ ...prev, team: true }))} />
-            ) : (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -549,12 +443,8 @@ export default function App() {
                   </Suspense>
                 </StaggeredSection>
               </motion.div>
-            )}
 
             {/* Testimonials Review Slider */}
-            {!loaded.testimonials ? (
-              <TestimonialsSkeleton lang={lang} onLoaded={() => setLoaded(prev => ({ ...prev, testimonials: true }))} />
-            ) : (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -571,12 +461,8 @@ export default function App() {
                   </Suspense>
                 </StaggeredSection>
               </motion.div>
-            )}
 
             {/* FAQ Section */}
-            {!loaded.faq ? (
-              <FAQSkeleton lang={lang} onLoaded={() => setLoaded(prev => ({ ...prev, faq: true }))} />
-            ) : (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -593,12 +479,8 @@ export default function App() {
                   </Suspense>
                 </StaggeredSection>
               </motion.div>
-            )}
 
             {/* Interactive Inquiries Form Panel */}
-            {!loaded.contact ? (
-              <ContactSkeleton lang={lang} onLoaded={() => setLoaded(prev => ({ ...prev, contact: true }))} />
-            ) : (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -615,15 +497,11 @@ export default function App() {
                   </Suspense>
                 </StaggeredSection>
               </motion.div>
-            )}
 
           </main>
 
           {/* Grid Aligned Footer Section */}
           <div className="lg:pl-20" id="footer-alignment-wrapper">
-            {!loaded.footer ? (
-              <FooterSkeleton lang={lang} onLoaded={() => setLoaded(prev => ({ ...prev, footer: true }))} />
-            ) : (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -633,7 +511,6 @@ export default function App() {
                   <Footer lang={lang} />
                 </Suspense>
               </motion.div>
-            )}
           </div>
         </motion.div>
       </AnimatePresence>
