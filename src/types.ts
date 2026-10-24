@@ -78,6 +78,7 @@ export interface PricingPlan {
   pricingType?: "project" | "hourly";
   paymentNote?: string;
   buttonText?: string;
+  buttonHref?: string; // when set, the plan button opens this page instead of the contact form
   phases?: {
     number: string;
     title: string;
