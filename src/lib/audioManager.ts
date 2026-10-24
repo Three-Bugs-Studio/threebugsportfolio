@@ -4,12 +4,12 @@ class AudioManager {
   private humOscillator: OscillatorNode | null = null;
   private humGain: GainNode | null = null;
   private isHumPlaying = false;
-  private isSfxEnabled = true;
+  private isSfxEnabled = false;
 
   constructor() {
-    // Read initial preference from localStorage or default to enabled
+    // Read initial preference from localStorage; sound stays off until the visitor opts in
     if (typeof window !== "undefined") {
-      this.isSfxEnabled = localStorage.getItem("three_bugs_sfx_enabled") !== "false";
+      this.isSfxEnabled = localStorage.getItem("three_bugs_sfx_enabled") === "true";
       const savedHum = localStorage.getItem("three_bugs_hum_enabled") === "true";
       
       // We start hum if user previously enabled it, but wait for first interaction
