@@ -413,285 +413,431 @@ export const VALUES_DATA: Record<"vi" | "en", Value[]> = {
 export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
   vi: [
     {
+      id: "template_landing",
+      badge: "TEMPLATE // GIAO NHANH",
+      name: "Landing Từ Template",
+      tagline: "Chọn mẫu có sẵn, chúng tôi thay logo, màu và nội dung theo thương hiệu của bạn. Dành cho cá nhân, spa, salon, quán ăn, shop nhỏ.",
+      priceVnd: "Từ 2,5 triệu",
+      priceUsd: "hoặc 299.000đ/tháng (tối thiểu 12 tháng)",
+      timeline: "2 - 3 ngày làm việc",
+      paymentNote: "Trọn gói: 50% đặt cọc, 50% khi bàn giao",
+      buttonText: "XEM CÁC MẪU WEBSITE",
+      buttonHref: "/templates",
+      features: [
+        {
+          title: "Khách Nhận Được",
+          items: [
+            "1 trang landing dựng từ mẫu có sẵn, thay logo, màu thương hiệu, nội dung và hình ảnh",
+            "Hiển thị tốt trên điện thoại & máy tính, tải dưới 2 giây",
+            "Nút Zalo, gọi điện, Messenger; form liên hệ gửi về email hoặc Google Sheet",
+            "SEO cơ bản: tiêu đề, mô tả, ảnh khi chia sẻ lên Facebook / Zalo",
+            "Gắn tên miền của khách, hosting Vercel miễn phí cho trang nhỏ",
+            "2 lượt chỉnh sửa trước khi bàn giao, bảo hành lỗi kỹ thuật 14 ngày",
+            "Trả theo tháng: đã gồm tên miền .com, chỉnh sửa nhỏ tối đa 1 giờ/tháng; đủ 12 tháng website thuộc về khách"
+          ]
+        },
+        {
+          title: "Không Bao Gồm",
+          items: [
+            "Thiết kế riêng, viết nội dung, chụp ảnh sản phẩm",
+            "Tên miền với gói trọn gói (khoảng 300 - 500k/năm, khách tự trả)"
+          ]
+        }
+      ],
+      benefits: []
+    },
+    {
       id: "phase_1_mvp",
-      badge: "KHỞI NGHIỆP // 3 PHASE",
-      name: "Gói Khởi Nghiệp & Landing Page",
-      tagline: "Tối ưu chi phí dành cho cá nhân, landing page chạy Ads, giới thiệu dịch vụ, Spa, Salon, Nhà hàng & Thương hiệu mới.",
-      priceVnd: "Liên Hệ Báo Giá",
-      priceUsd: "Báo giá theo quy mô & yêu cầu",
-      timeline: "1 - 2 Tuần (Trọn gói 3 Phase)",
-      phases: [
-        { number: "Phase 1", title: "Figma UI/UX Design", duration: "Ngày 1 - 3", description: "Phác thảo Wireframe & thiết kế giao diện độc quyền chuẩn thương hiệu." },
-        { number: "Phase 2", title: "Frontend Engineering", duration: "Ngày 4 - 8", description: "Lập trình React/Next.js tối ưu tốc độ < 1s, tương thích mọi thiết bị." },
-        { number: "Phase 3", title: "Cloud Launch & Warrant", duration: "Ngày 9 - 14", description: "Cấu hình Tên miền, SEO Google, chạy chính thức & Bảo hành 1 tháng." }
+      badge: "LANDING & GIỚI THIỆU // 3 PHASE",
+      name: "Landing & Web Giới Thiệu Thiết Kế Riêng",
+      tagline: "Thiết kế độc quyền trên Figma cho thương hiệu mới, landing chạy quảng cáo, web giới thiệu công ty.",
+      priceVnd: "Từ 8 triệu",
+      priceUsd: "Báo giá theo quy mô khách hàng",
+      timeline: "1 - 2 Tuần",
+      paymentNote: "30% đặt cọc · 40% xong lập trình · 30% khi bàn giao",
+      features: [
+        {
+          title: "Mức Giá Theo Quy Mô",
+          items: [
+            "Khách nhỏ (cá nhân, spa, quán, shop): 8 - 15 triệu",
+            "Start-up: 15 - 30 triệu",
+            "Doanh nghiệp: 30 - 60 triệu (song ngữ Việt/Anh, theo bộ nhận diện có sẵn, hóa đơn VAT, hợp đồng & NDA)"
+          ]
+        },
+        {
+          title: "Khách Nhận Được",
+          items: [
+            "Thiết kế riêng trên Figma, 2 vòng chỉnh sửa thiết kế",
+            "Website tối đa 5 trang (Trang chủ, Giới thiệu, Dịch vụ, Dự án, Liên hệ)",
+            "Code React / Next.js, điểm Google Lighthouse trên 90 trên điện thoại",
+            "Gắn Google Analytics & Facebook Pixel để đo hiệu quả quảng cáo",
+            "SEO kỹ thuật chuẩn: sitemap, schema, ảnh chia sẻ mạng xã hội",
+            "Bàn giao 100% mã nguồn & file Figma, 1 buổi hướng dẫn sử dụng",
+            "Bảo hành lỗi kỹ thuật 1 tháng, hỗ trợ giờ hành chính, phản hồi trong 4 giờ làm việc"
+          ]
+        },
+        {
+          title: "Không Bao Gồm",
+          items: [
+            "Viết nội dung, chụp ảnh; tên miền & hosting trả phí (khách tự trả)"
+          ]
+        }
       ],
-      benefits: [
-        "Trọn gói 3 Phase minh bạch (Figma ➔ Frontend ➔ Cloud Launch)",
-        "Phù hợp đa ngành: Spa, Salon, Bất động sản, Nhà hàng, Personal Brand",
-        "Lập trình Landing Page / Web Giới thiệu tối ưu tốc độ < 1s",
-        "Tối ưu hiển thị Responsive mượt mà trên Mobile & Desktop",
-        "Tích hợp nút Zalo, Hotline, Messenger, Email tương tác nhanh",
-        "Tối ưu hóa chuẩn SEO Google Baseline & Meta Social Cards",
-        "Miễn phí Hỗ trợ cấu hình Tên miền & Hosting Cloud 1 năm",
-        "Bảo hành & Hỗ trợ kỹ thuật 24/7 trong 1 tháng sau bàn giao"
-      ],
+      benefits: [],
       milestones: [
-        { stage: "Đặt Cọc Phase 1", percentage: "30%", description: "Thống nhất đặc tả & Phác thảo bản vẽ Figma UI/UX" },
-        { stage: "Nghiệm Thu Phase 2", percentage: "40%", description: "Lập trình giao diện & Tối ưu tốc độ hiển thị" },
-        { stage: "Nghiệm Thu Phase 3", percentage: "30%", description: "Cấu hình tên miền, bàn giao mã nguồn & Hướng dẫn" }
+        { stage: "Đặt Cọc Phase 1", percentage: "30%", description: "Chốt yêu cầu & thiết kế Figma" },
+        { stage: "Nghiệm Thu Phase 2", percentage: "40%", description: "Hoàn thiện lập trình giao diện" },
+        { stage: "Nghiệm Thu Phase 3", percentage: "30%", description: "Gắn tên miền, bàn giao mã nguồn & hướng dẫn" }
       ]
     },
     {
       id: "phase_2_fullstack",
       badge: "KHUYÊN DÙNG ★ // 3 PHASE",
-      name: "Gói Doanh Nghiệp Đa Ngành & E-Commerce",
-      tagline: "Giải pháp toàn diện cho Doanh nghiệp, Bất động sản, Đặt lịch Booking, Khóa học, Du lịch & Web bán hàng E-Commerce.",
-      priceVnd: "Liên Hệ Báo Giá",
-      priceUsd: "Báo giá theo quy mô & yêu cầu",
-      timeline: "2 - 4 Tuần (Trọn gói 3 Phase)",
-      phases: [
-        { number: "Phase 1", title: "UX Blueprint & DB Schema", duration: "Tuần 1", description: "Dựng sơ đồ trải nghiệm mua hàng & kiến trúc cơ sở dữ liệu PostgreSQL." },
-        { number: "Phase 2", title: "Fullstack & Cart/Payment", duration: "Tuần 2 - 3", description: "Lập trình Web CMS Admin, Giỏ hàng & Tích hợp cổng thanh toán QR." },
-        { number: "Phase 3", title: "Security, Launch & SLA", duration: "Tuần 4", description: "Kiểm thử QA bảo mật, bàn giao mã nguồn & Bảo trì hỗ trợ sự cố nhanh." }
+      name: "Gói Doanh Nghiệp & E-Commerce",
+      tagline: "Website có trang quản trị cho doanh nghiệp, bán hàng online, đặt lịch, khóa học, bất động sản, du lịch.",
+      priceVnd: "Từ 25 triệu",
+      priceUsd: "Báo giá theo quy mô khách hàng",
+      timeline: "3 - 6 Tuần",
+      recommended: true,
+      paymentNote: "30% đặt cọc · 40% xong lập trình · 30% khi bàn giao",
+      features: [
+        {
+          title: "Mức Giá Theo Quy Mô",
+          items: [
+            "Khách nhỏ: 25 - 50 triệu",
+            "Start-up: 50 - 120 triệu",
+            "Doanh nghiệp: 120 - 300 triệu (bảo hành 6 tháng, hóa đơn VAT, hợp đồng & NDA)"
+          ]
+        },
+        {
+          title: "Khách Nhận Được",
+          items: [
+            "Toàn bộ quyền lợi của gói Landing & Web Giới Thiệu",
+            "Trang quản trị (CMS) tự sửa bài viết, sản phẩm, dịch vụ, đơn hàng",
+            "1 tính năng chính: giỏ hàng & thanh toán QR (SePay / VietQR), đặt lịch, hoặc khóa học",
+            "Cơ sở dữ liệu PostgreSQL / Supabase, sao lưu tự động hằng ngày",
+            "Phân quyền Admin & Nhân viên; kiểm thử đặt hàng, thanh toán trước khi ra mắt",
+            "Bàn giao mã nguồn, tài khoản quản trị & tài liệu hướng dẫn tiếng Việt",
+            "Bảo hành lỗi kỹ thuật 3 tháng, hỗ trợ giờ hành chính, phản hồi trong 4 giờ làm việc"
+          ]
+        },
+        {
+          title: "Không Bao Gồm",
+          items: [
+            "Phí server sau năm đầu, phí cổng thanh toán, nhập liệu sản phẩm hàng loạt (báo giá riêng)"
+          ]
+        }
       ],
-      benefits: [
-        "Trọn gói quy trình 3 Phase toàn diện cho các dự án đa ngành",
-        "Xây dựng Web Doanh Nghiệp, Đặt Lịch Booking, Đào Tạo & E-Commerce",
-        "Trang Admin CMS dễ dàng tự quản lý bài viết, dịch vụ & đơn hàng",
-        "Tích hợp mã QR chuyển khoản tự động / Cổng thanh toán tiện lợi",
-        "Quản lý cơ sở dữ liệu PostgreSQL / Supabase Cloud bảo mật",
-        "Tối ưu hóa SEO Google chuẩn Lighthouse score 95 - 99%",
-        "Bao gồm Tên miền quốc tế chính thức & Server CSDL 1 năm",
-        "Bảo hành 12 tháng & Hỗ trợ kỹ thuật 24/7 ưu tiên sự cố"
-      ],
+      benefits: [],
       milestones: [
-        { stage: "Khởi Động Phase 1", percentage: "30%", description: "Thiết kế UI/UX & Cấu trúc CSDL Database Schema" },
-        { stage: "Phát Triển Phase 2", percentage: "40%", description: "Hoàn thiện Admin CMS, Giỏ hàng & Thanh toán" },
-        { stage: "Nghiệm Thu Phase 3", percentage: "30%", description: "Kiểm thử QA bảo mật, bàn giao 100% mã nguồn" }
+        { stage: "Khởi Động Phase 1", percentage: "30%", description: "Thiết kế UI/UX & cấu trúc cơ sở dữ liệu" },
+        { stage: "Phát Triển Phase 2", percentage: "40%", description: "Hoàn thiện trang quản trị, giỏ hàng & thanh toán" },
+        { stage: "Nghiệm Thu Phase 3", percentage: "30%", description: "Kiểm thử, bàn giao 100% mã nguồn & tài liệu" }
       ]
     },
     {
       id: "phase_3_enterprise",
-      badge: "CHUYÊN SÂU & AI // 3 PHASE",
-      name: "Gói Web App & Hệ Thống AI Độc Quyền",
-      tagline: "Quy trình chuyên sâu xây dựng Web App, Mobile App, Hệ thống Quản lý Doanh nghiệp (CRM/ERP) & Tích hợp AI Agent.",
-      priceVnd: "Liên Hệ Báo Giá",
-      priceUsd: "Báo giá theo quy mô & yêu cầu",
-      timeline: "4 - 6+ Tuần (Trọn gói 3 Phase)",
-      phases: [
-        { number: "Phase 1", title: "App Architecture & Spec", duration: "Tuần 1 - 2", description: "Phân tích đặc tả App, UX Flow & Thiết kế kiến trúc Backend/API." },
-        { number: "Phase 2", title: "App Engineering & AI", duration: "Tuần 3 - 4", description: "Lập trình Web/Mobile App, Tích hợp AI Agent & CSDL chịu tải." },
-        { number: "Phase 3", title: "Deployment & Priority SLA", duration: "Tuần 5 - 6+", description: "Đóng gói Docker/App Store, kiểm thử chịu tải & Bảo trì ưu tiên 6-12 tháng." }
+      badge: "WEB APP & AI // 3 PHASE",
+      name: "Gói Web App & Hệ Thống AI",
+      tagline: "Web App, Mobile App, hệ thống quản lý (CRM / ERP) và tích hợp AI cho start-up và doanh nghiệp.",
+      priceVnd: "Từ 150 triệu",
+      priceUsd: "Doanh nghiệp: báo giá sau khảo sát",
+      timeline: "MVP 6 - 10 Tuần",
+      paymentNote: "30% sau khảo sát · 40% theo tiến độ · 30% khi bàn giao",
+      features: [
+        {
+          title: "Mức Giá Theo Quy Mô",
+          items: [
+            "Start-up (bản MVP): 150 - 400 triệu",
+            "Doanh nghiệp: từ 400 triệu, báo giá theo từng giai đoạn sau buổi khảo sát",
+            "Bảo trì sau bàn giao: gói hằng tháng từ 5 - 20 triệu/tháng tùy quy mô hệ thống"
+          ]
+        },
+        {
+          title: "Khách Nhận Được",
+          items: [
+            "Buổi khảo sát & tài liệu đặc tả hệ thống, khách giữ tài liệu kể cả khi không làm tiếp",
+            "Web App / Mobile App theo đặc tả đã chốt",
+            "Tích hợp AI: chatbot, gợi ý tự động, xử lý tài liệu",
+            "Phân quyền nhiều vai trò, đăng nhập bảo mật, lưu lịch sử thao tác",
+            "Docker, tự động triển khai (CI/CD), môi trường thử nghiệm riêng",
+            "Demo tiến độ mỗi 2 tuần",
+            "Bàn giao mã nguồn, tài liệu kiến trúc & đào tạo đội vận hành; bảo hành 3 tháng"
+          ]
+        },
+        {
+          title: "Không Bao Gồm",
+          items: [
+            "Phí API AI (OpenAI, Claude, Gemini...) và server: khách trả trực tiếp cho nhà cung cấp"
+          ]
+        }
       ],
-      benefits: [
-        "Phát triển Web App / Mobile App chuyên sâu theo yêu cầu riêng",
-        "Tích hợp tính năng AI Agent thông minh (Chatbot AI, Gợi ý tự động)",
-        "Kiến trúc hệ thống nâng cao, tích hợp API & CSDL chịu tải lớn",
-        "Cấu hình Docker Cloud, quy trình CI/CD tự động triển khai",
-        "Phân quyền đa tài khoản (Multi-role) & Bảo mật nhiều lớp",
-        "Tư vấn kiến trúc giải pháp công nghệ & Tối ưu UX người dùng",
-        "Bàn giao 100% Mã nguồn app & Bộ tài liệu kiến trúc PuDo Code",
-        "Cam kết SLA Bảo trì & Hỗ trợ kỹ thuật ưu tiên 24/7 từ 6 - 12 tháng"
-      ],
+      benefits: [],
       milestones: [
-        { stage: "Phân Tích Phase 1", percentage: "30%", description: "Chốt tài liệu System Architecture & App Spec Blueprint" },
-        { stage: "Lập Trình Phase 2", percentage: "40%", description: "Lập trình Web/Mobile App, API Cloud & AI Agent" },
-        { stage: "Nghiệm Thu Phase 3", percentage: "30%", description: "Cấu hình Server, bàn giao 100% Mã nguồn & Đào tạo vận hành" }
+        { stage: "Phân Tích Phase 1", percentage: "30%", description: "Chốt tài liệu đặc tả & kiến trúc hệ thống" },
+        { stage: "Lập Trình Phase 2", percentage: "40%", description: "Lập trình App, API & tích hợp AI, demo mỗi 2 tuần" },
+        { stage: "Nghiệm Thu Phase 3", percentage: "30%", description: "Triển khai server, bàn giao mã nguồn & đào tạo" }
       ]
     },
     {
       id: "phase_maintenance",
       badge: "HẬU MÃI & THEO GIỜ // HOURLY SLA",
-      name: "Gói Bảo Trì & Nâng Cấp Ngoài Giờ",
-      tagline: "Dành riêng cho website/hệ thống đã hết thời hạn bảo hành tiêu chuẩn hoặc doanh nghiệp cần kỹ sư túc trực fix bug, tối ưu tốc độ, nâng cấp tính năng theo giờ mà không mất phí duy trì cố định hàng tháng.",
-      priceVnd: "Tính Theo Giờ (Thỏa thuận)",
-      priceUsd: "Thỏa thuận theo giờ thực tế",
-      timeline: "Linh hoạt / Gói Block 10h - 20h",
+      name: "Gói Bảo Trì & Nâng Cấp Theo Giờ",
+      tagline: "Dành cho website / hệ thống đã hết bảo hành hoặc cần kỹ sư sửa lỗi, tối ưu tốc độ, thêm tính năng theo giờ, không phí cố định hằng tháng.",
+      priceVnd: "Từ 300.000đ/giờ",
+      priceUsd: "Mua trước 10 giờ giảm 10%, 20 giờ giảm 15%",
+      timeline: "Linh hoạt / Gói 10h - 20h",
       pricingType: "hourly",
-      paymentNote: "Tính theo giờ làm việc thực tế / Thỏa thuận giữa khách hàng & Studio",
+      paymentNote: "Chỉ trả đúng số giờ làm thực tế, nghiệm thu xong mới thanh toán",
       buttonText: "LIÊN HỆ HOÀNG ĐỖ (BẢO TRÌ THEO GIỜ)",
       phases: [
-        { number: "Bước 1", title: "Khảo Sát & Ước Lượng Giờ", duration: "1 - 2 Giờ", description: "Tiếp nhận yêu cầu hoặc lỗi phát sinh, chốt danh sách task và ước lượng số giờ xử lý dự kiến." },
-        { number: "Bước 2", title: "Thực Thi & Time-Tracking", duration: "Linh hoạt", description: "Kỹ sư tiến hành fix bug hoặc code tính năng, sử dụng công cụ time-tracking ghi nhận thời gian minh bạch." },
-        { number: "Bước 3", title: "Nghiệm Thu & Bàn Giao", duration: "Hoàn tất task", description: "Khách hàng kiểm thử nghiệm thu trực tiếp trên môi trường thực tế và thanh toán đúng số giờ làm việc." }
+        { number: "Bước 1", title: "Khảo Sát & Ước Lượng Giờ", duration: "1 - 2 Giờ", description: "Tiếp nhận yêu cầu hoặc lỗi, chốt danh sách việc và ước lượng số giờ trước khi làm." },
+        { number: "Bước 2", title: "Thực Thi & Chấm Công", duration: "Linh hoạt", description: "Kỹ sư sửa lỗi hoặc code tính năng, ghi nhận thời gian minh bạch bằng công cụ chấm công." },
+        { number: "Bước 3", title: "Nghiệm Thu & Thanh Toán", duration: "Hoàn tất", description: "Khách kiểm tra trên môi trường thực tế và thanh toán đúng số giờ làm việc." }
       ],
       features: [
         {
-          title: "Hạng Mục Bảo Trì & Xử Lý Sự Cố Khẩn Cấp",
+          title: "Đơn Giá Theo Quy Mô",
           items: [
-            "Fix bug phát sinh, vá lỗi giao diện vỡ layout & xung đột thư viện",
-            "Vá lỗ hổng bảo mật, gia hạn chứng chỉ SSL & cấu hình Cloudflare",
-            "Tối ưu truy vấn CSDL, dọn dẹp cache & cải thiện điểm Google Lighthouse",
-            "Xử lý sự cố máy chủ gián đoạn, khôi phục dữ liệu từ bản backup an toàn"
+            "Khách nhỏ: 300.000đ/giờ",
+            "Start-up: 400.000đ/giờ",
+            "Doanh nghiệp: 600.000đ/giờ",
+            "Sửa lỗi khẩn cấp ngoài giờ hành chính: x1,5 đơn giá"
           ]
         },
         {
-          title: "Nâng Cấp Tính Năng & Cam Kết Hỗ Trợ Minh Bạch",
+          title: "Khách Nhận Được",
           items: [
-            "Chuyên viên Hoàng Đỗ trực tiếp tiếp nhận (Hotline: 0392.996.307 / Zalo) & điều phối xử lý ngay",
-            "Code thêm tính năng mới, tạo form khảo sát, chỉnh banner theo yêu cầu",
-            "Nâng cấp phiên bản framework (React, Next.js, Node.js) an toàn",
-            "Phần mềm Time-tracking bấm giờ minh bạch, báo cáo chi tiết từng task",
-            "Sao lưu toàn bộ source code & CSDL an toàn trước khi can thiệp kỹ thuật",
-            "Cam kết phản hồi sự cố trong vòng 2 - 4h, không ràng buộc phí duy trì hàng tháng"
+            "Đầu mối duy nhất: Hoàng Đỗ (0392.996.307 / Zalo) tiếp nhận & điều phối",
+            "Ước lượng số giờ trước khi làm, không phát sinh bất ngờ",
+            "Sửa lỗi, vá bảo mật, gia hạn SSL, tối ưu tốc độ & cơ sở dữ liệu",
+            "Thêm tính năng mới, nâng cấp phiên bản React / Next.js / Node.js an toàn",
+            "Sao lưu mã nguồn & dữ liệu trước khi can thiệp",
+            "Báo cáo chi tiết từng việc kèm số giờ và mã commit",
+            "Phản hồi trong 4 giờ làm việc, không ràng buộc phí duy trì hằng tháng"
           ]
         }
       ],
-      benefits: [
-        "Đầu mối tiếp nhận duy nhất: Hoàng Đỗ (0392.996.307) đảm bảo tiến độ & phản hồi nhanh",
-        "Không ràng buộc phí duy trì hàng tháng cố định nếu không có nhu cầu",
-        "Chi phí tính theo giờ làm việc thực tế (Time-tracking minh bạch)",
-        "Ưu tiên tiếp nhận xử lý sự cố khẩn cấp trong vòng 2 - 4h",
-        "Bảo đảm an toàn dữ liệu, luôn tạo bản sao lưu trước khi can thiệp mã nguồn",
-        "Đội ngũ kỹ sư chính của Three Bugs Studio trực tiếp xử lý, không qua trung gian",
-        "Báo cáo chi tiết nhật ký công việc (Worklog report) kèm mã commit rõ ràng"
-      ],
+      benefits: [],
       milestones: [
-        { stage: "Tiếp Nhận Task", percentage: "Ước lượng", description: "Khảo sát sự cố / yêu cầu và gửi bản ước lượng giờ làm việc" },
-        { stage: "Xử Lý & Time-Tracking", percentage: "Thực thi", description: "Tiến hành sửa lỗi hoặc phát triển tính năng theo giờ bấm máy" },
-        { stage: "Nghiệm Thu & Báo Cáo", percentage: "Nghiệm thu", description: "Khách hàng kiểm tra kết quả, nhận báo cáo và thanh toán theo giờ" }
+        { stage: "Tiếp Nhận", percentage: "Ước lượng", description: "Khảo sát yêu cầu và gửi bản ước lượng giờ" },
+        { stage: "Xử Lý", percentage: "Thực thi", description: "Sửa lỗi / phát triển tính năng, chấm công minh bạch" },
+        { stage: "Nghiệm Thu", percentage: "Thanh toán", description: "Khách kiểm tra kết quả, nhận báo cáo và thanh toán theo giờ" }
       ]
     }
   ],
   en: [
     {
+      id: "template_landing",
+      badge: "TEMPLATE // FAST DELIVERY",
+      name: "Landing From a Template",
+      tagline: "Pick a ready-made template and we apply your logo, colours and content. For individuals, spas, salons, restaurants and small shops.",
+      priceVnd: "From 2.5M VND",
+      priceUsd: "≈ US$95 · or 299k VND/month (12-month minimum)",
+      timeline: "2 - 3 working days",
+      paymentNote: "One-off: 50% deposit, 50% on handover",
+      buttonText: "BROWSE TEMPLATES",
+      buttonHref: "/templates",
+      features: [
+        {
+          title: "What You Get",
+          items: [
+            "One landing page built from a template with your logo, brand colours, content and images",
+            "Works well on phone and desktop, loads in under 2 seconds",
+            "Zalo, call and Messenger buttons; contact form to email or Google Sheets",
+            "Basic SEO: title, description and social share image for Facebook / Zalo",
+            "Connected to your domain, free Vercel hosting for small sites",
+            "2 revision rounds before handover, 14-day technical warranty",
+            "Monthly plan: includes a .com domain and up to 1 hour of small edits per month; the site is yours after 12 months"
+          ]
+        },
+        {
+          title: "Not Included",
+          items: [
+            "Custom design, copywriting, product photography",
+            "Domain on the one-off plan (about 300 - 500k VND/year, paid by you)"
+          ]
+        }
+      ],
+      benefits: []
+    },
+    {
       id: "phase_1_mvp",
-      badge: "STARTER // 3 PHASES",
-      name: "Starter Web & Landing Page",
-      tagline: "Cost-effective 3-Phase execution tailored for landing pages, ad campaigns, Spa, Salon, Restaurants & new brands.",
-      priceVnd: "Quote on Request",
-      priceUsd: "Tailored to Project Scope",
-      timeline: "1 - 2 Weeks (Full 3 Phases)",
-      phases: [
-        { number: "Phase 1", title: "Figma UI/UX Design", duration: "Days 1 - 3", description: "Wireframe layout sketches & custom brand-aligned Figma UI UX design." },
-        { number: "Phase 2", title: "Frontend Engineering", duration: "Days 4 - 8", description: "Fast React/Next.js code build (< 1s load time) across all responsive screens." },
-        { number: "Phase 3", title: "Cloud Launch & Warranty", duration: "Days 9 - 14", description: "Custom domain, Google SEO, live deployment & 1-month tech warranty." }
+      badge: "LANDING & COMPANY SITE // 3 PHASES",
+      name: "Custom-Designed Landing & Company Site",
+      tagline: "Exclusive Figma design for new brands, ad landing pages and company websites.",
+      priceVnd: "From 8M VND",
+      priceUsd: "≈ US$300 · priced by client size",
+      timeline: "1 - 2 Weeks",
+      paymentNote: "30% deposit · 40% after development · 30% on handover",
+      features: [
+        {
+          title: "Price by Client Size",
+          items: [
+            "Small business (individuals, spas, cafés, shops): 8 - 15M VND",
+            "Start-up: 15 - 30M VND",
+            "Enterprise: 30 - 60M VND (bilingual VI/EN, existing brand guidelines, VAT invoice, contract & NDA)"
+          ]
+        },
+        {
+          title: "What You Get",
+          items: [
+            "Custom Figma design with 2 design revision rounds",
+            "Up to 5 pages (Home, About, Services, Projects, Contact)",
+            "React / Next.js build with a Google Lighthouse mobile score above 90",
+            "Google Analytics & Facebook Pixel set up to measure ad performance",
+            "Technical SEO: sitemap, schema, social share images",
+            "100% source code and Figma files handed over, plus one training session",
+            "1-month technical warranty, business-hours support with a 4-working-hour response"
+          ]
+        },
+        {
+          title: "Not Included",
+          items: [
+            "Copywriting, photography; paid domain & hosting (paid by you)"
+          ]
+        }
       ],
-      benefits: [
-        "Transparent 3-Phase execution (Figma ➔ Frontend ➔ Cloud Launch)",
-        "Suitable for multi-sector: Spa, Salon, Real Estate, F&B, Personal Brand",
-        "Fast-loading Landing Page / Corporate Web (< 1s load time)",
-        "Fully Responsive layout across Mobile, Tablet & Desktop",
-        "Direct integration of Contact buttons (Zalo, Hotline, Email)",
-        "Google SEO Baseline & Meta Social Cards optimization",
-        "Free assistance with Domain setup & Cloud Hosting 1 year",
-        "24/7 Technical warranty & support for 1 month after handover"
-      ],
+      benefits: [],
       milestones: [
-        { stage: "Phase 1 Deposit", percentage: "30%", description: "Locking spec requirements & Figma UI/UX prototypes" },
-        { stage: "Phase 2 Staging", percentage: "40%", description: "Frontend code build & speed optimization" },
-        { stage: "Phase 3 Launch", percentage: "30%", description: "Domain setup, source code handover & user guide" }
+        { stage: "Phase 1 Deposit", percentage: "30%", description: "Requirements agreed & Figma design" },
+        { stage: "Phase 2 Sign-off", percentage: "40%", description: "Front-end development complete" },
+        { stage: "Phase 3 Sign-off", percentage: "30%", description: "Domain connected, source code & training handed over" }
       ]
     },
     {
       id: "phase_2_fullstack",
-      badge: "MOST POPULAR ★ // 3 PHASES",
-      name: "Corporate & Multi-Sector Web",
-      tagline: "Comprehensive 3-Phase solution for Corporate, Real Estate, Booking, Courses, Tourism & E-Commerce stores.",
-      priceVnd: "Quote on Request",
-      priceUsd: "Tailored to Project Scope",
-      timeline: "2 - 4 Weeks (Full 3 Phases)",
-      phases: [
-        { number: "Phase 1", title: "UX Blueprint & DB Schema", duration: "Week 1", description: "Mapping shopping user journey & PostgreSQL database schema architecture." },
-        { number: "Phase 2", title: "Fullstack & Cart/Payment", duration: "Weeks 2 - 3", description: "Admin CMS dashboard, Shopping cart & Instant QR payment gateway." },
-        { number: "Phase 3", title: "Security, Launch & SLA", duration: "Week 4", description: "Security QA audit, code repository handover & 12-month priority support." }
+      badge: "RECOMMENDED ★ // 3 PHASES",
+      name: "Business & E-Commerce",
+      tagline: "Websites with an admin panel for businesses, online stores, bookings, courses, real estate and travel.",
+      priceVnd: "From 25M VND",
+      priceUsd: "≈ US$950 · priced by client size",
+      timeline: "3 - 6 Weeks",
+      recommended: true,
+      paymentNote: "30% deposit · 40% after development · 30% on handover",
+      features: [
+        {
+          title: "Price by Client Size",
+          items: [
+            "Small business: 25 - 50M VND",
+            "Start-up: 50 - 120M VND",
+            "Enterprise: 120 - 300M VND (6-month warranty, VAT invoice, contract & NDA)"
+          ]
+        },
+        {
+          title: "What You Get",
+          items: [
+            "Everything in the Landing & Company Site package",
+            "Admin panel (CMS) to edit posts, products, services and orders yourself",
+            "One core feature: cart & QR payments (SePay / VietQR), bookings, or courses",
+            "PostgreSQL / Supabase database with automatic daily backups",
+            "Admin & staff roles; ordering and payments tested before launch",
+            "Source code, admin accounts and a written user guide handed over",
+            "3-month technical warranty, business-hours support with a 4-working-hour response"
+          ]
+        },
+        {
+          title: "Not Included",
+          items: [
+            "Server costs after year one, payment gateway fees, bulk product data entry (quoted separately)"
+          ]
+        }
       ],
-      benefits: [
-        "Full 3-Phase development pipeline for multi-sector projects",
-        "Corporate Web, Booking Portals, Training & E-Commerce platforms",
-        "Easy-to-use Admin CMS for managing products, articles & orders",
-        "Instant QR payment gateway & online payment integration",
-        "Secure PostgreSQL / Supabase Cloud database architecture",
-        "Google Lighthouse performance score optimized to 95 - 99%",
-        "Includes Official Custom Domain & Database Server 1 year",
-        "12 Months warranty & 24/7 priority technical support commitment"
-      ],
+      benefits: [],
       milestones: [
-        { stage: "Phase 1 Initiation", percentage: "30%", description: "UI/UX approval & Database Schema architecture" },
-        { stage: "Phase 2 Build", percentage: "40%", description: "Admin CMS, Cart system & Payment flow integration" },
-        { stage: "Phase 3 Launch", percentage: "30%", description: "Security testing & 100% repository handover" }
+        { stage: "Phase 1 Kick-off", percentage: "30%", description: "UI/UX design & database structure" },
+        { stage: "Phase 2 Build", percentage: "40%", description: "Admin panel, cart & payments complete" },
+        { stage: "Phase 3 Sign-off", percentage: "30%", description: "Testing, 100% source code & documentation" }
       ]
     },
     {
       id: "phase_3_enterprise",
-      badge: "ENTERPRISE & AI // 3 PHASES",
-      name: "Custom Web App & AI Platform",
-      tagline: "Deep 3-Phase execution building Web Apps, Mobile Apps, Enterprise Systems (CRM/ERP) & AI Agents.",
-      priceVnd: "Quote on Request",
-      priceUsd: "Tailored to Project Scope",
-      timeline: "4 - 6+ Weeks (Full 3 Phases)",
-      phases: [
-        { number: "Phase 1", title: "App Architecture & Spec", duration: "Weeks 1 - 2", description: "Locking PuDo Code specs & designing mobile/web app API architecture." },
-        { number: "Phase 2", title: "App Engineering & AI", duration: "Weeks 3 - 4", description: "Building Web/Mobile App, Gemini AI Agent & Cloud DB workflows." },
-        { number: "Phase 3", title: "Deployment & Priority SLA", duration: "Weeks 5 - 6+", description: "Docker/App Store setup, load testing & 6-12 month priority SLA." }
+      badge: "WEB APP & AI // 3 PHASES",
+      name: "Web App & AI Systems",
+      tagline: "Web apps, mobile apps, management systems (CRM / ERP) and AI integration for start-ups and enterprises.",
+      priceVnd: "From 150M VND",
+      priceUsd: "≈ US$5,700 · enterprise quoted after discovery",
+      timeline: "MVP 6 - 10 Weeks",
+      paymentNote: "30% after discovery · 40% on progress · 30% on handover",
+      features: [
+        {
+          title: "Price by Client Size",
+          items: [
+            "Start-up (MVP): 150 - 400M VND",
+            "Enterprise: from 400M VND, quoted per stage after a discovery session",
+            "Post-launch maintenance: monthly plans from 5 - 20M VND depending on system size"
+          ]
+        },
+        {
+          title: "What You Get",
+          items: [
+            "Discovery session and system specification, which you keep even if you stop there",
+            "Web or mobile app built to the agreed specification",
+            "AI integration: chatbots, recommendations, document processing",
+            "Multiple user roles, secure login and activity history",
+            "Docker, automated deployment (CI/CD) and a separate staging environment",
+            "Progress demo every 2 weeks",
+            "Source code, architecture docs and team training; 3-month warranty"
+          ]
+        },
+        {
+          title: "Not Included",
+          items: [
+            "AI API (OpenAI, Claude, Gemini...) and server costs, paid directly to the provider"
+          ]
+        }
       ],
-      benefits: [
-        "Custom Web App / Mobile App development built to exact specifications",
-        "Smart AI Agent integration (AI Chatbot, automated data recommendations)",
-        "Advanced architecture with high-concurrency API & Database design",
-        "Docker Cloud setup with automated CI/CD deployment pipelines",
-        "Multi-role Access Control & multi-layered enterprise security",
-        "Tech stack architecture consulting & UX optimization",
-        "Complete 100% source code handover & PuDo Code system docs",
-        "Priority SLA maintenance & technical support for 6 - 12 months"
-      ],
+      benefits: [],
       milestones: [
-        { stage: "Phase 1 Blueprint", percentage: "30%", description: "Finalizing System Architecture & App Spec Document" },
-        { stage: "Phase 2 Build", percentage: "40%", description: "Mobile/Web App frontend, Backend API & AI Agent coding" },
-        { stage: "Phase 3 Launch", percentage: "30%", description: "Cloud production setup, 100% code handover & priority support" }
+        { stage: "Phase 1 Discovery", percentage: "30%", description: "Specification & system architecture agreed" },
+        { stage: "Phase 2 Build", percentage: "40%", description: "App, APIs & AI integration, demo every 2 weeks" },
+        { stage: "Phase 3 Sign-off", percentage: "30%", description: "Server deployment, source code & training" }
       ]
     },
     {
       id: "phase_maintenance",
-      badge: "POST-WARRANTY // HOURLY SLA",
-      name: "Post-Warranty Hourly SLA & Maintenance",
-      tagline: "Dedicated to systems whose warranty has ended or businesses needing on-demand engineers for hotfixes, performance tuning, and new features billed hourly with no recurring lock-in.",
-      priceVnd: "Hourly Rate (Mutual Agreement)",
-      priceUsd: "Hourly Rate (Mutual Agreement)",
-      timeline: "On-Demand / Flexible 10h - 20h Blocks",
+      badge: "AFTERCARE & HOURLY // HOURLY SLA",
+      name: "Hourly Maintenance & Upgrades",
+      tagline: "For sites and systems out of warranty, or teams that need engineers for fixes, speed work and new features by the hour, with no fixed monthly fee.",
+      priceVnd: "From 300k VND/hour",
+      priceUsd: "≈ US$12/hour · 10% off 10-hour blocks, 15% off 20-hour blocks",
+      timeline: "Flexible / 10h - 20h blocks",
       pricingType: "hourly",
-      paymentNote: "Billed strictly on tracked working hours / Mutual client agreement",
-      buttonText: "CONTACT HOANG DO (HOURLY SLA)",
+      paymentNote: "Pay only for hours actually worked, after you sign off",
+      buttonText: "CONTACT HOANG DO (HOURLY SUPPORT)",
       phases: [
-        { number: "Step 1", title: "Assessment & Hour Estimation", duration: "1 - 2 Hours", description: "Reviewing issue logs or new requests, itemizing tasks with upfront hour estimates." },
-        { number: "Step 2", title: "Execution & Time-Tracking", duration: "Flexible", description: "Engineers apply hotfixes or code new features with transparent time-tracking logs." },
-        { number: "Step 3", title: "QA Sign-off & Delivery", duration: "Upon Completion", description: "Direct staging verification by client, paying strictly for verified hours worked." }
+        { number: "Step 1", title: "Review & Estimate", duration: "1 - 2 Hours", description: "We take your request or bug, agree the task list and estimate the hours before starting." },
+        { number: "Step 2", title: "Work & Time Tracking", duration: "Flexible", description: "Engineers fix or build, with every hour logged in a time tracker." },
+        { number: "Step 3", title: "Sign-off & Payment", duration: "On completion", description: "You check the result live and pay for the hours worked." }
       ],
       features: [
         {
-          title: "Emergency Maintenance & Security Hotfixes",
+          title: "Rate by Client Size",
           items: [
-            "Debugging critical bugs, layout glitches & package version conflicts",
-            "Security vulnerability patching, SSL certificate renewal & Cloudflare tuning",
-            "Database query optimization, cache clearing & Lighthouse score boosts",
-            "Server downtime troubleshooting & secure database backup restoration"
+            "Small business: 300k VND/hour",
+            "Start-up: 400k VND/hour",
+            "Enterprise: 600k VND/hour",
+            "Urgent out-of-hours fixes: 1.5x rate"
           ]
         },
         {
-          title: "Feature Additions & Transparent SLA Commitment",
+          title: "What You Get",
           items: [
-            "Lead Consultant Hoang Do directly intakes requests (Hotline: 0392.996.307 / Zalo) with rapid engineer dispatch",
-            "Coding new components, custom landing pages, banners & forms",
-            "Safe dependencies & framework version upgrades (React, Next.js, Node.js)",
-            "Transparent time-tracking software with task-by-task hour breakdowns",
-            "Full data safety: complete source code & database backup snapshot prior to technical changes",
-            "Rapid 2-4h incident response SLA with zero monthly subscription lock-in"
+            "One point of contact: Hoang Do (0392.996.307 / Zalo) takes and coordinates requests",
+            "Hours estimated before work starts, no surprises",
+            "Bug fixes, security patches, SSL renewal, speed and database tuning",
+            "New features and safe React / Next.js / Node.js upgrades",
+            "Code and data backed up before any change",
+            "Detailed report per task with hours and commit links",
+            "Response within 4 working hours, no monthly commitment"
           ]
         }
       ],
-      benefits: [
-        "Dedicated intake lead: Hoang Do (0392.996.307) ensuring rapid communication & accountability",
-        "Zero monthly lock-in or recurring fees when you do not need support",
-        "Billed strictly on actual tracked engineering hours (Full transparency)",
-        "High-priority incident response within 2 - 4 hours of notification",
-        "Full data safety guarantee: mandatory pre-maintenance snapshots and backups",
-        "Direct handling by core Three Bugs Studio engineers without middlemen",
-        "Detailed worklog report delivered with transparent git commit history"
-      ],
+      benefits: [],
       milestones: [
-        { stage: "Task Assessment", percentage: "Estimate", description: "Analyzing requirements/incidents and sending transparent hour quote" },
-        { stage: "Work & Time-Track", percentage: "Execute", description: "Coding fixes or features with verified clock-in time tracking" },
-        { stage: "Sign-off & Report", percentage: "Sign-off", description: "Client inspects delivery, reviews hour report and settles payment" }
+        { stage: "Intake", percentage: "Estimate", description: "Review the request and send an hour estimate" },
+        { stage: "Execution", percentage: "Work", description: "Fix or build with transparent time tracking" },
+        { stage: "Sign-off", percentage: "Payment", description: "You check results, get the report and pay by the hour" }
       ]
     }
   ]
