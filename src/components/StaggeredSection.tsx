@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "motion/react";
-import { audioManager } from "../lib/audioManager";
 import { ChevronDownIcon } from "./ui/MajesticIcon";
 
 // Recursive helper to extract all pure text contents from React nodes
@@ -37,8 +36,6 @@ export default function StaggeredSection({
   const headerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-120px" });
   const isCurrentlyInView = useInView(containerRef, { once: false, margin: "-100px" });
-  const [progress, setProgress] = useState(0);
-  const [isLoaded, setIsLoaded] = useState(false);
   const [showScrollIndicator, setShowScrollIndicator] = useState(false);
 
   // Track scroll & lingering to show Chevron indicator after 5 seconds of inactivity
@@ -94,28 +91,6 @@ export default function StaggeredSection({
     setMousePos({ x, y });
   };
 
-  useEffect(() => {
-    if (isInView) {
-      // Trigger a unique, low-fidelity sector activation sound on entry
-      audioManager.playSectorActivation();
-
-      let current = 0;
-      // Faster, snappy counting for a premium yet visible digital loading feel
-      const interval = setInterval(() => {
-        current += Math.floor(Math.random() * 20) + 12;
-        if (current >= 100) {
-          current = 100;
-          setIsLoaded(true);
-          clearInterval(interval);
-        }
-        setProgress(current);
-      }, 60);
-      return () => clearInterval(interval);
-    }
-  }, [isInView]);
-
-  // Compute number of active blocks out of 10
-  const activeBlocks = Math.floor(progress / 10);
 
   return (
     <div
@@ -202,44 +177,6 @@ export default function StaggeredSection({
                 : `READ ~${readingTimeMin} MIN`}
             </motion.span>
           </div>
-
-          {/* Interactive Loading Meter */}
-          <div className="flex items-center gap-4 flex-wrap sm:flex-nowrap">
-            {/* Status light */}
-            <div className="flex items-center gap-1.5">
-              <span
-                className={`w-1.5 h-1.5 rounded-full ${
-                  isLoaded ? "bg-[#27C93F] shadow-[0_0_6px_#27C93F]" : "bg-brand-orange animate-pulse"
-                }`}
-              />
-              <span className={isLoaded ? "text-[#27C93F]" : "text-brand-orange"}>
-                {isLoaded
-                  ? (lang === "vi" ? "ĐÃ TẢI" : "READY_")
-                  : (lang === "vi" ? "ĐANG TẢI..." : "LOADING_")}
-              </span>
-            </div>
-
-            {/* Custom 10-block discrete progress indicator */}
-            <div className="flex gap-1 items-center bg-white/[0.02] border border-white/5 p-1 rounded-sm">
-              {Array.from({ length: 10 }).map((_, idx) => (
-                <div
-                  key={idx}
-                  className={`w-2 h-3.5 transition-colors duration-100 rounded-2xs ${
-                    idx < activeBlocks
-                      ? isLoaded
-                        ? "bg-[#27C93F]/85"
-                        : "bg-brand-orange/85"
-                      : "bg-white/[0.04]"
-                  }`}
-                />
-              ))}
-            </div>
-
-            {/* Numeric Percentage */}
-            <span className="min-w-[35px] text-right font-bold text-white">
-              {progress}%
-            </span>
-          </div>
         </div>
       </div>
 
@@ -264,7 +201,7 @@ export default function StaggeredSection({
           }
         }}
         initial="hidden"
-        animate={isInView && progress > 25 ? "visible" : "hidden"}
+        animate={isInView ? "visible" : "hidden"}
         className="relative"
       >
         {children}
