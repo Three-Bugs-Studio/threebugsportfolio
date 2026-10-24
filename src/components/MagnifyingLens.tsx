@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { SearchIcon } from "./ui/MajesticIcon";
 
@@ -18,40 +18,38 @@ export default function MagnifyingLens({
   lang
 }: MagnifyingLensProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [coords, setCoords] = useState({ x: 0, y: 0 });
+  const lensRef = useRef<HTMLDivElement>(null);
+  const lensBgRef = useRef<HTMLDivElement>(null);
+  const coordsRef = useRef<HTMLSpanElement>(null);
+  const pointer = useRef({ x: 0, y: 0, w: 1, h: 1 });
+  const frame = useRef(0);
   const [isActive, setIsActive] = useState(false);
-  const [lensPos, setLensPos] = useState({ left: 0, top: 0 });
-  const [bgPos, setBgPos] = useState("0% 0%");
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return;
-
-    const rect = containerRef.current.getBoundingClientRect();
-    
-    // Calculate cursor position relative to the container element
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    // Constrain position of coordinates to track
-    setCoords({
-      x: Math.round(x),
-      y: Math.round(y)
-    });
-
-    // Position of the magnifier lens (centered on cursor)
-    const left = x - lensSize / 2;
-    const top = y - lensSize / 2;
-
-    setLensPos({ left, top });
-
-    // Percentage of cursor position within the element container
-    const pctX = (x / rect.width) * 100;
-    const pctY = (y / rect.height) * 100;
-
-    setBgPos(`${pctX}% ${pctY}%`);
+  // Write lens position straight to the DOM once per frame; React state here re-rendered the whole card on every mousemove.
+  const applyPointer = () => {
+    frame.current = 0;
+    const { x, y, w, h } = pointer.current;
+    if (lensRef.current) lensRef.current.style.transform = `translate3d(${x - lensSize / 2}px, ${y - lensSize / 2}px, 0)`;
+    if (lensBgRef.current) lensBgRef.current.style.backgroundPosition = `${(x / w) * 100}% ${(y / h) * 100}%`;
+    if (coordsRef.current) coordsRef.current.textContent = `COORDS: X=${Math.round(x)} Y=${Math.round(y)}`;
   };
 
-  const handleMouseEnter = () => {
+  const trackPointer = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    pointer.current = { x: e.clientX - rect.left, y: e.clientY - rect.top, w: rect.width, h: rect.height };
+    if (!frame.current) frame.current = requestAnimationFrame(applyPointer);
+  };
+
+  // Place the lens under the cursor as soon as it mounts, before the first paint.
+  useLayoutEffect(() => {
+    if (isActive) applyPointer();
+  }, [isActive]);
+
+  useEffect(() => () => cancelAnimationFrame(frame.current), []);
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    trackPointer(e);
     setIsActive(true);
   };
 
@@ -62,7 +60,7 @@ export default function MagnifyingLens({
   return (
     <div
       ref={containerRef}
-      onMouseMove={handleMouseMove}
+      onMouseMove={trackPointer}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className="relative overflow-hidden w-full h-full cursor-none group/lens"
@@ -102,43 +100,45 @@ export default function MagnifyingLens({
               id="magnifier-hud-bottom"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-[#27C93F] shadow-[0_0_6px_rgba(39,201,63,0.8)]" />
-              <span>COORDS: X={coords.x} Y={coords.y}</span>
+              <span ref={coordsRef}>COORDS: X=0 Y=0</span>
             </motion.div>
 
-            {/* The actual Magnifying Lens */}
-            <motion.div
-              initial={{ scale: 0.2, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.2, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 450, damping: 25, mass: 0.5 }}
-              className="absolute pointer-events-none rounded-full border-2 border-brand-orange shadow-[0_0_20px_rgba(255,106,0,0.5),_inset_0_0_15px_rgba(0,0,0,0.8)] z-40 overflow-hidden bg-[#111111]"
-              style={{
-                width: lensSize,
-                height: lensSize,
-                left: lensPos.left,
-                top: lensPos.top,
-                backgroundImage: `url(${zoomImage})`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: `${zoomLevel * 100}%`,
-                backgroundPosition: bgPos
-              }}
-              id="magnifying-floating-lens"
+            {/* The actual Magnifying Lens: outer div is moved by transform, inner one handles the pop-in */}
+            <div
+              ref={lensRef}
+              className="absolute left-0 top-0 pointer-events-none z-40 will-change-transform"
+              style={{ width: lensSize, height: lensSize }}
             >
-              {/* Retro Lens Scanline and Reflection Glass Grid overlay */}
-              <div className="absolute inset-0 bg-[#090909]/10 pointer-events-none" />
+              <motion.div
+                ref={lensBgRef}
+                initial={{ scale: 0.2, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.2, opacity: 0 }}
+                transition={{ type: "spring", stiffness: 450, damping: 25, mass: 0.5 }}
+                className="relative w-full h-full pointer-events-none rounded-full border-2 border-brand-orange shadow-[0_0_20px_rgba(255,106,0,0.5),_inset_0_0_15px_rgba(0,0,0,0.8)] overflow-hidden bg-[#111111]"
+                style={{
+                  backgroundImage: `url(${zoomImage})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: `${zoomLevel * 100}%`
+                }}
+                id="magnifying-floating-lens"
+              >
+                {/* Retro Lens Scanline and Reflection Glass Grid overlay */}
+                <div className="absolute inset-0 bg-[#090909]/10 pointer-events-none" />
               
-              {/* Subtle grid lines inside the magnifying lens view */}
-              <div className="absolute inset-0 pointer-events-none swiss-grid opacity-15" />
+                {/* Subtle grid lines inside the magnifying lens view */}
+                <div className="absolute inset-0 pointer-events-none swiss-grid opacity-15" />
               
-              {/* Outer metallic shine ring inside the border */}
-              <div className="absolute inset-0 rounded-full border border-white/10" />
+                {/* Outer metallic shine ring inside the border */}
+                <div className="absolute inset-0 rounded-full border border-white/10" />
 
-              {/* Centered crosshair */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                <div className="w-4 h-[1px] bg-brand-orange" />
-                <div className="h-4 w-[1px] bg-brand-orange absolute" />
-              </div>
-            </motion.div>
+                {/* Centered crosshair */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-30">
+                  <div className="w-4 h-[1px] bg-brand-orange" />
+                  <div className="h-4 w-[1px] bg-brand-orange absolute" />
+                </div>
+              </motion.div>
+            </div>
           </>
         )}
       </AnimatePresence>
