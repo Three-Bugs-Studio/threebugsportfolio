@@ -15,6 +15,7 @@ export interface CardNavLink {
 
 export interface CardNavItem {
   label: string;
+  tag?: string;
   bgColor: string;
   textColor: string;
   links: CardNavLink[];
@@ -96,6 +97,7 @@ export default function CardNav({
   const defaultItems: CardNavItem[] = [
     {
       label: lang === "vi" ? "Sản Phẩm & Dịch Vụ" : "Work & Services",
+      tag: lang === "vi" ? "DỰ ÁN" : "WORK",
       bgColor: isLight ? "#FFFFFF" : "#171717",
       textColor: isLight ? "#0A2540" : "#FFFFFF",
       links: [
@@ -107,6 +109,7 @@ export default function CardNav({
     },
     {
       label: lang === "vi" ? "Quy Trình & Báo Giá" : "Process & Pricing",
+      tag: lang === "vi" ? "BÁO GIÁ" : "PRICING",
       bgColor: isLight ? "#DCE5EC" : "#1E1917",
       textColor: isLight ? "#0A2540" : "#FFFFFF",
       links: [
@@ -117,6 +120,7 @@ export default function CardNav({
     },
     {
       label: lang === "vi" ? "Studio & Đội Ngũ" : "About & Team",
+      tag: lang === "vi" ? "STUDIO" : "STUDIO",
       bgColor: isLight ? "#E2E8F0" : "#26160C",
       textColor: isLight ? "#0A2540" : "#FFFFFF",
       links: [
@@ -127,6 +131,7 @@ export default function CardNav({
     },
     {
       label: lang === "vi" ? "Liên Hệ Dự Án" : "Project Inquiries",
+      tag: lang === "vi" ? "LIÊN HỆ" : "CONTACT",
       bgColor: isLight ? "#006989" : "#FF6A00",
       textColor: isLight ? "#FFFFFF" : "#090909",
       links: [
@@ -343,7 +348,7 @@ export default function CardNav({
                     <div>
                       <div className="flex items-center justify-between mb-3 pb-2 border-b border-white/10">
                         <span className="font-mono text-[9px] md:text-[10px] opacity-60 tracking-widest">
-                          CARD 0{index + 1}
+                          0{index + 1}{card.tag && ` // ${card.tag}`}
                         </span>
                         <div className="w-2 h-2 rounded-full" style={{ backgroundColor: card.textColor === "#090909" ? "#090909" : "#FF6A00" }} />
                       </div>
