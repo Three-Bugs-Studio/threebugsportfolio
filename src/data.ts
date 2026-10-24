@@ -461,7 +461,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
           items: [
             "Khách nhỏ (cá nhân, spa, quán, shop): 8 - 15 triệu",
             "Start-up: 15 - 30 triệu",
-            "Doanh nghiệp: 30 - 60 triệu (song ngữ Việt/Anh, theo bộ nhận diện có sẵn, hóa đơn VAT, hợp đồng & NDA)"
+            "Doanh nghiệp: 30 - 60 triệu (song ngữ Việt/Anh, theo bộ nhận diện có sẵn, hợp đồng & NDA)"
           ]
         },
         {
@@ -506,7 +506,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
           items: [
             "Khách nhỏ: 25 - 50 triệu",
             "Start-up: 50 - 120 triệu",
-            "Doanh nghiệp: 120 - 300 triệu (bảo hành 6 tháng, hóa đơn VAT, hợp đồng & NDA)"
+            "Doanh nghiệp: 120 - 300 triệu (bảo hành 6 tháng, hợp đồng & NDA)"
           ]
         },
         {
@@ -676,7 +676,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
           items: [
             "Small business (individuals, spas, cafés, shops): 8 - 15M VND",
             "Start-up: 15 - 30M VND",
-            "Enterprise: 30 - 60M VND (bilingual VI/EN, existing brand guidelines, VAT invoice, contract & NDA)"
+            "Enterprise: 30 - 60M VND (bilingual VI/EN, existing brand guidelines, contract & NDA)"
           ]
         },
         {
@@ -721,7 +721,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
           items: [
             "Small business: 25 - 50M VND",
             "Start-up: 50 - 120M VND",
-            "Enterprise: 120 - 300M VND (6-month warranty, VAT invoice, contract & NDA)"
+            "Enterprise: 120 - 300M VND (6-month warranty, contract & NDA)"
           ]
         },
         {
