@@ -296,6 +296,13 @@ export default function Footer({ lang }: FooterProps) {
                 <span className="font-semibold">{lang === "vi" ? "09 / LIÊN HỆ ĐẶT HÀNG" : "09 / INQUIRY PORTAL"}</span>
                 <span className="text-brand-orange opacity-0 group-hover:opacity-100 transition-opacity">→</span>
               </a>
+              <a
+                href="/templates"
+                className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive"
+              >
+                <span>{lang === "vi" ? "10 / MẪU WEBSITE" : "10 / TEMPLATES"}</span>
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+              </a>
             </div>
           </div>
 
