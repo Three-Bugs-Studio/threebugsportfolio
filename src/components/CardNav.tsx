@@ -101,7 +101,8 @@ export default function CardNav({
       links: [
         { label: lang === "vi" ? "Sản Phẩm Tiêu Biểu" : "Featured Portfolio", href: "#app-work-section", ariaLabel: "Portfolio" },
         { label: lang === "vi" ? "Công Nghệ & Dịch Vụ" : "Core Capabilities", href: "#app-services-section", ariaLabel: "Services" },
-        { label: lang === "vi" ? "Hệ Thống Công Nghệ" : "System Stack", href: "#app-technology-section", ariaLabel: "Technology" }
+        { label: lang === "vi" ? "Hệ Thống Công Nghệ" : "System Stack", href: "#app-technology-section", ariaLabel: "Technology" },
+        { label: lang === "vi" ? "Mẫu Website (Templates)" : "Website Templates", href: "/templates", ariaLabel: "Templates" }
       ]
     },
     {
@@ -139,8 +140,8 @@ export default function CardNav({
   const cardNavItems = items || defaultItems;
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isExternal?: boolean) => {
-    if (isExternal || href.startsWith("http")) {
-      return; // allow standard external link navigation
+    if (isExternal || !href.startsWith("#")) {
+      return; // let external links and other pages navigate normally
     }
 
     e.preventDefault();
