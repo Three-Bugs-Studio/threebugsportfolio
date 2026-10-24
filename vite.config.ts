@@ -20,7 +20,7 @@ export default defineConfig(() => {
               return 'ui-icons';
             }
             if (id.includes('node_modules')) {
-              if (id.includes('three')) return 'vendor-three';
+              if (/node_modules[/]three[/]/.test(id)) return 'vendor-three';
               if (id.includes('motion')) return 'vendor-motion';
               if (id.includes('react-dom') || id.includes('node_modules/react/') || id.includes('node_modules\\react\\')) return 'vendor-react';
               if (id.includes('lucide-react') || id.includes('react-icons')) return 'vendor-icons';
