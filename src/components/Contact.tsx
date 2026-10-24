@@ -44,7 +44,7 @@ export default function Contact({ lang }: ContactProps) {
     const handlePlanSelected = (e: Event) => {
       const customEvt = e as CustomEvent;
       if (customEvt && customEvt.detail) {
-        const { planId, planName, badge } = customEvt.detail;
+        const { planId, planName, badge, quoteNotice } = customEvt.detail;
         
         // Map planId to budget option
         if (planId === "phase_1_mvp") setBudgetIndex(0);
@@ -65,8 +65,8 @@ export default function Contact({ lang }: ContactProps) {
           setFormData((prev) => ({
             ...prev,
             message: lang === "vi" 
-              ? `${badgeLabel} Đăng ký tư vấn ${planName} (Liên Hệ Báo Giá)\nTôi muốn được trao đổi chi tiết về lộ trình 3 Phase và đặc tả hệ thống cho gói dịch vụ này.`
-              : `${badgeLabel} Registering consultation for ${planName} (Quote on Request)\nI would like technical details regarding the 3-Phase roadmap and specs for this package.`
+              ? `${badgeLabel} Đăng ký tư vấn ${planName} (${quoteNotice})\nTôi muốn được trao đổi chi tiết về lộ trình 3 Phase và đặc tả hệ thống cho gói dịch vụ này.`
+              : `${badgeLabel} Registering consultation for ${planName} (${quoteNotice})\nI would like technical details regarding the 3-Phase roadmap and specs for this package.`
           }));
         }
       }
@@ -81,26 +81,26 @@ export default function Contact({ lang }: ContactProps) {
   const budgetOptions = [
     {
       badge: lang === "vi" ? "GÓI 01" : "PLAN 01",
-      title: lang === "vi" ? "Khởi Nghiệp & Landing Page" : "Starter Web & Landing Page",
-      quote: lang === "vi" ? "Liên Hệ Báo Giá" : "Quote on Request",
+      title: lang === "vi" ? "Landing & Web Giới Thiệu" : "Landing & Company Site",
+      quote: lang === "vi" ? "Từ 8 triệu" : "From 8M VND",
       desc: lang === "vi" ? "Phù hợp cá nhân, chiến dịch ra mắt sản phẩm hoặc MVP tinh gọn." : "Ideal for individuals, product launches, or lean MVPs.",
     },
     {
       badge: lang === "vi" ? "GÓI 02" : "PLAN 02",
       title: lang === "vi" ? "Doanh Nghiệp Đa Ngành & E-Commerce" : "Corporate & E-Commerce",
-      quote: lang === "vi" ? "Liên Hệ Báo Giá" : "Quote on Request",
+      quote: lang === "vi" ? "Từ 25 triệu" : "From 25M VND",
       desc: lang === "vi" ? "Tối ưu cho công ty cần nhận diện thương hiệu, bán hàng hoặc đặt lịch." : "Optimized for companies requiring branding, commerce, or booking.",
     },
     {
       badge: lang === "vi" ? "GÓI 03" : "PLAN 03",
       title: lang === "vi" ? "Web App & Hệ Thống AI Độc Quyền" : "Custom Web App & AI Platform",
-      quote: lang === "vi" ? "Liên Hệ Báo Giá" : "Quote on Request",
+      quote: lang === "vi" ? "Từ 150 triệu" : "From 150M VND",
       desc: lang === "vi" ? "Kiến trúc chuyên sâu, tích hợp AI Assistant, Dashboard & API phức tạp." : "Deep architecture, AI Assistant, real-time dashboards & custom APIs.",
     },
     {
       badge: lang === "vi" ? "GÓI 04" : "PLAN 04",
       title: lang === "vi" ? "Bảo Trì & Nâng Cấp Ngoài Giờ (Hoàng Đỗ)" : "Post-Warranty Hourly SLA (Hoang Do)",
-      quote: lang === "vi" ? "Tính Theo Giờ (Thỏa thuận)" : "Hourly Rate (Mutual Agreement)",
+      quote: lang === "vi" ? "Từ 300.000đ/giờ" : "From 300k VND/hour",
       desc: lang === "vi" ? "Chuyên viên Hoàng Đỗ tiếp nhận: Fix bug khẩn cấp, vá bảo mật & nâng cấp tính năng theo giờ." : "Intake by Hoang Do: On-demand hotfixes, security patching & feature upgrades billed hourly.",
     },
   ];
