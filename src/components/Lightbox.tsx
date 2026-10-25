@@ -15,12 +15,6 @@ import storepage from "@/assets/storepage.webp";
 import aboutpage from "@/assets/aboutpage.webp";
 import productdetail from "@/assets/productdetail.webp";
 import contactpage from "@/assets/contactpage.webp";
-import fortifyHomepage from "@/assets/fortifykitchen/fortify_homepage.webp";
-import fortifyMenu from "@/assets/fortifykitchen/fortify_menu.webp";
-import fortifyCalories from "@/assets/fortifykitchen/fortify_calories.webp";
-import qmdHomepage from "@/assets/qmdtech/qmd_tech_homepage.webp";
-import qmdBuildPc from "@/assets/qmdtech/qmd_tech_buildpc.webp";
-import qmdProducts from "@/assets/qmdtech/qmd_tech_products.webp";
 import lehongkhanhHomepage from "@/assets/lehongkhanh/lehongkhanh_homepage.webp";
 import lehongkhanhFeatures from "@/assets/lehongkhanh/lehongkhanh_features.webp";
 import lehongkhanhDetails from "@/assets/lehongkhanh/lehongkhanh_details.webp";
@@ -157,52 +151,6 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
           : "Visualization of semantic distance between doc files. Click on quick queries above to focus vector clusters."
       }
     ],
-    fortify_kitchen: [
-      {
-        title: lang === "vi" ? "Trang Chủ Đặt Món (Home Portal)" : "Fortify Kitchen Home Portal",
-        subtitle: "fortifykitchen.vercel.app",
-        desc: lang === "vi"
-          ? "Giao diện trang chủ giới thiệu thực đơn dinh dưỡng nấu chậm Sous-Vide hiện đại, thiết kế tối giản tăng trải nghiệm người dùng."
-          : "The core healthy nutrition storefront displaying slow-cooked (Sous-Vide) meal plans with high-end aesthetic layout."
-      },
-      {
-        title: lang === "vi" ? "Thực Đơn Dinh Dưỡng (Nutritional Menu)" : "Nutritional Menu Board",
-        subtitle: "fortifykitchen.vercel.app/menu",
-        desc: lang === "vi"
-          ? "Hiển thị danh sách các món ăn nấu chậm Sous-Vide thơm ngon kèm thông số dinh dưỡng đầy đủ."
-          : "The complete Sous-Vide menu card listing ingredients, prep details, and delivery information."
-      },
-      {
-        title: lang === "vi" ? "Tính Toán Lượng Calo (Calorie Compass)" : "Calorie Compass Calculator",
-        subtitle: "fortifykitchen.vercel.app/calories",
-        desc: lang === "vi"
-          ? "Bộ công cụ tính toán lượng calo tiêu thụ và lập lộ trình ăn uống lành mạnh tùy biến theo chỉ số cá nhân."
-          : "Interactive calculator to determine daily calorie needs and match tailored Sous-Vide dishes."
-      }
-    ],
-    qmd_tech: [
-      {
-        title: lang === "vi" ? "Trang Chủ Cửa Hàng (Storefront Portal)" : "E-Commerce Storefront Portal",
-        subtitle: "qmd-tech.vercel.app",
-        desc: lang === "vi"
-          ? "Giao diện trang chủ phân phối PC Gaming và linh kiện máy tính chính hãng, tối ưu hiển thị giờ vàng giá tốt và giao hàng hỏa tốc tại Hà Nội."
-          : "Core desktop storefront showcasing Gaming PCs and components with flash sale countdown and express delivery in Hanoi."
-      },
-      {
-        title: lang === "vi" ? "Công Cụ Tự Dựng PC (Custom PC Builder)" : "Smart Custom PC Builder Tool",
-        subtitle: "qmd-tech.vercel.app/vi/build-pc",
-        desc: lang === "vi"
-          ? "Bộ công cụ tự ráp máy thông minh, tự động kiểm tra tương thích giữa socket CPU, mainboard và tính toán công suất nguồn PSU chuẩn xác."
-          : "Interactive PC building system with real-time socket compatibility validation and automated PSU wattage estimation."
-      },
-      {
-        title: lang === "vi" ? "Cấu Hình PC Ráp Sẵn (Pre-built PC Catalog)" : "Pre-built PC Tier Showcase",
-        subtitle: "qmd-tech.vercel.app/vi#pc-rap-san",
-        desc: lang === "vi"
-          ? "Danh mục cấu hình PC ráp sẵn tối ưu theo từng phân khúc: Gaming Esport, Đồ Họa 3D, Giả Lập và Workstation chuyên nghiệp."
-          : "Curated pre-built desktop tiers tailored for esports gaming, 3D graphics, virtualization, and heavy workstation loads."
-      }
-    ],
     h1t_micro: [
       {
         title: lang === "vi" ? "Trang Đích Định Lượng Vi Chất (Landing Page)" : "Micronutrient Tracking Landing Portal",
@@ -316,32 +264,6 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
         <div className="w-full h-full bg-[#0a0a0a] flex items-center justify-center relative overflow-hidden select-none">
           <BlurUpImage 
             src={sukajanScreenshots[currentSlide]} 
-            alt={projectSlides[currentSlide]?.title} 
-            className="w-full h-full object-contain"
-            wrapperClassName="w-full h-full"
-            referrerPolicy="no-referrer"
-          />
-        </div>
-      );
-    } else if (projectId === "fortify_kitchen") {
-      const fortifyScreenshots = [fortifyHomepage, fortifyMenu, fortifyCalories];
-      return (
-        <div className="w-full h-full bg-[#0a0a0a] flex items-center justify-center relative overflow-hidden select-none">
-          <BlurUpImage 
-            src={fortifyScreenshots[currentSlide]} 
-            alt={projectSlides[currentSlide]?.title} 
-            className="w-full h-full object-contain"
-            wrapperClassName="w-full h-full"
-            referrerPolicy="no-referrer"
-          />
-        </div>
-      );
-    } else if (projectId === "qmd_tech") {
-      const qmdScreenshots = [qmdHomepage, qmdBuildPc, qmdProducts];
-      return (
-        <div className="w-full h-full bg-[#0a0a0a] flex items-center justify-center relative overflow-hidden select-none">
-          <BlurUpImage 
-            src={qmdScreenshots[currentSlide]} 
             alt={projectSlides[currentSlide]?.title} 
             className="w-full h-full object-contain"
             wrapperClassName="w-full h-full"
