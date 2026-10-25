@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Logo from "../components/Logo";
 import aurelleImg from "@/assets/templates/aurelle-motors.jpg";
 import voltlineImg from "@/assets/templates/voltline-garage.jpg";
+import fortifyImg from "@/assets/fortifykitchen/fortify_homepage.webp";
+import qmdImg from "@/assets/qmdtech/qmd_tech_homepage.webp";
 
 type Lang = "vi" | "en";
 
@@ -28,6 +30,28 @@ const TEMPLATES = [
     desc: {
       vi: "Website gara sửa chữa, bảo dưỡng và detailing với bảng dịch vụ, FAQ và nút đặt lịch hẹn trực tuyến.",
       en: "Garage site for servicing, repairs and detailing with a services list, FAQ and online booking.",
+    },
+  },
+  {
+    id: "fortify-kitchen",
+    name: "Fortify Kitchen",
+    url: "https://fortifykitchen.vercel.app/",
+    img: fortifyImg,
+    tag: { vi: "Nhà hàng & đặt món", en: "Restaurant & food ordering" },
+    desc: {
+      vi: "Website nhà hàng / bếp giao món với thực đơn, trang thông tin dinh dưỡng và luồng đặt món.",
+      en: "Restaurant and delivery kitchen site with a menu, nutrition page and ordering flow.",
+    },
+  },
+  {
+    id: "qmd-tech",
+    name: "QMD Tech",
+    url: "https://qmd-tech.vercel.app/",
+    img: qmdImg,
+    tag: { vi: "Cửa hàng công nghệ / E-Commerce", en: "Tech store / E-Commerce" },
+    desc: {
+      vi: "Cửa hàng bán linh kiện, PC với danh mục sản phẩm, công cụ build cấu hình và thanh toán QR.",
+      en: "Store for PCs and components with product catalogue, PC builder tool and QR payments.",
     },
   },
 ];
