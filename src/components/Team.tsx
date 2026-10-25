@@ -9,11 +9,11 @@ import {
 } from "./ui/MajesticIcon";
 import { SiGithub } from "react-icons/si";
 import { TeamMember } from "../types";
-import DuongPhuDongImg from "@/assets/profile/DuongPhuDongProfile.webp";
-import HuynhQuangDongImg from "@/assets/profile/HuynhQuangDongProfile.webp";
-import HoQuangHuyImg from "@/assets/profile/HoQuangHuyProfile.webp";
-import ThuTranImg from "@/assets/profile/ThuTranProfile.webp";
-import HaoVuImg from "@/assets/profile/HaoProfile.webp";
+import friedrichImg from "@/assets/team-art/friedrich-wanderer.jpg";
+import kandinskyImg from "@/assets/team-art/kandinsky-composition-8.jpg";
+import vitruvianImg from "@/assets/team-art/davinci-vitruvian-man.jpg";
+import turnerImg from "@/assets/team-art/turner-rain-steam-speed.jpg";
+import piranesiImg from "@/assets/team-art/piranesi-drawbridge.jpg";
 import receptionistDeskGif from "@/assets/animation-icon/receptionist-desk.gif";
 
 interface TeamProps {
@@ -25,12 +25,28 @@ export default function Team({ lang }: TeamProps) {
   const teamList = TEAM_DATA[lang];
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
-  const profileImages: Record<string, string> = {
-    "Duong Phu Dong": DuongPhuDongImg,
-    "Thu Tran": ThuTranImg,
-    "Huynh Quang Dong": HuynhQuangDongImg,
-    "Ho Quang Huy": HoQuangHuyImg,
-    "Hao Vu": HaoVuImg,
+  // One public-domain artwork per role (Wikimedia Commons), shown instead of portraits.
+  const ART: Record<string, { img: string; title: string; artist: string; year: string; focus: string; meaning: { vi: string; en: string } }> = {
+    "Duong Phu Dong": {
+      img: friedrichImg, title: "Wanderer above the Sea of Fog", artist: "Caspar David Friedrich", year: "1818", focus: "50% 30%",
+      meaning: { vi: "Tầm nhìn & dẫn đường: nhìn xa qua lớp sương mù để định hướng cả đội.", en: "Vision & direction: seeing past the fog to set the course for the team." },
+    },
+    "Thu Tran": {
+      img: kandinskyImg, title: "Composition VIII", artist: "Wassily Kandinsky", year: "1923", focus: "40% 50%",
+      meaning: { vi: "Màu sắc, bố cục & cân bằng: thiết kế đẹp và sổ sách minh bạch đều cần sự hài hòa.", en: "Colour, composition & balance: good design and clean books both need harmony." },
+    },
+    "Huynh Quang Dong": {
+      img: vitruvianImg, title: "Vitruvian Man", artist: "Leonardo da Vinci", year: "c. 1490", focus: "50% 45%",
+      meaning: { vi: "Chuẩn mực & đo lường: mọi tính năng được kiểm định theo đúng tỷ lệ và tiêu chuẩn.", en: "Standards & measurement: every feature checked against the right proportions." },
+    },
+    "Ho Quang Huy": {
+      img: turnerImg, title: "Rain, Steam and Speed", artist: "J. M. W. Turner", year: "1844", focus: "68% 60%",
+      meaning: { vi: "Tốc độ & hạ tầng: đoàn tàu lao qua mưa gió như pipeline triển khai không ngừng.", en: "Speed & infrastructure: a train through the storm, like a deploy pipeline that never stops." },
+    },
+    "Hao Vu": {
+      img: piranesiImg, title: "Carceri d'invenzione: The Drawbridge", artist: "Giovanni Battista Piranesi", year: "1761", focus: "50% 40%",
+      meaning: { vi: "Kiến trúc sâu & nền móng: những tầng cấu trúc vững chắc bên dưới mọi hệ thống.", en: "Deep architecture & foundations: the solid layers beneath every system." },
+    },
   };
 
   // Keyboard Escape listener & body scroll lock for member modal
@@ -137,7 +153,7 @@ export default function Team({ lang }: TeamProps) {
           viewport={{ once: true, margin: "-50px" }}
         >
           {teamList.map((member, idx) => {
-            const memberImg = profileImages[member.name];
+            const art = ART[member.name];
             const colorHex = member.colorTag?.hex || "#FF6A00";
 
             return (
@@ -186,16 +202,31 @@ export default function Team({ lang }: TeamProps) {
                   )}
                 </div>
 
-                {/* Member Portrait Box - Full Color, Perfectly Cropped Edge-to-Edge */}
-                <div className="relative aspect-[3/4] w-full border border-white/10 rounded-lg overflow-hidden mb-4 group-hover:border-brand-orange/40 transition-all duration-500">
-                  <img
-                    src={memberImg}
-                    alt={member.name}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-all duration-500"
-                  />
-                </div>
+                {/* Role Artwork: tinted in the member's colour, full colour on hover, with a museum-style label */}
+                {art && (
+                  <figure className="relative aspect-[3/4] w-full border border-white/10 rounded-lg overflow-hidden mb-4 group-hover:border-brand-orange/40 transition-all duration-500 bg-[#080808]">
+                    <img
+                      src={art.img}
+                      alt={`${art.title} - ${art.artist}`}
+                      loading="lazy"
+                      decoding="async"
+                      style={{ objectPosition: art.focus }}
+                      className="w-full h-full object-cover grayscale-[70%] contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                    />
+                    <div
+                      className="absolute inset-0 mix-blend-color opacity-60 group-hover:opacity-0 transition-opacity duration-700 pointer-events-none"
+                      style={{ backgroundColor: colorHex }}
+                    />
+                    <figcaption className="absolute inset-x-0 bottom-0 p-3 pt-10 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+                      <span className="block font-display text-[11px] font-semibold text-white leading-tight line-clamp-2 italic">
+                        {art.title}
+                      </span>
+                      <span className="block font-mono text-[8px] uppercase tracking-wider text-white/60 mt-1">
+                        {art.artist} · {art.year}
+                      </span>
+                    </figcaption>
+                  </figure>
+                )}
 
                 {/* Name & Role */}
                 <div className="space-y-1 mb-3">
@@ -309,13 +340,14 @@ export default function Team({ lang }: TeamProps) {
                 </button>
 
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-xl overflow-hidden border border-brand-orange/40 shrink-0 bg-[#080808]">
+                  <div className="w-16 h-20 rounded-lg overflow-hidden border border-brand-orange/40 shrink-0 bg-[#080808]">
                     <img
-                      src={profileImages[selectedMember.name]}
-                      alt={selectedMember.name}
+                      src={ART[selectedMember.name]?.img}
+                      alt={ART[selectedMember.name] ? `${ART[selectedMember.name].title} - ${ART[selectedMember.name].artist}` : selectedMember.name}
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-full object-cover object-top"
+                      style={{ objectPosition: ART[selectedMember.name]?.focus }}
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   <div>
@@ -330,6 +362,17 @@ export default function Team({ lang }: TeamProps) {
                     </span>
                   </div>
                 </div>
+
+                {ART[selectedMember.name] && (
+                  <blockquote className="mb-5 pl-3 border-l-2 border-brand-orange/60">
+                    <p className="font-sans text-xs md:text-sm text-[#F5F5F3] italic leading-relaxed">
+                      {ART[selectedMember.name].meaning[lang]}
+                    </p>
+                    <cite className="block not-italic font-mono text-[9px] uppercase tracking-wider text-[#8E8E93] mt-1.5">
+                      {ART[selectedMember.name].title} · {ART[selectedMember.name].artist}, {ART[selectedMember.name].year}
+                    </cite>
+                  </blockquote>
+                )}
 
                 <p className="font-sans text-xs md:text-sm text-[#8E8E93] leading-relaxed mb-6 font-light">
                   {selectedMember.bio}
