@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { ChevronDownIcon } from "./ui/MajesticIcon";
+import { TextScramble } from "./ui/TextScramble";
 
 // Recursive helper to extract all pure text contents from React nodes
 const extractText = (node: React.ReactNode): string => {
@@ -160,7 +161,7 @@ export default function StaggeredSection({
               transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.5 }}
               className="text-white font-medium inline-block tracking-widest"
             >
-              {sectorName}
+              <TextScramble trigger={isInView}>{sectorName}</TextScramble>
             </motion.span>
 
             {/* Dynamic Estimated Reading Time Indicator */}
