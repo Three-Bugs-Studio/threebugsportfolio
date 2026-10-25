@@ -829,6 +829,12 @@ a.btn-stacked:active {
   box-shadow: 0 0 12px rgba(10, 102, 194, 0.5);
 }
 
+.footer-social-card .containerEight:hover {
+  background-color: #E4405F; /* Instagram Brand Pink */
+  border-color: #E4405F;
+  box-shadow: 0 0 12px rgba(228, 64, 95, 0.5);
+}
+
 .footer-social-card .socialContainer:active {
   transform: scale(0.88);
   transition-duration: 0.2s;
