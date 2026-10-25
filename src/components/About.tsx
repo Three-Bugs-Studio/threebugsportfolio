@@ -58,7 +58,7 @@ export default function About({ lang }: AboutProps) {
     {
       id: "delivery",
       title: "Bàn Giao Source Code & Bảo Hành Kỹ Thuật",
-      subtitle: "Bàn giao 100% quyền sở hữu mã nguồn sạch, tài liệu kiến trúc hệ thống và chính sách hỗ trợ kỹ thuật lâu dài.",
+      subtitle: "Bàn giao 100% quyền sở hữu mã nguồn sạch, tài liệu kiến trúc hệ thống và bảo hành kỹ thuật theo từng gói.",
       icon: <CodeIcon size={20} />,
     },
     {
@@ -96,7 +96,7 @@ export default function About({ lang }: AboutProps) {
     {
       id: "delivery",
       title: "Full Code Ownership & Warranty",
-      subtitle: "100% source code handover with complete architecture documentation and long-term technical warranty.",
+      subtitle: "100% source code handover with complete architecture documentation and a technical warranty for each package.",
       icon: <CodeIcon size={20} />,
     },
     {
