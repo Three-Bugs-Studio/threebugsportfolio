@@ -83,23 +83,23 @@ export default function Contact({ lang }: ContactProps) {
       badge: lang === "vi" ? "GÓI 01" : "PLAN 01",
       title: lang === "vi" ? "Landing & Web Giới Thiệu" : "Landing & Company Site",
       quote: lang === "vi" ? "Từ 8 triệu" : "From 8M VND",
-      desc: lang === "vi" ? "Phù hợp cá nhân, chiến dịch ra mắt sản phẩm hoặc MVP tinh gọn." : "Ideal for individuals, product launches, or lean MVPs.",
+      desc: lang === "vi" ? "Thiết kế riêng trên Figma, tối đa 5 trang, giao trong 1 - 2 tuần." : "Custom Figma design, up to 5 pages, delivered in 1 - 2 weeks.",
     },
     {
       badge: lang === "vi" ? "GÓI 02" : "PLAN 02",
-      title: lang === "vi" ? "Doanh Nghiệp Đa Ngành & E-Commerce" : "Corporate & E-Commerce",
+      title: lang === "vi" ? "Doanh Nghiệp & E-Commerce" : "Business & E-Commerce",
       quote: lang === "vi" ? "Từ 25 triệu" : "From 25M VND",
-      desc: lang === "vi" ? "Tối ưu cho công ty cần nhận diện thương hiệu, bán hàng hoặc đặt lịch." : "Optimized for companies requiring branding, commerce, or booking.",
+      desc: lang === "vi" ? "Có trang quản trị, bán hàng / đặt lịch / khóa học, giao trong 3 - 6 tuần." : "Admin panel plus shop, bookings or courses, delivered in 3 - 6 weeks.",
     },
     {
       badge: lang === "vi" ? "GÓI 03" : "PLAN 03",
-      title: lang === "vi" ? "Web App & Hệ Thống AI Độc Quyền" : "Custom Web App & AI Platform",
+      title: lang === "vi" ? "Web App & Hệ Thống AI" : "Web App & AI Systems",
       quote: lang === "vi" ? "Từ 150 triệu" : "From 150M VND",
-      desc: lang === "vi" ? "Kiến trúc chuyên sâu, tích hợp AI Assistant, Dashboard & API phức tạp." : "Deep architecture, AI Assistant, real-time dashboards & custom APIs.",
+      desc: lang === "vi" ? "Web / Mobile App, CRM / ERP, tích hợp AI; bản MVP 6 - 10 tuần." : "Web / mobile apps, CRM / ERP and AI integration; MVP in 6 - 10 weeks.",
     },
     {
       badge: lang === "vi" ? "GÓI 04" : "PLAN 04",
-      title: lang === "vi" ? "Bảo Trì & Nâng Cấp Ngoài Giờ (Hoàng Đỗ)" : "Post-Warranty Hourly SLA (Hoang Do)",
+      title: lang === "vi" ? "Bảo Trì & Nâng Cấp Theo Giờ (Hoàng Đỗ)" : "Hourly Maintenance & Upgrades (Hoang Do)",
       quote: lang === "vi" ? "Từ 300.000đ/giờ" : "From 300k VND/hour",
       desc: lang === "vi" ? "Chuyên viên Hoàng Đỗ tiếp nhận: Fix bug khẩn cấp, vá bảo mật & nâng cấp tính năng theo giờ." : "Intake by Hoang Do: On-demand hotfixes, security patching & feature upgrades billed hourly.",
     },
@@ -582,7 +582,7 @@ export default function Contact({ lang }: ContactProps) {
                         </li>
                         <li className="flex items-center gap-2">
                           <span className="w-1 h-1 bg-brand-orange rounded-full" />
-                          {lang === "vi" ? "Người sáng lập phản hồi trong vòng 12 giờ." : "Founder response within 12 hours."}
+                          {lang === "vi" ? "Phản hồi trong vòng 4 giờ làm việc." : "Response within 4 working hours."}
                         </li>
                       </ul>
                     </div>
