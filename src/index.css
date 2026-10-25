@@ -973,6 +973,18 @@ html.light .card-brutalist:hover {
   user-select: none;
 }
 
+/* Services ticker (Marquee): two identical rows, shifted by half the track */
+@keyframes marquee-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+.marquee-track {
+  animation: marquee-scroll linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
 /* Global Prefers-Reduced-Motion Accessibility Support */
 @media (prefers-reduced-motion: reduce) {
   *,
