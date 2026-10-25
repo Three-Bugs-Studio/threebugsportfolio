@@ -181,32 +181,6 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       sponsorUrl: "https://github.com/sponsors/DongDuong2001"
     },
     {
-      id: "fortify_kitchen",
-      title: "Fortify Kitchen",
-      client: "Fortify Kitchen",
-      category: "Ẩm thực Sous-Vide & Hệ thống Đặt món",
-      shortStory: "Hệ thống website giới thiệu thực đơn dinh dưỡng nấu chậm Sous-Vide giao tại khu vực TP.HCM. Dự án có sự tham gia lập trình và thiết kế của cả 5 thành viên Duong Phu Dong, Thu Tran, Ho Huy, Huynh Quang Dong và Hao Vu.",
-      technologies: ["Next.js", "NestJS", "PostgreSQL", "Render", "Vercel"],
-      timeline: "Đang duy trì & Hotfix",
-      outcome: "Bàn giao giao diện tối giản giới thiệu thực đơn ăn uống khoa học, tích hợp biểu đồ lượng calo và hiện đang duy trì vận hành ổn định.",
-      coverImage: "fortifykitchen",
-      metrics: "Giao tại TP.HCM & Đang Bảo trì",
-      liveUrl: "https://fortifykitchen.vercel.app/"
-    },
-    {
-      id: "qmd_tech",
-      title: "QMD Tech",
-      client: "QMD-Tech (Hà Nội)",
-      category: "Thương Mại Điện Tử & Hệ Thống Build PC Thông Minh",
-      shortStory: "Hệ thống website thương mại điện tử chuyên phân phối Gaming PC và linh kiện máy tính chính hãng tại Hà Nội & giao toàn quốc. Studio xây dựng giao diện hiện đại, tích hợp công cụ Custom PC Builder tự kiểm tra tương thích chân socket và công suất nguồn tự động.",
-      technologies: ["Next.js", "TypeScript", "TailwindCSS", "Sepay VietQR", "Vercel"],
-      timeline: "Đang Xây Dựng & Vận Hành",
-      outcome: "Đang trong lộ trình hoàn thiện và duy trì vận hành ổn định, hỗ trợ thanh toán VietQR tự động, tra cứu bảo hành và tùy biến cấu hình máy tính cá nhân hóa.",
-      coverImage: "qmdtech",
-      metrics: "Hỏa tốc Hà Nội 2H & Đang Vận Hành",
-      liveUrl: "https://qmd-tech.vercel.app/"
-    },
-    {
       id: "h1t_micro",
       title: "H1T MICRO",
       client: "Lê Hồng Khánh",
@@ -247,32 +221,6 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       metrics: "45% setup time optimization",
       liveUrl: "https://github.com/DongDuong2001/pudo-code-system",
       sponsorUrl: "https://github.com/sponsors/DongDuong2001"
-    },
-    {
-      id: "fortify_kitchen",
-      title: "Fortify Kitchen",
-      client: "Fortify Kitchen",
-      category: "Sous-Vide Culinary & Ordering System",
-      shortStory: "A web platform presenting slow-cooked (Sous-Vide) nutritional meal plans with local delivery in Ho Chi Minh City. Built collaboratively by Duong Phu Dong, Thu Tran, Ho Huy, Huynh Quang Dong, and Hao Vu.",
-      technologies: ["Next.js", "NestJS", "PostgreSQL", "Render", "Vercel"],
-      timeline: "Active Maintenance & Hotfix",
-      outcome: "Launched the interface for healthy menu listings and calorie calculations. Currently in continuous maintenance and hotfix support.",
-      coverImage: "fortifykitchen",
-      metrics: "Saigon Delivery & Maintenance",
-      liveUrl: "https://fortifykitchen.vercel.app/"
-    },
-    {
-      id: "qmd_tech",
-      title: "QMD Tech",
-      client: "QMD-Tech (Hanoi)",
-      category: "E-Commerce & Smart Custom PC Builder Platform",
-      shortStory: "An e-commerce platform distributing high-performance Gaming PCs and hardware components in Hanoi with nationwide delivery. Features a real-time Custom PC Builder with automated socket and PSU wattage compatibility checks.",
-      technologies: ["Next.js", "TypeScript", "TailwindCSS", "Sepay VietQR", "Vercel"],
-      timeline: "Active Build & Maintenance",
-      outcome: "Currently under active development and continuous maintenance, featuring instant VietQR payment integration, warranty tracking, and custom hardware builds.",
-      coverImage: "qmdtech",
-      metrics: "Hanoi 2H Express & Active Maintenance",
-      liveUrl: "https://qmd-tech.vercel.app/"
     },
     {
       id: "h1t_micro",
