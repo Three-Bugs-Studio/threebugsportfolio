@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { TextScramble } from "./ui/TextScramble";
 import Logo from "./Logo";
 import ThemeSwitch from "./ThemeSwitch";
 import { motion, AnimatePresence } from "motion/react";
@@ -370,7 +371,7 @@ export default function CardNav({
                           onClick={(e) => handleScrollTo(e, link.href, link.isExternal)}
                           className="font-mono text-[11px] md:text-xs uppercase tracking-wider opacity-85 hover:opacity-100 hover:translate-x-1.5 transition-all flex items-center justify-between py-1 group/link border-b border-white/5 last:border-none"
                         >
-                          <span>{link.label}</span>
+                          <TextScramble trigger={false} scrambleOnHover duration={0.4}>{link.label}</TextScramble>
                           <ArrowUpRightIcon className="w-3 h-3 opacity-60 group-hover/link:opacity-100 transition-opacity" size={12} />
                         </a>
                       ))}
