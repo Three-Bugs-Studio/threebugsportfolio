@@ -119,6 +119,36 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                       }`} />
                     </h3>
 
+                    {/* Unikorn badges for PuDo (product, weekly rank, daily rank) */}
+                    {project.id === "pudo_code_system" && (
+                      <div className="flex flex-wrap items-center gap-3 mb-6">
+                        {[
+                          { path: "pudo", alt: "Pudo trên Unikorn.vn" },
+                          { path: "pudo/rank?type=weekly", alt: "Pudo - Hàng tuần" },
+                          { path: "pudo/rank?type=daily", alt: "Pudo - Hàng ngày" },
+                        ].map((badge) => (
+                          <a
+                            key={badge.path}
+                            href="https://unikorn.vn/p/pudo?ref=embed-pudo"
+                            target="_blank"
+                            rel="noreferrer"
+                            title={badge.alt}
+                            className="inline-flex items-center transition-transform hover:scale-[1.03] active:scale-95 focus-visible:ring-1 focus-visible:ring-brand-orange rounded-sm"
+                          >
+                            {(["dark", "light"] as const).map((theme) => (
+                              <img
+                                key={theme}
+                                src={`https://unikorn.vn/api/widgets/badge/${badge.path}${badge.path.includes("?") ? "&" : "?"}theme=${theme}`}
+                                alt={badge.alt}
+                                className={`unikorn-badge-${theme} h-10 sm:h-11 w-auto object-contain`}
+                                loading="lazy"
+                              />
+                            ))}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+
                     {/* Specific Hero Accolades & KPI Blocks for H1T MICRO */}
                     {project.id === "h1t_micro" && (
                       <div className="space-y-4 mb-6">
