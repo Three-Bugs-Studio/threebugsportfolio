@@ -67,7 +67,7 @@ export const SERVICES_DATA: Record<"vi" | "en", Service[]> = {
       title: "Vận Hành & Vá Lỗi (Maintenance & Hotfix)",
       description: "Chúng tôi duy trì hệ thống hoạt động liên tục, xử lý sự cố khẩn cấp và khắc phục lỗi trực tiếp (hotfix) lập tức cho các cửa hàng trực tuyến như Sukajan Store.",
       details: [
-        "Hỗ trợ khắc phục sự cố khẩn cấp 24/7",
+        "Tiếp nhận sự cố, phản hồi trong 4 giờ làm việc",
         "Tự động sao lưu và bảo vệ cơ sở dữ liệu",
         "Theo dõi hiệu suất và trạng thái máy chủ",
         "Bảo trì và vá lỗi bảo mật định kỳ"
@@ -141,7 +141,7 @@ export const SERVICES_DATA: Record<"vi" | "en", Service[]> = {
       title: "Maintenance & Hotfix Support",
       description: "We secure seamless operational uptime, resolve critical bugs, and push production hotfixes instantly for live stores like Sukajan Store.",
       details: [
-        "24/7 Incident and Crash Hotfix Response",
+        "Incident intake with a 4-working-hour response",
         "Automated DB Backups & Cloud Protection",
         "Continuous Server Health & Speed Monitoring",
         "Regular Framework Security Upgrades"
@@ -296,35 +296,35 @@ export const PROCESS_DATA: Record<"vi" | "en", ProcessStep[]> = {
       number: "01",
       title: "Khám Phá",
       description: "Chúng tôi cùng bạn trao đổi chi tiết về ý tưởng, xác định các chức năng cần thiết của trang web và lập kế hoạch triển khai cụ thể để phù hợp với nhu cầu thực tế.",
-      duration: "Tuần 1",
+      duration: "1 - 5 ngày",
       deliverables: ["Tài liệu Đặc tả Sản phẩm", "Sơ đồ Kiến trúc Hệ thống", "Lộ trình và Dự toán Chi phí"]
     },
     {
       number: "02",
       title: "Thiết Kế",
       description: "Chúng tôi phác thảo sơ đồ trang web và thiết kế giao diện trên Figma để bạn dễ dàng hình dung. Mọi nút bấm, màu sắc và kiểu chữ đều được thiết kế rõ ràng, nhất quán.",
-      duration: "Tuần 2 đến 3",
+      duration: "Theo gói",
       deliverables: ["Bản vẽ giao diện mẫu", "Bộ thành phần thiết kế đồng bộ", "Sơ đồ hoạt động của người dùng"]
     },
     {
       number: "03",
       title: "Xây Dựng",
       description: "Chúng tôi tiến hành lập trình giao diện bằng React và máy chủ bằng các công nghệ hiện đại. Cơ sở dữ liệu và hệ thống xử lý được tối ưu hóa để trang web tải nhanh và hoạt động bền bỉ.",
-      duration: "Tuần 4 đến 8",
+      duration: "Theo gói",
       deliverables: ["Bản dựng thử nghiệm", "Tài liệu hướng dẫn kỹ thuật", "Hệ thống cơ sở dữ liệu hoàn chỉnh"]
     },
     {
       number: "04",
       title: "Triển Khai",
       description: "Chúng tôi kiểm tra bảo mật, tối ưu hóa tốc độ tải trang và chính thức đưa trang web của bạn lên hoạt động trên mạng internet.",
-      duration: "Tuần 9",
+      duration: "1 - 3 ngày",
       deliverables: ["Đưa trang web hoạt động chính thức", "Cấu hình quy trình vận hành tự động", "Báo cáo kiểm tra hiệu năng ổn định"]
     },
     {
       number: "05",
       title: "Đồng Hành",
-      description: "Chúng tôi bàn giao đầy đủ mã nguồn và tài liệu hướng dẫn vận hành cho bạn. Đồng thời cam kết bảo hành dài hạn và hỗ trợ kỹ thuật khi cần nâng cấp.",
-      duration: "Dài hạn",
+      description: "Chúng tôi bàn giao đầy đủ mã nguồn và tài liệu hướng dẫn vận hành cho bạn. Sau đó bảo hành theo thời hạn của từng gói và hỗ trợ nâng cấp theo giờ khi cần.",
+      duration: "Theo gói",
       deliverables: ["Mã nguồn và hướng dẫn vận hành", "Hệ thống kiểm tra trạng thái hoạt động", "Hỗ trợ định kỳ hàng tháng"]
     }
   ],
@@ -333,35 +333,35 @@ export const PROCESS_DATA: Record<"vi" | "en", ProcessStep[]> = {
       number: "01",
       title: "Discover",
       description: "We discuss details of your idea, identify core website features, and establish a clear execution plan to fit your exact business goals.",
-      duration: "Week 1",
+      duration: "1 - 5 days",
       deliverables: ["Product Specification Document", "System Architecture Outline", "Project Timeline and Costing"]
     },
     {
       number: "02",
       title: "Design",
       description: "We map out the user flow and design Figma templates. Every button, color, and typography element is structured clearly and consistently.",
-      duration: "Weeks 2 to 3",
+      duration: "Per package",
       deliverables: ["Interactive Prototypes", "Design Token Library", "User Flow Diagrams"]
     },
     {
       number: "03",
       title: "Build",
       description: "We write clean, typed React code and set up robust backend endpoints. Database and system queries are optimized to guarantee fast load times.",
-      duration: "Weeks 4 to 8",
+      duration: "Per package",
       deliverables: ["Staging Ready Application Build", "API Documentation", "Database Schemas and Tables"]
     },
     {
       number: "04",
       title: "Ship",
       description: "We audit platform security, tune performance scores, and officially deploy your live website to the cloud network.",
-      duration: "Week 9",
+      duration: "1 - 3 days",
       deliverables: ["Production Launch", "Automated Release Pipeline", "Performance Stability Report"]
     },
     {
       number: "05",
       title: "Support",
-      description: "We hand over full source code and documentation. We also provide long term warranty coverage and support your ongoing feature upgrades.",
-      duration: "Long term",
+      description: "We hand over full source code and documentation. After that you get the warranty of your package and hourly support for upgrades.",
+      duration: "Per package",
       deliverables: ["Full Developer Handover", "System Health Monitors", "Periodic Tech Checkups"]
     }
   ]
@@ -1166,24 +1166,24 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
       question: "Chi phí dự án được tính như thế nào? Studio có cam kết không phát sinh phụ phí ẩn không?",
       badge: "CAM KẾT 0Đ PHÍ ẨN",
       category: "pricing",
-      answer: "Three Bugs Studio cam kết 100% không phát sinh bất kỳ phụ phí ẩn nào ngoài hợp đồng! Báo giá được tính toán trọn gói dựa trên bảng đặc tả tính năng chi tiết (Scope of Work) được hai bên thống nhất từ đầu. Chi phí thanh toán được chia nhỏ theo 3 Phase nghiệm thu rõ ràng: bạn chỉ giải ngân giai đoạn tiếp theo khi đã kiểm tra và hoàn toàn hài lòng với kết quả giai đoạn trước. Nếu trong quá trình làm bạn muốn bổ sung tính năng mới ngoài thỏa thuận ban đầu, Studio sẽ báo giá độc lập minh bạch và chỉ triển khai khi có sự đồng ý của bạn.",
+      answer: "Three Bugs Studio cam kết 100% không phát sinh bất kỳ phụ phí ẩn nào ngoài hợp đồng! Báo giá được tính toán trọn gói dựa trên bảng đặc tả tính năng chi tiết (Scope of Work) được hai bên thống nhất từ đầu. Giá khởi điểm của từng gói được công khai ngay trên website, và chi phí thanh toán được chia theo từng mốc nghiệm thu (30% - 40% - 30%; gói Template 50% - 50%): bạn chỉ giải ngân giai đoạn tiếp theo khi đã kiểm tra và hoàn toàn hài lòng với kết quả giai đoạn trước. Nếu trong quá trình làm bạn muốn bổ sung tính năng mới ngoài thỏa thuận ban đầu, Studio sẽ báo giá độc lập minh bạch và chỉ triển khai khi có sự đồng ý của bạn.",
       keyBenefits: [
         "Báo giá trọn gói minh bạch, cam kết không phát sinh phụ phí bất ngờ",
         "Thanh toán linh hoạt chia theo từng cột mốc (Phase) nghiệm thu thực tế",
         "Chỉ thanh toán giai đoạn tiếp theo khi đã nghiệm thu ưng ý giai đoạn trước",
-        "Tư vấn tối ưu chi phí hạ tầng Cloud (Vercel/Supabase) mức tiết kiệm nhất"
+        "Ghi rõ những khoản không bao gồm (server, phí API AI, tên miền) ngay trong từng gói"
       ]
     },
     {
       question: "Chính sách bảo hành, sửa lỗi và duy trì hoạt động sau khi bàn giao diễn ra như thế nào?",
-      badge: "BẢO HÀNH ĐẾN 12 THÁNG",
+      badge: "BẢO HÀNH THEO GÓI",
       category: "warranty",
-      answer: "Mọi sản phẩm của Three Bugs Studio đều đi kèm chính sách bảo hành kỹ thuật MIỄN PHÍ 100% từ 3 đến 12 tháng (tùy theo gói dịch vụ). Trong suốt thời gian bảo hành, bất kỳ lỗi lập trình hoặc vấn đề phát sinh từ hệ thống đã bàn giao đều được đội ngũ kỹ sư khắc phục triệt để không tốn thêm chi phí. Chúng tôi cam kết SLA phản hồi nhanh chóng trong vòng 1–2 giờ đối với các sự cố vận hành khẩn cấp, đồng thời hỗ trợ thiết lập cơ chế tự động sao lưu dữ liệu (Automated Daily Backup) để bạn hoàn toàn an tâm kinh doanh.",
+      answer: "Mọi sản phẩm đều được bảo hành lỗi kỹ thuật MIỄN PHÍ theo thời hạn của từng gói: Template 14 ngày, Landing & Web Giới Thiệu 1 tháng, Doanh Nghiệp & E-Commerce 3 tháng (khách doanh nghiệp 6 tháng), Web App & AI 3 tháng. Trong thời gian bảo hành, mọi lỗi phát sinh từ phần studio đã bàn giao đều được sửa miễn phí; tính năng mới không nằm trong bảo hành. Chúng tôi hỗ trợ trong giờ hành chính và phản hồi trong vòng 4 giờ làm việc. Hết bảo hành, bạn có thể dùng gói Bảo Trì Theo Giờ (từ 300.000đ/giờ) hoặc gói bảo trì hằng tháng cho Web App.",
       keyBenefits: [
-        "Bảo hành kỹ thuật miễn phí 100% từ 3 đến 12 tháng sau bàn giao",
-        "Sửa chữa triệt để mọi lỗi phát sinh từ hệ thống với SLA phản hồi khẩn cấp 1-2h",
-        "Hỗ trợ cấu hình tự động sao lưu dữ liệu và giám sát Uptime 99.9%",
-        "Chính sách hỗ trợ kỹ thuật đồng hành trọn đời sau thời gian bảo hành"
+        "Bảo hành lỗi miễn phí: 14 ngày đến 6 tháng tùy gói, ghi rõ trong từng gói",
+        "Hỗ trợ giờ hành chính, phản hồi trong 4 giờ làm việc",
+        "Gói Doanh Nghiệp & Web App có sao lưu dữ liệu tự động hằng ngày",
+        "Hết bảo hành: bảo trì theo giờ từ 300.000đ/giờ, không bắt buộc phí hằng tháng"
       ]
     },
     {
@@ -1202,12 +1202,12 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
       question: "Studio cam kết tiến độ bàn giao ra sao? Tôi có được theo dõi tiến độ thời gian thực không?",
       badge: "CAM KẾT ĐÚNG TIẾN ĐỘ",
       category: "warranty",
-      answer: "Chúng tôi cam kết tiến độ rõ ràng bằng văn bản: thời gian hoàn thành thông thường từ 1–3 tuần đối với Website/E-Commerce và 4–6 tuần đối với các hệ thống Web App/AI phức tạp. Trong suốt quá trình phát triển, bạn sẽ được cung cấp đường link Live Staging/Demo riêng biệt để trực tiếp truy cập trên điện thoại và máy tính, theo dõi từng màn hình được hoàn thiện mỗi tuần. Hợp đồng có điều khoản cam kết mốc thời gian rõ ràng: nếu trễ hạn do lỗi từ Studio, chúng tôi cam kết chịu phạt hợp đồng hoặc bồi hoàn bằng các tháng bảo trì kỹ thuật miễn phí.",
+      answer: "Chúng tôi cam kết tiến độ rõ ràng bằng văn bản: Template 2–3 ngày làm việc, Landing & Web Giới Thiệu 1–2 tuần, Doanh Nghiệp & E-Commerce 3–6 tuần, Web App & AI bản MVP 6–10 tuần. Trong suốt quá trình phát triển, bạn sẽ được cung cấp đường link Live Staging/Demo riêng biệt để trực tiếp truy cập trên điện thoại và máy tính, theo dõi từng màn hình được hoàn thiện mỗi tuần. Hợp đồng ghi rõ mốc thời gian: nếu trễ hạn do lỗi từ Studio, chúng tôi gia hạn thêm thời gian bảo hành miễn phí tương ứng.",
       keyBenefits: [
-        "Tiến độ hoàn thành nhanh chóng: 1–3 tuần cho Web/E-commerce, 4–6 tuần cho Web App",
+        "Tiến độ theo gói: 2–3 ngày (Template) đến 6–10 tuần (Web App MVP)",
         "Cung cấp link Staging/Demo kiểm thử trực tiếp trên điện thoại & máy tính hàng tuần",
         "Cam kết điều khoản tiến độ rõ ràng trong hợp đồng pháp lý",
-        "Chính sách bồi thường hoặc gia hạn bảo trì miễn phí nếu trễ hạn do lỗi Studio"
+        "Gia hạn bảo hành miễn phí nếu trễ hạn do lỗi Studio"
       ]
     },
     {
@@ -1276,24 +1276,24 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
       question: "How is project pricing calculated? Does the Studio guarantee zero hidden fees?",
       badge: "ZERO HIDDEN FEES",
       category: "pricing",
-      answer: "Three Bugs Studio strictly guarantees zero unexpected hidden fees! Every project quote is fixed-scope based on an itemized Scope of Work mutually agreed upon before kickoff. Payments are divided across 3 transparent delivery phases: you only disburse funds for the next phase once you have inspected and fully approved the deliverables of the previous phase. Should you wish to expand functionality, we provide clear separate estimates and proceed only upon your consent.",
+      answer: "Three Bugs Studio strictly guarantees zero unexpected hidden fees! Every project quote is fixed-scope based on an itemized Scope of Work mutually agreed upon before kickoff. Starting prices for every package are published on this site, and payments follow clear milestones (30% - 40% - 30%; 50% - 50% for templates): you only disburse funds for the next phase once you have inspected and fully approved the deliverables of the previous phase. Should you wish to expand functionality, we provide clear separate estimates and proceed only upon your consent.",
       keyBenefits: [
         "Transparent fixed-scope quotes with zero unexpected surcharges",
         "Flexible milestone payments across verified delivery phases",
         "Next milestone payment released only upon your explicit satisfaction",
-        "Tailored infrastructure cost optimization on Vercel and Supabase"
+        "Every package lists what is not included (servers, AI API fees, domains)"
       ]
     },
     {
       question: "What is your warranty policy, bug-fixing coverage, and post-launch maintenance SLA?",
-      badge: "UP TO 12-MONTH WARRANTY",
+      badge: "WARRANTY PER PACKAGE",
       category: "warranty",
-      answer: "All solutions delivered by Three Bugs Studio include 100% FREE technical warranty coverage for 3 to 12 months (depending on your project tier). During this warranty period, any functional bugs or regressions arising from delivered systems are resolved without extra charge. We commit to a rapid 1–2 hour SLA response for critical operational disruptions, along with configuring automated daily backups so your business operates with peace of mind.",
+      answer: "Every delivery includes a FREE technical warranty for the period of its package: Template 14 days, Landing & Company Site 1 month, Business & E-Commerce 3 months (6 months for enterprise clients), Web App & AI 3 months. During the warranty, bugs in what we delivered are fixed at no cost; new features are not covered. We support you during business hours and respond within 4 working hours. After the warranty you can use Hourly Maintenance (from 300k VND/hour) or a monthly maintenance plan for web apps.",
       keyBenefits: [
-        "100% free technical warranty coverage for 3 to 12 months post-launch",
-        "Comprehensive bug-fixing with priority 1–2h emergency SLA response",
-        "Automated daily database backups and 99.9% uptime health monitoring",
-        "Lifetime technical advisory support even after the warranty period"
+        "Free bug-fix warranty from 14 days to 6 months, stated in each package",
+        "Business-hours support with a 4-working-hour response",
+        "Automatic daily backups on Business & Web App packages",
+        "After warranty: hourly maintenance from 300k VND/hour, no monthly lock-in"
       ]
     },
     {
@@ -1312,12 +1312,12 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
       question: "How does the Studio guarantee delivery deadlines? Can I track live progress in real-time?",
       badge: "ON-TIME GUARANTEE",
       category: "warranty",
-      answer: "We guarantee delivery timelines in formal contracts: typically 1–3 weeks for Corporate & E-Commerce sites and 4–6 weeks for complex Web Apps and AI platforms. Throughout development, you receive access to a dedicated Live Staging/Demo link to test newly shipped screens every week directly on your mobile device and desktop. Our contracts feature clear milestone clauses: if delays occur due to studio fault, we honor penalty credits or complimentary maintenance extensions.",
+      answer: "We guarantee delivery timelines in formal contracts: Template 2–3 working days, Landing & Company Site 1–2 weeks, Business & E-Commerce 3–6 weeks, Web App & AI MVP 6–10 weeks. Throughout development, you receive access to a dedicated Live Staging/Demo link to test newly shipped screens every week directly on your mobile device and desktop. Contracts state clear milestones: if we are late through our own fault, we extend your free warranty by the same amount.",
       keyBenefits: [
-        "Swift turnaround: 1–3 weeks for Web/E-commerce, 4–6 weeks for Web Apps",
+        "Timelines per package: 2–3 days (Template) to 6–10 weeks (Web App MVP)",
         "Live weekly staging links accessible on mobile and desktop devices",
         "Legally committed delivery milestones in binding contracts",
-        "Compensation credits or free maintenance extensions if deadlines slip"
+        "Free warranty extension if we miss a deadline through our fault"
       ]
     },
     {
@@ -1442,10 +1442,10 @@ export const TRANSLATIONS = {
     contactFieldServices: "Dịch vụ cần tư vấn",
     contactFieldBudget: "Gói cước / Ngân sách lựa chọn",
     contactFieldMessage: "Chi tiết yêu cầu của bạn",
-    contactBudgetValue: "Liên Hệ Báo Giá",
-    contactBudgetRange1: "Gói 1: Khởi Nghiệp & Landing Page (Liên Hệ Báo Giá)",
-    contactBudgetRange2: "Gói 2: Doanh Nghiệp Đa Ngành & E-Commerce (Liên Hệ Báo Giá)",
-    contactBudgetRange3: "Gói 3: Web App & Hệ Thống AI Độc Quyền (Liên Hệ Báo Giá)",
+    contactBudgetValue: "Từ 2,5 triệu",
+    contactBudgetRange1: "Gói 1: Landing & Web Giới Thiệu (Từ 8 triệu)",
+    contactBudgetRange2: "Gói 2: Doanh Nghiệp & E-Commerce (Từ 25 triệu)",
+    contactBudgetRange3: "Gói 3: Web App & Hệ Thống AI (Từ 150 triệu)",
     contactBudgetConversionLabel: "Tư vấn & báo giá chi tiết trực tiếp qua Zalo / Hotline",
     contactSendBtn: "GỬI THÔNG TIN YÊU CẦU",
     contactSendingBtn: "ĐANG GỬI THÔNG TIN...",
@@ -1530,10 +1530,10 @@ export const TRANSLATIONS = {
     contactFieldServices: "Service of Interest",
     contactFieldBudget: "Selected Package / Budget",
     contactFieldMessage: "Project Requirements",
-    contactBudgetValue: "Quote on Request",
-    contactBudgetRange1: "Package 1: Starter Web & Landing Page (Quote on Request)",
-    contactBudgetRange2: "Package 2: Corporate & E-Commerce (Quote on Request)",
-    contactBudgetRange3: "Package 3: Custom Web App & AI Platform (Quote on Request)",
+    contactBudgetValue: "From 2.5M VND",
+    contactBudgetRange1: "Package 1: Landing & Company Site (From 8M VND)",
+    contactBudgetRange2: "Package 2: Business & E-Commerce (From 25M VND)",
+    contactBudgetRange3: "Package 3: Web App & AI Systems (From 150M VND)",
     contactBudgetConversionLabel: "Direct project consultation via Zalo / Hotline",
     contactSendBtn: "SEND PROJECT INQUIRY",
     contactSendingBtn: "TRANSMITTING INQUIRY...",
