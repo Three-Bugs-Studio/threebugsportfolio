@@ -73,8 +73,8 @@ export default function Services({ lang }: ServicesProps) {
               </span>
               <p className="font-mono text-[11px] text-[#8E8E93] leading-relaxed">
                 {lang === "vi"
-                  ? "Tất cả các sản phẩm triển khai đều sử dụng các cấu trúc container chuẩn hóa bền bỉ, cam kết tỉ lệ hoạt động 99.9% và tối ưu hóa SEO xuất sắc."
-                  : "All production deployments are standard containerized structures, securing 99.9% uptime and SEO metrics above 95."}
+                  ? "Tất cả các sản phẩm triển khai đều sử dụng các cấu trúc container chuẩn hóa bền bỉ, chạy ổn định và tối ưu SEO ngay từ đầu."
+                  : "All production deployments are standard containerized structures, built to run reliably with strong SEO from day one."}
               </p>
             </motion.div>
           </div>
