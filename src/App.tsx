@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, startTransition, lazy, Suspense } from "react";
 import Navbar from "./components/Navbar";
+import Marquee from "./components/ui/Marquee";
 import Hero from "./components/Hero";
 import StaggeredSection from "./components/StaggeredSection";
 import QuickContactWidget from "./components/QuickContactWidget";
@@ -317,6 +318,14 @@ export default function App() {
               >
                 <Hero lang={lang} />
               </motion.div>
+
+            {/* Services ticker */}
+            <Marquee
+              className="border-y border-white/5 bg-[#0c0c0c] py-4 font-mono text-[11px] md:text-xs uppercase tracking-[0.25em] text-[#8E8E93]"
+              items={lang === "vi"
+                ? ["Thiết kế UI/UX", "Phát triển website", "E-Commerce", "Web App", "Tích hợp AI", "Bảo trì & vá lỗi", "Mẫu website từ 2,5 triệu"]
+                : ["UI/UX design", "Web development", "E-Commerce", "Web apps", "AI integration", "Maintenance & hotfixes", "Templates from 2.5M VND"]}
+            />
 
             {/* About Section */}
               <motion.div
