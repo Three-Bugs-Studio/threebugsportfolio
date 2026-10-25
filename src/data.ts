@@ -185,7 +185,7 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       title: "H1T MICRO",
       client: "Lê Hồng Khánh",
       category: "Nền Tảng Dinh Dưỡng Khoa Học & Định Lượng 22 Vi Chất",
-      shortStory: "Hệ thống landing page và ứng dụng theo dõi 22 vi chất dinh dưỡng thiết yếu (10 khoáng chất & 12 vitamin) chuẩn y khoa và dinh dưỡng khoa học (RNI/RDA từ Viện Dinh Dưỡng Quốc Gia & USDA) cho thương hiệu H1T MICRO của Lê Hồng Khánh. Dự án do Duong Phu Dong và Hao Vu trực tiếp lập trình với kiến trúc Frontend Next.js tốc độ cao, Backend Golang xử lý dữ liệu vi chất chuẩn xác, kết hợp cơ sở dữ liệu Supabase, lưu trữ Cloudinary và hạ tầng Cloud VPS Vietnix bảo mật.",
+      shortStory: "Hệ thống landing page và ứng dụng theo dõi 22 vi chất dinh dưỡng thiết yếu (10 khoáng chất & 12 vitamin) chuẩn y khoa và dinh dưỡng khoa học (RNI/RDA từ Viện Dinh Dưỡng Quốc Gia & USDA) cho thương hiệu H1T MICRO của Lê Hồng Khánh. Duong Phu Dong đảm nhận vai trò Solution Architect & Backend Engineer (kiến trúc hệ thống, Backend Golang xử lý dữ liệu vi chất, cơ sở dữ liệu Supabase, lưu trữ Cloudinary và hạ tầng Cloud VPS Vietnix); Hao Vu phụ trách Frontend với Next.js tốc độ cao.",
       technologies: ["Next.js", "Golang", "Supabase", "Cloudinary", "VPS Vietnix"],
       timeline: "Đã Triển Khai & Đang Duy Trì",
       outcome: "Xuất sắc đạt #1 Product of the Day trên Unikorn.vn và cán mốc 1.000+ thành viên theo dõi dinh dưỡng khoa học. Nền tảng đạt chứng nhận kiểm định thực tế 99 Performance, 100 SEO, 100 Accessibility trên hạ tầng backend Golang và VPS Vietnix.",
@@ -227,7 +227,7 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       title: "H1T MICRO",
       client: "Le Hong Khanh",
       category: "HealthTech & Scientific Micronutrient Platform",
-      shortStory: "A scientific landing platform and web application quantifying 22 essential micronutrients (10 minerals & 12 vitamins) based on RNI/RDA recommendations from the National Institute of Nutrition & USDA for H1T MICRO (Le Hong Khanh). Engineered end-to-end by Duong Phu Dong and Hao Vu with a high-performance Next.js frontend, Golang backend, Supabase database, Cloudinary media CDN, and secure Vietnix Cloud VPS hosting.",
+      shortStory: "A scientific landing platform and web application quantifying 22 essential micronutrients (10 minerals & 12 vitamins) based on RNI/RDA recommendations from the National Institute of Nutrition & USDA for H1T MICRO (Le Hong Khanh). Duong Phu Dong served as Solution Architect & Backend Engineer (system architecture, Golang backend, Supabase database, Cloudinary media CDN and Vietnix Cloud VPS hosting), while Hao Vu built the high-performance Next.js frontend.",
       technologies: ["Next.js", "Golang", "Supabase", "Cloudinary", "VPS Vietnix"],
       timeline: "Deployed & Active Maintenance",
       outcome: "Awarded #1 Product of the Day on Unikorn.vn and scaled past 1,000+ active members tracking micronutrients. Achieved verified benchmarks: 99 Performance, 100 SEO, 100 Accessibility powered by compiled Golang on Vietnix Cloud VPS.",
@@ -746,8 +746,8 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
     {
       name: "Duong Phu Dong",
       role: "Founder & Trưởng nhóm Dự án Doanh nghiệp",
-      bio: "Sáng lập Three Bugs Studio với kinh nghiệm dày dặn trong quản trị và trực tiếp hoàn thành các dự án phần mềm cho doanh nghiệp (nổi bật là dự án Project Luvcraft cho Project Pluto trên RMIT Showcase). Anh chịu trách nhiệm quản lý tổng thể, đặc tả kiến trúc kỹ thuật và cam kết chất lượng bàn giao.",
-      specialties: ["Quản lý Dự án Doanh nghiệp", "Đặc tả Phần mềm", "Kiến trúc Hệ thống", "RMIT Enterprise Showcase"],
+      bio: "Sáng lập Three Bugs Studio với kinh nghiệm dày dặn trong quản trị và trực tiếp hoàn thành các dự án phần mềm cho doanh nghiệp (nổi bật là dự án Project Luvcraft cho Project Pluto trên RMIT Showcase). Anh chịu trách nhiệm quản lý tổng thể, đặc tả kiến trúc kỹ thuật và cam kết chất lượng bàn giao; tại H1T MICRO, anh là Solution Architect kiêm Backend Engineer (Golang, Supabase, VPS).",
+      specialties: ["Solution Architecture", "Backend Golang", "Quản lý Dự án Doanh nghiệp", "RMIT Enterprise Showcase"],
       socials: {
         github: "https://github.com/DongDuong2001"
       },
@@ -832,8 +832,8 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
     {
       name: "Hao Vu",
       role: "Kỹ sư Backend Golang & Cơ sở dữ liệu Doanh nghiệp",
-      bio: "Kỹ sư chuyên sâu về lập trình backend Golang & Node.js, API bảo mật và tối ưu dữ liệu quy mô doanh nghiệp trên RMIT Showcase (Project Luvcraft). Anh phụ trách kiến trúc backend Golang hiệu năng cao cho H1T MICRO, thiết kế lược đồ cơ sở dữ liệu tối ưu, phân quyền đa tài khoản RBAC và tích hợp các pipeline dữ liệu thông minh.",
-      specialties: ["Lập trình Backend Golang", "Tối ưu hóa CSDL", "Bảo mật & Phân quyền RBAC", "Thiết kế API Doanh nghiệp"],
+      bio: "Kỹ sư chuyên sâu về lập trình backend Golang & Node.js, API bảo mật và tối ưu dữ liệu quy mô doanh nghiệp trên RMIT Showcase (Project Luvcraft). Anh thiết kế lược đồ cơ sở dữ liệu tối ưu, phân quyền đa tài khoản RBAC và các pipeline dữ liệu; tại H1T MICRO, anh phụ trách toàn bộ Frontend với Next.js.",
+      specialties: ["Lập trình Backend Golang", "Frontend Next.js", "Tối ưu hóa CSDL", "Bảo mật & Phân quyền RBAC"],
       socials: {
         github: "https://github.com/haovu310"
       },
@@ -856,8 +856,8 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
     {
       name: "Duong Phu Dong",
       role: "Studio Founder & Enterprise Project Lead",
-      bio: "Founder of Three Bugs Studio with proven enterprise project execution experience (notably Project Luvcraft for Project Pluto featured on RMIT Showcase). He oversees end-to-end architecture, technical specifications, and timely delivery.",
-      specialties: ["Enterprise Project Management", "Software Specifications", "System Architecture", "RMIT Enterprise Showcase"],
+      bio: "Founder of Three Bugs Studio with proven enterprise project execution experience (notably Project Luvcraft for Project Pluto featured on RMIT Showcase). He oversees end-to-end architecture, technical specifications, and timely delivery; on H1T MICRO he is the Solution Architect and Backend Engineer (Golang, Supabase, VPS).",
+      specialties: ["Solution Architecture", "Golang Backend", "Enterprise Project Management", "RMIT Enterprise Showcase"],
       socials: {
         github: "https://github.com/DongDuong2001"
       },
@@ -942,8 +942,8 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
     {
       name: "Hao Vu",
       role: "Enterprise Backend & Golang Engineer",
-      bio: "Server-side and database architect with proven enterprise project delivery on RMIT Showcase (Project Luvcraft). He builds secure Golang backend APIs, optimized PostgreSQL schemas, Role-Based Access Control (RBAC), and high-throughput data pipelines.",
-      specialties: ["Golang Backend Engineering", "Database Optimization", "Enterprise RBAC Security", "API Architecture"],
+      bio: "Server-side and database architect with proven enterprise project delivery on RMIT Showcase (Project Luvcraft). He builds secure Golang backend APIs, optimized PostgreSQL schemas, Role-Based Access Control (RBAC), and data pipelines; on H1T MICRO he built the entire Next.js frontend.",
+      specialties: ["Golang Backend Engineering", "Next.js Frontend", "Database Optimization", "Enterprise RBAC Security"],
       socials: {
         github: "https://github.com/haovu310"
       },
