@@ -435,13 +435,6 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "2 lượt chỉnh sửa trước khi bàn giao, bảo hành lỗi kỹ thuật 14 ngày",
             "Trả theo tháng: đã gồm tên miền .com, chỉnh sửa nhỏ tối đa 1 giờ/tháng; đủ 12 tháng website thuộc về khách"
           ]
-        },
-        {
-          title: "Không Bao Gồm",
-          items: [
-            "Thiết kế riêng, viết nội dung, chụp ảnh sản phẩm",
-            "Tên miền với gói trọn gói (khoảng 300 - 500k/năm, khách tự trả)"
-          ]
         }
       ],
       benefits: []
@@ -474,12 +467,6 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "SEO kỹ thuật chuẩn: sitemap, schema, ảnh chia sẻ mạng xã hội",
             "Bàn giao 100% mã nguồn & file Figma, 1 buổi hướng dẫn sử dụng",
             "Bảo hành lỗi kỹ thuật 1 tháng, hỗ trợ giờ hành chính, phản hồi trong 4 giờ làm việc"
-          ]
-        },
-        {
-          title: "Không Bao Gồm",
-          items: [
-            "Viết nội dung, chụp ảnh; tên miền & hosting trả phí (khách tự trả)"
           ]
         }
       ],
@@ -520,12 +507,6 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "Bàn giao mã nguồn, tài khoản quản trị & tài liệu hướng dẫn tiếng Việt",
             "Bảo hành lỗi kỹ thuật 3 tháng, hỗ trợ giờ hành chính, phản hồi trong 4 giờ làm việc"
           ]
-        },
-        {
-          title: "Không Bao Gồm",
-          items: [
-            "Phí server sau năm đầu, phí cổng thanh toán, nhập liệu sản phẩm hàng loạt (báo giá riêng)"
-          ]
         }
       ],
       benefits: [],
@@ -563,12 +544,6 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "Docker, tự động triển khai (CI/CD), môi trường thử nghiệm riêng",
             "Demo tiến độ mỗi 2 tuần",
             "Bàn giao mã nguồn, tài liệu kiến trúc & đào tạo đội vận hành; bảo hành 3 tháng"
-          ]
-        },
-        {
-          title: "Không Bao Gồm",
-          items: [
-            "Phí API AI (OpenAI, Claude, Gemini...) và server: khách trả trực tiếp cho nhà cung cấp"
           ]
         }
       ],
@@ -650,13 +625,6 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "2 revision rounds before handover, 14-day technical warranty",
             "Monthly plan: includes a .com domain and up to 1 hour of small edits per month; the site is yours after 12 months"
           ]
-        },
-        {
-          title: "Not Included",
-          items: [
-            "Custom design, copywriting, product photography",
-            "Domain on the one-off plan (about 300 - 500k VND/year, paid by you)"
-          ]
         }
       ],
       benefits: []
@@ -689,12 +657,6 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "Technical SEO: sitemap, schema, social share images",
             "100% source code and Figma files handed over, plus one training session",
             "1-month technical warranty, business-hours support with a 4-working-hour response"
-          ]
-        },
-        {
-          title: "Not Included",
-          items: [
-            "Copywriting, photography; paid domain & hosting (paid by you)"
           ]
         }
       ],
@@ -735,12 +697,6 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "Source code, admin accounts and a written user guide handed over",
             "3-month technical warranty, business-hours support with a 4-working-hour response"
           ]
-        },
-        {
-          title: "Not Included",
-          items: [
-            "Server costs after year one, payment gateway fees, bulk product data entry (quoted separately)"
-          ]
         }
       ],
       benefits: [],
@@ -778,12 +734,6 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "Docker, automated deployment (CI/CD) and a separate staging environment",
             "Progress demo every 2 weeks",
             "Source code, architecture docs and team training; 3-month warranty"
-          ]
-        },
-        {
-          title: "Not Included",
-          items: [
-            "AI API (OpenAI, Claude, Gemini...) and server costs, paid directly to the provider"
           ]
         }
       ],
@@ -1171,7 +1121,7 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
         "Báo giá trọn gói minh bạch, cam kết không phát sinh phụ phí bất ngờ",
         "Thanh toán linh hoạt chia theo từng cột mốc (Phase) nghiệm thu thực tế",
         "Chỉ thanh toán giai đoạn tiếp theo khi đã nghiệm thu ưng ý giai đoạn trước",
-        "Ghi rõ những khoản không bao gồm (server, phí API AI, tên miền) ngay trong từng gói"
+        "Phạm vi công việc và chi phí được ghi rõ trong hợp đồng trước khi bắt đầu"
       ]
     },
     {
@@ -1281,7 +1231,7 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
         "Transparent fixed-scope quotes with zero unexpected surcharges",
         "Flexible milestone payments across verified delivery phases",
         "Next milestone payment released only upon your explicit satisfaction",
-        "Every package lists what is not included (servers, AI API fees, domains)"
+        "Scope and costs are written into the contract before work starts"
       ]
     },
     {
