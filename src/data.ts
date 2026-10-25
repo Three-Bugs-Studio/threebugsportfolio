@@ -380,7 +380,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "Nút Zalo, gọi điện, Messenger; form liên hệ gửi về email hoặc Google Sheet",
             "SEO cơ bản: tiêu đề, mô tả, ảnh khi chia sẻ lên Facebook / Zalo",
             "Gắn tên miền của khách, hosting Vercel miễn phí cho trang nhỏ",
-            "2 lượt chỉnh sửa trước khi bàn giao, bảo hành lỗi kỹ thuật 14 ngày",
+            "2 lượt chỉnh sửa trước khi bàn giao, bảo hành lỗi kỹ thuật 1 tháng",
             "Trả theo tháng: đã gồm tên miền .com, chỉnh sửa nhỏ tối đa 1 giờ/tháng; đủ 12 tháng website thuộc về khách"
           ]
         }
@@ -414,7 +414,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "Gắn Google Analytics & Facebook Pixel để đo hiệu quả quảng cáo",
             "SEO kỹ thuật chuẩn: sitemap, schema, ảnh chia sẻ mạng xã hội",
             "Bàn giao 100% mã nguồn & file Figma, 1 buổi hướng dẫn sử dụng",
-            "Bảo hành lỗi kỹ thuật 1 tháng, hỗ trợ giờ hành chính, phản hồi trong 4 giờ làm việc"
+            "Bảo hành lỗi kỹ thuật 3 tháng, hỗ trợ giờ hành chính, phản hồi trong 4 giờ làm việc"
           ]
         }
       ],
@@ -441,7 +441,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
           items: [
             "Khách nhỏ: 25 - 50 triệu",
             "Start-up: 50 - 120 triệu",
-            "Doanh nghiệp: 120 - 300 triệu (bảo hành 6 tháng, hợp đồng & NDA)"
+            "Doanh nghiệp: 120 - 300 triệu (bảo hành 12 tháng, hợp đồng & NDA)"
           ]
         },
         {
@@ -453,7 +453,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "Cơ sở dữ liệu PostgreSQL / Supabase, sao lưu tự động hằng ngày",
             "Phân quyền Admin & Nhân viên; kiểm thử đặt hàng, thanh toán trước khi ra mắt",
             "Bàn giao mã nguồn, tài khoản quản trị & tài liệu hướng dẫn tiếng Việt",
-            "Bảo hành lỗi kỹ thuật 3 tháng, hỗ trợ giờ hành chính, phản hồi trong 4 giờ làm việc"
+            "Bảo hành lỗi kỹ thuật 6 tháng, hỗ trợ giờ hành chính, phản hồi trong 4 giờ làm việc"
           ]
         }
       ],
@@ -477,8 +477,8 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
         {
           title: "Mức Giá Theo Quy Mô",
           items: [
-            "Start-up (bản MVP): 150 - 400 triệu",
-            "Doanh nghiệp: từ 400 triệu, báo giá theo từng giai đoạn sau buổi khảo sát",
+            "Start-up (bản MVP): 150 - 400 triệu, bảo hành 12 tháng",
+            "Doanh nghiệp: từ 400 triệu, bảo hành 24 tháng, báo giá theo từng giai đoạn sau buổi khảo sát",
             "Bảo trì sau bàn giao: gói hằng tháng từ 5 - 20 triệu/tháng tùy quy mô hệ thống"
           ]
         },
@@ -491,7 +491,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "Phân quyền nhiều vai trò, đăng nhập bảo mật, lưu lịch sử thao tác",
             "Docker, tự động triển khai (CI/CD), môi trường thử nghiệm riêng",
             "Demo tiến độ mỗi 2 tuần",
-            "Bàn giao mã nguồn, tài liệu kiến trúc & đào tạo đội vận hành; bảo hành 3 tháng"
+            "Bàn giao mã nguồn, tài liệu kiến trúc & đào tạo đội vận hành; bảo hành 12 tháng (doanh nghiệp 24 tháng)"
           ]
         }
       ],
@@ -570,7 +570,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "Zalo, call and Messenger buttons; contact form to email or Google Sheets",
             "Basic SEO: title, description and social share image for Facebook / Zalo",
             "Connected to your domain, free Vercel hosting for small sites",
-            "2 revision rounds before handover, 14-day technical warranty",
+            "2 revision rounds before handover, 1-month technical warranty",
             "Monthly plan: includes a .com domain and up to 1 hour of small edits per month; the site is yours after 12 months"
           ]
         }
@@ -604,7 +604,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "Google Analytics & Facebook Pixel set up to measure ad performance",
             "Technical SEO: sitemap, schema, social share images",
             "100% source code and Figma files handed over, plus one training session",
-            "1-month technical warranty, business-hours support with a 4-working-hour response"
+            "3-month technical warranty, business-hours support with a 4-working-hour response"
           ]
         }
       ],
@@ -631,7 +631,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
           items: [
             "Small business: 25 - 50M VND",
             "Start-up: 50 - 120M VND",
-            "Enterprise: 120 - 300M VND (6-month warranty, contract & NDA)"
+            "Enterprise: 120 - 300M VND (12-month warranty, contract & NDA)"
           ]
         },
         {
@@ -643,7 +643,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "PostgreSQL / Supabase database with automatic daily backups",
             "Admin & staff roles; ordering and payments tested before launch",
             "Source code, admin accounts and a written user guide handed over",
-            "3-month technical warranty, business-hours support with a 4-working-hour response"
+            "6-month technical warranty, business-hours support with a 4-working-hour response"
           ]
         }
       ],
@@ -667,8 +667,8 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
         {
           title: "Price by Client Size",
           items: [
-            "Start-up (MVP): 150 - 400M VND",
-            "Enterprise: from 400M VND, quoted per stage after a discovery session",
+            "Start-up (MVP): 150 - 400M VND, 12-month warranty",
+            "Enterprise: from 400M VND, 24-month warranty, quoted per stage after a discovery session",
             "Post-launch maintenance: monthly plans from 5 - 20M VND depending on system size"
           ]
         },
@@ -681,7 +681,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "Multiple user roles, secure login and activity history",
             "Docker, automated deployment (CI/CD) and a separate staging environment",
             "Progress demo every 2 weeks",
-            "Source code, architecture docs and team training; 3-month warranty"
+            "Source code, architecture docs and team training; 12-month warranty (24 months for enterprise)"
           ]
         }
       ],
@@ -1074,13 +1074,13 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
     },
     {
       question: "Chính sách bảo hành, sửa lỗi và duy trì hoạt động sau khi bàn giao diễn ra như thế nào?",
-      badge: "BẢO HÀNH THEO GÓI",
+      badge: "BẢO HÀNH ĐẾN 2 NĂM",
       category: "warranty",
-      answer: "Mọi sản phẩm đều được bảo hành lỗi kỹ thuật MIỄN PHÍ theo thời hạn của từng gói: Template 14 ngày, Landing & Web Giới Thiệu 1 tháng, Doanh Nghiệp & E-Commerce 3 tháng (khách doanh nghiệp 6 tháng), Web App & AI 3 tháng. Trong thời gian bảo hành, mọi lỗi phát sinh từ phần studio đã bàn giao đều được sửa miễn phí; tính năng mới không nằm trong bảo hành. Chúng tôi hỗ trợ trong giờ hành chính và phản hồi trong vòng 4 giờ làm việc. Hết bảo hành, bạn có thể dùng gói Bảo Trì Theo Giờ (từ 300.000đ/giờ) hoặc gói bảo trì hằng tháng cho Web App.",
+      answer: "Mọi sản phẩm đều được bảo hành lỗi kỹ thuật MIỄN PHÍ theo thời hạn của từng gói: Template 1 tháng, Landing & Web Giới Thiệu 3 tháng, Doanh Nghiệp & E-Commerce 6 tháng (khách doanh nghiệp 12 tháng), Web App & AI 12 tháng (khách doanh nghiệp 24 tháng). Bảo hành bao gồm: mọi lỗi trong phần studio đã bàn giao so với đặc tả đã thống nhất, và lỗi bảo mật do mã nguồn của studio. Bảo hành không bao gồm: tính năng mới hoặc thay đổi giao diện, cập nhật theo chính sách mới của Google Play / App Store, thay đổi từ dịch vụ bên thứ ba (máy chủ, cổng thanh toán, API), và phần mã nguồn do bên khác chỉnh sửa; các hạng mục này được hỗ trợ qua gói Bảo Trì. Bảo hành có hiệu lực sau khi thanh toán đủ 100%. Chúng tôi hỗ trợ trong giờ hành chính và phản hồi trong vòng 4 giờ làm việc.",
       keyBenefits: [
-        "Bảo hành lỗi miễn phí: 14 ngày đến 6 tháng tùy gói, ghi rõ trong từng gói",
+        "Bảo hành lỗi miễn phí từ 1 tháng đến 24 tháng tùy gói, ghi rõ trong từng gói",
         "Hỗ trợ giờ hành chính, phản hồi trong 4 giờ làm việc",
-        "Gói Doanh Nghiệp & Web App có sao lưu dữ liệu tự động hằng ngày",
+        "Ranh giới rõ ràng: lỗi phần đã bàn giao được sửa miễn phí, tính năng mới & cập nhật nền tảng tính theo gói Bảo Trì",
         "Hết bảo hành: bảo trì theo giờ từ 300.000đ/giờ, không bắt buộc phí hằng tháng"
       ]
     },
@@ -1184,13 +1184,13 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
     },
     {
       question: "What is your warranty policy, bug-fixing coverage, and post-launch maintenance SLA?",
-      badge: "WARRANTY PER PACKAGE",
+      badge: "UP TO 2-YEAR WARRANTY",
       category: "warranty",
-      answer: "Every delivery includes a FREE technical warranty for the period of its package: Template 14 days, Landing & Company Site 1 month, Business & E-Commerce 3 months (6 months for enterprise clients), Web App & AI 3 months. During the warranty, bugs in what we delivered are fixed at no cost; new features are not covered. We support you during business hours and respond within 4 working hours. After the warranty you can use Hourly Maintenance (from 300k VND/hour) or a monthly maintenance plan for web apps.",
+      answer: "Every delivery includes a FREE technical warranty for the period of its package: Template 1 month, Landing & Company Site 3 months, Business & E-Commerce 6 months (12 months for enterprise clients), Web App & AI 12 months (24 months for enterprise clients). Covered: any defect in what we delivered against the agreed specification, and security issues caused by our code. Not covered: new features or design changes, updates required by new Google Play / App Store policies, changes in third-party services (hosting, payment gateways, APIs), and code modified by other parties; these are handled through our Maintenance plans. The warranty takes effect once the project is paid in full. We support you during business hours and respond within 4 working hours.",
       keyBenefits: [
-        "Free bug-fix warranty from 14 days to 6 months, stated in each package",
+        "Free bug-fix warranty from 1 to 24 months, stated in each package",
         "Business-hours support with a 4-working-hour response",
-        "Automatic daily backups on Business & Web App packages",
+        "Clear boundaries: defects in delivered work are fixed free; new features and platform updates go through Maintenance",
         "After warranty: hourly maintenance from 300k VND/hour, no monthly lock-in"
       ]
     },
