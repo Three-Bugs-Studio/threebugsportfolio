@@ -12,8 +12,6 @@ import {
 } from "./ui/MajesticIcon";
 import Lightbox from "./Lightbox";
 import randomPhiTruongStore from "@/assets/randomphitruongstore.webp";
-import fortifyHomepage from "@/assets/fortifykitchen/fortify_homepage.webp";
-import qmdHomepage from "@/assets/qmdtech/qmd_tech_homepage.webp";
 import lehongkhanhHomepage from "@/assets/lehongkhanh/lehongkhanh_homepage.webp";
 import BlurUpImage from "./BlurUpImage";
 import MagnifyingLens from "./MagnifyingLens";
@@ -93,7 +91,7 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                       <span className="font-mono text-xs text-[#8E8E93]">
                         {project.category}
                       </span>
-                      {(project.id === "qmd_tech" || project.id === "fortify_kitchen" || project.id === "h1t_micro") && (
+                      {project.id === "h1t_micro" && (
                         <span className="inline-flex items-center gap-1.5 font-mono text-[10px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-sm font-semibold">
                           <span className="w-1.5 h-1.5 rounded-sm bg-emerald-400" />
                           <span>{project.timeline}</span>
@@ -402,82 +400,6 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                           </div>
                         </div>
                       </div>
-                    )}
-
-                    {/* 3. Fortify Kitchen Device Frame */}
-                    {project.id === "fortify_kitchen" && (
-                      <MagnifyingLens lang={lang} zoomImage={fortifyHomepage} zoomLevel={2.5}>
-                        <div className="w-full h-full flex flex-col relative z-10 text-left font-sans device-showcase-frame bg-[#0d0d0f] border border-white/10 rounded-sm overflow-hidden shadow-2xl">
-                          <div className="device-showcase-header bg-[#18181b] border-b border-white/5 px-3 py-2 flex items-center justify-between gap-3 shrink-0">
-                            <div className="flex items-center gap-1.5 shrink-0">
-                              <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
-                              <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-                              <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
-                            </div>
-                            <div className="device-showcase-url flex-1 max-w-xs mx-auto bg-[#09090b]/80 border border-white/5 rounded-sm py-0.5 px-3 flex items-center justify-between text-[#8E8E93] text-[9px] font-mono">
-                              <span className="truncate">https://fortifykitchen.vercel.app</span>
-                              <span className="text-[8px] text-emerald-400">🔒</span>
-                            </div>
-                            <span className="font-mono text-[8px] text-[#8E8E93] tracking-widest shrink-0 uppercase">FOOD TECH</span>
-                          </div>
-
-                          <div className="relative flex-1 min-h-[260px] sm:min-h-[300px] bg-[#090909] overflow-hidden group/image">
-                            <BlurUpImage 
-                              src={fortifyHomepage} 
-                              alt="Fortify Kitchen Preview" 
-                              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/image:scale-[1.03]"
-                              wrapperClassName="w-full h-full"
-                              referrerPolicy="no-referrer"
-                            />
-                            <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
-                            <div className="absolute bottom-2.5 inset-x-3 flex items-center justify-between gap-2 z-10 pointer-events-none">
-                              <div className="flex items-center gap-1.5 font-mono text-[8.5px] text-white">
-                                <span className="bg-emerald-500 text-white font-bold px-1.5 py-0.5 rounded-[2px]">NUTRITION MENU</span>
-                                <span className="bg-white/10 px-1.5 py-0.5 rounded-[2px] backdrop-blur-sm">CALORIE TRACKING · SAIGON</span>
-                              </div>
-                              <span className="font-mono text-[7.5px] text-[#8E8E93] uppercase tracking-wider hidden sm:inline-block">2.5X ZOOM</span>
-                            </div>
-                          </div>
-                        </div>
-                      </MagnifyingLens>
-                    )}
-
-                    {/* 4. QMD Tech Device Frame */}
-                    {project.id === "qmd_tech" && (
-                      <MagnifyingLens lang={lang} zoomImage={qmdHomepage} zoomLevel={2.5}>
-                        <div className="w-full h-full flex flex-col relative z-10 text-left font-sans device-showcase-frame bg-[#0d0d0f] border border-white/10 rounded-sm overflow-hidden shadow-2xl">
-                          <div className="device-showcase-header bg-[#18181b] border-b border-white/5 px-3 py-2 flex items-center justify-between gap-3 shrink-0">
-                            <div className="flex items-center gap-1.5 shrink-0">
-                              <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
-                              <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-                              <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
-                            </div>
-                            <div className="device-showcase-url flex-1 max-w-xs mx-auto bg-[#09090b]/80 border border-white/5 rounded-sm py-0.5 px-3 flex items-center justify-between text-[#8E8E93] text-[9px] font-mono">
-                              <span className="truncate">https://qmd-tech.vercel.app</span>
-                              <span className="text-[8px] text-emerald-400">🔒</span>
-                            </div>
-                            <span className="font-mono text-[8px] text-[#8E8E93] tracking-widest shrink-0 uppercase">CUSTOM PC</span>
-                          </div>
-
-                          <div className="relative flex-1 min-h-[260px] sm:min-h-[300px] bg-[#090909] overflow-hidden group/image">
-                            <BlurUpImage 
-                              src={qmdHomepage} 
-                              alt="QMD Tech Preview" 
-                              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/image:scale-[1.03]"
-                              wrapperClassName="w-full h-full"
-                              referrerPolicy="no-referrer"
-                            />
-                            <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
-                            <div className="absolute bottom-2.5 inset-x-3 flex items-center justify-between gap-2 z-10 pointer-events-none">
-                              <div className="flex items-center gap-1.5 font-mono text-[8.5px] text-white">
-                                <span className="bg-brand-orange text-[#090909] font-bold px-1.5 py-0.5 rounded-[2px]">SMART PC BUILDER</span>
-                                <span className="bg-white/10 px-1.5 py-0.5 rounded-[2px] backdrop-blur-sm">SEPAY VIETQR · HỎA TỐC 2H</span>
-                              </div>
-                              <span className="font-mono text-[7.5px] text-[#8E8E93] uppercase tracking-wider hidden sm:inline-block">2.5X ZOOM</span>
-                            </div>
-                          </div>
-                        </div>
-                      </MagnifyingLens>
                     )}
 
                     {/* 5. H1T MICRO Device Frame */}
