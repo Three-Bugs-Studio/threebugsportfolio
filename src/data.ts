@@ -850,6 +850,40 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       showcaseUrl: "https://www.rmitvn-showcase.com/nightswatch10f37c09",
       showcaseLabel: "RMIT Enterprise Showcase (Project Luvcraft)",
       highlightBadge: "RMIT SHOWCASE"
+    },
+    {
+      name: "Hoang Do",
+      role: "Client Relations · Tư vấn báo giá & Bảo trì",
+      bio: "Đầu mối chăm sóc khách hàng của Three Bugs Studio. Anh tiếp nhận yêu cầu, tư vấn gói dịch vụ và lập dự toán chi phí minh bạch, đồng thời là người phụ trách gói Bảo Trì Theo Giờ sau bàn giao. Liên hệ trực tiếp: 0392.996.307 (Zalo).",
+      specialties: ["Tư vấn & Báo giá", "Chăm sóc khách hàng", "Điều phối Bảo trì", "Lập phạm vi dự án"],
+      socials: {},
+      colorTag: {
+        name: "Amber Gold",
+        hex: "#F59E0B",
+        badgeClass: "bg-[#F59E0B]/15 text-[#F59E0B] border-[#F59E0B]/40",
+        glowClass: "border-[#F59E0B]/40 shadow-[0_0_20px_rgba(245,158,11,0.25)]",
+        borderHex: "#F59E0B"
+      },
+      diagramRole: "CLIENT RELATIONS · QUOTES & AFTERCARE",
+      nodeId: "node_hoangdo",
+      highlightBadge: "ZALO 0392.996.307"
+    },
+    {
+      name: "Minh Duc",
+      role: "Client Relations · Tư vấn kỹ thuật & Lộ trình",
+      bio: "Cầu nối giữa khách hàng và đội ngũ kỹ sư. Anh tìm hiểu nhu cầu kinh doanh, tư vấn giải pháp kỹ thuật và lộ trình triển khai phù hợp, rồi theo sát dự án để khách luôn nắm rõ tiến độ. Liên hệ trực tiếp: 0867.474.204 (Zalo).",
+      specialties: ["Tư vấn Giải pháp", "Lộ trình Triển khai", "Chăm sóc khách hàng", "Theo dõi Tiến độ"],
+      socials: {},
+      colorTag: {
+        name: "Indigo Blue",
+        hex: "#6366F1",
+        badgeClass: "bg-[#6366F1]/15 text-[#6366F1] border-[#6366F1]/40",
+        glowClass: "border-[#6366F1]/40 shadow-[0_0_20px_rgba(99,102,241,0.25)]",
+        borderHex: "#6366F1"
+      },
+      diagramRole: "CLIENT RELATIONS · TECH CONSULTING",
+      nodeId: "node_minhduc",
+      highlightBadge: "ZALO 0867.474.204"
     }
   ],
   en: [
@@ -960,6 +994,40 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       showcaseUrl: "https://www.rmitvn-showcase.com/nightswatch10f37c09",
       showcaseLabel: "RMIT Enterprise Showcase (Project Luvcraft)",
       highlightBadge: "RMIT SHOWCASE"
+    },
+    {
+      name: "Hoang Do",
+      role: "Client Relations · Quotes & Aftercare",
+      bio: "Three Bugs Studio's main point of contact for clients. He takes in requests, recommends the right package and prepares transparent cost estimates, and he runs the Hourly Maintenance plan after handover. Direct line: 0392.996.307 (Zalo).",
+      specialties: ["Consulting & Quotes", "Client Care", "Maintenance Coordination", "Project Scoping"],
+      socials: {},
+      colorTag: {
+        name: "Amber Gold",
+        hex: "#F59E0B",
+        badgeClass: "bg-[#F59E0B]/15 text-[#F59E0B] border-[#F59E0B]/40",
+        glowClass: "border-[#F59E0B]/40 shadow-[0_0_20px_rgba(245,158,11,0.25)]",
+        borderHex: "#F59E0B"
+      },
+      diagramRole: "CLIENT RELATIONS · QUOTES & AFTERCARE",
+      nodeId: "node_hoangdo",
+      highlightBadge: "ZALO 0392.996.307"
+    },
+    {
+      name: "Minh Duc",
+      role: "Client Relations · Technical Consulting & Roadmap",
+      bio: "The bridge between clients and our engineers. He learns your business needs, recommends the technical solution and delivery roadmap, then follows the project so you always know where it stands. Direct line: 0867.474.204 (Zalo).",
+      specialties: ["Solution Consulting", "Delivery Roadmap", "Client Care", "Progress Tracking"],
+      socials: {},
+      colorTag: {
+        name: "Indigo Blue",
+        hex: "#6366F1",
+        badgeClass: "bg-[#6366F1]/15 text-[#6366F1] border-[#6366F1]/40",
+        glowClass: "border-[#6366F1]/40 shadow-[0_0_20px_rgba(99,102,241,0.25)]",
+        borderHex: "#6366F1"
+      },
+      diagramRole: "CLIENT RELATIONS · TECH CONSULTING",
+      nodeId: "node_minhduc",
+      highlightBadge: "ZALO 0867.474.204"
     }
   ]
 };
