@@ -176,7 +176,29 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                             />
                           </a>
 
-                          {/* 2. Community Upvote Badge */}
+                          {/* 2. Weekly Rank Badge */}
+                          <a
+                            href="https://unikorn.vn/p/h1t-micro?ref=embed-h1t-micro"
+                            target="_blank"
+                            rel="noreferrer"
+                            title="H1T MICRO - Hàng tuần trên Unikorn.vn"
+                            className="inline-flex items-center transition-transform hover:scale-[1.03] active:scale-95 focus-visible:ring-1 focus-visible:ring-brand-orange rounded-sm"
+                          >
+                            <img
+                              src="https://unikorn.vn/api/widgets/badge/h1t-micro/rank?theme=dark&type=weekly"
+                              alt="H1T MICRO - Hàng tuần"
+                              className="unikorn-badge-dark h-10 sm:h-11 w-auto object-contain"
+                              loading="lazy"
+                            />
+                            <img
+                              src="https://unikorn.vn/api/widgets/badge/h1t-micro/rank?theme=light&type=weekly"
+                              alt="H1T MICRO - Hàng tuần"
+                              className="unikorn-badge-light h-10 sm:h-11 w-auto object-contain"
+                              loading="lazy"
+                            />
+                          </a>
+
+                          {/* 3. Community Upvote Badge */}
                           <a 
                             href="https://unikorn.vn/p/h1t-micro?ref=embed-h1t-micro" 
                             target="_blank" 
