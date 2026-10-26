@@ -14,6 +14,8 @@ import kandinskyImg from "@/assets/team-art/kandinsky-composition-8.jpg";
 import vitruvianImg from "@/assets/team-art/davinci-vitruvian-man.jpg";
 import turnerImg from "@/assets/team-art/turner-rain-steam-speed.jpg";
 import piranesiImg from "@/assets/team-art/piranesi-drawbridge.jpg";
+import monetImg from "@/assets/team-art/monet-water-lily-bridge.jpg";
+import vanGoghImg from "@/assets/team-art/vangogh-cafe-terrace.jpg";
 import receptionistDeskGif from "@/assets/animation-icon/receptionist-desk.gif";
 
 interface TeamProps {
@@ -46,6 +48,14 @@ export default function Team({ lang }: TeamProps) {
     "Hao Vu": {
       img: piranesiImg, title: "Carceri d'invenzione: The Drawbridge", artist: "Giovanni Battista Piranesi", year: "1761", focus: "50% 40%",
       meaning: { vi: "Kiến trúc sâu & nền móng: những tầng cấu trúc vững chắc bên dưới mọi hệ thống.", en: "Deep architecture & foundations: the solid layers beneath every system." },
+    },
+    "Hoang Do": {
+      img: monetImg, title: "Bridge over a Pond of Water Lilies", artist: "Claude Monet", year: "1899", focus: "50% 45%",
+      meaning: { vi: "Cây cầu kết nối: đưa khách hàng đến với studio một cách nhẹ nhàng, rõ ràng.", en: "A connecting bridge: bringing clients and the studio together, calmly and clearly." },
+    },
+    "Minh Duc": {
+      img: vanGoghImg, title: "Café Terrace at Night", artist: "Vincent van Gogh", year: "1888", focus: "45% 50%",
+      meaning: { vi: "Ánh đèn chào đón: lắng nghe khách hàng và soi rõ con đường triển khai.", en: "A welcoming light: listening to clients and lighting up the road ahead." },
     },
   };
 
@@ -146,7 +156,7 @@ export default function Team({ lang }: TeamProps) {
 
         {/* 5-Column Professional Team Grid */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
