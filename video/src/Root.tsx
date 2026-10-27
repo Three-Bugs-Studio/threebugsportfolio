@@ -21,5 +21,14 @@ export const Root: React.FC = () => (
       width={1920}
       height={1080}
     />
+    <Composition
+      id="ShowreelEN"
+      component={Showreel}
+      defaultProps={{ lang: "en" as const }}
+      durationInFrames={SHOWREEL_FRAMES}
+      fps={60}
+      width={1920}
+      height={1080}
+    />
   </>
 );
