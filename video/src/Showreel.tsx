@@ -2,6 +2,7 @@ import React from "react";
 import {
   AbsoluteFill,
   Audio,
+  getStaticFiles,
   Easing,
   Img,
   Sequence,
@@ -24,6 +25,41 @@ const TEXT = "#F5F5F3";
 const MUTED = "#8E8E93";
 const S = 60;
 export const SHOWREEL_FRAMES = 32 * S;
+
+// All on-screen text, per language. The animation code below is shared.
+const COPY = {
+  vi: {
+    hello: "> Xin chào, chúng tôi là",
+    helps: ["Giúp doanh nghiệp", "tăng trưởng online."],
+    web: "Website",
+    app: "Web App & AI",
+    appChip: "H1T MICRO · 1.800+ người dùng · #1 Unikorn",
+    templates: "Mẫu website",
+    templatesChip: "7 mẫu có sẵn · giao trong 2–3 ngày",
+    pitch: ["Thay vì thuê cả một đội ngũ…", "chúng tôi là đội ngũ của bạn ✦", "Chỉ từ 2,5 triệu"],
+    chips: ["Thiết kế", "Lập trình", "Ra mắt", "Bảo trì"],
+    findUs: "Tìm chúng tôi tại",
+    wall: ["Dành cho start-up & doanh nghiệp", "cần ra mắt thật nhanh."],
+    studioShot: "3bstudio.jpg",
+  },
+  en: {
+    hello: "> Hi, we're",
+    helps: ["We help businesses", "grow online."],
+    web: "Websites",
+    app: "Web Apps & AI",
+    appChip: "H1T MICRO · 1,800+ users · #1 Unikorn",
+    templates: "Templates",
+    templatesChip: "7 ready-made designs · live in 2–3 days",
+    pitch: ["Skip hiring a whole team…", "we are your team ✦", "From 2.5M VND"],
+    chips: ["Design", "Code", "Launch", "Care"],
+    findUs: "Find us at",
+    wall: ["For startups & businesses", "that need to move fast."],
+    studioShot: "3bstudio-en.jpg",
+  },
+};
+type Lang = keyof typeof COPY;
+const CopyContext = React.createContext(COPY.vi);
+const useCopy = () => React.useContext(CopyContext);
 
 // Scene timings in seconds: [start, length]
 const SCENES = {
@@ -135,6 +171,7 @@ const Typed: React.FC<{ text: string; start: number; cps?: number; style?: React
 /* ---------------- Scenes ---------------- */
 
 const Intro: React.FC = () => {
+  const t = useCopy();
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   const pop = spring({ frame: f - 70, fps, config: { damping: 14 } });
@@ -142,7 +179,7 @@ const Intro: React.FC = () => {
     <AbsoluteFill style={{ justifyContent: "center", alignItems: "center" }}>
       <DotField />
       <div style={{ position: "relative", fontFamily: mono, fontSize: 44, color: MUTED, marginBottom: 30 }}>
-        <Typed text="> Xin chào, chúng tôi là" start={8} />
+        <Typed text={t.hello} start={8} />
       </div>
       <div style={{ position: "relative", display: "flex", alignItems: "center", gap: 36, opacity: pop, transform: `scale(${0.85 + pop * 0.15})` }}>
         <Img src={staticFile("ThreeBugsStudio.webp")} style={{ width: 150, height: 150, borderRadius: 26, border: `2px solid ${ORANGE}66` }} />
@@ -152,17 +189,21 @@ const Intro: React.FC = () => {
   );
 };
 
-const Helps: React.FC = () => (
+const Helps: React.FC = () => {
+  const t = useCopy();
+  return (
   <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", textAlign: "center" }}>
     <div style={{ fontFamily: display, fontWeight: 500, fontSize: 130, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
-      <div style={{ color: TEXT, ...useIn(0, 120) }}>Giúp doanh nghiệp</div>
-      <div style={{ color: ORANGE, ...useIn(14, 120) }}>tăng trưởng online.</div>
+      <div style={{ color: TEXT, ...useIn(0, 120) }}>{t.helps[0]}</div>
+      <div style={{ color: ORANGE, ...useIn(14, 120) }}>{t.helps[1]}</div>
     </div>
   </AbsoluteFill>
-);
+  );
+};
 
 // Six screenshots spread out from the centre around the word.
 const Web: React.FC = () => {
+  const t = useCopy();
   const f = useCurrentFrame();
   const spread = interpolate(f, [0, 40], [0.35, 1], { ...clamp, easing: ease });
   const zoom = interpolate(f, [0, 180], [1.05, 0.95]);
@@ -191,13 +232,14 @@ const Web: React.FC = () => {
           />
         ))}
       </AbsoluteFill>
-      <BigWord delay={10}>Website</BigWord>
+      <BigWord delay={10}>{t.web}</BigWord>
     </AbsoluteFill>
   );
 };
 
 // H1T MICRO screens slide in from three corners, with the real traction numbers.
 const App: React.FC = () => {
+  const t = useCopy();
   const f = useCurrentFrame();
   const slide = (d: number) => interpolate(f, [d, d + 30], [1, 0], { ...clamp, easing: ease });
   const out = interpolate(f, [165, 180], [1, 0], clamp);
@@ -207,7 +249,7 @@ const App: React.FC = () => {
       <Shot src={SHOTS.h1tFeatures} w={700} style={{ right: 60 - slide(8) * 900, top: 120, transform: "rotate(3deg)" }} />
       <Shot src={SHOTS.h1tDetails} w={720} style={{ left: 600, bottom: 40 - slide(16) * 700, transform: "rotate(-1deg)" }} />
       <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 50%, #090909dd 25%, transparent 70%)" }} />
-      <BigWord delay={12} size={170}>Web App & AI</BigWord>
+      <BigWord delay={12} size={170}>{t.app}</BigWord>
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", paddingTop: 300 }}>
         <div
           style={{
@@ -221,7 +263,7 @@ const App: React.FC = () => {
             ...useIn(40, undefined, 30),
           }}
         >
-          H1T MICRO · 1.800+ người dùng · #1 Unikorn
+          {t.appChip}
         </div>
       </AbsoluteFill>
     </AbsoluteFill>
@@ -230,6 +272,7 @@ const App: React.FC = () => {
 
 // Template screenshots ride across in one row.
 const Templates: React.FC = () => {
+  const t = useCopy();
   const f = useCurrentFrame();
   const x = interpolate(f, [0, 120], [300, -900]);
   const row = [SHOTS.aurelle, SHOTS.voltline, SHOTS.vivu, SHOTS.betonform, SHOTS.timbera, SHOTS.fortify];
@@ -240,9 +283,9 @@ const Templates: React.FC = () => {
         <Shot key={src} src={src} w={560} style={{ top: 360, left: x + i * 600 }} />
       ))}
       <AbsoluteFill style={{ background: "linear-gradient(180deg, #090909ee 0%, #09090966 30%, #090909d9 45%, #090909d9 62%, #09090966 75%, #090909ee 100%)" }} />
-      <BigWord delay={4} size={170}>Mẫu website</BigWord>
+      <BigWord delay={4} size={170}>{t.templates}</BigWord>
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", paddingTop: 290 }}>
-        <div style={{ fontFamily: mono, fontSize: 36, color: TEXT, background: "#090909e6", border: `1px solid ${ORANGE}66`, padding: "12px 28px", borderRadius: 999, ...useIn(20, undefined, 20) }}>7 mẫu có sẵn · giao trong 2–3 ngày</div>
+        <div style={{ fontFamily: mono, fontSize: 36, color: TEXT, background: "#090909e6", border: `1px solid ${ORANGE}66`, padding: "12px 28px", borderRadius: 999, ...useIn(20, undefined, 20) }}>{t.templatesChip}</div>
       </AbsoluteFill>
     </AbsoluteFill>
   );
@@ -250,16 +293,17 @@ const Templates: React.FC = () => {
 
 // Four pitch lines, ~1.5s each, with the studio site in a browser frame behind.
 const Pitch: React.FC = () => {
+  const t = useCopy();
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   const laptopIn = interpolate(f, [10, 50], [0, 1], { ...clamp, easing: ease });
   const lines: [string, number, number, string][] = [
-    ["Thay vì thuê cả một đội ngũ…", 0, 90, TEXT],
-    ["chúng tôi là đội ngũ của bạn ✦", 90, 180, TEXT],
+    [t.pitch[0], 0, 90, TEXT],
+    [t.pitch[1], 90, 180, TEXT],
     ["", 180, 270, TEXT],
-    ["Chỉ từ 2,5 triệu", 270, 360, ORANGE],
+    [t.pitch[2], 270, 360, ORANGE],
   ];
-  const chips = ["Thiết kế", "Lập trình", "Ra mắt", "Bảo trì"];
+  const chips = t.chips;
   return (
     <AbsoluteFill>
       <div
@@ -281,7 +325,7 @@ const Pitch: React.FC = () => {
           ))}
           <span style={{ fontFamily: mono, fontSize: 18, color: MUTED, marginLeft: 16 }}>3bstudio.me</span>
         </div>
-        <Img src={SHOTS.studio} style={{ width: "100%", display: "block" }} />
+        <Img src={shot(t.studioShot)} style={{ width: "100%", display: "block" }} />
       </div>
       {lines.map(([text, a, b, color]) =>
         text ? (
@@ -341,13 +385,14 @@ const PitchLine: React.FC<{ text: string; color: string; len: number }> = ({ tex
 );
 
 const Search: React.FC = () => {
+  const t = useCopy();
   const f = useCurrentFrame();
   const bar = interpolate(f, [10, 40], [0, 1], { ...clamp, easing: ease });
   return (
     <AbsoluteFill style={{ justifyContent: "center", alignItems: "center" }}>
       <DotField />
       <div style={{ position: "relative", fontFamily: display, fontWeight: 500, fontSize: 96, color: TEXT, marginBottom: 50, ...useIn(0, 180, 40) }}>
-        Tìm chúng tôi tại
+        {t.findUs}
       </div>
       <div
         style={{
@@ -377,6 +422,7 @@ const Search: React.FC = () => {
 
 // Two rows of all the work drifting in opposite directions behind two closing lines.
 const Wall: React.FC = () => {
+  const t = useCopy();
   const f = useCurrentFrame();
   const all = Object.values(SHOTS);
   const rowA = all.slice(0, 7);
@@ -394,10 +440,10 @@ const Wall: React.FC = () => {
       ))}
       <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 50%, #090909f2 30%, #09090966 75%)" }} />
       <Sequence from={0} durationInFrames={180} layout="none">
-        <BigWord delay={6} size={110} end={180}>Dành cho start-up & doanh nghiệp</BigWord>
+        <BigWord delay={6} size={110} end={180}>{t.wall[0]}</BigWord>
       </Sequence>
       <Sequence from={180} durationInFrames={180} layout="none">
-        <BigWord delay={6} size={130} color={ORANGE} end={180}>cần ra mắt thật nhanh.</BigWord>
+        <BigWord delay={6} size={130} color={ORANGE} end={180}>{t.wall[1]}</BigWord>
       </Sequence>
     </AbsoluteFill>
   );
@@ -445,20 +491,45 @@ const CUES: Cue[] = [
   ["boot.wav", sec("outro") + 10, 0.7],
 ];
 
-const SoundTrack: React.FC = () => (
-  <>
-    <Audio src={staticFile("sfx/hum.wav")} volume={0.5} />
-    {CUES.map(([file, from, volume], i) => (
-      <Sequence key={i} from={Math.max(0, from)} durationInFrames={2 * S} layout="none">
-        <Audio src={staticFile(`sfx/${file}`)} volume={volume} />
-      </Sequence>
-    ))}
-  </>
-);
+// English voiceover (ElevenLabs clips in public/vo), one per scene; clips not downloaded yet are skipped.
+const VO: [string, number][] = [
+  ["vo-01.mp3", 0.3],
+  ["vo-02.mp3", 3.1],
+  ["vo-03.mp3", 5.2],
+  ["vo-04.mp3", 8.1],
+  ["vo-05.mp3", 11.1],
+  ["vo-06.mp3", 13.1],
+  ["vo-07.mp3", 19.2],
+  ["vo-08.mp3", 22.3],
+  ["vo-09.mp3", 28.4],
+];
 
-export const Showreel: React.FC = () => (
+const SoundTrack: React.FC<{ lang: Lang }> = ({ lang }) => {
+  const available = new Set(getStaticFiles().map((f) => f.name));
+  const voice = lang === "en" ? VO.filter(([file]) => available.has(`vo/${file}`)) : [];
+  // Duck the bed and effects under the voice so it stays clear.
+  const duck = voice.length ? 0.45 : 1;
+  return (
+    <>
+      <Audio src={staticFile("sfx/hum.wav")} volume={0.5 * duck} />
+      {CUES.map(([file, from, volume], i) => (
+        <Sequence key={i} from={Math.max(0, from)} durationInFrames={2 * S} layout="none">
+          <Audio src={staticFile(`sfx/${file}`)} volume={volume * duck} />
+        </Sequence>
+      ))}
+      {voice.map(([file, at]) => (
+        <Sequence key={file} from={Math.round(at * S)} layout="none">
+          <Audio src={staticFile(`vo/${file}`)} volume={1} />
+        </Sequence>
+      ))}
+    </>
+  );
+};
+
+export const Showreel: React.FC<{ lang?: Lang }> = ({ lang = "vi" }) => (
+  <CopyContext.Provider value={COPY[lang]}>
   <AbsoluteFill style={{ background: BG }}>
-    <SoundTrack />
+    <SoundTrack lang={lang} />
     <Sequence {...at(SCENES.intro)}><Intro /></Sequence>
     <Sequence {...at(SCENES.helps)}><Helps /></Sequence>
     <Sequence {...at(SCENES.web)}><Web /></Sequence>
@@ -469,4 +540,5 @@ export const Showreel: React.FC = () => (
     <Sequence {...at(SCENES.wall)}><Wall /></Sequence>
     <Sequence {...at(SCENES.outro)}><Outro /></Sequence>
   </AbsoluteFill>
+  </CopyContext.Provider>
 );
