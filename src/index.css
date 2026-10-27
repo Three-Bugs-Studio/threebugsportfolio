@@ -991,6 +991,14 @@ html.light .card-brutalist:hover {
   animation-play-state: paused;
 }
 
+/* Team focus effect: when one card is hovered or keyboard-focused, the others step back */
+.team-focus:has(.team-card-item:hover) .team-card-item:not(:hover),
+.team-focus:has(.team-card-item:focus-visible) .team-card-item:not(:focus-visible) {
+  /* !important: Motion leaves opacity/filter as inline styles after the entrance animation */
+  opacity: 0.45 !important;
+  filter: blur(1.5px) saturate(0.6) !important;
+}
+
 /* Global Prefers-Reduced-Motion Accessibility Support */
 @media (prefers-reduced-motion: reduce) {
   *,
