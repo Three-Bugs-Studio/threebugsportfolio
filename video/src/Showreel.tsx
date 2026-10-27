@@ -24,7 +24,6 @@ const BG = "#090909";
 const TEXT = "#F5F5F3";
 const MUTED = "#8E8E93";
 const S = 60;
-export const SHOWREEL_FRAMES = 32 * S;
 
 // All on-screen text, per language. The animation code below is shared.
 const COPY = {
@@ -61,18 +60,44 @@ type Lang = keyof typeof COPY;
 const CopyContext = React.createContext(COPY.vi);
 const useCopy = () => React.useContext(CopyContext);
 
-// Scene timings in seconds: [start, length]
-const SCENES = {
-  intro: [0, 3],
-  helps: [3, 2],
-  web: [5, 3],
-  app: [8, 3],
-  templates: [11, 2],
-  pitch: [13, 6],
-  search: [19, 3],
-  wall: [22, 6],
-  outro: [28, 4],
-} as const;
+type SceneKey = "intro" | "helps" | "web" | "app" | "templates" | "pitch" | "search" | "wall" | "outro";
+type Timing = {
+  total: number; // seconds
+  scenes: Record<SceneKey, readonly [number, number]>; // [start, length] in seconds
+  pitchBeats: [number, number, number, number]; // frames inside the pitch scene: end of line 1, line 2, chips, price
+  chipAt: [number, number, number, number]; // frames inside the pitch scene where each chip pops
+  vo: [string, number][]; // voiceover clip and start time in seconds
+};
+
+// Vietnamese: the original 32s cut. English: stretched to 40s so each ElevenLabs line fits its scene,
+// with the pitch beats placed on the pauses measured in vo-06.
+const TIMING: Record<Lang, Timing> = {
+  vi: {
+    total: 32,
+    scenes: { intro: [0, 3], helps: [3, 2], web: [5, 3], app: [8, 3], templates: [11, 2], pitch: [13, 6], search: [19, 3], wall: [22, 6], outro: [28, 4] },
+    pitchBeats: [90, 180, 270, 360],
+    chipAt: [180, 188, 196, 204],
+    vo: [],
+  },
+  en: {
+    total: 40,
+    scenes: { intro: [0, 3], helps: [3, 2.6], web: [5.6, 2.4], app: [8, 6.2], templates: [14.2, 3.4], pitch: [17.6, 9.6], search: [27.2, 3.2], wall: [30.4, 3.8], outro: [34.2, 5.8] },
+    pitchBeats: [135, 225, 423, 576],
+    chipAt: [239, 282, 321, 354],
+    vo: [
+      ["vo-01.mp3", 0.3],
+      ["vo-02.mp3", 3.15],
+      ["vo-03.mp3", 5.75],
+      ["vo-04.mp3", 8.15],
+      ["vo-05.mp3", 14.3],
+      ["vo-06.mp3", 17.75],
+      ["vo-07.mp3", 27.35],
+      ["vo-08.mp3", 30.5],
+      ["vo-09.mp3", 34.4],
+    ],
+  },
+};
+export const showreelFrames = (lang: Lang) => TIMING[lang].total * S;
 
 const ease = Easing.bezier(0.16, 1, 0.3, 1);
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
@@ -189,24 +214,24 @@ const Intro: React.FC = () => {
   );
 };
 
-const Helps: React.FC = () => {
+const Helps: React.FC<{ len: number }> = ({ len }) => {
   const t = useCopy();
   return (
   <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", textAlign: "center" }}>
     <div style={{ fontFamily: display, fontWeight: 500, fontSize: 130, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
-      <div style={{ color: TEXT, ...useIn(0, 120) }}>{t.helps[0]}</div>
-      <div style={{ color: ORANGE, ...useIn(14, 120) }}>{t.helps[1]}</div>
+      <div style={{ color: TEXT, ...useIn(0, len) }}>{t.helps[0]}</div>
+      <div style={{ color: ORANGE, ...useIn(14, len) }}>{t.helps[1]}</div>
     </div>
   </AbsoluteFill>
   );
 };
 
 // Six screenshots spread out from the centre around the word.
-const Web: React.FC = () => {
+const Web: React.FC<{ len: number }> = ({ len }) => {
   const t = useCopy();
   const f = useCurrentFrame();
   const spread = interpolate(f, [0, 40], [0.35, 1], { ...clamp, easing: ease });
-  const zoom = interpolate(f, [0, 180], [1.05, 0.95]);
+  const zoom = interpolate(f, [0, len], [1.05, 0.95]);
   const tiles: [string, number, number, number][] = [
     [SHOTS.store, -620, -300, -4],
     [SHOTS.aurelle, 0, -360, 2],
@@ -215,7 +240,7 @@ const Web: React.FC = () => {
     [SHOTS.qmd, 0, 360, -2],
     [SHOTS.timbera, 620, 300, -3],
   ];
-  const out = interpolate(f, [165, 180], [1, 0], clamp);
+  const out = interpolate(f, [len - 15, len], [1, 0], clamp);
   return (
     <AbsoluteFill style={{ opacity: out }}>
       <AbsoluteFill style={{ transform: `scale(${zoom})` }}>
@@ -238,11 +263,11 @@ const Web: React.FC = () => {
 };
 
 // H1T MICRO screens slide in from three corners, with the real traction numbers.
-const App: React.FC = () => {
+const App: React.FC<{ len: number }> = ({ len }) => {
   const t = useCopy();
   const f = useCurrentFrame();
   const slide = (d: number) => interpolate(f, [d, d + 30], [1, 0], { ...clamp, easing: ease });
-  const out = interpolate(f, [165, 180], [1, 0], clamp);
+  const out = interpolate(f, [len - 15, len], [1, 0], clamp);
   return (
     <AbsoluteFill style={{ opacity: out }}>
       <Shot src={SHOTS.h1tHome} w={760} style={{ left: 60 - slide(0) * 900, top: 70, transform: "rotate(-3deg)" }} />
@@ -271,12 +296,12 @@ const App: React.FC = () => {
 };
 
 // Template screenshots ride across in one row.
-const Templates: React.FC = () => {
+const Templates: React.FC<{ len: number }> = ({ len }) => {
   const t = useCopy();
   const f = useCurrentFrame();
-  const x = interpolate(f, [0, 120], [300, -900]);
+  const x = interpolate(f, [0, len], [300, -300 - len * 5]);
   const row = [SHOTS.aurelle, SHOTS.voltline, SHOTS.vivu, SHOTS.betonform, SHOTS.timbera, SHOTS.fortify];
-  const out = interpolate(f, [105, 120], [1, 0], clamp);
+  const out = interpolate(f, [len - 15, len], [1, 0], clamp);
   return (
     <AbsoluteFill style={{ opacity: out }}>
       {row.map((src, i) => (
@@ -291,17 +316,17 @@ const Templates: React.FC = () => {
   );
 };
 
-// Four pitch lines, ~1.5s each, with the studio site in a browser frame behind.
-const Pitch: React.FC = () => {
+// Four pitch beats with the studio site in a browser frame behind; beat ends come from TIMING.
+const Pitch: React.FC<{ beats: Timing["pitchBeats"]; chipAt: Timing["chipAt"] }> = ({ beats, chipAt }) => {
   const t = useCopy();
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   const laptopIn = interpolate(f, [10, 50], [0, 1], { ...clamp, easing: ease });
   const lines: [string, number, number, string][] = [
-    [t.pitch[0], 0, 90, TEXT],
-    [t.pitch[1], 90, 180, TEXT],
-    ["", 180, 270, TEXT],
-    [t.pitch[2], 270, 360, ORANGE],
+    [t.pitch[0], 0, beats[0], TEXT],
+    [t.pitch[1], beats[0], beats[1], TEXT],
+    ["", beats[1], beats[2], TEXT],
+    [t.pitch[2], beats[2], beats[3], ORANGE],
   ];
   const chips = t.chips;
   return (
@@ -312,7 +337,7 @@ const Pitch: React.FC = () => {
           left: 960 - 560,
           top: 400 + (1 - laptopIn) * 300,
           width: 1120,
-          opacity: laptopIn * interpolate(f, [170, 190], [1, 0.25], clamp),
+          opacity: laptopIn * interpolate(f, [beats[1] - 10, beats[1] + 10], [1, 0.25], clamp),
           borderRadius: 16,
           overflow: "hidden",
           border: "1px solid #ffffff22",
@@ -336,11 +361,11 @@ const Pitch: React.FC = () => {
           </Sequence>
         ) : null
       )}
-      <Sequence from={180} durationInFrames={90} layout="none">
+      <Sequence from={beats[1]} durationInFrames={beats[2] - beats[1]} layout="none">
         <AbsoluteFill style={{ justifyContent: "flex-start", alignItems: "center", paddingTop: 170 }}>
           <div style={{ display: "flex", gap: 24 }}>
             {chips.map((c, i) => {
-              const p = spring({ frame: f - 180 - i * 8, fps, config: { damping: 13 } });
+              const p = spring({ frame: f - chipAt[i], fps, config: { damping: 13 } });
               return (
                 <div
                   key={c}
@@ -354,7 +379,7 @@ const Pitch: React.FC = () => {
                     padding: "18px 40px",
                     borderRadius: 18,
                     transform: `scale(${p})`,
-                    opacity: interpolate(f, [255, 270], [1, 0], clamp),
+                    opacity: interpolate(f, [beats[2] - 15, beats[2]], [1, 0], clamp),
                   }}
                 >
                   {c}
@@ -384,14 +409,14 @@ const PitchLine: React.FC<{ text: string; color: string; len: number }> = ({ tex
   </div>
 );
 
-const Search: React.FC = () => {
+const Search: React.FC<{ len: number }> = ({ len }) => {
   const t = useCopy();
   const f = useCurrentFrame();
   const bar = interpolate(f, [10, 40], [0, 1], { ...clamp, easing: ease });
   return (
     <AbsoluteFill style={{ justifyContent: "center", alignItems: "center" }}>
       <DotField />
-      <div style={{ position: "relative", fontFamily: display, fontWeight: 500, fontSize: 96, color: TEXT, marginBottom: 50, ...useIn(0, 180, 40) }}>
+      <div style={{ position: "relative", fontFamily: display, fontWeight: 500, fontSize: 96, color: TEXT, marginBottom: 50, ...useIn(0, len, 40) }}>
         {t.findUs}
       </div>
       <div
@@ -406,7 +431,7 @@ const Search: React.FC = () => {
           padding: "0 50px",
           gap: 30,
           boxShadow: `0 0 0 6px ${ORANGE}55, 0 30px 80px #000`,
-          opacity: interpolate(f, [165, 180], [1, 0], clamp),
+          opacity: interpolate(f, [len - 15, len], [1, 0], clamp),
           overflow: "hidden",
         }}
       >
@@ -421,15 +446,16 @@ const Search: React.FC = () => {
 };
 
 // Two rows of all the work drifting in opposite directions behind two closing lines.
-const Wall: React.FC = () => {
+const Wall: React.FC<{ len: number }> = ({ len }) => {
   const t = useCopy();
   const f = useCurrentFrame();
   const all = Object.values(SHOTS);
   const rowA = all.slice(0, 7);
   const rowB = all.slice(7);
-  const a = interpolate(f, [0, 360], [0, -700]);
-  const b = interpolate(f, [0, 360], [-900, -200]);
-  const out = interpolate(f, [345, 360], [1, 0], clamp);
+  const half = Math.round(len / 2);
+  const a = interpolate(f, [0, len], [0, -700]);
+  const b = interpolate(f, [0, len], [-900, -200]);
+  const out = interpolate(f, [len - 15, len], [1, 0], clamp);
   return (
     <AbsoluteFill style={{ opacity: out }}>
       {rowA.map((src, i) => (
@@ -439,22 +465,22 @@ const Wall: React.FC = () => {
         <Shot key={`b${i}`} src={src} w={500} style={{ top: 650, left: b + i * 530 }} />
       ))}
       <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 50%, #090909f2 30%, #09090966 75%)" }} />
-      <Sequence from={0} durationInFrames={180} layout="none">
-        <BigWord delay={6} size={110} end={180}>{t.wall[0]}</BigWord>
+      <Sequence from={0} durationInFrames={half} layout="none">
+        <BigWord delay={6} size={110} end={half}>{t.wall[0]}</BigWord>
       </Sequence>
-      <Sequence from={180} durationInFrames={180} layout="none">
-        <BigWord delay={6} size={130} color={ORANGE} end={180}>{t.wall[1]}</BigWord>
+      <Sequence from={half} durationInFrames={len - half} layout="none">
+        <BigWord delay={6} size={130} color={ORANGE} end={len - half}>{t.wall[1]}</BigWord>
       </Sequence>
     </AbsoluteFill>
   );
 };
 
-const Outro: React.FC = () => {
+const Outro: React.FC<{ len: number }> = ({ len }) => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   const pop = spring({ frame: f - 10, fps, config: { damping: 15 } });
-  const glow = interpolate(f, [0, 240], [0.4, 1]);
-  const toWhite = interpolate(f, [205, 240], [0, 1], clamp);
+  const glow = interpolate(f, [0, len], [0.4, 1]);
+  const toWhite = interpolate(f, [len - 35, len], [0, 1], clamp);
   return (
     <AbsoluteFill style={{ justifyContent: "center", alignItems: "center" }}>
       <AbsoluteFill style={{ background: `radial-gradient(ellipse 70% 55% at 50% 60%, ${ORANGE}${Math.round(glow * 70).toString(16).padStart(2, "0")} 0%, transparent 70%)` }} />
@@ -475,44 +501,35 @@ const Outro: React.FC = () => {
 /* ---------------- Sound ---------------- */
 
 const at = ([start, len]: readonly [number, number]) => ({ from: Math.round(start * S), durationInFrames: Math.round(len * S) });
-const sec = (k: keyof typeof SCENES) => Math.round(SCENES[k][0] * S);
 type Cue = [string, number, number];
-const CUES: Cue[] = [
-  ...Array.from({ length: 12 }, (_, i): Cue => ["key.wav", 8 + i * 3, 0.45]),
-  ["boot.wav", 70, 0.6],
-  ...(["helps", "web", "app", "templates", "pitch", "search", "wall"] as const).map((k): Cue => ["whoosh.wav", sec(k) - 8, 0.7]),
-  ["pop.wav", sec("app") + 40, 0.6],
-  ["pop.wav", sec("templates") + 20, 0.4],
-  ...[0, 1, 2, 3].map((i): Cue => ["pop.wav", sec("pitch") + 180 + i * 8, 0.5]),
-  ["boot.wav", sec("pitch") + 270, 0.4],
-  ...Array.from({ length: 11 }, (_, i): Cue => ["key.wav", sec("search") + 45 + Math.round(i * (S / 9)), 0.5]),
-  ["whoosh.wav", sec("wall") + 172, 0.45],
-  ["whoosh.wav", sec("outro") - 8, 0.7],
-  ["boot.wav", sec("outro") + 10, 0.7],
-];
+const makeCues = (tm: Timing): Cue[] => {
+  const sec = (k: SceneKey) => Math.round(tm.scenes[k][0] * S);
+  const wallHalf = Math.round((tm.scenes.wall[1] * S) / 2);
+  return [
+    ...Array.from({ length: 12 }, (_, i): Cue => ["key.wav", 8 + i * 3, 0.45]),
+    ["boot.wav", 70, 0.6],
+    ...(["helps", "web", "app", "templates", "pitch", "search", "wall"] as const).map((k): Cue => ["whoosh.wav", sec(k) - 8, 0.7]),
+    ["pop.wav", sec("app") + 40, 0.6],
+    ["pop.wav", sec("templates") + 20, 0.4],
+    ...tm.chipAt.map((c): Cue => ["pop.wav", sec("pitch") + c, 0.5]),
+    ["boot.wav", sec("pitch") + tm.pitchBeats[2], 0.4],
+    ...Array.from({ length: 11 }, (_, i): Cue => ["key.wav", sec("search") + 45 + Math.round(i * (S / 9)), 0.5]),
+    ["whoosh.wav", sec("wall") + wallHalf - 8, 0.45],
+    ["whoosh.wav", sec("outro") - 8, 0.7],
+    ["boot.wav", sec("outro") + 10, 0.7],
+  ];
+};
 
-// English voiceover (ElevenLabs clips in public/vo), one per scene; clips not downloaded yet are skipped.
-const VO: [string, number][] = [
-  ["vo-01.mp3", 0.3],
-  ["vo-02.mp3", 3.1],
-  ["vo-03.mp3", 5.2],
-  ["vo-04.mp3", 8.1],
-  ["vo-05.mp3", 11.1],
-  ["vo-06.mp3", 13.1],
-  ["vo-07.mp3", 19.2],
-  ["vo-08.mp3", 22.3],
-  ["vo-09.mp3", 28.4],
-];
-
-const SoundTrack: React.FC<{ lang: Lang }> = ({ lang }) => {
+// Voiceover clips live in public/vo; any clip not present is skipped so the video still renders.
+const SoundTrack: React.FC<{ tm: Timing }> = ({ tm }) => {
   const available = new Set(getStaticFiles().map((f) => f.name));
-  const voice = lang === "en" ? VO.filter(([file]) => available.has(`vo/${file}`)) : [];
+  const voice = tm.vo.filter(([file]) => available.has(`vo/${file}`));
   // Duck the bed and effects under the voice so it stays clear.
   const duck = voice.length ? 0.45 : 1;
   return (
     <>
       <Audio src={staticFile("sfx/hum.wav")} volume={0.5 * duck} />
-      {CUES.map(([file, from, volume], i) => (
+      {makeCues(tm).map(([file, from, volume], i) => (
         <Sequence key={i} from={Math.max(0, from)} durationInFrames={2 * S} layout="none">
           <Audio src={staticFile(`sfx/${file}`)} volume={volume * duck} />
         </Sequence>
@@ -526,19 +543,24 @@ const SoundTrack: React.FC<{ lang: Lang }> = ({ lang }) => {
   );
 };
 
-export const Showreel: React.FC<{ lang?: Lang }> = ({ lang = "vi" }) => (
-  <CopyContext.Provider value={COPY[lang]}>
-  <AbsoluteFill style={{ background: BG }}>
-    <SoundTrack lang={lang} />
-    <Sequence {...at(SCENES.intro)}><Intro /></Sequence>
-    <Sequence {...at(SCENES.helps)}><Helps /></Sequence>
-    <Sequence {...at(SCENES.web)}><Web /></Sequence>
-    <Sequence {...at(SCENES.app)}><App /></Sequence>
-    <Sequence {...at(SCENES.templates)}><Templates /></Sequence>
-    <Sequence {...at(SCENES.pitch)}><Pitch /></Sequence>
-    <Sequence {...at(SCENES.search)}><Search /></Sequence>
-    <Sequence {...at(SCENES.wall)}><Wall /></Sequence>
-    <Sequence {...at(SCENES.outro)}><Outro /></Sequence>
-  </AbsoluteFill>
-  </CopyContext.Provider>
-);
+export const Showreel: React.FC<{ lang?: Lang }> = ({ lang = "vi" }) => {
+  const tm = TIMING[lang];
+  const sc = tm.scenes;
+  const len = (k: SceneKey) => Math.round(sc[k][1] * S);
+  return (
+    <CopyContext.Provider value={COPY[lang]}>
+      <AbsoluteFill style={{ background: BG }}>
+        <SoundTrack tm={tm} />
+        <Sequence {...at(sc.intro)}><Intro /></Sequence>
+        <Sequence {...at(sc.helps)}><Helps len={len("helps")} /></Sequence>
+        <Sequence {...at(sc.web)}><Web len={len("web")} /></Sequence>
+        <Sequence {...at(sc.app)}><App len={len("app")} /></Sequence>
+        <Sequence {...at(sc.templates)}><Templates len={len("templates")} /></Sequence>
+        <Sequence {...at(sc.pitch)}><Pitch beats={tm.pitchBeats} chipAt={tm.chipAt} /></Sequence>
+        <Sequence {...at(sc.search)}><Search len={len("search")} /></Sequence>
+        <Sequence {...at(sc.wall)}><Wall len={len("wall")} /></Sequence>
+        <Sequence {...at(sc.outro)}><Outro len={len("outro")} /></Sequence>
+      </AbsoluteFill>
+    </CopyContext.Provider>
+  );
+};
