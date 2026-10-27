@@ -188,9 +188,9 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       shortStory: "Hệ thống landing page và ứng dụng theo dõi 22 vi chất dinh dưỡng thiết yếu (10 khoáng chất & 12 vitamin) chuẩn y khoa và dinh dưỡng khoa học (RNI/RDA từ Viện Dinh Dưỡng Quốc Gia & USDA) cho thương hiệu H1T MICRO của Lê Hồng Khánh. Duong Phu Dong đảm nhận vai trò Solution Architect & Backend Engineer (kiến trúc hệ thống, Backend Golang xử lý dữ liệu vi chất, cơ sở dữ liệu Supabase, lưu trữ Cloudinary và hạ tầng Cloud VPS Vietnix); Hao Vu phụ trách Frontend với Next.js tốc độ cao.",
       technologies: ["Next.js", "Golang", "Supabase", "Cloudinary", "VPS Vietnix"],
       timeline: "Đã Triển Khai & Đang Duy Trì",
-      outcome: "Xuất sắc đạt #1 Product of the Day trên Unikorn.vn và cán mốc 1.000+ thành viên theo dõi dinh dưỡng khoa học. Nền tảng đạt chứng nhận kiểm định thực tế 99 Performance, 100 SEO, 100 Accessibility trên hạ tầng backend Golang và VPS Vietnix.",
+      outcome: "Xuất sắc đạt #1 Product of the Day trên Unikorn.vn và cán mốc 1.800+ thành viên theo dõi dinh dưỡng khoa học. Nền tảng đạt chứng nhận kiểm định thực tế 99 Performance, 100 SEO, 100 Accessibility trên hạ tầng backend Golang và VPS Vietnix.",
       coverImage: "lehongkhanh",
-      metrics: "1.000+ Thành Viên · #1 Unikorn · 99 Perf",
+      metrics: "1.800+ Thành Viên · #1 Unikorn · 99 Perf",
       liveUrl: "https://lehongkhanh.vn"
     }
   ],
@@ -230,9 +230,9 @@ export const PROJECTS_DATA: Record<"vi" | "en", Project[]> = {
       shortStory: "A scientific landing platform and web application quantifying 22 essential micronutrients (10 minerals & 12 vitamins) based on RNI/RDA recommendations from the National Institute of Nutrition & USDA for H1T MICRO (Le Hong Khanh). Duong Phu Dong served as Solution Architect & Backend Engineer (system architecture, Golang backend, Supabase database, Cloudinary media CDN and Vietnix Cloud VPS hosting), while Hao Vu built the high-performance Next.js frontend.",
       technologies: ["Next.js", "Golang", "Supabase", "Cloudinary", "VPS Vietnix"],
       timeline: "Deployed & Active Maintenance",
-      outcome: "Awarded #1 Product of the Day on Unikorn.vn and scaled past 1,000+ active members tracking micronutrients. Achieved verified benchmarks: 99 Performance, 100 SEO, 100 Accessibility powered by compiled Golang on Vietnix Cloud VPS.",
+      outcome: "Awarded #1 Product of the Day on Unikorn.vn and scaled past 1,800+ active members tracking micronutrients. Achieved verified benchmarks: 99 Performance, 100 SEO, 100 Accessibility powered by compiled Golang on Vietnix Cloud VPS.",
       coverImage: "lehongkhanh",
-      metrics: "1,000+ Members · #1 Unikorn · 99 Perf",
+      metrics: "1,800+ Members · #1 Unikorn · 99 Perf",
       liveUrl: "https://lehongkhanh.vn"
     }
   ]
