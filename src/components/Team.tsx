@@ -59,6 +59,18 @@ export default function Team({ lang }: TeamProps) {
     },
   };
 
+  // Bento rows by function; anyone not listed falls into a final row so nobody disappears.
+  const GROUPS: { key: string; vi: string; en: string; names: string[]; wide: boolean }[] = [
+    { key: "lead", vi: "BAN ĐIỀU HÀNH", en: "LEADERSHIP", names: ["Duong Phu Dong", "Thu Tran"], wide: true },
+    { key: "eng", vi: "KỸ SƯ", en: "ENGINEERING", names: ["Huynh Quang Dong", "Ho Quang Huy", "Hao Vu"], wide: false },
+    { key: "client", vi: "CLIENT RELATIONS", en: "CLIENT RELATIONS", names: ["Hoang Do", "Minh Duc"], wide: true },
+  ];
+  const groupedNames = new Set(GROUPS.flatMap((g) => g.names));
+  const leftovers = teamList.filter((m) => !groupedNames.has(m.name)).map((m) => m.name);
+  const rows = leftovers.length
+    ? [...GROUPS, { key: "more", vi: "THÀNH VIÊN", en: "MEMBERS", names: leftovers, wide: false }]
+    : GROUPS;
+
   // Keyboard Escape listener & body scroll lock for member modal
   useEffect(() => {
     if (!selectedMember) return;
@@ -127,14 +139,14 @@ export default function Team({ lang }: TeamProps) {
               <span className="h-[1px] w-12 bg-brand-orange/40" />
             </div>
             <h2 className="font-display font-bold text-3xl md:text-5xl tracking-tight text-[#F5F5F3] uppercase leading-tight">
-              {lang === "vi" ? "Đội Ngũ 5 Kỹ Sư & Thiết Kế Studio" : "The 5 In-House Engineers & Designers"}
+              {lang === "vi" ? "Đội Ngũ Three Bugs Studio" : "The Three Bugs Studio Team"}
             </h2>
           </div>
 
           <p className="font-sans text-xs md:text-sm text-[#8E8E93] max-w-md font-light leading-relaxed">
             {lang === "vi"
-              ? "Đội ngũ 5 kỹ sư & thiết kế chuyên nghiệp tại TP.HCM với kinh nghiệm thực chiến hoàn thành dự án doanh nghiệp (RMIT Showcase) và quản trị tài chính minh bạch."
-              : "5 dedicated in-house engineers & designers in Ho Chi Minh City with verified enterprise showcase experience (RMIT Vietnam) & transparent studio operations."}
+              ? "5 kỹ sư & thiết kế tại TP.HCM với kinh nghiệm thực chiến dự án doanh nghiệp (RMIT Showcase), cùng 2 chuyên viên Client Relations đồng hành với khách hàng từ tư vấn đến bảo trì."
+              : "5 in-house engineers & designers in Ho Chi Minh City with enterprise showcase experience (RMIT Vietnam), plus 2 Client Relations leads who guide you from first call to aftercare."}
           </p>
         </div>
 
@@ -154,15 +166,24 @@ export default function Team({ lang }: TeamProps) {
           </div>
         </div>
 
-        {/* 5-Column Professional Team Grid */}
+        {/* Team rows grouped by function (bento); hovering one card dims the rest (see .team-focus in index.css) */}
+        <div className="team-focus space-y-12">
+        {rows.map((group, groupIdx) => (
+        <div key={group.key}>
+          <div className="flex items-center gap-3 mb-5 font-mono text-[10px] md:text-xs uppercase tracking-[0.3em]">
+            <span className="text-brand-orange font-semibold">// 0{groupIdx + 1}</span>
+            <span className="text-[#F5F5F3]">{lang === "vi" ? group.vi : group.en}</span>
+            <span className="h-[1px] flex-1 bg-white/10" />
+          </div>
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          className={`grid grid-cols-1 gap-6 ${group.wide ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3"}`}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
-          {teamList.map((member, idx) => {
+          {teamList.filter((m) => group.names.includes(m.name)).map((member) => {
+            const idx = teamList.indexOf(member);
             const art = ART[member.name];
             const colorHex = member.colorTag?.hex || "#FF6A00";
 
@@ -214,7 +235,7 @@ export default function Team({ lang }: TeamProps) {
 
                 {/* Role Artwork: tinted in the member's colour, full colour on hover, with a museum-style label */}
                 {art && (
-                  <figure className="relative aspect-[3/4] w-full border border-white/10 rounded-lg overflow-hidden mb-4 group-hover:border-brand-orange/40 transition-all duration-500 bg-[#080808]">
+                  <figure className={`relative ${group.wide ? "aspect-[16/10]" : "aspect-[4/5]"} w-full border border-white/10 rounded-lg overflow-hidden mb-4 group-hover:border-brand-orange/40 transition-all duration-500 bg-[#080808]`}>
                     <img
                       src={art.img}
                       alt={`${art.title} - ${art.artist}`}
@@ -286,6 +307,9 @@ export default function Team({ lang }: TeamProps) {
             );
           })}
         </motion.div>
+        </div>
+        ))}
+        </div>
 
         {/* Team CTA Box */}
         <div className="mt-16 bg-[#111113]/90 border border-white/10 p-6 md:p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
