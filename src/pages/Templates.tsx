@@ -4,6 +4,9 @@ import aurelleImg from "@/assets/templates/aurelle-motors.jpg";
 import voltlineImg from "@/assets/templates/voltline-garage.jpg";
 import fortifyImg from "@/assets/fortifykitchen/fortify_homepage.webp";
 import qmdImg from "@/assets/qmdtech/qmd_tech_homepage.webp";
+import vivuImg from "@/assets/templates/vivu-travel.jpg";
+import betonformImg from "@/assets/templates/betonform.jpg";
+import timberaImg from "@/assets/templates/timbera.jpg";
 
 type Lang = "vi" | "en";
 
@@ -52,6 +55,39 @@ const TEMPLATES = [
     desc: {
       vi: "Cửa hàng bán linh kiện, PC với danh mục sản phẩm, công cụ build cấu hình và thanh toán QR.",
       en: "Store for PCs and components with product catalogue, PC builder tool and QR payments.",
+    },
+  },
+  {
+    id: "vivu-travel",
+    name: "Vivu Travel",
+    url: "https://vivu-eosin.vercel.app/",
+    img: vivuImg,
+    tag: { vi: "Công ty du lịch / Đặt tour", en: "Travel agency / Tour booking" },
+    desc: {
+      vi: "Website du lịch với tour trong nước & nước ngoài, combo máy bay + khách sạn, cẩm nang và ô tìm tour theo điểm đến, ngày đi.",
+      en: "Travel site with domestic and international tours, flight + hotel combos, travel guides and a tour search by destination and date.",
+    },
+  },
+  {
+    id: "betonform",
+    name: "Betonform",
+    url: "https://betonform-three.vercel.app/",
+    img: betonformImg,
+    tag: { vi: "Xây dựng & Hạ tầng", en: "Construction & Infrastructure" },
+    desc: {
+      vi: "Website công ty xây dựng phong cách hiện đại, giới thiệu năng lực thi công công trình thương mại, công nghiệp và hạ tầng.",
+      en: "Modern construction company site showcasing commercial, industrial and infrastructure projects.",
+    },
+  },
+  {
+    id: "timbera",
+    name: "Timbera",
+    url: "https://timbera-two.vercel.app/",
+    img: timberaImg,
+    tag: { vi: "Vật liệu gỗ & Nội thất", en: "Wood materials & Interiors" },
+    desc: {
+      vi: "Website sang trọng cho thương hiệu vật liệu gỗ, ván, sàn gỗ nội ngoại thất với bộ sưu tập sản phẩm nổi bật.",
+      en: "Premium site for a wood materials brand: panels, flooring and interior / exterior collections.",
     },
   },
 ];
