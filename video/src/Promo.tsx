@@ -151,7 +151,7 @@ const Services: React.FC = () => {
 const PROJECTS = [
   ["fortify_homepage.webp", "Fortify Kitchen", "Giao tại TP.HCM · Đang bảo trì"],
   ["qmd_tech_homepage.webp", "QMD Tech", "Hỏa tốc Hà Nội 2H · Đang vận hành"],
-  ["storepage.webp", "Sukajan Store", "SEO 98% · 15.000+ truy cập"],
+  ["shots/sukajan-store.jpg", "Sukajan Store", "SEO 98% · 15.000+ truy cập"],
 ] as const;
 
 const Work: React.FC = () => {
