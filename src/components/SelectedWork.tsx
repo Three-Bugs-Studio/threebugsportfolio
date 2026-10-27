@@ -228,7 +228,7 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                               {lang === "vi" ? "THÀNH VIÊN" : "COMMUNITY"}
                             </span>
                             <span className="font-display font-bold text-lg sm:text-xl text-white">
-                              1.000+
+                              1.800+
                             </span>
                           </div>
                           <div className="bg-[#141416]/80 border border-emerald-500/30 p-2.5 rounded-sm">
@@ -488,7 +488,7 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                                   <span>🏆 #1 UNIKORN</span>
                                 </span>
                                 <span className="bg-[#141416]/90 border border-emerald-500/40 text-emerald-400 font-bold px-2 py-0.5 rounded-[2px] backdrop-blur-sm">
-                                  👥 1.000+ MEMBERS
+                                  👥 1.800+ MEMBERS
                                 </span>
                                 <span className="bg-[#141416]/90 border border-white/20 text-white font-bold px-2 py-0.5 rounded-[2px] backdrop-blur-sm">
                                   ⚡ 99 LIGHTHOUSE
