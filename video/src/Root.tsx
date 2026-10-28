@@ -2,6 +2,7 @@ import React from "react";
 import { Composition } from "remotion";
 import { Promo, PROMO_FRAMES } from "./Promo";
 import { Showreel, showreelFrames } from "./Showreel";
+import { SaasReel, SAAS_FRAMES } from "./SaasReel";
 
 export const Root: React.FC = () => (
   <>
@@ -29,6 +30,14 @@ export const Root: React.FC = () => (
       fps={60}
       width={1920}
       height={1080}
+    />
+    <Composition
+      id="SaasReel"
+      component={SaasReel}
+      durationInFrames={SAAS_FRAMES}
+      fps={60}
+      width={1080}
+      height={1920}
     />
   </>
 );
