@@ -14,7 +14,7 @@ import {
 import { loadFont as loadInter } from "@remotion/google-fonts/Inter";
 import { loadFont as loadMono } from "@remotion/google-fonts/IBMPlexMono";
 
-// Vertical SaaS-style service reel, cut on the bar lines of the original 120 BPM track in public/music (scripts/music.mjs).
+// Vertical SaaS-style service reel, cut on the bar lines of Farben (TAK TIK Mix), 110 BPM, in public/music.
 const inter = loadInter("normal", { weights: ["400", "600", "800"], subsets: ["latin", "vietnamese"] }).fontFamily;
 const mono = loadMono("normal", { weights: ["400", "600"], subsets: ["latin", "vietnamese"] }).fontFamily;
 
@@ -23,17 +23,20 @@ const AMBER = "#FFB020";
 const BG = "#07070A";
 const TEXT = "#F5F5F3";
 const MUTED = "#9A9AA3";
-const BEAT = 30; // frames per beat at 60 fps, 120 BPM
+const BEAT = 3600 / 110; // frames per beat at 60 fps, 110 BPM (not an integer, so cuts round to the nearest frame)
 const BAR = BEAT * 4;
-export const SAAS_FRAMES = 15 * BAR;
+const barFrame = (b: number) => Math.round(b * BAR);
+export const SAAS_FRAMES = barFrame(15);
+// The track's beat grid starts at 0.041 s; start 6 bars in so its drop (bar 8, 17.5 s) lands on our bar 2.
+const MUSIC_START = Math.round((0.041 + (6 * 4 * 60) / 110) * 60);
 
 const ease = Easing.bezier(0.16, 1, 0.3, 1);
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 const shot = (f: string) => staticFile(`shots/${f}`);
 const ramp = (f: number, at: number, dur = 18) => interpolate(f, [at, at + dur], [0, 1], { ...clamp, easing: ease });
 
-// Mirrors kickBar in scripts/music.mjs: the picture pulses on every kick.
-const kickBar = (b: number) => b >= 2 && b <= 13 && b !== 7;
+// The picture pulses on every kick from the drop until the outro.
+const kickBar = (b: number) => b >= 2 && b <= 13;
 const kickPulse = (f: number) => (kickBar(Math.floor(f / BAR)) ? Math.exp(-(f % BEAT) / 7) : 0);
 
 /* ---------------- Building blocks ---------------- */
@@ -183,7 +186,7 @@ const Intro: React.FC = () => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   const logo = spring({ frame: f - 10, fps, config: { damping: 13 } });
-  const push = interpolate(f, [150, 240], [1, 1.12], { ...clamp, easing: Easing.in(Easing.cubic) });
+  const push = interpolate(f, [barFrame(2) - 90, barFrame(2)], [1, 1.12], { ...clamp, easing: Easing.in(Easing.cubic) });
   return (
     <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", transform: `scale(${push})` }}>
       <div style={{ position: "relative", transform: `scale(${logo})`, marginBottom: 70 }}>
@@ -355,8 +358,8 @@ const Stats: React.FC = () => {
         <div
           style={{
             position: "absolute",
-            right: 50,
-            top: 170,
+            right: 56,
+            top: 350,
             fontFamily: inter,
             fontWeight: 800,
             fontSize: 44,
@@ -482,7 +485,7 @@ const Process: React.FC = () => {
       <Heading pill="QUY TRÌNH" title="4 bước, không rườm rà" />
       <div style={{ position: "absolute", left: 160, top: 740, width: 6, height: interpolate(f, [4, 100], [0, 690], { ...clamp, easing: ease }), background: `linear-gradient(${ORANGE}, ${AMBER})`, borderRadius: 3 }} />
       {STEPS.map((s, i) => {
-        const at = 6 + i * 26;
+        const at = 4 + i * BEAT;
         const p = spring({ frame: f - at, fps, config: { damping: 13 } });
         return (
           <div key={s} style={{ position: "absolute", left: 110, top: 690 + i * 230, display: "flex", alignItems: "center", gap: 50, opacity: Math.min(1, p * 1.4), transform: `translateX(${(1 - p) * 60}px)` }}>
@@ -582,10 +585,14 @@ const TIMELINE: [React.FC, number, number][] = [
 
 export const SaasReel: React.FC = () => {
   const f = useCurrentFrame();
-  const ctaFrom = 13 * BAR;
+  const ctaFrom = barFrame(13);
   return (
     <AbsoluteFill style={{ background: BG }}>
-      <Audio src={staticFile("music/ebm-120.wav")} />
+      <Audio
+        src={staticFile("music/farben.mp3")}
+        trimBefore={MUSIC_START}
+        volume={(t) => interpolate(t, [0, 8, SAAS_FRAMES - 100, SAAS_FRAMES], [0, 1, 1, 0], clamp)}
+      />
       {Array.from({ length: URL_TEXT.length }, (_, i) => (
         <Sequence key={i} from={ctaFrom + TYPE_AT + Math.round((i * 60) / TYPE_CPS)} durationInFrames={20} layout="none">
           <Audio src={staticFile("sfx/key.wav")} volume={0.35} />
@@ -597,8 +604,8 @@ export const SaasReel: React.FC = () => {
       <Backdrop />
       <AbsoluteFill style={{ transform: `scale(${1 + kickPulse(f) * 0.008})` }}>
         {TIMELINE.map(([C, bar, bars]) => (
-          <Sequence key={bar} from={bar * BAR} durationInFrames={bars * BAR}>
-            <Scene len={bars * BAR}>
+          <Sequence key={bar} from={barFrame(bar)} durationInFrames={barFrame(bar + bars) - barFrame(bar)}>
+            <Scene len={barFrame(bar + bars) - barFrame(bar)}>
               <C />
             </Scene>
           </Sequence>
