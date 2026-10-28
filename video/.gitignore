@@ -1,2 +1,4 @@
 node_modules/
 out/
+# Licensed music the user supplies locally; never commit it.
+public/music/farben.mp3
