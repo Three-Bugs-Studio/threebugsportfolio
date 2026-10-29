@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "motion/react";
 
 const About = lazy(() => import("./components/About"));
 const Services = lazy(() => import("./components/Services"));
+const TemplatesShowcase = lazy(() => import("./components/TemplatesShowcase"));
 const SelectedWork = lazy(() => import("./components/SelectedWork"));
 const Process = lazy(() => import("./components/Process"));
 const Pricing = lazy(() => import("./components/Pricing"));
@@ -326,6 +327,18 @@ export default function App() {
                 ? ["Thiết kế UI/UX", "Phát triển website", "E-Commerce", "Web App", "Tích hợp AI", "Bảo trì & vá lỗi", "Mẫu website từ 2,5 triệu"]
                 : ["UI/UX design", "Web development", "E-Commerce", "Web apps", "AI integration", "Maintenance & hotfixes", "Templates from 2.5M VND"]}
             />
+
+            {/* Templates: right under the hero so budget customers see them first */}
+              <StaggeredSection
+                id="app-templates-section"
+                sectorCode="SECTOR_T"
+                sectorName={lang === "vi" ? "MẪU WEBSITE CÓ SẴN" : "READY-MADE TEMPLATES"}
+                lang={lang}
+              >
+                <Suspense fallback={null}>
+                  <TemplatesShowcase lang={lang} />
+                </Suspense>
+              </StaggeredSection>
 
             {/* About Section */}
               <motion.div
