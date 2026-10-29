@@ -1,100 +1,37 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Logo from "../components/Logo";
-import aurelleImg from "@/assets/templates/aurelle-motors.jpg";
-import voltlineImg from "@/assets/templates/voltline-garage.jpg";
-import fortifyImg from "@/assets/fortifykitchen/fortify_homepage.webp";
-import qmdImg from "@/assets/qmdtech/qmd_tech_homepage.webp";
-import vivuImg from "@/assets/templates/vivu-travel.jpg";
-import betonformImg from "@/assets/templates/betonform.jpg";
-import timberaImg from "@/assets/templates/timbera.jpg";
+import { TemplateCard, TemplateChips, TemplateFilter } from "../components/TemplateCard";
+import { TEMPLATES, TEMPLATE_CATEGORIES, TEMPLATE_CONTACT as CONTACT } from "../templates";
 
 type Lang = "vi" | "en";
 
-const CONTACT = { name: "Hoàng Đỗ", phone: "0392996307", display: "0392.996.307" };
-
-const TEMPLATES = [
-  {
-    id: "aurelle-motors",
-    name: "Aurelle Motors",
-    url: "https://aurelle-motors.vercel.app/",
-    img: aurelleImg,
-    tag: { vi: "Showroom ô tô cao cấp", en: "Luxury car showroom" },
-    desc: {
-      vi: "Giao diện tối giản, sang trọng với video nền toàn màn hình, trưng bày bộ sưu tập xe và đặt lịch xem xe.",
-      en: "Minimal, premium layout with a full-screen video hero, a curated car collection and viewing bookings.",
-    },
-  },
-  {
-    id: "voltline-garage",
-    name: "Voltline Garage",
-    url: "https://voltline-garage.vercel.app/",
-    img: voltlineImg,
-    tag: { vi: "Gara & chăm sóc xe", en: "Garage & car care" },
-    desc: {
-      vi: "Website gara sửa chữa, bảo dưỡng và detailing với bảng dịch vụ, FAQ và nút đặt lịch hẹn trực tuyến.",
-      en: "Garage site for servicing, repairs and detailing with a services list, FAQ and online booking.",
-    },
-  },
-  {
-    id: "fortify-kitchen",
-    name: "Fortify Kitchen",
-    url: "https://fortifykitchen.vercel.app/",
-    img: fortifyImg,
-    tag: { vi: "Nhà hàng & đặt món", en: "Restaurant & food ordering" },
-    desc: {
-      vi: "Website nhà hàng / bếp giao món với thực đơn, trang thông tin dinh dưỡng và luồng đặt món.",
-      en: "Restaurant and delivery kitchen site with a menu, nutrition page and ordering flow.",
-    },
-  },
-  {
-    id: "qmd-tech",
-    name: "QMD Tech",
-    url: "https://qmd-tech.vercel.app/",
-    img: qmdImg,
-    tag: { vi: "Cửa hàng công nghệ / E-Commerce", en: "Tech store / E-Commerce" },
-    desc: {
-      vi: "Cửa hàng bán linh kiện, PC với danh mục sản phẩm, công cụ build cấu hình và thanh toán QR.",
-      en: "Store for PCs and components with product catalogue, PC builder tool and QR payments.",
-    },
-  },
-  {
-    id: "vivu-travel",
-    name: "Vivu Travel",
-    url: "https://vivu-eosin.vercel.app/",
-    img: vivuImg,
-    tag: { vi: "Công ty du lịch / Đặt tour", en: "Travel agency / Tour booking" },
-    desc: {
-      vi: "Website du lịch với tour trong nước & nước ngoài, combo máy bay + khách sạn, cẩm nang và ô tìm tour theo điểm đến, ngày đi.",
-      en: "Travel site with domestic and international tours, flight + hotel combos, travel guides and a tour search by destination and date.",
-    },
-  },
-  {
-    id: "betonform",
-    name: "Betonform",
-    url: "https://betonform-three.vercel.app/",
-    img: betonformImg,
-    tag: { vi: "Xây dựng & Hạ tầng", en: "Construction & Infrastructure" },
-    desc: {
-      vi: "Website công ty xây dựng phong cách hiện đại, giới thiệu năng lực thi công công trình thương mại, công nghiệp và hạ tầng.",
-      en: "Modern construction company site showcasing commercial, industrial and infrastructure projects.",
-    },
-  },
-  {
-    id: "timbera",
-    name: "Timbera",
-    url: "https://timbera-two.vercel.app/",
-    img: timberaImg,
-    tag: { vi: "Vật liệu gỗ & Nội thất", en: "Wood materials & Interiors" },
-    desc: {
-      vi: "Website sang trọng cho thương hiệu vật liệu gỗ, ván, sàn gỗ nội ngoại thất với bộ sưu tập sản phẩm nổi bật.",
-      en: "Premium site for a wood materials brand: panels, flooring and interior / exterior collections.",
-    },
-  },
-];
+const initialCat = (): TemplateFilter => {
+  const c = new URLSearchParams(window.location.search).get("cat");
+  return TEMPLATE_CATEGORIES.some((x) => x.id === c) ? (c as TemplateFilter) : "all";
+};
 
 export default function Templates() {
   const [lang, setLang] = useState<Lang>(() => (localStorage.getItem("three_bugs_lang") === "en" ? "en" : "vi"));
   const vi = lang === "vi";
+  const [cat, setCat] = useState<TemplateFilter>(initialCat);
+  const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (cat === "all") url.searchParams.delete("cat");
+    else url.searchParams.set("cat", cat);
+    window.history.replaceState(null, "", url);
+  }, [cat]);
+
+  const shown = useMemo(() => {
+    // Short terms must match a whole word ("xe" finds cars, not "xem"); longer ones may match a word start.
+    const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+    return TEMPLATES.filter((t) => {
+      if (cat !== "all" && t.cat !== cat) return false;
+      const words = `${t.name} ${t.tag.vi} ${t.tag.en} ${t.desc[lang]}`.toLowerCase().split(/[\s/,.:()&+–-]+/);
+      return terms.every((q) => words.some((w) => w === q || (q.length > 2 && w.startsWith(q))));
+    });
+  }, [cat, query, lang]);
 
   useEffect(() => {
     localStorage.setItem("three_bugs_lang", lang);
@@ -127,66 +64,86 @@ export default function Templates() {
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 md:px-12 py-16 md:py-24">
+      <main className="max-w-7xl mx-auto px-4 md:px-12 py-14 md:py-20">
         <div className="font-mono text-[10px] md:text-xs tracking-[0.3em] text-brand-orange uppercase">
-          [SECTOR_T] {vi ? "Mẫu website có sẵn" : "Ready-made templates"}
+          [SECTOR_T] {vi ? `${TEMPLATES.length} mẫu website có sẵn` : `${TEMPLATES.length} ready-made templates`}
         </div>
         <h1 className="font-display font-medium text-4xl md:text-6xl tracking-tighter mt-5 max-w-3xl leading-[1.05]">
           {vi ? "Chọn mẫu, chúng tôi tùy chỉnh cho thương hiệu của bạn." : "Pick a template, we tailor it to your brand."}
         </h1>
         <p className="text-[#8E8E93] text-base md:text-lg mt-6 max-w-2xl font-light leading-relaxed">
           {vi
-            ? `Xem demo trực tiếp từng mẫu. Để biết giá và thời gian triển khai, liên hệ ${CONTACT.name}.`
-            : `Open each live demo. For pricing and delivery time, contact ${CONTACT.name}.`}
+            ? `Lọc theo ngành, mở demo chạy thật để trải nghiệm. Ưng mẫu nào, nhắn ${CONTACT.name} để nhận báo giá.`
+            : `Filter by industry and try each live demo. Found one you like? Message ${CONTACT.name} for a quote.`}
         </p>
 
-        <div className="grid md:grid-cols-2 gap-8 mt-14">
-          {TEMPLATES.map((t) => (
-            <article key={t.id} className="bg-[#121212] border border-white/10 border-t-2 border-t-brand-orange rounded-sm overflow-hidden flex flex-col">
-              <a href={t.url} target="_blank" rel="noreferrer" className="block group" aria-label={`${t.name} demo`}>
-                <div className="h-8 bg-[#141414] flex items-center gap-1.5 px-3 border-b border-white/5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
-                  <span className="ml-3 font-mono text-[10px] text-[#6E6E73] truncate">{t.url.replace("https://", "")}</span>
-                </div>
-                <div className="aspect-[16/10] overflow-hidden">
-                  <img
-                    src={t.img}
-                    alt={`${t.name} — ${t.tag[lang]}`}
-                    loading="lazy"
-                    width={1440}
-                    height={900}
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
-                </div>
-              </a>
-              <div className="p-6 md:p-8 flex flex-col gap-4 flex-1">
-                <span className="font-mono text-[10px] tracking-widest uppercase text-brand-orange">{t.tag[lang]}</span>
-                <h2 className="font-display font-bold text-2xl md:text-3xl">{t.name}</h2>
-                <p className="text-[#8E8E93] text-sm md:text-base leading-relaxed flex-1">{t.desc[lang]}</p>
-                <div className="flex flex-col sm:flex-row gap-3 mt-2">
-                  <a
-                    href={t.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn-stacked font-mono text-xs uppercase tracking-widest px-5 py-3 border border-white/15 text-[#F5F5F3] rounded-sm text-center hover:border-brand-orange/60 transition-colors focus-terminal"
-                  >
-                    {vi ? "Xem demo ↗" : "Live demo ↗"}
-                  </a>
-                  <a
-                    href={`https://zalo.me/${CONTACT.phone}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn-stacked font-mono text-xs uppercase tracking-widest px-5 py-3 bg-brand-orange text-[#090909] font-semibold rounded-sm text-center hover:shadow-[0_0_20px_rgba(255,106,0,0.35)] transition-shadow focus-terminal"
-                  >
-                    {vi ? `Hỏi giá · ${CONTACT.name}` : `Ask price · ${CONTACT.name}`}
-                  </a>
-                </div>
-              </div>
-            </article>
+        <ul className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-10">
+          {(vi
+            ? [["Từ 2,5 triệu", "hoặc trả theo tháng"], ["2–3 ngày", "làm việc là có web"], ["Theo thương hiệu", "thay logo, màu, nội dung"], ["2 lượt chỉnh sửa", "trước khi bàn giao"]]
+            : [["From 2.5M VND", "or pay monthly"], ["2–3 days", "working days to launch"], ["Your brand", "logo, colours, content"], ["2 revisions", "before handover"]]
+          ).map(([big, small]) => (
+            <li key={big} className="bg-[#121212] border border-white/10 rounded-xl p-4 md:p-5">
+              <div className="font-display font-bold text-lg md:text-2xl text-[#F5F5F3]">{big}</div>
+              <div className="text-[#8E8E93] text-xs md:text-sm mt-1">{small}</div>
+            </li>
           ))}
+        </ul>
+
+        <ol className="grid md:grid-cols-3 gap-3 mt-3">
+          {(vi
+            ? ["Chọn mẫu và xem demo", "Gửi logo, nội dung, hình ảnh qua Zalo", "Nhận website sau 2–3 ngày làm việc"]
+            : ["Pick a template and try the demo", "Send your logo, copy and photos on Zalo", "Get your site in 2–3 working days"]
+          ).map((step, i) => (
+            <li key={step} className="flex items-center gap-4 border border-white/10 rounded-xl px-4 py-3.5">
+              <span className="shrink-0 w-8 h-8 rounded-full bg-brand-orange text-[#090909] font-mono font-bold text-sm flex items-center justify-center">{i + 1}</span>
+              <span className="text-sm md:text-base text-[#C0C0C5]">{step}</span>
+            </li>
+          ))}
+        </ol>
+
+        <div className="sticky top-[57px] z-30 -mx-4 px-4 md:-mx-12 md:px-12 py-4 mt-12 bg-[#090909]/90 backdrop-blur-xl border-b border-white/10 flex flex-col lg:flex-row lg:items-center gap-3">
+          <div className="flex-1 min-w-0">
+            <TemplateChips lang={lang} value={cat} onChange={setCat} />
+          </div>
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder={vi ? "Tìm theo ngành: spa, xe, nhà hàng…" : "Search: spa, cars, restaurant…"}
+            aria-label={vi ? "Tìm mẫu website" : "Search templates"}
+            className="w-full lg:w-72 bg-[#121212] border border-white/15 rounded-full px-4 py-2 text-sm text-[#F5F5F3] placeholder:text-[#6E6E73] focus:outline-none focus:border-brand-orange/60"
+          />
         </div>
+
+        <p className="text-[#8E8E93] text-sm mt-6" aria-live="polite">
+          {vi ? `Hiển thị ${shown.length} / ${TEMPLATES.length} mẫu` : `Showing ${shown.length} of ${TEMPLATES.length} templates`}
+        </p>
+
+        {shown.length ? (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mt-4">
+            {shown.map((t) => (
+              <TemplateCard key={t.id} t={t} lang={lang} />
+            ))}
+          </div>
+        ) : (
+          <div className="mt-6 border border-dashed border-white/15 rounded-xl p-10 text-center">
+            <p className="text-[#C0C0C5]">{vi ? "Chưa có mẫu phù hợp." : "No matching template yet."}</p>
+            <button
+              type="button"
+              onClick={() => { setCat("all"); setQuery(""); }}
+              className="mt-4 text-sm px-4 py-2 border border-white/15 rounded-full hover:border-brand-orange/60 cursor-pointer focus-terminal"
+            >
+              {vi ? "Xem tất cả mẫu" : "Show all templates"}
+            </button>
+          </div>
+        )}
+
+        <p className="text-[#8E8E93] text-sm mt-10">
+          {vi ? "Không thấy ngành của bạn? " : "Don't see your industry? "}
+          <a href={`https://zalo.me/${CONTACT.phone}`} target="_blank" rel="noreferrer" className="text-brand-orange underline underline-offset-4">
+            {vi ? `Nhắn ${CONTACT.name}, bên em thiết kế riêng theo yêu cầu.` : `Message ${CONTACT.name} for a custom design.`}
+          </a>
+        </p>
 
         <section className="mt-16 border border-white/10 bg-[#0c0c0c] rounded-sm p-6 md:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div>
