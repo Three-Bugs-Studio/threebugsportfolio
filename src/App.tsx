@@ -11,6 +11,7 @@ const About = lazy(() => import("./components/About"));
 const Services = lazy(() => import("./components/Services"));
 const TemplatesShowcase = lazy(() => import("./components/TemplatesShowcase"));
 const SelectedWork = lazy(() => import("./components/SelectedWork"));
+const OpenSource = lazy(() => import("./components/OpenSource"));
 const Process = lazy(() => import("./components/Process"));
 const Pricing = lazy(() => import("./components/Pricing"));
 const Technology = lazy(() => import("./components/Technology"));
@@ -393,6 +394,18 @@ export default function App() {
                   </Suspense>
                 </StaggeredSection>
               </motion.div>
+
+            {/* Open-source product: 3BCAD */}
+              <StaggeredSection
+                id="app-opensource-section"
+                sectorCode="SECTOR_03_ALT"
+                sectorName={lang === "vi" ? "SẢN PHẨM MÃ NGUỒN MỞ" : "OPEN-SOURCE PRODUCT"}
+                lang={lang}
+              >
+                <Suspense fallback={null}>
+                  <OpenSource lang={lang} />
+                </Suspense>
+              </StaggeredSection>
 
             {/* Process Timeline Section */}
               <motion.div
