@@ -13,6 +13,10 @@ import nepnhaImg from "@/assets/templates/nepnha.jpg";
 import thienungImg from "@/assets/templates/thienung.jpg";
 import vanloImg from "@/assets/templates/vanlo.jpg";
 import langspaImg from "@/assets/templates/langspa.jpg";
+import mamsonImg from "@/assets/templates/mamson.jpg";
+import machImg from "@/assets/templates/mach.jpg";
+import viaenergyImg from "@/assets/templates/viaenergy.jpg";
+import lanhImg from "@/assets/templates/lanh.jpg";
 
 // Ready-made templates shown on /templates and on the homepage showcase.
 export type TemplateCategory = "ecommerce" | "food" | "booking" | "business" | "showcase";
@@ -216,6 +220,54 @@ export const TEMPLATES: Template[] = [
     desc: {
       vi: "Website spa với đặt lịch 4 bước: chọn dịch vụ, chi nhánh, kỹ thuật viên và giờ trống, mã ưu đãi, huỷ lịch, giỏ sản phẩm chăm sóc tại nhà và khung tư vấn 24/7.",
       en: "Spa site with 4-step booking: pick a treatment, branch, therapist and free time slot, voucher codes, cancellation, a home-care product cart and a 24/7 chat helper.",
+    },
+  },
+  {
+    id: "mamson",
+    cat: "food",
+    name: "Mâm Son",
+    url: "https://mamson.vercel.app/",
+    img: mamsonImg,
+    tag: { vi: "Nhà hàng / Fine dining", en: "Restaurant / Fine dining" },
+    desc: {
+      vi: "Website nhà hàng Việt đương đại: thực đơn lọc và tìm không dấu, gọi món trước vào mâm, đặt bàn theo khung giờ còn chỗ, tra cứu và huỷ bàn, thư viện ảnh, tuyển dụng và đặt tiệc.",
+      en: "Contemporary Vietnamese restaurant site: filterable menu with accent-free search, pre-order tray, table booking by live slot availability, lookup and cancel, photo gallery, careers and event enquiries.",
+    },
+  },
+  {
+    id: "mach",
+    cat: "business",
+    name: "Mạch",
+    url: "https://mach-delta.vercel.app/",
+    img: machImg,
+    tag: { vi: "SaaS / Nền tảng kỹ thuật", en: "SaaS / Engineering platform" },
+    desc: {
+      vi: "Website SaaS cho nền tảng vận hành kỹ thuật kèm ứng dụng demo chạy thật: bảng Kanban lệnh việc kéo thả, quản lý tài sản, sự cố có đồng hồ SLA, trợ lý AI hỏi đáp trên dữ liệu, công cụ ước tính giá trị và đặt lịch demo.",
+      en: "SaaS site for an engineering operations platform with a working demo app: drag-and-drop work-order board, asset health, incidents with SLA clocks, an AI assistant over the data, a value estimator and demo booking.",
+    },
+  },
+  {
+    id: "viaenergy",
+    cat: "business",
+    name: "Vỉa Energy",
+    url: "https://viaenergy.vercel.app/",
+    img: viaenergyImg,
+    tag: { vi: "Dầu khí / Quan hệ nhà đầu tư", en: "Oil & gas / Investor relations" },
+    desc: {
+      vi: "Website doanh nghiệp thăm dò khai thác dầu khí: bản đồ mỏ ngoài khơi tương tác, danh mục dự án lọc theo bể và trạng thái, biểu đồ giá cổ phiếu và kết quả kinh doanh, thư viện tài liệu PDF có form thu thông tin, mô phỏng lợi suất và đặt lịch gọi với IR.",
+      en: "Oil & gas E&P company site: interactive offshore field map, project portfolio filtered by basin and status, share price and financial charts, a PDF document library behind a lead form, a return simulator and IR call booking.",
+    },
+  },
+  {
+    id: "lanh",
+    cat: "ecommerce",
+    name: "Nhà thuốc Lành",
+    url: "https://lanh-psi.vercel.app/",
+    img: lanhImg,
+    tag: { vi: "Nhà thuốc / Y tế trực tuyến", en: "Pharmacy / Online healthcare" },
+    desc: {
+      vi: "Website nhà thuốc trực tuyến: tìm thuốc không dấu có gợi ý, lọc theo nhu cầu sức khỏe, giỏ hàng với mã giảm giá và giao nhanh theo tỉnh thành, gửi ảnh đơn thuốc cho dược sĩ, theo dõi đơn và đặt lịch dịch vụ sức khỏe.",
+      en: "Online pharmacy site: accent-free medicine search with suggestions, filters by health need, cart with vouchers and delivery by city, prescription upload for pharmacists, order tracking and health service booking.",
     },
   },
 ];
