@@ -103,6 +103,7 @@ export default function CardNav({
       textColor: isLight ? "#0A2540" : "#FFFFFF",
       links: [
         { label: lang === "vi" ? "Sản Phẩm Tiêu Biểu" : "Featured Portfolio", href: "#app-work-section", ariaLabel: "Portfolio" },
+        { label: lang === "vi" ? "3BCAD (Mã Nguồn Mở)" : "3BCAD (Open Source)", href: "#app-opensource-section", ariaLabel: "3BCAD" },
         { label: lang === "vi" ? "Công Nghệ & Dịch Vụ" : "Core Capabilities", href: "#app-services-section", ariaLabel: "Services" },
         { label: lang === "vi" ? "Hệ Thống Công Nghệ" : "System Stack", href: "#app-technology-section", ariaLabel: "Technology" },
         { label: lang === "vi" ? "Mẫu Website (Templates)" : "Website Templates", href: "/templates", ariaLabel: "Templates" }
