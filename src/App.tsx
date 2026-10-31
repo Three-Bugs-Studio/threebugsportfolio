@@ -407,6 +407,18 @@ export default function App() {
                 </Suspense>
               </StaggeredSection>
 
+            {/* Open-source product: 3B Infrastructure */}
+              <StaggeredSection
+                id="app-infrastructure-section"
+                sectorCode="SECTOR_03_INF"
+                sectorName={lang === "vi" ? "SẢN PHẨM MÃ NGUỒN MỞ" : "OPEN-SOURCE PRODUCT"}
+                lang={lang}
+              >
+                <Suspense fallback={null}>
+                  <OpenSource lang={lang} product="3binfrastructure" />
+                </Suspense>
+              </StaggeredSection>
+
             {/* Process Timeline Section */}
               <motion.div
                 initial={{ opacity: 0 }}
