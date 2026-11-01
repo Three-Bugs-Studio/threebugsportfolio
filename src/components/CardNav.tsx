@@ -1,31 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { TextScramble } from "./ui/TextScramble";
 import Logo from "./Logo";
 import ThemeSwitch from "./ThemeSwitch";
 import { motion, AnimatePresence } from "motion/react";
-import { MenuIcon, CloseIcon, ArrowUpRightIcon, SparklesIcon, SpeakerIcon } from "./ui/MajesticIcon";
+import { MenuIcon, CloseIcon, ArrowUpRightIcon, SpeakerIcon } from "./ui/MajesticIcon";
 import { TRANSLATIONS } from "../data";
 import { audioManager } from "../lib/audioManager";
 
 export interface CardNavLink {
   label: string;
+  hint: string;
   href: string;
-  ariaLabel?: string;
-  isExternal?: boolean;
 }
 
 export interface CardNavItem {
   label: string;
-  tag?: string;
-  bgColor: string;
-  textColor: string;
   links: CardNavLink[];
 }
 
 export interface CardNavProps {
   lang?: "vi" | "en";
   onLangChange?: (lang: "vi" | "en") => void;
-  items?: CardNavItem[];
   logo?: React.ReactNode;
   logoAlt?: string;
   baseColor?: string;
@@ -40,7 +34,6 @@ export interface CardNavProps {
 export default function CardNav({
   lang = "vi",
   onLangChange,
-  items,
   baseColor = "#090909",
   menuColor = "#FF6A00",
   buttonBgColor = "#FF6A00",
@@ -94,62 +87,41 @@ export default function CardNav({
 
   const isLight = theme === "light";
 
-  // Default Studio Card Nav Items structured for Three Bugs Studio if not passed explicitly
-  const defaultItems: CardNavItem[] = [
+  const vi = lang === "vi";
+
+  const navCards: CardNavItem[] = [
     {
-      label: lang === "vi" ? "Sản Phẩm & Dịch Vụ" : "Work & Services",
-      tag: lang === "vi" ? "DỰ ÁN" : "WORK",
-      bgColor: isLight ? "#FFFFFF" : "#171717",
-      textColor: isLight ? "#0A2540" : "#FFFFFF",
+      label: vi ? "Sản phẩm" : "Products",
       links: [
-        { label: lang === "vi" ? "Sản Phẩm Tiêu Biểu" : "Featured Portfolio", href: "#app-work-section", ariaLabel: "Portfolio" },
-        { label: lang === "vi" ? "3BCAD (Mã Nguồn Mở)" : "3BCAD (Open Source)", href: "#app-opensource-section", ariaLabel: "3BCAD" },
-        { label: lang === "vi" ? "3B Infrastructure (Mã Nguồn Mở)" : "3B Infrastructure (Open Source)", href: "#app-infrastructure-section", ariaLabel: "3B Infrastructure" },
-        { label: lang === "vi" ? "Công Nghệ & Dịch Vụ" : "Core Capabilities", href: "#app-services-section", ariaLabel: "Services" },
-        { label: lang === "vi" ? "Hệ Thống Công Nghệ" : "System Stack", href: "#app-technology-section", ariaLabel: "Technology" },
-        { label: lang === "vi" ? "Mẫu Website (Templates)" : "Website Templates", href: "/templates", ariaLabel: "Templates" }
+        { label: vi ? "Dự án tiêu biểu" : "Featured work", hint: vi ? "Sản phẩm đã làm cho khách hàng" : "Products built for clients", href: "#app-work-section" },
+        { label: vi ? "Mẫu website" : "Website templates", hint: vi ? "Có demo chạy thật, từ 2,5 triệu" : "Live demos, from 2.5M VND", href: "/templates" },
+        { label: "3BCAD", hint: vi ? "Phần mềm CAD 3D mã nguồn mở" : "Open-source 3D CAD software", href: "#app-opensource-section" },
+        { label: "3B Infrastructure", hint: vi ? "Sổ tay kỹ thuật mã nguồn mở" : "Open-source engineering notebook", href: "#app-infrastructure-section" }
       ]
     },
     {
-      label: lang === "vi" ? "Quy Trình & Báo Giá" : "Process & Pricing",
-      tag: lang === "vi" ? "BÁO GIÁ" : "PRICING",
-      bgColor: isLight ? "#DCE5EC" : "#1E1917",
-      textColor: isLight ? "#0A2540" : "#FFFFFF",
+      label: vi ? "Dịch vụ" : "Services",
       links: [
-        { label: lang === "vi" ? "Quy Trình Phát Triển" : "Engineering Flow", href: "#app-process-section", ariaLabel: "Process" },
-        { label: lang === "vi" ? "Báo Giá Theo Phase" : "Phase Pricing", href: "#app-pricing-section", ariaLabel: "Pricing" },
-        { label: lang === "vi" ? "Giải Đáp Thắc Mắc" : "FAQ Resolutions", href: "#app-faq-section", ariaLabel: "FAQ" }
+        { label: vi ? "Dịch vụ" : "What we do", hint: vi ? "Thiết kế, website, backend và AI" : "Design, web, backend and AI", href: "#app-services-section" },
+        { label: vi ? "Công nghệ" : "Tech stack", hint: vi ? "Công nghệ chúng tôi sử dụng" : "The tools we build with", href: "#app-technology-section" },
+        { label: vi ? "Quy trình" : "Process", hint: vi ? "Từ ý tưởng đến bàn giao" : "From idea to handover", href: "#app-process-section" },
+        { label: vi ? "Báo giá" : "Pricing", hint: vi ? "Chi phí theo từng giai đoạn" : "Costs for each phase", href: "#app-pricing-section" }
       ]
     },
     {
-      label: lang === "vi" ? "Studio & Đội Ngũ" : "About & Team",
-      tag: lang === "vi" ? "STUDIO" : "STUDIO",
-      bgColor: isLight ? "#E2E8F0" : "#26160C",
-      textColor: isLight ? "#0A2540" : "#FFFFFF",
+      label: "Studio",
       links: [
-        { label: lang === "vi" ? "Triết Lý Hoạt Động" : "About Philosophy", href: "#app-about-section", ariaLabel: "About" },
-        { label: lang === "vi" ? "Sơ Đồ & Đội Ngũ" : "Studio Founders", href: "#app-team-section", ariaLabel: "Team" },
-        { label: lang === "vi" ? "Đánh Giá Đối Tác" : "Partner Reviews", href: "#app-testimonials-section", ariaLabel: "Testimonials" }
-      ]
-    },
-    {
-      label: lang === "vi" ? "Liên Hệ Dự Án" : "Project Inquiries",
-      tag: lang === "vi" ? "LIÊN HỆ" : "CONTACT",
-      bgColor: isLight ? "#006989" : "#FF6A00",
-      textColor: isLight ? "#FFFFFF" : "#090909",
-      links: [
-        { label: lang === "vi" ? "Form Tư Vấn Dự Án (Trực Tiếp)" : "Project Inquiry Form", href: "#app-contact-section", ariaLabel: "Contact Form" },
-        { label: "EMAIL: threebugstudio@gmail.com", href: "mailto:threebugstudio@gmail.com", ariaLabel: "Email Direct", isExternal: true },
-        { label: "GITHUB: THREE-BUGS-STUDIO", href: "https://github.com/Three-Bugs-Studio", ariaLabel: "GitHub Repo", isExternal: true }
+        { label: vi ? "Về chúng tôi" : "About", hint: vi ? "Triết lý làm việc của studio" : "How the studio works", href: "#app-about-section" },
+        { label: vi ? "Đội ngũ" : "Team", hint: vi ? "Những người làm sản phẩm" : "The people behind the work", href: "#app-team-section" },
+        { label: vi ? "Khách hàng nói gì" : "Testimonials", hint: vi ? "Đánh giá từ đối tác" : "What partners say", href: "#app-testimonials-section" },
+        { label: vi ? "Câu hỏi thường gặp" : "FAQ", hint: vi ? "Giải đáp trước khi bắt đầu" : "Answers before you start", href: "#app-faq-section" }
       ]
     }
   ];
 
-  const cardNavItems = items || defaultItems;
-
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isExternal?: boolean) => {
-    if (isExternal || !href.startsWith("#")) {
-      return; // let external links and other pages navigate normally
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#")) {
+      return; // let other pages navigate normally
     }
 
     e.preventDefault();
@@ -324,73 +296,73 @@ export default function CardNav({
           >
             <div className="max-w-7xl mx-auto pb-4">
               
-              {/* Header Label */}
-              <div className="flex items-center justify-between mb-4 md:mb-6 pb-2.5 border-b border-white/10">
-                <div className="flex items-center gap-2 font-mono text-[11px] md:text-xs uppercase tracking-widest text-[#8E8E93]">
-                  <SparklesIcon className="w-3.5 h-3.5 text-brand-orange" size={14} />
-                  <span>{lang === "vi" ? "DANH MỤC NAVIGATION DỰ ÁN" : "STUDIO NAVIGATION CARDS"}</span>
-                </div>
-                <span className="font-mono text-[9px] md:text-[10px] text-brand-orange hidden sm:inline">
-                  // THREE BUGS STUDIO OS
-                </span>
-              </div>
-
               {/* Grid Layout for Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 md:gap-5">
-                {cardNavItems.map((card, index) => (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1.15fr] gap-3 md:gap-4">
+                {navCards.map((card, index) => (
                   <motion.div
                     key={card.label}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ delay: index * 0.05, duration: 0.35 }}
-                    className="flex flex-col justify-between p-4 sm:p-5 rounded-lg border border-white/10 hover:border-brand-orange/60 transition-all duration-300 relative overflow-hidden group shadow-xl"
-                    style={{ backgroundColor: card.bgColor, color: card.textColor }}
+                    className="bg-[#121212] border border-white/10 rounded-xl p-4 md:p-5"
                   >
-                    {/* Top Card Label Header */}
-                    <div>
-                      <div className="flex items-center justify-between mb-3 pb-2 border-b border-white/10">
-                        <span className="font-mono text-[9px] md:text-[10px] opacity-60 tracking-widest">
-                          0{index + 1}{card.tag && ` // ${card.tag}`}
-                        </span>
-                        <div className="w-2 h-2 rounded-full" style={{ backgroundColor: card.textColor === "#090909" ? "#090909" : "#FF6A00" }} />
-                      </div>
-
-                      <h3 className="font-display font-bold text-base md:text-lg tracking-tight mb-3">
-                        {card.label}
-                      </h3>
-                    </div>
+                    <h3 className="font-display font-bold text-base md:text-lg tracking-tight text-[#F5F5F3] mb-2">
+                      {card.label}
+                    </h3>
 
                     {/* Inner Links List */}
-                    <div className="flex flex-col gap-2 mt-1">
+                    <div className="flex flex-col">
                       {card.links.map((link) => (
                         <a
-                          key={link.label}
+                          key={link.href}
                           href={link.href}
-                          target={link.isExternal ? "_blank" : undefined}
-                          rel={link.isExternal ? "noreferrer" : undefined}
-                          aria-label={link.ariaLabel || link.label}
-                          onClick={(e) => handleScrollTo(e, link.href, link.isExternal)}
-                          className="font-mono text-[11px] md:text-xs uppercase tracking-wider opacity-85 hover:opacity-100 hover:translate-x-1.5 transition-all flex items-center justify-between py-1 group/link border-b border-white/5 last:border-none"
+                          onClick={(e) => handleScrollTo(e, link.href)}
+                          className="group -mx-2 px-2 py-2 rounded-lg flex items-center justify-between gap-3 hover:bg-white/5 transition-colors"
                         >
-                          <TextScramble trigger={false} scrambleOnHover duration={0.4}>{link.label}</TextScramble>
-                          <ArrowUpRightIcon className="w-3 h-3 opacity-60 group-hover/link:opacity-100 transition-opacity" size={12} />
+                          <span className="min-w-0">
+                            <span className="block text-sm font-medium text-[#F5F5F3] group-hover:text-brand-orange transition-colors">{link.label}</span>
+                            <span className="hidden sm:block text-xs text-[#8E8E93] mt-0.5">{link.hint}</span>
+                          </span>
+                          <ArrowUpRightIcon className="w-3.5 h-3.5 shrink-0 text-brand-orange opacity-0 group-hover:opacity-100 transition-opacity" size={14} />
                         </a>
                       ))}
                     </div>
                   </motion.div>
                 ))}
-              </div>
 
-              {/* Bottom Quick Contact Bar */}
-              <div className="mt-5 pt-3.5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 font-mono text-[11px] text-[#8E8E93] text-center sm:text-left">
-                <div className="flex items-center gap-2.5">
-                  <span className="w-2 h-2 rounded-full bg-[#27C93F] animate-pulse shrink-0" />
-                  <span>{lang === "vi" ? "TRẠNG THÁI: SẴN SÀNG NHẬN DỰ ÁN MỚI" : "STATUS: AVAILABLE FOR NEW PROJECTS"}</span>
-                </div>
-                <div>
-                  <span>EMAIL: <strong className="text-white">threebugstudio@gmail.com</strong></span>
-                </div>
+                {/* Contact Card: text sits in div/span so the light theme's h3, p and a:hover overrides stay off the coloured background */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ delay: navCards.length * 0.05, duration: 0.35 }}
+                  className="rounded-xl p-4 md:p-5 flex flex-col"
+                  style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
+                >
+                  <div className="flex items-center gap-2 text-xs font-medium">
+                    <span className="w-2 h-2 rounded-full bg-current animate-pulse" />
+                    {vi ? "Đang nhận dự án mới" : "Taking new projects"}
+                  </div>
+                  <div role="heading" aria-level={3} className="font-display font-bold text-xl md:text-2xl leading-tight tracking-tight mt-3 mb-5 [text-wrap:balance]">
+                    {vi ? "Có ý tưởng? Kể cho chúng tôi nghe." : "Got an idea? Tell us about it."}
+                  </div>
+                  <a
+                    href="#app-contact-section"
+                    onClick={(e) => handleScrollTo(e, "#app-contact-section")}
+                    className="mt-auto text-center text-sm font-semibold px-4 py-3 rounded-lg bg-[#090909] text-[#F5F5F3] hover:opacity-90 transition-opacity"
+                  >
+                    {vi ? "Gửi yêu cầu tư vấn" : "Send an inquiry"}
+                  </a>
+                  <div className="flex flex-col gap-1.5 mt-4 text-sm">
+                    <a href="mailto:threebugstudio@gmail.com" target="_blank" rel="noreferrer" className="break-all hover:underline underline-offset-4">
+                      <span style={{ color: buttonTextColor }}>threebugstudio@gmail.com</span>
+                    </a>
+                    <a href="https://github.com/Three-Bugs-Studio" target="_blank" rel="noreferrer" className="hover:underline underline-offset-4">
+                      <span style={{ color: buttonTextColor }}>GitHub: Three-Bugs-Studio</span>
+                    </a>
+                  </div>
+                </motion.div>
               </div>
 
             </div>
