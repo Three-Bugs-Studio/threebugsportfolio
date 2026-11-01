@@ -93,10 +93,10 @@ export default function CardNav({
     {
       label: vi ? "Sản phẩm" : "Products",
       links: [
-        { label: vi ? "Dự án tiêu biểu" : "Featured work", hint: vi ? "Sản phẩm đã làm cho khách hàng" : "Products built for clients", href: "#app-work-section" },
+        { label: vi ? "Dự án tiêu biểu" : "Featured work", hint: vi ? "Sản phẩm đã bàn giao" : "Products we have shipped", href: "#app-work-section" },
         { label: vi ? "Mẫu website" : "Website templates", hint: vi ? "Có demo chạy thật, từ 2,5 triệu" : "Live demos, from 2.5M VND", href: "/templates" },
-        { label: "3BCAD", hint: vi ? "Phần mềm CAD 3D mã nguồn mở" : "Open-source 3D CAD software", href: "#app-opensource-section" },
-        { label: "3B Infrastructure", hint: vi ? "Sổ tay kỹ thuật mã nguồn mở" : "Open-source engineering notebook", href: "#app-infrastructure-section" }
+        { label: "3BCAD", hint: vi ? "CAD 3D mã nguồn mở" : "Open-source 3D CAD", href: "#app-opensource-section" },
+        { label: "3B Infrastructure", hint: vi ? "Sổ tay kỹ thuật mã nguồn mở" : "Open-source engineering notes", href: "#app-infrastructure-section" }
       ]
     },
     {
@@ -297,7 +297,7 @@ export default function CardNav({
             <div className="max-w-7xl mx-auto pb-4">
               
               {/* Grid Layout for Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1fr_1.15fr] gap-3 md:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-[1fr_1fr_1fr_1.15fr] gap-3 md:gap-4">
                 {navCards.map((card, index) => (
                   <motion.div
                     key={card.label}
@@ -355,7 +355,7 @@ export default function CardNav({
                     {vi ? "Gửi yêu cầu tư vấn" : "Send an inquiry"}
                   </a>
                   <div className="flex flex-col gap-1.5 mt-4 text-sm">
-                    <a href="mailto:threebugstudio@gmail.com" target="_blank" rel="noreferrer" className="break-all hover:underline underline-offset-4">
+                    <a href="mailto:threebugstudio@gmail.com" target="_blank" rel="noreferrer" className="hover:underline underline-offset-4">
                       <span style={{ color: buttonTextColor }}>threebugstudio@gmail.com</span>
                     </a>
                     <a href="https://github.com/Three-Bugs-Studio" target="_blank" rel="noreferrer" className="hover:underline underline-offset-4">
