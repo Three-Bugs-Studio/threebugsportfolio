@@ -17,6 +17,7 @@ import mamsonImg from "@/assets/templates/mamson.jpg";
 import machImg from "@/assets/templates/mach.jpg";
 import viaenergyImg from "@/assets/templates/viaenergy.jpg";
 import lanhImg from "@/assets/templates/lanh.jpg";
+import sannhaImg from "@/assets/templates/sannha.jpg";
 
 // Ready-made templates shown on /templates and on the homepage showcase.
 export type TemplateCategory = "ecommerce" | "food" | "booking" | "business" | "showcase";
@@ -268,6 +269,18 @@ export const TEMPLATES: Template[] = [
     desc: {
       vi: "Website nhà thuốc trực tuyến: tìm thuốc không dấu có gợi ý, lọc theo nhu cầu sức khỏe, giỏ hàng với mã giảm giá và giao nhanh theo tỉnh thành, gửi ảnh đơn thuốc cho dược sĩ, theo dõi đơn và đặt lịch dịch vụ sức khỏe.",
       en: "Online pharmacy site: accent-free medicine search with suggestions, filters by health need, cart with vouchers and delivery by city, prescription upload for pharmacists, order tracking and health service booking.",
+    },
+  },
+  {
+    id: "sannha",
+    cat: "booking",
+    name: "Sân Nhà",
+    url: "https://sannha-sepia.vercel.app/",
+    img: sannhaImg,
+    tag: { vi: "Cổng thể thao / Đặt sân", en: "Sports portal / Court booking" },
+    desc: {
+      vi: "Cổng thể thao Việt Nam kèm đặt sân: lịch đấu, bảng xếp hạng V.League xem theo sân nhà, sân khách và từng vòng, trang trận có nhắc lịch và dự đoán, đặt sân bóng đá, cầu lông, pickleball theo giờ với cọc VietQR, đổi giờ, hủy có hoàn tiền và giao diện sáng tối.",
+      en: "Vietnamese sports portal with court booking: fixtures, V.League standings by home, away and round, match pages with reminders and predictions, hourly booking for football, badminton and pickleball with a VietQR deposit, rescheduling, refunds on cancellation and light and dark themes.",
     },
   },
 ];
