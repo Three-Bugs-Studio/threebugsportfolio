@@ -22,7 +22,7 @@ export default function Technology({ lang }: TechnologyProps) {
   };
 
   return (
-    <section id="technology" className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative overflow-hidden">
+    <section id="technology" className="py-24 md:py-32 bg-canvas border-t border-line relative overflow-hidden">
       {/* Decorative subtle top lights */}
       <div className="absolute top-[20%] left-[-10%] brutalist-glow opacity-30" />
 
@@ -32,22 +32,22 @@ export default function Technology({ lang }: TechnologyProps) {
         <motion.div variants={itemVariants} className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange">
+              <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-ink">
                 {t.techLabel}
               </span>
-              <span className="h-[1px] w-12 bg-white/10" />
+              <span className="h-[1px] w-12 bg-line" />
             </div>
-            <h2 className="font-display font-medium text-4xl md:text-6xl tracking-tight text-[#F5F5F3] leading-[1.05] [text-wrap:balance]">
+            <h2 className="font-display font-medium text-4xl md:text-6xl tracking-tight text-ink leading-[1.05] [text-wrap:balance]">
               {t.techHeading}
             </h2>
           </div>
-          <p className="font-mono text-xs text-[#8E8E93] max-w-xs leading-relaxed">
+          <p className="font-mono text-xs text-ink-muted max-w-xs leading-relaxed">
             {t.techSubtitle}
           </p>
         </motion.div>
 
         {/* Technical Grid Layout */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 border-l border-t border-white/5" id="tech-grid">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 border-l border-t border-line" id="tech-grid">
           {techList.map((tech, idx) => {
             const isHovered = hoveredIdx === idx;
 
@@ -63,7 +63,7 @@ export default function Technology({ lang }: TechnologyProps) {
                 onFocus={() => setHoveredIdx(idx)}
                 onBlur={() => setHoveredIdx(null)}
                 variants={itemVariants}
-                className="group p-6 md:p-8 bg-transparent border-r border-b border-white/5 hover:bg-[#121212]/30 transition-all duration-300 relative overflow-hidden flex flex-col justify-between min-h-[190px] cursor-default select-none focus-terminal outline-none"
+                className="group p-6 md:p-8 bg-transparent border-r border-b border-line hover:bg-surface/30 transition-all duration-300 relative overflow-hidden flex flex-col justify-between min-h-[190px] cursor-default select-none focus-terminal outline-none"
               >
                 {/* Spotlight background gradient hover effect */}
                 <div
@@ -86,29 +86,29 @@ export default function Technology({ lang }: TechnologyProps) {
                 {/* Header (Real Tech Brand Logo + Category Tag) */}
                 <div className="flex items-center justify-between">
                   <div className={`p-2.5 rounded-sm border transition-all flex items-center justify-center ${
-                    isHovered ? "border-brand-orange/40 bg-brand-orange/10 shadow-[0_0_15px_rgba(255,106,0,0.15)]" : "border-white/10 bg-white/[0.03]"
+                    isHovered ? "border-brand-orange/40 bg-brand-orange/10 shadow-[0_0_15px_rgba(255,106,0,0.15)]" : "border-line bg-white/[0.03]"
                   }`}>
                     <TechIcon name={tech.name} className="w-6 h-6 text-xl" />
                   </div>
-                  <span className="font-mono text-[9px] uppercase tracking-widest text-[#8E8E93] bg-white/5 px-2 py-0.5 rounded-sm border border-white/5">
+                  <span className="font-mono text-xs uppercase tracking-widest text-ink-muted bg-line px-2 py-0.5 rounded-sm border border-line">
                     [{tech.category}]
                   </span>
                 </div>
 
                 {/* Tech Title */}
                 <div className="mt-6">
-                  <h3 className="font-display font-medium text-xl md:text-2xl text-[#F5F5F3] group-hover:text-brand-orange transition-colors">
+                  <h3 className="font-display font-medium text-xl md:text-2xl text-ink group-hover:text-brand-ink transition-colors">
                     {tech.name}
                   </h3>
-                  <p className="font-sans text-[11px] text-[#8E8E93] font-light leading-relaxed mt-1.5 opacity-80 group-hover:opacity-100 transition-opacity">
+                  <p className="font-sans text-xs text-ink-muted font-light leading-relaxed mt-1.5 opacity-80 group-hover:opacity-100 transition-opacity">
                     {tech.description}
                   </p>
                 </div>
 
                 {/* Bottom Core Level Indicator */}
-                <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between">
-                  <span className="font-mono text-[9px] text-[#8E8E93]">{lang === "vi" ? "CẤP ĐỘ" : "LEVEL"}</span>
-                  <span className="font-mono text-[9px] text-[#F5F5F3] tracking-widest uppercase">
+                <div className="mt-4 pt-3 border-t border-line flex items-center justify-between">
+                  <span className="font-mono text-xs text-ink-muted">{lang === "vi" ? "CẤP ĐỘ" : "LEVEL"}</span>
+                  <span className="font-mono text-xs text-ink tracking-widest uppercase">
                     {tech.level}
                   </span>
                 </div>
