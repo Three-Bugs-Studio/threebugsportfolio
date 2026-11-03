@@ -108,7 +108,7 @@ export default function About({ lang }: AboutProps) {
   ];
 
   return (
-    <section id="about" className="py-20 md:py-28 bg-[#090909] border-t border-white/5 relative">
+    <section id="about" className="py-20 md:py-28 bg-canvas border-t border-line relative">
       {/* Subtle grid layout lines */}
       <div className="absolute inset-0 flex justify-between px-6 md:px-12 pointer-events-none opacity-5">
         <div className="w-[1px] h-full bg-white" />
@@ -120,10 +120,10 @@ export default function About({ lang }: AboutProps) {
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         {/* Label Header */}
         <motion.div variants={itemVariants} className="flex items-center gap-3 mb-12">
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange">
+          <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-ink">
             {t.aboutLabel}
           </span>
-          <span className="h-[1px] w-12 bg-white/10" />
+          <span className="h-[1px] w-12 bg-line" />
         </motion.div>
 
         {/* Editorial Overview Statement */}
@@ -131,7 +131,7 @@ export default function About({ lang }: AboutProps) {
           <div className="lg:col-span-8">
             <motion.h2
               variants={itemVariants}
-              className="font-display font-medium text-3xl md:text-5xl lg:text-6xl tracking-tight text-[#F5F5F3] leading-[1.15]"
+              className="font-display font-medium text-3xl md:text-5xl lg:text-6xl tracking-tight text-ink leading-[1.15]"
             >
               {t.aboutHeading}
             </motion.h2>
@@ -139,7 +139,7 @@ export default function About({ lang }: AboutProps) {
           <div className="lg:col-span-4 flex flex-col justify-end gap-4">
             <motion.p
               variants={itemVariants}
-              className="font-sans text-sm md:text-base text-[#8E8E93] font-light leading-relaxed"
+              className="font-sans text-sm md:text-base text-ink-muted font-light leading-relaxed"
             >
               {t.aboutBody1}
             </motion.p>
@@ -154,7 +154,7 @@ export default function About({ lang }: AboutProps) {
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="overflow-hidden"
               >
-                <p className="font-sans text-xs md:text-sm text-[#8E8E93]/70 font-light leading-relaxed border-l border-brand-orange/30 pl-4 py-1">
+                <p className="font-sans text-xs md:text-sm text-ink-muted font-light leading-relaxed border-l border-brand-orange/30 pl-4 py-1">
                   {t.aboutBody2}
                 </p>
               </motion.div>
@@ -163,7 +163,7 @@ export default function About({ lang }: AboutProps) {
             <motion.button
               variants={itemVariants}
               onClick={() => setIsExpanded(!isExpanded)}
-              className="font-mono text-[9px] tracking-[0.2em] text-brand-orange uppercase hover:text-[#F5F5F3] transition-colors flex items-center gap-1 focus:outline-none cursor-pointer mt-1 self-start select-none interactive"
+              className="font-mono text-xs tracking-[0.2em] text-brand-ink uppercase hover:text-ink transition-colors flex items-center gap-1 focus:outline-none cursor-pointer mt-1 self-start select-none interactive"
               id="about-toggle-button"
             >
               {isExpanded ? (lang === "vi" ? "[ THU GỌN - ]" : "[ READ LESS - ]") : (lang === "vi" ? "[ ĐỌC THÊM + ]" : "[ READ MORE + ]")}
@@ -172,7 +172,7 @@ export default function About({ lang }: AboutProps) {
         </div>
 
         {/* Interactive CategoryList Component for Studio Portrait & Pillars */}
-        <motion.div variants={itemVariants} className="pt-8 border-t border-white/5">
+        <motion.div variants={itemVariants} className="pt-8 border-t border-line">
           <CategoryList
             title={lang === "vi" ? "ĐẶC ĐIỂM VẬN HÀNH STUDIO" : "STUDIO OPERATIONAL PRINCIPLES"}
             subtitle={lang === "vi" ? "Những tiêu chuẩn kỹ thuật cốt lõi được áp dụng nhất quán trong từng bản dựng." : "Core technical standards applied consistently across all product builds."}
