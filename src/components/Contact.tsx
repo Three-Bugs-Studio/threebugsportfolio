@@ -36,6 +36,12 @@ export default function Contact({ lang }: ContactProps) {
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
+  // Consent is never restored from the draft: the visitor must tick it on every submission
+  const [consent, setConsent] = useState(false);
+  const consentText =
+    lang === "vi"
+      ? "Tôi đồng ý để Three Bugs Studio dùng họ tên, email và nội dung trên để liên hệ, tư vấn và báo giá dự án."
+      : "I agree that Three Bugs Studio may use my name, email and message above to contact me, advise on and quote my project.";
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -118,6 +124,9 @@ export default function Contact({ lang }: ContactProps) {
     if (!formData.message.trim()) {
       newErrors.message = lang === "vi" ? "Vui lòng nhập mô tả yêu cầu" : "Message details are required";
     }
+    if (!consent) {
+      newErrors.consent = lang === "vi" ? "Vui lòng đồng ý để chúng tôi xử lý thông tin" : "Please agree so we can process your details";
+    }
     return newErrors;
   };
 
@@ -143,7 +152,10 @@ export default function Contact({ lang }: ContactProps) {
       company: formData.company || "Cá nhân / Doanh nghiệp",
       package: selectedBudget,
       message: formData.message,
-      timestamp: new Date().toLocaleString("vi-VN")
+      timestamp: new Date().toLocaleString("vi-VN"),
+      // Kept with the submission so the consent can be shown later if asked
+      consent: consentText,
+      consentAt: new Date().toISOString()
     };
 
     // Send payload asynchronously to Google Sheets / Webhook in background without blocking UI thread
@@ -520,6 +532,41 @@ export default function Contact({ lang }: ContactProps) {
                       {errors.message && (
                         <span id="message-error" className="font-mono text-[9px] text-red-500 mt-1 flex items-center gap-1">
                           <AlertCircleIcon size={14} className="w-3.5 h-3.5" /> {errors.message}
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Consent: unticked by default, required before sending */}
+                    <div>
+                      <div className="flex items-start gap-3">
+                        <input
+                          id="consent-input"
+                          type="checkbox"
+                          checked={consent}
+                          onChange={(e) => {
+                            setConsent(e.target.checked);
+                            if (errors.consent) {
+                              setErrors(({ consent: _, ...rest }) => rest);
+                            }
+                          }}
+                          aria-invalid={errors.consent ? "true" : "false"}
+                          aria-describedby={errors.consent ? "consent-error" : undefined}
+                          className="mt-0.5 w-4 h-4 shrink-0 accent-[#FF6A00] cursor-pointer"
+                        />
+                        <p className="text-xs text-[#C0C0C5] leading-relaxed">
+                          <label htmlFor="consent-input" className="cursor-pointer">{consentText}</label>{" "}
+                          <button
+                            type="button"
+                            onClick={() => window.dispatchEvent(new Event("three_bugs_open_privacy"))}
+                            className="text-brand-orange underline underline-offset-2 hover:text-[#F5F5F3] transition-colors cursor-pointer"
+                          >
+                            {lang === "vi" ? "Xem chính sách bảo mật" : "Read the privacy policy"}
+                          </button>
+                        </p>
+                      </div>
+                      {errors.consent && (
+                        <span id="consent-error" className="font-mono text-[9px] text-red-500 mt-1 flex items-center gap-1">
+                          <AlertCircleIcon size={14} className="w-3.5 h-3.5" /> {errors.consent}
                         </span>
                       )}
                     </div>
