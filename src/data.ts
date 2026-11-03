@@ -407,8 +407,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
           title: "Mức Giá Theo Quy Mô",
           items: [
             "Khách nhỏ (cá nhân, spa, quán, shop): 8 - 15 triệu",
-            "Start-up: 15 - 30 triệu",
-            "Doanh nghiệp: 30 - 60 triệu (song ngữ Việt/Anh, theo bộ nhận diện có sẵn, hợp đồng & NDA)"
+            "Start-up: 15 - 30 triệu"
           ]
         },
         {
@@ -446,8 +445,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
           title: "Mức Giá Theo Quy Mô",
           items: [
             "Khách nhỏ: 25 - 50 triệu",
-            "Start-up: 50 - 120 triệu",
-            "Doanh nghiệp: 120 - 300 triệu (bảo hành 12 tháng, hợp đồng & NDA)"
+            "Start-up: 50 - 120 triệu"
           ]
         },
         {
@@ -474,17 +472,16 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       id: "phase_3_enterprise",
       badge: "WEB APP & AI // 3 PHASE",
       name: "Gói Web App & Hệ Thống AI",
-      tagline: "Web App, Mobile App, hệ thống quản lý (CRM / ERP) và tích hợp AI cho start-up và doanh nghiệp.",
-      priceVnd: "Từ 150 triệu",
-      priceUsd: "Doanh nghiệp: báo giá sau khảo sát",
+      tagline: "Web App, Mobile App, hệ thống quản lý (CRM / ERP) và tích hợp AI cho start-up.",
+      priceVnd: "Báo giá theo yêu cầu",
+      priceUsd: "Báo giá sau buổi trao đổi yêu cầu",
       timeline: "MVP 6 - 10 Tuần",
       paymentNote: "30% sau khảo sát · 40% theo tiến độ · 30% khi bàn giao",
       features: [
         {
-          title: "Mức Giá Theo Quy Mô",
+          title: "Cách Báo Giá",
           items: [
-            "Start-up (bản MVP): 150 - 400 triệu, bảo hành 12 tháng",
-            "Doanh nghiệp: từ 400 triệu, bảo hành 24 tháng, báo giá theo từng giai đoạn sau buổi khảo sát",
+            "Start-up (bản MVP): báo giá theo phạm vi tính năng sau buổi trao đổi, bảo hành 12 tháng",
             "Bảo trì sau bàn giao: gói hằng tháng từ 5 - 20 triệu/tháng tùy quy mô hệ thống"
           ]
         },
@@ -497,7 +494,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "Phân quyền nhiều vai trò, đăng nhập bảo mật, lưu lịch sử thao tác",
             "Docker, tự động triển khai (CI/CD), môi trường thử nghiệm riêng",
             "Demo tiến độ mỗi 2 tuần",
-            "Bàn giao mã nguồn, tài liệu kiến trúc & đào tạo đội vận hành; bảo hành 12 tháng (doanh nghiệp 24 tháng)"
+            "Bàn giao mã nguồn, tài liệu kiến trúc & đào tạo đội vận hành; bảo hành 12 tháng"
           ]
         }
       ],
@@ -530,7 +527,6 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
           items: [
             "Khách nhỏ: 300.000đ/giờ",
             "Start-up: 400.000đ/giờ",
-            "Doanh nghiệp: 600.000đ/giờ",
             "Sửa lỗi khẩn cấp ngoài giờ hành chính: x1,5 đơn giá"
           ]
         },
@@ -597,8 +593,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
           title: "Price by Client Size",
           items: [
             "Small business (individuals, spas, cafés, shops): 8 - 15M VND",
-            "Start-up: 15 - 30M VND",
-            "Enterprise: 30 - 60M VND (bilingual VI/EN, existing brand guidelines, contract & NDA)"
+            "Start-up: 15 - 30M VND"
           ]
         },
         {
@@ -636,8 +631,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
           title: "Price by Client Size",
           items: [
             "Small business: 25 - 50M VND",
-            "Start-up: 50 - 120M VND",
-            "Enterprise: 120 - 300M VND (12-month warranty, contract & NDA)"
+            "Start-up: 50 - 120M VND"
           ]
         },
         {
@@ -664,17 +658,16 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       id: "phase_3_enterprise",
       badge: "WEB APP & AI // 3 PHASES",
       name: "Web App & AI Systems",
-      tagline: "Web apps, mobile apps, management systems (CRM / ERP) and AI integration for start-ups and enterprises.",
-      priceVnd: "From 150M VND",
-      priceUsd: "≈ US$5,700 · enterprise quoted after discovery",
+      tagline: "Web apps, mobile apps, management systems (CRM / ERP) and AI integration for start-ups.",
+      priceVnd: "Quoted per project",
+      priceUsd: "Quoted after a requirements call",
       timeline: "MVP 6 - 10 Weeks",
       paymentNote: "30% after discovery · 40% on progress · 30% on handover",
       features: [
         {
-          title: "Price by Client Size",
+          title: "How We Quote",
           items: [
-            "Start-up (MVP): 150 - 400M VND, 12-month warranty",
-            "Enterprise: from 400M VND, 24-month warranty, quoted per stage after a discovery session",
+            "Start-up (MVP): quoted on feature scope after a requirements call, 12-month warranty",
             "Post-launch maintenance: monthly plans from 5 - 20M VND depending on system size"
           ]
         },
@@ -687,7 +680,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
             "Multiple user roles, secure login and activity history",
             "Docker, automated deployment (CI/CD) and a separate staging environment",
             "Progress demo every 2 weeks",
-            "Source code, architecture docs and team training; 12-month warranty (24 months for enterprise)"
+            "Source code, architecture docs and team training; 12-month warranty"
           ]
         }
       ],
@@ -720,7 +713,6 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
           items: [
             "Small business: 300k VND/hour",
             "Start-up: 400k VND/hour",
-            "Enterprise: 600k VND/hour",
             "Urgent out-of-hours fixes: 1.5x rate"
           ]
         },
@@ -1417,7 +1409,7 @@ export const TRANSLATIONS = {
     contactBudgetValue: "Từ 2,5 triệu",
     contactBudgetRange1: "Gói 1: Landing & Web Giới Thiệu (Từ 8 triệu)",
     contactBudgetRange2: "Gói 2: Doanh Nghiệp & E-Commerce (Từ 25 triệu)",
-    contactBudgetRange3: "Gói 3: Web App & Hệ Thống AI (Từ 150 triệu)",
+    contactBudgetRange3: "Gói 3: Web App & Hệ Thống AI (Báo giá theo yêu cầu)",
     contactBudgetConversionLabel: "Tư vấn & báo giá chi tiết trực tiếp qua Zalo / Hotline",
     contactSendBtn: "GỬI THÔNG TIN YÊU CẦU",
     contactSendingBtn: "ĐANG GỬI THÔNG TIN...",
@@ -1505,7 +1497,7 @@ export const TRANSLATIONS = {
     contactBudgetValue: "From 2.5M VND",
     contactBudgetRange1: "Package 1: Landing & Company Site (From 8M VND)",
     contactBudgetRange2: "Package 2: Business & E-Commerce (From 25M VND)",
-    contactBudgetRange3: "Package 3: Web App & AI Systems (From 150M VND)",
+    contactBudgetRange3: "Package 3: Web App & AI Systems (Quoted per project)",
     contactBudgetConversionLabel: "Direct project consultation via Zalo / Hotline",
     contactSendBtn: "SEND PROJECT INQUIRY",
     contactSendingBtn: "TRANSMITTING INQUIRY...",
