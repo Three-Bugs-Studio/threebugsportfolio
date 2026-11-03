@@ -441,6 +441,11 @@ export default function Footer({ lang }: FooterProps) {
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-4 gap-y-2 text-center md:text-left">
             <span>{t.footerCopyright}</span>
             <span className="hidden md:inline text-white/10">|</span>
+            {/* Owner contact: the studio is not a registered business yet, so there is no tax ID to show */}
+            <span className="normal-case">
+              TP. Hồ Chí Minh · threebugstudio@gmail.com · 0392.996.307
+            </span>
+            <span className="hidden md:inline text-white/10">|</span>
             <span className="text-[#6E6E73]">{lang === "vi" ? "THIẾT KẾ & PHÁT TRIỂN BỞI THREE BUGS STUDIO" : "DESIGNED & ENGINEERED BY THREE BUGS STUDIO"}</span>
           </div>
 
