@@ -210,7 +210,7 @@ export default function Contact({ lang }: ContactProps) {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative">
+    <section id="contact" className="py-24 md:py-32 bg-canvas border-t border-line relative">
       <div className="absolute top-[10%] left-[20%] brutalist-glow opacity-25" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
@@ -220,70 +220,70 @@ export default function Contact({ lang }: ContactProps) {
           <div className="lg:col-span-5 flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-3 mb-8">
-                <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange">
+                <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-ink">
                   {t.contactLabel}
                 </span>
-                <span className="h-[1px] w-12 bg-white/10" />
+                <span className="h-[1px] w-12 bg-line" />
               </div>
 
-              <h2 className="font-display font-medium text-4xl md:text-5xl tracking-tight text-[#F5F5F3] leading-[1.1] mb-6">
+              <h2 className="font-display font-medium text-4xl md:text-5xl tracking-tight text-ink leading-[1.1] mb-6">
                 {t.contactHeading}
               </h2>
               
-              <p className="font-sans text-sm md:text-base text-[#8E8E93] font-light leading-relaxed max-w-sm mb-8">
+              <p className="font-sans text-sm md:text-base text-ink-muted font-light leading-relaxed max-w-sm mb-8">
                 {t.contactSubtitle}
               </p>
             </div>
 
             {/* Direct Contact details */}
-            <div className="border-t border-white/5 pt-8 space-y-6">
+            <div className="border-t border-line pt-8 space-y-6">
               
               {/* Direct Consultants Info Box */}
-              <div className="p-5 sm:p-6 bg-[#111113]/95 border border-brand-orange/30 rounded-md relative overflow-hidden shadow-2xl">
+              <div className="p-5 sm:p-6 bg-surface/95 border border-brand-orange/30 rounded-md relative overflow-hidden shadow-2xl">
                 {/* Accent top gradient line */}
                 <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-orange to-transparent opacity-90" />
                 
                 {/* Section Header */}
-                <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-white/10">
-                  <div className="w-7 h-7 rounded-md bg-brand-orange/15 text-brand-orange border border-brand-orange/30 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(255,106,0,0.2)]">
+                <div className="flex items-center gap-2.5 mb-4 pb-3 border-b border-line">
+                  <div className="w-7 h-7 rounded-md bg-brand-orange/15 text-brand-ink border border-brand-orange/30 flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(255,106,0,0.2)]">
                     <UserIcon size={14} className="w-3.5 h-3.5" />
                   </div>
-                  <span className="font-mono text-[9px] sm:text-[10px] tracking-widest text-brand-orange uppercase font-bold">
+                  <span className="font-mono text-xs tracking-widest text-brand-ink uppercase font-bold">
                     // {lang === "vi" ? "CHUYÊN VIÊN TƯ VẤN & TIẾP NHẬN DỰ ÁN" : "DIRECT PROJECT CONSULTANTS"}
                   </span>
                 </div>
 
                 <div className="flex flex-col gap-3.5">
                   {/* Consultant 1: Hoang Do */}
-                  <div className="p-4 bg-[#09090b] border border-white/10 hover:border-brand-orange/40 rounded-sm transition-all shadow-md group/c">
+                  <div className="p-4 bg-canvas border border-line hover:border-brand-orange/40 rounded-sm transition-all shadow-md group/c">
                     <div className="flex items-center justify-between mb-1.5">
                       <div className="flex items-center gap-2.5">
-                        <span className="w-7 h-7 rounded-full bg-brand-orange/15 text-brand-orange border border-brand-orange/30 font-display font-bold text-[11px] flex items-center justify-center shrink-0">
+                        <span className="w-7 h-7 rounded-full bg-brand-orange/15 text-brand-ink border border-brand-orange/30 font-display font-bold text-xs flex items-center justify-center shrink-0">
                           HĐ
                         </span>
                         <div>
                           <div className="flex items-center gap-2">
-                            <span className="font-display font-bold text-sm text-white group-hover/c:text-brand-orange transition-colors">
+                            <span className="font-display font-bold text-sm text-ink group-hover/c:text-brand-ink transition-colors">
                               Hoàng Đỗ
                             </span>
-                            <span className="font-mono text-[9px] uppercase tracking-wider bg-brand-orange/10 border border-brand-orange/20 text-brand-orange px-1.5 py-0.5 rounded font-semibold">
+                            <span className="font-mono text-xs uppercase tracking-wider bg-brand-orange/10 border border-brand-orange/20 text-brand-ink px-1.5 py-0.5 rounded font-semibold">
                               {lang === "vi" ? "TƯ VẤN BÁO GIÁ" : "QUOTE INTAKE"}
                             </span>
                           </div>
-                          <span className="font-mono text-[10px] text-[#8E8E93] block">
+                          <span className="font-mono text-xs text-ink-muted block">
                             {lang === "vi" ? "Tiếp nhận hồ sơ & Dự toán chi phí" : "Scope Assessment & Quote"}
                           </span>
                         </div>
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3 mt-3 pt-3 border-t border-white/5">
+                    <div className="grid grid-cols-2 gap-3 mt-3 pt-3 border-t border-line">
                       <a
                         href="tel:0392996307"
-                        className="inline-flex items-center justify-center gap-2 font-mono text-xs text-white hover:text-brand-orange bg-[#161618] hover:bg-[#202024] border border-white/10 hover:border-brand-orange/40 py-2.5 px-3 rounded-sm transition-all shadow-sm active:scale-95 group/btn"
+                        className="inline-flex items-center justify-center gap-2 font-mono text-xs text-ink hover:text-brand-ink bg-surface hover:bg-line border border-line hover:border-brand-orange/40 py-2.5 px-3 rounded-sm transition-all shadow-sm active:scale-95 group/btn"
                         title="Gọi Hoàng Đỗ: 0392.996.307"
                       >
-                        <PhoneIcon size={12} className="w-3 h-3 text-brand-orange shrink-0 transition-transform group-hover/btn:scale-110" />
+                        <PhoneIcon size={12} className="w-3 h-3 text-brand-ink shrink-0 transition-transform group-hover/btn:scale-110" />
                         <span className="font-bold tracking-tight">0392.996.307</span>
                       </a>
                       <a
@@ -299,35 +299,35 @@ export default function Contact({ lang }: ContactProps) {
                   </div>
 
                   {/* Consultant 2: Minh Duc */}
-                  <div className="p-4 bg-[#09090b] border border-white/10 hover:border-brand-orange/40 rounded-sm transition-all shadow-md group/c">
+                  <div className="p-4 bg-canvas border border-line hover:border-brand-orange/40 rounded-sm transition-all shadow-md group/c">
                     <div className="flex items-center justify-between mb-1.5">
                       <div className="flex items-center gap-2.5">
-                        <span className="w-7 h-7 rounded-full bg-brand-orange/15 text-brand-orange border border-brand-orange/30 font-display font-bold text-[11px] flex items-center justify-center shrink-0">
+                        <span className="w-7 h-7 rounded-full bg-brand-orange/15 text-brand-ink border border-brand-orange/30 font-display font-bold text-xs flex items-center justify-center shrink-0">
                           MĐ
                         </span>
                         <div>
                           <div className="flex items-center gap-2">
-                            <span className="font-display font-bold text-sm text-white group-hover/c:text-brand-orange transition-colors">
+                            <span className="font-display font-bold text-sm text-ink group-hover/c:text-brand-ink transition-colors">
                               Minh Đức
                             </span>
-                            <span className="font-mono text-[9px] uppercase tracking-wider bg-brand-orange/10 border border-brand-orange/20 text-brand-orange px-1.5 py-0.5 rounded font-semibold">
+                            <span className="font-mono text-xs uppercase tracking-wider bg-brand-orange/10 border border-brand-orange/20 text-brand-ink px-1.5 py-0.5 rounded font-semibold">
                               {lang === "vi" ? "TƯ VẤN KỸ THUẬT" : "TECH ARCHITECT"}
                             </span>
                           </div>
-                          <span className="font-mono text-[10px] text-[#8E8E93] block">
+                          <span className="font-mono text-xs text-ink-muted block">
                             {lang === "vi" ? "Tư vấn công nghệ & Lộ trình 3 Phase" : "Architecture & 3-Phase Roadmap"}
                           </span>
                         </div>
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3 mt-3 pt-3 border-t border-white/5">
+                    <div className="grid grid-cols-2 gap-3 mt-3 pt-3 border-t border-line">
                       <a
                         href="tel:0867474204"
-                        className="inline-flex items-center justify-center gap-2 font-mono text-xs text-white hover:text-brand-orange bg-[#161618] hover:bg-[#202024] border border-white/10 hover:border-brand-orange/40 py-2.5 px-3 rounded-sm transition-all shadow-sm active:scale-95 group/btn"
+                        className="inline-flex items-center justify-center gap-2 font-mono text-xs text-ink hover:text-brand-ink bg-surface hover:bg-line border border-line hover:border-brand-orange/40 py-2.5 px-3 rounded-sm transition-all shadow-sm active:scale-95 group/btn"
                         title="Gọi Minh Đức: 0867.474.204"
                       >
-                        <PhoneIcon size={12} className="w-3 h-3 text-brand-orange shrink-0 transition-transform group-hover/btn:scale-110" />
+                        <PhoneIcon size={12} className="w-3 h-3 text-brand-ink shrink-0 transition-transform group-hover/btn:scale-110" />
                         <span className="font-bold tracking-tight">0867.474.204</span>
                       </a>
                       <a
@@ -346,19 +346,19 @@ export default function Contact({ lang }: ContactProps) {
 
               {/* Email & Operating model */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
-                <div className="p-3.5 bg-[#09090b] border border-white/5 rounded-sm">
-                  <span className="font-mono text-[9px] tracking-widest text-brand-orange uppercase block mb-1">
+                <div className="p-3.5 bg-canvas border border-line rounded-sm">
+                  <span className="font-mono text-xs tracking-widest text-brand-ink uppercase block mb-1">
                     STUDIO INBOX
                   </span>
-                  <a href="mailto:threebugstudio@gmail.com" className="font-sans text-xs text-[#F5F5F3] hover:text-brand-orange transition-colors interactive break-all font-medium">
+                  <a href="mailto:threebugstudio@gmail.com" className="font-sans text-xs text-ink hover:text-brand-ink transition-colors interactive break-all font-medium">
                     threebugstudio@gmail.com
                   </a>
                 </div>
-                <div className="p-3.5 bg-[#09090b] border border-white/5 rounded-sm">
-                  <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block mb-1">
+                <div className="p-3.5 bg-canvas border border-line rounded-sm">
+                  <span className="font-mono text-xs tracking-widest text-ink-muted uppercase block mb-1">
                     OPERATING MODEL
                   </span>
-                  <span className="font-sans text-xs text-[#F5F5F3] tracking-wide block font-medium">
+                  <span className="font-sans text-xs text-ink tracking-wide block font-medium">
                     100% REMOTE
                   </span>
                 </div>
@@ -368,7 +368,7 @@ export default function Contact({ lang }: ContactProps) {
 
           {/* Right Column: Contact Form Panel (Grid-Span 7) */}
           <div className="lg:col-span-7">
-            <div className="bg-[#121212]/30 border border-white/5 p-8 md:p-10 rounded-sm hover:border-white/10 transition-all duration-300 relative">
+            <div className="bg-surface/30 border border-line p-8 md:p-10 rounded-sm hover:border-white/10 transition-all duration-300 relative">
               
               <AnimatePresence mode="wait">
                 {!isSubmitted ? (
@@ -384,8 +384,8 @@ export default function Contact({ lang }: ContactProps) {
                     {/* Grid Inputs: Name & Company */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
-                        <label htmlFor="name-input" className="font-mono text-[10px] tracking-widest text-[#C0C0C5] uppercase block mb-2">
-                          {t.contactFieldName} <span className="text-brand-orange">*</span>
+                        <label htmlFor="name-input" className="font-mono text-xs tracking-widest text-ink-muted uppercase block mb-2">
+                          {t.contactFieldName} <span className="text-brand-ink">*</span>
                         </label>
                         <input
                           id="name-input"
@@ -395,20 +395,20 @@ export default function Contact({ lang }: ContactProps) {
                           onChange={handleInputChange}
                           aria-invalid={errors.name ? "true" : "false"}
                           aria-describedby={errors.name ? "name-error" : undefined}
-                          className={`w-full bg-[#090909]/80 border px-4 py-3 text-sm text-[#F5F5F3] rounded-sm focus:outline-none focus:ring-1 focus:ring-brand-orange/50 transition-all ${
-                            errors.name ? "border-red-500/50 focus:border-red-500 focus:ring-red-500/30" : "border-white/10 focus:border-brand-orange focus:bg-[#141417]"
+                          className={`w-full bg-canvas/80 border px-4 py-3 text-sm text-ink rounded-sm focus:outline-none focus:ring-1 focus:ring-brand-orange/50 transition-all ${
+                            errors.name ? "border-red-500/50 focus:border-red-500 focus:ring-red-500/30" : "border-line focus:border-brand-orange focus:bg-surface"
                           }`}
                           placeholder="Alex Mercer"
                         />
                         {errors.name && (
-                          <span id="name-error" className="font-mono text-[9px] text-red-500 mt-1 flex items-center gap-1">
+                          <span id="name-error" className="font-mono text-xs text-red-500 mt-1 flex items-center gap-1">
                             <AlertCircleIcon size={14} className="w-3.5 h-3.5" /> {errors.name}
                           </span>
                         )}
                       </div>
 
                       <div>
-                        <label htmlFor="company-input" className="font-mono text-[10px] tracking-widest text-[#C0C0C5] uppercase block mb-2">
+                        <label htmlFor="company-input" className="font-mono text-xs tracking-widest text-ink-muted uppercase block mb-2">
                           {t.contactFieldCompany}
                         </label>
                         <input
@@ -417,7 +417,7 @@ export default function Contact({ lang }: ContactProps) {
                           name="company"
                           value={formData.company}
                           onChange={handleInputChange}
-                          className="w-full bg-[#090909]/80 border border-white/10 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange/50 focus:bg-[#141417] px-4 py-3 text-sm text-[#F5F5F3] rounded-sm focus:outline-none transition-all"
+                          className="w-full bg-canvas/80 border border-line focus:border-brand-orange focus:ring-1 focus:ring-brand-orange/50 focus:bg-surface px-4 py-3 text-sm text-ink rounded-sm focus:outline-none transition-all"
                           placeholder="MetaLabs Inc."
                         />
                       </div>
@@ -425,8 +425,8 @@ export default function Contact({ lang }: ContactProps) {
 
                     {/* Email Input */}
                     <div>
-                      <label htmlFor="email-input" className="font-mono text-[10px] tracking-widest text-[#C0C0C5] uppercase block mb-2">
-                        {t.contactFieldEmail} <span className="text-brand-orange">*</span>
+                      <label htmlFor="email-input" className="font-mono text-xs tracking-widest text-ink-muted uppercase block mb-2">
+                        {t.contactFieldEmail} <span className="text-brand-ink">*</span>
                       </label>
                       <input
                         id="email-input"
@@ -436,13 +436,13 @@ export default function Contact({ lang }: ContactProps) {
                         onChange={handleInputChange}
                         aria-invalid={errors.email ? "true" : "false"}
                         aria-describedby={errors.email ? "email-error" : undefined}
-                        className={`w-full bg-[#090909]/80 border px-4 py-3 text-sm text-[#F5F5F3] rounded-sm focus:outline-none focus:ring-1 focus:ring-brand-orange/50 transition-all ${
-                          errors.email ? "border-red-500/50 focus:border-red-500 focus:ring-red-500/30" : "border-white/10 focus:border-brand-orange focus:bg-[#141417]"
+                        className={`w-full bg-canvas/80 border px-4 py-3 text-sm text-ink rounded-sm focus:outline-none focus:ring-1 focus:ring-brand-orange/50 transition-all ${
+                          errors.email ? "border-red-500/50 focus:border-red-500 focus:ring-red-500/30" : "border-line focus:border-brand-orange focus:bg-surface"
                         }`}
                         placeholder="alex@metalabs.com"
                       />
                       {errors.email && (
-                        <span id="email-error" className="font-mono text-[9px] text-red-500 mt-1 flex items-center gap-1">
+                        <span id="email-error" className="font-mono text-xs text-red-500 mt-1 flex items-center gap-1">
                           <AlertCircleIcon size={14} className="w-3.5 h-3.5" /> {errors.email}
                         </span>
                       )}
@@ -452,7 +452,7 @@ export default function Contact({ lang }: ContactProps) {
 
                     {/* Budget Options Selector */}
                     <div>
-                      <label className="font-mono text-[10px] tracking-widest text-[#C0C0C5] uppercase block mb-3">
+                      <label className="font-mono text-xs tracking-widest text-ink-muted uppercase block mb-3">
                         {t.contactFieldBudget}
                       </label>
 
@@ -468,30 +468,30 @@ export default function Contact({ lang }: ContactProps) {
                               onClick={() => setBudgetIndex(oIdx)}
                               className={`w-full text-left p-3.5 md:p-4 border rounded-sm transition-all focus:outline-none flex items-center justify-between gap-3 cursor-pointer ${
                                 isSelected
-                                  ? "bg-brand-orange/15 border-brand-orange text-brand-orange shadow-[0_0_15px_rgba(255,106,0,0.1)]"
-                                  : "bg-[#090909]/60 border-white/10 text-[#8E8E93] hover:border-white/20 hover:text-[#F5F5F3]"
+                                  ? "bg-brand-orange/15 border-brand-orange text-brand-ink shadow-[0_0_15px_rgba(255,106,0,0.1)]"
+                                  : "bg-canvas/60 border-line text-ink-muted hover:border-white/20 hover:text-ink"
                               }`}
                             >
                               <div className="flex items-center gap-3 min-w-0 flex-1">
-                                <span className={`font-mono text-[9px] font-bold px-2 py-0.5 rounded-xs shrink-0 tracking-wider ${
-                                  isSelected ? "bg-brand-orange text-black" : "bg-white/10 text-[#8E8E93]"
+                                <span className={`font-mono text-xs font-bold px-2 py-0.5 rounded-xs shrink-0 tracking-wider ${
+                                  isSelected ? "bg-brand-orange text-black" : "bg-line text-ink-muted"
                                 }`}>
                                   {opt.badge}
                                 </span>
                                 <div className="flex flex-col min-w-0">
                                   <span className={`font-sans text-xs md:text-sm font-semibold leading-snug break-words ${
-                                    isSelected ? "text-[#F5F5F3]" : "text-[#D0D0D5]"
+                                    isSelected ? "text-ink" : "text-ink-muted"
                                   }`}>
                                     {opt.title}
                                   </span>
-                                  <span className="font-mono text-[10px] text-brand-orange font-medium tracking-wide mt-0.5">
-                                    {opt.quote} • <span className="text-[#8E8E93] font-normal">{opt.desc}</span>
+                                  <span className="font-mono text-xs text-brand-ink font-medium tracking-wide mt-0.5">
+                                    {opt.quote} • <span className="text-ink-muted font-normal">{opt.desc}</span>
                                   </span>
                                 </div>
                               </div>
 
                               <div className={`w-5 h-5 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
-                                isSelected ? "border-brand-orange bg-brand-orange text-black" : "border-white/20 bg-transparent text-transparent"
+                                isSelected ? "border-brand-orange bg-brand-orange text-black" : "border-line bg-transparent text-transparent"
                               }`}>
                                 <CheckIcon size={10} className="w-2.5 h-2.5" />
                               </div>
@@ -500,7 +500,7 @@ export default function Contact({ lang }: ContactProps) {
                         })}
                       </div>
 
-                      <span className="font-mono text-[8.5px] text-[#8E8E93]/80 tracking-wide mt-1.5 block">
+                      <span className="font-mono text-xs text-ink-muted tracking-wide mt-1.5 block">
                         * {lang === "vi" 
                           ? "Three Bugs Studio tiếp nhận yêu cầu và chủ động liên hệ gửi bảng báo giá tối ưu theo quy mô dự án." 
                           : "Three Bugs Studio will consult and provide a tailored quote matching your project scope."}
@@ -509,8 +509,8 @@ export default function Contact({ lang }: ContactProps) {
 
                     {/* Project details / Message input */}
                     <div>
-                      <label htmlFor="message-input" className="font-mono text-[10px] tracking-widest text-[#C0C0C5] uppercase block mb-2">
-                        {t.contactFieldMessage} <span className="text-brand-orange">*</span>
+                      <label htmlFor="message-input" className="font-mono text-xs tracking-widest text-ink-muted uppercase block mb-2">
+                        {t.contactFieldMessage} <span className="text-brand-ink">*</span>
                       </label>
                       <textarea
                         id="message-input"
@@ -520,8 +520,8 @@ export default function Contact({ lang }: ContactProps) {
                         onChange={handleInputChange}
                         aria-invalid={errors.message ? "true" : "false"}
                         aria-describedby={errors.message ? "message-error" : undefined}
-                        className={`w-full bg-[#090909]/80 border px-4 py-3 text-sm text-[#F5F5F3] rounded-sm focus:outline-none focus:ring-1 focus:ring-brand-orange/50 transition-all resize-none ${
-                          errors.message ? "border-red-500/50 focus:border-red-500 focus:ring-red-500/30" : "border-white/10 focus:border-brand-orange focus:bg-[#141417]"
+                        className={`w-full bg-canvas/80 border px-4 py-3 text-sm text-ink rounded-sm focus:outline-none focus:ring-1 focus:ring-brand-orange/50 transition-all resize-none ${
+                          errors.message ? "border-red-500/50 focus:border-red-500 focus:ring-red-500/30" : "border-line focus:border-brand-orange focus:bg-surface"
                         }`}
                         placeholder={
                           lang === "vi"
@@ -530,7 +530,7 @@ export default function Contact({ lang }: ContactProps) {
                         }
                       />
                       {errors.message && (
-                        <span id="message-error" className="font-mono text-[9px] text-red-500 mt-1 flex items-center gap-1">
+                        <span id="message-error" className="font-mono text-xs text-red-500 mt-1 flex items-center gap-1">
                           <AlertCircleIcon size={14} className="w-3.5 h-3.5" /> {errors.message}
                         </span>
                       )}
@@ -553,19 +553,19 @@ export default function Contact({ lang }: ContactProps) {
                           aria-describedby={errors.consent ? "consent-error" : undefined}
                           className="mt-0.5 w-4 h-4 shrink-0 accent-[#FF6A00] cursor-pointer"
                         />
-                        <p className="text-xs text-[#C0C0C5] leading-relaxed">
+                        <p className="text-xs text-ink-muted leading-relaxed">
                           <label htmlFor="consent-input" className="cursor-pointer">{consentText}</label>{" "}
                           <button
                             type="button"
                             onClick={() => window.dispatchEvent(new Event("three_bugs_open_privacy"))}
-                            className="text-brand-orange underline underline-offset-2 hover:text-[#F5F5F3] transition-colors cursor-pointer"
+                            className="text-brand-ink underline underline-offset-2 hover:text-ink transition-colors cursor-pointer"
                           >
                             {lang === "vi" ? "Xem chính sách bảo mật" : "Read the privacy policy"}
                           </button>
                         </p>
                       </div>
                       {errors.consent && (
-                        <span id="consent-error" className="font-mono text-[9px] text-red-500 mt-1 flex items-center gap-1">
+                        <span id="consent-error" className="font-mono text-xs text-red-500 mt-1 flex items-center gap-1">
                           <AlertCircleIcon size={14} className="w-3.5 h-3.5" /> {errors.consent}
                         </span>
                       )}
@@ -588,7 +588,7 @@ export default function Contact({ lang }: ContactProps) {
                       ) : (
                         <>
                           {t.contactSendBtn}
-                          <ArrowUpRightIcon size={16} className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-brand-orange" />
+                          <ArrowUpRightIcon size={16} className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-brand-ink" />
                         </>
                       )}
                     </button>
@@ -606,19 +606,19 @@ export default function Contact({ lang }: ContactProps) {
                       <CheckIcon size={24} className="w-6 h-6 stroke-[3]" />
                     </div>
 
-                    <h3 className="font-display font-medium text-2xl text-[#F5F5F3] mb-4">
+                    <h3 className="font-display font-medium text-2xl text-ink mb-4">
                       {t.contactSuccessTitle}
                     </h3>
 
-                    <p className="font-sans text-xs md:text-sm text-[#8E8E93] font-light leading-relaxed max-w-sm mb-8">
+                    <p className="font-sans text-xs md:text-sm text-ink-muted font-light leading-relaxed max-w-sm mb-8">
                       {t.contactSuccessMessage}
                     </p>
 
-                    <div className="p-4 bg-[#090909]/40 border border-white/5 rounded-sm w-full max-w-xs text-left mb-8">
-                      <span className="font-mono text-[8px] text-[#8E8E93] uppercase block mb-2">
+                    <div className="p-4 bg-canvas/40 border border-line rounded-sm w-full max-w-xs text-left mb-8">
+                      <span className="font-mono text-xs text-ink-muted uppercase block mb-2">
                         {lang === "vi" ? "TIẾN TRÌNH TIẾP THEO" : "WHAT HAPPENS NEXT"}
                       </span>
-                      <ul className="flex flex-col gap-2 font-sans text-xs text-[#F5F5F3] font-light">
+                      <ul className="flex flex-col gap-2 font-sans text-xs text-ink font-light">
                         <li className="flex items-center gap-2">
                           <span className="w-1 h-1 bg-brand-orange rounded-full" />
                           {lang === "vi" ? "Xem xét cấu trúc tham số hệ thống." : "Reviewing system architecture parameters."}
@@ -645,7 +645,7 @@ export default function Contact({ lang }: ContactProps) {
                         setBudgetIndex(1);
                         setIsSubmitted(false);
                       }}
-                      className="font-mono text-[10px] uppercase tracking-widest px-6 py-2.5 bg-transparent border border-white/10 hover:border-brand-orange/50 text-[#8E8E93] hover:text-[#F5F5F3] transition-colors rounded-sm interactive"
+                      className="font-mono text-xs uppercase tracking-widest px-6 py-2.5 bg-transparent border border-line hover:border-brand-orange/50 text-ink-muted hover:text-ink transition-colors rounded-sm interactive"
                     >
                       {lang === "vi" ? "Gửi một yêu cầu khác" : "Transmit another form"}
                     </button>
