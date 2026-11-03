@@ -87,19 +87,19 @@ export default function Contact({ lang }: ContactProps) {
   const budgetOptions = [
     {
       badge: lang === "vi" ? "GÓI 01" : "PLAN 01",
-      title: lang === "vi" ? "Landing & Web Giới Thiệu" : "Landing & Company Site",
+      title: lang === "vi" ? "Website Giới Thiệu" : "Company Website",
       quote: lang === "vi" ? "Từ 8 triệu" : "From 8M VND",
       desc: lang === "vi" ? "Thiết kế riêng trên Figma, tối đa 5 trang, giao trong 1 - 2 tuần." : "Custom Figma design, up to 5 pages, delivered in 1 - 2 weeks.",
     },
     {
       badge: lang === "vi" ? "GÓI 02" : "PLAN 02",
-      title: lang === "vi" ? "Doanh Nghiệp & E-Commerce" : "Business & E-Commerce",
+      title: lang === "vi" ? "Website Bán Hàng & Đặt Lịch" : "Store & Booking Website",
       quote: lang === "vi" ? "Từ 25 triệu" : "From 25M VND",
       desc: lang === "vi" ? "Có trang quản trị, bán hàng / đặt lịch / khóa học, giao trong 3 - 6 tuần." : "Admin panel plus shop, bookings or courses, delivered in 3 - 6 weeks.",
     },
     {
       badge: lang === "vi" ? "GÓI 03" : "PLAN 03",
-      title: lang === "vi" ? "Web App & Hệ Thống AI" : "Web App & AI Systems",
+      title: lang === "vi" ? "Hệ Thống & App Theo Yêu Cầu" : "Custom Systems & Apps",
       quote: lang === "vi" ? "Báo giá theo yêu cầu" : "Quoted per project",
       desc: lang === "vi" ? "Web / Mobile App, CRM / ERP, tích hợp AI; bản MVP 6 - 10 tuần." : "Web / mobile apps, CRM / ERP and AI integration; MVP in 6 - 10 weeks.",
     },
