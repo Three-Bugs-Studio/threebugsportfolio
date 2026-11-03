@@ -233,22 +233,31 @@ export default function Team({ lang }: TeamProps) {
                   )}
                 </div>
 
-                {/* Role Artwork: tinted in the member's colour, full colour on hover, with a museum-style label */}
+                {/* Role Artwork: neon duotone in the member's colour with scanlines, glitches on hover (styles in index.css) */}
                 {art && (
-                  <figure className={`relative ${group.wide ? "aspect-[16/10]" : "aspect-[4/5]"} w-full border border-white/10 rounded-lg overflow-hidden mb-4 group-hover:border-brand-orange/40 transition-all duration-500 bg-[#080808]`}>
+                  <figure
+                    className={`cyber-art relative ${group.wide ? "aspect-[16/10]" : "aspect-[4/5]"} w-full border border-white/10 rounded-lg overflow-hidden mb-4 transition-all duration-500 bg-[#080808]`}
+                    style={{ "--neon": colorHex } as React.CSSProperties}
+                  >
                     <img
                       src={art.img}
                       alt={`${art.title} - ${art.artist}`}
                       loading="lazy"
                       decoding="async"
                       style={{ objectPosition: art.focus }}
-                      className="w-full h-full object-cover grayscale-[70%] contrast-110 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div
-                      className="absolute inset-0 mix-blend-color opacity-60 group-hover:opacity-0 transition-opacity duration-700 pointer-events-none"
-                      style={{ backgroundColor: colorHex }}
+                    <div className="cyber-tint absolute inset-0 pointer-events-none" />
+                    <img
+                      src={art.img}
+                      alt=""
+                      aria-hidden="true"
+                      loading="lazy"
+                      decoding="async"
+                      style={{ objectPosition: art.focus }}
+                      className="cyber-glitch absolute inset-0 w-full h-full object-cover pointer-events-none"
                     />
-                    <figcaption className="absolute inset-x-0 bottom-0 p-3 pt-10 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+                    <figcaption className="absolute inset-x-0 bottom-0 z-[3] p-3 pt-10 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
                       <span className="block font-display text-[11px] font-semibold text-white leading-tight line-clamp-2 italic">
                         {art.title}
                       </span>
@@ -374,7 +383,11 @@ export default function Team({ lang }: TeamProps) {
                 </button>
 
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-20 rounded-lg overflow-hidden border border-brand-orange/40 shrink-0 bg-[#080808]">
+                  <div
+                    className="cyber-art relative w-16 h-20 rounded-lg overflow-hidden border border-brand-orange/40 shrink-0 bg-[#080808]"
+                    style={{ "--neon": selectedMember.colorTag?.hex || "#FF6A00" } as React.CSSProperties}
+                  >
+                    <div className="cyber-tint absolute inset-0 z-[1] pointer-events-none" />
                     <img
                       src={ART[selectedMember.name]?.img}
                       alt={ART[selectedMember.name] ? `${ART[selectedMember.name].title} - ${ART[selectedMember.name].artist}` : selectedMember.name}
