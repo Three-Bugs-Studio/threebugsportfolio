@@ -126,7 +126,7 @@ export default function StaggeredSection({
           setIsHovered(false);
           setMousePos({ x: 0, y: 0 });
         }}
-        className="bg-canvas border-y border-line py-3.5 px-6 md:px-12 select-none relative overflow-hidden cursor-crosshair group transition-colors duration-300 hover:bg-[#0f0f10]"
+        className="bg-canvas border-y border-line py-3.5 px-6 md:px-12 select-none relative overflow-hidden cursor-crosshair group transition-colors duration-300 hover:bg-surface"
       >
         {/* Alignment Grid Lines with subtle parallax depth */}
         <motion.div
