@@ -101,11 +101,42 @@ interface FooterProps {
   lang: "vi" | "en";
 }
 
+// [heading, body] pairs. Keep this in step with what Contact.tsx actually sends and where.
+const PRIVACY = {
+  vi: [
+    ["Dữ liệu thu thập", "Khi bạn gửi form liên hệ: họ tên, email, tên công ty (nếu có), gói dịch vụ quan tâm và nội dung yêu cầu. Vui lòng không nhập thông tin nhạy cảm như số tài khoản ngân hàng hay số CCCD vào form."],
+    ["Mục đích", "Chỉ dùng để trả lời yêu cầu, tư vấn và báo giá dự án. Chúng tôi không bán dữ liệu và không chia sẻ cho bên khác để quảng cáo."],
+    ["Nơi lưu và bên xử lý", "Nội dung form được gửi qua Google Apps Script và lưu trong tài khoản Google của studio. Website chạy trên hạ tầng của Vercel. Máy chủ của Google và Vercel đặt ở nước ngoài, nên dữ liệu của bạn được xử lý ngoài Việt Nam."],
+    ["Thống kê truy cập", "Chúng tôi dùng Vercel Web Analytics để đếm lượt xem trang. Công cụ này không dùng cookie và không ghi nhận tên hay email của bạn. Vercel có thể ghi nhật ký kỹ thuật như địa chỉ IP để vận hành và bảo vệ website. Website không dùng công cụ quảng cáo hay theo dõi nào khác."],
+    ["Lưu trên trình duyệt", "Lựa chọn giao diện, ngôn ngữ, âm thanh và bản nháp form được lưu ngay trên trình duyệt của bạn, không gửi về studio. Bản nháp tự xóa khi bạn gửi form hoặc đóng tab."],
+    ["Zalo và email", "Khi bạn bấm nút Zalo hoặc email, cuộc trò chuyện diễn ra trên Zalo hoặc dịch vụ email bạn dùng, theo chính sách của các dịch vụ đó."],
+    ["Thời gian lưu", "Tối đa 24 tháng kể từ lần trao đổi cuối nếu hai bên không ký hợp đồng. Nếu có hợp đồng, dữ liệu được lưu theo thời hạn hợp đồng và quy định về lưu trữ hồ sơ. Bạn có thể yêu cầu xóa sớm hơn bất cứ lúc nào."],
+    ["Quyền của bạn", "Bạn có quyền được biết, xem, chỉnh sửa, yêu cầu xóa dữ liệu, rút lại sự đồng ý, hạn chế hoặc phản đối việc xử lý, và khiếu nại. Gửi yêu cầu tới threebugstudio@gmail.com. Chúng tôi phản hồi trong 2 ngày làm việc; hoàn tất việc xem hoặc chỉnh sửa trong 10 ngày, rút đồng ý trong 15 ngày và xóa dữ liệu trong 20 ngày."],
+  ],
+  en: [
+    ["What we collect", "When you send the contact form: your name, email, company (optional), the plan you are interested in and your message. Please do not enter sensitive details such as bank account or ID numbers."],
+    ["Why", "Only to reply to your enquiry, advise on and quote your project. We do not sell your data or share it with anyone for advertising."],
+    ["Where it is stored", "Form submissions are sent through Google Apps Script and stored in the studio's Google account. The website runs on Vercel. Google and Vercel servers are outside Vietnam, so your data is processed abroad."],
+    ["Visitor statistics", "We use Vercel Web Analytics to count page views. It does not use cookies and does not record your name or email. Vercel may keep technical logs such as IP addresses to run and protect the site. The site uses no other advertising or tracking tools."],
+    ["Stored in your browser", "Your theme, language and sound choices and your form draft are kept in your own browser and are not sent to us. The draft is cleared when you send the form or close the tab."],
+    ["Zalo and email", "If you use the Zalo or email buttons, the conversation happens on Zalo or your email service under their own policies."],
+    ["How long we keep it", "Up to 24 months after our last exchange if no contract is signed. If we sign a contract, data is kept for the contract term and as record-keeping rules require. You can ask us to delete it sooner at any time."],
+    ["Your rights", "You can ask to know about, see, correct or delete your data, withdraw consent, restrict or object to processing, and complain. Email threebugstudio@gmail.com. We reply within 2 working days and complete access or correction within 10 days, consent withdrawal within 15 days and deletion within 20 days."],
+  ],
+};
+
 export default function Footer({ lang }: FooterProps) {
   const t = TRANSLATIONS[lang];
   const [utcTime, setUtcTime] = useState("");
   const [isHumOn, setIsHumOn] = useState(false);
   const [isTermsOpen, setIsTermsOpen] = useState(false);
+
+  // The contact form's consent line opens this modal
+  useEffect(() => {
+    const open = () => setIsTermsOpen(true);
+    window.addEventListener("three_bugs_open_privacy", open);
+    return () => window.removeEventListener("three_bugs_open_privacy", open);
+  }, []);
 
   useEffect(() => {
     setIsHumOn(audioManager.getStatus().hum);
@@ -483,16 +514,14 @@ export default function Footer({ lang }: FooterProps) {
                   <h4 className="font-mono text-[10px] text-brand-orange uppercase tracking-wider font-semibold">
                     {lang === "vi" ? "1. CHÍNH SÁCH BẢO MẬT (PRIVACY POLICY)" : "1. PRIVACY POLICY"}
                   </h4>
-                  <p>
-                    {lang === "vi"
-                      ? "Chúng tôi tôn trọng quyền riêng tư của bạn. Mọi thông tin bạn cung cấp thông qua biểu mẫu liên hệ (bao gồm Tên, Email, Công ty, Mô tả dự án và Dự toán chi phí) được gửi trực tiếp và an toàn đến hộp thư của studio (threebugstudio@gmail.com) và chỉ được sử dụng cho mục đích trao đổi yêu cầu hợp tác thiết kế, phát triển phần mềm."
-                      : "We respect your privacy. Any information you submit through our contact forms (including Name, Email, Company, Project requirements, and Budget options) is delivered directly and securely to our inbox (threebugstudio@gmail.com). This data is exclusively used to discuss project proposals and design services."}
-                  </p>
-                  <p>
-                    {lang === "vi"
-                      ? "Trang web của chúng tôi không sử dụng các dịch vụ theo dõi quảng cáo từ bên thứ ba, đảm bảo dữ liệu truy cập của bạn hoàn toàn bảo mật."
-                      : "Our site does not implement third-party advertising tracking technologies, ensuring your access data remains private."}
-                  </p>
+                  <ul className="space-y-2">
+                    {PRIVACY[lang].map(([heading, body]) => (
+                      <li key={heading}>
+                        <strong className="font-semibold text-[#C0C0C5]">{heading}:</strong> {body}
+                      </li>
+                    ))}
+                  </ul>
+                  <p>{lang === "vi" ? "Cập nhật: 03/11/2026." : "Last updated: 3 November 2026."}</p>
                 </section>
 
                 {/* 2. Terms Section */}
