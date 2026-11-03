@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { PRICING_DATA } from "../data";
+import { PRICING_DATA, PRICE_NOTE } from "../data";
 import { motion, useInView } from "motion/react";
 import {
   CheckIcon,
@@ -585,6 +585,8 @@ export default function Pricing({ lang }: PricingProps) {
               </p>
             </div>
           </div>
+
+          <p className="mt-4 font-sans text-xs text-[#8E8E93]">{PRICE_NOTE[lang]}</p>
 
           {/* Post-Warranty Hourly Maintenance SLA Guarantee Note */}
           <div className="mt-6 p-4 rounded-sm bg-[#090909] border border-brand-orange/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
