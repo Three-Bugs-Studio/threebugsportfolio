@@ -22,23 +22,23 @@ export default function Process({ lang }: ProcessProps) {
   };
 
   return (
-    <section id="process" className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative">
+    <section id="process" className="py-24 md:py-32 bg-canvas border-t border-line relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
         <motion.div variants={itemVariants} className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange">
+              <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-ink">
                 {t.processLabel}
               </span>
-              <span className="h-[1px] w-12 bg-white/10" />
+              <span className="h-[1px] w-12 bg-line" />
             </div>
-            <h2 className="font-display font-medium text-4xl md:text-6xl tracking-tight text-[#F5F5F3] leading-[1.05] [text-wrap:balance]">
+            <h2 className="font-display font-medium text-4xl md:text-6xl tracking-tight text-ink leading-[1.05] [text-wrap:balance]">
               {t.processHeading}
             </h2>
           </div>
-          <p className="font-mono text-xs text-[#8E8E93] max-w-xs leading-relaxed">
+          <p className="font-mono text-xs text-ink-muted max-w-xs leading-relaxed">
             {lang === "vi" 
               ? "QUY TRÌNH PHÁT TRIỂN CHUẨN HOÁ, ĐẢM BẢO TỐC ĐỘ, CHẤT LƯỢNG MÃ NGUỒN VÀ ĐỘ BẢO MẬT TUYỆT ĐỐI."
               : "OUR PREDICTABLE, PHASED PROCESS FOR DESIGNING, ENGINEERING, AND SHIPPING SECURE HIGH-END APPLICATIONS."}
@@ -61,14 +61,14 @@ export default function Process({ lang }: ProcessProps) {
                   variants={itemVariants}
                   className={`flex items-center justify-between text-left p-6 border transition-all duration-300 rounded-sm cursor-pointer w-full group interactive focus-terminal outline-none ${
                     isActive
-                      ? "bg-[#121212]/70 border-brand-orange/40 shadow-lg -translate-x-1"
-                      : "bg-transparent border-white/5 hover:border-white/10 hover:bg-[#121212]/10"
+                      ? "bg-surface/70 border-brand-orange/40 shadow-lg -translate-x-1"
+                      : "bg-transparent border-line hover:border-white/10 hover:bg-surface/10"
                   }`}
                 >
                   <div className="flex items-center gap-5">
                     {/* Index Number */}
                     <span className={`font-mono text-sm tracking-wider font-semibold ${
-                      isActive ? "text-brand-orange" : "text-[#8E8E93] group-hover:text-[#F5F5F3]"
+                      isActive ? "text-brand-ink" : "text-ink-muted group-hover:text-ink"
                     }`}>
                       {step.number}
                     </span>
@@ -76,7 +76,7 @@ export default function Process({ lang }: ProcessProps) {
                     {/* Stage Title */}
                     <div>
                       <span className={`font-display font-medium text-lg md:text-xl transition-colors ${
-                        isActive ? "text-[#F5F5F3]" : "text-[#8E8E93] group-hover:text-[#F5F5F3]"
+                        isActive ? "text-ink" : "text-ink-muted group-hover:text-ink"
                       }`}>
                         {step.title}
                       </span>
@@ -84,10 +84,10 @@ export default function Process({ lang }: ProcessProps) {
                   </div>
  
                   {/* Stage Duration Tag */}
-                  <span className={`font-mono text-[9px] tracking-widest uppercase px-2.5 py-1 border rounded-sm transition-all ${
+                  <span className={`font-mono text-xs tracking-widest uppercase px-2.5 py-1 border rounded-sm transition-all ${
                     isActive
-                      ? "bg-brand-orange/10 border-brand-orange text-brand-orange"
-                      : "bg-white/5 border-white/5 text-[#8E8E93]"
+                      ? "bg-brand-orange/10 border-brand-orange text-brand-ink"
+                      : "bg-line border-line text-ink-muted"
                   }`}>
                     {step.duration}
                   </span>
@@ -98,10 +98,10 @@ export default function Process({ lang }: ProcessProps) {
  
           {/* Right Side: Step Details View (Grid-Span 7) */}
           <div className="lg:col-span-7">
-            <motion.div variants={itemVariants} className="bg-[#121212]/20 border border-white/5 hover:border-white/10 p-8 md:p-12 min-h-[380px] flex flex-col justify-between rounded-sm relative overflow-hidden transition-all duration-300">
+            <motion.div variants={itemVariants} className="bg-surface/20 border border-line hover:border-white/10 p-8 md:p-12 min-h-[380px] flex flex-col justify-between rounded-sm relative overflow-hidden transition-all duration-300">
               
               {/* Background faint giant decorative stage indicator */}
-              <div className="absolute right-[-10px] bottom-[-20px] font-display font-bold text-9xl text-white/[0.02] select-none pointer-events-none">
+              <div className="absolute right-[-10px] bottom-[-20px] font-display font-bold text-9xl text-ink/[0.02] select-none pointer-events-none">
                 {stepsList[activeStepIdx]?.number}
               </div>
  
@@ -115,31 +115,31 @@ export default function Process({ lang }: ProcessProps) {
                       className={`h-1 flex-1 rounded-full transition-all duration-300 ${
                         pIdx <= activeStepIdx
                           ? "bg-brand-orange shadow-[0_0_6px_rgba(255,106,0,0.6)]"
-                          : "bg-white/10"
+                          : "bg-line"
                       }`}
                     />
                   ))}
                 </div>
 
                 <div className="flex items-center gap-2 mb-4">
-                  <MapMarkerIcon size={16} className="w-4 h-4 text-brand-orange" />
-                  <span className="font-mono text-[10px] tracking-widest text-[#8E8E93] uppercase">
+                  <MapMarkerIcon size={16} className="w-4 h-4 text-brand-ink" />
+                  <span className="font-mono text-xs tracking-widest text-ink-muted uppercase">
                     {lang === "vi" ? "GIAI ĐOẠN" : "PHASE"} {stepsList[activeStepIdx]?.number} / 05 — {stepsList[activeStepIdx]?.duration}
                   </span>
                 </div>
  
-                <h3 className="font-display font-medium text-2xl md:text-3xl text-[#F5F5F3] mb-6">
+                <h3 className="font-display font-medium text-2xl md:text-3xl text-ink mb-6">
                   {stepsList[activeStepIdx]?.title}
                 </h3>
  
-                <p className="font-sans text-sm md:text-base text-[#8E8E93] font-light leading-relaxed mb-8 max-w-xl">
+                <p className="font-sans text-sm md:text-base text-ink-muted font-light leading-relaxed mb-8 max-w-xl">
                   {stepsList[activeStepIdx]?.description}
                 </p>
               </div>
  
               {/* Stage Deliverables */}
-              <div className="border-t border-white/5 pt-6">
-                <span className="font-mono text-[9px] tracking-widest text-brand-orange uppercase block mb-4">
+              <div className="border-t border-line pt-6">
+                <span className="font-mono text-xs tracking-widest text-brand-ink uppercase block mb-4">
                   {t.processDeliverables}
                 </span>
  
@@ -147,9 +147,9 @@ export default function Process({ lang }: ProcessProps) {
                   {stepsList[activeStepIdx]?.deliverables.map((deliv, dIdx) => (
                     <div key={deliv} className="flex items-center gap-2.5">
                       <div className="w-4 h-4 rounded-full bg-brand-orange/10 flex items-center justify-center shrink-0 border border-brand-orange/20">
-                        <CheckIcon size={10} className="w-2.5 h-2.5 text-brand-orange" />
+                        <CheckIcon size={10} className="w-2.5 h-2.5 text-brand-ink" />
                       </div>
-                      <span className="font-sans text-xs text-[#F5F5F3] font-light">
+                      <span className="font-sans text-xs text-ink font-light">
                         {deliv}
                       </span>
                     </div>
@@ -171,8 +171,8 @@ export default function Process({ lang }: ProcessProps) {
                 key={step.number}
                 className={`border rounded-sm transition-all duration-300 overflow-hidden ${
                   isActive
-                    ? "bg-[#121212]/55 border-brand-orange/30 shadow-lg"
-                    : "bg-[#121212]/10 border-white/5"
+                    ? "bg-surface/55 border-brand-orange/30 shadow-lg"
+                    : "bg-surface/10 border-line"
                 }`}
               >
                 {/* Accordion Header Button */}
@@ -182,15 +182,15 @@ export default function Process({ lang }: ProcessProps) {
                   className="flex items-center justify-between text-left p-5 w-full cursor-pointer focus:outline-none"
                 >
                   <div className="flex items-center gap-4">
-                    <span className={`font-mono text-xs font-semibold ${isActive ? "text-brand-orange" : "text-[#8E8E93]"}`}>
+                    <span className={`font-mono text-xs font-semibold ${isActive ? "text-brand-ink" : "text-ink-muted"}`}>
                       {step.number}
                     </span>
-                    <span className="font-display font-medium text-base text-[#F5F5F3]">
+                    <span className="font-display font-medium text-base text-ink">
                       {step.title}
                     </span>
                   </div>
-                  <span className={`font-mono text-[8px] px-2 py-0.5 border rounded-sm ${
-                    isActive ? "bg-brand-orange/10 border-brand-orange text-brand-orange" : "bg-white/5 border-white/5 text-[#8E8E93]"
+                  <span className={`font-mono text-xs px-2 py-0.5 border rounded-sm ${
+                    isActive ? "bg-brand-orange/10 border-brand-orange text-brand-ink" : "bg-line border-line text-ink-muted"
                   }`}>
                     {step.duration}
                   </span>
@@ -198,22 +198,22 @@ export default function Process({ lang }: ProcessProps) {
 
                 {/* Accordion Content Panel */}
                 {isActive && (
-                  <div className="px-5 pb-5 pt-2 border-t border-white/5 space-y-4 text-left">
-                    <p className="font-sans text-xs text-[#8E8E93] leading-relaxed">
+                  <div className="px-5 pb-5 pt-2 border-t border-line space-y-4 text-left">
+                    <p className="font-sans text-xs text-ink-muted leading-relaxed">
                       {step.description}
                     </p>
 
-                    <div className="pt-4 border-t border-white/5">
-                      <span className="font-mono text-[8px] tracking-widest text-brand-orange uppercase block mb-3">
+                    <div className="pt-4 border-t border-line">
+                      <span className="font-mono text-xs tracking-widest text-brand-ink uppercase block mb-3">
                         {t.processDeliverables}
                       </span>
                       <div className="flex flex-col gap-2">
                         {step.deliverables.map((deliv) => (
                           <div key={deliv} className="flex items-center gap-2">
                             <div className="w-3.5 h-3.5 rounded-full bg-brand-orange/10 flex items-center justify-center shrink-0 border border-brand-orange/20">
-                              <CheckIcon size={8} className="w-2 h-2 text-brand-orange" />
+                              <CheckIcon size={8} className="w-2 h-2 text-brand-ink" />
                             </div>
-                            <span className="font-sans text-xs text-[#F5F5F3] font-light">
+                            <span className="font-sans text-xs text-ink font-light">
                               {deliv}
                             </span>
                           </div>
