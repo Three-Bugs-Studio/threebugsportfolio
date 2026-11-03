@@ -358,6 +358,12 @@ export const VALUES_DATA: Record<"vi" | "en", Value[]> = {
   ]
 };
 
+// Shown wherever prices appear. The studio is not VAT-registered, so nothing is added on top.
+export const PRICE_NOTE = {
+  vi: "Giá niêm yết là số tiền bạn thanh toán, không cộng thêm VAT. Studio hiện chưa xuất hóa đơn VAT.",
+  en: "Listed prices are what you pay, with no VAT added. The studio does not currently issue VAT invoices.",
+};
+
 export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
   vi: [
     {
