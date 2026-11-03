@@ -152,7 +152,7 @@ export default function CardNav({
       <nav
         className={`w-full pointer-events-auto transition-all duration-500 border-b ${
           scrolled || isOpen
-            ? "bg-[#090909]/90 backdrop-blur-xl border-white/10 py-3.5 shadow-2xl"
+            ? "bg-canvas/90 backdrop-blur-xl border-line py-3.5 shadow-2xl"
             : "bg-transparent border-transparent py-5"
         }`}
         style={{ backgroundColor: (scrolled || isOpen) ? `${baseColor}E6` : "transparent" }}
@@ -179,18 +179,18 @@ export default function CardNav({
             
             {/* Desktop Brand Text */}
             <div className="hidden md:block text-left leading-none">
-              <span className={`font-display font-bold tracking-widest text-sm uppercase group-hover:text-brand-orange transition-colors ${isLight ? "text-[#0F172A]" : "text-white"}`}>
+              <span className={`font-display font-bold tracking-widest text-sm uppercase group-hover:text-brand-ink transition-colors ${isLight ? "text-[#0F172A]" : "text-ink"}`}>
                 THREE BUGS
               </span>
-              <span className="block font-mono text-[10px] tracking-[0.35em] uppercase text-brand-orange font-medium mt-0.5">
+              <span className="block font-mono text-xs tracking-[0.35em] uppercase text-brand-ink font-medium mt-0.5">
                 STUDIO
               </span>
             </div>
 
             {/* Mobile Compact Brand Text: 3BSTUDIO */}
             <div className="block md:hidden text-left leading-none">
-              <span className={`font-display font-black tracking-wider text-sm uppercase group-hover:text-brand-orange transition-colors ${isLight ? "text-[#0F172A]" : "text-white"}`}>
-                3B<span className="text-brand-orange font-mono text-xs font-bold tracking-widest ml-0.5">STUDIO</span>
+              <span className={`font-display font-black tracking-wider text-sm uppercase group-hover:text-brand-ink transition-colors ${isLight ? "text-[#0F172A]" : "text-ink"}`}>
+                3B<span className="text-brand-ink font-mono text-xs font-bold tracking-widest ml-0.5">STUDIO</span>
               </span>
             </div>
           </a>
@@ -200,26 +200,26 @@ export default function CardNav({
             
             {/* Language Switcher */}
             {onLangChange && (
-              <div className="flex items-center border border-white/10 rounded-sm overflow-hidden font-mono text-[9px] md:text-[10px] tracking-wider" id="card-nav-lang">
+              <div className="flex items-center border border-line rounded-sm overflow-hidden font-mono text-xs tracking-wider" id="card-nav-lang">
                 <button
                   onClick={() => onLangChange("vi")}
                   aria-label="Chuyển sang tiếng Việt"
                   className={`px-2 md:px-2.5 py-1 md:py-1.5 transition-all ${
                     lang === "vi"
                       ? "bg-brand-orange text-[#090909] font-semibold"
-                      : isLight ? "bg-transparent text-[#334155] hover:text-[#0F172A]" : "bg-transparent text-[#8E8E93] hover:text-white"
+                      : isLight ? "bg-transparent text-[#334155] hover:text-[#0F172A]" : "bg-transparent text-ink-muted hover:text-ink"
                   }`}
                 >
                   VI
                 </button>
-                <div className="w-[1px] h-3 bg-white/10" />
+                <div className="w-[1px] h-3 bg-line" />
                 <button
                   onClick={() => onLangChange("en")}
                   aria-label="Switch to English"
                   className={`px-2 md:px-2.5 py-1 md:py-1.5 transition-all ${
                     lang === "en"
                       ? "bg-brand-orange text-[#090909] font-semibold"
-                      : isLight ? "bg-transparent text-[#334155] hover:text-[#0F172A]" : "bg-transparent text-[#8E8E93] hover:text-white"
+                      : isLight ? "bg-transparent text-[#334155] hover:text-[#0F172A]" : "bg-transparent text-ink-muted hover:text-ink"
                   }`}
                 >
                   EN
@@ -239,31 +239,31 @@ export default function CardNav({
               title={isSfxOn ? (lang === "vi" ? "Âm thanh: BẬT (phím M để tắt)" : "Sound: ON (press M to mute)") : (lang === "vi" ? "Âm thanh: TẮT" : "Sound: OFF")}
               className={`p-1.5 md:p-2 rounded-sm border transition-all duration-300 interactive flex items-center justify-center cursor-pointer ${
                 isLight 
-                  ? "bg-white border-slate-300 text-slate-700 hover:text-brand-orange hover:border-brand-orange" 
-                  : "bg-[#141414] border-white/15 text-[#8E8E93] hover:text-white hover:border-brand-orange/40"
+                  ? "bg-white border-slate-300 text-slate-700 hover:text-brand-ink hover:border-brand-orange" 
+                  : "bg-surface border-line text-ink-muted hover:text-ink hover:border-brand-orange/40"
               }`}
               id="header-sound-toggle-btn"
             >
               {isSfxOn ? (
-                <SpeakerIcon className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-orange" size={16} />
+                <SpeakerIcon className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-ink" size={16} />
               ) : (
-                <SpeakerIcon className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#8E8E93] opacity-50" size={16} />
+                <SpeakerIcon className="w-3.5 h-3.5 md:w-4 md:h-4 text-ink-muted opacity-50" size={16} />
               )}
             </button>
 
             {/* CardNav Menu Toggle Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`btn-stacked relative inline-flex items-center gap-1.5 md:gap-2 font-mono text-[11px] md:text-xs uppercase tracking-widest px-3 md:px-4 py-1.5 md:py-2 border transition-all duration-300 rounded-sm interactive ${
+              className={`btn-stacked relative inline-flex items-center gap-1.5 md:gap-2 font-mono text-xs uppercase tracking-widest px-3 md:px-4 py-1.5 md:py-2 border transition-all duration-300 rounded-sm interactive ${
                 isLight 
                   ? "bg-[#FFFFFF] border-slate-300 text-[#0F172A] hover:border-brand-orange font-bold" 
-                  : "bg-[#141414] border-white/15 text-white hover:border-brand-orange"
+                  : "bg-surface border-line text-ink hover:border-brand-orange"
               }`}
               id="card-nav-menu-btn"
             >
               <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full" style={{ backgroundColor: menuColor }} />
-              <span className={isLight ? "text-[#0F172A] font-bold" : "text-white"}>{isOpen ? (lang === "vi" ? "ĐÓNG" : "CLOSE") : "MENU"}</span>
-              {isOpen ? <CloseIcon className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-orange" size={16} /> : <MenuIcon className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-orange" size={16} />}
+              <span className={isLight ? "text-[#0F172A] font-bold" : "text-ink"}>{isOpen ? (lang === "vi" ? "ĐÓNG" : "CLOSE") : "MENU"}</span>
+              {isOpen ? <CloseIcon className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-ink" size={16} /> : <MenuIcon className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-ink" size={16} />}
             </button>
 
             {/* Direct Call to Action Button */}
@@ -292,7 +292,7 @@ export default function CardNav({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full pointer-events-auto bg-[#090909]/95 backdrop-blur-2xl border-b border-white/10 shadow-2xl py-5 md:py-8 px-4 md:px-12 max-h-[calc(100vh-68px)] overflow-y-auto overscroll-contain custom-scrollbar"
+            className="w-full pointer-events-auto bg-canvas/95 backdrop-blur-2xl border-b border-line shadow-2xl py-5 md:py-8 px-4 md:px-12 max-h-[calc(100vh-68px)] overflow-y-auto overscroll-contain custom-scrollbar"
           >
             <div className="max-w-7xl mx-auto pb-4">
               
@@ -305,9 +305,9 @@ export default function CardNav({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ delay: index * 0.05, duration: 0.35 }}
-                    className="bg-[#121212] border border-white/10 rounded-xl p-4 md:p-5"
+                    className="bg-surface border border-line rounded-xl p-4 md:p-5"
                   >
-                    <h3 className="font-display font-bold text-base md:text-lg tracking-tight text-[#F5F5F3] mb-2">
+                    <h3 className="font-display font-bold text-base md:text-lg tracking-tight text-ink mb-2">
                       {card.label}
                     </h3>
 
@@ -318,13 +318,13 @@ export default function CardNav({
                           key={link.href}
                           href={link.href}
                           onClick={(e) => handleScrollTo(e, link.href)}
-                          className="group -mx-2 px-2 py-2 rounded-lg flex items-center justify-between gap-3 hover:bg-white/5 transition-colors"
+                          className="group -mx-2 px-2 py-2 rounded-lg flex items-center justify-between gap-3 hover:bg-line transition-colors"
                         >
                           <span className="min-w-0">
-                            <span className="block text-sm font-medium text-[#F5F5F3] group-hover:text-brand-orange transition-colors">{link.label}</span>
-                            <span className="hidden sm:block text-xs text-[#8E8E93] mt-0.5">{link.hint}</span>
+                            <span className="block text-sm font-medium text-ink group-hover:text-brand-ink transition-colors">{link.label}</span>
+                            <span className="hidden sm:block text-xs text-ink-muted mt-0.5">{link.hint}</span>
                           </span>
-                          <ArrowUpRightIcon className="w-3.5 h-3.5 shrink-0 text-brand-orange opacity-0 group-hover:opacity-100 transition-opacity" size={14} />
+                          <ArrowUpRightIcon className="w-3.5 h-3.5 shrink-0 text-brand-ink opacity-0 group-hover:opacity-100 transition-opacity" size={14} />
                         </a>
                       ))}
                     </div>
@@ -350,7 +350,7 @@ export default function CardNav({
                   <a
                     href="#app-contact-section"
                     onClick={(e) => handleScrollTo(e, "#app-contact-section")}
-                    className="mt-auto text-center text-sm font-semibold px-4 py-3 rounded-lg bg-[#090909] text-[#F5F5F3] hover:opacity-90 transition-opacity"
+                    className="mt-auto text-center text-sm font-semibold px-4 py-3 rounded-lg bg-canvas text-ink hover:opacity-90 transition-opacity"
                   >
                     {vi ? "Gửi yêu cầu tư vấn" : "Send an inquiry"}
                   </a>
