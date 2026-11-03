@@ -54,7 +54,7 @@ export default function FAQ({ lang }: FAQProps) {
   });
 
   return (
-    <section id="faq" className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative overflow-hidden">
+    <section id="faq" className="py-24 md:py-32 bg-canvas border-t border-line relative overflow-hidden">
       {/* Background Ambient Glow */}
       <div className="absolute bottom-0 left-[10%] brutalist-glow opacity-25" style={{ filter: "blur(140px)" }} />
       <div className="absolute top-1/2 right-1/4 w-[500px] h-[500px] bg-brand-orange/5 rounded-full blur-[140px] pointer-events-none" />
@@ -65,7 +65,7 @@ export default function FAQ({ lang }: FAQProps) {
         <div className="flex flex-col items-center text-center mb-12">
           
           {/* Animated FAQ Icon Badge */}
-          <div className="faq-anim-icon-container w-16 h-16 rounded-2xl bg-[#111113] border border-white/15 p-2 shadow-2xl mb-6 flex items-center justify-center interactive hover:scale-105 transition-transform">
+          <div className="faq-anim-icon-container w-16 h-16 rounded-2xl bg-surface border border-line p-2 shadow-2xl mb-6 flex items-center justify-center interactive hover:scale-105 transition-transform">
             <img 
               src={faqGif} 
               alt="FAQ Animated Icon" 
@@ -77,15 +77,15 @@ export default function FAQ({ lang }: FAQProps) {
             />
           </div>
 
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-orange/10 border border-brand-orange/20 rounded-sm font-mono text-[11px] text-brand-orange uppercase tracking-widest mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-orange/10 border border-brand-orange/20 rounded-sm font-mono text-xs text-brand-ink uppercase tracking-widest mb-4">
             <span>// {lang === "vi" ? "CAM KẾT MINH BẠCH VÌ LỢI ÍCH KHÁCH HÀNG" : "100% TRANSPARENT CLIENT GUARANTEES"}</span>
           </div>
 
-          <h2 className="font-display font-bold text-3xl md:text-5xl tracking-tight text-[#F5F5F3] mb-4 uppercase leading-tight">
+          <h2 className="font-display font-bold text-3xl md:text-5xl tracking-tight text-ink mb-4 uppercase leading-tight">
             {t.faqHeading}
           </h2>
 
-          <p className="font-sans text-xs md:text-sm text-[#8E8E93] max-w-xl mx-auto leading-relaxed font-light">
+          <p className="font-sans text-xs md:text-sm text-ink-muted max-w-xl mx-auto leading-relaxed font-light">
             {lang === "vi"
               ? "Mọi chính sách về quyền sở hữu 100% mã nguồn, bảo hành kỹ thuật, tiến độ bàn giao và bảo mật NDA đều được chúng tôi công khai minh bạch để bảo vệ tối đa lợi ích của bạn."
               : "Clear, binding commitments covering 100% source code ownership, warranty support, strict NDA privacy, and zero hidden fees."}
@@ -99,14 +99,14 @@ export default function FAQ({ lang }: FAQProps) {
               onChange={(e) => setSearchQuery(e.target.value)}
               aria-label={lang === "vi" ? "Tìm kiếm câu hỏi thường gặp" : "Search frequently asked questions"}
               placeholder={lang === "vi" ? "Tìm câu hỏi (vd: bảo hành, mã nguồn, chi phí, SEO...)" : "Search FAQ (e.g., ownership, warranty, fees, SEO...)"}
-              className="w-full bg-[#111113] border border-white/15 focus:border-brand-orange text-xs md:text-sm text-[#F5F5F3] placeholder-[#8E8E93] px-10 py-3 rounded-sm outline-none transition-colors shadow-lg focus-terminal"
+              className="w-full bg-surface border border-line focus:border-brand-orange text-xs md:text-sm text-ink placeholder-[#8E8E93] px-10 py-3 rounded-sm outline-none transition-colors shadow-lg focus-terminal"
             />
-            <SearchIcon size={16} className="w-4 h-4 text-[#8E8E93] absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <SearchIcon size={16} className="w-4 h-4 text-ink-muted absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
                 aria-label={lang === "vi" ? "Xóa tìm kiếm" : "Clear search"}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-[#8E8E93] hover:text-white focus-terminal px-1 py-0.5 rounded-sm"
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-ink-muted hover:text-ink focus-terminal px-1 py-0.5 rounded-sm"
               >
                 Clear
               </button>
@@ -123,10 +123,10 @@ export default function FAQ({ lang }: FAQProps) {
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
                   aria-pressed={isSelected}
-                  className={`font-mono text-[10px] md:text-[11px] uppercase tracking-wider px-3.5 py-1.5 rounded-sm transition-all duration-200 border focus-terminal outline-none active:scale-95 ${
+                  className={`font-mono text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-sm transition-all duration-200 border focus-terminal outline-none active:scale-95 ${
                     isSelected
                       ? "bg-brand-orange text-[#090909] font-bold border-brand-orange shadow-md shadow-brand-orange/20 scale-105"
-                      : "bg-[#111113] text-[#8E8E93] border-white/10 hover:border-white/25 hover:text-white"
+                      : "bg-surface text-ink-muted border-line hover:border-white/25 hover:text-ink"
                   }`}
                 >
                   {label}
@@ -136,7 +136,7 @@ export default function FAQ({ lang }: FAQProps) {
           </div>
 
           {/* Result count indicator */}
-          <div className="mt-3 font-mono text-[10px] text-[#8E8E93]/70">
+          <div className="mt-3 font-mono text-xs text-ink-muted">
             {lang === "vi"
               ? `Hiển thị ${filteredList.length} / ${list.length} cam kết minh bạch`
               : `Showing ${filteredList.length} of ${list.length} transparent guarantees`}
@@ -146,13 +146,13 @@ export default function FAQ({ lang }: FAQProps) {
         {/* Dynamic Interactive Accordion List */}
         <div className="space-y-4">
           {filteredList.length === 0 ? (
-            <div className="text-center py-12 bg-[#111113] border border-white/10 rounded-xl p-6">
-              <p className="font-sans text-sm text-[#8E8E93]">
+            <div className="text-center py-12 bg-surface border border-line rounded-xl p-6">
+              <p className="font-sans text-sm text-ink-muted">
                 {lang === "vi" ? "Không tìm thấy câu hỏi phù hợp. Hãy kết nối trực tiếp cùng đội ngũ kỹ sư của Studio!" : "No matching questions found. Consult directly with our engineering team!"}
               </p>
               <button
                 onClick={handleScrollToContact}
-                className="mt-4 font-mono text-xs text-brand-orange underline font-bold"
+                className="mt-4 font-mono text-xs text-brand-ink underline font-bold"
               >
                 {lang === "vi" ? "GỬI CÂU HỎI TRỰC TIẾP ✈" : "ASK A QUESTION DIRECTLY ✈"}
               </button>
@@ -165,8 +165,8 @@ export default function FAQ({ lang }: FAQProps) {
                   key={idx}
                   className={`faq-item-box border rounded-xl transition-all duration-300 overflow-hidden ${
                     isOpen
-                      ? "bg-[#141417] border-brand-orange/50 shadow-[0_0_25px_rgba(255,106,0,0.1)]"
-                      : "bg-[#111113]/90 border-white/10 hover:border-white/20"
+                      ? "bg-surface border-brand-orange/50 shadow-[0_0_25px_rgba(255,106,0,0.1)]"
+                      : "bg-surface/90 border-line hover:border-white/20"
                   }`}
                 >
                   {/* Accordion Trigger Header */}
@@ -179,20 +179,20 @@ export default function FAQ({ lang }: FAQProps) {
                   >
                     <div className="flex items-start sm:items-center gap-3.5 sm:gap-4 flex-1">
                       {/* Number Badge */}
-                      <span className="font-mono text-xs font-bold text-brand-orange bg-brand-orange/10 border border-brand-orange/20 px-2.5 py-1 rounded-md shrink-0 mt-0.5 sm:mt-0">
+                      <span className="font-mono text-xs font-bold text-brand-ink bg-brand-orange/10 border border-brand-orange/20 px-2.5 py-1 rounded-md shrink-0 mt-0.5 sm:mt-0">
                         0{idx + 1}
                       </span>
 
                       <div className="flex-1">
                         {item.badge && (
                           <div className="mb-1.5 sm:mb-1">
-                            <span className="inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-sm font-bold">
+                            <span className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-sm font-bold">
                               <span className="w-1.5 h-1.5 rounded-sm bg-emerald-400" />
                               <span>{item.badge}</span>
                             </span>
                           </div>
                         )}
-                        <h3 className="font-sans font-bold text-base md:text-lg tracking-tight text-[#F5F5F3] group-hover:text-brand-orange transition-colors leading-snug [text-wrap:balance]">
+                        <h3 className="font-sans font-bold text-base md:text-lg tracking-tight text-ink group-hover:text-brand-ink transition-colors leading-snug [text-wrap:balance]">
                           {item.question}
                         </h3>
                       </div>
@@ -202,7 +202,7 @@ export default function FAQ({ lang }: FAQProps) {
                       className={`flex-shrink-0 w-8 h-8 rounded-sm flex items-center justify-center border transition-all duration-300 mt-1 sm:mt-0 ${
                         isOpen 
                           ? "bg-brand-orange text-[#090909] border-brand-orange rotate-180" 
-                          : "bg-white/5 border-white/10 text-[#8E8E93] group-hover:text-white"
+                          : "bg-line border-line text-ink-muted group-hover:text-ink"
                       }`}
                     >
                       {isOpen ? (
@@ -222,14 +222,14 @@ export default function FAQ({ lang }: FAQProps) {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                       >
-                        <div className="px-5 sm:px-6 pb-6 text-sm md:text-base text-[#D4D4D8] leading-relaxed font-sans border-t border-white/5 pt-4 font-light">
+                        <div className="px-5 sm:px-6 pb-6 text-sm md:text-base text-ink-muted leading-relaxed font-sans border-t border-line pt-4 font-light">
                           <p className="leading-relaxed">{item.answer}</p>
 
                           {/* Key Benefits Checklist Box */}
                           {item.keyBenefits && item.keyBenefits.length > 0 && (
-                            <div className="mt-5 p-4 rounded-lg bg-[#0b0b0d] border border-white/10 space-y-2.5">
-                              <div className="flex items-center gap-2 text-brand-orange font-mono text-[10px] uppercase tracking-wider font-bold">
-                                <CheckIcon size={14} className="w-3.5 h-3.5 text-brand-orange shrink-0" />
+                            <div className="mt-5 p-4 rounded-lg bg-[#0b0b0d] border border-line space-y-2.5">
+                              <div className="flex items-center gap-2 text-brand-ink font-mono text-xs uppercase tracking-wider font-bold">
+                                <CheckIcon size={14} className="w-3.5 h-3.5 text-brand-ink shrink-0" />
                                 <span>{lang === "vi" ? "QUYỀN LỢI CAM KẾT BẢO ĐẢM CHO BẠN:" : "GUARANTEED CLIENT BENEFITS:"}</span>
                               </div>
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
@@ -253,16 +253,16 @@ export default function FAQ({ lang }: FAQProps) {
         </div>
 
         {/* FAQ Footer Direct Consultation Callout */}
-        <div className="mt-14 bg-[#111113] border border-white/10 rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left shadow-xl">
+        <div className="mt-14 bg-surface border border-line rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left shadow-xl">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center text-brand-orange shrink-0">
+            <div className="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center text-brand-ink shrink-0">
               <ChatIcon size={20} className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="font-display font-bold text-base md:text-lg text-[#F5F5F3]">
+              <h4 className="font-display font-bold text-base md:text-lg text-ink">
                 {lang === "vi" ? "Vẫn Còn Câu Hỏi Khác Cần Giải Đáp?" : "Still Have Unanswered Questions?"}
               </h4>
-              <p className="font-sans text-xs text-[#8E8E93] font-light mt-0.5">
+              <p className="font-sans text-xs text-ink-muted font-light mt-0.5">
                 {lang === "vi" ? "Đội ngũ kỹ sư của chúng tôi sẵn sàng giải đáp 1-1 trực tiếp." : "Our engineering team is available for 1-on-1 direct consultations."}
               </p>
             </div>
