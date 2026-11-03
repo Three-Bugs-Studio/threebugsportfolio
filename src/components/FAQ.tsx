@@ -227,14 +227,14 @@ export default function FAQ({ lang }: FAQProps) {
 
                           {/* Key Benefits Checklist Box */}
                           {item.keyBenefits && item.keyBenefits.length > 0 && (
-                            <div className="mt-5 p-4 rounded-lg bg-[#0b0b0d] border border-line space-y-2.5">
+                            <div className="mt-5 p-4 rounded-lg bg-canvas border border-line space-y-2.5">
                               <div className="flex items-center gap-2 text-brand-ink font-mono text-xs uppercase tracking-wider font-bold">
                                 <CheckIcon size={14} className="w-3.5 h-3.5 text-brand-ink shrink-0" />
                                 <span>{lang === "vi" ? "QUYỀN LỢI CAM KẾT BẢO ĐẢM CHO BẠN:" : "GUARANTEED CLIENT BENEFITS:"}</span>
                               </div>
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
                                 {item.keyBenefits.map((benefit, bIdx) => (
-                                  <div key={bIdx} className="flex items-start gap-2 text-xs text-[#E4E4E7]">
+                                  <div key={bIdx} className="flex items-start gap-2 text-xs text-ink">
                                     <span className="w-1.5 h-1.5 rounded-sm bg-emerald-400 mt-1.5 shrink-0" />
                                     <span className="font-sans leading-relaxed">{benefit}</span>
                                   </div>
