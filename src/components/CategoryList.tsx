@@ -29,7 +29,7 @@ export const CategoryList = ({
   const [hoveredItem, setHoveredItem] = useState<string | number | null>(null);
 
   return (
-    <div className={cn("w-full bg-[#090909] text-[#F5F5F3] py-6 px-2 md:px-6", className)}>
+    <div className={cn("w-full bg-canvas text-ink py-6 px-2 md:px-6", className)}>
       <div className="max-w-4xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-10 md:mb-14">
@@ -38,11 +38,11 @@ export const CategoryList = ({
               {headerIcon}
             </div>
           )}
-          <h1 className="text-3xl md:text-5xl font-display font-medium mb-3 tracking-tight text-[#F5F5F3]">
+          <h1 className="text-3xl md:text-5xl font-display font-medium mb-3 tracking-tight text-ink">
             {title}
           </h1>
           {subtitle && (
-            <h2 className="text-base md:text-xl font-sans font-light text-[#8E8E93] max-w-2xl mx-auto leading-relaxed">
+            <h2 className="text-base md:text-xl font-sans font-light text-ink-muted max-w-2xl mx-auto leading-relaxed">
               {subtitle}
             </h2>
           )}
@@ -71,11 +71,11 @@ export const CategoryList = ({
             >
               <div
                 className={cn(
-                  "relative overflow-hidden border bg-[#121212]/80 rounded-sm transition-all duration-300 ease-out cursor-pointer",
+                  "relative overflow-hidden border bg-surface/80 rounded-sm transition-all duration-300 ease-out cursor-pointer",
                   // Website brand theme hover state styles
                   hoveredItem === category.id
                     ? 'min-h-[110px] md:min-h-[120px] border-brand-orange shadow-lg shadow-brand-orange/20 bg-brand-orange/10 -translate-y-0.5'
-                    : 'min-h-[85px] md:min-h-[90px] border-white/10 hover:border-brand-orange/50 hover:bg-[#121212]'
+                    : 'min-h-[85px] md:min-h-[90px] border-line hover:border-brand-orange/50 hover:bg-surface'
                 )}
               >
                 {/* Corner brackets that appear on hover */}
@@ -99,7 +99,7 @@ export const CategoryList = ({
                       className={cn(
                         "font-display font-medium transition-colors duration-300 [text-wrap:balance]",
                         category.featured ? 'text-xl md:text-2xl' : 'text-lg md:text-xl',
-                        hoveredItem === category.id ? 'text-brand-orange' : 'text-[#F5F5F3]'
+                        hoveredItem === category.id ? 'text-brand-ink' : 'text-ink'
                       )}
                     >
                       {category.title}
@@ -108,7 +108,7 @@ export const CategoryList = ({
                       <p
                         className={cn(
                           "mt-1.5 transition-colors duration-300 text-xs md:text-sm font-sans font-light leading-relaxed",
-                           hoveredItem === category.id ? 'text-[#F5F5F3]/95' : 'text-[#A1A1AA] dark:text-[#8E8E93]'
+                           hoveredItem === category.id ? 'text-ink' : 'text-ink-muted dark:text-ink-muted'
                         )}
                       >
                         {category.subtitle}
@@ -121,8 +121,8 @@ export const CategoryList = ({
                     <div className={cn(
                       "text-xl md:text-2xl shrink-0 transition-all duration-300 flex items-center justify-center p-3 rounded-sm border",
                       hoveredItem === category.id 
-                        ? 'text-brand-orange border-brand-orange/40 bg-brand-orange/10 scale-110 opacity-100 shadow-[0_0_12px_rgba(255,106,0,0.25)]' 
-                        : 'text-[#8E8E93] border-white/5 bg-white/5 opacity-70'
+                        ? 'text-brand-ink border-brand-orange/40 bg-brand-orange/10 scale-110 opacity-100 shadow-[0_0_12px_rgba(255,106,0,0.25)]' 
+                        : 'text-ink-muted border-line bg-line opacity-70'
                     )}>
                       {category.icon}
                     </div>
