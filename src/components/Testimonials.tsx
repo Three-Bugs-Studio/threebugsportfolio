@@ -24,7 +24,7 @@ export default function Testimonials({ lang }: TestimonialsProps) {
   const activeTestimonial = list[activeIdx];
 
   return (
-    <section id="testimonials" className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative overflow-hidden">
+    <section id="testimonials" className="py-24 md:py-32 bg-canvas border-t border-line relative overflow-hidden">
       {/* Background Decorative Grid */}
       <div className="absolute inset-0 swiss-grid opacity-5 pointer-events-none" />
 
@@ -45,7 +45,7 @@ export default function Testimonials({ lang }: TestimonialsProps) {
 
         {/* Dynamic Testimonial Card */}
         <div className="min-h-[220px] md:min-h-[200px] flex items-center justify-center relative">
-          <div className="absolute -top-10 left-1/2 -translate-x-1/2 font-display text-8xl text-brand-orange/15 select-none pointer-events-none font-bold">
+          <div className="absolute -top-10 left-1/2 -translate-x-1/2 font-display text-8xl text-brand-ink/15 select-none pointer-events-none font-bold">
             “
           </div>
           <AnimatePresence mode="wait">
@@ -57,17 +57,17 @@ export default function Testimonials({ lang }: TestimonialsProps) {
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               className="w-full relative z-10"
             >
-              <blockquote className="font-display font-medium text-2xl md:text-3xl lg:text-4xl tracking-tight text-[#F5F5F3] leading-relaxed max-w-4xl mx-auto [text-wrap:balance]">
+              <blockquote className="font-display font-medium text-2xl md:text-3xl lg:text-4xl tracking-tight text-ink leading-relaxed max-w-4xl mx-auto [text-wrap:balance]">
                 "{activeTestimonial?.quote}"
               </blockquote>
 
               {/* Author Credits */}
               <cite className="block not-italic mt-8 md:mt-12">
-                <span className="font-sans font-semibold text-sm md:text-base text-[#F5F5F3] block">
+                <span className="font-sans font-semibold text-sm md:text-base text-ink block">
                   {activeTestimonial?.author}
                 </span>
-                <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block mt-1.5">
-                  {activeTestimonial?.role} — <span className="text-brand-orange font-semibold">{activeTestimonial?.company}</span>
+                <span className="font-mono text-xs tracking-widest text-ink-muted uppercase block mt-1.5">
+                  {activeTestimonial?.role} — <span className="text-brand-ink font-semibold">{activeTestimonial?.company}</span>
                 </span>
               </cite>
             </motion.div>
@@ -79,7 +79,7 @@ export default function Testimonials({ lang }: TestimonialsProps) {
           {/* Prev button */}
           <button
             onClick={handlePrev}
-            className="w-10 h-10 rounded-full border border-white/10 hover:border-brand-orange text-[#8E8E93] hover:text-[#F5F5F3] flex items-center justify-center transition-all duration-300 interactive focus-terminal outline-none hover:shadow-[0_0_12px_rgba(255,106,0,0.3)] active:scale-95"
+            className="w-10 h-10 rounded-full border border-line hover:border-brand-orange text-ink-muted hover:text-ink flex items-center justify-center transition-all duration-300 interactive focus-terminal outline-none hover:shadow-[0_0_12px_rgba(255,106,0,0.3)] active:scale-95"
             aria-label="Previous quote"
             id="testimonial-prev-btn"
           >
@@ -103,7 +103,7 @@ export default function Testimonials({ lang }: TestimonialsProps) {
           {/* Next button */}
           <button
             onClick={handleNext}
-            className="w-10 h-10 rounded-full border border-white/10 hover:border-brand-orange text-[#8E8E93] hover:text-[#F5F5F3] flex items-center justify-center transition-all duration-300 interactive focus-terminal outline-none hover:shadow-[0_0_12px_rgba(255,106,0,0.3)] active:scale-95"
+            className="w-10 h-10 rounded-full border border-line hover:border-brand-orange text-ink-muted hover:text-ink flex items-center justify-center transition-all duration-300 interactive focus-terminal outline-none hover:shadow-[0_0_12px_rgba(255,106,0,0.3)] active:scale-95"
             aria-label="Next quote"
             id="testimonial-next-btn"
           >
