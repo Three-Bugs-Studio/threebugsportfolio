@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TemplateCard, TemplateChips, TemplateFilter, countFor } from "./TemplateCard";
 import { TEMPLATES } from "../templates";
+import { PRICE_NOTE } from "../data";
 
 // Homepage teaser for /templates: same filter chips, up to 6 cards, then a link to the full page.
 const FEATURED = ["tieucu", "langspa", "vanlo", "senoi", "aurelle-motors", "nepnha"];
@@ -35,6 +36,7 @@ export default function TemplatesShowcase({ lang }: { lang: "vi" | "en" }) {
                 ? "Chọn mẫu theo ngành của bạn, xem demo chạy thật. Chúng tôi thay logo, màu và nội dung theo thương hiệu."
                 : "Pick a template for your industry and try the live demo. We swap in your logo, colours and content."}
             </p>
+            <p className="text-xs text-[#8E8E93] mt-2 max-w-xl">{PRICE_NOTE[lang]}</p>
           </div>
           <a
             href={more}
