@@ -100,7 +100,7 @@ export default function Contact({ lang }: ContactProps) {
     {
       badge: lang === "vi" ? "GÓI 03" : "PLAN 03",
       title: lang === "vi" ? "Web App & Hệ Thống AI" : "Web App & AI Systems",
-      quote: lang === "vi" ? "Từ 150 triệu" : "From 150M VND",
+      quote: lang === "vi" ? "Báo giá theo yêu cầu" : "Quoted per project",
       desc: lang === "vi" ? "Web / Mobile App, CRM / ERP, tích hợp AI; bản MVP 6 - 10 tuần." : "Web / mobile apps, CRM / ERP and AI integration; MVP in 6 - 10 weeks.",
     },
     {
