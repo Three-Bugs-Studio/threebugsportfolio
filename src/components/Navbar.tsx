@@ -18,8 +18,8 @@ export default function Navbar({ lang, onLangChange, theme = "dark", onThemeTogg
       onThemeToggle={onThemeToggle}
       baseColor={isLight ? "#EAEBED" : "#090909"}
       menuColor="#FF6A00"
-      buttonBgColor={isLight ? "#006989" : "#FF6A00"}
-      buttonTextColor={isLight ? "#FFFFFF" : "#090909"}
+      buttonBgColor="#FF6A00"
+      buttonTextColor="#090909"
       ease="power3.out"
     />
   );
