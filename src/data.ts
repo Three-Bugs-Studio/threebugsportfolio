@@ -369,7 +369,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     {
       id: "template_landing",
       badge: "TEMPLATE // GIAO NHANH",
-      name: "Landing Từ Template",
+      name: "Website Từ Mẫu Có Sẵn",
       tagline: "Chọn mẫu có sẵn, chúng tôi thay logo, màu và nội dung theo thương hiệu của bạn. Dành cho cá nhân, spa, salon, quán ăn, shop nhỏ.",
       priceVnd: "Từ 2,5 triệu",
       priceUsd: "hoặc 299.000đ/tháng (tối thiểu 12 tháng)",
@@ -396,7 +396,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     {
       id: "phase_1_mvp",
       badge: "LANDING & GIỚI THIỆU // 3 PHASE",
-      name: "Landing & Web Giới Thiệu Thiết Kế Riêng",
+      name: "Website Giới Thiệu Thiết Kế Riêng",
       tagline: "Thiết kế độc quyền trên Figma cho thương hiệu mới, landing chạy quảng cáo, web giới thiệu công ty.",
       priceVnd: "Từ 8 triệu",
       priceUsd: "Báo giá theo quy mô khách hàng",
@@ -433,7 +433,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     {
       id: "phase_2_fullstack",
       badge: "KHUYÊN DÙNG ★ // 3 PHASE",
-      name: "Gói Doanh Nghiệp & E-Commerce",
+      name: "Website Bán Hàng & Đặt Lịch",
       tagline: "Website có trang quản trị cho doanh nghiệp, bán hàng online, đặt lịch, khóa học, bất động sản, du lịch.",
       priceVnd: "Từ 25 triệu",
       priceUsd: "Báo giá theo quy mô khách hàng",
@@ -445,13 +445,14 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
           title: "Mức Giá Theo Quy Mô",
           items: [
             "Khách nhỏ: 25 - 50 triệu",
+            "Ví dụ: hệ thống đặt lịch cho spa, salon, sân thể thao khoảng 40 triệu",
             "Start-up: 50 - 120 triệu"
           ]
         },
         {
           title: "Khách Nhận Được",
           items: [
-            "Toàn bộ quyền lợi của gói Landing & Web Giới Thiệu",
+            "Toàn bộ quyền lợi của gói Website Giới Thiệu",
             "Trang quản trị (CMS) tự sửa bài viết, sản phẩm, dịch vụ, đơn hàng",
             "1 tính năng chính: giỏ hàng & thanh toán QR (PayOS / SePay / VietQR), đặt lịch, hoặc khóa học",
             "Cơ sở dữ liệu PostgreSQL / Supabase, sao lưu tự động hằng ngày",
@@ -470,8 +471,8 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     },
     {
       id: "phase_3_enterprise",
-      badge: "WEB APP & AI // 3 PHASE",
-      name: "Gói Web App & Hệ Thống AI",
+      badge: "THEO YÊU CẦU // 3 PHASE",
+      name: "Hệ Thống & App Theo Yêu Cầu",
       tagline: "Web App, Mobile App, hệ thống quản lý (CRM / ERP) và tích hợp AI cho start-up.",
       priceVnd: "Báo giá theo yêu cầu",
       priceUsd: "Báo giá sau buổi trao đổi yêu cầu",
@@ -508,7 +509,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     {
       id: "phase_maintenance",
       badge: "HẬU MÃI & THEO GIỜ // HOURLY SLA",
-      name: "Gói Bảo Trì & Nâng Cấp Theo Giờ",
+      name: "Bảo Trì & Nâng Cấp Theo Giờ",
       tagline: "Dành cho website / hệ thống đã hết bảo hành hoặc cần kỹ sư sửa lỗi, tối ưu tốc độ, thêm tính năng theo giờ, không phí cố định hằng tháng.",
       priceVnd: "Từ 300.000đ/giờ",
       priceUsd: "Mua trước 10 giờ giảm 10%, 20 giờ giảm 15%",
@@ -555,7 +556,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     {
       id: "template_landing",
       badge: "TEMPLATE // FAST DELIVERY",
-      name: "Landing From a Template",
+      name: "Website From a Template",
       tagline: "Pick a ready-made template and we apply your logo, colours and content. For individuals, spas, salons, restaurants and small shops.",
       priceVnd: "From 2.5M VND",
       priceUsd: "≈ US$95 · or 299k VND/month (12-month minimum)",
@@ -582,7 +583,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     {
       id: "phase_1_mvp",
       badge: "LANDING & COMPANY SITE // 3 PHASES",
-      name: "Custom-Designed Landing & Company Site",
+      name: "Custom-Designed Company Website",
       tagline: "Exclusive Figma design for new brands, ad landing pages and company websites.",
       priceVnd: "From 8M VND",
       priceUsd: "≈ US$300 · priced by client size",
@@ -619,7 +620,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     {
       id: "phase_2_fullstack",
       badge: "RECOMMENDED ★ // 3 PHASES",
-      name: "Business & E-Commerce",
+      name: "Online Store & Booking Website",
       tagline: "Websites with an admin panel for businesses, online stores, bookings, courses, real estate and travel.",
       priceVnd: "From 25M VND",
       priceUsd: "≈ US$950 · priced by client size",
@@ -631,13 +632,14 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
           title: "Price by Client Size",
           items: [
             "Small business: 25 - 50M VND",
+            "Example: a booking system for a spa, salon or sports court is around 40M VND",
             "Start-up: 50 - 120M VND"
           ]
         },
         {
           title: "What You Get",
           items: [
-            "Everything in the Landing & Company Site package",
+            "Everything in the Company Website package",
             "Admin panel (CMS) to edit posts, products, services and orders yourself",
             "One core feature: cart & QR payments (PayOS / SePay / VietQR), bookings, or courses",
             "PostgreSQL / Supabase database with automatic daily backups",
@@ -656,8 +658,8 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
     },
     {
       id: "phase_3_enterprise",
-      badge: "WEB APP & AI // 3 PHASES",
-      name: "Web App & AI Systems",
+      badge: "CUSTOM BUILD // 3 PHASES",
+      name: "Custom Systems & Apps",
       tagline: "Web apps, mobile apps, management systems (CRM / ERP) and AI integration for start-ups.",
       priceVnd: "Quoted per project",
       priceUsd: "Quoted after a requirements call",
@@ -1142,7 +1144,7 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
       question: "Chính sách bảo hành, sửa lỗi và duy trì hoạt động sau khi bàn giao diễn ra như thế nào?",
       badge: "BẢO HÀNH ĐẾN 2 NĂM",
       category: "warranty",
-      answer: "Mọi sản phẩm đều được bảo hành lỗi kỹ thuật MIỄN PHÍ theo thời hạn của từng gói: Template 1 tháng, Landing & Web Giới Thiệu 3 tháng, Doanh Nghiệp & E-Commerce 6 tháng (khách doanh nghiệp 12 tháng), Web App & AI 12 tháng (khách doanh nghiệp 24 tháng). Bảo hành bao gồm: mọi lỗi trong phần studio đã bàn giao so với đặc tả đã thống nhất, và lỗi bảo mật do mã nguồn của studio. Bảo hành không bao gồm: tính năng mới hoặc thay đổi giao diện, cập nhật theo chính sách mới của Google Play / App Store, thay đổi từ dịch vụ bên thứ ba (máy chủ, cổng thanh toán, API), và phần mã nguồn do bên khác chỉnh sửa; các hạng mục này được hỗ trợ qua gói Bảo Trì. Bảo hành có hiệu lực sau khi thanh toán đủ 100%. Chúng tôi hỗ trợ trong giờ hành chính và phản hồi trong vòng 4 giờ làm việc.",
+      answer: "Mọi sản phẩm đều được bảo hành lỗi kỹ thuật MIỄN PHÍ theo thời hạn của từng gói: Website từ mẫu 1 tháng, Website giới thiệu 3 tháng, Website bán hàng & đặt lịch 6 tháng, Hệ thống & app theo yêu cầu 12 tháng. Bảo hành bao gồm: mọi lỗi trong phần studio đã bàn giao so với đặc tả đã thống nhất, và lỗi bảo mật do mã nguồn của studio. Bảo hành không bao gồm: tính năng mới hoặc thay đổi giao diện, cập nhật theo chính sách mới của Google Play / App Store, thay đổi từ dịch vụ bên thứ ba (máy chủ, cổng thanh toán, API), và phần mã nguồn do bên khác chỉnh sửa; các hạng mục này được hỗ trợ qua gói Bảo Trì. Bảo hành có hiệu lực sau khi thanh toán đủ 100%. Chúng tôi hỗ trợ trong giờ hành chính và phản hồi trong vòng 4 giờ làm việc.",
       keyBenefits: [
         "Bảo hành lỗi miễn phí từ 1 tháng đến 24 tháng tùy gói, ghi rõ trong từng gói",
         "Hỗ trợ giờ hành chính, phản hồi trong 4 giờ làm việc",
@@ -1166,7 +1168,7 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
       question: "Studio cam kết tiến độ bàn giao ra sao? Tôi có được theo dõi tiến độ thời gian thực không?",
       badge: "CAM KẾT ĐÚNG TIẾN ĐỘ",
       category: "warranty",
-      answer: "Chúng tôi cam kết tiến độ rõ ràng bằng văn bản: Template 2–3 ngày làm việc, Landing & Web Giới Thiệu 1–2 tuần, Doanh Nghiệp & E-Commerce 3–6 tuần, Web App & AI bản MVP 6–10 tuần. Trong suốt quá trình phát triển, bạn sẽ được cung cấp đường link Live Staging/Demo riêng biệt để trực tiếp truy cập trên điện thoại và máy tính, theo dõi từng màn hình được hoàn thiện mỗi tuần. Hợp đồng ghi rõ mốc thời gian: nếu trễ hạn do lỗi từ Studio, chúng tôi gia hạn thêm thời gian bảo hành miễn phí tương ứng.",
+      answer: "Chúng tôi cam kết tiến độ rõ ràng bằng văn bản: Website từ mẫu 2–3 ngày làm việc, Website giới thiệu 1–2 tuần, Website bán hàng & đặt lịch 3–6 tuần, Hệ thống & app theo yêu cầu bản MVP 6–10 tuần. Trong suốt quá trình phát triển, bạn sẽ được cung cấp đường link Live Staging/Demo riêng biệt để trực tiếp truy cập trên điện thoại và máy tính, theo dõi từng màn hình được hoàn thiện mỗi tuần. Hợp đồng ghi rõ mốc thời gian: nếu trễ hạn do lỗi từ Studio, chúng tôi gia hạn thêm thời gian bảo hành miễn phí tương ứng.",
       keyBenefits: [
         "Tiến độ theo gói: 2–3 ngày (Template) đến 6–10 tuần (Web App MVP)",
         "Cung cấp link Staging/Demo kiểm thử trực tiếp trên điện thoại & máy tính hàng tuần",
@@ -1252,7 +1254,7 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
       question: "What is your warranty policy, bug-fixing coverage, and post-launch maintenance SLA?",
       badge: "UP TO 2-YEAR WARRANTY",
       category: "warranty",
-      answer: "Every delivery includes a FREE technical warranty for the period of its package: Template 1 month, Landing & Company Site 3 months, Business & E-Commerce 6 months (12 months for enterprise clients), Web App & AI 12 months (24 months for enterprise clients). Covered: any defect in what we delivered against the agreed specification, and security issues caused by our code. Not covered: new features or design changes, updates required by new Google Play / App Store policies, changes in third-party services (hosting, payment gateways, APIs), and code modified by other parties; these are handled through our Maintenance plans. The warranty takes effect once the project is paid in full. We support you during business hours and respond within 4 working hours.",
+      answer: "Every delivery includes a FREE technical warranty for the period of its package: Template website 1 month, Company website 3 months, Store & booking website 6 months, Custom systems & apps 12 months. Covered: any defect in what we delivered against the agreed specification, and security issues caused by our code. Not covered: new features or design changes, updates required by new Google Play / App Store policies, changes in third-party services (hosting, payment gateways, APIs), and code modified by other parties; these are handled through our Maintenance plans. The warranty takes effect once the project is paid in full. We support you during business hours and respond within 4 working hours.",
       keyBenefits: [
         "Free bug-fix warranty from 1 to 24 months, stated in each package",
         "Business-hours support with a 4-working-hour response",
@@ -1276,7 +1278,7 @@ export const FAQ_DATA: Record<"vi" | "en", FAQItem[]> = {
       question: "How does the Studio guarantee delivery deadlines? Can I track live progress in real-time?",
       badge: "ON-TIME GUARANTEE",
       category: "warranty",
-      answer: "We guarantee delivery timelines in formal contracts: Template 2–3 working days, Landing & Company Site 1–2 weeks, Business & E-Commerce 3–6 weeks, Web App & AI MVP 6–10 weeks. Throughout development, you receive access to a dedicated Live Staging/Demo link to test newly shipped screens every week directly on your mobile device and desktop. Contracts state clear milestones: if we are late through our own fault, we extend your free warranty by the same amount.",
+      answer: "We guarantee delivery timelines in formal contracts: Template website 2–3 working days, Company website 1–2 weeks, Store & booking website 3–6 weeks, Custom systems & apps MVP 6–10 weeks. Throughout development, you receive access to a dedicated Live Staging/Demo link to test newly shipped screens every week directly on your mobile device and desktop. Contracts state clear milestones: if we are late through our own fault, we extend your free warranty by the same amount.",
       keyBenefits: [
         "Timelines per package: 2–3 days (Template) to 6–10 weeks (Web App MVP)",
         "Live weekly staging links accessible on mobile and desktop devices",
@@ -1407,9 +1409,9 @@ export const TRANSLATIONS = {
     contactFieldBudget: "Gói cước / Ngân sách lựa chọn",
     contactFieldMessage: "Chi tiết yêu cầu của bạn",
     contactBudgetValue: "Từ 2,5 triệu",
-    contactBudgetRange1: "Gói 1: Landing & Web Giới Thiệu (Từ 8 triệu)",
-    contactBudgetRange2: "Gói 2: Doanh Nghiệp & E-Commerce (Từ 25 triệu)",
-    contactBudgetRange3: "Gói 3: Web App & Hệ Thống AI (Báo giá theo yêu cầu)",
+    contactBudgetRange1: "Gói 1: Website Giới Thiệu (Từ 8 triệu)",
+    contactBudgetRange2: "Gói 2: Website Bán Hàng & Đặt Lịch (Từ 25 triệu)",
+    contactBudgetRange3: "Gói 3: Hệ Thống & App Theo Yêu Cầu (Báo giá theo yêu cầu)",
     contactBudgetConversionLabel: "Tư vấn & báo giá chi tiết trực tiếp qua Zalo / Hotline",
     contactSendBtn: "GỬI THÔNG TIN YÊU CẦU",
     contactSendingBtn: "ĐANG GỬI THÔNG TIN...",
@@ -1495,9 +1497,9 @@ export const TRANSLATIONS = {
     contactFieldBudget: "Selected Package / Budget",
     contactFieldMessage: "Project Requirements",
     contactBudgetValue: "From 2.5M VND",
-    contactBudgetRange1: "Package 1: Landing & Company Site (From 8M VND)",
-    contactBudgetRange2: "Package 2: Business & E-Commerce (From 25M VND)",
-    contactBudgetRange3: "Package 3: Web App & AI Systems (Quoted per project)",
+    contactBudgetRange1: "Package 1: Company Website (From 8M VND)",
+    contactBudgetRange2: "Package 2: Store & Booking Website (From 25M VND)",
+    contactBudgetRange3: "Package 3: Custom Systems & Apps (Quoted per project)",
     contactBudgetConversionLabel: "Direct project consultation via Zalo / Hotline",
     contactSendBtn: "SEND PROJECT INQUIRY",
     contactSendingBtn: "TRANSMITTING INQUIRY...",
