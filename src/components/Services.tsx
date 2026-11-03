@@ -40,15 +40,15 @@ export default function Services({ lang }: ServicesProps) {
   };
 
   return (
-    <section id="services" className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative">
+    <section id="services" className="py-24 md:py-32 bg-canvas border-t border-line relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Title */}
         <motion.div variants={itemVariants} className="flex items-center gap-3 mb-16">
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange">
+          <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-ink">
             {t.servicesLabel}
           </span>
-          <span className="h-[1px] w-12 bg-white/10" />
+          <span className="h-[1px] w-12 bg-line" />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
@@ -56,10 +56,10 @@ export default function Services({ lang }: ServicesProps) {
           {/* Left Column: Descriptive Intro */}
           <div className="lg:col-span-4 flex flex-col justify-between">
             <motion.div variants={itemVariants}>
-              <h2 className="font-display font-medium text-4xl md:text-5xl tracking-tight text-[#F5F5F3] leading-[1.1] mb-6 [text-wrap:balance]">
+              <h2 className="font-display font-medium text-4xl md:text-5xl tracking-tight text-ink leading-[1.1] mb-6 [text-wrap:balance]">
                 {t.servicesHeading}
               </h2>
-              <p className="font-sans text-sm md:text-base text-[#8E8E93] font-light leading-relaxed max-w-sm">
+              <p className="font-sans text-sm md:text-base text-ink-muted font-light leading-relaxed max-w-sm">
                 {lang === "vi" 
                   ? "Chúng tôi kết hợp sự chính xác về mặt kỹ thuật với thiết kế tương tác cao cấp để mang lại các sản phẩm có thể tự mở rộng linh hoạt theo tải trọng người dùng."
                   : "We combine technical precision with high-end interaction design to ship products that outlast short-lived tech trends."}
@@ -67,11 +67,11 @@ export default function Services({ lang }: ServicesProps) {
             </motion.div>
 
             {/* Micro-interactive tech block details */}
-            <motion.div variants={itemVariants} className="hidden lg:block border-l border-white/5 pl-6 py-4 mt-8">
-              <span className="font-mono text-[9px] tracking-widest text-brand-orange uppercase block mb-2">
+            <motion.div variants={itemVariants} className="hidden lg:block border-l border-line pl-6 py-4 mt-8">
+              <span className="font-mono text-xs tracking-widest text-brand-ink uppercase block mb-2">
                 {lang === "vi" ? "// TIÊU CHUẨN KIẾN TRÚC HỆ THỐNG" : "// SYSTEM STACK CRITERIA"}
               </span>
-              <p className="font-mono text-[11px] text-[#8E8E93] leading-relaxed">
+              <p className="font-mono text-xs text-ink-muted leading-relaxed">
                 {lang === "vi"
                   ? "Tất cả các sản phẩm triển khai đều sử dụng các cấu trúc container chuẩn hóa bền bỉ, chạy ổn định và tối ưu SEO ngay từ đầu."
                   : "All production deployments are standard containerized structures, built to run reliably with strong SEO from day one."}
@@ -94,8 +94,8 @@ export default function Services({ lang }: ServicesProps) {
                   aria-controls={`service-details-${service.id}`}
                   aria-label={`${service.title} — ${lang === "vi" ? "Nhấp để hiển thị chi tiết dịch vụ" : "Click to view service details"}`}
                   variants={itemVariants}
-                  className={`group border border-white/5 hover:border-white/10 p-6 md:p-8 transition-all duration-500 rounded-sm cursor-pointer relative overflow-hidden select-none focus-terminal outline-none ${
-                    isActive ? "bg-[#121212]/50 border-white/15 shadow-xl -translate-y-0.5" : "bg-transparent hover:bg-[#121212]/15"
+                  className={`group border border-line hover:border-white/10 p-6 md:p-8 transition-all duration-500 rounded-sm cursor-pointer relative overflow-hidden select-none focus-terminal outline-none ${
+                    isActive ? "bg-surface/50 border-line shadow-xl -translate-y-0.5" : "bg-transparent hover:bg-surface/15"
                   }`}
                   onClick={() => setActiveId(isActive ? null : service.id)}
                   onKeyDown={(e) => {
@@ -118,7 +118,7 @@ export default function Services({ lang }: ServicesProps) {
                       <div className={`services-anim-icon-container relative w-12 h-12 md:w-14 md:h-14 p-1.5 rounded-xl border transition-all duration-500 flex items-center justify-center shrink-0 overflow-hidden ${
                         isActive
                           ? "bg-brand-orange/15 border-brand-orange shadow-[0_0_18px_rgba(255,106,0,0.3)] scale-105"
-                          : "bg-[#141416] border-white/10 group-hover:border-brand-orange/40 group-hover:shadow-[0_0_12px_rgba(255,106,0,0.15)]"
+                          : "bg-surface border-line group-hover:border-brand-orange/40 group-hover:shadow-[0_0_12px_rgba(255,106,0,0.15)]"
                       }`}>
                         <img
                           src={animIconMap[service.iconName] || logoDesignGif}
@@ -134,11 +134,11 @@ export default function Services({ lang }: ServicesProps) {
                       {/* Service Title & Brief */}
                       <div>
                         <h3 className={`font-display font-medium text-lg md:text-xl transition-colors duration-300 ${
-                          isActive ? "text-[#F5F5F3]" : "text-[#8E8E93] group-hover:text-[#F5F5F3]"
+                          isActive ? "text-ink" : "text-ink-muted group-hover:text-ink"
                         }`}>
                           {service.title}
                         </h3>
-                        <p className={`font-sans text-xs md:text-sm text-[#8E8E93] font-light mt-2 leading-relaxed transition-all duration-500 max-w-xl ${
+                        <p className={`font-sans text-xs md:text-sm text-ink-muted font-light mt-2 leading-relaxed transition-all duration-500 max-w-xl ${
                           isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100 max-h-0 group-hover:max-h-24 overflow-hidden mt-0 group-hover:mt-2"
                         }`}>
                           {service.description}
@@ -147,8 +147,8 @@ export default function Services({ lang }: ServicesProps) {
                     </div>
 
                     {/* Expand Chevron Icon */}
-                    <ChevronRightIcon size={20} className={`w-5 h-5 text-[#8E8E93] group-hover:text-[#F5F5F3] transition-transform duration-500 mt-1 ${
-                      isActive ? "rotate-90 text-brand-orange" : ""
+                    <ChevronRightIcon size={20} className={`w-5 h-5 text-ink-muted group-hover:text-ink transition-transform duration-500 mt-1 ${
+                      isActive ? "rotate-90 text-brand-ink" : ""
                     }`} />
                   </div>
 
@@ -162,7 +162,7 @@ export default function Services({ lang }: ServicesProps) {
                         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
                       >
-                        <div className="mt-6 pt-6 border-t border-white/5 pl-0 md:pl-16 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3.5">
+                        <div className="mt-6 pt-6 border-t border-line pl-0 md:pl-16 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3.5">
                           {service.details.map((detail, dIdx) => (
                             <motion.div
                               key={detail}
@@ -171,10 +171,10 @@ export default function Services({ lang }: ServicesProps) {
                               transition={{ delay: dIdx * 0.05, duration: 0.3 }}
                               className="flex items-start gap-2.5"
                             >
-                              <span className="font-mono text-[9px] text-brand-orange select-none shrink-0 whitespace-nowrap mt-0.5 tracking-wider font-semibold">
+                              <span className="font-mono text-xs text-brand-ink select-none shrink-0 whitespace-nowrap mt-0.5 tracking-wider font-semibold">
                                 // 0{dIdx + 1}
                               </span>
-                              <span className="font-sans text-xs text-[#F5F5F3] font-light leading-relaxed">
+                              <span className="font-sans text-xs text-ink font-light leading-relaxed">
                                 {detail}
                               </span>
                             </motion.div>
