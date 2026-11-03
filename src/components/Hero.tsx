@@ -81,7 +81,7 @@ export default function Hero({ lang }: HeroProps) {
       maxRings={4}
       seedPing={false}
       pingArea={[0.15, 0.2, 0.85, 0.8]}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#090909]"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-canvas"
     >
       {/* High-Contrast Vignette Mask Overlay to ensure text pops out prominently in dark mode */}
       <div className="hero-vignette absolute inset-0 z-[1] pointer-events-none dark:block hidden bg-[radial-gradient(ellipse_at_center,_rgba(9,9,9,0.15)_0%,_rgba(9,9,9,0.50)_50%,_rgba(9,9,9,0.92)_100%)]" />
@@ -97,17 +97,17 @@ export default function Hero({ lang }: HeroProps) {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center gap-3 mb-8 bg-[#121212]/80 border border-white/10 px-3.5 py-1.5 rounded-sm backdrop-blur-md select-none shadow-2xl transition-colors hover:border-brand-orange/40"
+          className="flex items-center gap-3 mb-8 bg-surface/80 border border-line px-3.5 py-1.5 rounded-sm backdrop-blur-md select-none shadow-2xl transition-colors hover:border-brand-orange/40"
         >
           <span className="relative flex h-2 w-2 shrink-0">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-orange shadow-[0_0_8px_rgba(255,106,0,0.8)]" />
           </span>
-          <span className="font-mono text-[10px] tracking-[0.2em] text-[#A1A1AA] dark:text-[#8E8E93] uppercase font-medium">
+          <span className="font-mono text-xs tracking-[0.2em] text-ink-muted dark:text-ink-muted uppercase font-medium">
             {greeting}
           </span>
           <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
-          <span className="font-mono text-[10px] text-brand-orange font-semibold tracking-wider">
+          <span className="font-mono text-xs text-brand-ink font-semibold tracking-wider">
             {currentTime}
           </span>
         </motion.div>
@@ -118,19 +118,19 @@ export default function Hero({ lang }: HeroProps) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display font-medium text-4xl md:text-7xl lg:text-8xl tracking-tighter text-[#F5F5F3] leading-[1.05] max-w-4xl dark:drop-shadow-[0_4px_32px_rgba(0,0,0,0.95)] [text-wrap:balance]"
+          className="font-display font-medium text-4xl md:text-7xl lg:text-8xl tracking-tighter text-ink leading-[1.05] max-w-4xl dark:drop-shadow-[0_4px_32px_rgba(0,0,0,0.95)] [text-wrap:balance]"
         >
           {lang === "vi" ? (
             <>
               Chúng tôi xây dựng <br />
-              <span className="text-[#A1A1AA] dark:text-[#8E8E93] dark:drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
+              <span className="text-ink-muted dark:text-ink-muted dark:drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
                 website và phần mềm.
               </span>
             </>
           ) : (
             <>
               We build websites <br />
-              <span className="text-[#A1A1AA] dark:text-[#8E8E93] dark:drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
+              <span className="text-ink-muted dark:text-ink-muted dark:drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
                 and custom software.
               </span>
             </>
@@ -143,7 +143,7 @@ export default function Hero({ lang }: HeroProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-sans text-base md:text-xl text-[#A1A1AA] dark:text-[#8E8E93] max-w-2xl mt-8 font-light leading-relaxed dark:drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)] [text-wrap:pretty]"
+          className="font-sans text-base md:text-xl text-ink-muted dark:text-ink-muted max-w-2xl mt-8 font-light leading-relaxed dark:drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)] [text-wrap:pretty]"
         >
           {t.heroDesc}
         </motion.p>
@@ -153,7 +153,7 @@ export default function Hero({ lang }: HeroProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.95 }}
           transition={{ delay: 0.7, duration: 1 }}
-          className="hero-slogan font-mono text-xs md:text-sm tracking-[0.25em] text-brand-orange mt-8 uppercase font-medium select-none drop-shadow-[0_0_12px_rgba(255,106,0,0.4)]"
+          className="hero-slogan font-mono text-xs md:text-sm tracking-[0.25em] text-brand-ink mt-8 uppercase font-medium select-none drop-shadow-[0_0_12px_rgba(255,106,0,0.4)]"
         >
           Every bug teaches. Every build improves.
         </motion.div>
@@ -172,7 +172,7 @@ export default function Hero({ lang }: HeroProps) {
             className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#F5F5F3] text-[#090909] font-medium rounded-sm inline-flex items-center justify-center gap-2.5 group interactive shadow-2xl focus-terminal active:scale-[0.98] transition-all hover:shadow-[0_0_24px_rgba(245,245,243,0.3)]"
           >
             <span>{t.heroExplore}</span>
-            <span className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-brand-orange inline-flex items-center justify-center">
+            <span className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-brand-ink inline-flex items-center justify-center">
               <ArrowUpRightIcon size={14} />
             </span>
           </button>
@@ -180,7 +180,7 @@ export default function Hero({ lang }: HeroProps) {
           <button
             onClick={() => handleScrollTo("app-contact-section")}
             aria-label={t.navStartProject}
-            className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#121212]/90 border border-white/10 text-[#F5F5F3] rounded-sm inline-flex items-center justify-center gap-2 group interactive backdrop-blur-md shadow-xl focus-terminal active:scale-[0.98] transition-all hover:border-brand-orange/60 hover:shadow-[0_0_20px_rgba(255,106,0,0.18)]"
+            className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-surface/90 border border-line text-ink rounded-sm inline-flex items-center justify-center gap-2 group interactive backdrop-blur-md shadow-xl focus-terminal active:scale-[0.98] transition-all hover:border-brand-orange/60 hover:shadow-[0_0_20px_rgba(255,106,0,0.18)]"
           >
             <span>{t.navStartProject}</span>
             <span className="w-1.5 h-1.5 bg-brand-orange rounded-full group-hover:scale-125 transition-transform" />
@@ -219,14 +219,14 @@ export default function Hero({ lang }: HeroProps) {
               }}
             />
           </div>
-          <span className="font-mono text-[9px] tracking-[0.4em] dark:text-[#8E8E93] text-slate-700 font-semibold uppercase group-hover:text-brand-orange transition-colors">
+          <span className="font-mono text-xs tracking-[0.4em] dark:text-ink-muted text-slate-700 font-semibold uppercase group-hover:text-brand-ink transition-colors">
             {lang === "vi" ? "CUỘN XUỐNG" : "SCROLL"}
           </span>
           <motion.div
             animate={{ y: [0, 4, 0] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
           >
-            <span className="dark:text-[#8E8E93] text-slate-700 group-hover:text-brand-orange transition-colors text-xs inline-flex items-center justify-center">
+            <span className="dark:text-ink-muted text-slate-700 group-hover:text-brand-ink transition-colors text-xs inline-flex items-center justify-center">
               <ArrowDownIcon size={14} />
             </span>
           </motion.div>
