@@ -71,7 +71,7 @@ function MagneticSocialLink({ href, label, target, rel }: MagneticSocialLinkProp
           rotateY,
           transformStyle: "preserve-3d",
         }}
-        className="hover:text-[#F5F5F3] text-[#8E8E93] transition-colors duration-200 flex items-center gap-1.5 interactive select-none w-fit"
+        className="hover:text-ink text-ink-muted transition-colors duration-200 flex items-center gap-1.5 interactive select-none w-fit"
       >
         <span 
           style={{ transform: "translateZ(8px)" }} 
@@ -90,7 +90,7 @@ function MagneticSocialLink({ href, label, target, rel }: MagneticSocialLinkProp
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
           className="inline-flex"
         >
-          <ArrowUpRightIcon size={12} className="w-3 h-3 text-brand-orange" />
+          <ArrowUpRightIcon size={12} className="w-3 h-3 text-brand-ink" />
         </motion.span>
       </motion.a>
     </div>
@@ -188,12 +188,12 @@ export default function Footer({ lang }: FooterProps) {
   };
 
   return (
-    <footer className="bg-[#090909] border-t border-white/5 pt-16 md:pt-24 pb-10 md:pb-12 relative overflow-hidden" id="main-footer">
+    <footer className="bg-canvas border-t border-line pt-16 md:pt-24 pb-10 md:pb-12 relative overflow-hidden" id="main-footer">
       {/* Visual Alignment helper lines */}
       <div className="absolute inset-x-0 bottom-0 h-[1px] bg-brand-orange/20" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 pb-16 border-b border-white/5">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16 pb-16 border-b border-line">
           
           {/* Column 1: Brand & Logo Splash (Grid-Span 6) */}
           <div className="lg:col-span-6 flex flex-col justify-between items-start">
@@ -205,45 +205,45 @@ export default function Footer({ lang }: FooterProps) {
               </div>
               <Logo size="sm" showText={false} variant="light" />
               <div className="text-left leading-none">
-                <span className="font-display font-bold tracking-widest text-sm uppercase text-white">
+                <span className="font-display font-bold tracking-widest text-sm uppercase text-ink">
                   THREE BUGS
                 </span>
-                <span className="block font-mono text-[10px] tracking-[0.35em] uppercase text-brand-orange font-medium mt-0.5">
+                <span className="block font-mono text-xs tracking-[0.35em] uppercase text-brand-ink font-medium mt-0.5">
                   STUDIO
                 </span>
               </div>
             </div>
 
-            <p className="font-display font-light text-xl text-[#8E8E93] max-w-sm leading-relaxed mb-8">
+            <p className="font-display font-light text-xl text-ink-muted max-w-sm leading-relaxed mb-8">
               {t.footerSlogan.split(".")[0]}.
               <br />
-              <span className="text-[#F5F5F3] font-medium relative">
+              <span className="text-ink font-medium relative">
                 {lang === "vi" ? "Kiến tạo phần mềm bền vững." : "Strong architectural foundations."}
                 <span className="absolute bottom-0.5 left-0 w-full h-[1px] bg-brand-orange/40" />
               </span>
             </p>
 
-            <div className="font-mono text-[9px] tracking-[0.2em] text-[#8E8E93] uppercase mb-8 select-none border-l border-brand-orange/30 pl-3">
+            <div className="font-mono text-xs tracking-[0.2em] text-ink-muted uppercase mb-8 select-none border-l border-brand-orange/30 pl-3">
               Every bug teaches. Every build improves.
             </div>
 
             {/* Dynamic UTC Engine Clock & Ambient Hum Toggle */}
             <div className="flex flex-wrap gap-3">
-              <div className="bg-[#121212]/50 border border-white/5 px-4 py-2.5 rounded-sm flex items-center gap-3 select-none">
+              <div className="bg-surface/50 border border-line px-4 py-2.5 rounded-sm flex items-center gap-3 select-none">
                 <span className="w-1.5 h-1.5 bg-brand-orange rounded-full animate-pulse" />
-                <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase">
-                  {t.footerClock} <span className="text-[#F5F5F3] ml-1">{utcTime}</span>
+                <span className="font-mono text-xs tracking-widest text-ink-muted uppercase">
+                  {t.footerClock} <span className="text-ink ml-1">{utcTime}</span>
                 </span>
               </div>
 
               <button
                 onClick={handleToggleHum}
-                className={`bg-[#121212]/50 border ${isHumOn ? 'border-brand-orange/30 text-white' : 'border-white/5 text-[#8E8E93]'} px-4 py-2.5 rounded-sm flex items-center gap-3 hover:bg-[#1a1a1a]/50 transition-all duration-300 interactive select-none cursor-pointer focus-terminal outline-none active:scale-[0.98]`}
+                className={`bg-surface/50 border ${isHumOn ? 'border-brand-orange/30 text-ink' : 'border-line text-ink-muted'} px-4 py-2.5 rounded-sm flex items-center gap-3 hover:bg-[#1a1a1a]/50 transition-all duration-300 interactive select-none cursor-pointer focus-terminal outline-none active:scale-[0.98]`}
                 id="footer-ambient-hum-toggle"
               >
                 <span className={`relative inline-flex rounded-full h-1.5 w-1.5 ${isHumOn ? 'bg-brand-orange shadow-[0_0_6px_rgba(255,106,0,0.8)]' : 'bg-[#404040]'}`} />
-                <span className="font-mono text-[9px] tracking-widest uppercase">
-                  {lang === "vi" ? "ÂM NỀN:" : "AMBIENT HUM:"} <span className={isHumOn ? "text-brand-orange font-medium" : "text-[#6E6E73]"}>{isHumOn ? (lang === "vi" ? "BẬT" : "ON") : (lang === "vi" ? "TẤT" : "OFF")}</span>
+                <span className="font-mono text-xs tracking-widest uppercase">
+                  {lang === "vi" ? "ÂM NỀN:" : "AMBIENT HUM:"} <span className={isHumOn ? "text-brand-ink font-medium" : "text-ink-muted"}>{isHumOn ? (lang === "vi" ? "BẬT" : "ON") : (lang === "vi" ? "TẤT" : "OFF")}</span>
                 </span>
               </button>
             </div>
@@ -251,14 +251,14 @@ export default function Footer({ lang }: FooterProps) {
 
           {/* Column 2: Navigation map (Grid-Span 3) */}
           <div className="lg:col-span-3 flex flex-col gap-6">
-            <span className="font-mono text-[9px] tracking-widest text-brand-orange uppercase block">
+            <span className="font-mono text-xs tracking-widest text-brand-ink uppercase block">
               // {t.footerSiteIndex}
             </span>
-            <div className="flex flex-col gap-2.5 font-mono text-xs text-[#8E8E93]">
+            <div className="flex flex-col gap-2.5 font-mono text-xs text-ink-muted">
               <a
                 href="#hero"
                 onClick={(e) => handleScrollToSection(e, "hero")}
-                className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive"
+                className="hover:text-ink transition-colors flex items-center justify-between group interactive"
               >
                 <span>{lang === "vi" ? "01 / TRANG CHỦ" : "01 / HOME"}</span>
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
@@ -266,7 +266,7 @@ export default function Footer({ lang }: FooterProps) {
               <a
                 href="#app-about-section"
                 onClick={(e) => handleScrollToSection(e, "app-about-section")}
-                className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive"
+                className="hover:text-ink transition-colors flex items-center justify-between group interactive"
               >
                 <span>{lang === "vi" ? "02 / GIỚI THIỆU" : "02 / PHILOSOPHY"}</span>
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
@@ -274,7 +274,7 @@ export default function Footer({ lang }: FooterProps) {
               <a
                 href="#app-services-section"
                 onClick={(e) => handleScrollToSection(e, "app-services-section")}
-                className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive"
+                className="hover:text-ink transition-colors flex items-center justify-between group interactive"
               >
                 <span>{lang === "vi" ? "03 / CÔNG NGHỆ & DỊCH VỤ" : "03 / CAPABILITIES"}</span>
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
@@ -282,7 +282,7 @@ export default function Footer({ lang }: FooterProps) {
               <a
                 href="#app-work-section"
                 onClick={(e) => handleScrollToSection(e, "app-work-section")}
-                className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive"
+                className="hover:text-ink transition-colors flex items-center justify-between group interactive"
               >
                 <span>{lang === "vi" ? "04 / DỰ ÁN TIÊU BIỂU" : "04 / SELECTED WORK"}</span>
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
@@ -290,7 +290,7 @@ export default function Footer({ lang }: FooterProps) {
               <a
                 href="#app-process-section"
                 onClick={(e) => handleScrollToSection(e, "app-process-section")}
-                className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive"
+                className="hover:text-ink transition-colors flex items-center justify-between group interactive"
               >
                 <span>{lang === "vi" ? "05 / QUY TRÌNH PHÁT TRIỂN" : "05 / ENGINEERING FLOW"}</span>
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
@@ -298,15 +298,15 @@ export default function Footer({ lang }: FooterProps) {
               <a
                 href="#app-pricing-section"
                 onClick={(e) => handleScrollToSection(e, "app-pricing-section")}
-                className="hover:text-brand-orange text-[#D4D4D8] transition-colors flex items-center justify-between group interactive"
+                className="hover:text-brand-ink text-ink-muted transition-colors flex items-center justify-between group interactive"
               >
                 <span className="font-semibold">{lang === "vi" ? "06 / BÁO GIÁ 3 PHASE" : "06 / 3-PHASE PRICING"}</span>
-                <span className="text-brand-orange opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                <span className="text-brand-ink opacity-0 group-hover:opacity-100 transition-opacity">→</span>
               </a>
               <a
                 href="#app-team-section"
                 onClick={(e) => handleScrollToSection(e, "app-team-section")}
-                className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive"
+                className="hover:text-ink transition-colors flex items-center justify-between group interactive"
               >
                 <span>{lang === "vi" ? "07 / ĐỘI NGŨ SÁNG LẬP" : "07 / STUDIO FOUNDERS"}</span>
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
@@ -314,7 +314,7 @@ export default function Footer({ lang }: FooterProps) {
               <a
                 href="#app-faq-section"
                 onClick={(e) => handleScrollToSection(e, "app-faq-section")}
-                className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive"
+                className="hover:text-ink transition-colors flex items-center justify-between group interactive"
               >
                 <span>{lang === "vi" ? "08 / GIẢI ĐÁP THẮC MẮC" : "08 / FAQ RESOLUTIONS"}</span>
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
@@ -322,14 +322,14 @@ export default function Footer({ lang }: FooterProps) {
               <a
                 href="#app-contact-section"
                 onClick={(e) => handleScrollToSection(e, "app-contact-section")}
-                className="hover:text-brand-orange text-[#D4D4D8] transition-colors flex items-center justify-between group interactive"
+                className="hover:text-brand-ink text-ink-muted transition-colors flex items-center justify-between group interactive"
               >
                 <span className="font-semibold">{lang === "vi" ? "09 / LIÊN HỆ ĐẶT HÀNG" : "09 / INQUIRY PORTAL"}</span>
-                <span className="text-brand-orange opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                <span className="text-brand-ink opacity-0 group-hover:opacity-100 transition-opacity">→</span>
               </a>
               <a
                 href="/templates"
-                className="hover:text-[#F5F5F3] transition-colors flex items-center justify-between group interactive"
+                className="hover:text-ink transition-colors flex items-center justify-between group interactive"
               >
                 <span>{lang === "vi" ? "10 / MẪU WEBSITE" : "10 / TEMPLATES"}</span>
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
@@ -339,7 +339,7 @@ export default function Footer({ lang }: FooterProps) {
 
           {/* Column 3: Studio Coordinates (Grid-Span 3) */}
           <div className="lg:col-span-3 flex flex-col gap-6">
-            <span className="font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase block">
+            <span className="font-mono text-xs tracking-widest text-ink-muted uppercase block">
               // {t.footerConnectivity}
             </span>
             <div className="flex flex-col gap-4">
@@ -418,59 +418,55 @@ export default function Footer({ lang }: FooterProps) {
         </div>
 
         {/* Keyboard Shortcuts Accessibility Legend */}
-        <div className="border-t border-white/5 pt-6 pb-2 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-[9px] tracking-widest text-[#8E8E93]">
-          <span className="text-brand-orange select-none">// {lang === "vi" ? "PHÍM TẮT HỆ THỐNG:" : "SYSTEM SHORTCUTS:"}</span>
+        <div className="border-t border-line pt-6 pb-2 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs tracking-widest text-ink-muted">
+          <span className="text-brand-ink select-none">// {lang === "vi" ? "PHÍM TẮT HỆ THỐNG:" : "SYSTEM SHORTCUTS:"}</span>
           <div className="flex flex-wrap gap-x-4 gap-y-2 select-none">
             <span className="flex items-center gap-1.5">
-              <kbd className="bg-[#121212] border border-white/10 px-1.5 py-0.5 rounded text-white text-[8px] font-mono shadow-[0_1px_2px_rgba(0,0,0,0.5)]">M</kbd>
+              <kbd className="bg-surface border border-line px-1.5 py-0.5 rounded text-ink text-xs font-mono shadow-[0_1px_2px_rgba(0,0,0,0.5)]">M</kbd>
               <span>{lang === "vi" ? "ÂM NỀN" : "AMBIENT HUM"}</span>
             </span>
             <span className="flex items-center gap-1.5">
-              <kbd className="bg-[#121212] border border-white/10 px-1.5 py-0.5 rounded text-white text-[8px] font-mono shadow-[0_1px_2px_rgba(0,0,0,0.5)]">L</kbd>
+              <kbd className="bg-surface border border-line px-1.5 py-0.5 rounded text-ink text-xs font-mono shadow-[0_1px_2px_rgba(0,0,0,0.5)]">L</kbd>
               <span>{lang === "vi" ? "NGÔN NGỮ" : "LANGUAGE"}</span>
             </span>
             <span className="flex items-center gap-1.5">
-              <kbd className="bg-[#121212] border border-white/10 px-1.5 py-0.5 rounded text-white text-[8px] font-mono shadow-[0_1px_2px_rgba(0,0,0,0.5)]">H</kbd>
+              <kbd className="bg-surface border border-line px-1.5 py-0.5 rounded text-ink text-xs font-mono shadow-[0_1px_2px_rgba(0,0,0,0.5)]">H</kbd>
               <span>{lang === "vi" ? "LÊN ĐẦU TRANG" : "SCROLL TO TOP"}</span>
             </span>
           </div>
         </div>
 
         {/* Bottom Sub-bar */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 font-mono text-[9px] tracking-widest text-[#8E8E93] uppercase">
-          <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-4 gap-y-2 text-center md:text-left">
+        <div className="pt-8 flex flex-col lg:flex-row items-center justify-between gap-6 font-mono text-xs tracking-wider text-ink-muted uppercase">
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-4 gap-y-2 text-center lg:text-left">
             <span>{t.footerCopyright}</span>
-            <span className="hidden md:inline text-white/10">|</span>
+            <span className="hidden md:inline text-line">|</span>
             {/* Owner contact: the studio is not a registered business yet, so there is no tax ID to show */}
             <span className="normal-case">
               TP. Hồ Chí Minh · threebugstudio@gmail.com · 0392.996.307
             </span>
-            <span className="hidden md:inline text-white/10">|</span>
-            <span className="text-[#6E6E73]">{lang === "vi" ? "THIẾT KẾ & PHÁT TRIỂN BỞI THREE BUGS STUDIO" : "DESIGNED & ENGINEERED BY THREE BUGS STUDIO"}</span>
+            <span className="hidden md:inline text-line">|</span>
+            <span className="text-ink-muted">{lang === "vi" ? "THIẾT KẾ & PHÁT TRIỂN BỞI THREE BUGS STUDIO" : "DESIGNED & ENGINEERED BY THREE BUGS STUDIO"}</span>
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
             {/* Privacy & Terms Modal Trigger */}
             <button
               onClick={() => setIsTermsOpen(true)}
-              className="hover:text-brand-orange text-[#8E8E93] transition-colors duration-200 cursor-pointer font-mono text-[9px] uppercase interactive"
+              className="whitespace-nowrap hover:text-brand-ink text-ink-muted transition-colors duration-200 cursor-pointer font-mono text-xs uppercase interactive"
             >
               {lang === "vi" ? "Bảo mật & Điều khoản" : "Privacy & Terms"}
             </button>
-            <span className="text-white/10 select-none">|</span>
-
-            {/* Version / Build indicator */}
-            <span className="text-[8px] text-white/20 select-none">BUILD_v1.0.4_PROD</span>
 
             {/* Return to top */}
             <button
               onClick={handleScrollToTop}
-              className="flex items-center gap-2 group hover:text-brand-orange text-[#F5F5F3] hover:bg-brand-orange/5 transition-all duration-300 cursor-pointer border border-white/5 hover:border-brand-orange/30 px-3.5 py-2 rounded-sm bg-[#121212]/50 interactive"
+              className="whitespace-nowrap flex items-center gap-2 group hover:text-brand-ink text-ink hover:bg-brand-orange/5 transition-all duration-300 cursor-pointer border border-line hover:border-brand-orange/30 px-3.5 py-2 rounded-sm bg-surface/50 interactive"
               aria-label="Scroll to top"
               id="scroll-to-top-btn"
             >
               <span>{t.footerBackToTop}</span>
-              <ArrowUpIcon size={12} className="w-3 h-3 group-hover:-translate-y-0.5 transition-transform text-brand-orange" />
+              <ArrowUpIcon size={12} className="w-3 h-3 group-hover:-translate-y-0.5 transition-transform text-brand-ink" />
             </button>
           </div>
         </div>
@@ -496,33 +492,33 @@ export default function Footer({ lang }: FooterProps) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-2xl bg-[#111111] border border-white/10 rounded-sm p-6 md:p-8 shadow-2xl z-10 flex flex-col max-h-[85vh] overflow-y-auto"
+              className="relative w-full max-w-2xl bg-surface border border-line rounded-sm p-6 md:p-8 shadow-2xl z-10 flex flex-col max-h-[85vh] overflow-y-auto"
             >
               {/* Close Button */}
               <button
                 onClick={() => setIsTermsOpen(false)}
-                className="absolute top-4 right-4 text-[#8E8E93] hover:text-white transition-colors p-1 cursor-pointer"
+                className="absolute top-4 right-4 text-ink-muted hover:text-ink transition-colors p-1 cursor-pointer"
                 aria-label="Close modal"
               >
                 <CloseIcon size={20} className="w-5 h-5" />
               </button>
 
               {/* Title */}
-              <h3 className="font-display font-medium text-xl md:text-2xl text-[#F5F5F3] mb-6 border-b border-white/5 pb-4">
+              <h3 className="font-display font-medium text-xl md:text-2xl text-ink mb-6 border-b border-line pb-4">
                 {lang === "vi" ? "Chính sách Bảo mật & Điều khoản" : "Privacy Policy & Terms"}
               </h3>
 
               {/* Scrollable Document Content */}
-              <div className="space-y-6 text-left font-sans text-xs text-[#8E8E93] leading-relaxed">
+              <div className="space-y-6 text-left font-sans text-xs text-ink-muted leading-relaxed">
                 {/* 1. Privacy Section */}
                 <section className="space-y-2">
-                  <h4 className="font-mono text-[10px] text-brand-orange uppercase tracking-wider font-semibold">
+                  <h4 className="font-mono text-xs text-brand-ink uppercase tracking-wider font-semibold">
                     {lang === "vi" ? "1. CHÍNH SÁCH BẢO MẬT (PRIVACY POLICY)" : "1. PRIVACY POLICY"}
                   </h4>
                   <ul className="space-y-2">
                     {PRIVACY[lang].map(([heading, body]) => (
                       <li key={heading}>
-                        <strong className="font-semibold text-[#C0C0C5]">{heading}:</strong> {body}
+                        <strong className="font-semibold text-ink-muted">{heading}:</strong> {body}
                       </li>
                     ))}
                   </ul>
@@ -531,7 +527,7 @@ export default function Footer({ lang }: FooterProps) {
 
                 {/* 2. Terms Section */}
                 <section className="space-y-2">
-                  <h4 className="font-mono text-[10px] text-brand-orange uppercase tracking-wider font-semibold">
+                  <h4 className="font-mono text-xs text-brand-ink uppercase tracking-wider font-semibold">
                     {lang === "vi" ? "2. ĐIỀU KHOẢN SỬ DỤNG (TERMS OF SERVICE)" : "2. TERMS OF SERVICE"}
                   </h4>
                   <p>
@@ -548,10 +544,10 @@ export default function Footer({ lang }: FooterProps) {
               </div>
 
               {/* Modal Footer Close Action */}
-              <div className="mt-8 pt-4 border-t border-white/5 flex justify-end">
+              <div className="mt-8 pt-4 border-t border-line flex justify-end">
                 <button
                   onClick={() => setIsTermsOpen(false)}
-                  className="bg-[#1C1C1E] border border-white/10 hover:border-brand-orange/30 text-white font-mono text-[10px] uppercase tracking-widest px-5 py-2.5 rounded-sm transition-all duration-300 interactive cursor-pointer"
+                  className="bg-[#1C1C1E] border border-line hover:border-brand-orange/30 text-ink font-mono text-xs uppercase tracking-widest px-5 py-2.5 rounded-sm transition-all duration-300 interactive cursor-pointer"
                 >
                   {lang === "vi" ? "ĐÓNG LẠI" : "CLOSE"}
                 </button>
