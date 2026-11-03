@@ -102,7 +102,7 @@ export default function CardNav({
     {
       label: vi ? "Dịch vụ" : "Services",
       links: [
-        { label: vi ? "Dịch vụ" : "What we do", hint: vi ? "Thiết kế, website, backend và AI" : "Design, web, backend and AI", href: "#app-services-section" },
+        { label: vi ? "Dịch vụ" : "What we do", hint: vi ? "Thiết kế, web, backend và AI" : "Design, web, backend and AI", href: "#app-services-section" },
         { label: vi ? "Công nghệ" : "Tech stack", hint: vi ? "Công nghệ chúng tôi sử dụng" : "The tools we build with", href: "#app-technology-section" },
         { label: vi ? "Quy trình" : "Process", hint: vi ? "Từ ý tưởng đến bàn giao" : "From idea to handover", href: "#app-process-section" },
         { label: vi ? "Báo giá" : "Pricing", hint: vi ? "Chi phí theo từng giai đoạn" : "Costs for each phase", href: "#app-pricing-section" }
