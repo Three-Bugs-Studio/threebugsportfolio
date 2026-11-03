@@ -234,7 +234,7 @@ export default function TechIcon({ name, className = "w-5 h-5", showColor = true
   }
 
   // Git
-  if (normName.includes("git")) {
+  if (normName === "git" || normName.startsWith("git ")) { // not includes(): "digitalocean" contains "git"
     return (
       <span className={`inline-flex items-center justify-center ${className}`}>
         <SiGit className={`w-full h-full ${showColor ? "text-[#F05032]" : ""}`} />
