@@ -572,7 +572,7 @@ export default function App() {
             {/* Background Staggered Pillars */}
             <div className="absolute inset-0 flex z-0 pointer-events-none">
               <motion.div 
-                className="flex-1 bg-[#101010] border-r border-line"
+                className="flex-1 bg-surface border-r border-line"
                 initial={{ y: "-100%" }}
                 animate={{ y: "0%" }}
                 exit={{ y: "100%" }}
