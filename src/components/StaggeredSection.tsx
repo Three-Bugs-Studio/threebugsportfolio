@@ -97,7 +97,7 @@ export default function StaggeredSection({
     <div
       ref={containerRef}
       id={id}
-      className="relative border-b border-white/5 scroll-mt-24"
+      className="relative border-b border-line scroll-mt-24"
     >
       {/* Subtle, animated horizontal line divider that draws itself from center outwards */}
       <div className="absolute top-0 left-0 right-0 h-[1px] overflow-visible z-30 pointer-events-none">
@@ -126,7 +126,7 @@ export default function StaggeredSection({
           setIsHovered(false);
           setMousePos({ x: 0, y: 0 });
         }}
-        className="bg-[#0c0c0c] border-y border-white/5 py-3.5 px-6 md:px-12 select-none relative overflow-hidden cursor-crosshair group transition-colors duration-300 hover:bg-[#0f0f10]"
+        className="bg-canvas border-y border-line py-3.5 px-6 md:px-12 select-none relative overflow-hidden cursor-crosshair group transition-colors duration-300 hover:bg-[#0f0f10]"
       >
         {/* Alignment Grid Lines with subtle parallax depth */}
         <motion.div
@@ -140,7 +140,7 @@ export default function StaggeredSection({
           className="absolute inset-y-0 right-6 md:right-12 w-[1px] bg-white/[0.04] pointer-events-none"
         />
 
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-[10px] font-mono tracking-widest uppercase">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono tracking-widest uppercase">
           {/* Diagnostic Code & Name with dynamic offset parallax layer depth */}
           <div className="flex items-center gap-3 select-none">
             <motion.span
@@ -149,7 +149,7 @@ export default function StaggeredSection({
                 y: isHovered ? mousePos.y * -8 : 0
               }}
               transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.5 }}
-              className="text-brand-orange font-bold inline-block"
+              className="text-brand-ink font-bold inline-block"
             >
               [{sectorCode}]
             </motion.span>
@@ -159,20 +159,20 @@ export default function StaggeredSection({
                 y: isHovered ? mousePos.y * 8 : 0
               }}
               transition={{ type: "spring", stiffness: 120, damping: 18, mass: 0.5 }}
-              className="text-white font-medium inline-block tracking-widest"
+              className="text-ink font-medium inline-block tracking-widest"
             >
               <TextScramble trigger={isInView}>{sectorName}</TextScramble>
             </motion.span>
 
             {/* Dynamic Estimated Reading Time Indicator */}
-            <span className="w-1 h-1 rounded-full bg-white/10 select-none hidden sm:inline" />
+            <span className="w-1 h-1 rounded-full bg-line select-none hidden sm:inline" />
             <motion.span
               initial={{ opacity: 0, x: -10 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="font-mono text-[9px] text-[#8E8E93] font-medium tracking-wider flex items-center gap-1.5 bg-white/[0.02] border border-white/5 px-2 py-0.5 rounded-sm select-none"
+              className="font-mono text-xs text-ink-muted font-medium tracking-wider flex items-center gap-1.5 bg-white/[0.02] border border-line px-2 py-0.5 rounded-sm select-none"
             >
-              <span className="text-brand-orange animate-pulse">●</span>
+              <span className="text-brand-ink animate-pulse">●</span>
               {lang === "vi" 
                 ? `ĐỌC ~${readingTimeMin} PHÚT` 
                 : `READ ~${readingTimeMin} MIN`}
@@ -214,16 +214,16 @@ export default function StaggeredSection({
           initial={{ opacity: 0, y: 15, scale: 0.95 }}
           animate={showScrollIndicator ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 15, scale: 0.95 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="flex flex-col items-center gap-1.5 bg-[#0c0c0c]/85 border border-white/5 px-4.5 py-2.5 rounded-sm backdrop-blur-md shadow-[0_12px_24px_-10px_rgba(0,0,0,0.8)]"
+          className="flex flex-col items-center gap-1.5 bg-canvas/85 border border-line px-4.5 py-2.5 rounded-sm backdrop-blur-md shadow-[0_12px_24px_-10px_rgba(0,0,0,0.8)]"
         >
-          <span className="font-mono text-[8px] text-[#8E8E93] tracking-[0.25em] font-medium uppercase select-none">
+          <span className="font-mono text-xs text-ink-muted tracking-[0.25em] font-medium uppercase select-none">
             {lang === "vi" ? "CUỘN XUỐNG" : "SCROLL DOWN"}
           </span>
           <motion.div
             animate={{ y: [0, 4, 0] }}
             transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
           >
-            <ChevronDownIcon size={14} className="w-3.5 h-3.5 text-brand-orange drop-shadow-[0_0_4px_rgba(255,106,0,0.4)]" />
+            <ChevronDownIcon size={14} className="w-3.5 h-3.5 text-brand-ink drop-shadow-[0_0_4px_rgba(255,106,0,0.4)]" />
           </motion.div>
         </motion.div>
       </div>
