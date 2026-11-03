@@ -169,7 +169,7 @@ export default function Hero({ lang }: HeroProps) {
           <button
             onClick={() => handleScrollTo("app-work-section")}
             aria-label={t.heroExplore}
-            className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-[#F5F5F3] text-[#090909] font-medium rounded-sm inline-flex items-center justify-center gap-2.5 group interactive shadow-2xl focus-terminal active:scale-[0.98] transition-all hover:shadow-[0_0_24px_rgba(245,245,243,0.3)]"
+            className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-ink text-canvas font-medium rounded-sm inline-flex items-center justify-center gap-2.5 group interactive shadow-2xl focus-terminal active:scale-[0.98] transition-all hover:shadow-[0_0_24px_rgba(245,245,243,0.3)]"
           >
             <span>{t.heroExplore}</span>
             <span className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-brand-ink inline-flex items-center justify-center">
