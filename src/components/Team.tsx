@@ -9,7 +9,7 @@ import {
 } from "./ui/MajesticIcon";
 import { SiGithub } from "react-icons/si";
 import { TeamMember } from "../types";
-import CyberAvatar, { CyberLook } from "./CyberAvatar";
+import TeamAvatar, { AvatarLook } from "./TeamAvatar";
 import receptionistDeskGif from "@/assets/animation-icon/receptionist-desk.gif";
 
 interface TeamProps {
@@ -21,40 +21,40 @@ export default function Team({ lang }: TeamProps) {
   const teamList = TEAM_DATA[lang];
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
-  // One cyberpunk character per member, drawn in SVG (CyberAvatar) in the member's colour.
-  const CHAR: Record<string, { look: CyberLook; codename: string; klass: { vi: string; en: string }; meaning: { vi: string; en: string } }> = {
+  // One line-art portrait per member (TeamAvatar), in the member's colour. Thu Tran is the only woman on the team.
+  const CHAR: Record<string, { look: AvatarLook; codename: string; klass: { vi: string; en: string }; meaning: { vi: string; en: string } }> = {
     "Duong Phu Dong": {
-      look: { hair: "spike", gear: "visor", skin: "#C68863" },
+      look: { hair: "cap", beard: "stubble", skin: "#F0C3A2", hairColor: "#3b2a24" },
       codename: "VANGUARD", klass: { vi: "Người dẫn đường", en: "Pathfinder" },
       meaning: { vi: "Tầm nhìn & dẫn đường: chốt hướng đi của sản phẩm và kiến trúc cho cả đội.", en: "Vision & direction: setting the course for the product and its architecture." },
     },
     "Thu Tran": {
-      look: { hair: "bob", gear: "glasses", skin: "#E8B996" },
+      look: { hair: "long", beard: "none", skin: "#F6D2BC", hairColor: "#3a2420" },
       codename: "PRISM", klass: { vi: "Nhà thiết kế ánh sáng", en: "Light designer" },
       meaning: { vi: "Màu sắc, bố cục & cân bằng: thiết kế đẹp và sổ sách minh bạch đều cần sự hài hòa.", en: "Colour, composition & balance: good design and clean books both need harmony." },
     },
     "Huynh Quang Dong": {
-      look: { hair: "buzz", gear: "goggles", skin: "#B97C55" },
+      look: { hair: "bald", beard: "full", skin: "#E8B48E", hairColor: "#5a3a2a" },
       codename: "SENTINEL", klass: { vi: "Người gác chất lượng", en: "Quality sentinel" },
       meaning: { vi: "Chuẩn mực & kiểm định: mọi tính năng đều qua kiểm thử trước khi tới tay khách.", en: "Standards & testing: every feature is checked before it reaches the client." },
     },
     "Ho Quang Huy": {
-      look: { hair: "hood", gear: "halfmask", skin: "#D9A07A" },
+      look: { hair: "spiky", beard: "none", glasses: true, skin: "#EBB896", hairColor: "#1f1715" },
       codename: "RUNNER", klass: { vi: "Người vận hành hạ tầng", en: "Infrastructure runner" },
       meaning: { vi: "Tốc độ & hạ tầng: giữ cho máy chủ và pipeline triển khai chạy không ngừng.", en: "Speed & infrastructure: keeping servers and the deploy pipeline running." },
     },
     "Hao Vu": {
-      look: { hair: "mohawk", gear: "visor", skin: "#A86F4C" },
+      look: { hair: "beanie", beard: "mustache", skin: "#D9A07A", hairColor: "#2a1d1a" },
       codename: "BEDROCK", klass: { vi: "Kiến trúc sư dữ liệu", en: "Data architect" },
       meaning: { vi: "Kiến trúc sâu & nền móng: những tầng cấu trúc vững chắc bên dưới mọi hệ thống.", en: "Deep architecture & foundations: the solid layers beneath every system." },
     },
     "Hoang Do": {
-      look: { hair: "cap", gear: "headset", skin: "#E0AC85" },
+      look: { hair: "side", beard: "short", skin: "#F2C4A8", hairColor: "#2d201c" },
       codename: "LINK", klass: { vi: "Cầu nối khách hàng", en: "Client link" },
       meaning: { vi: "Cây cầu kết nối: đưa khách hàng đến với studio một cách nhẹ nhàng, rõ ràng.", en: "A connecting bridge: bringing clients and the studio together, calmly and clearly." },
     },
     "Minh Duc": {
-      look: { hair: "long", gear: "monocle", skin: "#8D5A3B" },
+      look: { hair: "curly", beard: "stubble", skin: "#C98E66", hairColor: "#1d1513" },
       codename: "BEACON", klass: { vi: "Ngọn đèn dẫn lối", en: "Beacon" },
       meaning: { vi: "Ánh đèn chào đón: lắng nghe khách hàng và soi rõ con đường triển khai.", en: "A welcoming light: listening to clients and lighting up the road ahead." },
     },
@@ -226,29 +226,18 @@ export default function Team({ lang }: TeamProps) {
                   )}
                 </div>
 
-                {/* Role Artwork: neon duotone in the member's colour with scanlines, glitches on hover (styles in index.css) */}
+                {/* Illustrated portrait in a gradient circle, with the member's codename and role under it */}
                 {art && (
-                  <figure
-                    className={`cyber-art relative ${group.wide ? "aspect-[16/10]" : "aspect-[4/5]"} w-full border border-line rounded-lg overflow-hidden mb-4 transition-all duration-500 bg-canvas`}
-                    style={{ "--neon": colorHex } as React.CSSProperties}
-                  >
-                    <CyberAvatar
+                  <figure className={`relative ${group.wide ? "aspect-[16/10]" : "aspect-[4/5]"} w-full border border-line rounded-lg overflow-hidden mb-4 bg-canvas flex flex-col items-center justify-center gap-3 p-4 transition-colors duration-500 group-hover:border-brand-orange/40`}>
+                    <TeamAvatar
                       look={art.look}
-                      neon={colorHex}
-                      wide={group.wide}
-                      title={`${art.codename}: ${lang === "vi" ? "nhân vật cyberpunk minh họa cho" : "cyberpunk character for"} ${member.name}`}
-                      className="w-full h-full block group-hover:scale-105 transition-transform duration-700"
+                      color={colorHex}
+                      title={`${lang === "vi" ? "Chân dung minh họa" : "Illustrated portrait of"} ${member.name}`}
+                      className="h-[66%] w-auto max-w-full group-hover:scale-105 transition-transform duration-500"
                     />
-                    <span aria-hidden="true" className="cyber-glitch absolute inset-0 pointer-events-none">
-                      <CyberAvatar look={art.look} neon={colorHex} wide={group.wide} title="" className="w-full h-full block" />
-                    </span>
-                    <figcaption className="absolute inset-x-0 bottom-0 z-[3] p-3 pt-10 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
-                      <span className="block font-mono text-sm font-bold tracking-[0.2em] text-white leading-tight">
-                        {art.codename}
-                      </span>
-                      <span className="block font-mono text-xs uppercase tracking-wider text-white/70 mt-1">
-                        {art.klass[lang]}
-                      </span>
+                    <figcaption className="text-center">
+                      <span className="block font-mono text-sm font-bold tracking-[0.2em] text-ink">{art.codename}</span>
+                      <span className="block font-mono text-xs uppercase tracking-wider text-ink-muted mt-1">{art.klass[lang]}</span>
                     </figcaption>
                   </figure>
                 )}
@@ -368,19 +357,14 @@ export default function Team({ lang }: TeamProps) {
                 </button>
 
                 <div className="flex items-center gap-4 mb-6">
-                  <div
-                    className="cyber-art relative w-16 h-20 rounded-lg overflow-hidden border border-brand-orange/40 shrink-0 bg-canvas"
-                    style={{ "--neon": selectedMember.colorTag?.hex || "#FF6A00" } as React.CSSProperties}
-                  >
-                    {CHAR[selectedMember.name] && (
-                      <CyberAvatar
-                        look={CHAR[selectedMember.name].look}
-                        neon={selectedMember.colorTag?.hex || "#FF6A00"}
-                        title={CHAR[selectedMember.name].codename}
-                        className="w-full h-full block"
-                      />
-                    )}
-                  </div>
+                  {CHAR[selectedMember.name] && (
+                    <TeamAvatar
+                      look={CHAR[selectedMember.name].look}
+                      color={selectedMember.colorTag?.hex || "#FF6A00"}
+                      title={`${lang === "vi" ? "Chân dung minh họa" : "Illustrated portrait of"} ${selectedMember.name}`}
+                      className="w-16 h-16 shrink-0"
+                    />
+                  )}
                   <div>
                     <h3 className="font-display font-bold text-xl text-ink">
                       {selectedMember.name}
