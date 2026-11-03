@@ -275,7 +275,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen w-full overflow-x-hidden bg-[#090909] text-[#F5F5F3] font-sans selection:bg-brand-orange selection:text-[#090909]" id="root-app-container">
+    <div className="relative min-h-screen w-full overflow-x-hidden bg-canvas text-ink font-sans selection:bg-brand-orange selection:text-[#090909]" id="root-app-container">
 
       {/* Global CRT Scanline Hardware Overlay */}
       <div className="crt-overlay" id="crt-scanline-overlay" />
@@ -290,8 +290,8 @@ export default function App() {
       <Navbar lang={lang} onLangChange={handleLangChange} theme={theme} onThemeToggle={handleThemeToggle} />
 
       {/* Elegant Fixed Left Sidebar (Swiss Alignment Rail) */}
-      <aside className="hidden lg:flex fixed top-0 left-0 bottom-0 w-20 border-r border-white/5 flex-col justify-center items-center z-30 pointer-events-none" id="swiss-alignment-aside">
-        <span className="writing-mode-vertical select-none font-mono text-[10px] tracking-[0.3em] uppercase text-[#8E8E93]/40 flex items-center gap-6">
+      <aside className="hidden lg:flex fixed top-0 left-0 bottom-0 w-20 border-r border-line flex-col justify-center items-center z-30 pointer-events-none" id="swiss-alignment-aside">
+        <span className="writing-mode-vertical select-none font-mono text-xs tracking-[0.3em] uppercase text-ink-muted flex items-center gap-6">
           <span>EST. 2026</span>
           <span className="w-1.5 h-1.5 rounded-full bg-brand-orange/40 animate-pulse" />
           <span>100% REMOTE</span>
@@ -323,7 +323,7 @@ export default function App() {
 
             {/* Services ticker */}
             <Marquee
-              className="border-y border-white/5 bg-[#0c0c0c] py-4 font-mono text-[11px] md:text-xs uppercase tracking-[0.25em] text-[#8E8E93]"
+              className="border-y border-line bg-canvas py-4 font-mono text-xs uppercase tracking-[0.25em] text-ink-muted"
               items={lang === "vi"
                 ? ["Thiết kế UI/UX", "Phát triển website", "E-Commerce", "Web App", "Tích hợp AI", "Bảo trì & vá lỗi", "Mẫu website từ 2,5 triệu"]
                 : ["UI/UX design", "Web development", "E-Commerce", "Web apps", "AI integration", "Maintenance & hotfixes", "Templates from 2.5M VND"]}
@@ -572,21 +572,21 @@ export default function App() {
             {/* Background Staggered Pillars */}
             <div className="absolute inset-0 flex z-0 pointer-events-none">
               <motion.div 
-                className="flex-1 bg-[#101010] border-r border-white/5"
+                className="flex-1 bg-[#101010] border-r border-line"
                 initial={{ y: "-100%" }}
                 animate={{ y: "0%" }}
                 exit={{ y: "100%" }}
                 transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1] }}
               />
               <motion.div 
-                className="flex-1 bg-[#0c0c0c] border-r border-white/5"
+                className="flex-1 bg-canvas border-r border-line"
                 initial={{ y: "-100%" }}
                 animate={{ y: "0%" }}
                 exit={{ y: "100%" }}
                 transition={{ duration: 0.45, ease: [0.76, 0, 0.24, 1], delay: 0.05 }}
               />
               <motion.div 
-                className="flex-1 bg-[#090909]"
+                className="flex-1 bg-canvas"
                 initial={{ y: "-100%" }}
                 animate={{ y: "0%" }}
                 exit={{ y: "100%" }}
@@ -606,7 +606,7 @@ export default function App() {
               <div className="absolute inset-0 swiss-grid opacity-20 pointer-events-none" />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-orange/10 rounded-full blur-[80px]" />
 
-              <div className="flex justify-between items-center font-mono text-[9px] tracking-[0.3em] text-[#8E8E93]/60 relative z-10">
+              <div className="flex justify-between items-center font-mono text-xs tracking-[0.3em] text-ink-muted relative z-10">
                 <span>THREE BUGS STUDIO</span>
                 <span>LANG_STATE: SWITCHING</span>
               </div>
@@ -623,7 +623,7 @@ export default function App() {
                 </motion.div>
                 
                 <motion.h2 
-                  className="font-display font-medium text-xl md:text-3xl tracking-tight text-white/90"
+                  className="font-display font-medium text-xl md:text-3xl tracking-tight text-ink-muted"
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.15, duration: 0.5 }}
@@ -632,7 +632,7 @@ export default function App() {
                 </motion.h2>
 
                 <motion.p 
-                  className="font-mono text-[10px] tracking-widest text-brand-orange uppercase mt-3"
+                  className="font-mono text-xs tracking-widest text-brand-ink uppercase mt-3"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.3 }}
@@ -641,7 +641,7 @@ export default function App() {
                 </motion.p>
               </div>
 
-              <div className="flex justify-between items-end font-mono text-[8px] text-[#8E8E93]/60 relative z-10">
+              <div className="flex justify-between items-end font-mono text-xs text-ink-muted relative z-10">
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-[#27C93F] rounded-full animate-pulse" />
                   <span>TRANSITION_PORTAL_ACTIVE</span>
