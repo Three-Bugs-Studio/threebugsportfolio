@@ -206,23 +206,15 @@ export default function Team({ lang }: TeamProps) {
                 {/* Top Member Index & Studio Label / Highlight Badge */}
                 <div className="flex items-center justify-between gap-2 mb-3">
                   <span 
-                    className="font-mono text-xs font-bold tracking-widest uppercase px-2 py-0.5 rounded-sm border shrink-0"
-                    style={{ 
-                      color: colorHex, 
-                      backgroundColor: `${colorHex}15`, 
-                      borderColor: `${colorHex}40` 
-                    }}
+                    className="member-tag font-mono text-xs font-bold tracking-widest uppercase px-2 py-0.5 rounded-sm border shrink-0"
+                    style={{ "--tag": colorHex } as React.CSSProperties}
                   >
                     0{idx + 1}
                   </span>
                   {member.highlightBadge ? (
                     <span 
-                      className="font-mono text-xs font-bold px-1.5 py-0.5 rounded border tracking-wider truncate"
-                      style={{ 
-                        color: colorHex, 
-                        backgroundColor: `${colorHex}15`, 
-                        borderColor: `${colorHex}40` 
-                      }}
+                      className="member-tag font-mono text-xs font-bold px-1.5 py-0.5 rounded border tracking-wider truncate"
+                      style={{ "--tag": colorHex } as React.CSSProperties}
                     >
                       {member.highlightBadge}
                     </span>
@@ -480,7 +472,7 @@ export default function Team({ lang }: TeamProps) {
                     {(selectedMember.specialties || []).map((tech) => (
                       <span
                         key={tech}
-                        className="font-mono text-xs bg-[#1A1A1E] border border-line px-2.5 py-1 rounded-sm text-ink"
+                        className="font-mono text-xs bg-surface border border-line px-2.5 py-1 rounded-sm text-ink"
                       >
                         {tech}
                       </span>
