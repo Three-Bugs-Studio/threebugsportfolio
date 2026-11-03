@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import Logo from "../components/Logo";
 import { TemplateCard, TemplateChips, TemplateFilter } from "../components/TemplateCard";
 import { TEMPLATES, TEMPLATE_CATEGORIES, TEMPLATE_CONTACT as CONTACT } from "../templates";
+import { PRICE_NOTE } from "../data";
 
 type Lang = "vi" | "en";
 
@@ -100,6 +101,7 @@ export default function Templates() {
             </li>
           ))}
         </ol>
+        <p className="text-xs text-[#8E8E93] mt-3">{PRICE_NOTE[lang]}</p>
 
         <div className="sticky top-[57px] z-30 -mx-4 px-4 md:-mx-12 md:px-12 py-4 mt-12 bg-[#090909]/90 backdrop-blur-xl border-b border-white/10 flex flex-col lg:flex-row lg:items-center gap-3">
           <div className="flex-1 min-w-0">
