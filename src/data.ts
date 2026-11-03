@@ -381,13 +381,12 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
         {
           title: "Khách Nhận Được",
           items: [
-            "1 trang landing dựng từ mẫu có sẵn, thay logo, màu thương hiệu, nội dung và hình ảnh",
-            "Hiển thị tốt trên điện thoại & máy tính, tải dưới 2 giây",
-            "Nút Zalo, gọi điện, Messenger; form liên hệ gửi về email hoặc Google Sheet",
-            "SEO cơ bản: tiêu đề, mô tả, ảnh khi chia sẻ lên Facebook / Zalo",
-            "Gắn tên miền của khách, hosting Vercel miễn phí cho trang nhỏ",
-            "2 lượt chỉnh sửa trước khi bàn giao, bảo hành lỗi kỹ thuật 1 tháng",
-            "Trả theo tháng: đã gồm tên miền .com, chỉnh sửa nhỏ tối đa 1 giờ/tháng; đủ 12 tháng website thuộc về khách"
+            "Website 1 trang dựng từ mẫu, thay logo, màu, nội dung và hình ảnh của bạn",
+            "Đẹp trên điện thoại và máy tính, có nút Zalo, gọi điện và form liên hệ",
+            "SEO cơ bản, gắn tên miền riêng, hosting miễn phí cho trang nhỏ",
+            "Trả theo tháng: gồm tên miền .com và 1 giờ chỉnh sửa mỗi tháng, đủ 12 tháng website thuộc về bạn",
+            "2 lượt chỉnh sửa trước khi bàn giao",
+            "Bảo hành lỗi kỹ thuật 1 tháng"
           ]
         }
       ],
@@ -399,27 +398,18 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       name: "Website Giới Thiệu Thiết Kế Riêng",
       tagline: "Thiết kế độc quyền trên Figma cho thương hiệu mới, landing chạy quảng cáo, web giới thiệu công ty.",
       priceVnd: "Từ 8 triệu",
-      priceUsd: "Báo giá theo quy mô khách hàng",
+      priceUsd: "Báo giá theo số trang và tính năng",
       timeline: "1 - 2 Tuần",
       paymentNote: "30% đặt cọc · 40% xong lập trình · 30% khi bàn giao",
       features: [
         {
-          title: "Mức Giá Theo Quy Mô",
-          items: [
-            "Khách nhỏ (cá nhân, spa, quán, shop): 8 - 15 triệu",
-            "Start-up: 15 - 30 triệu"
-          ]
-        },
-        {
           title: "Khách Nhận Được",
           items: [
-            "Thiết kế riêng trên Figma, 2 vòng chỉnh sửa thiết kế",
-            "Website tối đa 5 trang (Trang chủ, Giới thiệu, Dịch vụ, Dự án, Liên hệ)",
-            "Code React / Next.js, điểm Google Lighthouse trên 90 trên điện thoại",
-            "Gắn Google Analytics & Facebook Pixel để đo hiệu quả quảng cáo",
-            "SEO kỹ thuật chuẩn: sitemap, schema, ảnh chia sẻ mạng xã hội",
-            "Bàn giao 100% mã nguồn & file Figma, 1 buổi hướng dẫn sử dụng",
-            "Bảo hành lỗi kỹ thuật 3 tháng, hỗ trợ giờ hành chính, phản hồi trong 4 giờ làm việc"
+            "Thiết kế riêng trên Figma, 2 vòng chỉnh sửa",
+            "Tối đa 5 trang, đẹp và tải nhanh trên điện thoại",
+            "SEO chuẩn, gắn Google Analytics và Facebook Pixel để đo quảng cáo",
+            "Bàn giao toàn bộ mã nguồn, file thiết kế và 1 buổi hướng dẫn",
+            "Bảo hành lỗi kỹ thuật 3 tháng"
           ]
         }
       ],
@@ -436,29 +426,20 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       name: "Website Bán Hàng & Đặt Lịch",
       tagline: "Website có trang quản trị cho doanh nghiệp, bán hàng online, đặt lịch, khóa học, bất động sản, du lịch.",
       priceVnd: "Từ 25 triệu",
-      priceUsd: "Báo giá theo quy mô khách hàng",
+      priceUsd: "Hệ thống đặt lịch thường khoảng 40 triệu",
       timeline: "3 - 6 Tuần",
       recommended: true,
       paymentNote: "30% đặt cọc · 40% xong lập trình · 30% khi bàn giao",
       features: [
         {
-          title: "Mức Giá Theo Quy Mô",
-          items: [
-            "Khách nhỏ: 25 - 50 triệu",
-            "Ví dụ: hệ thống đặt lịch cho spa, salon, sân thể thao khoảng 40 triệu",
-            "Start-up: 50 - 120 triệu"
-          ]
-        },
-        {
           title: "Khách Nhận Được",
           items: [
-            "Toàn bộ quyền lợi của gói Website Giới Thiệu",
-            "Trang quản trị (CMS) tự sửa bài viết, sản phẩm, dịch vụ, đơn hàng",
-            "1 tính năng chính: giỏ hàng & thanh toán QR (PayOS / SePay / VietQR), đặt lịch, hoặc khóa học",
-            "Cơ sở dữ liệu PostgreSQL / Supabase, sao lưu tự động hằng ngày",
-            "Phân quyền Admin & Nhân viên; kiểm thử đặt hàng, thanh toán trước khi ra mắt",
-            "Bàn giao mã nguồn, tài khoản quản trị & tài liệu hướng dẫn tiếng Việt",
-            "Bảo hành lỗi kỹ thuật 6 tháng, hỗ trợ giờ hành chính, phản hồi trong 4 giờ làm việc"
+            "Mọi quyền lợi của gói Website Giới Thiệu",
+            "Trang quản trị để tự sửa bài viết, sản phẩm, dịch vụ và đơn hàng",
+            "1 tính năng chính: bán hàng và thanh toán QR (PayOS / SePay / VietQR), đặt lịch hoặc khóa học",
+            "Phân quyền quản trị và nhân viên, sao lưu dữ liệu hằng ngày",
+            "Bàn giao mã nguồn, tài khoản quản trị và hướng dẫn tiếng Việt",
+            "Bảo hành lỗi kỹ thuật 6 tháng"
           ]
         }
       ],
@@ -480,22 +461,14 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       paymentNote: "30% sau khảo sát · 40% theo tiến độ · 30% khi bàn giao",
       features: [
         {
-          title: "Cách Báo Giá",
-          items: [
-            "Start-up (bản MVP): báo giá theo phạm vi tính năng sau buổi trao đổi, bảo hành 12 tháng",
-            "Bảo trì sau bàn giao: gói hằng tháng từ 5 - 20 triệu/tháng tùy quy mô hệ thống"
-          ]
-        },
-        {
           title: "Khách Nhận Được",
           items: [
-            "Buổi khảo sát & tài liệu đặc tả hệ thống, khách giữ tài liệu kể cả khi không làm tiếp",
-            "Web App / Mobile App theo đặc tả đã chốt",
-            "Tích hợp AI: chatbot, gợi ý tự động, xử lý tài liệu",
-            "Phân quyền nhiều vai trò, đăng nhập bảo mật, lưu lịch sử thao tác",
-            "Docker, tự động triển khai (CI/CD), môi trường thử nghiệm riêng",
-            "Demo tiến độ mỗi 2 tuần",
-            "Bàn giao mã nguồn, tài liệu kiến trúc & đào tạo đội vận hành; bảo hành 12 tháng"
+            "Buổi khảo sát và tài liệu đặc tả, bạn giữ tài liệu kể cả khi không làm tiếp",
+            "Web app hoặc mobile app theo đặc tả đã chốt, có thể tích hợp AI",
+            "Đăng nhập bảo mật, phân quyền nhiều vai trò, lưu lịch sử thao tác",
+            "Demo tiến độ mỗi 2 tuần trên môi trường thử nghiệm riêng",
+            "Bàn giao mã nguồn, tài liệu kỹ thuật và hướng dẫn vận hành",
+            "Bảo hành lỗi kỹ thuật 12 tháng"
           ]
         }
       ],
@@ -515,7 +488,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       priceUsd: "Mua trước 10 giờ giảm 10%, 20 giờ giảm 15%",
       timeline: "Linh hoạt / Gói 10h - 20h",
       pricingType: "hourly",
-      paymentNote: "Chỉ trả đúng số giờ làm thực tế, nghiệm thu xong mới thanh toán",
+      paymentNote: "Chỉ trả đúng số giờ làm thực tế, nghiệm thu xong mới thanh toán; sửa gấp ngoài giờ hành chính x1,5",
       buttonText: "LIÊN HỆ HOÀNG ĐỖ (BẢO TRÌ THEO GIỜ)",
       phases: [
         { number: "Bước 1", title: "Khảo Sát & Ước Lượng Giờ", duration: "1 - 2 Giờ", description: "Tiếp nhận yêu cầu hoặc lỗi, chốt danh sách việc và ước lượng số giờ trước khi làm." },
@@ -524,23 +497,13 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       ],
       features: [
         {
-          title: "Đơn Giá Theo Quy Mô",
-          items: [
-            "Khách nhỏ: 300.000đ/giờ",
-            "Start-up: 400.000đ/giờ",
-            "Sửa lỗi khẩn cấp ngoài giờ hành chính: x1,5 đơn giá"
-          ]
-        },
-        {
           title: "Khách Nhận Được",
           items: [
-            "Đầu mối duy nhất: Hoàng Đỗ (0392.996.307 / Zalo) tiếp nhận & điều phối",
+            "Một đầu mối: Hoàng Đỗ (0392.996.307 / Zalo)",
             "Ước lượng số giờ trước khi làm, không phát sinh bất ngờ",
-            "Sửa lỗi, vá bảo mật, gia hạn SSL, tối ưu tốc độ & cơ sở dữ liệu",
-            "Thêm tính năng mới, nâng cấp phiên bản React / Next.js / Node.js an toàn",
-            "Sao lưu mã nguồn & dữ liệu trước khi can thiệp",
-            "Báo cáo chi tiết từng việc kèm số giờ và mã commit",
-            "Phản hồi trong 4 giờ làm việc, không ràng buộc phí duy trì hằng tháng"
+            "Sửa lỗi, vá bảo mật, tối ưu tốc độ và thêm tính năng",
+            "Sao lưu trước khi sửa, báo cáo từng việc kèm số giờ",
+            "Không phí duy trì hằng tháng"
           ]
         }
       ],
@@ -568,13 +531,12 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
         {
           title: "What You Get",
           items: [
-            "One landing page built from a template with your logo, brand colours, content and images",
-            "Works well on phone and desktop, loads in under 2 seconds",
-            "Zalo, call and Messenger buttons; contact form to email or Google Sheets",
-            "Basic SEO: title, description and social share image for Facebook / Zalo",
-            "Connected to your domain, free Vercel hosting for small sites",
-            "2 revision rounds before handover, 1-month technical warranty",
-            "Monthly plan: includes a .com domain and up to 1 hour of small edits per month; the site is yours after 12 months"
+            "A one-page site built from a template with your logo, colours, content and images",
+            "Looks good on phone and desktop, with Zalo, call and contact form buttons",
+            "Basic SEO, your own domain, free hosting for small sites",
+            "Monthly plan: includes a .com domain and 1 hour of edits a month; the site is yours after 12 months",
+            "2 revision rounds before handover",
+            "1-month technical warranty"
           ]
         }
       ],
@@ -586,27 +548,18 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       name: "Custom-Designed Company Website",
       tagline: "Exclusive Figma design for new brands, ad landing pages and company websites.",
       priceVnd: "From 8M VND",
-      priceUsd: "≈ US$300 · priced by client size",
+      priceUsd: "≈ US$300 · priced by pages and features",
       timeline: "1 - 2 Weeks",
       paymentNote: "30% deposit · 40% after development · 30% on handover",
       features: [
         {
-          title: "Price by Client Size",
-          items: [
-            "Small business (individuals, spas, cafés, shops): 8 - 15M VND",
-            "Start-up: 15 - 30M VND"
-          ]
-        },
-        {
           title: "What You Get",
           items: [
-            "Custom Figma design with 2 design revision rounds",
-            "Up to 5 pages (Home, About, Services, Projects, Contact)",
-            "React / Next.js build with a Google Lighthouse mobile score above 90",
-            "Google Analytics & Facebook Pixel set up to measure ad performance",
-            "Technical SEO: sitemap, schema, social share images",
-            "100% source code and Figma files handed over, plus one training session",
-            "3-month technical warranty, business-hours support with a 4-working-hour response"
+            "Custom Figma design with 2 revision rounds",
+            "Up to 5 pages, fast and polished on mobile",
+            "Solid SEO, with Google Analytics and Facebook Pixel to measure ads",
+            "All source code, design files and one training session handed over",
+            "3-month technical warranty"
           ]
         }
       ],
@@ -623,29 +576,20 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       name: "Online Store & Booking Website",
       tagline: "Websites with an admin panel for businesses, online stores, bookings, courses, real estate and travel.",
       priceVnd: "From 25M VND",
-      priceUsd: "≈ US$950 · priced by client size",
+      priceUsd: "≈ US$950 · a booking system is usually around 40M VND",
       timeline: "3 - 6 Weeks",
       recommended: true,
       paymentNote: "30% deposit · 40% after development · 30% on handover",
       features: [
         {
-          title: "Price by Client Size",
-          items: [
-            "Small business: 25 - 50M VND",
-            "Example: a booking system for a spa, salon or sports court is around 40M VND",
-            "Start-up: 50 - 120M VND"
-          ]
-        },
-        {
           title: "What You Get",
           items: [
             "Everything in the Company Website package",
-            "Admin panel (CMS) to edit posts, products, services and orders yourself",
-            "One core feature: cart & QR payments (PayOS / SePay / VietQR), bookings, or courses",
-            "PostgreSQL / Supabase database with automatic daily backups",
-            "Admin & staff roles; ordering and payments tested before launch",
-            "Source code, admin accounts and a written user guide handed over",
-            "6-month technical warranty, business-hours support with a 4-working-hour response"
+            "An admin panel to edit posts, products, services and orders yourself",
+            "One core feature: online store with QR payments (PayOS / SePay / VietQR), bookings or courses",
+            "Admin and staff roles, daily data backups",
+            "Source code, admin accounts and a user guide handed over",
+            "6-month technical warranty"
           ]
         }
       ],
@@ -667,22 +611,14 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       paymentNote: "30% after discovery · 40% on progress · 30% on handover",
       features: [
         {
-          title: "How We Quote",
-          items: [
-            "Start-up (MVP): quoted on feature scope after a requirements call, 12-month warranty",
-            "Post-launch maintenance: monthly plans from 5 - 20M VND depending on system size"
-          ]
-        },
-        {
           title: "What You Get",
           items: [
-            "Discovery session and system specification, which you keep even if you stop there",
-            "Web or mobile app built to the agreed specification",
-            "AI integration: chatbots, recommendations, document processing",
-            "Multiple user roles, secure login and activity history",
-            "Docker, automated deployment (CI/CD) and a separate staging environment",
-            "Progress demo every 2 weeks",
-            "Source code, architecture docs and team training; 12-month warranty"
+            "A discovery session and written specification you keep even if you stop there",
+            "A web or mobile app built to the agreed specification, with AI features if needed",
+            "Secure login, multiple user roles and an activity history",
+            "A progress demo every 2 weeks on a separate staging environment",
+            "Source code, technical docs and an operations handover",
+            "12-month technical warranty"
           ]
         }
       ],
@@ -702,7 +638,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       priceUsd: "≈ US$12/hour · 10% off 10-hour blocks, 15% off 20-hour blocks",
       timeline: "Flexible / 10h - 20h blocks",
       pricingType: "hourly",
-      paymentNote: "Pay only for hours actually worked, after you sign off",
+      paymentNote: "Pay only for hours actually worked, after you sign off; urgent out-of-hours fixes at 1.5x",
       buttonText: "CONTACT HOANG DO (HOURLY SUPPORT)",
       phases: [
         { number: "Step 1", title: "Review & Estimate", duration: "1 - 2 Hours", description: "We take your request or bug, agree the task list and estimate the hours before starting." },
@@ -711,23 +647,13 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       ],
       features: [
         {
-          title: "Rate by Client Size",
-          items: [
-            "Small business: 300k VND/hour",
-            "Start-up: 400k VND/hour",
-            "Urgent out-of-hours fixes: 1.5x rate"
-          ]
-        },
-        {
           title: "What You Get",
           items: [
-            "One point of contact: Hoang Do (0392.996.307 / Zalo) takes and coordinates requests",
+            "One point of contact: Hoang Do (0392.996.307 / Zalo)",
             "Hours estimated before work starts, no surprises",
-            "Bug fixes, security patches, SSL renewal, speed and database tuning",
-            "New features and safe React / Next.js / Node.js upgrades",
-            "Code and data backed up before any change",
-            "Detailed report per task with hours and commit links",
-            "Response within 4 working hours, no monthly commitment"
+            "Bug fixes, security patches, speed work and new features",
+            "Backups before any change, and a report of every task with its hours",
+            "No monthly retainer"
           ]
         }
       ],
