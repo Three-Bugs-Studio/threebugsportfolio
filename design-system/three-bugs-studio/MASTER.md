@@ -38,11 +38,11 @@ Measured contrast (WCAG): ink on canvas 18.2:1, ink-muted on canvas 7.8:1, ink-m
 
 | Role | Font | Tailwind | Notes |
 |---|---|---|---|
-| Display, headings | Space Grotesk 500–700 | `font-display` | Brand character |
-| Body, UI | Be Vietnam Pro 300–700 | `font-sans` (default) | Designed for Vietnamese diacritics |
+| Display, headings | Be Vietnam Pro 500–900 | `font-display` | Same family as body; stacked Vietnamese marks (Ệ, Ẩ) stay clean at large sizes and tight leading |
+| Body, UI | Be Vietnam Pro 300–700 | `font-sans` (default) | Designed for Vietnamese, reads well in English |
 | Numbers, prices, code | IBM Plex Mono 400–600 | `font-mono` | Not for running Vietnamese text |
 
-All three fonts ship a Vietnamese subset on Google Fonts (checked 2026-11-03). They load from `index.html`.
+Both families ship a Vietnamese subset on Google Fonts (checked 2026-11-03) and load from `index.html`. Space Grotesk was dropped on 2026-11-03: its Vietnamese marks looked cramped in large headings.
 
 **Scale**
 - Minimum 12px for any text, including labels and badges. Body 16px, line-height 1.5–1.7.
