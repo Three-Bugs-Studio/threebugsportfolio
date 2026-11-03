@@ -453,7 +453,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
           items: [
             "Toàn bộ quyền lợi của gói Landing & Web Giới Thiệu",
             "Trang quản trị (CMS) tự sửa bài viết, sản phẩm, dịch vụ, đơn hàng",
-            "1 tính năng chính: giỏ hàng & thanh toán QR (SePay / VietQR), đặt lịch, hoặc khóa học",
+            "1 tính năng chính: giỏ hàng & thanh toán QR (PayOS / SePay / VietQR), đặt lịch, hoặc khóa học",
             "Cơ sở dữ liệu PostgreSQL / Supabase, sao lưu tự động hằng ngày",
             "Phân quyền Admin & Nhân viên; kiểm thử đặt hàng, thanh toán trước khi ra mắt",
             "Bàn giao mã nguồn, tài khoản quản trị & tài liệu hướng dẫn tiếng Việt",
@@ -639,7 +639,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
           items: [
             "Everything in the Landing & Company Site package",
             "Admin panel (CMS) to edit posts, products, services and orders yourself",
-            "One core feature: cart & QR payments (SePay / VietQR), bookings, or courses",
+            "One core feature: cart & QR payments (PayOS / SePay / VietQR), bookings, or courses",
             "PostgreSQL / Supabase database with automatic daily backups",
             "Admin & staff roles; ordering and payments tested before launch",
             "Source code, admin accounts and a written user guide handed over",
