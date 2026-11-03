@@ -74,9 +74,13 @@ All three fonts ship a Vietnamese subset on Google Fonts (checked 2026-11-03). T
 
 ## Migration status
 
-1. **Done (2026-11-03):** tokens added to `@theme`, body font switched from Inter to Be Vietnam Pro, this file rewritten. Existing components still use hard-coded hex values. Until step 3, the `html.light p` and hex-class overrides still beat the tokens in light mode (for example `text-ink-muted` on a `<p>` renders `#1E293B`), so check light mode after each migration.
-2. **Next:** move components to the tokens one by one, starting with the menu, pricing and contact form, and raise every text size below 12px.
-3. **Then:** delete the `html.light` hex-based overrides in `src/index.css` once no component needs them.
+All three steps done on 2026-11-03:
+
+1. Tokens added to `@theme`, body font switched from Inter to Be Vietnam Pro, this file rewritten.
+2. Every component except the always-dark ones moved to tokens, text raised to 12px minimum.
+3. Hex-keyed and blanket `html.light` overrides removed from `src/index.css`. What remains in `html.light` is scoped to named classes (pricing cards, FAQ items, team cards, art deco frame, theme button).
+
+Still hard-coded on purpose: `Lightbox`, `MagnifyingLens`, `ThemeSwitch`, `TechIcon`, `Logo`, `ui/MiniCrtLoader` (always dark or brand colours), white text on images and gradients, and Zalo's blue buttons.
 
 ## Anti-patterns
 
