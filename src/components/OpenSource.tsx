@@ -92,16 +92,16 @@ export default function OpenSource({
   const { sectionId, primaryHref, repo, images, stack } = PRODUCTS[product];
   const { name, heading, body, primaryLabel, note, features } = PRODUCTS[product][lang];
   return (
-    <section id={sectionId} className="py-20 md:py-28 bg-[#090909] border-t border-white/5">
+    <section id={sectionId} className="py-20 md:py-28 bg-canvas border-t border-line">
       <div className="max-w-7xl mx-auto px-4 md:px-12 grid lg:grid-cols-[5fr_7fr] gap-10 lg:gap-14 items-center">
         <div>
-          <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange">
+          <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-ink">
             {vi ? "Sản phẩm của studio · Mã nguồn mở" : "Studio product · Open source"}
           </span>
-          <h2 className="font-display font-medium text-4xl md:text-5xl tracking-tight text-[#F5F5F3] leading-[1.1] mt-4 [text-wrap:balance]">
+          <h2 className="font-display font-medium text-4xl md:text-5xl tracking-tight text-ink leading-[1.1] mt-4 [text-wrap:balance]">
             {heading}
           </h2>
-          <p className="text-sm md:text-base text-[#8E8E93] font-light leading-relaxed mt-4 max-w-xl">{body}</p>
+          <p className="text-sm md:text-base text-ink-muted font-light leading-relaxed mt-4 max-w-xl">{body}</p>
 
           <div className="flex flex-col sm:flex-row gap-3 mt-8">
             <a
@@ -116,17 +116,17 @@ export default function OpenSource({
               href={repo}
               target="_blank"
               rel="noreferrer"
-              className="font-mono text-xs uppercase tracking-widest text-center px-6 py-3.5 border border-white/15 rounded-sm text-[#F5F5F3] hover:border-brand-orange/60 transition-colors focus-terminal"
+              className="font-mono text-xs uppercase tracking-widest text-center px-6 py-3.5 border border-line rounded-sm text-ink hover:border-brand-orange/60 transition-colors focus-terminal"
             >
               {vi ? "Mã nguồn trên GitHub ↗" : "Source on GitHub ↗"}
             </a>
           </div>
-          <p className="text-xs text-[#8E8E93] mt-4">{note}</p>
-          <p className="font-mono text-[11px] text-[#8E8E93] mt-2">{stack.join(" · ")}</p>
+          <p className="text-xs text-ink-muted mt-4">{note}</p>
+          <p className="font-mono text-xs text-ink-muted mt-2">{stack.join(" · ")}</p>
         </div>
 
         <div>
-          <div className="border border-white/10 rounded-xl overflow-hidden bg-[#121212]">
+          <div className="border border-line rounded-xl overflow-hidden bg-surface">
             <img src={images[active]} alt={features[active][2]} loading="lazy" width={1400} height={900} className="w-full h-auto block" />
           </div>
           <div role="group" aria-label={vi ? `Tính năng của ${name}` : `${name} features`} className="grid sm:grid-cols-2 gap-3 mt-3">
@@ -137,11 +137,11 @@ export default function OpenSource({
                 onClick={() => setActive(i)}
                 aria-pressed={active === i}
                 className={`text-left p-4 rounded-xl border cursor-pointer transition-colors focus-terminal ${
-                  active === i ? "border-brand-orange bg-brand-orange/10" : "border-white/10 hover:border-brand-orange/50"
+                  active === i ? "border-brand-orange bg-brand-orange/10" : "border-line hover:border-brand-orange/50"
                 }`}
               >
-                <span className="block font-display font-bold text-base text-[#F5F5F3]">{title}</span>
-                <span className="block text-sm text-[#8E8E93] leading-relaxed mt-1">{desc}</span>
+                <span className="block font-display font-bold text-base text-ink">{title}</span>
+                <span className="block text-sm text-ink-muted leading-relaxed mt-1">{desc}</span>
               </button>
             ))}
           </div>
