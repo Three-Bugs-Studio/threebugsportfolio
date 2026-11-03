@@ -13,7 +13,7 @@ import {
 } from "./ui/MajesticIcon";
 
 // Common shimmering pulse skeleton class
-const pulseClass = "animate-pulse bg-white/5 rounded-sm";
+const pulseClass = "animate-pulse bg-line rounded-sm";
 
 interface SkeletonProps {
   onLoaded?: () => void;
@@ -36,15 +36,15 @@ export function SectorLoadingDiagnostics({ progress, sectorCode, statusText }: S
   const barString = "█".repeat(filledCount) + "░".repeat(emptyCount);
 
   return (
-    <div className="font-mono text-[10px] text-brand-orange bg-[#0b0b0c] border border-white/5 rounded-sm p-4 mb-6 flex flex-col md:flex-row md:items-center justify-between gap-3 select-none">
+    <div className="font-mono text-xs text-brand-ink bg-[#0b0b0c] border border-line rounded-sm p-4 mb-6 flex flex-col md:flex-row md:items-center justify-between gap-3 select-none">
       <div className="flex items-center gap-3">
         <span className="h-1.5 w-1.5 rounded-full bg-brand-orange shadow-[0_0_6px_rgba(255,106,0,0.8)] shrink-0" />
-        <span className="text-[#8e8e93]">[{sectorCode}_INIT]</span>
-        <span className="text-white font-medium truncate max-w-[280px] md:max-w-md">{statusText}</span>
+        <span className="text-ink-muted">[{sectorCode}_INIT]</span>
+        <span className="text-ink font-medium truncate max-w-[280px] md:max-w-md">{statusText}</span>
       </div>
       <div className="flex items-center gap-4 justify-between md:justify-end shrink-0">
-        <span className="text-white/20 tracking-wider font-semibold">{barString}</span>
-        <span className="text-brand-orange font-bold font-mono min-w-[35px] text-right">{progress}%</span>
+        <span className="text-line tracking-wider font-semibold">{barString}</span>
+        <span className="text-brand-ink font-bold font-mono min-w-[35px] text-right">{progress}%</span>
       </div>
     </div>
   );
@@ -108,7 +108,7 @@ export function HeroSkeleton({ onLoaded, lang }: SkeletonProps) {
     : "INITIALIZING CREATIVE DISPLAY SPACE ENGINE...";
 
   return (
-    <section className="min-h-screen relative flex flex-col items-center justify-center overflow-hidden py-24 border-b border-white/5 bg-[#090909]">
+    <section className="min-h-screen relative flex flex-col items-center justify-center overflow-hidden py-24 border-b border-line bg-canvas">
       <div className="absolute inset-0 swiss-grid opacity-[0.05]" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-orange/10 rounded-full blur-[100px]" />
       
@@ -146,17 +146,17 @@ export function AboutSkeleton({ onLoaded, lang }: SkeletonProps) {
     : "PHILOSOPHY MAP // ANALYZING STUDIO CORE PILLARS...";
 
   return (
-    <section className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative">
+    <section className="py-24 md:py-32 bg-canvas border-t border-line relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         <SectorLoadingDiagnostics progress={progress} sectorCode="SECTOR_01" statusText={status} />
 
         {/* Header Label Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 border-b border-white/5 pb-16 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 border-b border-line pb-16 mb-16">
           <div className="lg:col-span-8">
             <div className="flex items-center gap-3 mb-6">
-              <span className="font-mono text-xs text-brand-orange">[ 01_MISSION ]</span>
-              <div className="h-[1px] w-12 bg-white/10" />
+              <span className="font-mono text-xs text-brand-ink">[ 01_MISSION ]</span>
+              <div className="h-[1px] w-12 bg-line" />
             </div>
             <div className={`${pulseClass} h-10 md:h-16 w-3/4`} />
           </div>
@@ -178,15 +178,15 @@ export function AboutSkeleton({ onLoaded, lang }: SkeletonProps) {
             return (
               <div 
                 key={card.id} 
-                className={`border rounded-sm p-8 bg-[#121212]/20 relative overflow-hidden transition-all duration-300 ${
-                  isLit ? "border-brand-orange/40 shadow-[0_0_15px_rgba(255,8a,0,0.05)]" : "border-white/5"
+                className={`border rounded-sm p-8 bg-surface/20 relative overflow-hidden transition-all duration-300 ${
+                  isLit ? "border-brand-orange/40 shadow-[0_0_15px_rgba(255,8a,0,0.05)]" : "border-line"
                 }`}
               >
                 <div className="flex items-center justify-between mb-8">
-                  <div className={`p-3 rounded-sm ${isLit ? "bg-brand-orange/10 text-brand-orange" : "bg-white/5 text-[#8e8e93]"}`}>
+                  <div className={`p-3 rounded-sm ${isLit ? "bg-brand-orange/10 text-brand-ink" : "bg-line text-ink-muted"}`}>
                     <BoxIcon size={20} className="w-5 h-5" />
                   </div>
-                  <span className="font-mono text-xs text-[#8e8e93]">{card.label}</span>
+                  <span className="font-mono text-xs text-ink-muted">{card.label}</span>
                 </div>
                 
                 <div className={`${pulseClass} h-6 w-1/2 mb-4`} />
@@ -197,9 +197,9 @@ export function AboutSkeleton({ onLoaded, lang }: SkeletonProps) {
                 </div>
 
                 {/* Micro Status Check */}
-                <div className="mt-6 pt-4 border-t border-white/5 flex justify-between items-center text-[10px] font-mono">
-                  <span className="text-[#8e8e93]">[ STATUS ]</span>
-                  <span className={isLit ? "text-[#27C93F] font-bold" : "text-[#8e8e93]/30 animate-pulse"}>
+                <div className="mt-6 pt-4 border-t border-line flex justify-between items-center text-xs font-mono">
+                  <span className="text-ink-muted">[ STATUS ]</span>
+                  <span className={isLit ? "text-[#27C93F] font-bold" : "text-ink-muted animate-pulse"}>
                     {isLit ? "READY" : "LOADING..."}
                   </span>
                 </div>
@@ -220,7 +220,7 @@ export function ServicesSkeleton({ onLoaded, lang }: SkeletonProps) {
     : "CAPABILITY SCAN // SYNCING TECH SERVICE PARAMETERS...";
 
   return (
-    <section className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative">
+    <section className="py-24 md:py-32 bg-canvas border-t border-line relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         <SectorLoadingDiagnostics progress={progress} sectorCode="SECTOR_02" statusText={status} />
@@ -230,8 +230,8 @@ export function ServicesSkeleton({ onLoaded, lang }: SkeletonProps) {
           {/* Left Column Description */}
           <div className="lg:col-span-4 flex flex-col justify-between">
             <div className="space-y-6">
-              <div className="flex items-center gap-2 font-mono text-xs text-[#8e8e93]">
-                <GlobeIcon size={16} className="w-4 h-4 text-brand-orange" />
+              <div className="flex items-center gap-2 font-mono text-xs text-ink-muted">
+                <GlobeIcon size={16} className="w-4 h-4 text-brand-ink" />
                 <span>SPEC_CATALOG_v4.0</span>
               </div>
               <div className={`${pulseClass} h-10 md:h-14 w-full`} />
@@ -241,7 +241,7 @@ export function ServicesSkeleton({ onLoaded, lang }: SkeletonProps) {
               </div>
             </div>
             
-            <div className="hidden lg:block border-l border-white/5 pl-6 py-4 mt-8 space-y-2">
+            <div className="hidden lg:block border-l border-line pl-6 py-4 mt-8 space-y-2">
               <div className={`${pulseClass} h-3 w-28`} />
               <div className={`${pulseClass} h-3.5 w-full`} />
             </div>
@@ -260,18 +260,18 @@ export function ServicesSkeleton({ onLoaded, lang }: SkeletonProps) {
               return (
                 <div 
                   key={service.id} 
-                  className={`border p-6 md:p-8 rounded-sm bg-[#121212]/10 flex items-start justify-between gap-4 transition-all duration-300 ${
-                    active ? "border-brand-orange/35 bg-brand-orange/[0.02]" : "border-white/5"
+                  className={`border p-6 md:p-8 rounded-sm bg-surface/10 flex items-start justify-between gap-4 transition-all duration-300 ${
+                    active ? "border-brand-orange/35 bg-brand-orange/[0.02]" : "border-line"
                   }`}
                 >
                   <div className="flex items-start gap-5 w-full">
-                    <div className={`p-2.5 rounded-sm shrink-0 ${active ? "bg-brand-orange/15 text-brand-orange" : "bg-white/5 text-[#8e8e93]"}`}>
+                    <div className={`p-2.5 rounded-sm shrink-0 ${active ? "bg-brand-orange/15 text-brand-ink" : "bg-line text-ink-muted"}`}>
                       <CodeIcon size={20} className="w-5 h-5" />
                     </div>
                     <div className="w-full space-y-3">
-                      <div className="font-mono text-xs font-semibold text-white/90 flex items-center gap-2">
+                      <div className="font-mono text-xs font-semibold text-ink-muted flex items-center gap-2">
                         <span>{service.label}</span>
-                        {active && <span className="text-[9px] text-[#27C93F] bg-[#27C93F]/10 px-1.5 py-0.5 rounded-sm">COMPILED</span>}
+                        {active && <span className="text-xs text-[#27C93F] bg-[#27C93F]/10 px-1.5 py-0.5 rounded-sm">COMPILED</span>}
                       </div>
                       <div className={`${pulseClass} h-3 w-2/3`} />
                     </div>
@@ -280,7 +280,7 @@ export function ServicesSkeleton({ onLoaded, lang }: SkeletonProps) {
                     {active ? (
                       <CheckIcon size={20} className="w-5 h-5 text-[#27C93F]" />
                     ) : (
-                      <span className="w-5 h-5 rounded-full border border-white/10 animate-spin border-t-brand-orange shrink-0" />
+                      <span className="w-5 h-5 rounded-full border border-line animate-spin border-t-brand-orange shrink-0" />
                     )}
                   </div>
                 </div>
@@ -302,7 +302,7 @@ export function SelectedWorkSkeleton({ onLoaded, lang }: SkeletonProps) {
     : "SELECTED PROJECTS // CACHING ARTWORK VISUAL BUFFERS...";
 
   return (
-    <section className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative">
+    <section className="py-24 md:py-32 bg-canvas border-t border-line relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         <SectorLoadingDiagnostics progress={progress} sectorCode="SECTOR_03" statusText={status} />
@@ -311,8 +311,8 @@ export function SelectedWorkSkeleton({ onLoaded, lang }: SkeletonProps) {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <span className="font-mono text-xs text-brand-orange">[ 03_ARCHIVE ]</span>
-              <span className="h-[1px] w-12 bg-white/10" />
+              <span className="font-mono text-xs text-brand-ink">[ 03_ARCHIVE ]</span>
+              <span className="h-[1px] w-12 bg-line" />
             </div>
             <div className={`${pulseClass} h-12 md:h-16 w-80`} />
           </div>
@@ -325,10 +325,10 @@ export function SelectedWorkSkeleton({ onLoaded, lang }: SkeletonProps) {
           {/* Project List Column */}
           <div className="lg:col-span-5 space-y-3">
             {[1, 2, 3, 4].map((idx) => (
-              <div key={idx} className="border border-white/5 p-5 rounded-sm bg-[#121212]/10 flex flex-col gap-3">
+              <div key={idx} className="border border-line p-5 rounded-sm bg-surface/10 flex flex-col gap-3">
                 <div className="flex items-center justify-between">
                   <div className={`${pulseClass} h-4 w-12`} />
-                  <span className="text-[9px] font-mono text-[#8e8e93]/50">INDEX_0{idx}</span>
+                  <span className="text-xs font-mono text-ink-muted">INDEX_0{idx}</span>
                 </div>
                 <div className={`${pulseClass} h-6 w-3/4`} />
                 <div className="flex gap-2">
@@ -340,7 +340,7 @@ export function SelectedWorkSkeleton({ onLoaded, lang }: SkeletonProps) {
           </div>
 
           {/* Project Display / Previewer column with real scanline visual decompiling progress */}
-          <div className="lg:col-span-7 border border-white/5 p-6 rounded-sm bg-[#121212]/20 flex flex-col justify-between min-h-[450px] relative overflow-hidden">
+          <div className="lg:col-span-7 border border-line p-6 rounded-sm bg-surface/20 flex flex-col justify-between min-h-[450px] relative overflow-hidden">
             <div className="absolute inset-0 bg-[#000]/20 pointer-events-none" />
             
             {/* Visual Scanline Effect representing compiling */}
@@ -352,13 +352,13 @@ export function SelectedWorkSkeleton({ onLoaded, lang }: SkeletonProps) {
               }}
             />
 
-            <div className="flex items-center justify-between border-b border-white/5 pb-4 relative z-10">
+            <div className="flex items-center justify-between border-b border-line pb-4 relative z-10">
               <div className="flex gap-1.5">
                 <div className="w-2.5 h-2.5 rounded-full bg-[#ff3b30]/40" />
                 <div className="w-2.5 h-2.5 rounded-full bg-[#ffcc00]/40" />
                 <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]/40" />
               </div>
-              <div className="font-mono text-[9px] text-[#8e8e93] uppercase">
+              <div className="font-mono text-xs text-ink-muted uppercase">
                 PORTFOLIO_IMAGE_DECOMPILER.EXE
               </div>
               <div className="w-5" />
@@ -367,17 +367,17 @@ export function SelectedWorkSkeleton({ onLoaded, lang }: SkeletonProps) {
             <div className="my-auto py-12 flex flex-col items-center justify-center space-y-4 relative z-10">
               <div className="relative">
                 <div className={`${pulseClass} h-36 w-36 rounded-full border border-brand-orange/10 flex items-center justify-center`} />
-                <CompassIcon size={40} className="w-10 h-10 text-brand-orange/20 absolute inset-0 m-auto animate-spin" style={{ animationDuration: "12s" }} />
+                <CompassIcon size={40} className="w-10 h-10 text-brand-ink/20 absolute inset-0 m-auto animate-spin" style={{ animationDuration: "12s" }} />
               </div>
-              <div className="font-mono text-xs text-brand-orange bg-[#090909] px-3 py-1 border border-white/5 rounded-sm">
+              <div className="font-mono text-xs text-brand-ink bg-canvas px-3 py-1 border border-line rounded-sm">
                 COMPILING RENDER BUFFERS: {progress}%
               </div>
               <div className={`${pulseClass} h-3 w-64`} />
             </div>
 
-            <div className="flex justify-between items-center pt-4 border-t border-white/5 relative z-10">
+            <div className="flex justify-between items-center pt-4 border-t border-line relative z-10">
               <div className={`${pulseClass} h-4 w-20`} />
-              <div className="font-mono text-[10px] text-[#27C93F]">
+              <div className="font-mono text-xs text-[#27C93F]">
                 {progress < 100 ? "STREAMING PIXELS..." : "RASTERIZATION COMPLETE"}
               </div>
             </div>
@@ -397,7 +397,7 @@ export function ProcessSkeleton({ onLoaded, lang }: SkeletonProps) {
     : "ENGINEERING PROCESS // MAPPING COLLABORATION WORKFLOWS...";
 
   return (
-    <section className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative">
+    <section className="py-24 md:py-32 bg-canvas border-t border-line relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         <SectorLoadingDiagnostics progress={progress} sectorCode="SECTOR_04" statusText={status} />
@@ -416,22 +416,22 @@ export function ProcessSkeleton({ onLoaded, lang }: SkeletonProps) {
             return (
               <div 
                 key={node.id} 
-                className={`border p-6 rounded-sm bg-[#121212]/10 space-y-4 transition-all duration-300 ${
-                  completed ? "border-[#27C93F]/30 bg-[#27C93F]/[0.01]" : active ? "border-brand-orange/30 bg-brand-orange/[0.01]" : "border-white/5"
+                className={`border p-6 rounded-sm bg-surface/10 space-y-4 transition-all duration-300 ${
+                  completed ? "border-[#27C93F]/30 bg-[#27C93F]/[0.01]" : active ? "border-brand-orange/30 bg-brand-orange/[0.01]" : "border-line"
                 }`}
               >
                 <div className="flex justify-between items-center">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center font-mono text-xs font-bold ${
-                    completed ? "bg-[#27C93F]/10 text-[#27C93F]" : active ? "bg-brand-orange/10 text-brand-orange animate-pulse" : "bg-white/5 text-[#8e8e93]"
+                    completed ? "bg-[#27C93F]/10 text-[#27C93F]" : active ? "bg-brand-orange/10 text-brand-ink animate-pulse" : "bg-line text-ink-muted"
                   }`}>
                     {node.id}
                   </div>
-                  <div className="font-mono text-[9px] text-[#8e8e93]">
+                  <div className="font-mono text-xs text-ink-muted">
                     {completed ? "[ OK ]" : active ? "[ ACTIVE ]" : "[ PEND ]"}
                   </div>
                 </div>
                 
-                <div className="font-mono text-xs font-semibold text-white/90">{node.title}</div>
+                <div className="font-mono text-xs font-semibold text-ink-muted">{node.title}</div>
                 
                 <div className="space-y-1.5">
                   <div className={`${pulseClass} h-3 w-full`} />
@@ -439,7 +439,7 @@ export function ProcessSkeleton({ onLoaded, lang }: SkeletonProps) {
                 </div>
 
                 {/* Simulated subtask progress bar */}
-                <div className="w-full bg-white/5 h-[2px] rounded-sm relative overflow-hidden">
+                <div className="w-full bg-line h-[2px] rounded-sm relative overflow-hidden">
                   <div 
                     className={`absolute top-0 left-0 h-full transition-all duration-200 ${completed ? "bg-[#27C93F]" : "bg-brand-orange"}`}
                     style={{ 
@@ -473,7 +473,7 @@ export function TechnologySkeleton({ onLoaded, lang }: SkeletonProps) {
   ];
 
   return (
-    <section className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative">
+    <section className="py-24 md:py-32 bg-canvas border-t border-line relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         <SectorLoadingDiagnostics progress={progress} sectorCode="SECTOR_05" statusText={status} />
@@ -482,8 +482,8 @@ export function TechnologySkeleton({ onLoaded, lang }: SkeletonProps) {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-20">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <span className="font-mono text-xs text-brand-orange">[ 05_STACK ]</span>
-              <span className="h-[1px] w-12 bg-white/10" />
+              <span className="font-mono text-xs text-brand-ink">[ 05_STACK ]</span>
+              <span className="h-[1px] w-12 bg-line" />
             </div>
             <div className={`${pulseClass} h-10 md:h-14 w-80`} />
           </div>
@@ -499,26 +499,26 @@ export function TechnologySkeleton({ onLoaded, lang }: SkeletonProps) {
             return (
               <div 
                 key={mod.name} 
-                className={`border p-6 rounded-sm bg-[#121212]/10 flex flex-col items-center justify-center space-y-4 text-center transition-all duration-300 ${
-                  isFinished ? "border-[#27C93F]/30 bg-[#27C93F]/[0.01]" : isCurrent ? "border-brand-orange/30 bg-brand-orange/[0.01] animate-pulse" : "border-white/5"
+                className={`border p-6 rounded-sm bg-surface/10 flex flex-col items-center justify-center space-y-4 text-center transition-all duration-300 ${
+                  isFinished ? "border-[#27C93F]/30 bg-[#27C93F]/[0.01]" : isCurrent ? "border-brand-orange/30 bg-brand-orange/[0.01] animate-pulse" : "border-line"
                 }`}
               >
-                <div className={`p-3 rounded-sm ${isFinished ? "bg-[#27C93F]/10 text-[#27C93F]" : isCurrent ? "bg-brand-orange/10 text-brand-orange" : "bg-white/5 text-[#8e8e93]"}`}>
+                <div className={`p-3 rounded-sm ${isFinished ? "bg-[#27C93F]/10 text-[#27C93F]" : isCurrent ? "bg-brand-orange/10 text-brand-ink" : "bg-line text-ink-muted"}`}>
                   <CpuIcon size={24} className="w-6 h-6" />
                 </div>
                 
                 <div className="space-y-1">
-                  <div className="font-mono text-[10px] font-bold text-white/90">{mod.name}</div>
-                  <div className="font-mono text-[8px] text-[#8e8e93]">{mod.code}</div>
+                  <div className="font-mono text-xs font-bold text-ink-muted">{mod.name}</div>
+                  <div className="font-mono text-xs text-ink-muted">{mod.code}</div>
                 </div>
 
-                <div className="font-mono text-[9px] w-full pt-2 border-t border-white/5">
+                <div className="font-mono text-xs w-full pt-2 border-t border-line">
                   {isFinished ? (
                     <span className="text-[#27C93F] font-bold">[ READY ]</span>
                   ) : isCurrent ? (
-                    <span className="text-brand-orange font-bold animate-pulse">[ COMPILING ]</span>
+                    <span className="text-brand-ink font-bold animate-pulse">[ COMPILING ]</span>
                   ) : (
-                    <span className="text-[#8e8e93]/30">[ PENDING ]</span>
+                    <span className="text-ink-muted">[ PENDING ]</span>
                   )}
                 </div>
               </div>
@@ -538,7 +538,7 @@ export function TeamSkeleton({ onLoaded, lang }: SkeletonProps) {
     : "STUDIO LEADERS // STRUCTURING COLLABORATIVE TEAM DOSSIERS...";
 
   return (
-    <section className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative">
+    <section className="py-24 md:py-32 bg-canvas border-t border-line relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         <SectorLoadingDiagnostics progress={progress} sectorCode="SECTOR_06" statusText={status} />
@@ -552,8 +552,8 @@ export function TeamSkeleton({ onLoaded, lang }: SkeletonProps) {
             return (
               <div 
                 key={idx} 
-                className={`border rounded-sm bg-[#121212]/10 p-6 flex flex-col items-center text-center space-y-4 transition-all duration-300 ${
-                  isScanned ? "border-brand-orange/20" : "border-white/5"
+                className={`border rounded-sm bg-surface/10 p-6 flex flex-col items-center text-center space-y-4 transition-all duration-300 ${
+                  isScanned ? "border-brand-orange/20" : "border-line"
                 }`}
               >
                 {/* Custom circular progress loader ring around avatar */}
@@ -580,7 +580,7 @@ export function TeamSkeleton({ onLoaded, lang }: SkeletonProps) {
                     />
                   </svg>
                   <div className={`w-28 h-28 rounded-full flex items-center justify-center ${pulseClass}`}>
-                    <UsersIcon size={32} className="w-8 h-8 text-white/10" />
+                    <UsersIcon size={32} className="w-8 h-8 text-line" />
                   </div>
                 </div>
 
@@ -628,17 +628,17 @@ export function TestimonialsSkeleton({ onLoaded, lang }: SkeletonProps) {
   }, [progress, lang]);
 
   return (
-    <section className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative">
+    <section className="py-24 md:py-32 bg-canvas border-t border-line relative">
       <div className="max-w-4xl mx-auto px-6 md:px-12 relative z-10 text-center space-y-8">
         
         <SectorLoadingDiagnostics progress={progress} sectorCode="SECTOR_07" statusText={status} />
 
         {/* Slide text box with cipher text */}
         <div className="space-y-4 max-w-2xl mx-auto flex flex-col items-center">
-          <div className="font-mono text-xs text-[#8e8e93]/50 mb-2 uppercase tracking-widest">
+          <div className="font-mono text-xs text-ink-muted mb-2 uppercase tracking-widest">
             [ SECURE_KEYPORT_DECRYPTOR_v2.0 ]
           </div>
-          <p className="font-mono text-xs md:text-sm text-brand-orange/80 break-all leading-relaxed bg-[#0a0a0b] p-6 border border-white/5 rounded-sm w-full min-h-[100px]">
+          <p className="font-mono text-xs md:text-sm text-brand-ink/80 break-all leading-relaxed bg-[#0a0a0b] p-6 border border-line rounded-sm w-full min-h-[100px]">
             {crypticText}
           </p>
         </div>
@@ -661,7 +661,7 @@ export function FAQSkeleton({ onLoaded, lang }: SkeletonProps) {
     : "FAQ RETRIEVAL // COMPILING KNOWLEDGE BASE DIRECTORY...";
 
   return (
-    <section className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative">
+    <section className="py-24 md:py-32 bg-canvas border-t border-line relative">
       <div className="max-w-4xl mx-auto px-6 md:px-12 relative z-10 space-y-16">
         
         <SectorLoadingDiagnostics progress={progress} sectorCode="SECTOR_08" statusText={status} />
@@ -678,15 +678,15 @@ export function FAQSkeleton({ onLoaded, lang }: SkeletonProps) {
             return (
               <div 
                 key={faq.id} 
-                className={`border rounded-sm bg-[#111111]/40 p-5 flex items-center justify-between transition-all duration-300 ${
-                  isParsed ? "border-brand-orange/25" : "border-white/5"
+                className={`border rounded-sm bg-surface/40 p-5 flex items-center justify-between transition-all duration-300 ${
+                  isParsed ? "border-brand-orange/25" : "border-line"
                 }`}
               >
                 <div className="flex items-center gap-3 w-full">
-                  <QuestionCircleIcon size={18} className={`w-4.5 h-4.5 shrink-0 ${isParsed ? "text-brand-orange" : "text-[#8e8e93]/30"}`} />
-                  <div className="font-mono text-xs font-semibold text-white/80">{faq.title}</div>
+                  <QuestionCircleIcon size={18} className={`w-4.5 h-4.5 shrink-0 ${isParsed ? "text-brand-ink" : "text-ink-muted"}`} />
+                  <div className="font-mono text-xs font-semibold text-ink-muted">{faq.title}</div>
                 </div>
-                <div className="shrink-0 text-mono text-[9px] text-[#8e8e93]">
+                <div className="shrink-0 text-mono text-xs text-ink-muted">
                   {isParsed ? "[ OK ]" : "[ READ ]"}
                 </div>
               </div>
@@ -706,7 +706,7 @@ export function ContactSkeleton({ onLoaded, lang }: SkeletonProps) {
     : "INQUIRY CHANNEL // VERIFYING ENVELOPE SECURE SOCKETS...";
 
   return (
-    <section className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative">
+    <section className="py-24 md:py-32 bg-canvas border-t border-line relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
         
         {/* Left Col */}
@@ -714,8 +714,8 @@ export function ContactSkeleton({ onLoaded, lang }: SkeletonProps) {
           <SectorLoadingDiagnostics progress={progress} sectorCode="SECTOR_09" statusText={status} />
           
           <div className="flex items-center gap-3">
-            <span className="font-mono text-xs text-brand-orange">[ 09_SECURE_PORTAL ]</span>
-            <span className="h-[1px] w-12 bg-white/10" />
+            <span className="font-mono text-xs text-brand-ink">[ 09_SECURE_PORTAL ]</span>
+            <span className="h-[1px] w-12 bg-line" />
           </div>
           <div className={`${pulseClass} h-12 w-4/5`} />
           <div className="space-y-2">
@@ -725,28 +725,28 @@ export function ContactSkeleton({ onLoaded, lang }: SkeletonProps) {
         </div>
 
         {/* Right Col - Form */}
-        <div className="lg:col-span-7 border border-white/5 p-8 rounded-sm bg-[#121212]/15 space-y-6">
+        <div className="lg:col-span-7 border border-line p-8 rounded-sm bg-surface/15 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <div className="font-mono text-[10px] text-[#8e8e93]">[ FIELD: NAME ]</div>
+              <div className="font-mono text-xs text-ink-muted">[ FIELD: NAME ]</div>
               <div className={`${pulseClass} h-11 w-full`} />
             </div>
             <div className="space-y-2">
-              <div className="font-mono text-[10px] text-[#8e8e93]">[ FIELD: EMAIL ]</div>
+              <div className="font-mono text-xs text-ink-muted">[ FIELD: EMAIL ]</div>
               <div className={`${pulseClass} h-11 w-full`} />
             </div>
           </div>
           
           <div className="space-y-2">
-            <div className="font-mono text-[10px] text-[#8e8e93]">[ FIELD: TRANSMISSION_CONTENT ]</div>
+            <div className="font-mono text-xs text-ink-muted">[ FIELD: TRANSMISSION_CONTENT ]</div>
             <div className={`${pulseClass} h-28 w-full`} />
           </div>
 
           <button 
             disabled 
-            className="w-full h-11 bg-white/5 rounded-sm flex items-center justify-center gap-2 border border-white/5 text-xs font-mono text-[#8e8e93]"
+            className="w-full h-11 bg-line rounded-sm flex items-center justify-center gap-2 border border-line text-xs font-mono text-ink-muted"
           >
-            <SendIcon size={16} className="w-4 h-4 text-[#8e8e93]/50" />
+            <SendIcon size={16} className="w-4 h-4 text-ink-muted" />
             <span>ESTABLISHING TUNNEL: {progress}%</span>
           </button>
         </div>
@@ -763,7 +763,7 @@ export function FooterSkeleton({ onLoaded, lang }: SkeletonProps) {
     : "COMPILING FOOTER MAPPER LINKS...";
 
   return (
-    <footer className="border-t border-white/5 bg-[#090909] py-12 md:py-16 relative">
+    <footer className="border-t border-line bg-canvas py-12 md:py-16 relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <SectorLoadingDiagnostics progress={progress} sectorCode="SECTOR_10" statusText={status} />
         
@@ -771,7 +771,7 @@ export function FooterSkeleton({ onLoaded, lang }: SkeletonProps) {
           <div className="flex items-center gap-3">
             <div className={`${pulseClass} h-6 w-24`} />
           </div>
-          <div className="font-mono text-[10px] text-[#8e8e93]/40">
+          <div className="font-mono text-xs text-ink-muted">
             © 2026 THREE BUGS STUDIO // ALL COMPILED OK
           </div>
         </div>
@@ -782,7 +782,7 @@ export function FooterSkeleton({ onLoaded, lang }: SkeletonProps) {
 
 export default function FullPageSkeleton({ lang = "vi" }: { lang?: "vi" | "en" }) {
   return (
-    <div className="min-h-screen bg-[#090909] text-[#F5F5F3] font-sans selection:bg-brand-orange selection:text-[#090909] relative">
+    <div className="min-h-screen bg-canvas text-ink font-sans selection:bg-brand-orange selection:text-[#090909] relative">
       <HeroSkeleton lang={lang} />
       <AboutSkeleton lang={lang} />
       <ServicesSkeleton lang={lang} />
