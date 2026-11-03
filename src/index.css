@@ -4,7 +4,9 @@
   --bg-dark: #090909;
   --bg-card: #121212;
   --text-light: #F5F5F3;
-  --text-muted: #C0C0C5;
+  --text-muted: #A1A1AA;
+  --brand-ink: #FF6A00;
+  --line: rgba(255, 255, 255, 0.1);
 
   --expo-in: linear(
     0 0%, 0.0085 31.26%, 0.0167 40.94%,
@@ -58,7 +60,9 @@ html.light {
   --bg-dark: #F8FAFC;
   --bg-card: #FFFFFF;
   --text-light: #0F172A;
-  --text-muted: #334155;
+  --text-muted: #475569;
+  --brand-ink: #C2410C;
+  --line: rgba(15, 23, 42, 0.12);
   color-scheme: light;
 }
 
@@ -428,15 +432,21 @@ html.light .team-card-item {
 }
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Be Vietnam Pro", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Space Grotesk", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
-  
+
   --color-brand-orange: #FF6A00;
-  --color-bg-dark: var(--bg-dark);
-  --color-bg-card: var(--bg-card);
-  --color-text-light: var(--text-light);
-  --color-text-muted: var(--text-muted);
+
+  /* Theme tokens for new code: bg-canvas, bg-surface, text-ink, text-ink-muted, text-brand-ink, border-line.
+     Values switch with html.light above, so components need no light-mode overrides.
+     See design-system/three-bugs-studio/MASTER.md. */
+  --color-canvas: var(--bg-dark);
+  --color-surface: var(--bg-card);
+  --color-ink: var(--text-light);
+  --color-ink-muted: var(--text-muted);
+  --color-brand-ink: var(--brand-ink);
+  --color-line: var(--line);
 }
 
 /* Base resets & dark mode styling */
