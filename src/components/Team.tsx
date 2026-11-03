@@ -9,13 +9,7 @@ import {
 } from "./ui/MajesticIcon";
 import { SiGithub } from "react-icons/si";
 import { TeamMember } from "../types";
-import friedrichImg from "@/assets/team-art/friedrich-wanderer.jpg";
-import kandinskyImg from "@/assets/team-art/kandinsky-composition-8.jpg";
-import vitruvianImg from "@/assets/team-art/davinci-vitruvian-man.jpg";
-import turnerImg from "@/assets/team-art/turner-rain-steam-speed.jpg";
-import piranesiImg from "@/assets/team-art/piranesi-drawbridge.jpg";
-import monetImg from "@/assets/team-art/monet-water-lily-bridge.jpg";
-import vanGoghImg from "@/assets/team-art/vangogh-cafe-terrace.jpg";
+import CyberAvatar, { CyberLook } from "./CyberAvatar";
 import receptionistDeskGif from "@/assets/animation-icon/receptionist-desk.gif";
 
 interface TeamProps {
@@ -27,34 +21,41 @@ export default function Team({ lang }: TeamProps) {
   const teamList = TEAM_DATA[lang];
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
-  // One public-domain artwork per role (Wikimedia Commons), shown instead of portraits.
-  const ART: Record<string, { img: string; title: string; artist: string; year: string; focus: string; meaning: { vi: string; en: string } }> = {
+  // One cyberpunk character per member, drawn in SVG (CyberAvatar) in the member's colour.
+  const CHAR: Record<string, { look: CyberLook; codename: string; klass: { vi: string; en: string }; meaning: { vi: string; en: string } }> = {
     "Duong Phu Dong": {
-      img: friedrichImg, title: "Wanderer above the Sea of Fog", artist: "Caspar David Friedrich", year: "1818", focus: "50% 30%",
-      meaning: { vi: "Tầm nhìn & dẫn đường: nhìn xa qua lớp sương mù để định hướng cả đội.", en: "Vision & direction: seeing past the fog to set the course for the team." },
+      look: { hair: "spike", gear: "visor", skin: "#C68863" },
+      codename: "VANGUARD", klass: { vi: "Người dẫn đường", en: "Pathfinder" },
+      meaning: { vi: "Tầm nhìn & dẫn đường: chốt hướng đi của sản phẩm và kiến trúc cho cả đội.", en: "Vision & direction: setting the course for the product and its architecture." },
     },
     "Thu Tran": {
-      img: kandinskyImg, title: "Composition VIII", artist: "Wassily Kandinsky", year: "1923", focus: "40% 50%",
+      look: { hair: "bob", gear: "glasses", skin: "#E8B996" },
+      codename: "PRISM", klass: { vi: "Nhà thiết kế ánh sáng", en: "Light designer" },
       meaning: { vi: "Màu sắc, bố cục & cân bằng: thiết kế đẹp và sổ sách minh bạch đều cần sự hài hòa.", en: "Colour, composition & balance: good design and clean books both need harmony." },
     },
     "Huynh Quang Dong": {
-      img: vitruvianImg, title: "Vitruvian Man", artist: "Leonardo da Vinci", year: "c. 1490", focus: "50% 45%",
-      meaning: { vi: "Chuẩn mực & đo lường: mọi tính năng được kiểm định theo đúng tỷ lệ và tiêu chuẩn.", en: "Standards & measurement: every feature checked against the right proportions." },
+      look: { hair: "buzz", gear: "goggles", skin: "#B97C55" },
+      codename: "SENTINEL", klass: { vi: "Người gác chất lượng", en: "Quality sentinel" },
+      meaning: { vi: "Chuẩn mực & kiểm định: mọi tính năng đều qua kiểm thử trước khi tới tay khách.", en: "Standards & testing: every feature is checked before it reaches the client." },
     },
     "Ho Quang Huy": {
-      img: turnerImg, title: "Rain, Steam and Speed", artist: "J. M. W. Turner", year: "1844", focus: "68% 60%",
-      meaning: { vi: "Tốc độ & hạ tầng: đoàn tàu lao qua mưa gió như pipeline triển khai không ngừng.", en: "Speed & infrastructure: a train through the storm, like a deploy pipeline that never stops." },
+      look: { hair: "hood", gear: "halfmask", skin: "#D9A07A" },
+      codename: "RUNNER", klass: { vi: "Người vận hành hạ tầng", en: "Infrastructure runner" },
+      meaning: { vi: "Tốc độ & hạ tầng: giữ cho máy chủ và pipeline triển khai chạy không ngừng.", en: "Speed & infrastructure: keeping servers and the deploy pipeline running." },
     },
     "Hao Vu": {
-      img: piranesiImg, title: "Carceri d'invenzione: The Drawbridge", artist: "Giovanni Battista Piranesi", year: "1761", focus: "50% 40%",
+      look: { hair: "mohawk", gear: "visor", skin: "#A86F4C" },
+      codename: "BEDROCK", klass: { vi: "Kiến trúc sư dữ liệu", en: "Data architect" },
       meaning: { vi: "Kiến trúc sâu & nền móng: những tầng cấu trúc vững chắc bên dưới mọi hệ thống.", en: "Deep architecture & foundations: the solid layers beneath every system." },
     },
     "Hoang Do": {
-      img: monetImg, title: "Bridge over a Pond of Water Lilies", artist: "Claude Monet", year: "1899", focus: "50% 45%",
+      look: { hair: "cap", gear: "headset", skin: "#E0AC85" },
+      codename: "LINK", klass: { vi: "Cầu nối khách hàng", en: "Client link" },
       meaning: { vi: "Cây cầu kết nối: đưa khách hàng đến với studio một cách nhẹ nhàng, rõ ràng.", en: "A connecting bridge: bringing clients and the studio together, calmly and clearly." },
     },
     "Minh Duc": {
-      img: vanGoghImg, title: "Café Terrace at Night", artist: "Vincent van Gogh", year: "1888", focus: "45% 50%",
+      look: { hair: "long", gear: "monocle", skin: "#8D5A3B" },
+      codename: "BEACON", klass: { vi: "Ngọn đèn dẫn lối", en: "Beacon" },
       meaning: { vi: "Ánh đèn chào đón: lắng nghe khách hàng và soi rõ con đường triển khai.", en: "A welcoming light: listening to clients and lighting up the road ahead." },
     },
   };
@@ -184,7 +185,7 @@ export default function Team({ lang }: TeamProps) {
         >
           {teamList.filter((m) => group.names.includes(m.name)).map((member) => {
             const idx = teamList.indexOf(member);
-            const art = ART[member.name];
+            const art = CHAR[member.name];
             const colorHex = member.colorTag?.hex || "#FF6A00";
 
             return (
@@ -231,30 +232,22 @@ export default function Team({ lang }: TeamProps) {
                     className={`cyber-art relative ${group.wide ? "aspect-[16/10]" : "aspect-[4/5]"} w-full border border-line rounded-lg overflow-hidden mb-4 transition-all duration-500 bg-canvas`}
                     style={{ "--neon": colorHex } as React.CSSProperties}
                   >
-                    <img
-                      src={art.img}
-                      alt={`${art.title} - ${art.artist}`}
-                      loading="lazy"
-                      decoding="async"
-                      style={{ objectPosition: art.focus }}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    <CyberAvatar
+                      look={art.look}
+                      neon={colorHex}
+                      wide={group.wide}
+                      title={`${art.codename}: ${lang === "vi" ? "nhân vật cyberpunk minh họa cho" : "cyberpunk character for"} ${member.name}`}
+                      className="w-full h-full block group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="cyber-tint absolute inset-0 pointer-events-none" />
-                    <img
-                      src={art.img}
-                      alt=""
-                      aria-hidden="true"
-                      loading="lazy"
-                      decoding="async"
-                      style={{ objectPosition: art.focus }}
-                      className="cyber-glitch absolute inset-0 w-full h-full object-cover pointer-events-none"
-                    />
+                    <span aria-hidden="true" className="cyber-glitch absolute inset-0 pointer-events-none">
+                      <CyberAvatar look={art.look} neon={colorHex} wide={group.wide} title="" className="w-full h-full block" />
+                    </span>
                     <figcaption className="absolute inset-x-0 bottom-0 z-[3] p-3 pt-10 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
-                      <span className="block font-display text-xs font-semibold text-white leading-tight line-clamp-2 italic">
-                        {art.title}
+                      <span className="block font-mono text-sm font-bold tracking-[0.2em] text-white leading-tight">
+                        {art.codename}
                       </span>
-                      <span className="block font-mono text-xs uppercase tracking-wider text-white/60 mt-1">
-                        {art.artist} · {art.year}
+                      <span className="block font-mono text-xs uppercase tracking-wider text-white/70 mt-1">
+                        {art.klass[lang]}
                       </span>
                     </figcaption>
                   </figure>
@@ -379,15 +372,14 @@ export default function Team({ lang }: TeamProps) {
                     className="cyber-art relative w-16 h-20 rounded-lg overflow-hidden border border-brand-orange/40 shrink-0 bg-canvas"
                     style={{ "--neon": selectedMember.colorTag?.hex || "#FF6A00" } as React.CSSProperties}
                   >
-                    <div className="cyber-tint absolute inset-0 z-[1] pointer-events-none" />
-                    <img
-                      src={ART[selectedMember.name]?.img}
-                      alt={ART[selectedMember.name] ? `${ART[selectedMember.name].title} - ${ART[selectedMember.name].artist}` : selectedMember.name}
-                      loading="lazy"
-                      decoding="async"
-                      style={{ objectPosition: ART[selectedMember.name]?.focus }}
-                      className="w-full h-full object-cover"
-                    />
+                    {CHAR[selectedMember.name] && (
+                      <CyberAvatar
+                        look={CHAR[selectedMember.name].look}
+                        neon={selectedMember.colorTag?.hex || "#FF6A00"}
+                        title={CHAR[selectedMember.name].codename}
+                        className="w-full h-full block"
+                      />
+                    )}
                   </div>
                   <div>
                     <h3 className="font-display font-bold text-xl text-ink">
@@ -402,13 +394,13 @@ export default function Team({ lang }: TeamProps) {
                   </div>
                 </div>
 
-                {ART[selectedMember.name] && (
+                {CHAR[selectedMember.name] && (
                   <blockquote className="mb-5 pl-3 border-l-2 border-brand-orange/60">
                     <p className="font-sans text-xs md:text-sm text-ink italic leading-relaxed">
-                      {ART[selectedMember.name].meaning[lang]}
+                      {CHAR[selectedMember.name].meaning[lang]}
                     </p>
                     <cite className="block not-italic font-mono text-xs uppercase tracking-wider text-ink-muted mt-1.5">
-                      {ART[selectedMember.name].title} · {ART[selectedMember.name].artist}, {ART[selectedMember.name].year}
+                      {CHAR[selectedMember.name].codename} · {CHAR[selectedMember.name].klass[lang]}
                     </cite>
                   </blockquote>
                 )}
