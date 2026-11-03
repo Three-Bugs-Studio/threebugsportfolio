@@ -238,7 +238,7 @@ export default function Footer({ lang }: FooterProps) {
 
               <button
                 onClick={handleToggleHum}
-                className={`bg-surface/50 border ${isHumOn ? 'border-brand-orange/30 text-ink' : 'border-line text-ink-muted'} px-4 py-2.5 rounded-sm flex items-center gap-3 hover:bg-[#1a1a1a]/50 transition-all duration-300 interactive select-none cursor-pointer focus-terminal outline-none active:scale-[0.98]`}
+                className={`bg-surface/50 border ${isHumOn ? 'border-brand-orange/30 text-ink' : 'border-line text-ink-muted'} px-4 py-2.5 rounded-sm flex items-center gap-3 hover:bg-line/50 transition-all duration-300 interactive select-none cursor-pointer focus-terminal outline-none active:scale-[0.98]`}
                 id="footer-ambient-hum-toggle"
               >
                 <span className={`relative inline-flex rounded-full h-1.5 w-1.5 ${isHumOn ? 'bg-brand-orange shadow-[0_0_6px_rgba(255,106,0,0.8)]' : 'bg-[#404040]'}`} />
@@ -547,7 +547,7 @@ export default function Footer({ lang }: FooterProps) {
               <div className="mt-8 pt-4 border-t border-line flex justify-end">
                 <button
                   onClick={() => setIsTermsOpen(false)}
-                  className="bg-[#1C1C1E] border border-line hover:border-brand-orange/30 text-ink font-mono text-xs uppercase tracking-widest px-5 py-2.5 rounded-sm transition-all duration-300 interactive cursor-pointer"
+                  className="bg-surface border border-line hover:border-brand-orange/30 text-ink font-mono text-xs uppercase tracking-widest px-5 py-2.5 rounded-sm transition-all duration-300 interactive cursor-pointer"
                 >
                   {lang === "vi" ? "ĐÓNG LẠI" : "CLOSE"}
                 </button>
