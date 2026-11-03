@@ -121,7 +121,7 @@ export default function Team({ lang }: TeamProps) {
   };
 
   return (
-    <section id="team" className="py-24 md:py-32 bg-[#090909] border-t border-white/5 relative overflow-hidden">
+    <section id="team" className="py-24 md:py-32 bg-canvas border-t border-line relative overflow-hidden">
       {/* Background Tech Grid */}
       <div className="absolute inset-0 swiss-grid opacity-5 pointer-events-none" />
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-brand-orange/5 rounded-full blur-[140px] pointer-events-none" />
@@ -132,18 +132,18 @@ export default function Team({ lang }: TeamProps) {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-orange font-semibold flex items-center gap-2">
+              <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-ink font-semibold flex items-center gap-2">
                 <UsersIcon size={14} className="w-3.5 h-3.5" />
                 {t.teamLabel}
               </span>
               <span className="h-[1px] w-12 bg-brand-orange/40" />
             </div>
-            <h2 className="font-display font-bold text-3xl md:text-5xl tracking-tight text-[#F5F5F3] uppercase leading-tight">
+            <h2 className="font-display font-bold text-3xl md:text-5xl tracking-tight text-ink uppercase leading-tight">
               {lang === "vi" ? "Đội Ngũ Three Bugs Studio" : "The Three Bugs Studio Team"}
             </h2>
           </div>
 
-          <p className="font-sans text-xs md:text-sm text-[#8E8E93] max-w-md font-light leading-relaxed">
+          <p className="font-sans text-xs md:text-sm text-ink-muted max-w-md font-light leading-relaxed">
             {lang === "vi"
               ? "5 kỹ sư & thiết kế tại TP.HCM với kinh nghiệm thực chiến dự án doanh nghiệp (RMIT Showcase), cùng 2 chuyên viên Client Relations đồng hành với khách hàng từ tư vấn đến bảo trì."
               : "5 in-house engineers & designers in Ho Chi Minh City with enterprise showcase experience (RMIT Vietnam), plus 2 Client Relations leads who guide you from first call to aftercare."}
@@ -151,16 +151,16 @@ export default function Team({ lang }: TeamProps) {
         </div>
 
         {/* Studio Technical Guarantee Badges */}
-        <div className="flex flex-wrap items-center gap-3 mb-10 pb-6 border-b border-white/10">
-          <div className="flex items-center gap-2 bg-[#111113] border border-white/10 px-3.5 py-1.5 rounded-sm font-mono text-[11px] text-[#F5F5F3]">
-            <CheckDoubleIcon size={12} className="w-3 h-3 text-brand-orange" />
+        <div className="flex flex-wrap items-center gap-3 mb-10 pb-6 border-b border-line">
+          <div className="flex items-center gap-2 bg-surface border border-line px-3.5 py-1.5 rounded-sm font-mono text-xs text-ink">
+            <CheckDoubleIcon size={12} className="w-3 h-3 text-brand-ink" />
             <span>100% IN-HOUSE ENGINEERS</span>
           </div>
-          <div className="flex items-center gap-2 bg-[#111113] border border-cyan-500/30 px-3.5 py-1.5 rounded-sm font-mono text-[11px] text-cyan-300">
+          <div className="flex items-center gap-2 bg-surface border border-cyan-500/30 px-3.5 py-1.5 rounded-sm font-mono text-xs text-cyan-300">
             <CheckDoubleIcon size={12} className="w-3 h-3 text-cyan-400" />
             <span>RMIT ENTERPRISE SHOWCASE CREDENTIALS</span>
           </div>
-          <div className="flex items-center gap-2 bg-[#111113] border border-purple-500/30 px-3.5 py-1.5 rounded-sm font-mono text-[11px] text-purple-300">
+          <div className="flex items-center gap-2 bg-surface border border-purple-500/30 px-3.5 py-1.5 rounded-sm font-mono text-xs text-purple-300">
             <CheckDoubleIcon size={12} className="w-3 h-3 text-purple-400" />
             <span>STUDIO FINANCIAL TRANSPARENCY</span>
           </div>
@@ -170,10 +170,10 @@ export default function Team({ lang }: TeamProps) {
         <div className="team-focus space-y-12">
         {rows.map((group, groupIdx) => (
         <div key={group.key}>
-          <div className="flex items-center gap-3 mb-5 font-mono text-[10px] md:text-xs uppercase tracking-[0.3em]">
-            <span className="text-brand-orange font-semibold">// 0{groupIdx + 1}</span>
-            <span className="text-[#F5F5F3]">{lang === "vi" ? group.vi : group.en}</span>
-            <span className="h-[1px] flex-1 bg-white/10" />
+          <div className="flex items-center gap-3 mb-5 font-mono text-xs uppercase tracking-[0.3em]">
+            <span className="text-brand-ink font-semibold">// 0{groupIdx + 1}</span>
+            <span className="text-ink">{lang === "vi" ? group.vi : group.en}</span>
+            <span className="h-[1px] flex-1 bg-line" />
           </div>
         <motion.div
           className={`grid grid-cols-1 gap-6 ${group.wide ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3"}`}
@@ -201,12 +201,12 @@ export default function Team({ lang }: TeamProps) {
                     setSelectedMember(member);
                   }
                 }}
-                className="team-card-item group relative bg-[#111113]/90 border border-white/10 hover:border-brand-orange/50 p-4 rounded-xl transition-all duration-500 cursor-pointer flex flex-col justify-between overflow-hidden shadow-xl hover:shadow-[0_0_25px_rgba(255,106,0,0.15)] hover:-translate-y-1.5 interactive focus-terminal outline-none"
+                className="team-card-item group relative bg-surface/90 border border-line hover:border-brand-orange/50 p-4 rounded-xl transition-all duration-500 cursor-pointer flex flex-col justify-between overflow-hidden shadow-xl hover:shadow-[0_0_25px_rgba(255,106,0,0.15)] hover:-translate-y-1.5 interactive focus-terminal outline-none"
               >
                 {/* Top Member Index & Studio Label / Highlight Badge */}
                 <div className="flex items-center justify-between gap-2 mb-3">
                   <span 
-                    className="font-mono text-[9px] font-bold tracking-widest uppercase px-2 py-0.5 rounded-sm border shrink-0"
+                    className="font-mono text-xs font-bold tracking-widest uppercase px-2 py-0.5 rounded-sm border shrink-0"
                     style={{ 
                       color: colorHex, 
                       backgroundColor: `${colorHex}15`, 
@@ -217,7 +217,7 @@ export default function Team({ lang }: TeamProps) {
                   </span>
                   {member.highlightBadge ? (
                     <span 
-                      className="font-mono text-[8px] font-bold px-1.5 py-0.5 rounded border tracking-wider truncate"
+                      className="font-mono text-xs font-bold px-1.5 py-0.5 rounded border tracking-wider truncate"
                       style={{ 
                         color: colorHex, 
                         backgroundColor: `${colorHex}15`, 
@@ -227,7 +227,7 @@ export default function Team({ lang }: TeamProps) {
                       {member.highlightBadge}
                     </span>
                   ) : (
-                    <span className="font-mono text-[9px] text-[#8E8E93] tracking-wider uppercase">
+                    <span className="font-mono text-xs text-ink-muted tracking-wider uppercase">
                       THREE BUGS
                     </span>
                   )}
@@ -236,7 +236,7 @@ export default function Team({ lang }: TeamProps) {
                 {/* Role Artwork: neon duotone in the member's colour with scanlines, glitches on hover (styles in index.css) */}
                 {art && (
                   <figure
-                    className={`cyber-art relative ${group.wide ? "aspect-[16/10]" : "aspect-[4/5]"} w-full border border-white/10 rounded-lg overflow-hidden mb-4 transition-all duration-500 bg-[#080808]`}
+                    className={`cyber-art relative ${group.wide ? "aspect-[16/10]" : "aspect-[4/5]"} w-full border border-line rounded-lg overflow-hidden mb-4 transition-all duration-500 bg-canvas`}
                     style={{ "--neon": colorHex } as React.CSSProperties}
                   >
                     <img
@@ -258,10 +258,10 @@ export default function Team({ lang }: TeamProps) {
                       className="cyber-glitch absolute inset-0 w-full h-full object-cover pointer-events-none"
                     />
                     <figcaption className="absolute inset-x-0 bottom-0 z-[3] p-3 pt-10 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
-                      <span className="block font-display text-[11px] font-semibold text-white leading-tight line-clamp-2 italic">
+                      <span className="block font-display text-xs font-semibold text-white leading-tight line-clamp-2 italic">
                         {art.title}
                       </span>
-                      <span className="block font-mono text-[8px] uppercase tracking-wider text-white/60 mt-1">
+                      <span className="block font-mono text-xs uppercase tracking-wider text-white/60 mt-1">
                         {art.artist} · {art.year}
                       </span>
                     </figcaption>
@@ -270,23 +270,23 @@ export default function Team({ lang }: TeamProps) {
 
                 {/* Name & Role */}
                 <div className="space-y-1 mb-3">
-                  <h3 className="font-display font-bold text-base md:text-lg text-[#F5F5F3] group-hover:text-brand-orange transition-colors leading-snug">
+                  <h3 className="font-display font-bold text-base md:text-lg text-ink group-hover:text-brand-ink transition-colors leading-snug">
                     {member.name}
                   </h3>
-                  <p className="font-sans text-xs text-brand-orange font-medium">
+                  <p className="font-sans text-xs text-brand-ink font-medium">
                     {member.role}
                   </p>
-                  <span className="font-mono text-[9px] text-[#8E8E93] uppercase tracking-wider block mt-1 line-clamp-1">
+                  <span className="font-mono text-xs text-ink-muted uppercase tracking-wider block mt-1 line-clamp-1">
                     {member.diagramRole}
                   </span>
                 </div>
 
                 {/* Specialty Tags */}
-                <div className="flex flex-wrap gap-1 pt-2 border-t border-white/5">
+                <div className="flex flex-wrap gap-1 pt-2 border-t border-line">
                   {(member.specialties || []).slice(0, 2).map((skill) => (
                     <span
                       key={skill}
-                      className="font-mono text-[9px] bg-white/5 border border-white/10 px-2 py-0.5 rounded-sm text-[#8E8E93] group-hover:text-[#F5F5F3] transition-colors"
+                      className="font-mono text-xs bg-line border border-line px-2 py-0.5 rounded-sm text-ink-muted group-hover:text-ink transition-colors"
                     >
                       {skill}
                     </span>
@@ -295,7 +295,7 @@ export default function Team({ lang }: TeamProps) {
 
                 {/* Bottom Verification Indicator */}
                 {member.showcaseUrl && (
-                  <div className="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[9px] font-mono text-cyan-400 group-hover:text-cyan-300">
+                  <div className="mt-2.5 pt-2 border-t border-line flex items-center justify-between text-xs font-mono text-cyan-400 group-hover:text-cyan-300">
                     <span className="flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-sm bg-cyan-400" />
                       RMIT Showcase
@@ -304,7 +304,7 @@ export default function Team({ lang }: TeamProps) {
                   </div>
                 )}
                 {member.name === "Thu Tran" && (
-                  <div className="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[9px] font-mono text-purple-400 group-hover:text-purple-300">
+                  <div className="mt-2.5 pt-2 border-t border-line flex items-center justify-between text-xs font-mono text-purple-400 group-hover:text-purple-300">
                     <span className="flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-sm bg-purple-400" />
                       {lang === "vi" ? "Sổ Sách & Thu Chi" : "Financial Ops"}
@@ -321,9 +321,9 @@ export default function Team({ lang }: TeamProps) {
         </div>
 
         {/* Team CTA Box */}
-        <div className="mt-16 bg-[#111113]/90 border border-white/10 p-6 md:p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
+        <div className="mt-16 bg-surface/90 border border-line p-6 md:p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
           <div className="flex items-center gap-4 relative z-10">
-            <div className="receptionist-anim-icon-container w-14 h-14 rounded-xl bg-[#080808] border border-white/10 p-1.5 shrink-0 flex items-center justify-center">
+            <div className="receptionist-anim-icon-container w-14 h-14 rounded-xl bg-canvas border border-line p-1.5 shrink-0 flex items-center justify-center">
               <img 
                 src={receptionistDeskGif} 
                 alt="Receptionist Desk" 
@@ -335,10 +335,10 @@ export default function Team({ lang }: TeamProps) {
               />
             </div>
             <div>
-              <h3 className="font-display font-bold text-lg md:text-xl text-[#F5F5F3] leading-snug">
+              <h3 className="font-display font-bold text-lg md:text-xl text-ink leading-snug">
                 {lang === "vi" ? "Sẵn Sàng Đồng Hành Cùng Dự Án Của Bạn" : "Ready to Onboard Your Next Project"}
               </h3>
-              <p className="font-sans text-xs text-[#8E8E93] font-light mt-1">
+              <p className="font-sans text-xs text-ink-muted font-light mt-1">
                 {lang === "vi" ? "Trao đổi kỹ thuật 1-1 trực tiếp với lập trình viên phụ trách." : "Direct 1-on-1 technical consultation with lead engineers."}
               </p>
             </div>
@@ -368,7 +368,7 @@ export default function Team({ lang }: TeamProps) {
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.95, y: 20 }}
                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-[#111113] border border-white/15 rounded-xl p-6 md:p-8 max-w-lg w-full relative overflow-hidden shadow-2xl"
+                className="bg-surface border border-line rounded-xl p-6 md:p-8 max-w-lg w-full relative overflow-hidden shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Top Accent Orange Border Line */}
@@ -376,7 +376,7 @@ export default function Team({ lang }: TeamProps) {
 
                 <button
                   onClick={() => setSelectedMember(null)}
-                  className="absolute top-4 right-4 text-[#8E8E93] hover:text-white transition-colors p-1.5 focus-terminal rounded-sm outline-none"
+                  className="absolute top-4 right-4 text-ink-muted hover:text-ink transition-colors p-1.5 focus-terminal rounded-sm outline-none"
                   aria-label="Close detail modal"
                 >
                   <CloseIcon size={20} className="w-5 h-5" />
@@ -384,7 +384,7 @@ export default function Team({ lang }: TeamProps) {
 
                 <div className="flex items-center gap-4 mb-6">
                   <div
-                    className="cyber-art relative w-16 h-20 rounded-lg overflow-hidden border border-brand-orange/40 shrink-0 bg-[#080808]"
+                    className="cyber-art relative w-16 h-20 rounded-lg overflow-hidden border border-brand-orange/40 shrink-0 bg-canvas"
                     style={{ "--neon": selectedMember.colorTag?.hex || "#FF6A00" } as React.CSSProperties}
                   >
                     <div className="cyber-tint absolute inset-0 z-[1] pointer-events-none" />
@@ -398,13 +398,13 @@ export default function Team({ lang }: TeamProps) {
                     />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-xl text-[#F5F5F3]">
+                    <h3 className="font-display font-bold text-xl text-ink">
                       {selectedMember.name}
                     </h3>
-                    <p className="font-sans text-xs text-brand-orange font-medium mt-0.5">
+                    <p className="font-sans text-xs text-brand-ink font-medium mt-0.5">
                       {selectedMember.role}
                     </p>
-                    <span className="font-mono text-[9px] text-[#8E8E93] uppercase tracking-wider block mt-1">
+                    <span className="font-mono text-xs text-ink-muted uppercase tracking-wider block mt-1">
                       {selectedMember.diagramRole}
                     </span>
                   </div>
@@ -412,16 +412,16 @@ export default function Team({ lang }: TeamProps) {
 
                 {ART[selectedMember.name] && (
                   <blockquote className="mb-5 pl-3 border-l-2 border-brand-orange/60">
-                    <p className="font-sans text-xs md:text-sm text-[#F5F5F3] italic leading-relaxed">
+                    <p className="font-sans text-xs md:text-sm text-ink italic leading-relaxed">
                       {ART[selectedMember.name].meaning[lang]}
                     </p>
-                    <cite className="block not-italic font-mono text-[9px] uppercase tracking-wider text-[#8E8E93] mt-1.5">
+                    <cite className="block not-italic font-mono text-xs uppercase tracking-wider text-ink-muted mt-1.5">
                       {ART[selectedMember.name].title} · {ART[selectedMember.name].artist}, {ART[selectedMember.name].year}
                     </cite>
                   </blockquote>
                 )}
 
-                <p className="font-sans text-xs md:text-sm text-[#8E8E93] leading-relaxed mb-6 font-light">
+                <p className="font-sans text-xs md:text-sm text-ink-muted leading-relaxed mb-6 font-light">
                   {selectedMember.bio}
                 </p>
 
@@ -429,7 +429,7 @@ export default function Team({ lang }: TeamProps) {
                 {selectedMember.showcaseUrl && (
                   <div className="mb-6 p-3.5 rounded-lg bg-cyan-950/20 border border-cyan-500/30">
                     <div className="flex items-center justify-between gap-2 mb-1.5">
-                      <span className="font-mono text-[10px] font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                      <span className="font-mono text-xs font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-sm bg-cyan-400" />
                         {selectedMember.showcaseLabel || "RMIT Vietnam Enterprise Showcase"}
                       </span>
@@ -437,13 +437,13 @@ export default function Team({ lang }: TeamProps) {
                         href={selectedMember.showcaseUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1 font-mono text-[10px] text-cyan-300 hover:text-white bg-cyan-500/20 hover:bg-cyan-500/40 px-2 py-0.5 rounded border border-cyan-500/40 transition-colors"
+                        className="inline-flex items-center gap-1 font-mono text-xs text-cyan-300 hover:text-ink bg-cyan-500/20 hover:bg-cyan-500/40 px-2 py-0.5 rounded border border-cyan-500/40 transition-colors"
                       >
                         <span>{lang === "vi" ? "Xem Dự Án" : "View Showcase"}</span>
                         <ArrowUpRightIcon size={10} className="w-2.5 h-2.5" />
                       </a>
                     </div>
-                    <p className="font-sans text-xs text-[#A0A0A5] leading-relaxed">
+                    <p className="font-sans text-xs text-ink-muted leading-relaxed">
                       {lang === "vi"
                         ? "Dự án Luvcraft (Nights Watch): Nền tảng AI & Fandom Intelligence quy mô doanh nghiệp thực tế phối hợp cùng Project Pluto và RMIT Vietnam (FastAPI, RabbitMQ, Celery, PostgreSQL, Next.js)."
                         : "Project Luvcraft (Nights Watch): Enterprise-grade AI & Fandom Intelligence platform built with Project Pluto & RMIT Vietnam (FastAPI, RabbitMQ, Celery, PostgreSQL, Next.js)."}
@@ -455,15 +455,15 @@ export default function Team({ lang }: TeamProps) {
                 {selectedMember.name === "Thu Tran" && (
                   <div className="mb-6 p-3.5 rounded-lg bg-purple-950/20 border border-purple-500/30">
                     <div className="flex items-center justify-between gap-2 mb-1.5">
-                      <span className="font-mono text-[10px] font-bold text-purple-400 uppercase tracking-wider flex items-center gap-1.5">
+                      <span className="font-mono text-xs font-bold text-purple-400 uppercase tracking-wider flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-sm bg-purple-400" />
                         {lang === "vi" ? "Quản Lý Tài Chính & Sổ Sách Studio" : "Studio Financial Operations"}
                       </span>
-                      <span className="font-mono text-[9px] text-purple-300/80 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
+                      <span className="font-mono text-xs text-purple-300/80 bg-purple-500/10 px-2 py-0.5 rounded border border-purple-500/20">
                         {lang === "vi" ? "Minh Bạch 100%" : "100% Transparent"}
                       </span>
                     </div>
-                    <p className="font-sans text-xs text-[#A0A0A5] leading-relaxed">
+                    <p className="font-sans text-xs text-ink-muted leading-relaxed">
                       {lang === "vi"
                         ? "Phụ trách kiểm soát ngân sách hợp đồng, tiến độ giải ngân theo từng cột mốc (milestones), báo cáo sổ sách thu chi rõ ràng nhằm đảm bảo an toàn tài chính tuyệt đối cho khách hàng."
                         : "Oversees studio contract budgets, milestone-based disbursements, and transparent financial bookkeeping to ensure zero financial ambiguity for clients."}
@@ -473,14 +473,14 @@ export default function Team({ lang }: TeamProps) {
 
                 {/* Technical Stack / Specialties Tags */}
                 <div className="mb-6">
-                  <span className="font-mono text-[9px] uppercase tracking-widest text-brand-orange block mb-2 font-bold">
+                  <span className="font-mono text-xs uppercase tracking-widest text-brand-ink block mb-2 font-bold">
                     SPECIALIZED SKILLS & STACK
                   </span>
                   <div className="flex flex-wrap gap-1.5">
                     {(selectedMember.specialties || []).map((tech) => (
                       <span
                         key={tech}
-                        className="font-mono text-[10px] bg-[#1A1A1E] border border-white/10 px-2.5 py-1 rounded-sm text-[#F5F5F3]"
+                        className="font-mono text-xs bg-[#1A1A1E] border border-line px-2.5 py-1 rounded-sm text-ink"
                       >
                         {tech}
                       </span>
@@ -489,8 +489,8 @@ export default function Team({ lang }: TeamProps) {
                 </div>
 
                 {/* Modal Footer Link */}
-                <div className="pt-4 border-t border-white/5 flex justify-between items-center gap-2">
-                  <span className="font-mono text-[10px] text-[#8E8E93]">
+                <div className="pt-4 border-t border-line flex justify-between items-center gap-2">
+                  <span className="font-mono text-xs text-ink-muted">
                     THREE BUGS STUDIO
                   </span>
                   <div className="flex items-center gap-2">
@@ -499,7 +499,7 @@ export default function Team({ lang }: TeamProps) {
                         href={selectedMember.showcaseUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="font-mono text-xs text-cyan-400 hover:text-white border border-cyan-500/40 hover:bg-cyan-500/20 px-3 py-2 rounded-sm font-bold flex items-center gap-1.5 transition-colors"
+                        className="font-mono text-xs text-cyan-400 hover:text-ink border border-cyan-500/40 hover:bg-cyan-500/20 px-3 py-2 rounded-sm font-bold flex items-center gap-1.5 transition-colors"
                       >
                         <ArrowUpRightIcon size={12} className="w-3.5 h-3.5" />
                         <span>RMIT SHOWCASE</span>
