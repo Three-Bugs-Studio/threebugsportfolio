@@ -93,7 +93,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                    <span className="w-2 h-2  bg-emerald-400" />
                     <span className="font-display font-bold text-xs tracking-tight">
                       Hoàng Đỗ
                     </span>
@@ -108,7 +108,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
                     href="https://zalo.me/0392996307"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] text-white py-2 px-3 rounded-sm font-mono text-xs font-bold shadow-[0_0_12px_rgba(0,104,255,0.4)] hover:shadow-[0_0_18px_rgba(0,104,255,0.6)] transition-all active:scale-95"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] text-white py-2 px-3 rounded-sm font-mono text-xs font-bold   transition-all active:scale-95"
                   >
                     <SiZalo className="w-3.5 h-3.5 shrink-0" />
                     <span>Zalo Chat</span>
@@ -138,7 +138,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
               >
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                    <span className="w-2 h-2  bg-emerald-400" />
                     <span className="font-display font-bold text-xs tracking-tight">
                       Minh Đức
                     </span>
@@ -153,7 +153,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
                     href="https://zalo.me/0867474204"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] text-white py-2 px-3 rounded-sm font-mono text-xs font-bold shadow-[0_0_12px_rgba(0,104,255,0.4)] hover:shadow-[0_0_18px_rgba(0,104,255,0.6)] transition-all active:scale-95"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] text-white py-2 px-3 rounded-sm font-mono text-xs font-bold   transition-all active:scale-95"
                   >
                     <SiZalo className="w-3.5 h-3.5 shrink-0" />
                     <span>Zalo Chat</span>
@@ -183,7 +183,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
                 }`}
               >
                 <div className="flex items-center gap-2.5">
-                  <div className="w-6 h-6 rounded-full bg-line text-ink flex items-center justify-center text-xs shrink-0">
+                  <div className="w-6 h-6  bg-line text-ink flex items-center justify-center text-xs shrink-0">
                     <MailIcon size={12} className="w-3 h-3 text-slate-400" />
                   </div>
                   <div>
@@ -199,7 +199,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
             {/* Jump to Contact Form CTA */}
             <button
               onClick={handleScrollToContact}
-              className="mt-3.5 w-full bg-brand-orange hover:bg-brand-orange/90 text-[#090909] font-mono text-xs font-bold uppercase tracking-wider py-2.5 px-4 rounded-sm flex items-center justify-center gap-2 transition-transform active:scale-95 cursor-pointer shadow-lg shadow-brand-orange/10"
+              className="btn-stacked mt-3.5 w-full bg-brand-orange hover:bg-brand-orange/90 text-[#090909] font-mono text-xs font-bold uppercase tracking-wider py-2.5 px-4 rounded-sm flex items-center justify-center gap-2 transition-transform active:scale-95 cursor-pointer shadow-lg shadow-brand-orange/10"
             >
               <span>{lang === "vi" ? "Điền Form Yêu Cầu Chi Tiết" : "Fill Consultation Form"}</span>
               <ArrowRightIcon size={12} className="w-3 h-3" />
@@ -217,7 +217,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
         aria-expanded={isOpen}
         className="relative flex items-center gap-2.5 bg-brand-orange hover:bg-brand-orange/95 text-[#090909] font-mono text-xs font-bold uppercase tracking-wider px-4 py-3 rounded-sm shadow-2xl shadow-brand-orange/20 cursor-pointer interactive border-2 border-[#090909]/40 focus-terminal outline-none"
       >
-        <span className="h-2 w-2 rounded-full bg-white shadow-[0_0_6px_rgba(255,255,255,0.8)] shrink-0" />
+        <span className="h-2 w-2  bg-white  shrink-0" />
         {isOpen ? (
           <>
             <CloseIcon size={16} className="w-4 h-4" />
