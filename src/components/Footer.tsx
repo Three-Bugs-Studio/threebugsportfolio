@@ -198,20 +198,7 @@ export default function Footer({ lang }: FooterProps) {
           {/* Column 1: Brand & Logo Splash (Grid-Span 6) */}
           <div className="lg:col-span-6 flex flex-col justify-between items-start">
             <div className="flex items-center gap-3 mb-6" id="footer-logo-brand">
-              <div className="flex gap-1.5 mr-1" id="footer-logo-dots-indicator">
-                <div className="w-2 h-2 rounded-full bg-brand-orange animate-pulse" />
-                <div className="w-2 h-2 rounded-full bg-[#404040]" />
-                <div className="w-2 h-2 rounded-full bg-[#404040]" />
-              </div>
-              <Logo size="sm" showText={false} variant="light" />
-              <div className="text-left leading-none">
-                <span className="font-display font-bold tracking-widest text-sm uppercase text-ink">
-                  THREE BUGS
-                </span>
-                <span className="block font-mono text-xs tracking-[0.35em] uppercase text-brand-ink font-medium mt-0.5">
-                  STUDIO
-                </span>
-              </div>
+              <Logo wordmark className="h-10 md:h-12" />
             </div>
 
             <p className="font-display font-light text-xl text-ink-muted max-w-sm leading-relaxed mb-8">
@@ -230,7 +217,7 @@ export default function Footer({ lang }: FooterProps) {
             {/* Dynamic UTC Engine Clock & Ambient Hum Toggle */}
             <div className="flex flex-wrap gap-3">
               <div className="bg-surface/50 border border-line px-4 py-2.5 rounded-sm flex items-center gap-3 select-none">
-                <span className="w-1.5 h-1.5 bg-brand-orange rounded-full animate-pulse" />
+                <span className="w-1.5 h-1.5 bg-brand-orange  " />
                 <span className="font-mono text-xs tracking-widest text-ink-muted uppercase">
                   {t.footerClock} <span className="text-ink ml-1">{utcTime}</span>
                 </span>
@@ -241,7 +228,7 @@ export default function Footer({ lang }: FooterProps) {
                 className={`bg-surface/50 border ${isHumOn ? 'border-brand-orange/30 text-ink' : 'border-line text-ink-muted'} px-4 py-2.5 rounded-sm flex items-center gap-3 hover:bg-line/50 transition-all duration-300 interactive select-none cursor-pointer focus-terminal outline-none active:scale-[0.98]`}
                 id="footer-ambient-hum-toggle"
               >
-                <span className={`relative inline-flex rounded-full h-1.5 w-1.5 ${isHumOn ? 'bg-brand-orange shadow-[0_0_6px_rgba(255,106,0,0.8)]' : 'bg-[#404040]'}`} />
+                <span className={`relative inline-flex  h-1.5 w-1.5 ${isHumOn ? 'bg-brand-orange ' : 'bg-[#404040]'}`} />
                 <span className="font-mono text-xs tracking-widest uppercase">
                   {lang === "vi" ? "ÂM NỀN:" : "AMBIENT HUM:"} <span className={isHumOn ? "text-brand-ink font-medium" : "text-ink-muted"}>{isHumOn ? (lang === "vi" ? "BẬT" : "ON") : (lang === "vi" ? "TẤT" : "OFF")}</span>
                 </span>
@@ -419,7 +406,7 @@ export default function Footer({ lang }: FooterProps) {
 
         {/* Keyboard Shortcuts Accessibility Legend */}
         <div className="border-t border-line pt-6 pb-2 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs tracking-widest text-ink-muted">
-          <span className="text-brand-ink select-none">// {lang === "vi" ? "PHÍM TẮT HỆ THỐNG:" : "SYSTEM SHORTCUTS:"}</span>
+          <span className="text-brand-ink select-none">{lang === "vi" ? "PHÍM TẮT HỆ THỐNG:" : "SYSTEM SHORTCUTS:"}</span>
           <div className="flex flex-wrap gap-x-4 gap-y-2 select-none">
             <span className="flex items-center gap-1.5">
               <kbd className="bg-surface border border-line px-1.5 py-0.5 rounded text-ink text-xs font-mono shadow-[0_1px_2px_rgba(0,0,0,0.5)]">M</kbd>
@@ -547,7 +534,7 @@ export default function Footer({ lang }: FooterProps) {
               <div className="mt-8 pt-4 border-t border-line flex justify-end">
                 <button
                   onClick={() => setIsTermsOpen(false)}
-                  className="bg-surface border border-line hover:border-brand-orange/30 text-ink font-mono text-xs uppercase tracking-widest px-5 py-2.5 rounded-sm transition-all duration-300 interactive cursor-pointer"
+                  className="btn-stacked bg-surface border border-line hover:border-brand-orange/30 text-ink font-mono text-xs uppercase tracking-widest px-5 py-2.5 rounded-sm transition-all duration-300 interactive cursor-pointer"
                 >
                   {lang === "vi" ? "ĐÓNG LẠI" : "CLOSE"}
                 </button>
