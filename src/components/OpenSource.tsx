@@ -163,7 +163,7 @@ function ProductCard({ product, index, lang }: { product: Product; index: number
 export default function OpenSource({ lang }: { lang: "vi" | "en" }) {
   const vi = lang === "vi";
   return (
-    <section className="py-20 md:py-24 bg-canvas">
+    <section className="py-16 md:py-20 bg-canvas">
       <div className="max-w-7xl mx-auto px-4 md:px-12">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
           <div>
