@@ -22,8 +22,8 @@ const OUT = "#4a2b2b";
 const ln = { stroke: OUT, strokeWidth: 3.5, strokeLinejoin: "round" as const, strokeLinecap: "round" as const };
 const HEAD = "M62 92 C62 62 78 44 100 44 C122 44 138 62 138 92 L138 112 C138 136 122 150 100 150 C78 150 62 136 62 112 Z";
 
-/** A friendly line-art portrait in a gradient circle, tinted with the member's colour. */
-export default function TeamAvatar({ look, color, title, className = "" }: { look: AvatarLook; color: string; title: string; className?: string }) {
+/** A friendly line-art portrait in a gradient circle (or square, for ID-card photos), tinted with the member's colour. */
+export default function TeamAvatar({ look, color, title, className = "", square = false }: { look: AvatarLook; color: string; title: string; className?: string; square?: boolean }) {
   const id = useId().replace(/:/g, "");
   const skinShade = shade(look.skin, -0.12);
   const hair = look.hairColor;
@@ -37,11 +37,11 @@ export default function TeamAvatar({ look, color, title, className = "" }: { loo
           <stop offset="1" stopColor={shade(color, 0.2)} />
         </linearGradient>
         <clipPath id={`c${id}`}>
-          <circle cx="100" cy="100" r="100" />
+          {square ? <rect width="200" height="200" /> : <circle cx="100" cy="100" r="100" />}
         </clipPath>
       </defs>
 
-      <circle cx="100" cy="100" r="100" fill={`url(#bg${id})`} />
+      {square ? <rect width="200" height="200" fill={`url(#bg${id})`} /> : <circle cx="100" cy="100" r="100" fill={`url(#bg${id})`} />}
       <g clipPath={`url(#c${id})`}>
         {/* Long hair sits behind the head */}
         {isLong && <path {...ln} fill={hair} d="M56 166 C44 112 52 50 100 40 C148 50 156 112 144 166 Z" />}
