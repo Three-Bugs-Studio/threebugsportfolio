@@ -24,7 +24,6 @@ export default function Technology({ lang }: TechnologyProps) {
   return (
     <section id="technology" className="py-24 md:py-32 bg-canvas border-t border-line relative overflow-hidden">
       {/* Decorative subtle top lights */}
-      <div className="absolute top-[20%] left-[-10%] brutalist-glow opacity-30" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
@@ -86,7 +85,7 @@ export default function Technology({ lang }: TechnologyProps) {
                 {/* Header (Real Tech Brand Logo + Category Tag) */}
                 <div className="flex items-center justify-between">
                   <div className={`p-2.5 rounded-sm border transition-all flex items-center justify-center ${
-                    isHovered ? "border-brand-orange/40 bg-brand-orange/10 shadow-[0_0_15px_rgba(255,106,0,0.15)]" : "border-line bg-white/[0.03]"
+                    isHovered ? "border-brand-orange/40 bg-brand-orange/10 " : "border-line bg-white/[0.03]"
                   }`}>
                     <TechIcon name={tech.name} className="w-6 h-6 text-xl" />
                   </div>
