@@ -31,7 +31,7 @@ export default function Testimonials({ lang }: TestimonialsProps) {
       <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10 flex flex-col items-center text-center">
         
         {/* Animated Customer Review GIF Icon */}
-        <div className="customer-review-anim-container relative w-14 h-14 md:w-16 md:h-16 p-1.5 rounded-2xl bg-brand-orange/15 border border-brand-orange/30 shadow-[0_0_20px_rgba(255,106,0,0.25)] flex items-center justify-center shrink-0 overflow-hidden mb-8">
+        <div className="customer-review-anim-container relative w-14 h-14 md:w-16 md:h-16 p-1.5  bg-brand-orange/15 border border-brand-orange/30  flex items-center justify-center shrink-0 overflow-hidden mb-8">
           <img
             src={customerReviewGif}
             alt="Customer review feedback animation"
@@ -39,7 +39,7 @@ export default function Testimonials({ lang }: TestimonialsProps) {
             decoding="async"
             width={56}
             height={56}
-            className="w-full h-full object-contain rounded-xl transition-transform duration-300 hover:scale-110"
+            className="w-full h-full object-contain  transition-transform duration-300 hover:scale-110"
           />
         </div>
 
@@ -79,7 +79,7 @@ export default function Testimonials({ lang }: TestimonialsProps) {
           {/* Prev button */}
           <button
             onClick={handlePrev}
-            className="w-10 h-10 rounded-full border border-line hover:border-brand-orange text-ink-muted hover:text-ink flex items-center justify-center transition-all duration-300 interactive focus-terminal outline-none hover:shadow-[0_0_12px_rgba(255,106,0,0.3)] active:scale-95"
+            className="w-10 h-10  border border-line hover:border-brand-orange text-ink-muted hover:text-ink flex items-center justify-center transition-all duration-300 interactive focus-terminal outline-none  active:scale-95"
             aria-label="Previous quote"
             id="testimonial-prev-btn"
           >
@@ -92,8 +92,8 @@ export default function Testimonials({ lang }: TestimonialsProps) {
               <button
                 key={idx}
                 onClick={() => setActiveIdx(idx)}
-                className={`h-1.5 rounded-full transition-all duration-300 focus-terminal outline-none ${
-                  activeIdx === idx ? "w-6 bg-brand-orange shadow-[0_0_8px_rgba(255,106,0,0.6)]" : "w-2 bg-white/20 hover:bg-white/40"
+                className={`h-1.5  transition-all duration-300 focus-terminal outline-none ${
+                  activeIdx === idx ? "w-6 bg-brand-orange " : "w-2 bg-white/20 hover:bg-white/40"
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
@@ -103,7 +103,7 @@ export default function Testimonials({ lang }: TestimonialsProps) {
           {/* Next button */}
           <button
             onClick={handleNext}
-            className="w-10 h-10 rounded-full border border-line hover:border-brand-orange text-ink-muted hover:text-ink flex items-center justify-center transition-all duration-300 interactive focus-terminal outline-none hover:shadow-[0_0_12px_rgba(255,106,0,0.3)] active:scale-95"
+            className="w-10 h-10  border border-line hover:border-brand-orange text-ink-muted hover:text-ink flex items-center justify-center transition-all duration-300 interactive focus-terminal outline-none  active:scale-95"
             aria-label="Next quote"
             id="testimonial-next-btn"
           >
