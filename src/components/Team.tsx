@@ -11,7 +11,7 @@ import { SiGithub } from "react-icons/si";
 import { TeamMember } from "../types";
 import TeamAvatar, { AvatarLook } from "./TeamAvatar";
 import Logo from "./Logo";
-import receptionistDeskGif from "@/assets/animation-icon/receptionist-desk.gif";
+import AnimIcon from "./ui/AnimIcon";
 
 interface TeamProps {
   lang: "vi" | "en";
@@ -150,7 +150,7 @@ export default function Team({ lang }: TeamProps) {
   };
 
   return (
-    <section id="team" className="py-24 md:py-32 bg-canvas border-t border-line relative overflow-hidden">
+    <section id="team" className="py-16 md:py-20 bg-canvas border-t border-line relative overflow-hidden">
       {/* Background Tech Grid */}
       <div className="absolute inset-0 swiss-grid opacity-5 pointer-events-none" />
 
@@ -295,15 +295,7 @@ export default function Team({ lang }: TeamProps) {
         <div className="mt-16 bg-surface/90 border border-line p-6 md:p-8  flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
           <div className="flex items-center gap-4 relative z-10">
             <div className="receptionist-anim-icon-container w-14 h-14  bg-canvas border border-line p-1.5 shrink-0 flex items-center justify-center">
-              <img 
-                src={receptionistDeskGif} 
-                alt="Receptionist Desk" 
-                loading="lazy"
-                decoding="async"
-                width={48}
-                height={48}
-                className="w-full h-full object-contain" 
-              />
+              <AnimIcon name="contact" title={lang === "vi" ? "Liên hệ đội ngũ" : "Contact the team"} className="w-full h-full" />
             </div>
             <div>
               <h3 className="font-display font-bold text-lg md:text-xl text-ink leading-snug">
