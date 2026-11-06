@@ -1,65 +1,59 @@
-import React from "react";
-import logoImg from "@/assets/ThreeBugsStudio.webp";
+import React, { useId } from "react";
+
+// [3B] Bracket mark. With `wordmark`, it gets the Plate: "THREE BUGS" on a chamfered plate
+// that fades out to the right. Geometry matches the logo board: B is the 3 plus a stem.
+const BRACKETS = "M14 6 H4 V74 H14 M106 6 H116 V74 H106";
+const LETTERS =
+  "M20 16 H44 L52 24 V36 L48 40 L52 44 V56 L44 64 H20 V56 H40.7 L44 52.7 V48 L40 44 H28 V36 H40 L44 32 V27.3 L40.7 24 H20 Z " +
+  "M62 16 H88 L96 24 V36 L92 40 L96 44 V56 L88 64 H62 Z M70 24 V36 H84 L88 32 V27.3 L84.7 24 Z M70 44 V56 H84.7 L88 52.7 V48 L84 44 Z";
+const ANTENNAE = "M74 20 V12 L68 6 M84 20 V12 L90 6";
 
 interface LogoProps {
   className?: string;
-  showText?: boolean;
-  size?: "sm" | "md" | "lg" | "xl";
-  variant?: "light" | "dark" | "orange";
+  wordmark?: boolean;
+  /** Turn off when the mark renders under ~64px wide; the antennae read as a tone mark there. */
+  antennae?: boolean;
 }
 
-export default function Logo({
-  className = "",
-  showText = true,
-  size = "md",
-  variant = "light",
-}: LogoProps) {
-  // Size mappings for square rounded logo container
-  const sizeClasses = {
-    sm: "w-8 h-8",
-    md: "w-11 h-11",
-    lg: "w-20 h-20",
-    xl: "w-40 h-40",
-  };
-
-  const textSizes = {
-    sm: { title: "text-[10px]", subtitle: "text-[6px]" },
-    md: { title: "text-xs tracking-[0.3em]", subtitle: "text-[8px] tracking-[0.5em]" },
-    lg: { title: "text-lg tracking-[0.4em]", subtitle: "text-[10px] tracking-[0.6em]" },
-    xl: { title: "text-2xl tracking-[0.5em]", subtitle: "text-xs tracking-[0.7em]" },
-  };
-
-  const activeSize = sizeClasses[size];
-  const activeTextSize = textSizes[size];
+export default function Logo({ className = "h-9", wordmark = false, antennae = true }: LogoProps) {
+  const id = useId().replace(/:/g, "");
+  const brand = { stopColor: "var(--brand-ink)" };
 
   return (
-    <div className={`flex flex-col items-center justify-center ${className}`} id="studio-logo-container">
-      {/* Modern Rounded Logo Container */}
-      <div className={`relative group ${activeSize} rounded-xl overflow-hidden p-1 bg-brand-orange/10 border border-brand-orange/30 shadow-md hover:border-brand-orange/60 hover:shadow-[0_0_15px_rgba(255,106,0,0.35)] transition-all duration-300 flex items-center justify-center shrink-0`}>
-        <img
-          src={logoImg}
-          alt="Three Bugs Studio Logo"
-          className="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
-        />
-      </div>
-
-      {/* Typography */}
-      {showText && (
-        <div className="text-center mt-3 select-none pointer-events-none">
-          <div
-            className={`font-display font-bold text-white ${activeTextSize.title} uppercase`}
-            style={{ wordSpacing: "0.15em" }}
-          >
-            Three Bugs
-          </div>
-          <div
-            className={`font-mono text-brand-orange font-medium ${activeTextSize.subtitle} uppercase mt-1.5`}
-            style={{ wordSpacing: "0.2em" }}
-          >
-            Studio
-          </div>
-        </div>
+    <svg
+      viewBox={`0 0 ${wordmark ? 480 : 120} 80`}
+      className={`w-auto shrink-0 text-ink ${className}`}
+      role="img"
+      aria-label="Three Bugs Studio"
+    >
+      <path d={BRACKETS} fill="none" strokeWidth={5} strokeLinecap="square" style={{ stroke: "var(--brand-ink)" }} />
+      <g transform="translate(2 0)">
+        <path d={LETTERS} fill="currentColor" />
+        {antennae && <path d={ANTENNAE} fill="none" stroke="currentColor" strokeWidth={4} />}
+      </g>
+      {wordmark && (
+        <>
+          <defs>
+            <linearGradient id={`${id}f`} x1="0" x2="1">
+              <stop offset="0" style={{ ...brand, stopOpacity: 0.22 }} />
+              <stop offset="1" style={{ ...brand, stopOpacity: 0 }} />
+            </linearGradient>
+            <linearGradient id={`${id}s`} x1="0" x2="1">
+              <stop offset="0" style={brand} />
+              <stop offset="0.75" style={{ ...brand, stopOpacity: 0 }} />
+            </linearGradient>
+          </defs>
+          <polygon
+            points="134,22 142,14 480,14 480,66 134,66"
+            fill={`url(#${id}f)`}
+            stroke={`url(#${id}s)`}
+            strokeWidth={2}
+          />
+          <text x="154" y="49" fill="currentColor" fontFamily="Michroma, sans-serif" fontSize="24" letterSpacing="5">
+            THREE BUGS
+          </text>
+        </>
       )}
-    </div>
+    </svg>
   );
 }
