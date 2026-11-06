@@ -78,15 +78,6 @@ html.light .swiss-grid {
                     linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px) !important;
 }
 
-html.light .crt-overlay {
-  display: none !important;
-}
-
-html.light .hero-vignette {
-  display: none !important;
-  opacity: 0 !important;
-}
-
 html.light #hero-title,
 html.light #hero-title *,
 html.light #hero-subtitle,
@@ -369,39 +360,12 @@ body,
                     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
-.brutalist-glow {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(255, 106, 0, 0.04) 0%, rgba(0,0,0,0) 70%);
-  filter: blur(80px);
-  pointer-events: none;
-  will-change: transform;
-  transform: translate3d(0,0,0);
-  backface-visibility: hidden;
-}
-
 .writing-mode-vertical {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
 }
 
 
-
-/* CRT Scanline Overlay - Optimized static texture to prevent continuous whole-page repaints */
-.crt-overlay {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 99999;
-  background: 
-    linear-gradient(
-      rgba(18, 16, 16, 0) 50%, 
-      rgba(0, 0, 0, 0.12) 50%
-    );
-  background-size: 100% 4px;
-  opacity: 0.85;
-}
 
 /* Mobile & Low-Power Performance Optimization Rules */
 @media (max-width: 768px) {
@@ -478,33 +442,40 @@ button:focus-visible,
   outline-offset: 3px;
 }
 
-/* User Requested Stacked 3D Multi-layer Shadow Button Hover & Active Animation */
-.btn-stacked,
-.btn,
-button.btn-stacked,
-a.btn-stacked {
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+/* Corporate buttons: square, top-left chamfer like the logo plate, colour-only hover.
+   Outline buttons (.border) redraw the cut edge with a gradient so the border stays closed. */
+.btn-stacked {
+  --btn-cut: 10px;
+  --btn-edge: var(--line);
+  border-radius: 0 !important;
+  clip-path: polygon(var(--btn-cut) 0, 100% 0, 100% 100%, 0 100%, 0 var(--btn-cut));
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease !important;
 }
 
-.btn-stacked:hover,
-.btn:hover,
-button.btn-stacked:hover,
-a.btn-stacked:hover {
-  transform: translateY(-8px) !important;
-  box-shadow: 0 6px 0 -2px #FF6A00,
-              0 13px 0 -4px #06B6D4,
-              0 14px 10px -3px #06B6D4 !important;
+.btn-stacked.border {
+  background-image: linear-gradient(to bottom right, transparent calc(50% - 0.75px), var(--btn-edge) calc(50% - 0.75px),
+                    var(--btn-edge) calc(50% + 0.75px), transparent calc(50% + 0.75px));
+  background-size: var(--btn-cut) var(--btn-cut);
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-origin: border-box;
 }
 
-.btn-stacked:active,
-.btn:active,
-button.btn-stacked:active,
-a.btn-stacked:active {
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-  transform: translateY(-4px) !important;
-  box-shadow: 0 2px 0 -2px #FF6A00,
-              0 7px 0 -4px #06B6D4,
-              0 10px 8px -3px #06B6D4 !important;
+.btn-stacked.border:hover {
+  --btn-edge: currentColor;
+  border-color: currentColor !important;
+}
+
+.btn-stacked.bg-brand-orange:hover {
+  background-color: var(--text-light) !important;
+  color: var(--bg-dark) !important;
+}
+
+/* clip-path would hide an outside focus ring, so draw it inside */
+.btn-stacked.focus-terminal:focus-visible,
+.btn-stacked:focus-visible {
+  outline-offset: -5px !important;
+  box-shadow: none !important;
 }
 
 /* User Requested Cyber Math Matrix Hero Background Animation */
