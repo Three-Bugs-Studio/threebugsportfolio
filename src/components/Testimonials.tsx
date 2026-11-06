@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TESTIMONIALS_DATA, TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "./ui/MajesticIcon";
-import customerReviewGif from "@/assets/animation-icon/customer-review.gif";
+import AnimIcon from "./ui/AnimIcon";
 
 interface TestimonialsProps {
   lang: "vi" | "en";
@@ -24,7 +24,7 @@ export default function Testimonials({ lang }: TestimonialsProps) {
   const activeTestimonial = list[activeIdx];
 
   return (
-    <section id="testimonials" className="py-24 md:py-32 bg-canvas border-t border-line relative overflow-hidden">
+    <section id="testimonials" className="py-16 md:py-20 bg-canvas border-t border-line relative overflow-hidden">
       {/* Background Decorative Grid */}
       <div className="absolute inset-0 swiss-grid opacity-5 pointer-events-none" />
 
@@ -32,15 +32,7 @@ export default function Testimonials({ lang }: TestimonialsProps) {
         
         {/* Animated Customer Review GIF Icon */}
         <div className="customer-review-anim-container relative w-14 h-14 md:w-16 md:h-16 p-1.5  bg-brand-orange/15 border border-brand-orange/30  flex items-center justify-center shrink-0 overflow-hidden mb-8">
-          <img
-            src={customerReviewGif}
-            alt="Customer review feedback animation"
-            loading="lazy"
-            decoding="async"
-            width={56}
-            height={56}
-            className="w-full h-full object-contain  transition-transform duration-300 hover:scale-110"
-          />
+          <AnimIcon name="review" title={lang === "vi" ? "Đánh giá khách hàng" : "Customer reviews"} className="w-full h-full" />
         </div>
 
         {/* Dynamic Testimonial Card */}
