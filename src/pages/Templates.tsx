@@ -45,7 +45,7 @@ export default function Templates() {
       <header className="sticky top-0 z-40 bg-canvas/90 backdrop-blur-xl border-b border-line">
         <div className="max-w-7xl mx-auto px-4 md:px-12 py-3.5 flex items-center justify-between gap-4">
           <a href="/" className="flex items-center gap-3 focus-terminal" aria-label="Three Bugs Studio">
-            <Logo size="sm" showText={false} />
+            <Logo className="h-8" antennae={false} />
             <span className="font-mono text-xs tracking-widest text-ink-muted hover:text-ink transition-colors">
               ← {vi ? "TRANG CHỦ" : "HOME"}
             </span>
@@ -83,7 +83,7 @@ export default function Templates() {
             ? [["Từ 2,5 triệu", "hoặc trả theo tháng"], ["2–3 ngày", "làm việc là có web"], ["Theo thương hiệu", "thay logo, màu, nội dung"], ["2 lượt chỉnh sửa", "trước khi bàn giao"]]
             : [["From 2.5M VND", "or pay monthly"], ["2–3 days", "working days to launch"], ["Your brand", "logo, colours, content"], ["2 revisions", "before handover"]]
           ).map(([big, small]) => (
-            <li key={big} className="bg-surface border border-line rounded-xl p-4 md:p-5">
+            <li key={big} className="bg-surface border border-line  p-4 md:p-5">
               <div className="font-display font-bold text-lg md:text-2xl text-ink">{big}</div>
               <div className="text-ink-muted text-xs md:text-sm mt-1">{small}</div>
             </li>
@@ -95,8 +95,8 @@ export default function Templates() {
             ? ["Chọn mẫu và xem demo", "Gửi logo, nội dung, hình ảnh qua Zalo", "Nhận website sau 2–3 ngày làm việc"]
             : ["Pick a template and try the demo", "Send your logo, copy and photos on Zalo", "Get your site in 2–3 working days"]
           ).map((step, i) => (
-            <li key={step} className="flex items-center gap-4 border border-line rounded-xl px-4 py-3.5">
-              <span className="shrink-0 w-8 h-8 rounded-full bg-brand-orange text-[#090909] font-mono font-bold text-sm flex items-center justify-center">{i + 1}</span>
+            <li key={step} className="flex items-center gap-4 border border-line  px-4 py-3.5">
+              <span className="shrink-0 w-8 h-8  bg-brand-orange text-[#090909] font-mono font-bold text-sm flex items-center justify-center">{i + 1}</span>
               <span className="text-sm md:text-base text-ink-muted">{step}</span>
             </li>
           ))}
@@ -113,7 +113,7 @@ export default function Templates() {
             onChange={(e) => setQuery(e.target.value)}
             placeholder={vi ? "Tìm theo ngành: spa, xe, nhà hàng…" : "Search: spa, cars, restaurant…"}
             aria-label={vi ? "Tìm mẫu website" : "Search templates"}
-            className="w-full lg:w-72 bg-surface border border-line rounded-full px-4 py-2 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:border-brand-orange/60"
+            className="w-full lg:w-72 bg-surface border border-line  px-4 py-2 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:border-brand-orange/60"
           />
         </div>
 
@@ -128,12 +128,12 @@ export default function Templates() {
             ))}
           </div>
         ) : (
-          <div className="mt-6 border border-dashed border-line rounded-xl p-10 text-center">
+          <div className="mt-6 border border-dashed border-line  p-10 text-center">
             <p className="text-ink-muted">{vi ? "Chưa có mẫu phù hợp." : "No matching template yet."}</p>
             <button
               type="button"
               onClick={() => { setCat("all"); setQuery(""); }}
-              className="mt-4 text-sm px-4 py-2 border border-line rounded-full hover:border-brand-orange/60 cursor-pointer focus-terminal"
+              className="btn-stacked mt-4 font-mono text-xs uppercase tracking-widest px-5 py-3 border border-line cursor-pointer focus-terminal"
             >
               {vi ? "Xem tất cả mẫu" : "Show all templates"}
             </button>
@@ -157,10 +157,10 @@ export default function Templates() {
             </div>
           </div>
           <div className="flex gap-3">
-            <a href={`tel:${CONTACT.phone}`} className="font-mono text-xs uppercase tracking-widest px-5 py-3 border border-line rounded-sm hover:border-brand-orange/60 transition-colors focus-terminal">
+            <a href={`tel:${CONTACT.phone}`} className="btn-stacked font-mono text-xs uppercase tracking-widest px-5 py-3 border border-line rounded-sm hover:border-brand-orange/60 transition-colors focus-terminal">
               {vi ? "Gọi ngay" : "Call"}
             </a>
-            <a href={`https://zalo.me/${CONTACT.phone}`} target="_blank" rel="noreferrer" className="font-mono text-xs uppercase tracking-widest px-5 py-3 bg-brand-orange text-[#090909] font-semibold rounded-sm focus-terminal">
+            <a href={`https://zalo.me/${CONTACT.phone}`} target="_blank" rel="noreferrer" className="btn-stacked font-mono text-xs uppercase tracking-widest px-5 py-3 bg-brand-orange text-[#090909] font-semibold rounded-sm focus-terminal">
               Zalo
             </a>
           </div>
