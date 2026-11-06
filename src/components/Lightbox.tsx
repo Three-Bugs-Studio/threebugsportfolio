@@ -16,8 +16,14 @@ import aboutpage from "@/assets/aboutpage.webp";
 import productdetail from "@/assets/productdetail.webp";
 import contactpage from "@/assets/contactpage.webp";
 import lehongkhanhHomepage from "@/assets/lehongkhanh/lehongkhanh_homepage.webp";
-import lehongkhanhFeatures from "@/assets/lehongkhanh/lehongkhanh_features.webp";
-import lehongkhanhDetails from "@/assets/lehongkhanh/lehongkhanh_details.webp";
+import h1tToday from "@/assets/lehongkhanh/app/01-hom-nay.webp";
+import h1tMinerals from "@/assets/lehongkhanh/app/02-vi-chat.webp";
+import h1tVitamins from "@/assets/lehongkhanh/app/03-vitamin.webp";
+import h1tExplore from "@/assets/lehongkhanh/app/04-kham-pha.webp";
+import h1tRichCalcium from "@/assets/lehongkhanh/app/05-giau-calcium.webp";
+import h1tAddFood from "@/assets/lehongkhanh/app/06-tim-mon.webp";
+import h1tDocs from "@/assets/lehongkhanh/app/07-tai-lieu.webp";
+import h1tSettings from "@/assets/lehongkhanh/app/08-cai-dat.webp";
 import BlurUpImage from "./BlurUpImage";
 
 interface LightboxProps {
@@ -160,18 +166,60 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
           : "Scientific landing portal introducing the 22 micronutrient and energy tracking system built on RNI/RDA standards. Awarded #1 Product of the Day on Unikorn.vn and trusted by 2,500+ active members. Certified near-perfect Lighthouse audit (99 Performance, 100 SEO, 100 Accessibility, 100 Best Practices, 2/2 Agentic). Engineered with Next.js, a compiled Golang backend, Supabase, Cloudinary CDN, and Vietnix Cloud VPS hosting."
       },
       {
-        title: lang === "vi" ? "Bảng Đối Chiếu 22 Vi Chất & Tính Năng (Features & Comparison)" : "22 Micronutrients & Comparative Features",
-        subtitle: "lehongkhanh.vn#tinh-nang",
+        title: lang === "vi" ? "Ứng dụng: Hôm nay" : "App: Today",
+        subtitle: "H1T MICRO app",
         desc: lang === "vi"
-          ? "Bảng đối chiếu định lượng chi tiết 10 khoáng chất và 12 vitamin thiết yếu, tích hợp công cụ tính toán bù nước và điện giải theo cường độ tập luyện."
-          : "Quantitative breakdown of 10 minerals and 12 vitamins with an intelligent hydration & electrolyte replenishment calculator."
+          ? "Nhật ký ăn uống trong ngày: tổng kcal, tỷ lệ tinh bột, đạm, chất béo, các bữa sáng, trưa, trước tập, và số vi chất đã đạt mục tiêu."
+          : "The daily food log: total kcal, carb, protein and fat split, each meal of the day, and how many micronutrients have hit their target."
       },
       {
-        title: lang === "vi" ? "Độ Minh Bạch & Nhóm Đối Tượng (Audience & Scientific Transparency)" : "Target Audiences & Scientific Transparency",
-        subtitle: "lehongkhanh.vn#doi-tuong",
+        title: lang === "vi" ? "Vi chất: khoáng chất" : "Micronutrients: minerals",
+        subtitle: "H1T MICRO app",
         desc: lang === "vi"
-          ? "Chi tiết giải pháp dinh dưỡng chuyên sâu cho người tập luyện thể thao, phụ nữ mang thai, người ăn chay và người cần phục hồi sức khỏe."
-          : "Specialized precision nutrition tracking for athletes, pregnancy, plant-based diets, and metabolic recovery."
+          ? "10 khoáng chất so với mục tiêu ngày, tô màu theo mức thiếu, trung bình, gần đủ và đạt, kèm xu hướng 7 và 30 ngày."
+          : "10 minerals against the daily target, coloured from short to met, with 7 and 30 day trends."
+      },
+      {
+        title: lang === "vi" ? "Vi chất: vitamin" : "Micronutrients: vitamins",
+        subtitle: "H1T MICRO app",
+        desc: lang === "vi"
+          ? "12 vitamin trên cùng thang màu, và chỉ ra vi chất đang thiếu nhiều nhất trong ngày."
+          : "12 vitamins on the same colour scale, flagging the ones most short today."
+      },
+      {
+        title: lang === "vi" ? "Khám phá món ăn" : "Explore foods",
+        subtitle: "H1T MICRO app",
+        desc: lang === "vi"
+          ? "Tìm món, lọc theo nhóm, xem món do huấn luyện viên đăng và các nhóm món giàu từng vi chất."
+          : "Search foods, filter by group, browse the coach's dishes and foods rich in each micronutrient."
+      },
+      {
+        title: lang === "vi" ? "Thực phẩm giàu calcium" : "Foods rich in calcium",
+        subtitle: "H1T MICRO app",
+        desc: lang === "vi"
+          ? "Xếp hạng thực phẩm theo lượng vi chất trên 100 g hoặc mỗi khẩu phần, kèm phần trăm mục tiêu ngày."
+          : "Foods ranked by amount per 100 g or per serving, with the share of the daily target."
+      },
+      {
+        title: lang === "vi" ? "Thêm món vào bữa" : "Add a food to a meal",
+        subtitle: "H1T MICRO app",
+        desc: lang === "vi"
+          ? "Tìm món và thêm vào bữa đang chọn, xem kcal và đạm của từng khẩu phần, hoặc tự tạo món mới."
+          : "Find a food and add it to the chosen meal, see kcal and protein per serving, or create your own."
+      },
+      {
+        title: lang === "vi" ? "Tài liệu hướng dẫn" : "Guides",
+        subtitle: "H1T MICRO app",
+        desc: lang === "vi"
+          ? "Hỏi đáp, hướng dẫn ghi nhật ký và quy tắc ngày tập, đọc ngay trong ứng dụng."
+          : "FAQ, a logging guide and training-day rules, readable inside the app."
+      },
+      {
+        title: lang === "vi" ? "Cài đặt và mục tiêu" : "Settings and targets",
+        subtitle: "H1T MICRO app",
+        desc: lang === "vi"
+          ? "Mục tiêu kcal và đạm theo hồ sơ học viên, kết nối huấn luyện viên, tài khoản và ngôn ngữ."
+          : "Kcal and protein targets from the member profile, coach link, account and language."
       }
     ]
   };
@@ -272,7 +320,7 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
         </div>
       );
     } else if (projectId === "h1t_micro") {
-      const lehongkhanhScreenshots = [lehongkhanhHomepage, lehongkhanhFeatures, lehongkhanhDetails];
+      const lehongkhanhScreenshots = [lehongkhanhHomepage, h1tToday, h1tMinerals, h1tVitamins, h1tExplore, h1tRichCalcium, h1tAddFood, h1tDocs, h1tSettings];
       return (
         <div className="w-full h-full bg-[#0a0a0a] flex items-center justify-center relative overflow-hidden select-none">
           <BlurUpImage 
@@ -726,7 +774,8 @@ export default function Lightbox({ isOpen, onClose, projectId, projectName, lang
                 </div>
 
                 {/* Viewport Content */}
-                <div className="h-64 md:h-72 w-full relative">
+                {/* H1T slides are mostly portrait phone screens, so give them a taller viewport */}
+                <div className={`${projectId === "h1t_micro" ? "h-[26rem] md:h-[30rem]" : "h-64 md:h-72"} w-full relative`}>
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={currentSlide}
