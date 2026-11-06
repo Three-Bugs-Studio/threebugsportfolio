@@ -452,7 +452,8 @@ button:focus-visible,
   transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease !important;
 }
 
-.btn-stacked.border {
+.btn-stacked.border,
+.id-card {
   background-image: linear-gradient(to bottom right, transparent calc(50% - 0.75px), var(--btn-edge) calc(50% - 0.75px),
                     var(--btn-edge) calc(50% + 0.75px), transparent calc(50% + 0.75px));
   background-size: var(--btn-cut) var(--btn-cut);
@@ -469,6 +470,24 @@ button:focus-visible,
 .btn-stacked.bg-brand-orange:hover {
   background-color: var(--text-light) !important;
   color: var(--bg-dark) !important;
+}
+
+/* Team ID cards: same chamfer as the buttons, edge lights up in the member colour */
+.id-card {
+  --btn-cut: 14px;
+  --btn-edge: var(--line);
+  clip-path: polygon(var(--btn-cut) 0, 100% 0, 100% 100%, 0 100%, 0 var(--btn-cut));
+}
+
+.id-card:hover,
+.id-card:focus-visible {
+  --btn-edge: var(--tag);
+  border-color: var(--tag) !important;
+}
+
+.id-card:focus-visible {
+  outline: 2px solid #FF6A00;
+  outline-offset: -5px;
 }
 
 /* clip-path would hide an outside focus ring, so draw it inside */
