@@ -87,7 +87,7 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                       <span className="font-mono text-xs text-ink bg-line border border-line px-2.5 py-0.5 rounded-sm">
                         {project.client}
                       </span>
-                      <span className="w-1.5 h-1.5 bg-brand-orange rounded-full" />
+                      <span className="w-1.5 h-1.5 bg-brand-orange " />
                       <span className="font-mono text-xs text-ink-muted">
                         {project.category}
                       </span>
@@ -405,8 +405,8 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                             <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
                             <div className="absolute bottom-2.5 inset-x-3 flex items-center justify-between gap-2 z-10 pointer-events-none">
                               <div className="flex items-center gap-1.5 font-mono text-xs text-white">
-                                <span className="bg-brand-orange text-[#090909] font-bold px-1.5 py-0.5 rounded-[2px]">BRAND LAUNCH</span>
-                                <span className="bg-line px-1.5 py-0.5 rounded-[2px] backdrop-blur-sm">98% SEO · 15.000+ VISITS</span>
+                                <span className="bg-brand-orange text-[#090909] font-bold px-1.5 py-0.5 ">BRAND LAUNCH</span>
+                                <span className="bg-line px-1.5 py-0.5  backdrop-blur-sm">98% SEO · 15.000+ VISITS</span>
                               </div>
                               <span className="font-mono text-xs text-ink-muted uppercase tracking-wider hidden sm:inline-block">2.5X ZOOM</span>
                             </div>
@@ -484,13 +484,13 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                             {/* H1T MICRO Showcase Bottom Highlight Bar */}
                             <div className="absolute bottom-2.5 inset-x-3 flex items-center justify-between gap-2 z-10 pointer-events-none">
                               <div className="flex flex-wrap items-center gap-1.5 font-mono text-xs">
-                                <span className="bg-emerald-500 text-white font-bold px-2 py-0.5 rounded-[2px] shadow-lg flex items-center gap-1">
+                                <span className="bg-emerald-500 text-white font-bold px-2 py-0.5  shadow-lg flex items-center gap-1">
                                   <span>🏆 #1 UNIKORN</span>
                                 </span>
-                                <span className="bg-surface/90 border border-emerald-500/40 text-emerald-400 font-bold px-2 py-0.5 rounded-[2px] backdrop-blur-sm">
+                                <span className="bg-surface/90 border border-emerald-500/40 text-emerald-400 font-bold px-2 py-0.5  backdrop-blur-sm">
                                   👥 1.800+ MEMBERS
                                 </span>
-                                <span className="bg-surface/90 border border-line text-ink font-bold px-2 py-0.5 rounded-[2px] backdrop-blur-sm">
+                                <span className="bg-surface/90 border border-line text-ink font-bold px-2 py-0.5  backdrop-blur-sm">
                                   ⚡ 99 LIGHTHOUSE
                                 </span>
                               </div>
