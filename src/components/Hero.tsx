@@ -1,237 +1,108 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { ArrowUpRightIcon, ArrowDownIcon } from "./ui/MajesticIcon";
+import { ArrowUpRightIcon } from "./ui/MajesticIcon";
 import { TRANSLATIONS } from "../data";
-
-import { SonarGrid } from "./ui/SonarGrid";
 
 interface HeroProps {
   lang: "vi" | "en";
 }
 
+const hcmcTime = () =>
+  new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "Asia/Ho_Chi_Minh" });
+
+const rise = (delay: number) => ({
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { delay, duration: 0.9, ease: [0.16, 1, 0.3, 1] as const },
+});
+
+// Corporate hero: meta rule on top, oversized left-aligned statement, three-column footer row.
 export default function Hero({ lang }: HeroProps) {
-  const [greeting, setGreeting] = useState("");
-  const [currentTime, setCurrentTime] = useState("");
-
-  useEffect(() => {
-    const updateGreetingAndClock = () => {
-      const now = new Date();
-      const hour = now.getHours();
-
-      let greetText = "";
-      if (lang === "vi") {
-        if (hour >= 5 && hour < 12) greetText = "Chào buổi sáng";
-        else if (hour >= 12 && hour < 18) greetText = "Chào buổi chiều";
-        else if (hour >= 18 && hour < 22) greetText = "Chào buổi tối";
-        else greetText = "Chào bạn, cú đêm";
-      } else {
-        if (hour >= 5 && hour < 12) greetText = "Good morning";
-        else if (hour >= 12 && hour < 17) greetText = "Good afternoon";
-        else if (hour >= 17 && hour < 22) greetText = "Good evening";
-        else greetText = "Evening, night owl";
-      }
-
-      const options: Intl.DateTimeFormatOptions = {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true,
-      };
-      const timeString = now.toLocaleTimeString(lang === "vi" ? "vi-VN" : "en-US", options);
-
-      setGreeting(greetText);
-      setCurrentTime(timeString);
-    };
-
-    updateGreetingAndClock();
-    const interval = setInterval(updateGreetingAndClock, 1000);
-    return () => clearInterval(interval);
-  }, [lang]);
-
-  const handleScrollTo = (targetId: string) => {
-    const element = document.getElementById(targetId);
-    if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  };
-
+  const [time, setTime] = useState(hcmcTime);
   const t = TRANSLATIONS[lang];
 
+  useEffect(() => {
+    const id = setInterval(() => setTime(hcmcTime()), 30_000);
+    return () => clearInterval(id);
+  }, []);
+
+  const scrollTo = (targetId: string) => {
+    const el = document.getElementById(targetId);
+    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: "smooth" });
+  };
+
   return (
-    <SonarGrid
-      as="section"
-      id="hero"
-      color="#FF6A00"
-      spacing={26}
-      dotRadius={1.6}
-      baseOpacity={0.32}
-      pingEvery={0}
-      speed={260}
-      ringWidth={95}
-      amplitude={2.4}
-      interactive={true}
-      maxRings={4}
-      seedPing={false}
-      pingArea={[0.15, 0.2, 0.85, 0.8]}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-canvas"
-    >
-      {/* High-Contrast Vignette Mask Overlay to ensure text pops out prominently in dark mode */}
-      <div className="hero-vignette absolute inset-0 z-[1] pointer-events-none dark:block hidden bg-[radial-gradient(ellipse_at_center,_rgba(9,9,9,0.15)_0%,_rgba(9,9,9,0.50)_50%,_rgba(9,9,9,0.92)_100%)]" />
+    <section id="hero" className="relative min-h-screen flex flex-col overflow-hidden bg-canvas">
+      {/* Hairline column guides */}
+      <div aria-hidden="true" className="absolute inset-0 px-6 md:px-12 pointer-events-none">
+        <div className="max-w-7xl mx-auto h-full grid grid-cols-2 md:grid-cols-4 border-x border-line">
+          <div className="border-r border-line" />
+          <div className="md:border-r border-line" />
+          <div className="hidden md:block border-r border-line" />
+        </div>
+      </div>
 
-      {/* Ambient Brand Lighting Glares */}
-      <div className="absolute top-[-10%] left-[5%] brutalist-glow opacity-40 z-[1] pointer-events-none" />
-      <div className="absolute top-[30%] right-[-10%] brutalist-glow opacity-25 z-[1] pointer-events-none" style={{ filter: "blur(120px)" }} />
-
-      <div className="max-w-7xl mx-auto px-6 md:px-12 w-full relative z-10 flex flex-col items-center text-center mt-12 md:mt-16 pb-28 md:pb-36">
-        {/* Dynamic time-based greeting badge */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-12 flex-1 flex flex-col justify-between pt-32 md:pt-40 pb-12 md:pb-16">
         <motion.div
-          id="hero-greeting-badge"
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center gap-3 mb-8 bg-surface/80 border border-line px-3.5 py-1.5 rounded-sm backdrop-blur-md select-none shadow-2xl transition-colors hover:border-brand-orange/40"
+          {...rise(0.2)}
+          className="flex items-center justify-between gap-4 border-b border-line pb-4 font-mono text-xs uppercase tracking-[0.2em] md:tracking-[0.3em] text-ink-muted"
         >
-          <span className="relative flex h-2 w-2 shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-orange opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-orange shadow-[0_0_8px_rgba(255,106,0,0.8)]" />
+          <span>
+            <span className="text-brand-ink font-semibold">3B</span>
+            <span className="mx-3 text-line">/</span>
+            {lang === "vi" ? "Studio phần mềm" : "Software studio"}
           </span>
-          <span className="font-mono text-xs tracking-[0.2em] text-ink-muted dark:text-ink-muted uppercase font-medium">
-            {greeting}
-          </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-white/20" />
-          <span className="font-mono text-xs text-brand-ink font-semibold tracking-wider">
-            {currentTime}
-          </span>
+          <span className="hidden sm:inline tabular-nums">HCMC {time} · GMT+7</span>
         </motion.div>
 
-        {/* Prominent High-Contrast Statement Title */}
         <motion.h1
           id="hero-title"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display font-medium text-4xl md:text-7xl lg:text-8xl tracking-tighter text-ink leading-[1.05] max-w-4xl dark:drop-shadow-[0_4px_32px_rgba(0,0,0,0.95)] [text-wrap:balance]"
+          {...rise(0.35)}
+          className="font-display font-semibold text-5xl md:text-7xl lg:text-[6.5rem] tracking-[-0.04em] text-ink leading-[1.02] my-16 md:my-20 [text-wrap:balance]"
         >
           {lang === "vi" ? (
             <>
-              Chúng tôi xây dựng <br />
-              <span className="text-ink-muted dark:text-ink-muted dark:drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
-                website và phần mềm.
-              </span>
+              Chúng tôi xây dựng <span className="md:block text-ink-muted">website và phần mềm.</span>
             </>
           ) : (
             <>
-              We build websites <br />
-              <span className="text-ink-muted dark:text-ink-muted dark:drop-shadow-[0_4px_24px_rgba(0,0,0,0.9)]">
-                and custom software.
-              </span>
+              We build websites <span className="md:block text-ink-muted">and custom software.</span>
             </>
           )}
         </motion.h1>
 
-        {/* Subtitle Description */}
-        <motion.p
-          id="hero-subtitle"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-sans text-base md:text-xl text-ink-muted dark:text-ink-muted max-w-2xl mt-8 font-light leading-relaxed dark:drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)] [text-wrap:pretty]"
-        >
-          {t.heroDesc}
-        </motion.p>
-
-        {/* Studio Slogan Signature */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.95 }}
-          transition={{ delay: 0.7, duration: 1 }}
-          className="hero-slogan font-mono text-xs md:text-sm tracking-[0.25em] text-brand-ink mt-8 uppercase font-medium select-none drop-shadow-[0_0_12px_rgba(255,106,0,0.4)]"
-        >
-          Every bug teaches. Every build improves.
-        </motion.div>
-
-        {/* Call to Action Buttons */}
-        <motion.div
-          id="hero-ctas"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col sm:flex-row items-center gap-4 mt-12 w-full sm:w-auto"
-        >
-          <button
-            onClick={() => handleScrollTo("app-work-section")}
-            aria-label={t.heroExplore}
-            className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-ink text-canvas font-medium rounded-sm inline-flex items-center justify-center gap-2.5 group interactive shadow-2xl focus-terminal active:scale-[0.98] transition-all hover:shadow-[0_0_24px_rgba(245,245,243,0.3)]"
+        <motion.div {...rise(0.5)} className="grid md:grid-cols-12 gap-8 md:gap-6 border-t border-line pt-8">
+          <p
+            id="hero-subtitle"
+            className="md:col-span-5 text-base md:text-lg text-ink-muted font-light leading-relaxed [text-wrap:pretty]"
           >
-            <span>{t.heroExplore}</span>
-            <span className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform text-brand-ink inline-flex items-center justify-center">
-              <ArrowUpRightIcon size={14} />
-            </span>
-          </button>
-          
-          <button
-            onClick={() => handleScrollTo("app-contact-section")}
-            aria-label={t.navStartProject}
-            className="btn-stacked w-full sm:w-auto font-mono text-xs uppercase tracking-widest px-8 py-4 bg-surface/90 border border-line text-ink rounded-sm inline-flex items-center justify-center gap-2 group interactive backdrop-blur-md shadow-xl focus-terminal active:scale-[0.98] transition-all hover:border-brand-orange/60 hover:shadow-[0_0_20px_rgba(255,106,0,0.18)]"
-          >
-            <span>{t.navStartProject}</span>
-            <span className="w-1.5 h-1.5 bg-brand-orange rounded-full group-hover:scale-125 transition-transform" />
-          </button>
-        </motion.div>
+            {t.heroDesc}
+          </p>
 
-        {/* Scroll Indicator */}
-        <motion.div
-          id="hero-scroll-indicator"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.8 }}
-          transition={{ delay: 1.2, duration: 1 }}
-          role="button"
-          tabIndex={0}
-          aria-label={lang === "vi" ? "Cuộn xuống phần giới thiệu" : "Scroll to about section"}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 cursor-pointer group focus-terminal rounded-sm p-1"
-          onClick={() => handleScrollTo("app-about-section")}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              handleScrollTo("app-about-section");
-            }
-          }}
-        >
-          <div className="w-[18px] h-[28px] rounded-full border dark:border-[#8E8E93]/80 border-slate-400 group-hover:border-brand-orange transition-colors flex justify-center p-[4px]" id="scroll-mouse-icon">
-            <motion.div 
-              className="w-[3px] h-[6px] bg-brand-orange rounded-full"
-              animate={{ 
-                y: [0, 6, 0],
-                opacity: [1, 0.4, 1]
-              }}
-              transition={{ 
-                repeat: Infinity, 
-                duration: 1.6, 
-                ease: "easeInOut" 
-              }}
-            />
+          <div className="hero-slogan md:col-span-3 md:col-start-7 font-mono text-xs uppercase tracking-[0.25em] text-ink-muted leading-loose">
+            Every bug teaches.
+            <br />
+            Every build improves.
           </div>
-          <span className="font-mono text-xs tracking-[0.4em] dark:text-ink-muted text-slate-700 font-semibold uppercase group-hover:text-brand-ink transition-colors">
-            {lang === "vi" ? "CUỘN XUỐNG" : "SCROLL"}
-          </span>
-          <motion.div
-            animate={{ y: [0, 4, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-          >
-            <span className="dark:text-ink-muted text-slate-700 group-hover:text-brand-ink transition-colors text-xs inline-flex items-center justify-center">
-              <ArrowDownIcon size={14} />
-            </span>
-          </motion.div>
+
+          <div className="md:col-span-3 md:col-start-10 flex flex-col gap-3">
+            <button
+              onClick={() => scrollTo("app-contact-section")}
+              className="btn-stacked w-full font-mono text-xs uppercase tracking-widest px-6 py-4 bg-brand-orange text-[#090909] font-semibold rounded-sm inline-flex items-center justify-between gap-3 group interactive focus-terminal active:scale-[0.98] transition-colors hover:bg-ink"
+            >
+              <span>{t.navStartProject}</span>
+              <ArrowUpRightIcon size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </button>
+            <button
+              onClick={() => scrollTo("app-work-section")}
+              className="btn-stacked w-full font-mono text-xs uppercase tracking-widest px-6 py-4 border border-line text-ink rounded-sm inline-flex items-center justify-between gap-3 group interactive focus-terminal active:scale-[0.98] transition-colors hover:border-ink"
+            >
+              <span>{t.heroExplore}</span>
+              <ArrowUpRightIcon size={14} className="text-ink-muted group-hover:text-ink transition-colors" />
+            </button>
+          </div>
         </motion.div>
       </div>
-    </SonarGrid>
+    </section>
   );
 }
