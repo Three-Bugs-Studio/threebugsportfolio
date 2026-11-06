@@ -53,7 +53,7 @@ export default function FAQ({ lang }: FAQProps) {
   });
 
   return (
-    <section id="faq" className="py-24 md:py-32 bg-canvas border-t border-line relative overflow-hidden">
+    <section id="faq" className="py-16 md:py-20 bg-canvas border-t border-line relative overflow-hidden">
       {/* Background Ambient Glow */}
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
