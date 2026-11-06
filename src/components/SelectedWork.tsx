@@ -36,7 +36,7 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
   const projectList = PROJECTS_DATA[lang];
 
   return (
-    <section id="work" className="py-24 md:py-32 bg-canvas border-t border-line relative">
+    <section id="work" className="py-16 md:py-20 bg-canvas border-t border-line relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Header */}
