@@ -17,7 +17,7 @@ export default function TemplatesShowcase({ lang }: { lang: "vi" | "en" }) {
   const more = `/templates${cat === "all" ? "" : `?cat=${cat}`}`;
 
   return (
-    <section id="templates" className="py-20 md:py-28 bg-canvas border-t border-line">
+    <section id="templates" className="py-16 md:py-20 bg-canvas border-t border-line">
       <div className="max-w-7xl mx-auto px-4 md:px-12">
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
           <div>
