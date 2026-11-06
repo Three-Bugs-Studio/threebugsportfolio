@@ -176,7 +176,6 @@ export default function About({ lang }: AboutProps) {
           <CategoryList
             title={lang === "vi" ? "ĐẶC ĐIỂM VẬN HÀNH STUDIO" : "STUDIO OPERATIONAL PRINCIPLES"}
             subtitle={lang === "vi" ? "Những tiêu chuẩn kỹ thuật cốt lõi được áp dụng nhất quán trong từng bản dựng." : "Core technical standards applied consistently across all product builds."}
-            headerIcon={<LaptopIcon size={28} className="w-7 h-7" />}
             categories={categories}
             className="px-0 py-4"
           />
