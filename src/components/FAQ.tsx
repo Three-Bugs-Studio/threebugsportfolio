@@ -9,7 +9,6 @@ import {
   ArrowRightIcon,
   CheckIcon,
 } from "./ui/MajesticIcon";
-import faqGif from "@/assets/animation-icon/faq.gif";
 
 interface FAQProps {
   lang: "vi" | "en";
@@ -56,36 +55,21 @@ export default function FAQ({ lang }: FAQProps) {
   return (
     <section id="faq" className="py-24 md:py-32 bg-canvas border-t border-line relative overflow-hidden">
       {/* Background Ambient Glow */}
-      <div className="absolute bottom-0 left-[10%] brutalist-glow opacity-25" style={{ filter: "blur(140px)" }} />
-      <div className="absolute top-1/2 right-1/4 w-[500px] h-[500px] bg-brand-orange/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         
         {/* Lively Section Header with Animated Icon */}
-        <div className="flex flex-col items-center text-center mb-12">
-          
-          {/* Animated FAQ Icon Badge */}
-          <div className="faq-anim-icon-container w-16 h-16 rounded-2xl bg-surface border border-line p-2 shadow-2xl mb-6 flex items-center justify-center interactive hover:scale-105 transition-transform">
-            <img 
-              src={faqGif} 
-              alt="FAQ Animated Icon" 
-              loading="lazy"
-              decoding="async"
-              width={64}
-              height={64}
-              className="w-full h-full object-contain" 
-            />
+        <div className="flex flex-col items-start text-left mb-12">
+
+          <div className="font-mono text-xs text-brand-ink uppercase tracking-[0.3em] mb-4">
+            <span>{lang === "vi" ? "CAM KẾT MINH BẠCH VÌ LỢI ÍCH KHÁCH HÀNG" : "100% TRANSPARENT CLIENT GUARANTEES"}</span>
           </div>
 
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-brand-orange/10 border border-brand-orange/20 rounded-sm font-mono text-xs text-brand-ink uppercase tracking-widest mb-4">
-            <span>// {lang === "vi" ? "CAM KẾT MINH BẠCH VÌ LỢI ÍCH KHÁCH HÀNG" : "100% TRANSPARENT CLIENT GUARANTEES"}</span>
-          </div>
-
-          <h2 className="font-display font-bold text-3xl md:text-5xl tracking-tight text-ink mb-4 uppercase leading-tight">
+          <h2 className="font-display font-semibold text-3xl md:text-5xl tracking-tight text-ink mb-4 leading-tight">
             {t.faqHeading}
           </h2>
 
-          <p className="font-sans text-xs md:text-sm text-ink-muted max-w-xl mx-auto leading-relaxed font-light">
+          <p className="font-sans text-xs md:text-sm text-ink-muted max-w-xl leading-relaxed font-light">
             {lang === "vi"
               ? "Mọi chính sách về quyền sở hữu 100% mã nguồn, bảo hành kỹ thuật, tiến độ bàn giao và bảo mật NDA đều được chúng tôi công khai minh bạch để bảo vệ tối đa lợi ích của bạn."
               : "Clear, binding commitments covering 100% source code ownership, warranty support, strict NDA privacy, and zero hidden fees."}
@@ -146,7 +130,7 @@ export default function FAQ({ lang }: FAQProps) {
         {/* Dynamic Interactive Accordion List */}
         <div className="space-y-4">
           {filteredList.length === 0 ? (
-            <div className="text-center py-12 bg-surface border border-line rounded-xl p-6">
+            <div className="text-center py-12 bg-surface border border-line  p-6">
               <p className="font-sans text-sm text-ink-muted">
                 {lang === "vi" ? "Không tìm thấy câu hỏi phù hợp. Hãy kết nối trực tiếp cùng đội ngũ kỹ sư của Studio!" : "No matching questions found. Consult directly with our engineering team!"}
               </p>
@@ -163,9 +147,9 @@ export default function FAQ({ lang }: FAQProps) {
               return (
                 <div
                   key={idx}
-                  className={`faq-item-box border rounded-xl transition-all duration-300 overflow-hidden ${
+                  className={`faq-item-box border  transition-all duration-300 overflow-hidden ${
                     isOpen
-                      ? "bg-surface border-brand-orange/50 shadow-[0_0_25px_rgba(255,106,0,0.1)]"
+                      ? "bg-surface border-brand-orange/50 "
                       : "bg-surface/90 border-line hover:border-white/20"
                   }`}
                 >
@@ -179,7 +163,7 @@ export default function FAQ({ lang }: FAQProps) {
                   >
                     <div className="flex items-start sm:items-center gap-3.5 sm:gap-4 flex-1">
                       {/* Number Badge */}
-                      <span className="font-mono text-xs font-bold text-brand-ink bg-brand-orange/10 border border-brand-orange/20 px-2.5 py-1 rounded-md shrink-0 mt-0.5 sm:mt-0">
+                      <span className="font-mono text-xs font-bold text-brand-ink bg-brand-orange/10 border border-brand-orange/20 px-2.5 py-1  shrink-0 mt-0.5 sm:mt-0">
                         0{idx + 1}
                       </span>
 
@@ -227,7 +211,7 @@ export default function FAQ({ lang }: FAQProps) {
 
                           {/* Key Benefits Checklist Box */}
                           {item.keyBenefits && item.keyBenefits.length > 0 && (
-                            <div className="mt-5 p-4 rounded-lg bg-canvas border border-line space-y-2.5">
+                            <div className="mt-5 p-4  bg-canvas border border-line space-y-2.5">
                               <div className="flex items-center gap-2 text-brand-ink font-mono text-xs uppercase tracking-wider font-bold">
                                 <CheckIcon size={14} className="w-3.5 h-3.5 text-brand-ink shrink-0" />
                                 <span>{lang === "vi" ? "QUYỀN LỢI CAM KẾT BẢO ĐẢM CHO BẠN:" : "GUARANTEED CLIENT BENEFITS:"}</span>
@@ -253,9 +237,9 @@ export default function FAQ({ lang }: FAQProps) {
         </div>
 
         {/* FAQ Footer Direct Consultation Callout */}
-        <div className="mt-14 bg-surface border border-line rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left shadow-xl">
+        <div className="mt-14 bg-surface border border-line  p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left shadow-xl">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center text-brand-ink shrink-0">
+            <div className="w-12 h-12  bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center text-brand-ink shrink-0">
               <ChatIcon size={20} className="w-5 h-5" />
             </div>
             <div>
