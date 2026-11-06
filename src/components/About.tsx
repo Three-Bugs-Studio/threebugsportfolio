@@ -108,7 +108,7 @@ export default function About({ lang }: AboutProps) {
   ];
 
   return (
-    <section id="about" className="py-20 md:py-28 bg-canvas border-t border-line relative">
+    <section id="about" className="py-16 md:py-20 bg-canvas border-t border-line relative">
       {/* Subtle grid layout lines */}
       <div className="absolute inset-0 flex justify-between px-6 md:px-12 pointer-events-none opacity-5">
         <div className="w-[1px] h-full bg-white" />
