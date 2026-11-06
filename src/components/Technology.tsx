@@ -22,7 +22,7 @@ export default function Technology({ lang }: TechnologyProps) {
   };
 
   return (
-    <section id="technology" className="py-24 md:py-32 bg-canvas border-t border-line relative overflow-hidden">
+    <section id="technology" className="py-16 md:py-20 bg-canvas border-t border-line relative overflow-hidden">
       {/* Decorative subtle top lights */}
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
