@@ -125,7 +125,6 @@ export default function Team({ lang }: TeamProps) {
     <section id="team" className="py-24 md:py-32 bg-canvas border-t border-line relative overflow-hidden">
       {/* Background Tech Grid */}
       <div className="absolute inset-0 swiss-grid opacity-5 pointer-events-none" />
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-brand-orange/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         
@@ -172,7 +171,7 @@ export default function Team({ lang }: TeamProps) {
         {rows.map((group, groupIdx) => (
         <div key={group.key}>
           <div className="flex items-center gap-3 mb-5 font-mono text-xs uppercase tracking-[0.3em]">
-            <span className="text-brand-ink font-semibold">// 0{groupIdx + 1}</span>
+            <span className="text-brand-ink font-semibold">0{groupIdx + 1}</span>
             <span className="text-ink">{lang === "vi" ? group.vi : group.en}</span>
             <span className="h-[1px] flex-1 bg-line" />
           </div>
@@ -202,7 +201,7 @@ export default function Team({ lang }: TeamProps) {
                     setSelectedMember(member);
                   }
                 }}
-                className="team-card-item group relative bg-surface/90 border border-line hover:border-brand-orange/50 p-4 rounded-xl transition-all duration-500 cursor-pointer flex flex-col justify-between overflow-hidden shadow-xl hover:shadow-[0_0_25px_rgba(255,106,0,0.15)] hover:-translate-y-1.5 interactive focus-terminal outline-none"
+                className="team-card-item group relative bg-surface/90 border border-line hover:border-brand-orange/50 p-4  transition-all duration-500 cursor-pointer flex flex-col justify-between overflow-hidden shadow-xl  hover:-translate-y-1.5 interactive focus-terminal outline-none"
               >
                 {/* Top Member Index & Studio Label / Highlight Badge */}
                 <div className="flex items-center justify-between gap-2 mb-3">
@@ -228,7 +227,7 @@ export default function Team({ lang }: TeamProps) {
 
                 {/* Illustrated portrait in a gradient circle, with the member's codename and role under it */}
                 {art && (
-                  <figure className={`relative ${group.wide ? "aspect-[16/10]" : "aspect-[4/5]"} w-full border border-line rounded-lg overflow-hidden mb-4 bg-canvas flex flex-col items-center justify-center gap-3 p-4 transition-colors duration-500 group-hover:border-brand-orange/40`}>
+                  <figure className={`relative ${group.wide ? "aspect-[16/10]" : "aspect-[4/5]"} w-full border border-line  overflow-hidden mb-4 bg-canvas flex flex-col items-center justify-center gap-3 p-4 transition-colors duration-500 group-hover:border-brand-orange/40`}>
                     <TeamAvatar
                       look={art.look}
                       color={colorHex}
@@ -295,9 +294,9 @@ export default function Team({ lang }: TeamProps) {
         </div>
 
         {/* Team CTA Box */}
-        <div className="mt-16 bg-surface/90 border border-line p-6 md:p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
+        <div className="mt-16 bg-surface/90 border border-line p-6 md:p-8  flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden">
           <div className="flex items-center gap-4 relative z-10">
-            <div className="receptionist-anim-icon-container w-14 h-14 rounded-xl bg-canvas border border-line p-1.5 shrink-0 flex items-center justify-center">
+            <div className="receptionist-anim-icon-container w-14 h-14  bg-canvas border border-line p-1.5 shrink-0 flex items-center justify-center">
               <img 
                 src={receptionistDeskGif} 
                 alt="Receptionist Desk" 
@@ -342,7 +341,7 @@ export default function Team({ lang }: TeamProps) {
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.95, y: 20 }}
                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-surface border border-line rounded-xl p-6 md:p-8 max-w-lg w-full relative overflow-hidden shadow-2xl"
+                className="bg-surface border border-line  p-6 md:p-8 max-w-lg w-full relative overflow-hidden shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Top Accent Orange Border Line */}
@@ -395,7 +394,7 @@ export default function Team({ lang }: TeamProps) {
 
                 {/* Enterprise Showcase Credentials Box */}
                 {selectedMember.showcaseUrl && (
-                  <div className="mb-6 p-3.5 rounded-lg bg-cyan-950/20 border border-cyan-500/30">
+                  <div className="mb-6 p-3.5  bg-cyan-950/20 border border-cyan-500/30">
                     <div className="flex items-center justify-between gap-2 mb-1.5">
                       <span className="font-mono text-xs font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-sm bg-cyan-400" />
@@ -421,7 +420,7 @@ export default function Team({ lang }: TeamProps) {
 
                 {/* Studio Financial Operations Box for Thu Tran */}
                 {selectedMember.name === "Thu Tran" && (
-                  <div className="mb-6 p-3.5 rounded-lg bg-purple-950/20 border border-purple-500/30">
+                  <div className="mb-6 p-3.5  bg-purple-950/20 border border-purple-500/30">
                     <div className="flex items-center justify-between gap-2 mb-1.5">
                       <span className="font-mono text-xs font-bold text-purple-400 uppercase tracking-wider flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-sm bg-purple-400" />
