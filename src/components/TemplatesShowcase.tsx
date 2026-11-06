@@ -40,7 +40,7 @@ export default function TemplatesShowcase({ lang }: { lang: "vi" | "en" }) {
           </div>
           <a
             href={more}
-            className="hidden lg:inline-flex shrink-0 items-center gap-2 font-mono text-xs uppercase tracking-widest px-6 py-3.5 border border-line rounded-sm text-ink hover:border-brand-orange/60 transition-colors focus-terminal"
+            className="btn-stacked hidden lg:inline-flex shrink-0 items-center gap-2 font-mono text-xs uppercase tracking-widest px-6 py-3.5 border border-line rounded-sm text-ink hover:border-brand-orange/60 transition-colors focus-terminal"
           >
             {vi ? `Xem tất cả ${countFor(cat)} mẫu →` : `See all ${countFor(cat)} →`}
           </a>
@@ -59,7 +59,7 @@ export default function TemplatesShowcase({ lang }: { lang: "vi" | "en" }) {
         <div className="mt-10 flex justify-center">
           <a
             href={more}
-            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest px-8 py-4 bg-brand-orange text-[#090909] font-semibold rounded-sm hover:shadow-[0_0_24px_rgba(255,106,0,0.35)] transition-shadow focus-terminal"
+            className="btn-stacked inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest px-8 py-4 bg-brand-orange text-[#090909] font-semibold rounded-sm  transition-shadow focus-terminal"
           >
             {vi ? `Xem tất cả ${countFor(cat)} mẫu →` : `See all ${countFor(cat)} templates →`}
           </a>
