@@ -171,7 +171,7 @@ export default function CardNav({
             id="card-nav-logo"
           >
             <Logo className="h-9 md:hidden" antennae={false} />
-            <Logo wordmark className="hidden md:block h-11" />
+            <Logo wordmark animate className="hidden md:block h-11" />
           </a>
 
           {/* Desktop & Mobile Nav Actions */}
