@@ -1284,7 +1284,7 @@ export const TRANSLATIONS = {
     heroPillars: "Trụ Cột Thiết Kế",
     heroPillarsDesc: "Mọi trang web tốt đều cần giao diện dễ nhìn, mã nguồn tối ưu và tốc độ tải trang nhanh chóng.",
 
-    aboutLabel: "01 // CHÂN DUNG STUDIO",
+    aboutLabel: "CHÂN DUNG STUDIO",
     aboutHeading: "Lập trình thực tế để đưa ý tưởng kinh doanh của bạn lên internet.",
     aboutBody1: "Tại Three Bugs Studio, chúng tôi tập trung xây dựng trang web hoạt động ổn định và lâu dài. Thay vì làm các giải pháp tạm thời, chúng tôi đầu tư vào cơ sở dữ liệu gọn gàng và mã nguồn tối ưu để trang web của bạn chạy mượt mà, ổn định.",
     aboutBody2: "Bạn sẽ làm việc trực tiếp với những lập trình viên trực tiếp xây dựng sản phẩm của bạn. Điều này giúp đẩy nhanh tiến độ bàn giao, giảm thiểu hiểu lầm và đảm bảo sản phẩm đúng như mong đợi.",
@@ -1293,39 +1293,39 @@ export const TRANSLATIONS = {
     aboutStatCoffee: "Giờ làm việc tập trung",
     aboutStatSatisfied: "Khách hàng tin cậy",
 
-    servicesLabel: "02 // NĂNG LỰC CỐT LÕI",
+    servicesLabel: "NĂNG LỰC CỐT LÕI",
     servicesHeading: "Các dịch vụ chính chúng tôi cung cấp.",
     servicesLearnMore: "Chi tiết năng lực",
 
-    workLabel: "03 // DỰ ÁN TIÊU BIỂU",
+    workLabel: "DỰ ÁN TIÊU BIỂU",
     workHeading: "Dự án tiêu biểu đã bàn giao.",
     workClient: "Khách hàng",
     workTimeline: "Thời gian",
     workOutcome: "Kết quả đạt được",
     workTechStack: "Công nghệ",
 
-    processLabel: "04 // QUY TRÌNH CHUẨN MỰC",
+    processLabel: "QUY TRÌNH CHUẨN MỰC",
     processHeading: "Quy trình làm việc rõ ràng và minh bạch.",
     processDeliverables: "Sản phẩm bàn giao",
 
-    techLabel: "05 // HỆ THỐNG CÔNG NGHỆ",
+    techLabel: "HỆ THỐNG CÔNG NGHỆ",
     techHeading: "Các công nghệ chúng tôi thường sử dụng.",
     techSubtitle: "Những ngôn ngữ & công nghệ hiện đại (Next.js, TypeScript, Golang, FastAPI / Python, NestJS, Hetzner, Vietnix) giúp trang web tải nhanh, chịu tải tốt và dễ dàng nâng cấp.",
     techPrimary: "Chuyên sâu",
     techCore: "Cốt lõi",
 
-    teamLabel: "06 // ĐỘI NGŨ KỸ THUẬT",
+    teamLabel: "ĐỘI NGŨ KỸ THUẬT",
     teamHeading: "Đội ngũ lập trình viên trực tiếp thiết kế sản phẩm.",
     teamBioPrefix: "Tiểu sử",
     teamSpecialties: "Lĩnh vực chuyên sâu",
 
-    testimonialsLabel: "07 // ĐÁNH GIÁ TỪ KHÁCH HÀNG",
+    testimonialsLabel: "ĐÁNH GIÁ TỪ KHÁCH HÀNG",
     testimonialsHeading: "Ý kiến từ khách hàng đã hợp tác cùng chúng tôi.",
 
-    faqLabel: "08 // THẮC MẮC THƯỜNG GẶP",
+    faqLabel: "THẮC MẮC THƯỜNG GẶP",
     faqHeading: "Giải đáp các câu hỏi thường gặp.",
 
-    contactLabel: "09 // LIÊN HỆ HỢP TÁC",
+    contactLabel: "LIÊN HỆ HỢP TÁC",
     contactHeading: "Gửi yêu cầu thiết kế trang web của bạn.",
     contactSubtitle: "Hãy để lại thông tin liên hệ và ý tưởng của bạn. Đội ngũ kỹ sư của chúng tôi tiếp nhận các dự án trong nước & quốc tế, sẽ liên hệ lại trong vòng 12 giờ làm việc để tư vấn cụ thể.",
     contactFieldName: "Họ và tên",
@@ -1372,7 +1372,7 @@ export const TRANSLATIONS = {
     heroPillars: "Design Pillars",
     heroPillarsDesc: "Every great product starts with clean architecture, minimalist code, and high end visual layout alignment.",
 
-    aboutLabel: "01 // THE STUDIO PORTRAIT",
+    aboutLabel: "THE STUDIO PORTRAIT",
     aboutHeading: "Practical coding to launch your business online.",
     aboutBody1: "At Three Bugs Studio, we build software that lasts. Instead of temporary workarounds, we focus on organized database setups and optimal code to keep your website running smoothly at all times.",
     aboutBody2: "You will communicate directly with the programmers building your site. This speeds up delivery, avoids misunderstandings, and guarantees your project meets your exact expectations.",
@@ -1381,39 +1381,39 @@ export const TRANSLATIONS = {
     aboutStatCoffee: "Focused Work Hours",
     aboutStatSatisfied: "Satisfied Customers",
 
-    servicesLabel: "02 // CAPABILITIES",
+    servicesLabel: "CAPABILITIES",
     servicesHeading: "Core services crafted with absolute precision.",
     servicesLearnMore: "Explore capabilities",
 
-    workLabel: "03 // SELECTED WORK",
+    workLabel: "SELECTED WORK",
     workHeading: "Pristine digital systems for ambitious brands.",
     workClient: "Client",
     workTimeline: "Timeline",
     workOutcome: "Outcome Delivered",
     workTechStack: "Technologies",
 
-    processLabel: "04 // THE STANDARD PROCESS",
+    processLabel: "THE STANDARD PROCESS",
     processHeading: "Rigorous, transparent, and practical.",
     processDeliverables: "Key Deliverables",
 
-    techLabel: "05 // SYSTEM TECH STACK",
+    techLabel: "SYSTEM TECH STACK",
     techHeading: "Modern architectures built for growth.",
     techSubtitle: "Modern programming languages & cloud stacks (Next.js, TypeScript, Golang, FastAPI / Python, NestJS, Hetzner, Vietnix) engineered for high concurrency, durability, and performance.",
     techPrimary: "Primary",
     techCore: "Core",
 
-    teamLabel: "06 // FOUNDING ENGINEERS",
+    teamLabel: "FOUNDING ENGINEERS",
     teamHeading: "Work directly with the technical architects.",
     teamBioPrefix: "Background",
     teamSpecialties: "Areas of Specialty",
 
-    testimonialsLabel: "07 // TESTIMONIALS",
+    testimonialsLabel: "TESTIMONIALS",
     testimonialsHeading: "Direct thoughts from founders we have built for.",
 
-    faqLabel: "08 // FREQUENTLY ASKED QUESTIONS",
+    faqLabel: "FREQUENTLY ASKED QUESTIONS",
     faqHeading: "Common questions with clear and direct answers.",
 
-    contactLabel: "09 // THE BLUEPRINT FLOW",
+    contactLabel: "THE BLUEPRINT FLOW",
     contactHeading: "Initiate your next product blueprint.",
     contactSubtitle: "Tell us about your technical requirements. We build for clients locally and worldwide, reviewing specifications and responding within 12 business hours.",
     contactFieldName: "Full Name",
