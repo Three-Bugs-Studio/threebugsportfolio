@@ -3,25 +3,19 @@ import { SERVICES_DATA, TRANSLATIONS } from "../data";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronRightIcon } from "./ui/MajesticIcon";
 
-// Import custom animated GIF icons
-import logoDesignGif from "@/assets/animation-icon/logo-design.gif";
-import webDevGif from "@/assets/animation-icon/web-developer.gif";
-import strategyGif from "@/assets/animation-icon/strategy.gif";
-import aiAssistantGif from "@/assets/animation-icon/ai-assistant.gif";
-import responsiveGif from "@/assets/animation-icon/responsive.gif";
-import maintenanceGif from "@/assets/animation-icon/maintenance.gif";
+import AnimIcon, { AnimIconName } from "./ui/AnimIcon";
 
 interface ServicesProps {
   lang: "vi" | "en";
 }
 
-const animIconMap: Record<string, string> = {
-  PenTool: logoDesignGif,
-  Globe: webDevGif,
-  Database: strategyGif,
-  Cpu: aiAssistantGif,
-  Terminal: responsiveGif,
-  Wrench: maintenanceGif,
+const animIconMap: Record<string, AnimIconName> = {
+  PenTool: "design",
+  Globe: "web",
+  Database: "backend",
+  Cpu: "ai",
+  Terminal: "consult",
+  Wrench: "fix",
 };
 
 export default function Services({ lang }: ServicesProps) {
@@ -40,7 +34,7 @@ export default function Services({ lang }: ServicesProps) {
   };
 
   return (
-    <section id="services" className="py-24 md:py-32 bg-canvas border-t border-line relative">
+    <section id="services" className="py-16 md:py-20 bg-canvas border-t border-line relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Title */}
@@ -120,15 +114,7 @@ export default function Services({ lang }: ServicesProps) {
                           ? "bg-brand-orange/15 border-brand-orange  scale-105"
                           : "bg-surface border-line group-hover:border-brand-orange/40 "
                       }`}>
-                        <img
-                          src={animIconMap[service.iconName] || logoDesignGif}
-                          alt={service.title}
-                          loading="lazy"
-                          decoding="async"
-                          width={56}
-                          height={56}
-                          className="w-full h-full object-contain  transition-transform duration-300 group-hover:scale-110"
-                        />
+                        <AnimIcon name={animIconMap[service.iconName] ?? "design"} title={service.title} className="w-full h-full" />
                       </div>
 
                       {/* Service Title & Brief */}
