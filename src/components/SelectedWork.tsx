@@ -198,7 +198,29 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                             />
                           </a>
 
-                          {/* 3. Community Upvote Badge */}
+                          {/* 3. Monthly Rank Badge */}
+                          <a
+                            href="https://unikorn.vn/p/h1t-micro?ref=embed-h1t-micro"
+                            target="_blank"
+                            rel="noreferrer"
+                            title="H1T MICRO - Hàng tháng trên Unikorn.vn"
+                            className="inline-flex items-center transition-transform hover:scale-[1.03] active:scale-95 focus-visible:ring-1 focus-visible:ring-brand-orange rounded-sm"
+                          >
+                            <img
+                              src="https://unikorn.vn/api/widgets/badge/h1t-micro/rank?theme=dark&type=monthly"
+                              alt="H1T MICRO - Hàng tháng"
+                              className="unikorn-badge-dark h-10 sm:h-11 w-auto object-contain"
+                              loading="lazy"
+                            />
+                            <img
+                              src="https://unikorn.vn/api/widgets/badge/h1t-micro/rank?theme=light&type=monthly"
+                              alt="H1T MICRO - Hàng tháng"
+                              className="unikorn-badge-light h-10 sm:h-11 w-auto object-contain"
+                              loading="lazy"
+                            />
+                          </a>
+
+                          {/* 4. Community Upvote Badge */}
                           <a 
                             href="https://unikorn.vn/p/h1t-micro?ref=embed-h1t-micro" 
                             target="_blank" 
@@ -228,7 +250,7 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                               {lang === "vi" ? "THÀNH VIÊN" : "COMMUNITY"}
                             </span>
                             <span className="font-display font-bold text-lg sm:text-xl text-ink">
-                              1.800+
+                              2.500+
                             </span>
                           </div>
                           <div className="bg-surface/80 border border-emerald-500/30 p-2.5 rounded-sm">
@@ -488,7 +510,7 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                                   <span>🏆 #1 UNIKORN</span>
                                 </span>
                                 <span className="bg-surface/90 border border-emerald-500/40 text-emerald-400 font-bold px-2 py-0.5  backdrop-blur-sm">
-                                  👥 1.800+ MEMBERS
+                                  👥 2.500+ MEMBERS
                                 </span>
                                 <span className="bg-surface/90 border border-line text-ink font-bold px-2 py-0.5  backdrop-blur-sm">
                                   ⚡ 99 LIGHTHOUSE
