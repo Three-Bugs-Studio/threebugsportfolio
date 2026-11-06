@@ -326,7 +326,7 @@ export default function App() {
                 : ["UI/UX design", "Web development", "E-Commerce", "Web apps", "AI integration", "Maintenance & hotfixes", "Templates from 2.5M VND"]}
             />
 
-            {/* Templates: right under the hero so budget customers see them first */}
+            {/* Templates first so budget customers see them right away; then the client journey: what, proof, cost, how, trust, contact */}
               <StaggeredSection
                 id="app-templates-section"
                 sectorCode="01"
@@ -338,24 +338,6 @@ export default function App() {
                 </Suspense>
               </StaggeredSection>
 
-            {/* About Section */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.45 }}
-              >
-                <StaggeredSection
-                  id="app-about-section"
-                  sectorCode="02"
-                  sectorName={lang === "vi" ? "TRIẾT LÝ HOẠT ĐỘNG" : "ABOUT PHILOSOPHY"}
-                  lang={lang}
-                >
-                  <Suspense fallback={<AboutSkeleton lang={lang} />}>
-                    <About lang={lang} />
-                  </Suspense>
-                </StaggeredSection>
-              </motion.div>
-
             {/* Services / Capabilities Section */}
               <motion.div
                 initial={{ opacity: 0 }}
@@ -364,8 +346,8 @@ export default function App() {
               >
                 <StaggeredSection
                   id="app-services-section"
-                  sectorCode="03"
-                  sectorName={lang === "vi" ? "CÔNG NGHỆ & DỊCH VỤ" : "CORE CAPABILITIES"}
+                  sectorCode="02"
+                  sectorName={lang === "vi" ? "DỊCH VỤ" : "SERVICES"}
                   lang={lang}
                 >
                   <Suspense fallback={<ServicesSkeleton lang={lang} />}>
@@ -382,42 +364,12 @@ export default function App() {
               >
                 <StaggeredSection
                   id="app-work-section"
-                  sectorCode="04"
-                  sectorName={lang === "vi" ? "SẢN PHẨM TIÊU BIỂU" : "SELECTED PORTFOLIO"}
+                  sectorCode="03"
+                  sectorName={lang === "vi" ? "DỰ ÁN TIÊU BIỂU" : "SELECTED WORK"}
                   lang={lang}
                 >
                   <Suspense fallback={<SelectedWorkSkeleton lang={lang} />}>
                     <SelectedWork lang={lang} />
-                  </Suspense>
-                </StaggeredSection>
-              </motion.div>
-
-            {/* Studio products: 3BCAD and 3B Infrastructure */}
-              <StaggeredSection
-                id="app-opensource-section"
-                sectorCode="05"
-                sectorName={lang === "vi" ? "SẢN PHẨM CỦA STUDIO" : "STUDIO PRODUCTS"}
-                lang={lang}
-              >
-                <Suspense fallback={null}>
-                  <OpenSource lang={lang} />
-                </Suspense>
-              </StaggeredSection>
-
-            {/* Process Timeline Section */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.45 }}
-              >
-                <StaggeredSection
-                  id="app-process-section"
-                  sectorCode="06"
-                  sectorName={lang === "vi" ? "QUY TRÌNH PHÁT TRIỂN" : "ENGINEERING FLOW"}
-                  lang={lang}
-                >
-                  <Suspense fallback={<ProcessSkeleton lang={lang} />}>
-                    <Process lang={lang} />
                   </Suspense>
                 </StaggeredSection>
               </motion.div>
@@ -430,8 +382,8 @@ export default function App() {
             >
               <StaggeredSection
                 id="app-pricing-section"
-                sectorCode="07"
-                sectorName={lang === "vi" ? "BÁO GIÁ THEO PHASE" : "PHASE PRICING"}
+                sectorCode="04"
+                sectorName={lang === "vi" ? "BÁO GIÁ" : "PRICING"}
                 lang={lang}
               >
                 <Suspense fallback={null}>
@@ -440,38 +392,20 @@ export default function App() {
               </StaggeredSection>
             </motion.div>
 
-            {/* Technology / System Stack Section */}
+            {/* Process Timeline Section */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.45 }}
               >
                 <StaggeredSection
-                  id="app-technology-section"
-                  sectorCode="08"
-                  sectorName={lang === "vi" ? "HỆ THỐNG CÔNG NGHỆ" : "SYSTEM STACK"}
+                  id="app-process-section"
+                  sectorCode="05"
+                  sectorName={lang === "vi" ? "QUY TRÌNH LÀM VIỆC" : "HOW WE WORK"}
                   lang={lang}
                 >
-                  <Suspense fallback={<TechnologySkeleton lang={lang} />}>
-                    <Technology lang={lang} />
-                  </Suspense>
-                </StaggeredSection>
-              </motion.div>
-
-            {/* Founders / Team Section */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.45 }}
-              >
-                <StaggeredSection
-                  id="app-team-section"
-                  sectorCode="09"
-                  sectorName={lang === "vi" ? "ĐỘI NGŨ SÁNG LẬP" : "STUDIO FOUNDERS"}
-                  lang={lang}
-                >
-                  <Suspense fallback={<TeamSkeleton lang={lang} />}>
-                    <Team lang={lang} />
+                  <Suspense fallback={<ProcessSkeleton lang={lang} />}>
+                    <Process lang={lang} />
                   </Suspense>
                 </StaggeredSection>
               </motion.div>
@@ -484,8 +418,8 @@ export default function App() {
               >
                 <StaggeredSection
                   id="app-testimonials-section"
-                  sectorCode="10"
-                  sectorName={lang === "vi" ? "ĐÁNH GIÁ ĐỐI TÁC" : "PARTNER REVIEWS"}
+                  sectorCode="06"
+                  sectorName={lang === "vi" ? "KHÁCH HÀNG NÓI GÌ" : "CLIENT REVIEWS"}
                   lang={lang}
                 >
                   <Suspense fallback={<TestimonialsSkeleton lang={lang} />}>
@@ -493,6 +427,72 @@ export default function App() {
                   </Suspense>
                 </StaggeredSection>
               </motion.div>
+
+            {/* Founders / Team Section */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.45 }}
+              >
+                <StaggeredSection
+                  id="app-team-section"
+                  sectorCode="07"
+                  sectorName={lang === "vi" ? "ĐỘI NGŨ" : "THE TEAM"}
+                  lang={lang}
+                >
+                  <Suspense fallback={<TeamSkeleton lang={lang} />}>
+                    <Team lang={lang} />
+                  </Suspense>
+                </StaggeredSection>
+              </motion.div>
+
+            {/* About Section */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.45 }}
+              >
+                <StaggeredSection
+                  id="app-about-section"
+                  sectorCode="08"
+                  sectorName={lang === "vi" ? "VỀ STUDIO" : "ABOUT THE STUDIO"}
+                  lang={lang}
+                >
+                  <Suspense fallback={<AboutSkeleton lang={lang} />}>
+                    <About lang={lang} />
+                  </Suspense>
+                </StaggeredSection>
+              </motion.div>
+
+            {/* Technology / System Stack Section */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.45 }}
+              >
+                <StaggeredSection
+                  id="app-technology-section"
+                  sectorCode="09"
+                  sectorName={lang === "vi" ? "CÔNG NGHỆ SỬ DỤNG" : "TECH STACK"}
+                  lang={lang}
+                >
+                  <Suspense fallback={<TechnologySkeleton lang={lang} />}>
+                    <Technology lang={lang} />
+                  </Suspense>
+                </StaggeredSection>
+              </motion.div>
+
+            {/* Studio products: 3BCAD and 3B Infrastructure */}
+              <StaggeredSection
+                id="app-opensource-section"
+                sectorCode="10"
+                sectorName={lang === "vi" ? "SẢN PHẨM CỦA STUDIO" : "STUDIO PRODUCTS"}
+                lang={lang}
+              >
+                <Suspense fallback={null}>
+                  <OpenSource lang={lang} />
+                </Suspense>
+              </StaggeredSection>
 
             {/* FAQ Section */}
               <motion.div
@@ -503,7 +503,7 @@ export default function App() {
                 <StaggeredSection
                   id="app-faq-section"
                   sectorCode="11"
-                  sectorName={lang === "vi" ? "GIẢI ĐÁP THẮC MẮC" : "FAQ RESOLUTIONS"}
+                  sectorName={lang === "vi" ? "CÂU HỎI THƯỜNG GẶP" : "FAQ"}
                   lang={lang}
                 >
                   <Suspense fallback={<FAQSkeleton lang={lang} />}>
@@ -521,7 +521,7 @@ export default function App() {
                 <StaggeredSection
                   id="app-contact-section"
                   sectorCode="12"
-                  sectorName={lang === "vi" ? "LIÊN HỆ ĐẶT HÀNG" : "INQUIRY PORTAL"}
+                  sectorName={lang === "vi" ? "LIÊN HỆ" : "CONTACT"}
                   lang={lang}
                 >
                   <Suspense fallback={<ContactSkeleton lang={lang} />}>
