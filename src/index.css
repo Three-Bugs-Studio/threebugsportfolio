@@ -905,6 +905,14 @@ html.light .member-tag {
 @keyframes i-star{0%,8%{opacity:0;transform:scale(.2)}16%{opacity:1;transform:scale(1.35)}24%,85%{opacity:1;transform:scale(1)}90%,100%{opacity:0;transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.ico *{animation:none!important}.ico .i-gh,.ico .i-sweep,.ico .i-fx-scan{display:none}}
 
+/* Team portraits (TeamPortrait): still until hovered, then a short glitch */
+.av .av-gh{opacity:0}
+.av:hover .av-fig,.id-card:hover .av .av-fig{animation:av-jit .45s steps(1,end) infinite}
+.av:hover .av-gh,.id-card:hover .av .av-gh{animation:av-gh .45s steps(1,end) infinite}
+@keyframes av-jit{0%{transform:translateX(-2px)}20%{transform:none}50%{transform:translateX(2px)}70%,100%{transform:none}}
+@keyframes av-gh{0%{opacity:.75;transform:translateX(5px);clip-path:inset(12% 0 70% 0)}25%{opacity:.75;transform:translateX(-6px);clip-path:inset(44% 0 38% 0)}50%{opacity:.6;transform:translateX(4px);clip-path:inset(72% 0 10% 0)}75%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.av .av-fig,.av .av-gh{animation:none!important}}
+
 /* Header logo boot sequence: plays once on load, ends on the static logo */
 .logo-boot .lb-ghost { opacity: 0; }
 .logo-boot .lb-l,
