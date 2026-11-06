@@ -15,7 +15,6 @@ export interface CategoryListProps {
   title: string;
   subtitle?: string;
   categories: Category[];
-  headerIcon?: React.ReactNode;
   className?: string;
 }
 
@@ -23,7 +22,6 @@ export const CategoryList = ({
   title,
   subtitle,
   categories,
-  headerIcon,
   className,
 }: CategoryListProps) => {
   const [hoveredItem, setHoveredItem] = useState<string | number | null>(null);
@@ -32,20 +30,9 @@ export const CategoryList = ({
     <div className={cn("w-full bg-canvas text-ink py-6 px-2 md:px-6", className)}>
       <div className="max-w-4xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-10 md:mb-14">
-          {headerIcon && (
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-sm bg-gradient-to-br from-brand-orange/90 to-brand-orange mb-6 text-black shadow-[0_0_25px_rgba(255,106,0,0.3)]">
-              {headerIcon}
-            </div>
-          )}
-          <h1 className="text-3xl md:text-5xl font-display font-medium mb-3 tracking-tight text-ink">
-            {title}
-          </h1>
-          {subtitle && (
-            <h2 className="text-base md:text-xl font-sans font-light text-ink-muted max-w-2xl mx-auto leading-relaxed">
-              {subtitle}
-            </h2>
-          )}
+        <div className="mb-10 md:mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-4 border-b border-line pb-6">
+          <h2 className="text-3xl md:text-4xl font-display font-semibold tracking-tight text-ink">{title}</h2>
+          {subtitle && <p className="text-sm md:text-base text-ink-muted max-w-md leading-relaxed">{subtitle}</p>}
         </div>
 
         {/* Categories List */}
@@ -82,12 +69,12 @@ export const CategoryList = ({
                 {hoveredItem === category.id && (
                   <>
                     <div className="absolute top-3 left-3 w-5 h-5 pointer-events-none">
-                      <div className="absolute top-0 left-0 w-3.5 h-[2px] bg-brand-orange shadow-[0_0_8px_rgba(255,106,0,0.8)]" />
-                      <div className="absolute top-0 left-0 w-[2px] h-3.5 bg-brand-orange shadow-[0_0_8px_rgba(255,106,0,0.8)]" />
+                      <div className="absolute top-0 left-0 w-3.5 h-[2px] bg-brand-orange " />
+                      <div className="absolute top-0 left-0 w-[2px] h-3.5 bg-brand-orange " />
                     </div>
                     <div className="absolute bottom-3 right-3 w-5 h-5 pointer-events-none">
-                      <div className="absolute bottom-0 right-0 w-3.5 h-[2px] bg-brand-orange shadow-[0_0_8px_rgba(255,106,0,0.8)]" />
-                      <div className="absolute bottom-0 right-0 w-[2px] h-3.5 bg-brand-orange shadow-[0_0_8px_rgba(255,106,0,0.8)]" />
+                      <div className="absolute bottom-0 right-0 w-3.5 h-[2px] bg-brand-orange " />
+                      <div className="absolute bottom-0 right-0 w-[2px] h-3.5 bg-brand-orange " />
                     </div>
                   </>
                 )}
@@ -121,7 +108,7 @@ export const CategoryList = ({
                     <div className={cn(
                       "text-xl md:text-2xl shrink-0 transition-all duration-300 flex items-center justify-center p-3 rounded-sm border",
                       hoveredItem === category.id 
-                        ? 'text-brand-ink border-brand-orange/40 bg-brand-orange/10 scale-110 opacity-100 shadow-[0_0_12px_rgba(255,106,0,0.25)]' 
+                        ? 'text-brand-ink border-brand-orange/40 bg-brand-orange/10 scale-110 opacity-100 ' 
                         : 'text-ink-muted border-line bg-line opacity-70'
                     )}>
                       {category.icon}
