@@ -11,7 +11,7 @@ import {
 } from "./ui/MajesticIcon";
 import { SiZalo } from "react-icons/si";
 import { PricingPlan } from "../types";
-import priceGif from "@/assets/animation-icon/price.gif";
+import AnimIcon from "./ui/AnimIcon";
 
 interface PricingProps {
   lang: "vi" | "en";
@@ -142,7 +142,7 @@ export default function Pricing({ lang }: PricingProps) {
   };
 
   return (
-    <section id="pricing" className="py-24 md:py-32 bg-canvas border-t border-line relative overflow-hidden">
+    <section id="pricing" className="py-16 md:py-20 bg-canvas border-t border-line relative overflow-hidden">
       {/* Background Decorative Tech Grids */}
       <div className="absolute inset-0 swiss-grid opacity-5 pointer-events-none" />
 
@@ -153,15 +153,7 @@ export default function Pricing({ lang }: PricingProps) {
           <div>
             <div className="flex items-center gap-3.5 mb-4">
               <div className="price-header-icon-container w-9 h-9 p-1  bg-brand-orange/15 border border-brand-orange/30 flex items-center justify-center shrink-0 ">
-                <img 
-                  src={priceGif} 
-                  alt="Pricing icon" 
-                  loading="lazy" 
-                  decoding="async" 
-                  width={36} 
-                  height={36} 
-                  className="w-full h-full object-contain rounded-sm" 
-                />
+                <AnimIcon name="price" title={lang === "vi" ? "Bảng giá" : "Pricing"} className="w-full h-full" />
               </div>
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-ink font-semibold">
                 {lang === "vi" ? "BÁO GIÁ DỊCH VỤ & BẢO TRÌ" : "PACKAGES & HOURLY SLA"}
