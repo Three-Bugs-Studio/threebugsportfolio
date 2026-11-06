@@ -34,7 +34,7 @@ function PlanCard({ plan, lang, onSelect }: { plan: PricingPlan; lang: "vi" | "e
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      className={`relative flex flex-col bg-surface border rounded-xl p-5 md:p-6 ${plan.recommended ? "border-brand-orange shadow-[0_0_30px_rgba(255,106,0,0.12)]" : "border-line"}`}
+      className={`relative flex flex-col bg-surface border  p-5 md:p-6 ${plan.recommended ? "border-brand-orange " : "border-line"}`}
     >
       {plan.recommended && (
         <span className="absolute -top-3 left-5 font-mono text-xs font-bold uppercase tracking-wider bg-brand-orange text-[#090909] px-2.5 py-1 rounded-sm">
@@ -96,7 +96,7 @@ function PlanCard({ plan, lang, onSelect }: { plan: PricingPlan; lang: "vi" | "e
         onClick={() => onSelect(plan)}
         className={`mt-6 w-full py-3 px-4 rounded-sm font-mono text-xs uppercase tracking-wider font-bold inline-flex items-center justify-center gap-2 transition-colors focus-terminal cursor-pointer ${
           plan.recommended
-            ? "bg-brand-orange text-[#090909] hover:shadow-[0_0_24px_rgba(255,106,0,0.35)]"
+            ? "bg-brand-orange text-[#090909] "
             : "border border-line text-ink hover:border-brand-orange/60 hover:text-brand-ink"
         }`}
       >
@@ -145,7 +145,6 @@ export default function Pricing({ lang }: PricingProps) {
     <section id="pricing" className="py-24 md:py-32 bg-canvas border-t border-line relative overflow-hidden">
       {/* Background Decorative Tech Grids */}
       <div className="absolute inset-0 swiss-grid opacity-5 pointer-events-none" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-brand-orange/5 blur-[140px] pointer-events-none rounded-full" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
@@ -153,7 +152,7 @@ export default function Pricing({ lang }: PricingProps) {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <div className="flex items-center gap-3.5 mb-4">
-              <div className="price-header-icon-container w-9 h-9 p-1 rounded-lg bg-brand-orange/15 border border-brand-orange/30 flex items-center justify-center shrink-0 shadow-[0_0_12px_rgba(255,106,0,0.2)]">
+              <div className="price-header-icon-container w-9 h-9 p-1  bg-brand-orange/15 border border-brand-orange/30 flex items-center justify-center shrink-0 ">
                 <img 
                   src={priceGif} 
                   alt="Pricing icon" 
@@ -165,7 +164,7 @@ export default function Pricing({ lang }: PricingProps) {
                 />
               </div>
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-brand-ink font-semibold">
-                {lang === "vi" ? "04_ALT // BÁO GIÁ DỊCH VỤ & BẢO TRÌ" : "04_ALT // PACKAGES & HOURLY SLA"}
+                {lang === "vi" ? "BÁO GIÁ DỊCH VỤ & BẢO TRÌ" : "PACKAGES & HOURLY SLA"}
               </span>
               <span className="h-[1px] w-12 bg-brand-orange/40" />
             </div>
@@ -185,7 +184,7 @@ export default function Pricing({ lang }: PricingProps) {
           <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-gradient-to-b from-brand-orange to-brand-orange/40" />
           
           <div className="flex items-start md:items-center gap-4 max-w-xl">
-            <div className="w-12 h-12 rounded-sm bg-brand-orange/15 text-brand-ink border border-brand-orange/40 flex items-center justify-center shrink-0 shadow-[0_0_18px_rgba(255,106,0,0.25)]">
+            <div className="w-12 h-12 rounded-sm bg-brand-orange/15 text-brand-ink border border-brand-orange/40 flex items-center justify-center shrink-0 ">
               <UserIcon size={20} className="w-5 h-5" />
             </div>
             <div>
@@ -193,7 +192,7 @@ export default function Pricing({ lang }: PricingProps) {
                 <span className="font-mono text-xs uppercase tracking-widest text-brand-ink font-bold">
                   // {lang === "vi" ? "BỘ PHẬN TIẾP NHẬN HỒ SƠ & TƯ VẤN TRỰC TIẾP" : "PROJECT INTAKE & DIRECT CONSULTANTS"}
                 </span>
-                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                <span className="w-2 h-2  bg-emerald-400" />
               </div>
               <p className="font-display font-medium text-sm md:text-base text-ink leading-snug">
                 {lang === "vi" 
@@ -213,7 +212,7 @@ export default function Pricing({ lang }: PricingProps) {
                     <span className="font-display font-bold text-sm text-ink group-hover/card:text-brand-ink transition-colors">
                       Hoàng Đỗ
                     </span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    <span className="w-1.5 h-1.5  bg-emerald-400" />
                     <span className="font-mono text-xs text-brand-ink bg-brand-orange/10 border border-brand-orange/20 px-1.5 py-0.5 rounded font-semibold">
                       {lang === "vi" ? "Đầu mối Bảo Trì" : "Hourly SLA Lead"}
                     </span>
@@ -237,7 +236,7 @@ export default function Pricing({ lang }: PricingProps) {
                   href="https://zalo.me/0392996307"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-sm bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] text-white font-mono text-xs font-bold shadow-[0_0_12px_rgba(0,104,255,0.35)] hover:shadow-[0_0_18px_rgba(0,104,255,0.55)] transition-all active:scale-95"
+                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-sm bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] text-white font-mono text-xs font-bold   transition-all active:scale-95"
                 >
                   <SiZalo className="w-3.5 h-3.5 shrink-0" />
                   <span>Zalo Chat</span>
@@ -253,7 +252,7 @@ export default function Pricing({ lang }: PricingProps) {
                     <span className="font-display font-bold text-sm text-ink group-hover/card:text-brand-ink transition-colors">
                       Minh Đức
                     </span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    <span className="w-1.5 h-1.5  bg-emerald-400" />
                   </div>
                   <span className="font-mono text-xs text-ink-muted">
                     {lang === "vi" ? "Tư vấn kỹ thuật & Lộ trình" : "Technical & Roadmap"}
@@ -274,7 +273,7 @@ export default function Pricing({ lang }: PricingProps) {
                   href="https://zalo.me/0867474204"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-sm bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] text-white font-mono text-xs font-bold shadow-[0_0_12px_rgba(0,104,255,0.35)] hover:shadow-[0_0_18px_rgba(0,104,255,0.55)] transition-all active:scale-95"
+                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-sm bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] text-white font-mono text-xs font-bold   transition-all active:scale-95"
                 >
                   <SiZalo className="w-3.5 h-3.5 shrink-0" />
                   <span>Zalo Chat</span>
@@ -293,7 +292,7 @@ export default function Pricing({ lang }: PricingProps) {
 
         {/* Hourly maintenance is for sites already live, so it gets a slim strip rather than a fifth card */}
         {hourly && (
-          <div className="mt-5 bg-surface border border-line rounded-xl p-5 md:p-6 flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-8">
+          <div className="mt-5 bg-surface border border-line  p-5 md:p-6 flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-8">
             <div className="flex items-center gap-3 shrink-0">
               <div className="p-2 rounded-sm bg-brand-orange/15 text-brand-ink border border-brand-orange/30">
                 <ClockIcon size={18} className="w-[18px] h-[18px]" />
@@ -308,7 +307,7 @@ export default function Pricing({ lang }: PricingProps) {
             </p>
             <button
               onClick={() => handleSelectPlan(hourly)}
-              className="shrink-0 py-3 px-5 rounded-sm border border-line text-ink hover:border-brand-orange/60 hover:text-brand-ink font-mono text-xs uppercase tracking-wider font-bold inline-flex items-center justify-center gap-2 transition-colors focus-terminal cursor-pointer"
+              className="btn-stacked shrink-0 py-3 px-5 border border-line text-ink hover:border-brand-orange/60 hover:text-brand-ink font-mono text-xs uppercase tracking-wider font-bold inline-flex items-center justify-center gap-2 transition-colors focus-terminal cursor-pointer"
             >
               {vi ? "Liên hệ bảo trì" : "Ask about maintenance"}
               <ArrowRightIcon size={14} className="w-3.5 h-3.5" />
@@ -317,7 +316,7 @@ export default function Pricing({ lang }: PricingProps) {
         )}
 
         {/* Milestone payments for the custom-built plans */}
-        <div className="mt-5 bg-surface border border-line rounded-xl p-5 md:p-6">
+        <div className="mt-5 bg-surface border border-line  p-5 md:p-6">
           <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
             <div className="flex items-center gap-2 text-brand-ink font-mono text-xs uppercase tracking-wider font-bold shrink-0">
               <ShieldIcon size={16} className="w-4 h-4" />
