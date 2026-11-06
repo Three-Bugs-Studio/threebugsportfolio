@@ -96,7 +96,7 @@ export default function CardNav({
         { label: vi ? "Dự án tiêu biểu" : "Featured work", hint: vi ? "Sản phẩm đã bàn giao" : "Products we have shipped", href: "#app-work-section" },
         { label: vi ? "Mẫu website" : "Website templates", hint: vi ? "Có demo chạy thật, từ 2,5 triệu" : "Live demos, from 2.5M VND", href: "/templates" },
         { label: "3BCAD", hint: vi ? "CAD 3D mã nguồn mở" : "Open-source 3D CAD", href: "#app-opensource-section" },
-        { label: "3B Infrastructure", hint: vi ? "Sổ tay kỹ thuật mã nguồn mở" : "Open-source engineering notes", href: "#app-infrastructure-section" }
+        { label: "3B Infrastructure", hint: vi ? "Sổ tay kỹ thuật mã nguồn mở" : "Open-source engineering notes", href: "#open-source-3binfrastructure" }
       ]
     },
     {
@@ -170,29 +170,8 @@ export default function CardNav({
             className="flex items-center gap-2 md:gap-3 group interactive focus:outline-none"
             id="card-nav-logo"
           >
-            <div className="hidden sm:flex gap-1.5 mr-0.5" id="card-nav-logo-dots">
-              <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-brand-orange animate-pulse" />
-              <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#404040]" />
-              <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#404040]" />
-            </div>
-            <Logo size="sm" showText={false} variant="light" />
-            
-            {/* Desktop Brand Text */}
-            <div className="hidden md:block text-left leading-none">
-              <span className={`font-display font-bold tracking-widest text-sm uppercase group-hover:text-brand-ink transition-colors ${isLight ? "text-[#0F172A]" : "text-ink"}`}>
-                THREE BUGS
-              </span>
-              <span className="block font-mono text-xs tracking-[0.35em] uppercase text-brand-ink font-medium mt-0.5">
-                STUDIO
-              </span>
-            </div>
-
-            {/* Mobile Compact Brand Text: 3BSTUDIO */}
-            <div className="block md:hidden text-left leading-none">
-              <span className={`font-display font-black tracking-wider text-sm uppercase group-hover:text-brand-ink transition-colors ${isLight ? "text-[#0F172A]" : "text-ink"}`}>
-                3B<span className="text-brand-ink font-mono text-xs font-bold tracking-widest ml-0.5">STUDIO</span>
-              </span>
-            </div>
+            <Logo className="h-9 md:hidden" antennae={false} />
+            <Logo wordmark className="hidden md:block h-11" />
           </a>
 
           {/* Desktop & Mobile Nav Actions */}
@@ -261,7 +240,7 @@ export default function CardNav({
               }`}
               id="card-nav-menu-btn"
             >
-              <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full" style={{ backgroundColor: menuColor }} />
+              <span className="w-1.5 h-1.5 md:w-2 md:h-2 " style={{ backgroundColor: menuColor }} />
               <span className={isLight ? "text-[#0F172A] font-bold" : "text-ink"}>{isOpen ? (lang === "vi" ? "ĐÓNG" : "CLOSE") : "MENU"}</span>
               {isOpen ? <CloseIcon className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-ink" size={16} /> : <MenuIcon className="w-3.5 h-3.5 md:w-4 md:h-4 text-brand-ink" size={16} />}
             </button>
@@ -305,7 +284,7 @@ export default function CardNav({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ delay: index * 0.05, duration: 0.35 }}
-                    className="bg-surface border border-line rounded-xl p-4 md:p-5"
+                    className="bg-surface border border-line  p-4 md:p-5"
                   >
                     <h3 className="font-display font-bold text-base md:text-lg tracking-tight text-ink mb-2">
                       {card.label}
@@ -318,7 +297,7 @@ export default function CardNav({
                           key={link.href}
                           href={link.href}
                           onClick={(e) => handleScrollTo(e, link.href)}
-                          className="group -mx-2 px-2 py-2 rounded-lg flex items-center justify-between gap-3 hover:bg-line transition-colors"
+                          className="group -mx-2 px-2 py-2  flex items-center justify-between gap-3 hover:bg-line transition-colors"
                         >
                           <span className="min-w-0">
                             <span className="block text-sm font-medium text-ink group-hover:text-brand-ink transition-colors">{link.label}</span>
@@ -337,11 +316,11 @@ export default function CardNav({
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
                   transition={{ delay: navCards.length * 0.05, duration: 0.35 }}
-                  className="rounded-xl p-4 md:p-5 flex flex-col"
+                  className=" p-4 md:p-5 flex flex-col"
                   style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
                 >
                   <div className="flex items-center gap-2 text-xs font-medium">
-                    <span className="w-2 h-2 rounded-full bg-current animate-pulse" />
+                    <span className="w-2 h-2  bg-current " />
                     {vi ? "Đang nhận dự án mới" : "Taking new projects"}
                   </div>
                   <div role="heading" aria-level={3} className="font-display font-bold text-xl md:text-2xl leading-tight tracking-tight mt-3 mb-5 [text-wrap:balance]">
@@ -350,7 +329,7 @@ export default function CardNav({
                   <a
                     href="#app-contact-section"
                     onClick={(e) => handleScrollTo(e, "#app-contact-section")}
-                    className="mt-auto text-center text-sm font-semibold px-4 py-3 rounded-lg bg-canvas text-ink hover:opacity-90 transition-opacity"
+                    className="mt-auto text-center text-sm font-semibold px-4 py-3  bg-canvas text-ink hover:opacity-90 transition-opacity"
                   >
                     {vi ? "Gửi yêu cầu tư vấn" : "Send an inquiry"}
                   </a>
