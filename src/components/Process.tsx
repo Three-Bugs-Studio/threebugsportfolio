@@ -112,9 +112,9 @@ export default function Process({ lang }: ProcessProps) {
                   {stepsList.map((_, pIdx) => (
                     <div
                       key={pIdx}
-                      className={`h-1 flex-1 rounded-full transition-all duration-300 ${
+                      className={`h-1 flex-1  transition-all duration-300 ${
                         pIdx <= activeStepIdx
-                          ? "bg-brand-orange shadow-[0_0_6px_rgba(255,106,0,0.6)]"
+                          ? "bg-brand-orange "
                           : "bg-line"
                       }`}
                     />
@@ -146,7 +146,7 @@ export default function Process({ lang }: ProcessProps) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {stepsList[activeStepIdx]?.deliverables.map((deliv, dIdx) => (
                     <div key={deliv} className="flex items-center gap-2.5">
-                      <div className="w-4 h-4 rounded-full bg-brand-orange/10 flex items-center justify-center shrink-0 border border-brand-orange/20">
+                      <div className="w-4 h-4  bg-brand-orange/10 flex items-center justify-center shrink-0 border border-brand-orange/20">
                         <CheckIcon size={10} className="w-2.5 h-2.5 text-brand-ink" />
                       </div>
                       <span className="font-sans text-xs text-ink font-light">
@@ -210,7 +210,7 @@ export default function Process({ lang }: ProcessProps) {
                       <div className="flex flex-col gap-2">
                         {step.deliverables.map((deliv) => (
                           <div key={deliv} className="flex items-center gap-2">
-                            <div className="w-3.5 h-3.5 rounded-full bg-brand-orange/10 flex items-center justify-center shrink-0 border border-brand-orange/20">
+                            <div className="w-3.5 h-3.5  bg-brand-orange/10 flex items-center justify-center shrink-0 border border-brand-orange/20">
                               <CheckIcon size={8} className="w-2 h-2 text-brand-ink" />
                             </div>
                             <span className="font-sans text-xs text-ink font-light">
