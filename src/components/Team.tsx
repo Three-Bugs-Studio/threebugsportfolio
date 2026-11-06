@@ -9,7 +9,7 @@ import {
 } from "./ui/MajesticIcon";
 import { SiGithub } from "react-icons/si";
 import { TeamMember } from "../types";
-import TeamAvatar, { AvatarLook } from "./TeamAvatar";
+import TeamPortrait from "./TeamPortrait";
 import Logo from "./Logo";
 import AnimIcon from "./ui/AnimIcon";
 
@@ -49,40 +49,33 @@ export default function Team({ lang }: TeamProps) {
   const teamList = TEAM_DATA[lang];
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
-  // One line-art portrait per member (TeamAvatar), in the member's colour. Thu Tran is the only woman on the team.
-  const CHAR: Record<string, { look: AvatarLook; codename: string; klass: { vi: string; en: string }; meaning: { vi: string; en: string } }> = {
+  // Codename and meaning per member; portraits live in TeamPortrait. Thu Tran is the only woman on the team.
+  const CHAR: Record<string, { codename: string; klass: { vi: string; en: string }; meaning: { vi: string; en: string } }> = {
     "Duong Phu Dong": {
-      look: { hair: "cap", beard: "stubble", skin: "#F0C3A2", hairColor: "#3b2a24" },
       codename: "VANGUARD", klass: { vi: "Người dẫn đường", en: "Pathfinder" },
       meaning: { vi: "Tầm nhìn & dẫn đường: chốt hướng đi của sản phẩm và kiến trúc cho cả đội.", en: "Vision & direction: setting the course for the product and its architecture." },
     },
     "Thu Tran": {
-      look: { hair: "long", beard: "none", skin: "#F6D2BC", hairColor: "#3a2420" },
       codename: "PRISM", klass: { vi: "Nhà thiết kế ánh sáng", en: "Light designer" },
       meaning: { vi: "Màu sắc, bố cục & cân bằng: thiết kế đẹp và sổ sách minh bạch đều cần sự hài hòa.", en: "Colour, composition & balance: good design and clean books both need harmony." },
     },
     "Huynh Quang Dong": {
-      look: { hair: "bald", beard: "full", skin: "#E8B48E", hairColor: "#5a3a2a" },
       codename: "SENTINEL", klass: { vi: "Người gác chất lượng", en: "Quality sentinel" },
       meaning: { vi: "Chuẩn mực & kiểm định: mọi tính năng đều qua kiểm thử trước khi tới tay khách.", en: "Standards & testing: every feature is checked before it reaches the client." },
     },
     "Ho Quang Huy": {
-      look: { hair: "spiky", beard: "none", glasses: true, skin: "#EBB896", hairColor: "#1f1715" },
       codename: "RUNNER", klass: { vi: "Người vận hành hạ tầng", en: "Infrastructure runner" },
       meaning: { vi: "Tốc độ & hạ tầng: giữ cho máy chủ và pipeline triển khai chạy không ngừng.", en: "Speed & infrastructure: keeping servers and the deploy pipeline running." },
     },
     "Hao Vu": {
-      look: { hair: "beanie", beard: "mustache", skin: "#D9A07A", hairColor: "#2a1d1a" },
       codename: "BEDROCK", klass: { vi: "Kiến trúc sư dữ liệu", en: "Data architect" },
       meaning: { vi: "Kiến trúc sâu & nền móng: những tầng cấu trúc vững chắc bên dưới mọi hệ thống.", en: "Deep architecture & foundations: the solid layers beneath every system." },
     },
     "Hoang Do": {
-      look: { hair: "side", beard: "short", skin: "#F2C4A8", hairColor: "#2d201c" },
       codename: "LINK", klass: { vi: "Cầu nối khách hàng", en: "Client link" },
       meaning: { vi: "Cây cầu kết nối: đưa khách hàng đến với studio một cách nhẹ nhàng, rõ ràng.", en: "A connecting bridge: bringing clients and the studio together, calmly and clearly." },
     },
     "Minh Duc": {
-      look: { hair: "curly", beard: "stubble", skin: "#C98E66", hairColor: "#1d1513" },
       codename: "BEACON", klass: { vi: "Ngọn đèn dẫn lối", en: "Beacon" },
       meaning: { vi: "Ánh đèn chào đón: lắng nghe khách hàng và soi rõ con đường triển khai.", en: "A welcoming light: listening to clients and lighting up the road ahead." },
     },
@@ -250,9 +243,8 @@ export default function Team({ lang }: TeamProps) {
                 <div className="flex gap-4 pl-5 pr-4 py-4 flex-1">
                   {art && (
                     <div className="shrink-0 w-24 sm:w-28 self-start border border-line bg-canvas p-1">
-                      <TeamAvatar
-                        square
-                        look={art.look}
+                      <TeamPortrait
+                        name={member.name}
                         color={colorHex}
                         title={`${lang === "vi" ? "Chân dung minh họa" : "Illustrated portrait of"} ${member.name}`}
                         className="block w-full h-auto"
@@ -347,8 +339,8 @@ export default function Team({ lang }: TeamProps) {
 
                 <div className="flex items-center gap-4 mb-6">
                   {CHAR[selectedMember.name] && (
-                    <TeamAvatar
-                      look={CHAR[selectedMember.name].look}
+                    <TeamPortrait
+                      name={selectedMember.name}
                       color={selectedMember.colorTag?.hex || "#FF6A00"}
                       title={`${lang === "vi" ? "Chân dung minh họa" : "Illustrated portrait of"} ${selectedMember.name}`}
                       className="w-16 h-16 shrink-0"
