@@ -69,7 +69,7 @@ export default function Services({ lang }: ServicesProps) {
             {/* Micro-interactive tech block details */}
             <motion.div variants={itemVariants} className="hidden lg:block border-l border-line pl-6 py-4 mt-8">
               <span className="font-mono text-xs tracking-widest text-brand-ink uppercase block mb-2">
-                {lang === "vi" ? "// TIÊU CHUẨN KIẾN TRÚC HỆ THỐNG" : "// SYSTEM STACK CRITERIA"}
+                {lang === "vi" ? "TIÊU CHUẨN KIẾN TRÚC HỆ THỐNG" : "SYSTEM STACK CRITERIA"}
               </span>
               <p className="font-mono text-xs text-ink-muted leading-relaxed">
                 {lang === "vi"
@@ -115,10 +115,10 @@ export default function Services({ lang }: ServicesProps) {
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex items-start gap-5">
                       {/* Service Animated Icon Container */}
-                      <div className={`services-anim-icon-container relative w-12 h-12 md:w-14 md:h-14 p-1.5 rounded-xl border transition-all duration-500 flex items-center justify-center shrink-0 overflow-hidden ${
+                      <div className={`services-anim-icon-container relative w-12 h-12 md:w-14 md:h-14 p-1.5  border transition-all duration-500 flex items-center justify-center shrink-0 overflow-hidden ${
                         isActive
-                          ? "bg-brand-orange/15 border-brand-orange shadow-[0_0_18px_rgba(255,106,0,0.3)] scale-105"
-                          : "bg-surface border-line group-hover:border-brand-orange/40 group-hover:shadow-[0_0_12px_rgba(255,106,0,0.15)]"
+                          ? "bg-brand-orange/15 border-brand-orange  scale-105"
+                          : "bg-surface border-line group-hover:border-brand-orange/40 "
                       }`}>
                         <img
                           src={animIconMap[service.iconName] || logoDesignGif}
@@ -127,7 +127,7 @@ export default function Services({ lang }: ServicesProps) {
                           decoding="async"
                           width={56}
                           height={56}
-                          className="w-full h-full object-contain rounded-lg transition-transform duration-300 group-hover:scale-110"
+                          className="w-full h-full object-contain  transition-transform duration-300 group-hover:scale-110"
                         />
                       </div>
 
