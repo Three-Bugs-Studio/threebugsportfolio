@@ -10,10 +10,38 @@ import {
 import { SiGithub } from "react-icons/si";
 import { TeamMember } from "../types";
 import TeamAvatar, { AvatarLook } from "./TeamAvatar";
+import Logo from "./Logo";
 import receptionistDeskGif from "@/assets/animation-icon/receptionist-desk.gif";
 
 interface TeamProps {
   lang: "vi" | "en";
+}
+
+// One labelled line on the ID card.
+function IdField({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="min-w-0">
+      <dt className="font-mono text-xs uppercase tracking-[0.25em] text-ink-muted">{label}</dt>
+      <dd className="text-sm text-ink leading-snug line-clamp-2 mt-0.5">{children}</dd>
+    </div>
+  );
+}
+
+// Decorative barcode derived from the name, so each card's code is stable across renders.
+function Barcode({ seed, className }: { seed: string; className?: string }) {
+  let x = 0;
+  const bars = [...seed].map((ch, i) => {
+    const c = ch.charCodeAt(0);
+    const w = 1 + (c % 3);
+    const bar = <rect key={i} x={x} width={w} height={24} />;
+    x += w + 1 + ((c >> 2) % 2);
+    return bar;
+  });
+  return (
+    <svg viewBox={`0 0 ${x} 24`} preserveAspectRatio="none" aria-hidden="true" fill="currentColor" className={className}>
+      {bars}
+    </svg>
+  );
 }
 
 export default function Team({ lang }: TeamProps) {
@@ -138,7 +166,7 @@ export default function Team({ lang }: TeamProps) {
               </span>
               <span className="h-[1px] w-12 bg-brand-orange/40" />
             </div>
-            <h2 className="font-display font-bold text-3xl md:text-5xl tracking-tight text-ink uppercase leading-tight">
+            <h2 className="font-display font-semibold text-3xl md:text-5xl tracking-tight text-ink leading-tight">
               {lang === "vi" ? "Đội Ngũ Three Bugs Studio" : "The Three Bugs Studio Team"}
             </h2>
           </div>
@@ -156,12 +184,12 @@ export default function Team({ lang }: TeamProps) {
             <CheckDoubleIcon size={12} className="w-3 h-3 text-brand-ink" />
             <span>100% IN-HOUSE ENGINEERS</span>
           </div>
-          <div className="flex items-center gap-2 bg-surface border border-cyan-500/30 px-3.5 py-1.5 rounded-sm font-mono text-xs text-cyan-300">
-            <CheckDoubleIcon size={12} className="w-3 h-3 text-cyan-400" />
+          <div className="flex items-center gap-2 bg-surface border border-line px-3.5 py-1.5 rounded-sm font-mono text-xs text-ink">
+            <CheckDoubleIcon size={12} className="w-3 h-3 text-brand-ink" />
             <span>RMIT ENTERPRISE SHOWCASE CREDENTIALS</span>
           </div>
-          <div className="flex items-center gap-2 bg-surface border border-purple-500/30 px-3.5 py-1.5 rounded-sm font-mono text-xs text-purple-300">
-            <CheckDoubleIcon size={12} className="w-3 h-3 text-purple-400" />
+          <div className="flex items-center gap-2 bg-surface border border-line px-3.5 py-1.5 rounded-sm font-mono text-xs text-ink">
+            <CheckDoubleIcon size={12} className="w-3 h-3 text-brand-ink" />
             <span>STUDIO FINANCIAL TRANSPARENCY</span>
           </div>
         </div>
@@ -201,90 +229,60 @@ export default function Team({ lang }: TeamProps) {
                     setSelectedMember(member);
                   }
                 }}
-                className="team-card-item group relative bg-surface/90 border border-line hover:border-brand-orange/50 p-4  transition-all duration-500 cursor-pointer flex flex-col justify-between overflow-hidden shadow-xl  hover:-translate-y-1.5 interactive focus-terminal outline-none"
+                style={{ "--tag": colorHex } as React.CSSProperties}
+                className="team-card-item id-card group relative bg-surface border border-line cursor-pointer flex flex-col overflow-hidden interactive outline-none transition-colors duration-300"
               >
-                {/* Top Member Index & Studio Label / Highlight Badge */}
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span 
-                    className="member-tag font-mono text-xs font-bold tracking-widest uppercase px-2 py-0.5 rounded-sm border shrink-0"
-                    style={{ "--tag": colorHex } as React.CSSProperties}
-                  >
-                    0{idx + 1}
-                  </span>
-                  {member.highlightBadge ? (
-                    <span 
-                      className="member-tag font-mono text-xs font-bold px-1.5 py-0.5 rounded border tracking-wider truncate"
-                      style={{ "--tag": colorHex } as React.CSSProperties}
-                    >
-                      {member.highlightBadge}
+                {/* Member colour stripe, widens on hover */}
+                <span aria-hidden="true" className="absolute left-0 top-0 bottom-0 w-[3px] group-hover:w-1.5 transition-[width] duration-300" style={{ backgroundColor: colorHex }} />
+
+                {/* Issuer strip */}
+                <div className="flex items-center justify-between gap-3 pl-5 pr-4 py-2.5 border-b border-line">
+                  <span className="flex items-center gap-2.5 min-w-0">
+                    <Logo className="h-4" antennae={false} />
+                    <span className="font-mono text-xs uppercase tracking-[0.25em] text-ink-muted truncate">
+                      {lang === "vi" ? "Thẻ nhân sự" : "Personnel ID"}
                     </span>
-                  ) : (
-                    <span className="font-mono text-xs text-ink-muted tracking-wider uppercase">
-                      THREE BUGS
+                  </span>
+                  <span className="font-mono text-xs font-semibold tracking-widest text-ink shrink-0">3B-0{idx + 1}</span>
+                </div>
+
+                {/* Photo + record fields */}
+                <div className="flex gap-4 pl-5 pr-4 py-4 flex-1">
+                  {art && (
+                    <div className="shrink-0 w-24 sm:w-28 self-start border border-line bg-canvas p-1">
+                      <TeamAvatar
+                        square
+                        look={art.look}
+                        color={colorHex}
+                        title={`${lang === "vi" ? "Chân dung minh họa" : "Illustrated portrait of"} ${member.name}`}
+                        className="block w-full h-auto"
+                      />
+                    </div>
+                  )}
+                  <dl className="min-w-0 flex-1 grid content-start gap-2.5">
+                    {art && (
+                      <IdField label="Codename">
+                        <span className="font-mono font-bold tracking-[0.2em]" style={{ color: colorHex }}>{art.codename}</span>
+                      </IdField>
+                    )}
+                    <IdField label={lang === "vi" ? "Họ tên" : "Name"}>
+                      <span className="font-display font-semibold text-base md:text-lg">{member.name}</span>
+                    </IdField>
+                    <IdField label={lang === "vi" ? "Vai trò" : "Role"}>{member.role}</IdField>
+                    <IdField label={lang === "vi" ? "Bộ phận" : "Division"}>{lang === "vi" ? group.vi : group.en}</IdField>
+                  </dl>
+                </div>
+
+                {/* Barcode strip */}
+                <div className="flex items-center gap-3 pl-5 pr-4 py-2.5 border-t border-line">
+                  <Barcode seed={member.name} className="h-6 w-24 shrink-0 text-ink" />
+                  <span className="font-mono text-xs text-ink-muted truncate">{(member.specialties || []).slice(0, 2).join(" · ")}</span>
+                  {(member.showcaseUrl || member.name === "Thu Tran") && (
+                    <span className="ml-auto font-mono text-xs uppercase tracking-wider text-brand-ink shrink-0">
+                      {member.showcaseUrl ? "RMIT" : lang === "vi" ? "Tài chính" : "Finance"}
                     </span>
                   )}
                 </div>
-
-                {/* Illustrated portrait in a gradient circle, with the member's codename and role under it */}
-                {art && (
-                  <figure className={`relative ${group.wide ? "aspect-[16/10]" : "aspect-[4/5]"} w-full border border-line  overflow-hidden mb-4 bg-canvas flex flex-col items-center justify-center gap-3 p-4 transition-colors duration-500 group-hover:border-brand-orange/40`}>
-                    <TeamAvatar
-                      look={art.look}
-                      color={colorHex}
-                      title={`${lang === "vi" ? "Chân dung minh họa" : "Illustrated portrait of"} ${member.name}`}
-                      className="h-[66%] w-auto max-w-full group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <figcaption className="text-center">
-                      <span className="block font-mono text-sm font-bold tracking-[0.2em] text-ink">{art.codename}</span>
-                      <span className="block font-mono text-xs uppercase tracking-wider text-ink-muted mt-1">{art.klass[lang]}</span>
-                    </figcaption>
-                  </figure>
-                )}
-
-                {/* Name & Role */}
-                <div className="space-y-1 mb-3">
-                  <h3 className="font-display font-bold text-base md:text-lg text-ink group-hover:text-brand-ink transition-colors leading-snug">
-                    {member.name}
-                  </h3>
-                  <p className="font-sans text-xs text-brand-ink font-medium">
-                    {member.role}
-                  </p>
-                  <span className="font-mono text-xs text-ink-muted uppercase tracking-wider block mt-1 line-clamp-1">
-                    {member.diagramRole}
-                  </span>
-                </div>
-
-                {/* Specialty Tags */}
-                <div className="flex flex-wrap gap-1 pt-2 border-t border-line">
-                  {(member.specialties || []).slice(0, 2).map((skill) => (
-                    <span
-                      key={skill}
-                      className="font-mono text-xs bg-line border border-line px-2 py-0.5 rounded-sm text-ink-muted group-hover:text-ink transition-colors"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Bottom Verification Indicator */}
-                {member.showcaseUrl && (
-                  <div className="mt-2.5 pt-2 border-t border-line flex items-center justify-between text-xs font-mono text-cyan-400 group-hover:text-cyan-300">
-                    <span className="flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-sm bg-cyan-400" />
-                      RMIT Showcase
-                    </span>
-                    <ArrowUpRightIcon size={10} className="w-2.5 h-2.5" />
-                  </div>
-                )}
-                {member.name === "Thu Tran" && (
-                  <div className="mt-2.5 pt-2 border-t border-line flex items-center justify-between text-xs font-mono text-purple-400 group-hover:text-purple-300">
-                    <span className="flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-sm bg-purple-400" />
-                      {lang === "vi" ? "Sổ Sách & Thu Chi" : "Financial Ops"}
-                    </span>
-                    <CheckDoubleIcon size={10} className="w-2.5 h-2.5" />
-                  </div>
-                )}
               </motion.div>
             );
           })}
