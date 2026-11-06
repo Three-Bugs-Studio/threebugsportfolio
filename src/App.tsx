@@ -277,9 +277,6 @@ export default function App() {
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden bg-canvas text-ink font-sans selection:bg-brand-orange selection:text-[#090909]" id="root-app-container">
 
-      {/* Global CRT Scanline Hardware Overlay */}
-      <div className="crt-overlay" id="crt-scanline-overlay" />
-
       {/* Floating Direct Consultation & Zalo Quick Connect Widget */}
       <QuickContactWidget lang={lang} theme={theme} />
 
@@ -292,11 +289,11 @@ export default function App() {
       {/* Elegant Fixed Left Sidebar (Swiss Alignment Rail) */}
       <aside className="hidden lg:flex fixed top-0 left-0 bottom-0 w-20 border-r border-line flex-col justify-center items-center z-30 pointer-events-none" id="swiss-alignment-aside">
         <span className="writing-mode-vertical select-none font-mono text-xs tracking-[0.3em] uppercase text-ink-muted flex items-center gap-6">
+          <span>THREE BUGS STUDIO</span>
+          <span className="w-px h-6 bg-line" />
+          <span>{lang === "vi" ? "HỒ CHÍ MINH · VN" : "HO CHI MINH CITY · VN"}</span>
+          <span className="w-px h-6 bg-line" />
           <span>EST. 2026</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-brand-orange/40 animate-pulse" />
-          <span>100% REMOTE</span>
-          <span className="w-1.5 h-1.5 rounded-full bg-brand-orange/40" />
-          <span>DIGITAL CRAFT</span>
         </span>
       </aside>
 
@@ -332,7 +329,7 @@ export default function App() {
             {/* Templates: right under the hero so budget customers see them first */}
               <StaggeredSection
                 id="app-templates-section"
-                sectorCode="SECTOR_T"
+                sectorCode="01"
                 sectorName={lang === "vi" ? "MẪU WEBSITE CÓ SẴN" : "READY-MADE TEMPLATES"}
                 lang={lang}
               >
@@ -349,7 +346,7 @@ export default function App() {
               >
                 <StaggeredSection
                   id="app-about-section"
-                  sectorCode="SECTOR_01"
+                  sectorCode="02"
                   sectorName={lang === "vi" ? "TRIẾT LÝ HOẠT ĐỘNG" : "ABOUT PHILOSOPHY"}
                   lang={lang}
                 >
@@ -367,7 +364,7 @@ export default function App() {
               >
                 <StaggeredSection
                   id="app-services-section"
-                  sectorCode="SECTOR_02"
+                  sectorCode="03"
                   sectorName={lang === "vi" ? "CÔNG NGHỆ & DỊCH VỤ" : "CORE CAPABILITIES"}
                   lang={lang}
                 >
@@ -385,7 +382,7 @@ export default function App() {
               >
                 <StaggeredSection
                   id="app-work-section"
-                  sectorCode="SECTOR_03"
+                  sectorCode="04"
                   sectorName={lang === "vi" ? "SẢN PHẨM TIÊU BIỂU" : "SELECTED PORTFOLIO"}
                   lang={lang}
                 >
@@ -395,27 +392,15 @@ export default function App() {
                 </StaggeredSection>
               </motion.div>
 
-            {/* Open-source product: 3BCAD */}
+            {/* Studio products: 3BCAD and 3B Infrastructure */}
               <StaggeredSection
                 id="app-opensource-section"
-                sectorCode="SECTOR_03_ALT"
-                sectorName={lang === "vi" ? "SẢN PHẨM MÃ NGUỒN MỞ" : "OPEN-SOURCE PRODUCT"}
+                sectorCode="05"
+                sectorName={lang === "vi" ? "SẢN PHẨM CỦA STUDIO" : "STUDIO PRODUCTS"}
                 lang={lang}
               >
                 <Suspense fallback={null}>
                   <OpenSource lang={lang} />
-                </Suspense>
-              </StaggeredSection>
-
-            {/* Open-source product: 3B Infrastructure */}
-              <StaggeredSection
-                id="app-infrastructure-section"
-                sectorCode="SECTOR_03_INF"
-                sectorName={lang === "vi" ? "SẢN PHẨM MÃ NGUỒN MỞ" : "OPEN-SOURCE PRODUCT"}
-                lang={lang}
-              >
-                <Suspense fallback={null}>
-                  <OpenSource lang={lang} product="3binfrastructure" />
                 </Suspense>
               </StaggeredSection>
 
@@ -427,7 +412,7 @@ export default function App() {
               >
                 <StaggeredSection
                   id="app-process-section"
-                  sectorCode="SECTOR_04"
+                  sectorCode="06"
                   sectorName={lang === "vi" ? "QUY TRÌNH PHÁT TRIỂN" : "ENGINEERING FLOW"}
                   lang={lang}
                 >
@@ -445,7 +430,7 @@ export default function App() {
             >
               <StaggeredSection
                 id="app-pricing-section"
-                sectorCode="SECTOR_04_ALT"
+                sectorCode="07"
                 sectorName={lang === "vi" ? "BÁO GIÁ THEO PHASE" : "PHASE PRICING"}
                 lang={lang}
               >
@@ -463,7 +448,7 @@ export default function App() {
               >
                 <StaggeredSection
                   id="app-technology-section"
-                  sectorCode="SECTOR_05"
+                  sectorCode="08"
                   sectorName={lang === "vi" ? "HỆ THỐNG CÔNG NGHỆ" : "SYSTEM STACK"}
                   lang={lang}
                 >
@@ -481,7 +466,7 @@ export default function App() {
               >
                 <StaggeredSection
                   id="app-team-section"
-                  sectorCode="SECTOR_06"
+                  sectorCode="09"
                   sectorName={lang === "vi" ? "ĐỘI NGŨ SÁNG LẬP" : "STUDIO FOUNDERS"}
                   lang={lang}
                 >
@@ -499,7 +484,7 @@ export default function App() {
               >
                 <StaggeredSection
                   id="app-testimonials-section"
-                  sectorCode="SECTOR_07"
+                  sectorCode="10"
                   sectorName={lang === "vi" ? "ĐÁNH GIÁ ĐỐI TÁC" : "PARTNER REVIEWS"}
                   lang={lang}
                 >
@@ -517,7 +502,7 @@ export default function App() {
               >
                 <StaggeredSection
                   id="app-faq-section"
-                  sectorCode="SECTOR_08"
+                  sectorCode="11"
                   sectorName={lang === "vi" ? "GIẢI ĐÁP THẮC MẮC" : "FAQ RESOLUTIONS"}
                   lang={lang}
                 >
@@ -535,7 +520,7 @@ export default function App() {
               >
                 <StaggeredSection
                   id="app-contact-section"
-                  sectorCode="SECTOR_09"
+                  sectorCode="12"
                   sectorName={lang === "vi" ? "LIÊN HỆ ĐẶT HÀNG" : "INQUIRY PORTAL"}
                   lang={lang}
                 >
@@ -604,7 +589,6 @@ export default function App() {
             >
               {/* Background layout dots & accent glows */}
               <div className="absolute inset-0 swiss-grid opacity-20 pointer-events-none" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-orange/10 rounded-full blur-[80px]" />
 
               <div className="flex justify-between items-center font-mono text-xs tracking-[0.3em] text-ink-muted relative z-10">
                 <span>THREE BUGS STUDIO</span>
@@ -643,7 +627,7 @@ export default function App() {
 
               <div className="flex justify-between items-end font-mono text-xs text-ink-muted relative z-10">
                 <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#27C93F] rounded-full animate-pulse" />
+                  <span className="w-1.5 h-1.5 bg-[#27C93F] rounded-full " />
                   <span>TRANSITION_PORTAL_ACTIVE</span>
                 </div>
                 <span>© 2026 THREE BUGS STUDIO</span>
