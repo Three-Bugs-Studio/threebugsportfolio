@@ -12,7 +12,7 @@ import {
 } from "./ui/MajesticIcon";
 import Lightbox from "./Lightbox";
 import randomPhiTruongStore from "@/assets/randomphitruongstore.webp";
-import lehongkhanhHomepage from "@/assets/lehongkhanh/lehongkhanh_homepage.webp";
+import h1tAppPreview from "@/assets/lehongkhanh/app/h1t_app_preview.webp";
 import BlurUpImage from "./BlurUpImage";
 import MagnifyingLens from "./MagnifyingLens";
 
@@ -478,7 +478,7 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
 
                     {/* 5. H1T MICRO Device Frame */}
                     {project.id === "h1t_micro" && (
-                      <MagnifyingLens lang={lang} zoomImage={lehongkhanhHomepage} zoomLevel={2.5}>
+                      <MagnifyingLens lang={lang} zoomImage={h1tAppPreview} zoomLevel={2.5}>
                         <div className="w-full h-full flex flex-col relative z-10 text-left font-sans device-showcase-frame bg-[#0d0d0f] border border-emerald-500/30 rounded-sm overflow-hidden shadow-2xl">
                           <div className="device-showcase-header bg-surface border-b border-line px-3 py-2 flex items-center justify-between gap-3 shrink-0">
                             <div className="flex items-center gap-1.5 shrink-0">
@@ -493,11 +493,11 @@ export default function SelectedWork({ lang }: SelectedWorkProps) {
                             <span className="hidden sm:inline font-mono text-xs text-emerald-400 font-bold tracking-widest shrink-0 uppercase">HEALTH TECH</span>
                           </div>
 
-                          <div className="relative flex-1 min-h-[260px] sm:min-h-[300px] bg-canvas overflow-hidden group/image">
+                          <div className="relative flex-1 min-h-[260px] sm:min-h-[300px] bg-[#0d0d0f] overflow-hidden group/image">
                             <BlurUpImage 
-                              src={lehongkhanhHomepage} 
-                              alt="H1T MICRO Preview" 
-                              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/image:scale-[1.03]"
+                              src={h1tAppPreview} 
+                              alt={lang === "vi" ? "Ứng dụng H1T MICRO: màn Hôm nay, Vi chất và Khám phá" : "The H1T MICRO app: Today, Micronutrients and Explore screens"} 
+                              className="w-full h-full object-contain transition-transform duration-700 group-hover/image:scale-[1.03]"
                               wrapperClassName="w-full h-full"
                               referrerPolicy="no-referrer"
                             />
