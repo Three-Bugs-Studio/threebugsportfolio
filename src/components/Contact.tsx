@@ -210,7 +210,7 @@ export default function Contact({ lang }: ContactProps) {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-canvas border-t border-line relative">
+    <section id="contact" className="py-16 md:py-20 bg-canvas border-t border-line relative">
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
