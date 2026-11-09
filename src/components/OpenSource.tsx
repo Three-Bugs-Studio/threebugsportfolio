@@ -34,6 +34,8 @@ type Product = {
   primaryHref: string;
   repo: string;
   releases?: string;
+  /** Unikorn.vn product slug: shows the daily, weekly and vote badges. */
+  unikorn?: string;
   image: string;
   stack: string[];
   vi: Copy;
@@ -46,6 +48,7 @@ const PRODUCTS: Product[] = [
     primaryHref: `${CAD_REPO}/releases/latest`,
     repo: CAD_REPO,
     releases: "Three-Bugs-Studio/3bcad",
+    unikorn: "3bcad",
     image: sketchImg,
     stack: ["Rust", "wgpu", "egui", "truck"],
     vi: {
@@ -134,6 +137,33 @@ function ProductCard({ product, index, lang }: { product: Product; index: number
         </ul>
 
         <p className="font-mono text-xs text-ink-muted">{product.stack.join(" · ")}</p>
+
+        {product.unikorn && (
+          <div className="flex flex-wrap items-center gap-2.5">
+            {([
+              ["rank", "daily", vi ? "Hàng ngày" : "Daily"],
+              ["rank", "weekly", vi ? "Hàng tuần" : "Weekly"],
+              ["", "", vi ? "Bình chọn trên Unikorn.vn" : "Vote on Unikorn.vn"],
+            ] as const).map(([path, type, label]) => {
+              const src = (theme: string) =>
+                `https://unikorn.vn/api/widgets/badge/${product.unikorn}${path ? `/${path}` : ""}?theme=${theme}${type ? `&type=${type}` : ""}`;
+              const alt = `${c.name} - ${label}`;
+              return (
+                <a
+                  key={label}
+                  href={`https://unikorn.vn/p/${product.unikorn}?ref=embed-${product.unikorn}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  title={`${c.name} - ${label}`}
+                  className="inline-flex items-center transition-transform hover:scale-[1.03] focus-terminal"
+                >
+                  <img src={src("dark")} alt={alt} width={250} height={64} loading="lazy" className="unikorn-badge-dark h-9 w-auto" />
+                  <img src={src("light")} alt={alt} width={250} height={64} loading="lazy" className="unikorn-badge-light h-9 w-auto" />
+                </a>
+              );
+            })}
+          </div>
+        )}
 
         <div className="mt-auto flex flex-col sm:flex-row gap-3 pt-1">
           <a
