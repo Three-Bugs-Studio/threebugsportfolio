@@ -462,6 +462,12 @@ button:focus-visible,
   background-origin: border-box;
 }
 
+/* --line is the divider colour (10-12% alpha): too faint for a button edge. Half the text colour clears 3:1 in both themes. */
+.btn-stacked.border-line {
+  --btn-edge: color-mix(in srgb, currentColor 50%, transparent);
+  border-color: var(--btn-edge);
+}
+
 .btn-stacked.border:hover {
   --btn-edge: currentColor;
   border-color: currentColor !important;
