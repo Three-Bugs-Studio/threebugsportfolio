@@ -33,6 +33,8 @@ type Product = {
   id: string;
   primaryHref: string;
   repo: string;
+  /** User guide site: shows a "Guide" button next to GitHub. */
+  docs?: string;
   releases?: string;
   /** Unikorn.vn product slug: shows the daily, weekly and vote badges. */
   unikorn?: string;
@@ -47,6 +49,7 @@ const PRODUCTS: Product[] = [
     id: "open-source",
     primaryHref: `${CAD_REPO}/releases/latest`,
     repo: CAD_REPO,
+    docs: "https://three-bugs-studio.github.io/3bcad/",
     releases: "Three-Bugs-Studio/3bcad",
     unikorn: "3bcad",
     image: sketchImg,
@@ -174,6 +177,16 @@ function ProductCard({ product, index, lang }: { product: Product; index: number
           >
             {release ? (vi ? `Tải ${release.tag}` : `Download ${release.tag}`) : c.primaryLabel} ↗
           </a>
+          {product.docs && (
+            <a
+              href={product.docs}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-stacked font-mono text-xs uppercase tracking-widest text-center px-5 py-3 border border-line text-ink focus-terminal"
+            >
+              {vi ? "Hướng dẫn" : "Guide"} ↗
+            </a>
+          )}
           <a
             href={product.repo}
             target="_blank"
