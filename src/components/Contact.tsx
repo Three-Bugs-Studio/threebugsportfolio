@@ -44,6 +44,7 @@ export default function Contact({ lang }: ContactProps) {
       : "I agree that Three Bugs Studio may use my name, email and message above to contact me, advise on and quote my project.";
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [sendFailed, setSendFailed] = useState(false);
 
   // Listen for pricing plan selection events
   useEffect(() => {
@@ -140,6 +141,22 @@ export default function Contact({ lang }: ContactProps) {
     }
 
     setErrors({});
+    setSendFailed(false);
+
+    const done = () => {
+      setIsSubmitted(true);
+      try {
+        sessionStorage.removeItem("three_bugs_contact_draft");
+      } catch (e) {}
+    };
+
+    // Honeypot: people never see this field, bots fill it. Fake a success so the bot does not retry.
+    const trap = (e.currentTarget as HTMLFormElement).elements.namedItem("b3_trap") as HTMLInputElement | null;
+    if (trap?.value) {
+      done();
+      return;
+    }
+
     setIsSubmitting(true);
 
     const selectedOption = budgetOptions[budgetIndex];
@@ -158,34 +175,25 @@ export default function Contact({ lang }: ContactProps) {
       consentAt: new Date().toISOString()
     };
 
-    // Send payload asynchronously to Google Sheets / Webhook in background without blocking UI thread
-    if (googleScriptUrl && !googleScriptUrl.includes("YOUR_SCRIPT_ID")) {
-      try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 2500);
-
-        fetch(googleScriptUrl, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "text/plain" },
-          body: JSON.stringify(payload),
-          signal: controller.signal
-        })
-          .catch((err) => console.warn("Background sheet sync notice:", err))
-          .finally(() => clearTimeout(timeoutId));
-      } catch (err) {
-        console.warn("Async submission notice:", err);
-      }
-    }
-
-    // Instant UI feedback: transition to Success state within 400ms for snappy user experience!
-    setTimeout(() => {
+    // Only show success once the request has gone out; otherwise keep the form and offer email/Zalo.
+    // shortcut: no-cors hides the script's reply, so this catches network failures and timeouts but not
+    // an error inside the Apps Script; return JSON from the script and drop no-cors to catch those too.
+    try {
+      if (!googleScriptUrl || googleScriptUrl.includes("YOUR_SCRIPT_ID")) throw new Error("Contact endpoint not configured");
+      await fetch(googleScriptUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify(payload),
+        signal: AbortSignal.timeout(10000),
+      });
+      done();
+    } catch (err) {
+      console.warn("Contact form send failed:", err);
+      setSendFailed(true);
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      try {
-        sessionStorage.removeItem("three_bugs_contact_draft");
-      } catch (e) {}
-    }, 400);
+    }
   };
 
   const handleInputChange = (
@@ -380,6 +388,12 @@ export default function Contact({ lang }: ContactProps) {
                     exit={{ opacity: 0 }}
                     noValidate
                   >
+                    {/* Honeypot: off-screen and out of the tab order, so only bots fill it. The name avoids
+                        anything browser autofill recognises (website, url, phone...), or real visitors would trip it. */}
+                    <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+                      <label htmlFor="b3-trap-input">Leave this field empty</label>
+                      <input id="b3-trap-input" type="text" name="b3_trap" tabIndex={-1} autoComplete="off" defaultValue="" />
+                    </div>
                     {/* Grid Inputs: Name & Company */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                       <div>
@@ -591,6 +605,18 @@ export default function Contact({ lang }: ContactProps) {
                         </>
                       )}
                     </button>
+
+                    {sendFailed && (
+                      <p role="alert" className="font-mono text-xs text-red-500 -mt-2 flex items-start gap-1.5 leading-relaxed">
+                        <AlertCircleIcon size={14} className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                        <span>
+                          {lang === "vi" ? "Chưa gửi được yêu cầu. Bạn thử lại, hoặc gửi qua " : "Your request did not go through. Try again, or reach us at "}
+                          <a href="mailto:threebugstudio@gmail.com" className="underline underline-offset-2 hover:text-ink">threebugstudio@gmail.com</a>
+                          {lang === "vi" ? " hoặc " : " or "}
+                          <a href="https://zalo.me/0392996307" target="_blank" rel="noreferrer" className="underline underline-offset-2 hover:text-ink">Zalo</a>.
+                        </span>
+                      </p>
+                    )}
                   </motion.form>
                 ) : (
                   <motion.div
