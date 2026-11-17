@@ -9,7 +9,7 @@ import {
 } from "./ui/MajesticIcon";
 import { SiGithub } from "react-icons/si";
 import { TeamMember } from "../types";
-import TeamPortrait from "./TeamPortrait";
+import TeamPortrait, { PHOTOS } from "./TeamPortrait";
 import Logo from "./Logo";
 import AnimIcon from "./ui/AnimIcon";
 
@@ -197,7 +197,11 @@ export default function Team({ lang }: TeamProps) {
             <span className="h-[1px] flex-1 bg-line" />
           </div>
         <motion.div
-          className={`grid grid-cols-1 gap-6 ${group.wide ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3"}`}
+          className={
+            group.names.every((n) => PHOTOS[n])
+              ? "grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:gap-6"
+              : `grid grid-cols-1 gap-6 ${group.wide ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3"}`
+          }
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -207,6 +211,76 @@ export default function Team({ lang }: TeamProps) {
             const idx = teamList.indexOf(member);
             const art = CHAR[member.name];
             const colorHex = member.colorTag?.hex || "#FF6A00";
+            const open = () => setSelectedMember(member);
+            const onKey = (e: React.KeyboardEvent) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                open();
+              }
+            };
+
+            // Photo ID badge (new design): orange frame, dark inner panel in both themes like a real card.
+            if (PHOTOS[member.name]) {
+              return (
+                <motion.div
+                  key={member.name}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`${member.name} - ${member.role} (${lang === "vi" ? "Nhấn để xem chi tiết" : "Click to view profile"})`}
+                  variants={cardVariants}
+                  onClick={open}
+                  onKeyDown={onKey}
+                  className="team-card-item id-badge group relative sm:w-[240px] cursor-pointer interactive outline-none rounded-[18px] bg-brand-orange p-[5px] shadow-[0_12px_32px_-12px_rgba(255,106,0,0.55)] transition-transform duration-300 hover:-translate-y-1"
+                >
+                  <div className="relative h-full rounded-[14px] bg-[#0c0c0c] text-[#f2f2f2] px-2.5 sm:px-3 pt-4 pb-3 flex flex-col overflow-hidden">
+                    {/* Lanyard slot */}
+                    <span aria-hidden="true" className="absolute top-1.5 left-1/2 -translate-x-1/2 w-10 h-1.5 rounded-full bg-[#1d1d1d] border border-white/10" />
+
+                    {/* Issuer header: logo between two barcode blocks */}
+                    <div className="flex items-center justify-between gap-2 pt-1">
+                      <Barcode seed={member.name.slice(0, 6)} className="h-7 w-4 sm:w-6 text-white/40" />
+                      <Logo className="h-8 sm:h-10 text-white!" />
+                      <Barcode seed={member.name.slice(-6)} className="h-7 w-4 sm:w-6 text-white/40" />
+                    </div>
+
+                    {/* Photo window with chamfered top corners */}
+                    <div className="relative mt-3 p-px bg-brand-orange/70 [clip-path:polygon(10px_0,calc(100%-10px)_0,100%_10px,100%_100%,0_100%,0_10px)]">
+                      <div className="overflow-hidden bg-[#1a1a1a] [clip-path:polygon(10px_0,calc(100%-10px)_0,100%_10px,100%_100%,0_100%,0_10px)]">
+                        <TeamPortrait
+                          name={member.name}
+                          color={colorHex}
+                          title={`${lang === "vi" ? "Chân dung minh họa" : "Illustrated portrait of"} ${member.name}`}
+                          className="block w-full aspect-[94/131] transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Name, ID number, codename, chip */}
+                    <div className="mt-3 flex items-start gap-2">
+                      <div className="min-w-0 flex-1 text-center">
+                        <p className="font-display font-bold text-sm sm:text-base leading-tight [text-wrap:balance]">{member.name}</p>
+                        <p className="font-mono text-xs tracking-widest text-white/60 mt-0.5">
+                          {lang === "vi" ? "MÃ SỐ" : "ID"} 3B-0{idx + 1}
+                        </p>
+                        <span aria-hidden="true" className="block h-px bg-brand-orange/80 my-1.5" />
+                        {art && <p className="font-mono font-bold text-xs sm:text-sm tracking-[0.18em] text-[#FF6A00] truncate">{art.codename}</p>}
+                      </div>
+                      {/* Gold contact chip */}
+                      <span aria-hidden="true" className="mt-1 shrink-0 w-6 h-7 sm:w-7 sm:h-8 rounded-[4px] bg-gradient-to-br from-[#f1d27a] via-[#c9992f] to-[#8a6a1f] grid grid-cols-2 gap-px p-[3px] opacity-90">
+                        <span className="border border-black/30 rounded-[1px]" />
+                        <span className="border border-black/30 rounded-[1px]" />
+                        <span className="border border-black/30 rounded-[1px]" />
+                        <span className="border border-black/30 rounded-[1px]" />
+                      </span>
+                    </div>
+
+                    {/* Footer barcode + glow bar */}
+                    <Barcode seed={member.name + idx} className="mt-2 h-3 w-16 text-white/35" />
+                    <span aria-hidden="true" className="mx-auto mt-2 block h-1 w-1/2 rounded-full bg-white shadow-[0_0_10px_2px_rgba(255,255,255,0.6)]" />
+                  </div>
+                </motion.div>
+              );
+            }
 
             return (
               <motion.div
@@ -215,13 +289,8 @@ export default function Team({ lang }: TeamProps) {
                 role="button"
                 aria-label={`${member.name} - ${member.role} (${lang === "vi" ? "Nhấn để xem chi tiết" : "Click to view profile"})`}
                 variants={cardVariants}
-                onClick={() => setSelectedMember(member)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    setSelectedMember(member);
-                  }
-                }}
+                onClick={open}
+                onKeyDown={onKey}
                 style={{ "--tag": colorHex } as React.CSSProperties}
                 className="team-card-item id-card group relative bg-surface border border-line cursor-pointer flex flex-col overflow-hidden interactive outline-none transition-colors duration-300"
               >

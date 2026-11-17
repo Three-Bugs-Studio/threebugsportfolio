@@ -113,7 +113,7 @@ html.light .receptionist-anim-icon-container,
 html.light .customer-review-anim-container,
 html.light .faq-anim-icon-container,
 html.light .faq-item-box,
-html.light .team-card-item {
+html.light .team-card-item:not(.id-badge) {
   background-color: #FFFFFF !important;
   border-color: rgba(15, 23, 42, 0.14) !important;
   box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06) !important;
@@ -257,7 +257,7 @@ html.light #card-nav-theme-btn:hover {
 html.light .pricing-card-left,
 html.light .pricing-card-right,
 html.light .faq-item-box,
-html.light .team-card-item {
+html.light .team-card-item:not(.id-badge) {
   box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.08) !important;
   border-color: rgba(15, 23, 42, 0.14) !important;
 }

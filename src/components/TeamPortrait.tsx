@@ -1,4 +1,23 @@
 import React, { useId } from "react";
+import duongPhuDong from "@/assets/team/duong-phu-dong.webp";
+import thuTran from "@/assets/team/thu-tran.webp";
+import huynhQuangDong from "@/assets/team/huynh-quang-dong.webp";
+import hoQuangHuy from "@/assets/team/ho-quang-huy.webp";
+import haoVu from "@/assets/team/hao-vu.webp";
+import hoangDo from "@/assets/team/hoang-do.webp";
+import minhDuc from "@/assets/team/minh-duc.webp";
+
+// 3D portraits cropped from the new ID card design. Members listed here get the photo ID card;
+// everyone else keeps the SVG figure below. To swap who is who, swap the imports.
+export const PHOTOS: Record<string, string> = {
+  "Duong Phu Dong": duongPhuDong,
+  "Thu Tran": thuTran,
+  "Huynh Quang Dong": huynhQuangDong,
+  "Ho Quang Huy": hoQuangHuy,
+  "Hao Vu": haoVu,
+  "Hoang Do": hoangDo,
+  "Minh Duc": minhDuc,
+};
 
 // Arasaka-style team portraits: faceted, desaturated skin, orange rim light and cyberware,
 // high-collar jacket with a [3B] pin. Generated from the logo artifact's PERSONNEL board.
@@ -22,6 +41,10 @@ interface TeamPortraitProps {
 
 export default function TeamPortrait({ name, color, title, className = "" }: TeamPortraitProps) {
   const id = useId().replace(/:/g, "");
+  const photo = PHOTOS[name];
+  if (photo) {
+    return <img src={photo} alt={title} width={188} height={262} loading="lazy" className={`object-cover object-top ${className}`} />;
+  }
   const fig = FIGURES[name];
   if (!fig) return null;
   // Our own static markup, so innerHTML is safe.
