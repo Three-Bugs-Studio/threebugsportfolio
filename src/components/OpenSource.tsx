@@ -38,6 +38,8 @@ type Product = {
   releases?: string;
   /** Unikorn.vn product slug: shows the daily, weekly and vote badges. */
   unikorn?: string;
+  /** Product Hunt ids: shows the featured, review and follow badges. */
+  productHunt?: { slug: string; productId: number; postId: number };
   image: string;
   stack: string[];
   vi: Copy;
@@ -52,6 +54,7 @@ const PRODUCTS: Product[] = [
     docs: "https://three-bugs-studio.github.io/3bcad/",
     releases: "Three-Bugs-Studio/3bcad",
     unikorn: "3bcad",
+    productHunt: { slug: "3bcad", productId: 1369756, postId: 1307529 },
     image: sketchImg,
     stack: ["Rust", "wgpu", "egui", "truck"],
     vi: {
@@ -95,6 +98,94 @@ const PRODUCTS: Product[] = [
     },
   },
 ];
+
+type Badge = { label: string; href: string; src: (theme: "dark" | "light") => string; w: number; h: number; cls: string };
+
+// One badge as two images; the theme CSS (unikorn-badge-dark/-light) shows the one matching the site theme.
+function BadgeLink({ badge, name }: { badge: Badge; name: string }) {
+  const alt = `${name} - ${badge.label}`;
+  return (
+    <a
+      href={badge.href}
+      target="_blank"
+      rel="noreferrer"
+      title={alt}
+      className="inline-flex items-center transition-transform hover:scale-[1.03] focus-terminal"
+    >
+      <img src={badge.src("dark")} alt={alt} width={badge.w} height={badge.h} loading="lazy" className={`unikorn-badge-dark w-auto ${badge.cls}`} />
+      <img src={badge.src("light")} alt={alt} width={badge.w} height={badge.h} loading="lazy" className={`unikorn-badge-light w-auto ${badge.cls}`} />
+    </a>
+  );
+}
+
+// "Launched on" panel: Product Hunt first (the headline launch), Unikorn.vn below.
+function LaunchPanel({ product, name, vi }: { product: Product; name: string; vi: boolean }) {
+  const ph = product.productHunt;
+  const phBadges: Badge[] = ph
+    ? [
+        {
+          label: vi ? "Nổi bật trên Product Hunt" : "Featured on Product Hunt",
+          href: `https://www.producthunt.com/products/${ph.slug}?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-${ph.slug}`,
+          src: (t) => `https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=${ph.postId}&theme=${t}`,
+          w: 250, h: 54, cls: "h-12",
+        },
+        {
+          label: vi ? "Viết đánh giá trên Product Hunt" : "Review on Product Hunt",
+          href: `https://www.producthunt.com/products/${ph.slug}/reviews/new?utm_source=badge-product_review&utm_medium=badge&utm_campaign=badge-${ph.slug}`,
+          src: (t) => `https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=${ph.productId}&theme=${t}`,
+          w: 250, h: 54, cls: "h-12",
+        },
+        {
+          label: vi ? "Theo dõi trên Product Hunt" : "Follow on Product Hunt",
+          href: `https://www.producthunt.com/products/${ph.slug}?utm_source=badge-follow&utm_medium=badge&utm_campaign=badge-${ph.slug}`,
+          src: (t) => `https://api.producthunt.com/widgets/embed-image/v1/follow.svg?product_id=${ph.productId}&theme=${t}&size=small`,
+          w: 86, h: 32, cls: "h-8",
+        },
+      ]
+    : [];
+  const uk = product.unikorn;
+  const ukBadges: Badge[] = uk
+    ? ([
+        ["rank", "daily", vi ? "Hàng ngày" : "Daily"],
+        ["rank", "weekly", vi ? "Hàng tuần" : "Weekly"],
+        ["", "", vi ? "Bình chọn trên Unikorn.vn" : "Vote on Unikorn.vn"],
+      ] as const).map(([path, type, label]) => ({
+        label,
+        href: `https://unikorn.vn/p/${uk}?ref=embed-${uk}`,
+        src: (t) => `https://unikorn.vn/api/widgets/badge/${uk}${path ? `/${path}` : ""}?theme=${t}${type ? `&type=${type}` : ""}`,
+        w: 250, h: 64, cls: "h-9",
+      }))
+    : [];
+
+  const group = (title: string, badges: Badge[], divided = false) => (
+    <div className={`p-4 flex flex-col gap-3 ${divided ? "border-t border-line" : ""}`}>
+      <span className="font-mono text-xs uppercase tracking-[0.2em] text-ink-muted">{title}</span>
+      <div className="flex flex-wrap items-center gap-2.5">
+        {badges.map((b) => (
+          <BadgeLink key={b.label} badge={b} name={name} />
+        ))}
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="relative border border-brand-orange/30 bg-surface/60 overflow-hidden">
+      <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-brand-orange to-transparent" aria-hidden="true" />
+      <div className="flex items-center justify-between gap-3 px-4 py-2.5 border-b border-line font-mono text-xs uppercase tracking-[0.2em]">
+        <span className="text-brand-ink font-semibold">// {vi ? "Đã ra mắt trên" : "Launched on"}</span>
+        <span className="flex items-center gap-2 text-ink-muted">
+          <span className="relative flex w-2 h-2" aria-hidden="true">
+            <span className="absolute inset-0 rounded-full bg-brand-orange opacity-75 animate-ping motion-reduce:animate-none" />
+            <span className="relative w-2 h-2 rounded-full bg-brand-orange" />
+          </span>
+          Live
+        </span>
+      </div>
+      {phBadges.length > 0 && group("Product Hunt", phBadges)}
+      {ukBadges.length > 0 && group("Unikorn.vn", ukBadges, phBadges.length > 0)}
+    </div>
+  );
+}
 
 function ProductCard({ product, index, lang }: { product: Product; index: number; lang: "vi" | "en" }) {
   const vi = lang === "vi";
@@ -141,31 +232,8 @@ function ProductCard({ product, index, lang }: { product: Product; index: number
 
         <p className="font-mono text-xs text-ink-muted">{product.stack.join(" · ")}</p>
 
-        {product.unikorn && (
-          <div className="flex flex-wrap items-center gap-2.5">
-            {([
-              ["rank", "daily", vi ? "Hàng ngày" : "Daily"],
-              ["rank", "weekly", vi ? "Hàng tuần" : "Weekly"],
-              ["", "", vi ? "Bình chọn trên Unikorn.vn" : "Vote on Unikorn.vn"],
-            ] as const).map(([path, type, label]) => {
-              const src = (theme: string) =>
-                `https://unikorn.vn/api/widgets/badge/${product.unikorn}${path ? `/${path}` : ""}?theme=${theme}${type ? `&type=${type}` : ""}`;
-              const alt = `${c.name} - ${label}`;
-              return (
-                <a
-                  key={label}
-                  href={`https://unikorn.vn/p/${product.unikorn}?ref=embed-${product.unikorn}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  title={`${c.name} - ${label}`}
-                  className="inline-flex items-center transition-transform hover:scale-[1.03] focus-terminal"
-                >
-                  <img src={src("dark")} alt={alt} width={250} height={64} loading="lazy" className="unikorn-badge-dark h-9 w-auto" />
-                  <img src={src("light")} alt={alt} width={250} height={64} loading="lazy" className="unikorn-badge-light h-9 w-auto" />
-                </a>
-              );
-            })}
-          </div>
+        {(product.productHunt || product.unikorn) && (
+          <LaunchPanel product={product} name={c.name} vi={vi} />
         )}
 
         <div className="mt-auto flex flex-col sm:flex-row gap-3 pt-1">
