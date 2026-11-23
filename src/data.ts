@@ -795,23 +795,6 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       highlightBadge: "ZALO 0392.996.307"
     },
     {
-      name: "Minh Duc",
-      role: "Client Relations · Tư vấn kỹ thuật & Lộ trình",
-      bio: "Cầu nối giữa khách hàng và đội ngũ kỹ sư. Anh tìm hiểu nhu cầu kinh doanh, tư vấn giải pháp kỹ thuật và lộ trình triển khai phù hợp, rồi theo sát dự án để khách luôn nắm rõ tiến độ. Liên hệ trực tiếp: 0867.474.204 (Zalo).",
-      specialties: ["Tư vấn Giải pháp", "Lộ trình Triển khai", "Chăm sóc khách hàng", "Theo dõi Tiến độ"],
-      socials: {},
-      colorTag: {
-        name: "Indigo Blue",
-        hex: "#6366F1",
-        badgeClass: "bg-[#6366F1]/15 text-[#6366F1] border-[#6366F1]/40",
-        glowClass: "border-[#6366F1]/40 shadow-[0_0_20px_rgba(99,102,241,0.25)]",
-        borderHex: "#6366F1"
-      },
-      diagramRole: "CLIENT RELATIONS · TECH CONSULTING",
-      nodeId: "node_minhduc",
-      highlightBadge: "ZALO 0867.474.204"
-    },
-    {
       name: "Do Khang",
       role: "Client Relations · Tư vấn & Chăm sóc khách hàng",
       bio: "Chuyên viên Client Relations của Three Bugs Studio. Anh tiếp nhận yêu cầu, tư vấn gói dịch vụ phù hợp và đồng hành cùng khách hàng trong suốt dự án. Liên hệ trực tiếp: 0359.708.826 (Zalo).",
@@ -954,23 +937,6 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       diagramRole: "CLIENT RELATIONS · QUOTES & AFTERCARE",
       nodeId: "node_hoangdo",
       highlightBadge: "ZALO 0392.996.307"
-    },
-    {
-      name: "Minh Duc",
-      role: "Client Relations · Technical Consulting & Roadmap",
-      bio: "The bridge between clients and our engineers. He learns your business needs, recommends the technical solution and delivery roadmap, then follows the project so you always know where it stands. Direct line: 0867.474.204 (Zalo).",
-      specialties: ["Solution Consulting", "Delivery Roadmap", "Client Care", "Progress Tracking"],
-      socials: {},
-      colorTag: {
-        name: "Indigo Blue",
-        hex: "#6366F1",
-        badgeClass: "bg-[#6366F1]/15 text-[#6366F1] border-[#6366F1]/40",
-        glowClass: "border-[#6366F1]/40 shadow-[0_0_20px_rgba(99,102,241,0.25)]",
-        borderHex: "#6366F1"
-      },
-      diagramRole: "CLIENT RELATIONS · TECH CONSULTING",
-      nodeId: "node_minhduc",
-      highlightBadge: "ZALO 0867.474.204"
     },
     {
       name: "Do Khang",

@@ -128,52 +128,7 @@ export default function QuickContactWidget({ lang, theme = "dark" }: QuickContac
                 </div>
               </div>
 
-              {/* Consultant 2: Minh Duc */}
-              <div
-                className={`p-3 rounded-sm border transition-all duration-200 ${
-                  isLight
-                    ? "bg-blue-50/70 border-blue-200/80 text-slate-900"
-                    : "bg-[#0c1220]/90 border-[#0068FF]/30 text-ink"
-                }`}
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2  bg-emerald-400" />
-                    <span className="font-display font-bold text-xs tracking-tight">
-                      Minh Đức
-                    </span>
-                    <span className="font-mono text-xs text-ink-muted">
-                      ({lang === "vi" ? "Tư Vấn Kỹ Thuật" : "Tech Consultant"})
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <a
-                    href="https://zalo.me/0867474204"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] text-white py-2 px-3 rounded-sm font-mono text-xs font-bold   transition-all active:scale-95"
-                  >
-                    <SiZalo className="w-3.5 h-3.5 shrink-0" />
-                    <span>Zalo Chat</span>
-                  </a>
-                  <a
-                    href="tel:0867474204"
-                    className={`inline-flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-sm font-mono text-xs font-bold border transition-all active:scale-95 ${
-                      isLight
-                        ? "bg-white border-slate-300 text-slate-800 hover:border-brand-orange"
-                        : "bg-surface border-line text-ink hover:border-brand-orange/40 hover:text-brand-ink"
-                    }`}
-                    title="Gọi Minh Đức: 0867.474.204"
-                  >
-                    <PhoneIcon size={12} className="w-3 h-3 text-brand-ink shrink-0" />
-                    <span>0867.474.204</span>
-                  </a>
-                </div>
-              </div>
-
-              {/* Consultant 3: Do Khang */}
+              {/* Consultant 2: Do Khang */}
               <div
                 className={`p-3 rounded-sm border transition-all duration-200 ${
                   isLight

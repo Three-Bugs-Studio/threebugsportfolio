@@ -305,51 +305,7 @@ export default function Contact({ lang }: ContactProps) {
                     </div>
                   </div>
 
-                  {/* Consultant 2: Minh Duc */}
-                  <div className="p-4 bg-canvas border border-line hover:border-brand-orange/40 rounded-sm transition-all shadow-md group/c">
-                    <div className="flex items-center justify-between mb-1.5">
-                      <div className="flex items-center gap-2.5">
-                        <span className="w-7 h-7  bg-brand-orange/15 text-brand-ink border border-brand-orange/30 font-display font-bold text-xs flex items-center justify-center shrink-0">
-                          MĐ
-                        </span>
-                        <div>
-                          <div className="flex items-center gap-2">
-                            <span className="font-display font-bold text-sm text-ink group-hover/c:text-brand-ink transition-colors">
-                              Minh Đức
-                            </span>
-                            <span className="font-mono text-xs uppercase tracking-wider bg-brand-orange/10 border border-brand-orange/20 text-brand-ink px-1.5 py-0.5 rounded font-semibold">
-                              {lang === "vi" ? "TƯ VẤN KỸ THUẬT" : "TECH ARCHITECT"}
-                            </span>
-                          </div>
-                          <span className="font-mono text-xs text-ink-muted block">
-                            {lang === "vi" ? "Tư vấn công nghệ & Lộ trình 3 Phase" : "Architecture & 3-Phase Roadmap"}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-3 mt-3 pt-3 border-t border-line">
-                      <a
-                        href="tel:0867474204"
-                        className="inline-flex items-center justify-center gap-2 font-mono text-xs text-ink hover:text-brand-ink bg-surface hover:bg-line border border-line hover:border-brand-orange/40 py-2.5 px-3 rounded-sm transition-all shadow-sm active:scale-95 group/btn"
-                        title="Gọi Minh Đức: 0867.474.204"
-                      >
-                        <PhoneIcon size={12} className="w-3 h-3 text-brand-ink shrink-0 transition-transform group-hover/btn:scale-110" />
-                        <span className="font-bold tracking-tight">0867.474.204</span>
-                      </a>
-                      <a
-                        href="https://zalo.me/0867474204"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center justify-center gap-2 font-mono text-xs font-bold text-white bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] py-2.5 px-3 rounded-sm   transition-all active:scale-95"
-                      >
-                        <SiZalo className="w-3.5 h-3.5 shrink-0" />
-                        <span>Chat Zalo</span>
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Consultant 3: Do Khang */}
+                  {/* Consultant 2: Do Khang */}
                   <div className="p-4 bg-canvas border border-line hover:border-brand-orange/40 rounded-sm transition-all shadow-md group/c">
                     <div className="flex items-center justify-between mb-1.5">
                       <div className="flex items-center gap-2.5">

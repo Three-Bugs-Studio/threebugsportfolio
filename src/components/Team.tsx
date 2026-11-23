@@ -65,10 +65,6 @@ export default function Team({ lang }: TeamProps) {
       codename: "LINK", klass: { vi: "Cầu nối khách hàng", en: "Client link" },
       meaning: { vi: "Cây cầu kết nối: đưa khách hàng đến với studio một cách nhẹ nhàng, rõ ràng.", en: "A connecting bridge: bringing clients and the studio together, calmly and clearly." },
     },
-    "Minh Duc": {
-      codename: "BEACON", klass: { vi: "Ngọn đèn dẫn lối", en: "Beacon" },
-      meaning: { vi: "Ánh đèn chào đón: lắng nghe khách hàng và soi rõ con đường triển khai.", en: "A welcoming light: listening to clients and lighting up the road ahead." },
-    },
     "Do Khang": {
       codename: "RELAY", klass: { vi: "Người tiếp sức", en: "Relay" },
       meaning: { vi: "Tiếp nối liền mạch: nhận yêu cầu và giữ liên lạc với khách hàng suốt dự án.", en: "A seamless hand-off: taking requests and keeping clients in the loop throughout the project." },
@@ -79,7 +75,7 @@ export default function Team({ lang }: TeamProps) {
   const GROUPS: { key: string; vi: string; en: string; names: string[] }[] = [
     { key: "lead", vi: "BAN ĐIỀU HÀNH", en: "LEADERSHIP", names: ["Duong Phu Dong", "Thu Tran"] },
     { key: "eng", vi: "KỸ SƯ", en: "ENGINEERING", names: ["Huynh Quang Dong", "Ho Quang Huy", "Hao Vu"] },
-    { key: "client", vi: "CLIENT RELATIONS", en: "CLIENT RELATIONS", names: ["Hoang Do", "Minh Duc", "Do Khang"] },
+    { key: "client", vi: "CLIENT RELATIONS", en: "CLIENT RELATIONS", names: ["Hoang Do", "Do Khang"] },
   ];
   const groupedNames = new Set(GROUPS.flatMap((g) => g.names));
   const leftovers = teamList.filter((m) => !groupedNames.has(m.name)).map((m) => m.name);
@@ -160,8 +156,8 @@ export default function Team({ lang }: TeamProps) {
 
           <p className="font-sans text-xs md:text-sm text-ink-muted max-w-md font-light leading-relaxed">
             {lang === "vi"
-              ? "5 kỹ sư & thiết kế tại TP.HCM với kinh nghiệm thực chiến dự án doanh nghiệp (RMIT Showcase), cùng 3 chuyên viên Client Relations đồng hành với khách hàng từ tư vấn đến bảo trì."
-              : "5 in-house engineers & designers in Ho Chi Minh City with enterprise showcase experience (RMIT Vietnam), plus 3 Client Relations leads who guide you from first call to aftercare."}
+              ? "5 kỹ sư & thiết kế tại TP.HCM với kinh nghiệm thực chiến dự án doanh nghiệp (RMIT Showcase), cùng 2 chuyên viên Client Relations đồng hành với khách hàng từ tư vấn đến bảo trì."
+              : "5 in-house engineers & designers in Ho Chi Minh City with enterprise showcase experience (RMIT Vietnam), plus 2 Client Relations leads who guide you from first call to aftercare."}
           </p>
         </div>
 
