@@ -371,7 +371,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       badge: "TEMPLATE // GIAO NHANH",
       name: "Website Từ Mẫu Có Sẵn",
       tagline: "Chọn mẫu có sẵn, chúng tôi thay logo, màu và nội dung theo thương hiệu của bạn. Dành cho cá nhân, spa, salon, quán ăn, shop nhỏ.",
-      priceVnd: "Từ 2,5 triệu",
+      priceVnd: "Từ 1,5 triệu",
       priceUsd: "hoặc 299.000đ/tháng (tối thiểu 12 tháng)",
       timeline: "2 - 3 ngày làm việc",
       paymentNote: "Trọn gói: 50% đặt cọc, 50% khi bàn giao",
@@ -397,7 +397,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       badge: "LANDING & GIỚI THIỆU // 3 PHASE",
       name: "Website Giới Thiệu Thiết Kế Riêng",
       tagline: "Thiết kế độc quyền trên Figma cho thương hiệu mới, landing chạy quảng cáo, web giới thiệu công ty.",
-      priceVnd: "Từ 8 triệu",
+      priceVnd: "Từ 5 triệu",
       priceUsd: "Báo giá theo số trang và tính năng",
       timeline: "1 - 2 Tuần",
       paymentNote: "30% đặt cọc · 40% xong lập trình · 30% khi bàn giao",
@@ -425,7 +425,7 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       badge: "KHUYÊN DÙNG ★ // 3 PHASE",
       name: "Website Bán Hàng & Đặt Lịch",
       tagline: "Website có trang quản trị cho doanh nghiệp, bán hàng online, đặt lịch, khóa học, bất động sản, du lịch.",
-      priceVnd: "Từ 25 triệu",
+      priceVnd: "Từ 20 triệu",
       priceUsd: "Hệ thống đặt lịch thường khoảng 40 triệu",
       timeline: "3 - 6 Tuần",
       recommended: true,
@@ -521,8 +521,8 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       badge: "TEMPLATE // FAST DELIVERY",
       name: "Website From a Template",
       tagline: "Pick a ready-made template and we apply your logo, colours and content. For individuals, spas, salons, restaurants and small shops.",
-      priceVnd: "From 2.5M VND",
-      priceUsd: "≈ US$95 · or 299k VND/month (12-month minimum)",
+      priceVnd: "From 1.5M VND",
+      priceUsd: "≈ US$57 · or 299k VND/month (12-month minimum)",
       timeline: "2 - 3 working days",
       paymentNote: "One-off: 50% deposit, 50% on handover",
       buttonText: "BROWSE TEMPLATES",
@@ -547,8 +547,8 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       badge: "LANDING & COMPANY SITE // 3 PHASES",
       name: "Custom-Designed Company Website",
       tagline: "Exclusive Figma design for new brands, ad landing pages and company websites.",
-      priceVnd: "From 8M VND",
-      priceUsd: "≈ US$300 · priced by pages and features",
+      priceVnd: "From 5M VND",
+      priceUsd: "≈ US$190 · priced by pages and features",
       timeline: "1 - 2 Weeks",
       paymentNote: "30% deposit · 40% after development · 30% on handover",
       features: [
@@ -575,8 +575,8 @@ export const PRICING_DATA: Record<"vi" | "en", PricingPlan[]> = {
       badge: "RECOMMENDED ★ // 3 PHASES",
       name: "Online Store & Booking Website",
       tagline: "Websites with an admin panel for businesses, online stores, bookings, courses, real estate and travel.",
-      priceVnd: "From 25M VND",
-      priceUsd: "≈ US$950 · a booking system is usually around 40M VND",
+      priceVnd: "From 20M VND",
+      priceUsd: "≈ US$760 · a booking system is usually around 40M VND",
       timeline: "3 - 6 Weeks",
       recommended: true,
       paymentNote: "30% deposit · 40% after development · 30% on handover",
@@ -810,6 +810,23 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       diagramRole: "CLIENT RELATIONS · TECH CONSULTING",
       nodeId: "node_minhduc",
       highlightBadge: "ZALO 0867.474.204"
+    },
+    {
+      name: "Do Khang",
+      role: "Client Relations · Tư vấn & Chăm sóc khách hàng",
+      bio: "Chuyên viên Client Relations của Three Bugs Studio. Anh tiếp nhận yêu cầu, tư vấn gói dịch vụ phù hợp và đồng hành cùng khách hàng trong suốt dự án. Liên hệ trực tiếp: 0359.708.826 (Zalo).",
+      specialties: ["Tư vấn Dịch vụ", "Chăm sóc khách hàng", "Tiếp nhận Yêu cầu", "Theo dõi Dự án"],
+      socials: {},
+      colorTag: {
+        name: "Lime Green",
+        hex: "#84CC16",
+        badgeClass: "bg-[#84CC16]/15 text-[#84CC16] border-[#84CC16]/40",
+        glowClass: "border-[#84CC16]/40 shadow-[0_0_20px_rgba(132,204,22,0.25)]",
+        borderHex: "#84CC16"
+      },
+      diagramRole: "CLIENT RELATIONS · CLIENT CARE",
+      nodeId: "node_dokhang",
+      highlightBadge: "ZALO 0359.708.826"
     }
   ],
   en: [
@@ -954,6 +971,23 @@ export const TEAM_DATA: Record<"vi" | "en", TeamMember[]> = {
       diagramRole: "CLIENT RELATIONS · TECH CONSULTING",
       nodeId: "node_minhduc",
       highlightBadge: "ZALO 0867.474.204"
+    },
+    {
+      name: "Do Khang",
+      role: "Client Relations · Consulting & Client Care",
+      bio: "A Client Relations specialist at Three Bugs Studio. He takes in requests, recommends the right package and stays with clients throughout the project. Direct line: 0359.708.826 (Zalo).",
+      specialties: ["Service Consulting", "Client Care", "Request Intake", "Project Follow-up"],
+      socials: {},
+      colorTag: {
+        name: "Lime Green",
+        hex: "#84CC16",
+        badgeClass: "bg-[#84CC16]/15 text-[#84CC16] border-[#84CC16]/40",
+        glowClass: "border-[#84CC16]/40 shadow-[0_0_20px_rgba(132,204,22,0.25)]",
+        borderHex: "#84CC16"
+      },
+      diagramRole: "CLIENT RELATIONS · CLIENT CARE",
+      nodeId: "node_dokhang",
+      highlightBadge: "ZALO 0359.708.826"
     }
   ]
 };
@@ -1334,9 +1368,9 @@ export const TRANSLATIONS = {
     contactFieldServices: "Dịch vụ cần tư vấn",
     contactFieldBudget: "Gói cước / Ngân sách lựa chọn",
     contactFieldMessage: "Chi tiết yêu cầu của bạn",
-    contactBudgetValue: "Từ 2,5 triệu",
-    contactBudgetRange1: "Gói 1: Website Giới Thiệu (Từ 8 triệu)",
-    contactBudgetRange2: "Gói 2: Website Bán Hàng & Đặt Lịch (Từ 25 triệu)",
+    contactBudgetValue: "Từ 1,5 triệu",
+    contactBudgetRange1: "Gói 1: Website Giới Thiệu (Từ 5 triệu)",
+    contactBudgetRange2: "Gói 2: Website Bán Hàng & Đặt Lịch (Từ 20 triệu)",
     contactBudgetRange3: "Gói 3: Hệ Thống & App Theo Yêu Cầu (Báo giá theo yêu cầu)",
     contactBudgetConversionLabel: "Tư vấn & báo giá chi tiết trực tiếp qua Zalo / Hotline",
     contactSendBtn: "GỬI THÔNG TIN YÊU CẦU",
@@ -1422,9 +1456,9 @@ export const TRANSLATIONS = {
     contactFieldServices: "Service of Interest",
     contactFieldBudget: "Selected Package / Budget",
     contactFieldMessage: "Project Requirements",
-    contactBudgetValue: "From 2.5M VND",
-    contactBudgetRange1: "Package 1: Company Website (From 8M VND)",
-    contactBudgetRange2: "Package 2: Store & Booking Website (From 25M VND)",
+    contactBudgetValue: "From 1.5M VND",
+    contactBudgetRange1: "Package 1: Company Website (From 5M VND)",
+    contactBudgetRange2: "Package 2: Store & Booking Website (From 20M VND)",
     contactBudgetRange3: "Package 3: Custom Systems & Apps (Quoted per project)",
     contactBudgetConversionLabel: "Direct project consultation via Zalo / Hotline",
     contactSendBtn: "SEND PROJECT INQUIRY",

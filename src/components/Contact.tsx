@@ -89,13 +89,13 @@ export default function Contact({ lang }: ContactProps) {
     {
       badge: lang === "vi" ? "GÓI 01" : "PLAN 01",
       title: lang === "vi" ? "Website Giới Thiệu" : "Company Website",
-      quote: lang === "vi" ? "Từ 8 triệu" : "From 8M VND",
+      quote: lang === "vi" ? "Từ 5 triệu" : "From 5M VND",
       desc: lang === "vi" ? "Thiết kế riêng trên Figma, tối đa 5 trang, giao trong 1 - 2 tuần." : "Custom Figma design, up to 5 pages, delivered in 1 - 2 weeks.",
     },
     {
       badge: lang === "vi" ? "GÓI 02" : "PLAN 02",
       title: lang === "vi" ? "Website Bán Hàng & Đặt Lịch" : "Store & Booking Website",
-      quote: lang === "vi" ? "Từ 25 triệu" : "From 25M VND",
+      quote: lang === "vi" ? "Từ 20 triệu" : "From 20M VND",
       desc: lang === "vi" ? "Có trang quản trị, bán hàng / đặt lịch / khóa học, giao trong 3 - 6 tuần." : "Admin panel plus shop, bookings or courses, delivered in 3 - 6 weeks.",
     },
     {
@@ -339,6 +339,50 @@ export default function Contact({ lang }: ContactProps) {
                       </a>
                       <a
                         href="https://zalo.me/0867474204"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center justify-center gap-2 font-mono text-xs font-bold text-white bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] py-2.5 px-3 rounded-sm   transition-all active:scale-95"
+                      >
+                        <SiZalo className="w-3.5 h-3.5 shrink-0" />
+                        <span>Chat Zalo</span>
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Consultant 3: Do Khang */}
+                  <div className="p-4 bg-canvas border border-line hover:border-brand-orange/40 rounded-sm transition-all shadow-md group/c">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <div className="flex items-center gap-2.5">
+                        <span className="w-7 h-7  bg-brand-orange/15 text-brand-ink border border-brand-orange/30 font-display font-bold text-xs flex items-center justify-center shrink-0">
+                          ĐK
+                        </span>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-display font-bold text-sm text-ink group-hover/c:text-brand-ink transition-colors">
+                              Đỗ Khang
+                            </span>
+                            <span className="font-mono text-xs uppercase tracking-wider bg-brand-orange/10 border border-brand-orange/20 text-brand-ink px-1.5 py-0.5 rounded font-semibold">
+                              {lang === "vi" ? "CHĂM SÓC KHÁCH HÀNG" : "CLIENT CARE"}
+                            </span>
+                          </div>
+                          <span className="font-mono text-xs text-ink-muted block">
+                            {lang === "vi" ? "Tiếp nhận yêu cầu & Đồng hành dự án" : "Request Intake & Project Follow-up"}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3 mt-3 pt-3 border-t border-line">
+                      <a
+                        href="tel:0359708826"
+                        className="inline-flex items-center justify-center gap-2 font-mono text-xs text-ink hover:text-brand-ink bg-surface hover:bg-line border border-line hover:border-brand-orange/40 py-2.5 px-3 rounded-sm transition-all shadow-sm active:scale-95 group/btn"
+                        title="Gọi Đỗ Khang: 0359.708.826"
+                      >
+                        <PhoneIcon size={12} className="w-3 h-3 text-brand-ink shrink-0 transition-transform group-hover/btn:scale-110" />
+                        <span className="font-bold tracking-tight">0359.708.826</span>
+                      </a>
+                      <a
+                        href="https://zalo.me/0359708826"
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center justify-center gap-2 font-mono text-xs font-bold text-white bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] py-2.5 px-3 rounded-sm   transition-all active:scale-95"

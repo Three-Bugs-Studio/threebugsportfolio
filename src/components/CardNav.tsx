@@ -94,7 +94,7 @@ export default function CardNav({
       label: vi ? "Sản phẩm" : "Products",
       links: [
         { label: vi ? "Dự án tiêu biểu" : "Featured work", hint: vi ? "Sản phẩm đã bàn giao" : "Products we have shipped", href: "#app-work-section" },
-        { label: vi ? "Mẫu website" : "Website templates", hint: vi ? "Có demo chạy thật, từ 2,5 triệu" : "Live demos, from 2.5M VND", href: "/templates" },
+        { label: vi ? "Mẫu website" : "Website templates", hint: vi ? "Có demo chạy thật, từ 1,5 triệu" : "Live demos, from 1.5M VND", href: "/templates" },
         { label: "3BCAD", hint: vi ? "CAD 3D mã nguồn mở" : "Open-source 3D CAD", href: "#app-opensource-section" },
         { label: "3B Infrastructure", hint: vi ? "Sổ tay kỹ thuật mã nguồn mở" : "Open-source engineering notes", href: "#open-source-3binfrastructure" }
       ]

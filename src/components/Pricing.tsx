@@ -188,8 +188,8 @@ export default function Pricing({ lang }: PricingProps) {
               </div>
               <p className="font-display font-medium text-sm md:text-base text-ink leading-snug">
                 {lang === "vi" 
-                  ? "Báo giá linh hoạt theo quy mô & chức năng – Liên hệ ngay 2 chuyên viên phụ trách tiếp nhận dự án:" 
-                  : "Custom quote tailored to project scope – Contact our 2 direct project intake consultants:"}
+                  ? "Báo giá linh hoạt theo quy mô & chức năng – Liên hệ ngay 3 chuyên viên phụ trách tiếp nhận dự án:"
+                  : "Custom quote tailored to project scope – Contact our 3 direct project intake consultants:"}
               </p>
             </div>
           </div>
@@ -263,6 +263,43 @@ export default function Pricing({ lang }: PricingProps) {
                 </a>
                 <a
                   href="https://zalo.me/0867474204"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-sm bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] text-white font-mono text-xs font-bold   transition-all active:scale-95"
+                >
+                  <SiZalo className="w-3.5 h-3.5 shrink-0" />
+                  <span>Zalo Chat</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Consultant 3: Do Khang (full width under the other two) */}
+            <div className="sm:col-span-2 flex flex-col justify-between p-3.5 sm:p-4 bg-canvas/90 border border-line hover:border-brand-orange/40 rounded-sm transition-all shadow-md group/card">
+              <div className="flex items-center justify-between mb-2.5">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-display font-bold text-sm text-ink group-hover/card:text-brand-ink transition-colors">
+                      Đỗ Khang
+                    </span>
+                    <span className="w-1.5 h-1.5  bg-emerald-400" />
+                  </div>
+                  <span className="font-mono text-xs text-ink-muted">
+                    {lang === "vi" ? "Tư vấn & Chăm sóc khách hàng" : "Consulting & Client Care"}
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2.5 mt-2">
+                <a
+                  href="tel:0359708826"
+                  className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-sm bg-surface hover:bg-line border border-line hover:border-brand-orange/40 font-mono text-xs text-ink hover:text-brand-ink transition-all shadow-sm active:scale-95"
+                  title="Gọi Đỗ Khang: 0359.708.826"
+                >
+                  <PhoneIcon size={12} className="w-3 h-3 text-brand-ink shrink-0" />
+                  <span className="font-bold tracking-tight">0359.708.826</span>
+                </a>
+                <a
+                  href="https://zalo.me/0359708826"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-sm bg-gradient-to-r from-[#0068FF] to-[#0084FF] hover:from-[#0058e6] hover:to-[#0074e6] text-white font-mono text-xs font-bold   transition-all active:scale-95"

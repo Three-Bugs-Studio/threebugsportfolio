@@ -46,7 +46,17 @@ export default function TeamPortrait({ name, color, title, className = "" }: Tea
     return <img src={photo} alt={title} width={188} height={262} loading="lazy" className={`object-cover object-top ${className}`} />;
   }
   const fig = FIGURES[name];
-  if (!fig) return null;
+  if (!fig) {
+    // No portrait yet: initials in the member's colour, so a new member still gets a full ID badge.
+    const initials = name.split(" ").map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+    return (
+      <div role="img" aria-label={title} className={`relative bg-[#141414] ${className}`}>
+        <span className="absolute inset-0 flex items-center justify-center font-display font-bold text-3xl tracking-widest" style={{ color }}>
+          {initials}
+        </span>
+      </div>
+    );
+  }
   // Our own static markup, so innerHTML is safe.
   const html =
     `<defs><radialGradient id="${id}g" cx="50%" cy="38%" r="55%"><stop offset="0" stop-color="${color}" stop-opacity=".3"/>` +

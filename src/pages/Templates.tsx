@@ -80,8 +80,8 @@ export default function Templates() {
 
         <ul className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-10">
           {(vi
-            ? [["Từ 2,5 triệu", "hoặc trả theo tháng"], ["2–3 ngày", "làm việc là có web"], ["Theo thương hiệu", "thay logo, màu, nội dung"], ["2 lượt chỉnh sửa", "trước khi bàn giao"]]
-            : [["From 2.5M VND", "or pay monthly"], ["2–3 days", "working days to launch"], ["Your brand", "logo, colours, content"], ["2 revisions", "before handover"]]
+            ? [["Từ 1,5 triệu", "hoặc trả theo tháng"], ["2–3 ngày", "làm việc là có web"], ["Theo thương hiệu", "thay logo, màu, nội dung"], ["2 lượt chỉnh sửa", "trước khi bàn giao"]]
+            : [["From 1.5M VND", "or pay monthly"], ["2–3 days", "working days to launch"], ["Your brand", "logo, colours, content"], ["2 revisions", "before handover"]]
           ).map(([big, small]) => (
             <li key={big} className="bg-surface border border-line  p-4 md:p-5">
               <div className="font-display font-bold text-lg md:text-2xl text-ink">{big}</div>

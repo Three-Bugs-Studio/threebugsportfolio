@@ -26,9 +26,9 @@ export default function TemplatesShowcase({ lang }: { lang: "vi" | "en" }) {
             </span>
             <h2 className="font-display font-medium text-4xl md:text-5xl tracking-tight text-ink leading-[1.1] mt-4 [text-wrap:balance]">
               {vi ? (
-                <>Có website trong <span className="whitespace-nowrap">2–3 ngày</span>, chỉ từ 2,5 triệu.</>
+                <>Có website trong <span className="whitespace-nowrap">2–3 ngày</span>, chỉ từ 1,5 triệu.</>
               ) : (
-                <>Launch in <span className="whitespace-nowrap">2–3 days</span>, from 2.5M VND.</>
+                <>Launch in <span className="whitespace-nowrap">2–3 days</span>, from 1.5M VND.</>
               )}
             </h2>
             <p className="text-sm md:text-base text-ink-muted font-light leading-relaxed mt-4 max-w-xl">

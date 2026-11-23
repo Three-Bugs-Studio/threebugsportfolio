@@ -322,8 +322,8 @@ export default function App() {
             <Marquee
               className="border-y border-line bg-canvas py-4 font-mono text-xs uppercase tracking-[0.25em] text-ink-muted"
               items={lang === "vi"
-                ? ["Thiết kế UI/UX", "Phát triển website", "E-Commerce", "Web App", "Tích hợp AI", "Bảo trì & vá lỗi", "Mẫu website từ 2,5 triệu"]
-                : ["UI/UX design", "Web development", "E-Commerce", "Web apps", "AI integration", "Maintenance & hotfixes", "Templates from 2.5M VND"]}
+                ? ["Thiết kế UI/UX", "Phát triển website", "E-Commerce", "Web App", "Tích hợp AI", "Bảo trì & vá lỗi", "Mẫu website từ 1,5 triệu"]
+                : ["UI/UX design", "Web development", "E-Commerce", "Web apps", "AI integration", "Maintenance & hotfixes", "Templates from 1.5M VND"]}
             />
 
             {/* Templates first so budget customers see them right away; then the client journey: what, proof, cost, how, trust, contact */}

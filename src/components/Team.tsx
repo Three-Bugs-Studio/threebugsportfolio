@@ -9,22 +9,12 @@ import {
 } from "./ui/MajesticIcon";
 import { SiGithub } from "react-icons/si";
 import { TeamMember } from "../types";
-import TeamPortrait, { PHOTOS } from "./TeamPortrait";
+import TeamPortrait from "./TeamPortrait";
 import Logo from "./Logo";
 import AnimIcon from "./ui/AnimIcon";
 
 interface TeamProps {
   lang: "vi" | "en";
-}
-
-// One labelled line on the ID card.
-function IdField({ label, children }: { label: string; children: React.ReactNode }) {
-  return (
-    <div className="min-w-0">
-      <dt className="font-mono text-xs uppercase tracking-[0.25em] text-ink-muted">{label}</dt>
-      <dd className="text-sm text-ink leading-snug line-clamp-2 mt-0.5">{children}</dd>
-    </div>
-  );
 }
 
 // Decorative barcode derived from the name, so each card's code is stable across renders.
@@ -79,18 +69,22 @@ export default function Team({ lang }: TeamProps) {
       codename: "BEACON", klass: { vi: "Ngọn đèn dẫn lối", en: "Beacon" },
       meaning: { vi: "Ánh đèn chào đón: lắng nghe khách hàng và soi rõ con đường triển khai.", en: "A welcoming light: listening to clients and lighting up the road ahead." },
     },
+    "Do Khang": {
+      codename: "RELAY", klass: { vi: "Người tiếp sức", en: "Relay" },
+      meaning: { vi: "Tiếp nối liền mạch: nhận yêu cầu và giữ liên lạc với khách hàng suốt dự án.", en: "A seamless hand-off: taking requests and keeping clients in the loop throughout the project." },
+    },
   };
 
   // Bento rows by function; anyone not listed falls into a final row so nobody disappears.
-  const GROUPS: { key: string; vi: string; en: string; names: string[]; wide: boolean }[] = [
-    { key: "lead", vi: "BAN ĐIỀU HÀNH", en: "LEADERSHIP", names: ["Duong Phu Dong", "Thu Tran"], wide: true },
-    { key: "eng", vi: "KỸ SƯ", en: "ENGINEERING", names: ["Huynh Quang Dong", "Ho Quang Huy", "Hao Vu"], wide: false },
-    { key: "client", vi: "CLIENT RELATIONS", en: "CLIENT RELATIONS", names: ["Hoang Do", "Minh Duc"], wide: true },
+  const GROUPS: { key: string; vi: string; en: string; names: string[] }[] = [
+    { key: "lead", vi: "BAN ĐIỀU HÀNH", en: "LEADERSHIP", names: ["Duong Phu Dong", "Thu Tran"] },
+    { key: "eng", vi: "KỸ SƯ", en: "ENGINEERING", names: ["Huynh Quang Dong", "Ho Quang Huy", "Hao Vu"] },
+    { key: "client", vi: "CLIENT RELATIONS", en: "CLIENT RELATIONS", names: ["Hoang Do", "Minh Duc", "Do Khang"] },
   ];
   const groupedNames = new Set(GROUPS.flatMap((g) => g.names));
   const leftovers = teamList.filter((m) => !groupedNames.has(m.name)).map((m) => m.name);
   const rows = leftovers.length
-    ? [...GROUPS, { key: "more", vi: "THÀNH VIÊN", en: "MEMBERS", names: leftovers, wide: false }]
+    ? [...GROUPS, { key: "more", vi: "THÀNH VIÊN", en: "MEMBERS", names: leftovers }]
     : GROUPS;
 
   // Keyboard Escape listener & body scroll lock for member modal
@@ -166,8 +160,8 @@ export default function Team({ lang }: TeamProps) {
 
           <p className="font-sans text-xs md:text-sm text-ink-muted max-w-md font-light leading-relaxed">
             {lang === "vi"
-              ? "5 kỹ sư & thiết kế tại TP.HCM với kinh nghiệm thực chiến dự án doanh nghiệp (RMIT Showcase), cùng 2 chuyên viên Client Relations đồng hành với khách hàng từ tư vấn đến bảo trì."
-              : "5 in-house engineers & designers in Ho Chi Minh City with enterprise showcase experience (RMIT Vietnam), plus 2 Client Relations leads who guide you from first call to aftercare."}
+              ? "5 kỹ sư & thiết kế tại TP.HCM với kinh nghiệm thực chiến dự án doanh nghiệp (RMIT Showcase), cùng 3 chuyên viên Client Relations đồng hành với khách hàng từ tư vấn đến bảo trì."
+              : "5 in-house engineers & designers in Ho Chi Minh City with enterprise showcase experience (RMIT Vietnam), plus 3 Client Relations leads who guide you from first call to aftercare."}
           </p>
         </div>
 
@@ -197,11 +191,7 @@ export default function Team({ lang }: TeamProps) {
             <span className="h-[1px] flex-1 bg-line" />
           </div>
         <motion.div
-          className={
-            group.names.every((n) => PHOTOS[n])
-              ? "grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:gap-6"
-              : `grid grid-cols-1 gap-6 ${group.wide ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3"}`
-          }
+          className="grid grid-cols-2 gap-4 sm:flex sm:flex-wrap sm:gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -219,69 +209,7 @@ export default function Team({ lang }: TeamProps) {
               }
             };
 
-            // Photo ID badge (new design): orange frame, dark inner panel in both themes like a real card.
-            if (PHOTOS[member.name]) {
-              return (
-                <motion.div
-                  key={member.name}
-                  tabIndex={0}
-                  role="button"
-                  aria-label={`${member.name} - ${member.role} (${lang === "vi" ? "Nhấn để xem chi tiết" : "Click to view profile"})`}
-                  variants={cardVariants}
-                  onClick={open}
-                  onKeyDown={onKey}
-                  className="team-card-item id-badge group relative sm:w-[240px] cursor-pointer interactive outline-none rounded-[18px] bg-brand-orange p-[5px] shadow-[0_12px_32px_-12px_rgba(255,106,0,0.55)] transition-transform duration-300 hover:-translate-y-1"
-                >
-                  <div className="relative h-full rounded-[14px] bg-[#0c0c0c] text-[#f2f2f2] px-2.5 sm:px-3 pt-4 pb-3 flex flex-col overflow-hidden">
-                    {/* Lanyard slot */}
-                    <span aria-hidden="true" className="absolute top-1.5 left-1/2 -translate-x-1/2 w-10 h-1.5 rounded-full bg-[#1d1d1d] border border-white/10" />
-
-                    {/* Issuer header: logo between two barcode blocks */}
-                    <div className="flex items-center justify-between gap-2 pt-1">
-                      <Barcode seed={member.name.slice(0, 6)} className="h-7 w-4 sm:w-6 text-white/40" />
-                      <Logo className="h-8 sm:h-10 text-white!" />
-                      <Barcode seed={member.name.slice(-6)} className="h-7 w-4 sm:w-6 text-white/40" />
-                    </div>
-
-                    {/* Photo window with chamfered top corners */}
-                    <div className="relative mt-3 p-px bg-brand-orange/70 [clip-path:polygon(10px_0,calc(100%-10px)_0,100%_10px,100%_100%,0_100%,0_10px)]">
-                      <div className="overflow-hidden bg-[#1a1a1a] [clip-path:polygon(10px_0,calc(100%-10px)_0,100%_10px,100%_100%,0_100%,0_10px)]">
-                        <TeamPortrait
-                          name={member.name}
-                          color={colorHex}
-                          title={`${lang === "vi" ? "Chân dung minh họa" : "Illustrated portrait of"} ${member.name}`}
-                          className="block w-full aspect-[94/131] transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Name, ID number, codename, chip */}
-                    <div className="mt-3 flex items-start gap-2">
-                      <div className="min-w-0 flex-1 text-center">
-                        <p className="font-display font-bold text-sm sm:text-base leading-tight [text-wrap:balance]">{member.name}</p>
-                        <p className="font-mono text-xs tracking-widest text-white/60 mt-0.5">
-                          {lang === "vi" ? "MÃ SỐ" : "ID"} 3B-0{idx + 1}
-                        </p>
-                        <span aria-hidden="true" className="block h-px bg-brand-orange/80 my-1.5" />
-                        {art && <p className="font-mono font-bold text-xs sm:text-sm tracking-[0.18em] text-[#FF6A00] truncate">{art.codename}</p>}
-                      </div>
-                      {/* Gold contact chip */}
-                      <span aria-hidden="true" className="mt-1 shrink-0 w-6 h-7 sm:w-7 sm:h-8 rounded-[4px] bg-gradient-to-br from-[#f1d27a] via-[#c9992f] to-[#8a6a1f] grid grid-cols-2 gap-px p-[3px] opacity-90">
-                        <span className="border border-black/30 rounded-[1px]" />
-                        <span className="border border-black/30 rounded-[1px]" />
-                        <span className="border border-black/30 rounded-[1px]" />
-                        <span className="border border-black/30 rounded-[1px]" />
-                      </span>
-                    </div>
-
-                    {/* Footer barcode + glow bar */}
-                    <Barcode seed={member.name + idx} className="mt-2 h-3 w-16 text-white/35" />
-                    <span aria-hidden="true" className="mx-auto mt-2 block h-1 w-1/2 rounded-full bg-white shadow-[0_0_10px_2px_rgba(255,255,255,0.6)]" />
-                  </div>
-                </motion.div>
-              );
-            }
-
+            // ID badge: orange frame, dark inner panel in both themes like a real card.
             return (
               <motion.div
                 key={member.name}
@@ -291,58 +219,53 @@ export default function Team({ lang }: TeamProps) {
                 variants={cardVariants}
                 onClick={open}
                 onKeyDown={onKey}
-                style={{ "--tag": colorHex } as React.CSSProperties}
-                className="team-card-item id-card group relative bg-surface border border-line cursor-pointer flex flex-col overflow-hidden interactive outline-none transition-colors duration-300"
+                className="team-card-item id-badge group relative sm:w-[240px] cursor-pointer interactive outline-none rounded-[18px] bg-brand-orange p-[5px] shadow-[0_12px_32px_-12px_rgba(255,106,0,0.55)] transition-transform duration-300 hover:-translate-y-1"
               >
-                {/* Member colour stripe, widens on hover */}
-                <span aria-hidden="true" className="absolute left-0 top-0 bottom-0 w-[3px] group-hover:w-1.5 transition-[width] duration-300" style={{ backgroundColor: colorHex }} />
+                <div className="relative h-full rounded-[14px] bg-[#0c0c0c] text-[#f2f2f2] px-2.5 sm:px-3 pt-4 pb-3 flex flex-col overflow-hidden">
+                  {/* Lanyard slot */}
+                  <span aria-hidden="true" className="absolute top-1.5 left-1/2 -translate-x-1/2 w-10 h-1.5 rounded-full bg-[#1d1d1d] border border-white/10" />
 
-                {/* Issuer strip */}
-                <div className="flex items-center justify-between gap-3 pl-5 pr-4 py-2.5 border-b border-line">
-                  <span className="flex items-center gap-2.5 min-w-0">
-                    <Logo className="h-4" antennae={false} />
-                    <span className="font-mono text-xs uppercase tracking-[0.25em] text-ink-muted truncate">
-                      {lang === "vi" ? "Thẻ nhân sự" : "Personnel ID"}
-                    </span>
-                  </span>
-                  <span className="font-mono text-xs font-semibold tracking-widest text-ink shrink-0">3B-0{idx + 1}</span>
-                </div>
+                  {/* Issuer header: logo between two barcode blocks */}
+                  <div className="flex items-center justify-between gap-2 pt-1">
+                    <Barcode seed={member.name.slice(0, 6)} className="h-7 w-4 sm:w-6 text-white/40" />
+                    <Logo className="h-8 sm:h-10 text-white!" />
+                    <Barcode seed={member.name.slice(-6)} className="h-7 w-4 sm:w-6 text-white/40" />
+                  </div>
 
-                {/* Photo + record fields */}
-                <div className="flex gap-4 pl-5 pr-4 py-4 flex-1">
-                  {art && (
-                    <div className="shrink-0 w-24 sm:w-28 self-start border border-line bg-canvas p-1">
+                  {/* Photo window with chamfered top corners */}
+                  <div className="relative mt-3 p-px bg-brand-orange/70 [clip-path:polygon(10px_0,calc(100%-10px)_0,100%_10px,100%_100%,0_100%,0_10px)]">
+                    <div className="overflow-hidden bg-[#1a1a1a] [clip-path:polygon(10px_0,calc(100%-10px)_0,100%_10px,100%_100%,0_100%,0_10px)]">
                       <TeamPortrait
                         name={member.name}
                         color={colorHex}
                         title={`${lang === "vi" ? "Chân dung minh họa" : "Illustrated portrait of"} ${member.name}`}
-                        className="block w-full h-auto"
+                        className="block w-full aspect-[94/131] transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
-                  )}
-                  <dl className="min-w-0 flex-1 grid content-start gap-2.5">
-                    {art && (
-                      <IdField label="Codename">
-                        <span className="font-mono font-bold tracking-[0.2em]" style={{ color: colorHex }}>{art.codename}</span>
-                      </IdField>
-                    )}
-                    <IdField label={lang === "vi" ? "Họ tên" : "Name"}>
-                      <span className="font-display font-semibold text-base md:text-lg">{member.name}</span>
-                    </IdField>
-                    <IdField label={lang === "vi" ? "Vai trò" : "Role"}>{member.role}</IdField>
-                    <IdField label={lang === "vi" ? "Bộ phận" : "Division"}>{lang === "vi" ? group.vi : group.en}</IdField>
-                  </dl>
-                </div>
+                  </div>
 
-                {/* Barcode strip */}
-                <div className="flex items-center gap-3 pl-5 pr-4 py-2.5 border-t border-line">
-                  <Barcode seed={member.name} className="h-6 w-24 shrink-0 text-ink" />
-                  <span className="font-mono text-xs text-ink-muted truncate">{(member.specialties || []).slice(0, 2).join(" · ")}</span>
-                  {(member.showcaseUrl || member.name === "Thu Tran") && (
-                    <span className="ml-auto font-mono text-xs uppercase tracking-wider text-brand-ink shrink-0">
-                      {member.showcaseUrl ? "RMIT" : lang === "vi" ? "Tài chính" : "Finance"}
+                  {/* Name, ID number, codename, chip */}
+                  <div className="mt-3 flex items-start gap-2">
+                    <div className="min-w-0 flex-1 text-center">
+                      <p className="font-display font-bold text-sm sm:text-base leading-tight [text-wrap:balance]">{member.name}</p>
+                      <p className="font-mono text-xs tracking-widest text-white/60 mt-0.5">
+                        {lang === "vi" ? "MÃ SỐ" : "ID"} 3B-0{idx + 1}
+                      </p>
+                      <span aria-hidden="true" className="block h-px bg-brand-orange/80 my-1.5" />
+                      {art && <p className="font-mono font-bold text-xs sm:text-sm tracking-[0.18em] text-[#FF6A00] truncate">{art.codename}</p>}
+                    </div>
+                    {/* Gold contact chip */}
+                    <span aria-hidden="true" className="mt-1 shrink-0 w-6 h-7 sm:w-7 sm:h-8 rounded-[4px] bg-gradient-to-br from-[#f1d27a] via-[#c9992f] to-[#8a6a1f] grid grid-cols-2 gap-px p-[3px] opacity-90">
+                      <span className="border border-black/30 rounded-[1px]" />
+                      <span className="border border-black/30 rounded-[1px]" />
+                      <span className="border border-black/30 rounded-[1px]" />
+                      <span className="border border-black/30 rounded-[1px]" />
                     </span>
-                  )}
+                  </div>
+
+                  {/* Footer barcode + glow bar */}
+                  <Barcode seed={member.name + idx} className="mt-2 h-3 w-16 text-white/35" />
+                  <span aria-hidden="true" className="mx-auto mt-2 block h-1 w-1/2 rounded-full bg-white shadow-[0_0_10px_2px_rgba(255,255,255,0.6)]" />
                 </div>
               </motion.div>
             );
